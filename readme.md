@@ -1,3 +1,5 @@
+# Section 1️⃣ : The Test Anatomy
+
 ## ⚪ ️ 1. Include 3 parts in each test name
 
 :white_check_mark: **Do:** A test report should tell whether the current application revision satisfies the requirements for the people who are not necessarily familiar with the code: the tester, the DevOps engineer who is deploying and the future you two years from now. This can be achieved best if the tests speak at the requirements level and include 3 parts:
@@ -449,7 +451,7 @@ Learn and practice TDD principles — they are extremely valuable for many b
 
 <br/><br/>
 
-# Section 2️⃣ : Test Types
+# Section 2️⃣ : Backend Testing
 
 ## ⚪ ️12. Enrich your testing portfolio: Look beyond unit tests and the pyramid
 
@@ -576,8 +578,20 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 <br/><br/>
 
+# Section 3️⃣: Frontend Testing
+
+## ⚪ ️ 3.1. Get enough coverage for being confident, ~80% seems to be the lucky number
+
+:white_check_mark: **Do:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380 than 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule (Fowler: “in the upper 80s or 90s”) that presumably should satisfy most of the applications.
+
+Implementation tips: You may want to configure your continuous integration (CI) to have a coverage threshold (Jest link) and stop a build that doesn’t stand to this standard (it’s also possible to configure threshold per component, see code example below). On top of this, consider detecting build coverage decrease (when a newly committed code has less coverage) — this will push developers raising or at least preserving the amount of tested code. All that said, coverage is only one measure, a quantitative based one, that is not enough to tell the robustness of your testing. And it can also be fooled as illustrated in the next bullets
+
+<br/>
+
+
+<br/><br/>
   
-# Section 3️⃣: Measuring Test Effectiveness
+# Section 4️⃣: Measuring Test Effectiveness
 
 <br/><br/>
 
@@ -659,7 +673,7 @@ it("Test addNewOrder, don't use such test names", () => {
 <br/><br/>
 
   
-# Section 4️⃣ CI and Other Quality Measures
+# Section 5️⃣ CI and Other Quality Measures
 
 <br/><br/>
 
