@@ -449,7 +449,7 @@ Learn and practice TDD principles — they are extremely valuable for many b
 
 <br/><br/>
 
-***Section 2️⃣ : Test Types***
+# Section 2️⃣ : Test Types
 
 ## ⚪ ️12. Enrich your testing portfolio: Look beyond unit tests and the pyramid
 
@@ -576,7 +576,10 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 <br/><br/>
 
-<h3 name="62dd" id="62dd" class="graf graf--h3 graf--leading">***Section 3️⃣: Measuring Test Effectiveness***</h3>
+  
+# Section 3️⃣: Measuring Test Effectiveness
+
+<br/><br/>
 
 ## ⚪ ️ 18. Get enough coverage for being confident, ~80% seems to be the lucky number
 
@@ -655,7 +658,10 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/><br/>
 
-<h3 name="68f9" id="68f9" class="graf graf--h3 graf--leading">***Section 4️⃣&nbsp;: CI &amp; Other Quality Measures***</h3>
+  
+# Section 4️⃣ CI and Other Quality Measures
+
+<br/><br/>
 
 ## ⚪ ️ 21. Enrich your linters and abort builds that have linting issues
 
