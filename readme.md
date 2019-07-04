@@ -1,3 +1,43 @@
+# JavaScript & Node.JS Testing Best Practices
+
+<h1 align="center">
+  <img src="assets/js-bp-header.jpg" alt="JavaScript & Node.JS Testing Best Practices">
+</h1>
+
+<br/>
+
+<div align="center">
+  <img src="https://img.shields.io/badge/⚙%20Item%20count%20-%2083%20Best%20Practices-blue.svg" alt="83 items"> <img src="https://img.shields.io/badge/%F0%9F%93%85%20Last%20update%20-%20Jun%205%202019-green.svg" alt="Last update: Jun 5, 2019"> <img src="https://img.shields.io/badge/ %E2%9C%94%20Updated%20For%20Version%20-%20Node%2012.14.0%20LTS-brightgreen.svg" alt="Updated for Node 12.14.0 LTS">
+</div>
+
+<br/>
+
+[![nodepractices](/assets/images/twitter-s.png)](https://twitter.com/nodepractices/) **Follow us on Twitter!** [**@nodepractices**](https://twitter.com/nodepractices/)
+
+<br/>
+
+# What 3 main things can you find in this repository?
+
+**1. 40+ testing best practices and it's growing -** this repository is a summary and curation of the top-ranked content on Node.js best practices, as well as content written here by collaborators
+
+**2. Content and tools beyond the basics of testing -** currently, more than 80 best practices, style guides, and architectural tips are presented. New issues and pull requests are created every day to keep this live book updated. We'd love to see you contributing here, whether that is fixing code mistakes, helping with translations, or suggesting brilliant new ideas. See our [writing guidelines here](/.operations/writing-guidelines.md)
+
+**3. End-2-end reliability: Frontend, backend, CI, static analysis and more -** most bullets include a **🔗Read More** link that expands on the practice with code examples, quotes from selected blogs and more information
+
+<br/><br/>
+
+## Table of Contents
+
+1.  [The Test Anatomy (5)](#1-project-structure-practices)
+2.  [Backend Testing (11) ](#2-error-handling-practices)
+3.  [Frontend Testing (12) ](#3-code-style-practices)
+4.  [Measuring Test Effectiveness (11) ](#4-testing-and-overall-quality-practices)
+5.  [CI And Other Quality Measures (18) ](#5-going-to-production-practices)
+
+<br/><br/>
+
+
+
 # Section 1️⃣ : The Test Anatomy
 
 ## ⚪ ️ 1.1 Include 3 parts in each test name
