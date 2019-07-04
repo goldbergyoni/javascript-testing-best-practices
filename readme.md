@@ -590,7 +590,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 ## ⚪ ️ 3.2. Use dedicated test attributes for selecting HTML elements
 
-:white_check_mark: **Do:** Don't let brittle UI details fail your functional test, avoid selecting HTML elements using UI-related selectors like using CSS attributes or HTML attributes. Instead, place and query based on a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your tests never break because of graphic changes, but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
+:white_check_mark: **Do:** Don't let brittle UI details fail your functional test, avoid selecting HTML elements using UI-related selectors like using CSS attributes or HTML attributes. Instead, place and query based on attributes that are likely to survive graphic changes like form labels. If the desginated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your tests never break because of graphic changes, but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
 
 <br/>
 
@@ -604,10 +604,10 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 ### :clap: Doing It Right Example: Querying an element using a dedicated attrbiute for testing
 ```html
-//the markup
+//the markup code (part of React component)
 <h3>
               <Badge pill className="fixed_badge" variant="dark">
-                <span id="coo" data-testid="errorsLabel">{value}</span> //note the attribute data-testid
+                <span data-testid="errorsLabel">{value}</span> //note the attribute data-testid
               </Badge>
             </h3>
 ```
@@ -630,6 +630,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 ### :thumbsdown: Anti-Pattern Example: Relying on CSS attributes
 ```html
+//the markup code (part of React component)
 <span id="metric" className="d-flex-column">{value}</span>//what if the designer changes the classs?
 ```
 
