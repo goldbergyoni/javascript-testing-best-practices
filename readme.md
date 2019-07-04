@@ -599,8 +599,48 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
+<br/>
+
+
+### :clap: Doing It Right Example: Querying an element using a dedicated attrbiute for testing
+```html
+//the markup
+<h3>
+              <Badge pill className="fixed_badge" variant="dark">
+                <span id="coo" data-testid="errorsLabel">{value}</span> //note the attribute data-testid
+              </Badge>
+            </h3>
+```
+
+```javascript
+//this example is using react-testing-library
+  test('Whenever no data is passed to metric, show 0 as default', () => {
+    //Arrange
+    const metricValue = undefined;
+
+    //Act
+    const { getByTestId } = render(<dashboardMetric value={undefined}/>);    
+    
+    expect(getByTestId('errorsLabel')).text()).toBe("0");
+  });
+
+```
 
 <br/>
+
+### :thumbsdown: Anti-Pattern Example: Relying on CSS attributes
+```html
+<span id="metric" className="d-flex-column">{value}</span>//what if the designer changes the classs?
+```
+
+```javascript
+//this exammple is using enzyme
+test('Whenever no data is passed, error metric shows zero', () => {
+    //...
+    
+    expect(wrapper.find("[className='d-flex-column']").text()).toBe("0");
+  });
+```
 
 
 <br/><br/>
