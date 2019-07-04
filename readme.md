@@ -588,16 +588,13 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
-## ⚪ ️ 3.2. Use dedicated test attributes for selecting HTML elements
+## ⚪ ️ 3.2. Query HTML elements based on attributes that are unlikely to change
 
-:white_check_mark: **Do:** Don't let brittle UI details fail your functional test, avoid selecting HTML elements using UI-related selectors like using CSS attributes or HTML attributes. Instead, place and query based on attributes that are likely to survive graphic changes like form labels. If the desginated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your tests never break because of graphic changes, but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
-
-<br/>
-
-
-:negative_squared_cross_mark: **Otherwise:** You want to test the login functionality that spans many components and services, everything is setup perfectly - stubs, spies, Ajax calls are isolated. All seems perfect. Then the test fails because the designer changed the div css class from 'thick-border' to 'thin-border'
+:white_check_mark: **Do:** Query HTML elements based on attributes that are likely to survive graphic changes unlike css selectors and like form labels. If the desginated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your functional/logic tests never break because of look&feel changes, but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
 
 <br/>
+
+:negative_squared_cross_mark: **Otherwise:** You want to test the login functionality that spans many components, logic and services, everything is setup perfectly - stubs, spies, Ajax calls are isolated. All seems perfect. Then the test fails because the designer changed the div css class from 'thick-border' to 'thin-border'
 
 <br/>
 
