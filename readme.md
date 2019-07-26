@@ -679,9 +679,7 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 ## ⚪ ️ 3.1. Separate UI from functionality
 
-:white_check_mark: **Do:** UI is noise, side affect, Dodd's example
-
-Focused on logic/data, UI is a noise, apply measure to minimize its precense. UI is painful because less focused tests, fragile, slow due to animation. Might tempt to test without rendering, then you're not testing the reality, logic might work in-mem. 
+:white_check_mark: **Do:** When focused on testing component's logic, the UI details becomes a noise that should be extracted-out so you can focus your test and expectation on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data and not on HTML and disable animations that slow down for no good reasons. You might get tempted to avoid rendering and test only thge back part of the UI (e.g. services, actions, store) but this will result in artifical tests that doesn't resemeble the reality and won't reveal cases where the right data doesn't arrive to the UI
 
 <br/>
 
@@ -699,11 +697,9 @@ test('When users-list is flagged to show only VIP, should display only VIP membe
   //Act
   const {getAllByTestId} = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
 
-  //Assert
-  // Extract the data from the UI, query using non-graphical selectors
+  //Assert - Extract the data from the UI first
   const allRenderedUsers = getAllByTestId('user').map(uiElement => uiElement.textContent);
   const allRealVIPUsers = allUsers.filter((user) => user.vip).map((user) => user.name);
-  //Now comparing pure input data with pure output data
   expect(allRenderedUsers).toEqual(allRealVIPUsers);
 });
 
@@ -721,14 +717,13 @@ test('When flagging to show only VIP, should display only VIP members', () => {
   //Act
   const {getAllByTestId} = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
 
-  //Assert
-  //Mix UI & data in assertion
+  //Assert - Mix UI & data in assertion
   expect(getAllByTestId('user')).toEqual('[<li data-testid="user">John Doe</li>]');
-});```
+});
 
+```
 
 <br/><br/>
-
 
 
 ## ⚪ ️ 3.2. Query HTML elements based on attributes that are unlikely to change
