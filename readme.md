@@ -681,9 +681,55 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 :white_check_mark: **Do:** UI is noise, side affect, Dodd's example
 
-Implementation tips: You may want to configure your continuous integration (CI) to have a coverage threshold (Jest link) and stop a build that doesn’t stand to this standard (it’s also possible to configure threshold per component, see code example below). On top of this, consider detecting build coverage decrease (when a newly committed code has less coverage) — this will push developers raising or at least preserving the amount of tested code. All that said, coverage is only one measure, a quantitative based one, that is not enough to tell the robustness of your testing. And it can also be fooled as illustrated in the next bullets
+Focused on logic/data, UI is a noise, apply measure to minimize its precense. UI is painful because less focused tests, fragile, slow due to animation. Might tempt to test without rendering, then you're not testing the reality, logic might work in-mem. 
 
 <br/>
+
+:negative_squared_cross_mark: **Otherwise:** The pure calculated data of your test might be ready in 10ms, but then the whole test will last 500ms (100 tests = 1 min) due to some transitioning animation
+
+<br/>
+
+### :clap: Doing It Right Example: Separating out the UI details
+```javascript
+test('When users-list is flagged to show only VIP, should display only VIP members', () => {
+  //Arrange
+  const allUsers = [{id:1 , name: 'Yoni Goldberg', vip: false}, 
+   {id:2 , name: 'John Doe', vip: true}];
+
+  //Act
+  const {getAllByTestId} = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
+
+  //Assert
+  // Extract the data from the UI, query using non-graphical selectors
+  const allRenderedUsers = getAllByTestId('user').map(uiElement => uiElement.textContent);
+  const allRealVIPUsers = allUsers.filter((user) => user.vip).map((user) => user.name);
+  //Now comparing pure input data with pure output data
+  expect(allRenderedUsers).toEqual(allRealVIPUsers);
+});
+
+```
+
+<br/>
+
+### :thumbsdown: Anti Pattern Example: Assertion mix UI details and data
+```javascript
+test('When flagging to show only VIP, should display only VIP members', () => {
+  //Arrange
+  const allUsers = [{id:1 , name: 'Yoni Goldberg', vip: false}, 
+   {id:2 , name: 'John Doe', vip: true}];
+
+  //Act
+  const {getAllByTestId} = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
+
+  //Assert
+  //Mix UI & data in assertion
+  expect(getAllByTestId('user')).toEqual('[<li data-testid="user">John Doe</li>]');
+});```
+
+
+<br/><br/>
+
+
 
 ## ⚪ ️ 3.2. Query HTML elements based on attributes that are unlikely to change
 
