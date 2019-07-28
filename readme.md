@@ -782,13 +782,13 @@ test('Whenever no data is passed, error metric shows zero', () => {
 
 ## ⚪ ️ 3.3. Whenever possible, test with a realistic and fully rendered component
 
-:white_check_mark: **Do:** Whenver reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - the later approach might result in untrapped bugs due to lack of details and might be harder to maintain as they mess with the internals (see bullet 'Favour blackbox testing'). If one of the child significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
+:white_check_mark: **Do:** Whenver reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet 'Favour blackbox testing'). If one of the child significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
 
 With all that said, a word of caution is in order: this technique works for small/medium components that packs a reasonable size of child components. Fully rendering a component with too many childs will make it hard to reason about test failures (root cause analysis) and might get too slow. In such cases, write only few tests against that fat parent component and more tests against its childs
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** When poking into the components internal, invoking methods, checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have the capacity for that?
+:negative_squared_cross_mark: **Otherwise:** When poking into a component's internal by invoking its private methods, and checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have a capacity for this level of maintenance?
 
 <br/>
 
