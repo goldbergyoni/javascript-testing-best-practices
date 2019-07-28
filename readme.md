@@ -851,8 +851,52 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 :negative_squared_cross_mark: **Otherwise:** Explanation here
 
+<br/>
+
+## ⚪ ️ 3.5. Watch how the content is served over the network
+
+:white_check_mark: **Do:** Explanation here
+
+<br/>
+
+:negative_squared_cross_mark: **Otherwise:** Explanation here
+
+<br/>
+
+## ⚪ ️ 3.6. Stub flakky resources like backend APIs
+
+:white_check_mark: **Do:** Explanation here
+
+<br/>
+
+:negative_squared_cross_mark: **Otherwise:** Explanation here
+
+<br/>
+
+## ⚪ ️ 3.7. Speed-up E2E tests by reusing login credentials
+
+:white_check_mark: **Do:** Explanation here
+
+<br/>
+
+:negative_squared_cross_mark: **Otherwise:** Explanation here
+
+<br/>
+
+## ⚪ ️ 3.8. Have few true end-to-end (front to back) tests
+
+:white_check_mark: **Do:** Explanation here
+
+<br/>
+
+:negative_squared_cross_mark: **Otherwise:** Explanation here
+
+<br/>
+
 
 <br/><br/>
+
+
   
 # Section 4️⃣: Measuring Test Effectiveness
 
