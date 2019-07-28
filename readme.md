@@ -16,13 +16,13 @@
 
 <br/>
 
-# What 3 main things can you find in this repository?
+# 👇 Read this before you read the rest 👇
 
-**1. 40+ testing best practices and it's growing -** this repository is a summary and curation of the top-ranked content on Node.js best practices, as well as content written here by collaborators
+**📗 Super-comprehensive and exhaustive: 40+ advice -** this repository is a summary and curation of the top-ranked content on Node.js best practices, as well as content written here by collaborators
 
-**2. Content and tools beyond the basics of testing -** currently, more than 80 best practices, style guides, and architectural tips are presented. New issues and pull requests are created every day to keep this live book updated. We'd love to see you contributing here, whether that is fixing code mistakes, helping with translations, or suggesting brilliant new ideas. See our [writing guidelines here](/.operations/writing-guidelines.md)
+**🎓 Goes 10,000 miles beyond the basics -** currently, more than 80 best practices, style guides, and architectural tips are presented. New issues and pull requests are created every day to keep this live book updated. We'd love to see you contributing here, whether that is fixing code mistakes, helping with translations, or suggesting brilliant new ideas. See our [writing guidelines here](/.operations/writing-guidelines.md)
 
-**3. End-2-end reliability: Frontend, backend, CI, static analysis and more -** most bullets include a **🔗Read More** link that expands on the practice with code examples, quotes from selected blogs and more information
+**🔁 Full-stack: front, backend, ops, anything -** most bullets include a **🔗Read More** link that expands on the practice with code examples, quotes from selected blogs and more information
 
 <br/><br/>
 
