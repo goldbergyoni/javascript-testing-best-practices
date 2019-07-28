@@ -782,9 +782,9 @@ test('Whenever no data is passed, error metric shows zero', () => {
 
 ## ⚪ ️ 3.3. Whenever possible, test with a realistic and fully rendered component
 
-:white_check_mark: **Do:** Whenver reasonably sized,Avoid fakes and partial-rendering solution in favour of fully renderd component to achieve tests that more realistic and maintainable. The more resemble user/req, easier to reason about the test, no implementation details, confident. Simply put, render full, assert that your expectations exist in UI, need to trigger action? With all that said, a word of caution is in order: this technique works for small/medium otherwise if graph of 100 components, it will get too cumbersome to reason about test failures and speed will also be a conern. In that case, you
+:white_check_mark: **Do:** Whenver reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - the later approach might result in untrapped bugs due to lack of details and might be harder to maintain as they mess with the internals (see bullet 'Favour blackbox testing'). If one of the child significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
 
-Natural and user oriented, test from the user perspecive
+With all that said, a word of caution is in order: this technique works for small/medium components that packs a reasonable size of child components. Fully rendering a component with too many childs will make it hard to reason about test failures (root cause analysis) and might get too slow. In such cases, write only few tests against that fat parent component and more tests against its childs
 
 <br/>
 
@@ -827,6 +827,18 @@ test('Realistic approach: When clicked to show filters, filters are displayed', 
 ### :thumbsdown: Anti-Pattern Example: Mocking the reality with shallow rendering
 ```javascript
 
+test('Shallow/mocked approach: When clicked to show filters, filters are displayed', () => {
+    //Arrange
+    const wrapper = shallow(<Calendar showFilters={false} title='Choose Filter'/>)
+
+    //Act
+    wrapper.find('filtersPanel').instance().showFilters();
+    //Tap into the internals, bypass the UI and invoke a method. White-box approach
+
+    //Assert
+    expect(wrapper.find('Filter').props()).toEqual({title: 'Choose Filter'});
+    //what if we change the prop name or don't pass anything relevant?
+})
 
 ```
 
