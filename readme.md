@@ -778,6 +778,28 @@ test('Whenever no data is passed, error metric shows zero', () => {
   });
 ```
 
+<br/>
+
+## ⚪ ️ 3.3. Whenever possible, test with a realistic and fully rendered component
+
+:white_check_mark: **Do:** Whenver reasonably sized,Avoid fakes and partial-rendering solution in favour of fully renderd component to achieve tests that more realistic and maintainable. The more resemble user/req, easier to reason about the test, no implementation details, confident. Simply put, render full, assert that your expectations exist in UI, need to trigger action? With all that said, a word of caution is in order: this technique works for small/medium otherwise if graph of 100 components, it will get too cumbersome to reason about test failures and speed will also be a conern. In that case, you
+
+Natural and user oriented, test from the user perspecive
+
+<br/>
+
+:negative_squared_cross_mark: **Otherwise:** When poking into the components internal, invoking methods, checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have the capacity for that?
+
+<br/>
+
+## ⚪ ️ 3.4. Don't sleep and wait, speed-up by making things happen
+
+:white_check_mark: **Do:** Explanation here
+
+<br/>
+
+:negative_squared_cross_mark: **Otherwise:** Explanation here
+
 
 <br/><br/>
   
