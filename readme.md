@@ -792,6 +792,45 @@ Natural and user oriented, test from the user perspecive
 
 <br/>
 
+### :clap: Doing It Right Example: Working realstically with a fully rendered component
+
+```javascript
+class Calendar extends React.Component {
+  static defaultProps = {showFilters: false}
+  
+  render() {
+    return (
+      <div>
+        A filters panel with a button to hide/show filters
+        <FiltersPanel showFilter={showFilters} title='Choose Filters'/>
+      </div>
+    )
+  }
+}
+
+//Examples use React & Enzyme
+test('Realistic approach: When clicked to show filters, filters are displayed', () => {
+    //Arrange
+    const wrapper = mount(<Calendar showFilters={false} />)
+
+    //Act
+    wrapper.find('button').simulate('click');
+
+    //Assert
+    expect(wrapper.text().includes('Choose Filter'));
+    //This is how the user will approach this element: by text
+})
+
+
+```
+
+### :thumbsdown: Anti-Pattern Example: Mocking the reality with shallow rendering
+```javascript
+
+
+```
+
+
 ## ⚪ ️ 3.4. Don't sleep and wait, speed-up by making things happen
 
 :white_check_mark: **Do:** Explanation here
