@@ -865,11 +865,14 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 ## ⚪ ️ 3.6. Stub flakky resources like backend APIs
 
-:white_check_mark: **Do:** Explanation here
+:white_check_mark: **Do:** When mainstream, don't allow your component, rather Stub 3rd party APIs or anything external that is beyond control. The first and foremos reason is flakiness... The reason for this is 3 fold: your test will suffer from Flakiness
+main reason is to simulate, flakiness, slow. This stubbing can be achieved in different techniques: stub and intercepting
+
+There is a room for tests that... E2E
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** Explanation here
+:negative_squared_cross_mark: **Otherwise:** The average test runs no longer than few ms, a typical API call last 100ms>, this make each ~20x slower. 
 
 <br/>
 
