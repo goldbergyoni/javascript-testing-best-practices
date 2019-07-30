@@ -1,28 +1,19 @@
-# JavaScript & Node.JS Testing Best Practices
-
 <h1 align="center">
-  <img src="assets/js-bp-header.jpg" alt="JavaScript & Node.JS Testing Best Practices">
+  <img src="/assets/nbptest.jpeg" alt="JavaScript & Node.JS Testing Best Practices">
 </h1>
 
 <br/>
 
-<div align="center">
-  <img src="https://img.shields.io/badge/⚙%20Item%20count%20-%2083%20Best%20Practices-blue.svg" alt="83 items"> <img src="https://img.shields.io/badge/%F0%9F%93%85%20Last%20update%20-%20Jun%205%202019-green.svg" alt="Last update: Jun 5, 2019"> <img src="https://img.shields.io/badge/ %E2%9C%94%20Updated%20For%20Version%20-%20Node%2012.14.0%20LTS-brightgreen.svg" alt="Updated for Node 12.14.0 LTS">
-</div>
+# 👇 Why this guide can take your testing skills to the next level 
 
-<br/>
+## 📗 40+ testing best practices: Super-comprehensive and exhaustive
+is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
 
-[![nodepractices](/assets/images/twitter-s.png)](https://twitter.com/nodepractices/) **Follow us on Twitter!** [**@nodepractices**](https://twitter.com/nodepractices/)
+## 🚢 Advanced: Goes 10,000 miles beyond the basics
+is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 
-<br/>
-
-# 👇 Read this before you read the rest 👇
-
-**📗 Super-comprehensive and exhaustive: 40+ advice -** this repository is a summary and curation of the top-ranked content on Node.js best practices, as well as content written here by collaborators
-
-**🎓 Goes 10,000 miles beyond the basics -** currently, more than 80 best practices, style guides, and architectural tips are presented. New issues and pull requests are created every day to keep this live book updated. We'd love to see you contributing here, whether that is fixing code mistakes, helping with translations, or suggesting brilliant new ideas. See our [writing guidelines here](/.operations/writing-guidelines.md)
-
-**🔁 Full-stack: front, backend, ops, anything -** most bullets include a **🔗Read More** link that expands on the practice with code examples, quotes from selected blogs and more information
+## 🌐 Full-stack: front, backend, CI, ops, anything
+is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
 
 <br/><br/>
 
