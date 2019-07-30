@@ -920,7 +920,9 @@ export default function ProductsList() {
 
 ## ⚪ ️ 3.10. Expose the tests as a live collaborative document
 
-:white_check_mark: **Do:** Opprtunity, inhertenly speaks product language, using the right tools they serve as a communication artifact greatly enhance the understanding. For example, if use a human-language for the test plan -> then becomes acceptenace test allow the customer to understand and comment on the requirements. Cocumber framework (see example below) facilititas this by. Apart from PM and customer, can serve as live doc for developers who visually walked-through the component input and output using framework like storybook
+:white_check_mark: **Do:** Beyobd reliability - Opprtunity. Since tests inhertenly speaks at high-level product and UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers, and customers or product managers. For example, some frameworks allow using a human-language to describe the flow and expectations (i.e. tests plan), so now any stakeholder, even the less-technical ones like customers, can read, approve and collaborate on the tests plan which became a live requirements document. This technique is also called 'acceptance test' as it allows the customer to define his acceptance criteria in plain languae. One of the famous frameworks that support this is cocumber which has a JavaScript support, see example below. Another similar opprtunity is a graphic gallery of components - storybook -  where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc) , see how it looks like, and how to trigger that state - this can serve both product folks but mostly serves as live doc for developers who consume those components. 
+
+:negative_squared_cross_mark: **Otherwise:** After investing top $$ and time on testing, it's just a pity not to leverage this investment
 
 <br/>
 
