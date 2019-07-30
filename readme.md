@@ -897,7 +897,7 @@ export default function ProductsList() {
 
 <br/>
 
-## ⚪ ️ 3.8. Have few true end-to-end (front to back) tests
+## ⚪ ️ 3.8. Have one smoke test that just travells across the site map
 
 :white_check_mark: **Do:** Explanation here
 
@@ -907,9 +907,10 @@ export default function ProductsList() {
 
 <br/>
 
-## ⚪ ️ 3.9. Expose the tests as a live collaborative document
 
-:white_check_mark: **Do:** Opprtunity, inhertenly speaks product language, using the right tools they serve as a communication artifact greatly enhance the understanding. For example, if use a human-language for the test plan -> then becomes acceptenace test allow the customer to understand and comment on the requirements. Cocumber framework (see example below) facilititas this by. Apart from PM and customer, can serve as live doc for developers who visually walked-through the component input and output using framework like storybook
+## ⚪ ️ 3.9. Have few true end-to-end (front to back) tests
+
+:white_check_mark: **Do:** Explanation here
 
 <br/>
 
@@ -917,6 +918,19 @@ export default function ProductsList() {
 
 <br/>
 
+## ⚪ ️ 3.10. Expose the tests as a live collaborative document
+
+:white_check_mark: **Do:** Opprtunity, inhertenly speaks product language, using the right tools they serve as a communication artifact greatly enhance the understanding. For example, if use a human-language for the test plan -> then becomes acceptenace test allow the customer to understand and comment on the requirements. Cocumber framework (see example below) facilititas this by. Apart from PM and customer, can serve as live doc for developers who visually walked-through the component input and output using framework like storybook
+
+<br/>
+
+## ⚪ ️ 3.11. Test visual regression
+
+:white_check_mark: **Do:** Opprtunity, inhertenly speaks product language, using the right tools they serve as a communication artifact greatly enhance the understanding. For example, if use a human-language for the test plan -> then becomes acceptenace test allow the customer to understand and comment on the requirements. Cocumber framework (see example below) facilititas this by. Apart from PM and customer, can serve as live doc for developers who visually walked-through the component input and output using framework like storybook
+
+<br/>
+
+:negative_squared_cross_mark: **Otherwise:** Explanation here
 
 <br/><br/>
 
