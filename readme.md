@@ -926,6 +926,28 @@ export default function ProductsList() {
 
 <br/>
 
+### :clap: Doing It Right Example: Describing tests in human-language using cocumber-js
+
+```javascript
+//this is how one can describe tests using cocumber: plain language that allows anyone to understand and collaborate
+
+Feature: Twitter new tweet
+ 
+  I want to tweet something in Twitter
+  
+  @focus
+  Scenario: Tweeting from the home page
+    Given I open Twitter home
+    Given I click on "New tweet" button
+    Given I type "Hello followers!" in the textbox 
+    Given I click on "Submit" button
+    Then I see message "Tweet saved"
+    
+```
+
+### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using storybook
+![alt text](assets/story-book.jpg "Visualizing component with storybook")
+
 ## ⚪ ️ 3.11. Test visual regression
 
 :white_check_mark: **Do:** Opprtunity, inhertenly speaks product language, using the right tools they serve as a communication artifact greatly enhance the understanding. For example, if use a human-language for the test plan -> then becomes acceptenace test allow the customer to understand and comment on the requirements. Cocumber framework (see example below) facilititas this by. Apart from PM and customer, can serve as live doc for developers who visually walked-through the component input and output using framework like storybook
