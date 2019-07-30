@@ -1,28 +1,19 @@
-# JavaScript & Node.JS Testing Best Practices
-
 <h1 align="center">
-  <img src="assets/js-bp-header.jpg" alt="JavaScript & Node.JS Testing Best Practices">
+  <img src="/assets/nbptest.jpeg" alt="JavaScript & Node.JS Testing Best Practices">
 </h1>
 
 <br/>
 
-<div align="center">
-  <img src="https://img.shields.io/badge/⚙%20Item%20count%20-%2083%20Best%20Practices-blue.svg" alt="83 items"> <img src="https://img.shields.io/badge/%F0%9F%93%85%20Last%20update%20-%20Jun%205%202019-green.svg" alt="Last update: Jun 5, 2019"> <img src="https://img.shields.io/badge/ %E2%9C%94%20Updated%20For%20Version%20-%20Node%2012.14.0%20LTS-brightgreen.svg" alt="Updated for Node 12.14.0 LTS">
-</div>
+# 👇 Why this guide can take your testing skills to the next level 
 
-<br/>
+## 📗 40+ testing best practices: Super-comprehensive and exhaustive
+is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
 
-[![nodepractices](/assets/images/twitter-s.png)](https://twitter.com/nodepractices/) **Follow us on Twitter!** [**@nodepractices**](https://twitter.com/nodepractices/)
+## 🚢 Advanced: Goes 10,000 miles beyond the basics
+is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 
-<br/>
-
-# 👇 Read this before you read the rest 👇
-
-**📗 Super-comprehensive and exhaustive: 40+ advice -** this repository is a summary and curation of the top-ranked content on Node.js best practices, as well as content written here by collaborators
-
-**🎓 Goes 10,000 miles beyond the basics -** currently, more than 80 best practices, style guides, and architectural tips are presented. New issues and pull requests are created every day to keep this live book updated. We'd love to see you contributing here, whether that is fixing code mistakes, helping with translations, or suggesting brilliant new ideas. See our [writing guidelines here](/.operations/writing-guidelines.md)
-
-**🔁 Full-stack: front, backend, ops, anything -** most bullets include a **🔗Read More** link that expands on the practice with code examples, quotes from selected blogs and more information
+## 🌐 Full-stack: front, backend, CI, ops, anything
+is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
 
 <br/><br/>
 
@@ -782,7 +773,7 @@ test('Whenever no data is passed, error metric shows zero', () => {
 
 ## ⚪ ️ 3.3. Whenever possible, test with a realistic and fully rendered component
 
-:white_check_mark: **Do:** Whenver reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet 'Favour blackbox testing'). If one of the child significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
+:white_check_mark: **Do:** Whenver reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet 'Favour blackbox testing'). If one of the child components is significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
 
 With all that said, a word of caution is in order: this technique works for small/medium components that packs a reasonable size of child components. Fully rendering a component with too many childs will make it hard to reason about test failures (root cause analysis) and might get too slow. In such cases, write only few tests against that fat parent component and more tests against its childs
 
@@ -863,7 +854,7 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 <br/>
 
-## ⚪ ️ 3.6. Stub flakky resources like backend APIs
+## ⚪ ️ 3.6. Stub flakky and slow resources like backend APIs
 
 :white_check_mark: **Do:** When mainstream, don't allow your component, rather Stub 3rd party APIs or anything external that is beyond control. The first and foremos reason is flakiness... The reason for this is 3 fold: your test will suffer from Flakiness
 main reason is to simulate, flakiness, slow. This stubbing can be achieved in different techniques: stub and intercepting
@@ -872,9 +863,29 @@ There is a room for tests that... E2E
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** The average test runs no longer than few ms, a typical API call last 100ms>, this make each ~20x slower. 
+:negative_squared_cross_mark: **Otherwise:** The average test runs no longer than few ms, a typical API call last 100ms>, this makes each test ~20x slower
 
 <br/>
+
+### :clap: Doing It Right Example: Stubbing or intercepting API calls
+
+```javascript
+export default function ProductsList() { 
+    const [products, setProducts] = useState(false)
+
+    const fetchProducts = async() => {
+      const products = await axios.get('api/products')
+      setProducts(products);
+    }
+
+    useEffect(() => {
+      fetchProducts();
+    }, []);
+
+  return products ? <div>{products}</div> : <div data-testid='no-products-message'>No products</div>
+}
+
+```
 
 ## ⚪ ️ 3.7. Speed-up E2E tests by reusing login credentials
 
@@ -886,7 +897,7 @@ There is a room for tests that... E2E
 
 <br/>
 
-## ⚪ ️ 3.8. Have few true end-to-end (front to back) tests
+## ⚪ ️ 3.8. Have one smoke test that just travells across the site map
 
 :white_check_mark: **Do:** Explanation here
 
@@ -896,6 +907,54 @@ There is a room for tests that... E2E
 
 <br/>
 
+
+## ⚪ ️ 3.9. Have few true end-to-end (front to back) tests
+
+:white_check_mark: **Do:** Explanation here
+
+<br/>
+
+:negative_squared_cross_mark: **Otherwise:** Explanation here
+
+<br/>
+
+## ⚪ ️ 3.10. Expose the tests as a live collaborative document
+
+:white_check_mark: **Do:** Besides increasing app reliability, tests brings another attractive opprtunity to the table - serve as a live app documentation. Since tests inherently speak at a less-technical and product/UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers and their customers. For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as 'acceptance test' as it allows the customer to define his acceptance criteria in plain languae. This is [BDD (behaviour-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) at its purest form. One of the popular frameworks that enable this is [Cocumber which has a JavaScript flavour](https://github.com/cucumber/cucumber-js), see example below. Another similar yet different opprtunity, [StoryBook](https://storybook.js.org/), allows exposing UI components as a graphic catalog where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc), see how it looks like, and how to trigger that state - this can appeal also to product folks but mostly serves as live doc for developers who consume those components.
+
+:negative_squared_cross_mark: **Otherwise:** After investing top resources on testing, it's just a pity not to leverage this investment and win great value
+
+<br/>
+
+### :clap: Doing It Right Example: Describing tests in human-language using cocumber-js
+
+```javascript
+//this is how one can describe tests using cocumber: plain language that allows anyone to understand and collaborate
+
+Feature: Twitter new tweet
+ 
+  I want to tweet something in Twitter
+  
+  @focus
+  Scenario: Tweeting from the home page
+    Given I open Twitter home
+    Given I click on "New tweet" button
+    Given I type "Hello followers!" in the textbox 
+    Given I click on "Submit" button
+    Then I see message "Tweet saved"
+    
+```
+
+### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using storybook
+![alt text](assets/story-book.jpg "Visualizing component with storybook")
+
+## ⚪ ️ 3.11. Test visual regression
+
+:white_check_mark: **Do:** Opprtunity, inhertenly speaks product language, using the right tools they serve as a communication artifact greatly enhance the understanding. For example, if use a human-language for the test plan -> then becomes acceptenace test allow the customer to understand and comment on the requirements. Cocumber framework (see example below) facilititas this by. Apart from PM and customer, can serve as live doc for developers who visually walked-through the component input and output using framework like storybook
+
+<br/>
+
+:negative_squared_cross_mark: **Otherwise:** Explanation here
 
 <br/><br/>
 
