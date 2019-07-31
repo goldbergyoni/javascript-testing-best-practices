@@ -48,7 +48,7 @@ is simply dummy text of the printing and typesetting industry. Lorem Ipsum has b
 
 <br/>
 
-<details><summary>Code Examples</summary>
+<details><summary> ✏ Code Examples</summary>
   
 ### :clap: Doing It Right Example: A test name that constitutes 3 parts
 
