@@ -892,13 +892,43 @@ export default function ProductsList() {
 
 ## ⚪ ️ 3.7. Speed-up E2E tests by reusing login credentials
 
-:white_check_mark: **Do:** Explanation here
+:white_check_mark: **Do:** In E2E more flexible due to perf concern, cache or reuse repetetive actions like login so they happen only once. Practically, login on before all and set valid token on local storage. This violates, might interfere, but the perf penalty might be crucial. Mitigate this by never rely on users previous data.
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** Explanation here
+:negative_squared_cross_mark: **Otherwise:** Given 200 test cases and assuming login=100ms = 20 seconds only for logging-in again and again
 
 <br/>
+
+### :clap: Doing It Right Example: Logging-in before-all and not before-each (using Cypress)
+
+```javascript
+let authenticationToken;
+
+//happens before ALL tests run
+before(() => {
+  cy.request('POST', 'http://localhost:3000/login', {
+    username: Cypress.env('username'),
+    password: Cypress.env('password'),
+  })
+  .its('body')
+  .then((responseFromLogin) => {
+    authenticationToken = responseFromLogin.token;
+  })
+})
+
+//happens before EACH test
+beforeEach(setUser => () {
+  cy.visit('/home', {
+    onBeforeLoad (win) {
+      win.localStorage.setItem('token', JSON.stringify(authenticationToken))
+    },
+  })
+})
+
+```
+
+
 
 ## ⚪ ️ 3.8. Have one smoke test that just travells across the site map
 
