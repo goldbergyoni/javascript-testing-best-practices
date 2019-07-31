@@ -835,13 +835,14 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 ```
 
 
-## ⚪ ️ 3.4. Don't sleep and wait, speed-up by making things happen
+## ⚪ ️ 3.4. Don't sleep, use frameworks built-in support for async events. Also try to speed things up
 
-:white_check_mark: **Do:** Whenever async, avoid sleeping and prefer other like await, stub, or faking the clock. For example waiting for the UI to re-render after some update, or , ... if your. Whenever polling is inevitable, use https://www.npmjs.com/package/wait-for-expect
+:white_check_mark: **Do:** In many cases, the unit under test completion time is just unknown (e.g. animation suspends an element appearance on a page) - in that case avoid sleeping (e.g. setTimeOut) and prefer more deterministic methods that most platforms provide. Some platofrm allows awaiting on operations (e.g. Cypress cy.request('url')), other provide API for waiting like @testing-library/dom method wait(expect(element)). Sometime a more elegant way is to stub the slow resource, API for example, and then the response moment become detemionistic and the component can be re-rendered. When depending upon some external component that sleeps, it might turn useful to hurry-up the clock. Sleeping is a pattern to avoid becaue it forces your test to be slow or risky (when waiting too few). For example, when waiting for the UI to re-render after fetching API data... or when waiting for some animation to complete then . Whenever sleeping and polling is inevitable, consider some semi-deterministic solution like use https://www.npmjs.com/package/wait-for-expect
 
+Determinism
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** When sleeping for a long time, tests will be order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't provide the response in a timely fashion
+:negative_squared_cross_mark: **Otherwise:** When sleeping for a long time, tests will be order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't provide the response in a timely fashion. So it boils down to a trade-off between flaskiness and bad performance
 
 <br/>
 
