@@ -859,10 +859,7 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 ## ⚪ ️ 3.6. Stub flakky and slow resources like backend APIs
 
-:white_check_mark: **Do:** When mainstream, don't allow your component, rather Stub 3rd party APIs or anything external that is beyond control. The first and foremos reason is flakiness... The reason for this is 3 fold: your test will suffer from Flakiness
-main reason is to simulate, flakiness, slow. This stubbing can be achieved in different techniques: stub and intercepting
-
-There is a room for tests that... E2E
+:white_check_mark: **Do:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control, don't approaching backend API and use stubs instead (i.e. test double). Practially, define your API response using some test double library (like Sinon, Jest, etc). The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttle requests). Doing this will allow simulating various API behaviour that should drive your component behaviour like when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
 
 <br/>
 
@@ -873,6 +870,8 @@ There is a room for tests that... E2E
 ### :clap: Doing It Right Example: Stubbing or intercepting API calls
 
 ```javascript
+
+//unit under test
 export default function ProductsList() { 
     const [products, setProducts] = useState(false)
 
@@ -887,6 +886,20 @@ export default function ProductsList() {
 
   return products ? <div>{products}</div> : <div data-testid='no-products-message'>No products</div>
 }
+
+//test
+test('When no products exist, show the appropriate message', () => {
+    //Arrange
+    nock("api")
+            .get(`/products`)
+            .reply(404);
+
+    //Act
+    const {getByTestId} = render(<ProductsList/>);
+
+    //Assert
+    expect(getByTestId('no-products-message')).toBeTruthy();
+});
 
 ```
 
@@ -996,7 +1009,8 @@ Feature: Twitter new tweet
 ### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using storybook
 ![alt text](assets/story-book.jpg "Visualizing component with storybook")
 
-## ⚪ ️ 3.11. Test visual regression
+## ⚪ ️ 
+. Test visual regression
 
 :white_check_mark: **Do:** Opprtunity, inhertenly speaks product language, using the right tools they serve as a communication artifact greatly enhance the understanding. For example, if use a human-language for the test plan -> then becomes acceptenace test allow the customer to understand and comment on the requirements. Cocumber framework (see example below) facilititas this by. Apart from PM and customer, can serve as live doc for developers who visually walked-through the component input and output using framework like storybook
 
