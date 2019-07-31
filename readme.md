@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="/assets/nbptest.jpeg" alt="JavaScript & Node.JS Testing Best Practices">
+  <img src="/assets/t.png" alt="JavaScript & Node.JS Testing Best Practices">
 </h1>
 
 <br/>
