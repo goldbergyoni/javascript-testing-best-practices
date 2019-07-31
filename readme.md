@@ -846,6 +846,57 @@ Determinism
 
 <br/>
 
+### :clap: Doing It Right Example: E2E API that resolves only when the async operations is done (Cypress)
+
+```javascript
+//using Cypress
+cy.get('#show-products').click()//navigate
+cy.wait('@products')//wait for route to appear
+//this line will get executed only when the route is ready
+
+```
+
+### :clap: Doing It Right Example: Testing library that waits for DOM elements (@testing-library/dom)
+
+```javascript
+//@testing-library/dom
+test('movie title appears', async () => {
+    // element is initially not present...
+
+    // wait for appearance
+    await wait(() => {
+        expect(getByText('the lion king')).toBeInTheDocument()
+    })
+
+    // wait for appearance and return the element
+    const movie = await waitForElement(() => getByText('the lion king'))
+})
+
+```
+
+### :thumbsdown: Anti-Pattern Example: custom sleep code
+```javascript
+
+test('movie title appears', async () => {
+    // element is initially not present...
+
+    // custom wait logic (caution: simplistic, no timeout)
+    const interval = setInterval(() => {
+        const found = getByText('the lion king');
+        if(found){
+            clearInterval(interval);
+            expect(getByText('the lion king')).toBeInTheDocument();
+        }
+        
+    }, 100);
+
+    // wait for appearance and return the element
+    const movie = await waitForElement(() => getByText('the lion king'))
+})
+
+```
+
+
 ## ⚪ ️ 3.5. Watch how the content is served over the network
 
 :white_check_mark: **Do:** Explanation here
