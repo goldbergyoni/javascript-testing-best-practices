@@ -1018,13 +1018,13 @@ it('When doing smoke testing over all page, should load them all successfully', 
 ```
 
 
-## ⚪ ️ 3.9. Have few true end-to-end (front to back) tests
+## ⚪ ️ 3.9. Have very few end-to-end tests that spans the whole system
 
-:white_check_mark: **Do:** Explanation here
+:white_check_mark: **Do:** Although E2E (end-to-end) usually means UI-only testing with real browser, they also mean tests that stretch the entire system including the real backend. The later type of tests are highly valuable as they cover integration bugs between frontend and backend that might happen due to wrong understanding of the exchange schema. They are also an efficient method to discover backend-to-backend integration issues (e.g. Microservice A sends the wrong message to Microservice B) and even to detect deployment failures - there are no backend frameworks for E2E testing that are as friendly and mature as UI frameworks like [Cypress](https://www.cypress.io/) and [Pupeteer](https://github.com/GoogleChrome/puppeteer). The downside of such tests is the high cost of configuring an environment with so many component, and mostly their brittleness - given 50 microservices, even if one fails then the entire E2E just failed. For that reason, we should use this technique sparingly and probably have 1-10 of those and no more. That said, even small number of E2E tests are likely to catch the type of issues they are targeted for - deployment & integration faults. It's advisable to run those over a production-like staging environment
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** Explanation here
+:negative_squared_cross_mark: **Otherwise:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very differnt than expected
 
 <br/>
 
