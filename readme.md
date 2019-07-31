@@ -836,11 +836,11 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 ## ⚪ ️ 3.4. Don't sleep and wait, speed-up by making things happen
 
-:white_check_mark: **Do:** Explanation here
+:white_check_mark: **Do:** Whenever async, avoid sleeping and prefer other like await, stub, or faking the clock. For example waiting for the UI to re-render after some update, or , ... if your. Whenever polling is inevitable, use https://www.npmjs.com/package/wait-for-expect
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** Explanation here
+:negative_squared_cross_mark: **Otherwise:** When sleeping for a long time, tests will be order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't provide the response in a timely fashion
 
 <br/>
 
