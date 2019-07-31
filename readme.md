@@ -29,6 +29,8 @@ is simply dummy text of the printing and typesetting industry. Lorem Ipsum has b
 
 # Section 1️⃣ : The Test Anatomy
 
+<br/>
+
 ## ⚪ ️ 1.1 Include 3 parts in each test name
 
 :white_check_mark: **Do:** A test report should tell whether the current application revision satisfies the requirements for the people who are not necessarily familiar with the code: the tester, the DevOps engineer who is deploying and the future you two years from now. This can be achieved best if the tests speak at the requirements level and include 3 parts:
@@ -47,6 +49,9 @@ is simply dummy text of the printing and typesetting industry. Lorem Ipsum has b
 <br/>
 
 <details><summary>✏ <b>Code Examples</b></summary>
+  
+  <details><summary>123</summary></details>
+  
   
 ### :clap: Doing It Right Example: A test name that constitutes 3 parts
 
