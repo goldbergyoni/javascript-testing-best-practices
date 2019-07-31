@@ -50,8 +50,7 @@ is simply dummy text of the printing and typesetting industry. Lorem Ipsum has b
 
 <details><summary>✏ <b>Code Examples</b></summary>
   
-  <details><summary>123</summary></details>
-  
+  <br/>
   
 ### :clap: Doing It Right Example: A test name that constitutes 3 parts
 
