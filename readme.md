@@ -44,7 +44,7 @@ is simply dummy text of the printing and typesetting industry. Lorem Ipsum has b
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** A deployment just failed, a test named “Add product” failed. Does this tell you what exactly is malfunctioning?
+❌ **Otherwise:** A deployment just failed, a test named “Add product” failed. Does this tell you what exactly is malfunctioning?
 
 <br/>
 
