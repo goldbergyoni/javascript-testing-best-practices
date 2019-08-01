@@ -675,7 +675,7 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 ## ⚪ ️ 3.1. Separate UI from functionality
 
-:white_check_mark: **Do:** When focused on testing component's logic, the UI details becomes a noise that should be extracted-out so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only thge back part of the UI (e.g. services, actions, store) but this will result in artifical tests that doesn't resemeble the reality and won't reveal cases where the right data doesn't arrive to the UI
+:white_check_mark: **Do:** When focused on testing component's logic, the UI details becomes a noise that should be extracted-out so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only thge back part of the UI (e.g. services, actions, store) but this will result in fictional tests that doesn't resemeble the reality and won't reveal cases where the right data doesn't even arrive to the UI
 
 <br/>
 
