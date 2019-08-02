@@ -1,4 +1,4 @@
-<img src="/assets/js-test-bp-header.png" width="100%"/>
+<img src="/assets/js-test-bp-header.png" width="1920px"/>
 
 <br/>
 
