@@ -1,4 +1,4 @@
-<img src="/assets/js-test-bp-header.png" alt="JavaScript & Node.JS Testing Best Practices">{:width="100%"}
+<img src="/assets/js-test-bp-header.png" width="100%"/>
 
 <br/>
 
