@@ -209,7 +209,9 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 
 
 <br/>
+<details><summary>✏ <b>Code Examples</b></summary>
 
+<br/>
 
 ### :thumbsdown: Anti Pattern Example: A test case full of errors, luckily all are caught by Linters
 
@@ -226,6 +228,12 @@ it.skip("Test name", () => {// *error:no-skipped-tests, error:error:no-global-te
 it("Test name", () => {*//error:no-identical-title. Assign unique titles to tests
 });
 ```
+
+</details>
+
+
+
+
 
 <br/><br/>
 
