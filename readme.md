@@ -329,7 +329,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## ⚪ ️6. Don’t “foo”, use realistic input dataing
+## ⚪ ️1.7 Don’t “foo”, use realistic input dataing
 
 :white_check_mark: **Do:**  Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like Faker to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries will generate random yet realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. Consider even importing real data from your production environment and use in your tests. Want to take it to the next level? see next bullet (property-based testing)
 <br/>
@@ -376,7 +376,7 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/><br/>
 
-## ⚪ ️ 7. Test many input combinations using Property-based testing
+## ⚪ ️ 1.8 Test many input combinations using Property-based testing
 
 :white_check_mark: **Do:** Typically we choose a few input samples for each test. Even when the input format resembles real-world data (see bullet ‘Don’t foo’), we cover only a few input combinations (method(‘’, true, 1), method(“string” , false” , 0)), However, in production, an API that is called with 5 parameters can be invoked with thousands of different permutations, one of them might render our process down (see Fuzz Testing). What if you could write a single test that sends 1000 permutations of different inputs automatically and catches for which input our code fails to return the right response? Property-based testing is a technique that does exactly that: by sending all the possible input combinations to your unit under test it increases the serendipity of finding a bug. For example, given a method — addNewProduct(id, name, isDiscount) — the supporting libraries will call this method with many combinations of (number, string, boolean) like (1, “iPhone”, false), (2, “Galaxy”, true). You can run property-based testing using your favorite test runner (Mocha, Jest, etc) using libraries like js-verify or testcheck (much better documentation). Update: Nicolas Dubien suggests in the comments below to checkout fast-check which seems to offer some additional features and also to be actively maintained
 <br/>
@@ -408,7 +408,7 @@ describe('Product service', () => {
 
 <br/><br/>
 
-## ⚪ ️ 8. Stay within the test: Minimize external helpers and abstractions
+## ⚪ ️ 1.9 Stay within the test: Minimize external helpers and abstractions
 
 :white_check_mark: **Do:** By now, it’s probably obvious that I’m advocating for dead-simple tests: The team can’t afford another software project that demands a mental effort to understand the code. Michael Lync explains this in his great post:
 
@@ -452,7 +452,7 @@ it("When getting orders report, get the existing orders", () => {
 ```
 <br/><br/>
 
-## ⚪ ️9. Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️1.10 Avoid global test fixtures and seeds, add data per-test
 
 :white_check_mark: **Do:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests (also known as ‘test fixture’) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
 <br/>
@@ -500,7 +500,7 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/><br/>
 
-## ⚪ ️ 10. Don’t catch errors, expect them
+## ⚪ ️ 1.11 Don’t catch errors, expect them
 :white_check_mark: **Do:**   When trying to assert that some input triggers an error, it might look right to use try-catch-finally and asserts that the catch clause was entered. The result is an awkward and verbose test case (example below) that hides the simple test intent and the result expectations
 
 A more elegant alternative is the using the one-line dedicated Chai assertion: expect(method).to.throw (or in Jest: expect(method).toThrow()). It’s absolutely mandatory to also ensure the exception contains a property that tells the error type, otherwise given just a generic error the application won’t be able to do much rather than show a disappointing message to the user
@@ -541,7 +541,7 @@ it.only("When no product name, it throws error 400", async() => {
 
 <br/><br/>
 
-## ⚪ ️ 10. Tag your tests
+## ⚪ ️ 1.12 Tag your tests
 
 :white_check_mark: **Do:**  Different tests must run on different scenarios: quick smoke, IO-less, tests should run when a developer saves or commits a file, full end-to-end tests usually run when a new pull request is submitted, etc. This can be achieved by tagging tests with keywords like #cold #api #sanity so you can grep with your testing harness and invoke the desired subset. For example, this is how you would invoke only the sanity test group with Mocha: mocha — grep ‘sanity’
 <br/>
@@ -568,7 +568,7 @@ describe('Order service', function() {
 
 <br/><br/>
 
-## ⚪ ️11. Other generic good testing hygiene
+## ⚪ ️1.13 Other generic good testing hygiene
 :white_check_mark: **Do:**  This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
 
 Learn and practice TDD principles — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a red-green-refactor style, ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, avoid any dependency on the environment (paths, OS, etc)
@@ -610,7 +610,7 @@ A word of caution: the TDD argument in the software world takes a typical false-
 
 <br/><br/>
 
-## ⚪ ️13. Component testing might be your best affair
+## ⚪ ️2.2 Component testing might be your best affair
 
 :white_check_mark: **Do:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung song of the testing world — they provide the best from both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
 
@@ -627,7 +627,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/><br/>
 
-## ⚪ ️14. Ensure new releases don’t break the API using
+## ⚪ ️2.3 Ensure new releases don’t break the API using
 
 :white_check_mark: **Do:**  So your Microservice has multiple clients, and you run multiple versions of the service for compatibility reasons (keeping everyone happy). Then you change some field and ‘boom!’, some important client who relies on this field is angry. This is the Catch-22 of the integration world: It’s very challenging for the server side to consider all the multiple client expectations — On the other hand, the clients can’t perform any testing because the server controls the release dates. Consumer-driven contracts and the framework PACT were born to formalize this process with a very disruptive approach — not the server defines the test plan of itself rather the client defines the tests of the… server! PACT can record the client expectation and put in a shared location, “broker”, so the server can pull the expectations and run on every build using PACT library to detect broken contracts — a client expectation that is not met. By doing so, all the server-client API mismatches are caught early during build/CI and might save you a great deal of frustration
 <br/>
@@ -643,7 +643,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 <br/><br/>
 
 
-## ⚪ ️ 15. Test your middlewares in isolation
+## ⚪ ️ 2.4 Test your middlewares in isolation
 
 :white_check_mark: **Do:** Many avoid Middleware testing because they represent a small portion of the system and require a live Express server. Both reasons are wrong — Middlewares are small but affect all or most of the requests and can be tested easily as pure functions that get {req,res} JS objects. To test a middleware function one should just invoke it and spy (using Sinon for example) on the interaction with the {req,res} objects to ensure the function performed the right action. The library node-mock-http takes it even further and factors the {req,res} objects along with spying on their behavior. For example, it can assert whether the http status that was set on the res object matches the expectation (See example below)
 <br/>
@@ -677,7 +677,7 @@ test('A request without authentication header, should return http status 403', (
 
 <br/><br/>
 
-## ⚪ ️16. Measure and refactor using static analysis tools
+## ⚪ ️2.5 Measure and refactor using static analysis tools
 :white_check_mark: **Do:** Using static analysis tools helps by giving objective ways to improve code quality and keep your code maintainable. You can add static analysis tools to your CI build to abort when it finds code smells. Its main selling points over plain linting are the ability to inspect quality in the context of multiple files (e.g. detect duplications), perform advanced analysis (e.g. code complexity) and follow the history and progress of code issues. Two examples of tools you can use are Sonarqube (2,600+ stars) and Code Climate (1,500+ stars)
 
 Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.com/TheHollidayInn" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">Keith Holliday</a>
@@ -693,7 +693,7 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 <br/><br/>
 
-## ⚪ ️ 17. Check your readiness for Node-related chaos
+## ⚪ ️ 2.6 Check your readiness for Node-related chaos
 :white_check_mark: **Do:** Weirdly, most software testings are about logic & data only, but some of the worst things that happen (and are really hard to mitigate ) are infrastructural issues. For example, did you ever test what happens when your process memory is overloaded, or when the server/process dies, or does your monitoring system realizes when the API becomes 50% slower?. To test and mitigate these type of bad things — Chaos engineering was born by Netflix. It aims to provide awareness, frameworks and tools for testing our app resiliency for chaotic issues. For example, one of its famous tools, the chaos monkey, randomly kills servers to ensure that our service can still serve users and not relying on a single server (there is also a Kubernetes version, kube-monkey, that kills pods). All these tools work on the hosting/platform level, but what if you wish to test and generate pure Node chaos like check how your Node process copes with uncaught errors, unhandled promise rejection, v8 memory overloaded with the max allowed of 1.7GB or whether your UX stays satisfactory when the event loop gets blocked often? to address this I’ve written, node-chaos (alpha) which provides all sort of Node-related chaotic acts
 <br/>
 
