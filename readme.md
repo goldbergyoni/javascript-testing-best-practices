@@ -1072,7 +1072,7 @@ Feature: Twitter new tweet
 ## ⚪ ️ 3.11. Detect visual issues with automated tools
 
 
-:white_check_mark: **Do:** Setup automated tools to capture UI and detect visual issues like overlapping. Our testing DNA is usually focused on func but visuals are what the user experience and with so many devices it's very easy to present visual issues
+:white_check_mark: **Do:** Setup automated tools to capture UI and detect visual issues like overlapping. This ensures that not only RIGHT data but also can see it. Our testing DNA is usually focused on func but visuals are what the user experience and with so many devices it's very easy to present visual issues. A basic set of tools allow to capture screenshots, then human eyes are needed for comparison - this technique is called visual testing. Better than nothing, it's as flaw as any other manual tests, better to get some detection automation
 
 On top of functionality, do best effort to discover visual issues across devices. This is typically easiest with visual regression tools that automatically compare and alert.
 
@@ -1327,6 +1327,6 @@ license-checker --summary --failOn BSD
 
 </li><li name="ed06" id="ed06" class="graf graf--li graf-after--li"><a href="https://medium.com/@me_37286/19-ways-to-become-a-better-node-js-developer-in-2019-ffd3a8fbfe38" data-href="https://medium.com/@me_37286/19-ways-to-become-a-better-node-js-developer-in-2019-ffd3a8fbfe38" class="markup--anchor markup--li-anchor" target="_blank">19 ways to become a better Node.js developer in 2019</a></li><li name="c446" id="c446" class="graf graf--li graf-after--li"><a href="https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d" data-href="https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d" class="markup--anchor markup--li-anchor" target="_blank">Node.js security best practices (September 2018)</a></li><li name="98bf" id="98bf" class="graf graf--li graf-after--li"><a href="https://youtu.be/-2zP494wdUY" data-href="https://youtu.be/-2zP494wdUY" class="markup--anchor markup--li-anchor" rel="noopener nofollow" target="_blank">YouTube: 5 advanced and shiny testing techniques</a></li><li name="34cf" id="34cf" class="graf graf--li graf-after--li"><a href="https://github.com/i0natan/nodebestpractices" data-href="https://github.com/i0natan/nodebestpractices" class="markup--anchor markup--li-anchor" rel="noopener nofollow" target="_blank">Node.js best practices — 79 best practices for a robust Node application</a></li></ul><p name="ae52" id="ae52" class="graf graf--p graf-after--li"><em class="markup--em markup--p-em">⭐ </em>Want more? <a href="https://twitter.com/goldbergyoni" data-href="https://twitter.com/goldbergyoni" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">follow me on Twitter</a><em class="markup--em markup--p-em">⭐</em></p><p name="3182" id="3182" class="graf graf--p graf-after--p graf--trailing">✏️ Have your own testing tip? <a href="https://github.com/i0natan/nodebestpractices" data-href="https://github.com/i0natan/nodebestpractices" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">PR here and I</a>’ll be sure to update this article ✏️</p>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5MjI3NTk1Niw3ODY4NjY2MzQsLTE3MD
-kxMjIzMTYsLTE2MjcxMTA5NzEsLTE5MTg0MTk4OTFdfQ==
+eyJoaXN0b3J5IjpbLTEzNTExMjU0NzcsNzg2ODY2NjM0LC0xNz
+A5MTIyMzE2LC0xNjI3MTEwOTcxLC0xOTE4NDE5ODkxXX0=
 -->
