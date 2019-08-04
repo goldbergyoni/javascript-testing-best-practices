@@ -148,6 +148,7 @@ test('Should be classified as premium', () => {
 
 
 :negative_squared_cross_mark: **Otherwise:** The team will write less test and decorate the annoying ones with .skip()
+
 <br/>
 
 <details><summary>✏ <b>Code Examples</b></summary><br/>
@@ -292,6 +293,11 @@ For example, if you want to test what your app behaves reasonably when the payme
 
 
 :negative_squared_cross_mark: **Otherwise:** Any refactoring of code mandates searching for all the mocks in the code and updating accordingly. Tests become a burden rather than a helpful friend
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :thumbsdown: Anti-pattern example: Mocks focus on the internals
@@ -316,6 +322,10 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
     //hmmm OK: we deal with internals? Yes, but as a side effect of testing the requirements (sending an email)
 });
 ```
+
+</details>
+
+
 
 <br/><br/>
 
