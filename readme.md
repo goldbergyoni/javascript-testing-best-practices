@@ -34,9 +34,17 @@ Strucuturing clean tests (10 tests)
 Writing backend and Microservices tests efficiently (9 bullets)
 
 
-* ### [`Section 3: Frontend Tests`](/) - Writing UI tests the right way (10 bullets)
-* ### [`Section 4: Measuring Tests Effectivenss`](/) - How to measure your tests relability (4 bullets)
-* ### [`Section 5: Continous Integration`](/) - Guideliness for CI in the JS world (6 bullets)
+* ### [`Section 3: Frontend/UI`](/)
+
+Writing UI tests the right way (10 bullets)
+
+* ### [`Section 4: Measuring Tests Effectivenss`](/)
+
+How to measure your tests relability (4 bullets)
+
+* ### [`Section 5: Continous Integration`](/)
+
+Guideliness for CI in the JS world (6 bullets)
 
 
 <br/><br/>
