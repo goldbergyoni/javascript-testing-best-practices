@@ -1382,6 +1382,11 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 :negative_squared_cross_mark: **Otherwise:**  Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear. and fear will slow you down
 
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap: Example: A typical coverage report
@@ -1391,6 +1396,10 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 ### :clap: Doing It Right Example: Setting up coverage per component (using Jest)
 ![alt text](assets/bp-18-code-coverage2.jpeg "Setting up coverage per component (using Jest)")
+
+</details>
+
+
 
 <br/><br/>
 
@@ -1402,10 +1411,19 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 :negative_squared_cross_mark: **Otherwise:** If you don’t know which parts of your code are left un-tested, you don’t know where the issues might come from
 
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :thumbsdown: Anti-Pattern Example: What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
 ![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)")
+
+</details>
+
+
 
 <br/><br/>
 
@@ -1424,6 +1442,11 @@ Knowing that all or most of the mutations were killed gives much higher confiden
 
 
 :negative_squared_cross_mark: **Otherwise:** You’ll be fooled to believe that 85% coverage means your test will detect bugs in 85% of your code
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :thumbsdown: Anti Pattern Example: 100% coverage, 0% testing
@@ -1446,6 +1469,10 @@ it("Test addNewOrder, don't use such test names", () => {
 ### :clap: Doing It Right Example: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
 ![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
 
+</details>
+
+
+
 <br/><br/>
 
   
@@ -1460,10 +1487,21 @@ it("Test addNewOrder, don't use such test names", () => {
 
 
 :negative_squared_cross_mark: **Otherwise:** Consider a rainy day where your production keeps crashing but the logs don’t display the error stack trace. What happened? Your code mistakenly threw a non-error object and the stack trace was lost, a good reason for banging your head against a brick wall. A 5min linter setup could detect this TYPO and save your day
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :thumbsdown: Anti Pattern Example: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
 ![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
+
+</details>
+
+
+
 
 <br/><br/>
 
@@ -1476,8 +1514,13 @@ Practically, some CI vendors (Example: CircleCI load CLI) allow running the pipe
 
 
 :negative_squared_cross_mark: **Otherwise:** When the quality results arrive the day after the code, testing doesn’t become a fluent part of development rather an after the fact formal artifact
+
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :clap:  Doing It Right Example: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
 ```javascript
@@ -1499,6 +1542,11 @@ Practically, some CI vendors (Example: CircleCI load CLI) allow running the pipe
 
 ```
 
+</details>
+
+
+
+
 <br/><br/>
 
 # ⚪ ️5.3 Perform e2e testing over a true production-mirror
@@ -1510,12 +1558,23 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 
 
 :negative_squared_cross_mark: **Otherwise:** Using different technologies for production and testing demands maintaining two deployment models and keeps the developers and the ops team separated
+
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :clap:  Example: a CI pipeline that generates Kubernetes cluster on the fly <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">(Credit: Dynamic-environments Kubernetes)</a>
 
 <pre name="38d9" id="38d9" class="graf graf--pre graf-after--p">deploy:<br>stage: deploy<br>image: registry.gitlab.com/gitlab-examples/kubernetes-deploy<br>script:<br>- ./configureCluster.sh $KUBE_CA_PEM_FILE $KUBE_URL $KUBE_TOKEN<br>- kubectl create ns $NAMESPACE<br>- kubectl create secret -n $NAMESPACE docker-registry gitlab-registry --docker-server="$CI_REGISTRY" --docker-username="$CI_REGISTRY_USER" --docker-password="$CI_REGISTRY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL"<br>- mkdir .generated<br>- echo "$CI_BUILD_REF_NAME-$CI_BUILD_REF"<br>- sed -e "s/TAG/$CI_BUILD_REF_NAME-$CI_BUILD_REF/g" templates/deals.yaml | tee ".generated/deals.yaml"<br>- kubectl apply --namespace $NAMESPACE -f .generated/deals.yaml<br>- kubectl apply --namespace $NAMESPACE -f templates/my-sock-shop.yaml<br>environment:<br>name: test-for-ci</pre>
+
+</details>
+
+
+
+
 
 <br/><br/>
 
@@ -1524,11 +1583,21 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 
 
 :negative_squared_cross_mark: **Otherwise:** Getting test results 1 hour long after pushing new code, as you already code the next features, is a great recipe for making testing less relevant
+
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :clap: Doing It Right Example: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)
 ![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
+
+</details>
+
+
+
 
 <br/><br/>
 
@@ -1536,8 +1605,13 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 :white_check_mark: **Do:**    Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like license check and plagiarism check (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stackoverflow and apparently violates some copyrights
 
 :negative_squared_cross_mark: **Otherwise:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
+
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :clap: Doing It Right Example:
 ```javascript
@@ -1553,6 +1627,11 @@ license-checker --summary --failOn BSD
 
 ![alt text](assets/bp-25-nodejs-licsense.png)
 
+
+</details>
+
+
+
 <br/><br/>
 
 ## ⚪ ️5.6 Constantly inspect for vulnerable dependencies
@@ -1561,10 +1640,21 @@ license-checker --summary --failOn BSD
 
 
 :negative_squared_cross_mark: **Otherwise:** Even the most reputable dependencies such as Express have known vulnerabilities. This can get easily tamed using community tools such as npm audit, or commercial tools like snyk (offer also a free community version). Both can be invoked from your CI on every build
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap: Example: NPM Audit result
 ![alt text](assets/bp-26-npm-audit-snyk.png "NPM Audit result")
+
+</details>
+
+
+
 
 <br/><br/>
 
@@ -1574,10 +1664,20 @@ license-checker --summary --failOn BSD
 
 
 :negative_squared_cross_mark: **Otherwise:** Your production will run packages that have been explicitly tagged by their author as risky
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap:  Example: ncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions
 ![alt text](assets/bp-27-yoni-goldberg-npm.png "Nncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
+
+
+</details>
+
 
 <br/><br/>
 
@@ -1598,6 +1698,12 @@ license-checker --summary --failOn BSD
 
 
 :negative_squared_cross_mark: **Otherwise:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap:   Example: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
@@ -1614,3 +1720,7 @@ c0MDUsMTgxNDkyODM5OCwtMTc2MjIzODUyMywtMTQzNjcwNDc1
 MSw3ODY4NjY2MzQsLTE3MDkxMjIzMTYsLTE2MjcxMTA5NzEsLT
 E5MTg0MTk4OTFdfQ==
 -->
+
+
+</details>
+
