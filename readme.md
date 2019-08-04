@@ -18,16 +18,19 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 <br/><br/>
 
-## Table of Contents
+# `Table of contents`
 
-1.  [The Test Anatomy (5)](#1-project-structure-practices)
-2.  [Backend Testing (11) ](#2-error-handling-practices)
-3.  [Frontend Testing (12) ](#3-code-style-practices)
-4.  [Measuring Test Effectiveness (11) ](#4-testing-and-overall-quality-practices)
-5.  [CI And Other Quality Measures (18) ](#5-going-to-production-practices)
+### Ubiquitous: Frontend & backend
+
+* [`The Golden Rule`](/) - A single advice that inspires all the others (1 bullets)
+* [`The Test Anatomy`](/) - Strucuturing tests (11 bullets)
+* [`Backend`](/) - Writing backend and Microservices tests efficiently
+* [`Frontend Tests`](/) - Writing UI tests the right way
+* [`Measuring Tests Effectivenss`](/) - How to measure your tests relability
+* [`Continous Integration`](/) - Guideliness for CI in the JS world
+
 
 <br/><br/>
-
 
 
 # Section 1️⃣ : The Test Anatomy
