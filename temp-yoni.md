@@ -1,12 +1,12 @@
-📗 43+ testing best practices: Super-comprehensive and exhaustive
+## 📗 43+ testing best practices: Super-comprehensive and exhaustive
 This is a guide for JavaScript & Node.js reliability from A-Z. It summarizes and curates for you dozens of the best blog posts, books and tools the market has to offer
 
 
-🚢 Advanced: Goes 10,000 miles beyond the basics
+## 🚢 Advanced: Goes 10,000 miles beyond the basics
 Hop into a journey that travells way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
 
 
-🌐 Full-stack: front, backend, CI, anything
+## 🌐 Full-stack: front, backend, CI, anything
 Start by understanding the ubiquitous testing practices that are the foundation for any application tier. Then, delve into your area of choice: frontend/UI, backend, CI or maybe all of them?
 
 
