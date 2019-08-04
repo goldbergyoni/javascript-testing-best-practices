@@ -1072,7 +1072,7 @@ Feature: Twitter new tweet
 ## ⚪ ️ 3.11. Detect visual issues with automated tools
 
 
-:white_check_mark: **Do:** If your UI accuracy
+:white_check_mark: **Do:** On top of functionality, do best effort to discover visual issues
 
 Opprtunity, inhertenly speaks product language, using the right tools they serve as a communication artifact greatly enhance the understanding. For example, if use a human-language for the test plan -> then becomes acceptenace test allow the customer to understand and comment on the requirements. Cocumber framework (see example below) facilititas this by. Apart from PM and customer, can serve as live doc for developers who visually walked-through the component input and output using framework like storybook
 
@@ -1326,5 +1326,6 @@ license-checker --summary --failOn BSD
 
 </li><li name="ed06" id="ed06" class="graf graf--li graf-after--li"><a href="https://medium.com/@me_37286/19-ways-to-become-a-better-node-js-developer-in-2019-ffd3a8fbfe38" data-href="https://medium.com/@me_37286/19-ways-to-become-a-better-node-js-developer-in-2019-ffd3a8fbfe38" class="markup--anchor markup--li-anchor" target="_blank">19 ways to become a better Node.js developer in 2019</a></li><li name="c446" id="c446" class="graf graf--li graf-after--li"><a href="https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d" data-href="https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d" class="markup--anchor markup--li-anchor" target="_blank">Node.js security best practices (September 2018)</a></li><li name="98bf" id="98bf" class="graf graf--li graf-after--li"><a href="https://youtu.be/-2zP494wdUY" data-href="https://youtu.be/-2zP494wdUY" class="markup--anchor markup--li-anchor" rel="noopener nofollow" target="_blank">YouTube: 5 advanced and shiny testing techniques</a></li><li name="34cf" id="34cf" class="graf graf--li graf-after--li"><a href="https://github.com/i0natan/nodebestpractices" data-href="https://github.com/i0natan/nodebestpractices" class="markup--anchor markup--li-anchor" rel="noopener nofollow" target="_blank">Node.js best practices — 79 best practices for a robust Node application</a></li></ul><p name="ae52" id="ae52" class="graf graf--p graf-after--li"><em class="markup--em markup--p-em">⭐ </em>Want more? <a href="https://twitter.com/goldbergyoni" data-href="https://twitter.com/goldbergyoni" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">follow me on Twitter</a><em class="markup--em markup--p-em">⭐</em></p><p name="3182" id="3182" class="graf graf--p graf-after--p graf--trailing">✏️ Have your own testing tip? <a href="https://github.com/i0natan/nodebestpractices" data-href="https://github.com/i0natan/nodebestpractices" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">PR here and I</a>’ll be sure to update this article ✏️</p>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ0NDg5MzcwNywtMTkxODQxOTg5MV19
+eyJoaXN0b3J5IjpbLTIwNTY1OTQ1ODMsLTE5MTg0MTk4OTFdfQ
+==
 -->
