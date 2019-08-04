@@ -687,10 +687,20 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 :negative_squared_cross_mark: **Otherwise:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
 
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap: Doing It Right Example: Supertest allows approaching Express API in-process (fast and cover many layers)
 ![alt text](assets/bp-13-component-test-yoni-goldberg.png " Supertest allows approaching Express API in-process (fast and cover many layers)")
+
+</details>
+
+
+
 
 <br/><br/>
 
@@ -702,10 +712,20 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 :negative_squared_cross_mark: **Otherwise:** The alternatives are exhausting manual testing or deployment fear
 
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap: Doing It Right Example:
 ![alt text](assets/bp-14-testing-best-practices-contract-flow.png )
+
+
+</details>
+
+
 
 <br/><br/>
 
@@ -718,8 +738,12 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 :negative_squared_cross_mark: **Otherwise:** A bug in Express middleware === a bug in all or most requests
 
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :clap:Doing It Right Example: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
 ```javascript
@@ -741,6 +765,11 @@ test('A request without authentication header, should return http status 403', (
 });
 
 ```
+
+</details>
+
+
+
 
 <br/><br/>
 
