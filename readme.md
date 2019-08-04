@@ -1072,14 +1072,21 @@ Feature: Twitter new tweet
 ## ⚪ ️ 3.11. Detect visual issues with automated tools
 
 
-:white_check_mark: **Do:** Setup automated tools to capture UI and detect visual issues like overlapping. This ensures that not only RIGHT data but also can see it. Our testing DNA is usually focused on func but visuals are what the user experience and with so many devices it's very easy to present visual issues. A basic set of tools allow to capture screenshots, then human eyes are needed for comparison - this technique is called visual testing. Better than nothing, it's as flaw as any other manual tests, better to get some detection automation that can realize that the UI suffers some degragation by comparing the previous state with the new one and detecting changes. There are few free OSS tools to help with this mission like wraith &. The commercial tool (some have some free plans) takes is a step higher but introducing vital and sophisiticated features like management UI, alerting, sma
-
+:white_check_mark: **Do:** Setup automated tools to capture UI and detect visual issues like overlapping. This ensures that not only RIGHT data but also can see it. Our testing DNA is usually focused on func but visuals are what the user experience and with so many devices it's very easy to present visual issues. A basic set of tools allow to capture screenshots, then human eyes are needed for comparison - this technique is called visual testing. Better than nothing, it's as flaw as any other manual tests, better to get some detection automation that can realize that the UI suffers some degragation by comparing the previous state with the new one and detecting changes. There are few free OSS tools to help with this mission like wraith &. The commercial tool (some have some free plans) takes is a step higher but introducing vital and sophisiticated features like management UI, alerting, smart capturing by elemeinating noise like ads and slow animations and even detection of the DOM changes that led to a visual issues
 
 Our minds are focused on functionality, CSS,  manual tests are as bad as, CI, DOM differences, animations
 
 <br/>
 
 :negative_squared_cross_mark: **Otherwise:** How good is a content page that is snappy, works great (100% tests passed), loads fast but helf of the content area is hidden?
+
+<br/>
+### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using storybook
+
+code with wraith
+
+
+
 
 <br/><br/>
 
@@ -1326,7 +1333,7 @@ license-checker --summary --failOn BSD
 
 </li><li name="ed06" id="ed06" class="graf graf--li graf-after--li"><a href="https://medium.com/@me_37286/19-ways-to-become-a-better-node-js-developer-in-2019-ffd3a8fbfe38" data-href="https://medium.com/@me_37286/19-ways-to-become-a-better-node-js-developer-in-2019-ffd3a8fbfe38" class="markup--anchor markup--li-anchor" target="_blank">19 ways to become a better Node.js developer in 2019</a></li><li name="c446" id="c446" class="graf graf--li graf-after--li"><a href="https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d" data-href="https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d" class="markup--anchor markup--li-anchor" target="_blank">Node.js security best practices (September 2018)</a></li><li name="98bf" id="98bf" class="graf graf--li graf-after--li"><a href="https://youtu.be/-2zP494wdUY" data-href="https://youtu.be/-2zP494wdUY" class="markup--anchor markup--li-anchor" rel="noopener nofollow" target="_blank">YouTube: 5 advanced and shiny testing techniques</a></li><li name="34cf" id="34cf" class="graf graf--li graf-after--li"><a href="https://github.com/i0natan/nodebestpractices" data-href="https://github.com/i0natan/nodebestpractices" class="markup--anchor markup--li-anchor" rel="noopener nofollow" target="_blank">Node.js best practices — 79 best practices for a robust Node application</a></li></ul><p name="ae52" id="ae52" class="graf graf--p graf-after--li"><em class="markup--em markup--p-em">⭐ </em>Want more? <a href="https://twitter.com/goldbergyoni" data-href="https://twitter.com/goldbergyoni" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">follow me on Twitter</a><em class="markup--em markup--p-em">⭐</em></p><p name="3182" id="3182" class="graf graf--p graf-after--p graf--trailing">✏️ Have your own testing tip? <a href="https://github.com/i0natan/nodebestpractices" data-href="https://github.com/i0natan/nodebestpractices" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">PR here and I</a>’ll be sure to update this article ✏️</p>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MTg3NzMwNzgsLTE0MzY3MDQ3NTEsNz
-g2ODY2NjM0LC0xNzA5MTIyMzE2LC0xNjI3MTEwOTcxLC0xOTE4
-NDE5ODkxXX0=
+eyJoaXN0b3J5IjpbODA4MTY2NzM5LC0xNDM2NzA0NzUxLDc4Nj
+g2NjYzNCwtMTcwOTEyMjMxNiwtMTYyNzExMDk3MSwtMTkxODQx
+OTg5MV19
 -->
