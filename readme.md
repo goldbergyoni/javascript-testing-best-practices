@@ -959,6 +959,11 @@ With all that said, a word of caution is in order: this technique works for smal
 
 :negative_squared_cross_mark: **Otherwise:** When poking into a component's internal by invoking its private methods, and checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have a capacity for this level of maintenance?
 
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap: Doing It Right Example: Working realstically with a fully rendered component
@@ -1010,6 +1015,10 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 })
 
 ```
+
+</details>
+
+
 
 
 ## ⚪ ️ 3.4 Don't sleep, use frameworks built-in support for async events. Also try to speed things up
