@@ -393,8 +393,12 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 :negative_squared_cross_mark: **Otherwise:** Unconsciously, you choose the test inputs that cover only code paths that work well. Unfortunately, this decreases the efficiency of testing as a vehicle to expose bugs
 
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :clap:  Doing It Right Example: Testing many input permutations with “mocha-testcheck”
 
@@ -415,6 +419,11 @@ describe('Product service', () => {
 
 ```
 
+</details>
+
+
+
+
 <br/><br/>
 
 ## ⚪ ️ 1.9 Stay within the test: Minimize external helpers and abstractions
@@ -429,8 +438,13 @@ Let the reader get the whole story without leaving the test, minimize utils, hoo
 
 
 :negative_squared_cross_mark: **Otherwise:** Suddenly found yourself with 4 helpers per test suite, 2 of them inheriting from base util, a lot of setup and tearing-up hooks? congratulation, you just won another challenging project to maintain, you might write tests soon against your test suite
+
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :thumbsdown: Anti-Pattern Example: Fancy and indirect test structure. Do you understand the test case without navigating to external dependencies?
 
@@ -459,6 +473,11 @@ it("When getting orders report, get the existing orders", () => {
 })
 
 ```
+
+</details>
+
+
+
 <br/><br/>
 
 ## ⚪ ️1.10 Avoid global test fixtures and seeds, add data per-test
