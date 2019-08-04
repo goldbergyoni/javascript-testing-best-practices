@@ -245,7 +245,9 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 :negative_squared_cross_mark: **Otherwise:** Your test behaves like the child who cries wolf: shoot out loud false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday a real bug will get ignored…
 <br/>
+<details><summary>✏ <b>Code Examples</b></summary>
 
+<br/>
 
 ### :thumbsdown: Anti Pattern Example: A test case is testing the internals for no good reason
 ```javascript
@@ -270,6 +272,11 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 });
 
 ```
+
+</details>
+
+
+
 
 <br/><br/>
 
