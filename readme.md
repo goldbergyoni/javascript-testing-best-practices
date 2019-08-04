@@ -337,8 +337,12 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 :negative_squared_cross_mark: **Otherwise:** All your development testing will falsely seem green when you use synthetic inputs like “Foo” but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
 
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :thumbsdown: Anti-Pattern Example: A test suite that passes due to non-realistic data
 ```javascript
@@ -373,6 +377,11 @@ it("Better: When adding new valid product, get successful confirmation", async (
     //We discovered a bug early!
 });
 ```
+
+</details>
+
+
+
 
 <br/><br/>
 
