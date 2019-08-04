@@ -1270,7 +1270,8 @@ it('When doing smoke testing over all page, should load them all successfully', 
 
 ## ⚪ ️ 3.9 Have very few end-to-end tests that spans the whole system
 
-:white_check_mark: **Do:** Although E2E (end-to-end) usually means UI-only testing with real browser, they also mean tests that stretch the entire system including the real backend. The later type of tests are highly valuable as they cover integration bugs between frontend and backend that might happen due to wrong understanding of the exchange schema. They are also an efficient method to discover backend-to-backend integration issues (e.g. Microservice A sends the wrong message to Microservice B) and even to detect deployment failures - there are no backend frameworks for E2E testing that are as friendly and mature as UI frameworks like [Cypress](https://www.cypress.io/) and [Pupeteer](https://github.com/GoogleChrome/puppeteer). The downside of such tests is the high cost of configuring an environment with so many component, and mostly their brittleness - given 50 microservices, even if one fails then the entire E2E just failed. For that reason, we should use this technique sparingly and probably have 1-10 of those and no more. That said, even small number of E2E tests are likely to catch the type of issues they are targeted for - deployment & integration faults. It's advisable to run those over a production-like staging environment
+:white_check_mark: **Do:** 
+Although E2E (end-to-end) usually means UI-only testing with a real browser, they also mean tests that stretch the entire system including the real backend. The latter type of tests is highly valuable as they cover integration bugs between frontend and backend that might happen due to a wrong understanding of the exchange schema. They are also an efficient method to discover backend-to-backend integration issues (e.g. Microservice A sends the wrong message to Microservice B) and even to detect deployment failures - there are no backend frameworks for E2E testing that are as friendly and mature as UI frameworks like [Cypress](https://www.cypress.io/) and [Pupeteer](https://github.com/GoogleChrome/puppeteer). The downside of such tests is the high cost of configuring an environment with so many components, and mostly their brittleness - given 50 microservices, even if one fails then the entire E2E just failed. For that reason, we should use this technique sparingly and probably have 1-10 of those and no more. That said, even a small number of E2E tests are likely to catch the type of issues they are targeted for - deployment & integration faults. It's advisable to run those over a production-like staging environment
 
 <br/>
 
@@ -1735,6 +1736,5 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MzE0NjY2NTAsLTExNjk1NjExNjFdfQ
-==
+eyJoaXN0b3J5IjpbLTkxMTQ4NDU2NiwtMTE2OTU2MTE2MV19
 -->
