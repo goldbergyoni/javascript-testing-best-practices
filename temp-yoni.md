@@ -8,8 +8,8 @@
 
 <br/>
 
-### :clap: Doing It Right Example: Lighthouse inspection report
+### :clap: Doing It Right Example: Lighthouse page load inspection report
 
-
+![](/assets/lighthouse2.png "Lighthouse page load inspection report")
 
 <br/>
