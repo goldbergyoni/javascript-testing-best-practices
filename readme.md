@@ -20,8 +20,19 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 # `Table of contents`
 
-* ### [`Section 0: The Golden Rule`](/) - A single advice that inspires all the others (1 bullets)
-* ### [`Section 1: The Test Anatomy`](/) - Strucuturing tests (10 bullets)
+* ### [`Section 0: The Golden Rule`](/)
+
+A single advice that inspires all the others
+
+1️⃣ bullet
+
+* ### [`Section 1: The Test Anatomy`](/
+
+Strucuturing clean tests
+
+1️⃣0️⃣ bullets
+
+
 * ### [`Section 2: Backend`](/) - Writing backend and Microservices tests efficiently (9 bullets)
 * ### [`Section 3: Frontend Tests`](/) - Writing UI tests the right way (10 bullets)
 * ### [`Section 4: Measuring Tests Effectivenss`](/) - How to measure your tests relability (4 bullets)
