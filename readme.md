@@ -1111,7 +1111,7 @@ test('movie title appears', async () => {
 
 <br/>
 
-❌ **Otherwise:** It must be disappointing to realize that after such a great care for crafting an UI, 100% functional tests passing and and sophisiticated bundling - the UX is horrible and slow due to CDN misconfiguration
+❌ **Otherwise:** It must be disappointing to realize that after such great care for crafting a UI, 100% functional tests passing and sophisticated bundling - the UX is horrible and slow due to CDN misconfiguration
 
 <br/>
 
@@ -1735,6 +1735,5 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDE2OTkxNTAsLTExNjk1NjExNjFdfQ
-==
+eyJoaXN0b3J5IjpbMTgxNDA3MDgxNywtMTE2OTU2MTE2MV19
 -->
