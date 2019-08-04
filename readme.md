@@ -595,8 +595,13 @@ it.only("When no product name, it throws error 400", async() => {
 
 
 :negative_squared_cross_mark: **Otherwise:** Running all the tests, including tests that perform dozens of DB queries, any time a developer makes a small change can be extremely slow and keeps developers away from running tests
+
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :clap: Doing It Right Example: Tagging tests as ‘#cold-test’ allows the test runner to execute only fast tests (Cold===quick tests that are doing no IO and can be executed frequently even as the developer is typing)
 ```javascript
@@ -612,6 +617,11 @@ describe('Order service', function() {
 
 
 ```
+
+</details>
+
+
+
 
 <br/><br/>
 
