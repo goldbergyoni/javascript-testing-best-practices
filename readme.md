@@ -1042,7 +1042,7 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** When sleeping for a long time, tests will be order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't provide the response in a timely fashion. So it boils down to a trade-off between flaskiness and bad performance
+:negative_squared_cross_mark: **Otherwise:** When sleeping for a long time, tests will be an order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't respond in a timely fashion. So it boils down to a trade-off between flakiness and bad performance
 
 
 <br/>
@@ -1736,5 +1736,6 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwNDA0NDc4OCwtMTE2OTU2MTE2MV19
+eyJoaXN0b3J5IjpbLTEzNTU1MjMyMzgsLTExNjk1NjExNjFdfQ
+==
 -->
