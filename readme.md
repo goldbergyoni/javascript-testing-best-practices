@@ -94,6 +94,10 @@ describe('Products Service', function() {
 
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
+
 ### :clap: Doing It Right Example: A test strcutured with the AAA pattern
 
 ```javascript
@@ -126,6 +130,11 @@ test('Should be classified as premium', () => {
         expect(receivedClassification).toMatch('premium');
     });
 ```
+
+
+</details>
+
+
 
 <br/><br/>
 
