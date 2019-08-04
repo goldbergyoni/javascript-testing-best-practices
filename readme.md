@@ -1089,47 +1089,30 @@ Feature: Twitter new tweet
 
 <br/>
 
-### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using storybook
-
-before_capture: "javascript/config-level.js"​
-
-​
+### :clap: Doing It Right Example: Configuring wraith to capture and compare UI snapshots
 
 ​# Add as many domains as necessary. Key will act as a label​
 
 domains:
-
-  english: "http://www.bbc.co.uk/news"​
-
-​
+  english: "http://www.mysite.com"​
 
 ​#Type screen widths below, here are a couple of examples​
 
 screen_widths:
 
-  - 320​
-
   - 600​
-
   - 768​
-
   - 1024​
-
   - 1280​
 
-​
 
 ​#Type page URL paths below, here are a couple of examples​
-
 paths:
-
-  clickable_guide:
-
-    path: /entertainment-arts-27221191​
-
-    selector: '.idt__news'​
-
-  clickable_guide__after_click:
+  about:
+    path: /about
+    selector: '.about'​
+  subscribe:
+      selector: '.subscribe'​
 
     path: /entertainment-arts-27221191​
 
@@ -1389,7 +1372,7 @@ license-checker --summary --failOn BSD
 
 </li><li name="ed06" id="ed06" class="graf graf--li graf-after--li"><a href="https://medium.com/@me_37286/19-ways-to-become-a-better-node-js-developer-in-2019-ffd3a8fbfe38" data-href="https://medium.com/@me_37286/19-ways-to-become-a-better-node-js-developer-in-2019-ffd3a8fbfe38" class="markup--anchor markup--li-anchor" target="_blank">19 ways to become a better Node.js developer in 2019</a></li><li name="c446" id="c446" class="graf graf--li graf-after--li"><a href="https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d" data-href="https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d" class="markup--anchor markup--li-anchor" target="_blank">Node.js security best practices (September 2018)</a></li><li name="98bf" id="98bf" class="graf graf--li graf-after--li"><a href="https://youtu.be/-2zP494wdUY" data-href="https://youtu.be/-2zP494wdUY" class="markup--anchor markup--li-anchor" rel="noopener nofollow" target="_blank">YouTube: 5 advanced and shiny testing techniques</a></li><li name="34cf" id="34cf" class="graf graf--li graf-after--li"><a href="https://github.com/i0natan/nodebestpractices" data-href="https://github.com/i0natan/nodebestpractices" class="markup--anchor markup--li-anchor" rel="noopener nofollow" target="_blank">Node.js best practices — 79 best practices for a robust Node application</a></li></ul><p name="ae52" id="ae52" class="graf graf--p graf-after--li"><em class="markup--em markup--p-em">⭐ </em>Want more? <a href="https://twitter.com/goldbergyoni" data-href="https://twitter.com/goldbergyoni" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">follow me on Twitter</a><em class="markup--em markup--p-em">⭐</em></p><p name="3182" id="3182" class="graf graf--p graf-after--p graf--trailing">✏️ Have your own testing tip? <a href="https://github.com/i0natan/nodebestpractices" data-href="https://github.com/i0natan/nodebestpractices" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">PR here and I</a>’ll be sure to update this article ✏️</p>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMTE1NDU0Niw0MjUwMzc1MjgsMjQ1ND
+eyJoaXN0b3J5IjpbLTE4MDQwMjM2Niw0MjUwMzc1MjgsMjQ1ND
 c0MDUsMTgxNDkyODM5OCwtMTc2MjIzODUyMywtMTQzNjcwNDc1
 MSw3ODY4NjY2MzQsLTE3MDkxMjIzMTYsLTE2MjcxMTA5NzEsLT
 E5MTg0MTk4OTFdfQ==
