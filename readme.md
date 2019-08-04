@@ -966,9 +966,9 @@ test('Whenever no data is passed, error metric shows zero', () => {
 
 ## ⚪ ️ 3.3 Whenever possible, test with a realistic and fully rendered component
 
-:white_check_mark: **Do:** Whenver reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet 'Favour blackbox testing'). If one of the child components is significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
+:white_check_mark: **Do:** Whenever reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet 'Favour blackbox testing'). If one of the child components is significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
 
-With all that said, a word of caution is in order: this technique works for small/medium components that packs a reasonable size of child components. Fully rendering a component with too many childs will make it hard to reason about test failures (root cause analysis) and might get too slow. In such cases, write only few tests against that fat parent component and more tests against its childs
+With all that said, a word of caution is in order: this technique works for small/medium components that pack a reasonable size of child components. Fully rendering a component with too many children will make it hard to reason about test failures (root cause analysis) and might get too slow. In such cases, write only a few tests against that fat parent component and more tests against its children
 
 <br/>
 
@@ -1736,5 +1736,5 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNjk1NjExNjFdfQ==
+eyJoaXN0b3J5IjpbMTAwNDA0NDc4OCwtMTE2OTU2MTE2MV19
 -->
