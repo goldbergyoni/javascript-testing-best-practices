@@ -1129,7 +1129,7 @@ test('movie title appears', async () => {
 
 ## ⚪ ️ 3.6 Stub flakky and slow resources like backend APIs
 
-:white_check_mark: **Do:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practially, instead of real network calls to APIs, use some test double library (like [Sinon]https://sinonjs.org/, [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttle requests). Doing this will allow simulating various API behaviour that should drive your component behaviour like when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
+:white_check_mark: **Do:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practically, instead of real network calls to APIs, use some test double library (like [Sinon]https://sinonjs.org/, [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttles requests). Doing this will allow simulating various API behavior that should drive your component behavior as when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
 
 <br/>
 
@@ -1735,5 +1735,5 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxNDA3MDgxNywtMTE2OTU2MTE2MV19
+eyJoaXN0b3J5IjpbLTI2NDg5NDkzNCwtMTE2OTU2MTE2MV19
 -->
