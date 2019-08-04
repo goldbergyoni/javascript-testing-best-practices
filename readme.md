@@ -141,7 +141,7 @@ test('Should be classified as premium', () => {
 
 
 
-## ⚪ ️1.3. Describe expectations in a product language: use BDD-style assertions
+## ⚪ ️1.3 Describe expectations in a product language: use BDD-style assertions
 
 :white_check_mark: **Do:** Coding your tests in a declarative-style allows the reader to get the grab instantly without spending even a single brain-CPU cycle. When you write an imperative code that is packed with conditional logic the reader is thrown away to an effortful mental mood. In that sense, code the expectation in a human-like language, declarative BDD style using expect or should and not using custom code. If Chai & Jest don’t include the desired assertion and it’s highly repeatable, consider extending Jest matcher (Jest) or writing a custom Chai plugin
 <br/>
@@ -198,7 +198,7 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 <br/><br/>
 
 
-## ⚪ ️1.4. Lint with testing-dedicated plugins
+## ⚪ ️1.4 Lint with testing-dedicated plugins
 
 :white_check_mark: **Do:**  A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, eslint-plugin-mocha will warn when a test is written at the global level (not a son of a describe() statement) or when tests are skipped which might lead to a false belief that all tests are passing. Similarly, eslint-plugin-jest can, for example, warn when a test has no assertions at all (not checking anything)
 
@@ -229,7 +229,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-## ⚪ ️  1.5. Stick to black-box testing: Test only public methods
+## ⚪ ️  1.5 Stick to black-box testing: Test only public methods
 
 :white_check_mark: **Do:** Testing the internals brings huge overhead for almost nothing. If your code/API deliver the right results, should you really invest your next 3 hours in testing HOW it worked internally and then maintain these fragile tests? Whenever a public behavior is checked, the private implementation is also implicitly tested and your tests will break only if there is a certain problem (e.g. wrong output). This approach is also referred to as behavioral testing. On the other side, should you test the internals (white box approach) — your focus shifts from planning the component outcome to nitty-gritty details and your test might break because of minor code refactors although the results are fine- this dramatically increases the maintenance burden
 <br/>
@@ -265,7 +265,7 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 
 <br/><br/>
 
-## ⚪ ️ ️1.6. Choose the right test doubles: Avoid mocks in favor of stubs and spies
+## ⚪ ️ ️1.6 Choose the right test doubles: Avoid mocks in favor of stubs and spies
 
 :white_check_mark: **Do:**  Test doubles are a necessary evil because they are coupled to the application internals, yet some provide an immense valuespie <p name="becf" id="becf" class="graf graf--p graf-after--h3"><strong class="markup--strong markup--p-strong">✅ Do: </strong>Test doubles are a necessary evil because they are coupled to the application internals, yet some provide an immense value (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">Read here a reminder about test doubles: mocks vs stubs vs spies</a>). However, the various techniques were not born equal: some of them, spies and stubs, are focused on testing the requirements but as an <strong class="markup--strong markup--p-strong">inevitable side-effect</strong> they also slightly touch the internals. Mocks, on the contrary side, <strong class="markup--strong markup--p-strong">are focused on testing the internals</strong> — this brings huge overhead as explained in the bullet “Stick to black box testing”.</p>. However, the various techniques were not born equal: some of them, spies and stubs, are focused on testing the requirements but as an inevitable side-effect they also slightly touch the internals. Mocks, on the contrary side, are focused on testing the internals — this brings huge overhead as explained in the bullet “Stick to black box testing”.
 
