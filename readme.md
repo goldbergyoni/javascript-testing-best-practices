@@ -145,9 +145,7 @@ test('Should be classified as premium', () => {
 :negative_squared_cross_mark: **Otherwise:** The team will write less test and decorate the annoying ones with .skip()
 <br/>
 
-
-
-### :thumbsdown: Anti Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
+<details><summary>✏ <b>Code Examples</b></summary><br/>### :thumbsdown: Anti Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
 
 ```javascript
 it("When asking for an admin, ensure only ordered admins in results" , ()={
@@ -187,6 +185,8 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 });
 
 ```
+</details>
+
 
 <br/><br/>
 
