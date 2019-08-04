@@ -487,8 +487,13 @@ it("When getting orders report, get the existing orders", () => {
 
 
 :negative_squared_cross_mark: **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
+
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
 
@@ -526,6 +531,11 @@ it("When updating site name, get successful confirmation", async () => {
 
 ```
 
+</details>
+
+
+
+
 <br/><br/>
 
 ## ⚪ ️ 1.11 Don’t catch errors, expect them
@@ -537,8 +547,12 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 
 :negative_squared_cross_mark: **Otherwise:**It will be challenging to infer from the test reports (e.g. CI reports) what went wrong
 
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :thumbsdown: Anti-pattern Example: A long test case that tries to assert the existence of error with try-catch
 ```javascript
@@ -566,6 +580,11 @@ it.only("When no product name, it throws error 400", async() => {
 });
 
 ```
+
+</details>
+
+
+
 
 <br/><br/>
 
