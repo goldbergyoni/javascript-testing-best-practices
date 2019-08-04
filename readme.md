@@ -652,6 +652,12 @@ A word of caution: the TDD argument in the software world takes a typical false-
 
 
 :negative_squared_cross_mark: **Otherwise:** You’re going to miss some tools with amazing ROI, some like Fuzz, lint, and mutation can provide value in 10 minutes
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap: Doing It Right Example: Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’
@@ -662,6 +668,10 @@ A word of caution: the TDD argument in the software world takes a typical false-
 <br/>
 
 ![alt text](assets/bp-12-Yoni-Goldberg-Testing.jpeg "A test name that constitutes 3 parts")
+
+
+</details>
+
 
 
 
