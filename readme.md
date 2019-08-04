@@ -757,7 +757,7 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 <br/><br/>
 
 
-## ⚪ ️ 3.2. Query HTML elements based on attributes that are unlikely to change
+## ⚪ ️ 3.2 Query HTML elements based on attributes that are unlikely to change
 
 :white_check_mark: **Do:** Query HTML elements based on attributes that are likely to survive graphic changes unlike css selectors and like form labels. If the desginated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your functional/logic tests never break because of look&feel changes, but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
 
@@ -811,7 +811,7 @@ test('Whenever no data is passed, error metric shows zero', () => {
 
 <br/>
 
-## ⚪ ️ 3.3. Whenever possible, test with a realistic and fully rendered component
+## ⚪ ️ 3.3 Whenever possible, test with a realistic and fully rendered component
 
 :white_check_mark: **Do:** Whenver reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet 'Favour blackbox testing'). If one of the child components is significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
 
@@ -874,7 +874,7 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 ```
 
 
-## ⚪ ️ 3.4. Don't sleep, use frameworks built-in support for async events. Also try to speed things up
+## ⚪ ️ 3.4 Don't sleep, use frameworks built-in support for async events. Also try to speed things up
 
 :white_check_mark: **Do:** In many cases, the unit under test completion time is just unknown (e.g. animation suspends element appearance) - in that case avoid sleeping (e.g. setTimeOut) and prefer more deterministic methods that most platforms provide. Some libraries allows awaiting on operations (e.g. [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), other provide API for waiting like [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance). Sometime a more elegant way is to stub the slow resource, like API for example, and then once the response moment becomes deterministic the component can be explictly re-rendered. When depending upon some external component that sleeps, it might turn useful to [hurry-up the clock](https://jestjs.io/docs/en/timer-mocks). Sleeping is a pattern to avoid becaue it forces your test to be slow or risky (when waiting for a too short perioed). Whenever sleeping and polling is inevitable and there's no support from the testing framework, some npm libraries like [wait-for-expect](https://www.npmjs.com/package/wait-for-expect) can help with a semi-deterministic solution 
 
@@ -935,7 +935,7 @@ test('movie title appears', async () => {
 ```
 
 
-## ⚪ ️ 3.5. Watch how the content is served over the network
+## ⚪ ️ 3.5 Watch how the content is served over the network
 
 :white_check_mark: **Do:** Apply some active monitor that alive but also bundled, latency, zippped and other bundling and serving. With all respect to dev, production is where matters, things can act unwildly and realizing it soon is as important as discoivering functional bug. The tools is no short, basics is monitoring products that ensure uptime, latency. CI can perform richer analysis with lightguard that check things like. But you may take it step higher by running custom tests that goes down to specifity of checking things like zipping, SSL, etc
 
@@ -951,7 +951,7 @@ Image of lighthouse
 
 <br/>
 
-## ⚪ ️ 3.6. Stub flakky and slow resources like backend APIs
+## ⚪ ️ 3.6 Stub flakky and slow resources like backend APIs
 
 :white_check_mark: **Do:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practially, instead of real network calls to APIs, use some test double library (like [Sinon]https://sinonjs.org/, [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttle requests). Doing this will allow simulating various API behaviour that should drive your component behaviour like when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
 
@@ -997,7 +997,7 @@ test('When no products exist, show the appropriate message', () => {
 
 ```
 
-## ⚪ ️ 3.7. Speed-up E2E tests by reusing login credentials
+## ⚪ ️ 3.7 Speed-up E2E tests by reusing login credentials
 
 :white_check_mark: **Do:** In E2E more flexible due to perf concern, cache or reuse repetetive actions like login so they happen only once. Practically, login on before all and set valid token on local storage. This violates, might interfere, but the perf penalty might be crucial. Mitigate this by never rely on users previous data.
 
@@ -1037,7 +1037,7 @@ beforeEach(setUser => () {
 
 
 
-## ⚪ ️ 3.8. Have one E2E smoke test that just travells across the site map
+## ⚪ ️ 3.8 Have one E2E smoke test that just travells across the site map
 
 :white_check_mark: **Do:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensure no one breaks. This type of test brings great return on investement as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other style of smoke and sanity checking are not as reliable and exahustive - some ops teams just ping the home page (production) or developers who run many integration tests which doesn't discover packaging and browser issues. Goes without saying that smoke test doesn't replace functional tests rather just aim to server as a quick smoke detector
 
@@ -1063,7 +1063,7 @@ it('When doing smoke testing over all page, should load them all successfully', 
 ```
 
 
-## ⚪ ️ 3.9. Have very few end-to-end tests that spans the whole system
+## ⚪ ️ 3.9 Have very few end-to-end tests that spans the whole system
 
 :white_check_mark: **Do:** Although E2E (end-to-end) usually means UI-only testing with real browser, they also mean tests that stretch the entire system including the real backend. The later type of tests are highly valuable as they cover integration bugs between frontend and backend that might happen due to wrong understanding of the exchange schema. They are also an efficient method to discover backend-to-backend integration issues (e.g. Microservice A sends the wrong message to Microservice B) and even to detect deployment failures - there are no backend frameworks for E2E testing that are as friendly and mature as UI frameworks like [Cypress](https://www.cypress.io/) and [Pupeteer](https://github.com/GoogleChrome/puppeteer). The downside of such tests is the high cost of configuring an environment with so many component, and mostly their brittleness - given 50 microservices, even if one fails then the entire E2E just failed. For that reason, we should use this technique sparingly and probably have 1-10 of those and no more. That said, even small number of E2E tests are likely to catch the type of issues they are targeted for - deployment & integration faults. It's advisable to run those over a production-like staging environment
 
@@ -1073,7 +1073,7 @@ it('When doing smoke testing over all page, should load them all successfully', 
 
 <br/>
 
-## ⚪ ️ 3.10. Expose the tests as a live collaborative document
+## ⚪ ️ 3.10 Expose the tests as a live collaborative document
 
 :white_check_mark: **Do:** Besides increasing app reliability, tests brings another attractive opprtunity to the table - serve as a live app documentation. Since tests inherently speak at a less-technical and product/UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers and their customers. For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as 'acceptance test' as it allows the customer to define his acceptance criteria in plain languae. This is [BDD (behaviour-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) at its purest form. One of the popular frameworks that enable this is [Cocumber which has a JavaScript flavour](https://github.com/cucumber/cucumber-js), see example below. Another similar yet different opprtunity, [StoryBook](https://storybook.js.org/), allows exposing UI components as a graphic catalog where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc), see how it looks like, and how to trigger that state - this can appeal also to product folks but mostly serves as live doc for developers who consume those components.
 
@@ -1104,7 +1104,7 @@ Feature: Twitter new tweet
 ![alt text](assets/story-book.jpg "Visualizing component with storybook")
 
 
-## ⚪ ️ 3.11. Detect visual issues with automated tools
+## ⚪ ️ 3.11 Detect visual issues with automated tools
 
 
 :white_check_mark: **Do:** Setup automated tools to capture UI screenshots when changes are presented and detect visual issues like content overlapping or breaking. This ensures that not only the right data is prepared but also the user can convenietly see it. This technique is not widely adopted, our testing mindset leans toward functional tests but it's the visuals what the user experience and with so many device types it's very easy to overlook some nasty UI bug. Some free tools can provide the basics - generate and save screenshots for the inspection of human eyes. While this approach might be sufficient for small apps, it's flawed as any other manual testing that demands human labour anytime something changes. On the other hand, it's quite challenging to detect UI issues automatically due to the lack of clear definition - this is where the field of 'Visual Regression' chime in and solve this puzzle by comparing old UI with the latest changes and detect differences. Some OSS/free tools can provide some of this functionality (e.g. [wraith](https://github.com/BBC-News/wraith), [PhantomCSS]([https://github.com/HuddleEng/PhantomCSS](https://github.com/HuddleEng/PhantomCSS)) but might charge signficant setup time. The commercial line of tools (e.g. [Applitools](https://applitools.com/), [Perci.io](https://percy.io/)) takes is a step further by smoothing the installation and packing advanced features like management UI, alerting, smart capturing by elemeinating  'visual noise' (e.g. ads, animations) and even root cause analysis of the DOM/css changes that led to the issue
@@ -1156,7 +1156,7 @@ paths:
 
 <br/><br/>
 
-## ⚪ ️ 18. Get enough coverage for being confident, ~80% seems to be the lucky number
+## ⚪ ️ 4.1 Get enough coverage for being confident, ~80% seems to be the lucky number
 
 :white_check_mark: **Do:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380 than 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule (Fowler: “in the upper 80s or 90s”) that presumably should satisfy most of the applications.
 
@@ -1179,7 +1179,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/><br/>
 
-## ⚪ ️ 19. Inspect coverage reports to detect untested areas and other oddities
+## ⚪ ️ 4.2 Inspect coverage reports to detect untested areas and other oddities
 
 :white_check_mark: **Do:** Some issues sneak just under the radar and are really hard to find using traditional tools. These are not really bugs but more of surprising application behavior that might have a severe impact. For example, often some code areas are never or rarely being invoked — you thought that the ‘PricingCalculator’ class is always setting the product price but it turns out it is actually never invoked although we have 10000 products in DB and many sales… Code coverage reports help you realize whether the application behaves the way you believe it does. Other than that, it can also highlight which types of code is not tested — being informed that 80% of the code is tested doesn’t tell whether the critical parts are covered. Generating reports is easy — just run your app in production or during testing with coverage tracking and then see colorful reports that highlight how frequent each code area is invoked. If you take your time to glimpse into this data — you might find some gotchas
 <br/>
@@ -1194,7 +1194,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/><br/>
 
-## ⚪ ️ 20. Measure logical coverage using mutation testing
+## ⚪ ️ 4.3 Measure logical coverage using mutation testing
 
 :white_check_mark: **Do:**  The Traditional Coverage metric often lies: It may show you 100% code coverage, but none of your functions, even not one, return the right response. How come? it simply measures over which lines of code the test visited, but it doesn’t check if the tests actually tested anything — asserted for the right response. Like someone who’s traveling for business and showing his passport stamps — this doesn’t prove any work done, only that he visited few airports and hotels.
 
@@ -1238,7 +1238,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/><br/>
 
-## ⚪ ️ 21. Enrich your linters and abort builds that have linting issues
+## ⚪ ️ 4.4 Enrich your linters and abort builds that have linting issues
 
 :white_check_mark: **Do:**  Linters are a free lunch, with 5 min setup you get for free an auto-pilot guarding your code and catching significant issue as you type. Gone are the days where linting was about cosmetics (no semi-colons!). Nowadays, Linters can catch severe issues like errors that are not thrown correctly and losing information. On top of your basic set of rules (like ESLint standard or Airbnb style), consider including some specializing Linters like eslint-plugin-chai-expect that can discover tests without assertions, eslint-plugin-promise can discover promises with no resolve (your code will never continue), eslint-plugin-security which can discover eager regex expressions that might get used for DOS attacks, and eslint-plugin-you-dont-need-lodash-underscore is capable of alarming when the code uses utility library methods that are part of the V8 core methods like Lodash._map(…)
 <br/>
@@ -1252,7 +1252,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/><br/>
 
-# ⚪ ️ 22. Shorten the feedback loop with local developer-CI
+# ⚪ ️ 4.5 Shorten the feedback loop with local developer-CI
 
 :white_check_mark: **Do:**   Using a CI with shiny quality inspections like testing, linting, vulnerabilities check, etc? Help developers run this pipeline also locally to solicit instant feedback and shorten the feedback loop. Why? an efficient testing process constitutes many and iterative loops: (1) try-outs -> (2) feedback -> (3) refactor. The faster the feedback is, the more improvement iterations a developer can perform per-module and perfect the results. On the flip, when the feedback is late to come fewer improvement iterations could be packed into a single day, the team might already move forward to another topic/task/module and might not be up for refining that module.
 
@@ -1286,7 +1286,7 @@ Practically, some CI vendors (Example: CircleCI load CLI) allow running the pipe
 
 <br/><br/>
 
-# ⚪ ️23. Perform e2e testing over a true production-mirror
+# ⚪ ️4.6 Perform e2e testing over a true production-mirror
 
 :white_check_mark: **Do:**   End to end (e2e) testing are the main challenge of every CI pipeline — creating an identical ephemeral production mirror on the fly with all the related cloud services can be tedious and expensive. Finding the best compromise is your game: Docker-compose allows crafting isolated dockerized environment with identical containers using a single plain text file but the backing technology (e.g. networking, deployment model) is different from real-world productions. You may combine it with ‘AWS Local’ to work with a stub of the real AWS services. If you went serverless multiple frameworks like serverless and AWS SAM allows the local invocation of Faas code.
 
@@ -1304,7 +1304,7 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 
 <br/><br/>
 
-## ⚪ ️24. Parallelize test execution
+## ⚪ ️4.7 Parallelize test execution
 :white_check_mark: **Do:**    When done right, testing is your 24/7 friend providing almost instant feedback. In practice, executing 500 CPU-bounded unit test on a single thread can take too long. Luckily, modern test runners and CI platforms (like Jest, AVA and Mocha extensions) can parallelize the test into multiple processes and achieve significant improvement in feedback time. Some CI vendors do also parallelize tests across containers (!) which shortens the feedback loop even further. Whether locally over multiple processes, or over some cloud CLI using multiple machines — parallelizing demand keeping the tests autonomous as each might run on different processes
 
 
@@ -1317,7 +1317,7 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 
 <br/><br/>
 
-## ⚪ ️25. Stay away from legal issues using license and plagiarism check
+## ⚪ ️4.8 Stay away from legal issues using license and plagiarism check
 :white_check_mark: **Do:**    Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like license check and plagiarism check (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stackoverflow and apparently violates some copyrights
 
 :negative_squared_cross_mark: **Otherwise:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
@@ -1340,7 +1340,7 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️26. Constantly inspect for vulnerable dependencies
+## ⚪ ️4.9 Constantly inspect for vulnerable dependencies
 :white_check_mark: **Do:**    Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like license check and plagiarism check (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stackoverflow and apparently violates some copyrights
 <br/>
 
@@ -1353,7 +1353,7 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️27. Automate dependency updates
+## ⚪ ️4.10 Automate dependency updates
 :white_check_mark: **Do:**   Yarn and npm latest introduction of package-lock.json introduced a serious challenge (the road to hell is paved with good intentions) — by default now, packages are no longer getting updates. Even a team running many fresh deployments with ‘npm install’ & ‘npm update’ won’t get any new updates. This leads to subpar dependent packages versions at best or to vulnerable code at worst. Teams now rely on developers goodwill and memory to manually update the package.json or use tools like ncu manually. A more reliable way could be to automate the process of getting the most reliable dependency versions, though there are no silver bullet solutions yet there are two possible automation roads: (1) CI can fail builds that have obsolete dependencies — using tools like ‘npm outdated’ or ‘npm-check-updates (ncu)’ . Doing so will enforce developers to update dependencies. (2) Use commercial tools that scan the code and automatically send pull requests with updated dependencies. One interesting question remaining is what should be the dependency update policy — updating on every patch generates too many overhead, updating right when a major is released might point to an unstable version (many packages found vulnerable on the very first days after being released, see the eslint-scope incident). An efficient update policy may allow some ‘vesting period’ — let the code lag behind the @latest for some time and versions before considering the local copy as obsolete (e.g. local version is 1.3.1 and repository version is 1.3.8)
 <br/>
 
@@ -1366,7 +1366,7 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️ 28. Other, non-Node related, CI tips
+## ⚪ ️ 4.11 Other, non-Node related, CI tips
 :white_check_mark: **Do:**    This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
 
  <ol class="postList"><li name="e3e4" id="e3e4" class="graf graf--li graf-after--p">Use a declarative syntax. This is the only option for most vendors but older versions of Jenkins allows using code or UI</li><li name="1fdc" id="1fdc" class="graf graf--li graf-after--li">Opt for a vendor that has native Docker support</li><li name="edcd" id="edcd" class="graf graf--li graf-after--li">Fail early, run your fastest tests first. Create a ‘Smoke testing’ step/milestone that groups multiple fast inspections (e.g. linting, unit tests) and provide snappy feedback to the code committer</li><li name="0375" id="0375" class="graf graf--li graf-after--li">Make it easy to skim-through all build artifacts including test reports, coverage reports, mutation reports, logs, etc</li><li name="df82" id="df82" class="graf graf--li graf-after--li">Create multiple pipelines/jobs for each event, reuse steps between them. For example, configure a job for feature branch commits and a different one for master PR. Let each reuse logic using shared steps (most vendors provide some mechanism for code reuse</li><li name="19b0" id="19b0" class="graf graf--li graf-after--li">Never embed secrets in a job declaration, grab them from a secret store or from the job’s configuration</li><li name="b70d" id="b70d" class="graf graf--li graf-after--li">Explicitly bump version in a release build or at least ensure the developer did so</li><li name="957c" id="957c" class="graf graf--li graf-after--li">Build only once and perform all the inspections over the single build artifact (e.g. Docker image)</li><li name="339b" id="339b" class="graf graf--li graf-after--li">Test in an ephemeral environment that doesn’t drift state between builds. Caching node_modules might be the only exception</li></ol>
@@ -1377,7 +1377,7 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️ 29. Build matrix: Run the same CI steps using multiple Node versions
+## ⚪ ️ 4.12 Build matrix: Run the same CI steps using multiple Node versions
 :white_check_mark: **Do:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use mySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of mySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
 <br/>
 
