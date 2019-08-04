@@ -1029,6 +1029,11 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 :negative_squared_cross_mark: **Otherwise:** When sleeping for a long time, tests will be order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't provide the response in a timely fashion. So it boils down to a trade-off between flaskiness and bad performance
 
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap: Doing It Right Example: E2E API that resolves only when the async operations is done (Cypress)
@@ -1081,6 +1086,10 @@ test('movie title appears', async () => {
 
 ```
 
+</details>
+
+
+
 
 ## ⚪ ️ 3.5 Watch how the content is served over the network
 
@@ -1090,11 +1099,21 @@ test('movie title appears', async () => {
 
 :negative_squared_cross_mark: **Otherwise:** Must be disappointing to realie Taking care for amazing UX, accurate functionality and sophisiticated bundling the UX is horrible and slow due to CDN misconfiguration
 
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap: Doing It Right Example: Testing library that waits for DOM elements (@testing-library/dom)
 
 Image of lighthouse
+
+</details>
+
+
+
 
 <br/>
 
@@ -1105,6 +1124,11 @@ Image of lighthouse
 <br/>
 
 :negative_squared_cross_mark: **Otherwise:** The average test runs no longer than few ms, a typical API call last 100ms>, this makes each test ~20x slower
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
 
 <br/>
 
@@ -1144,6 +1168,10 @@ test('When no products exist, show the appropriate message', () => {
 
 ```
 
+</details>
+
+
+
 ## ⚪ ️ 3.7 Speed-up E2E tests by reusing login credentials
 
 :white_check_mark: **Do:** In E2E more flexible due to perf concern, cache or reuse repetetive actions like login so they happen only once. Practically, login on before all and set valid token on local storage. This violates, might interfere, but the perf penalty might be crucial. Mitigate this by never rely on users previous data.
@@ -1151,6 +1179,11 @@ test('When no products exist, show the appropriate message', () => {
 <br/>
 
 :negative_squared_cross_mark: **Otherwise:** Given 200 test cases and assuming login=100ms = 20 seconds only for logging-in again and again
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
 
 <br/>
 
@@ -1182,6 +1215,11 @@ beforeEach(setUser => () {
 
 ```
 
+</details>
+
+
+
+
 
 
 ## ⚪ ️ 3.8 Have one E2E smoke test that just travells across the site map
@@ -1191,6 +1229,11 @@ beforeEach(setUser => () {
 <br/>
 
 :negative_squared_cross_mark: **Otherwise:** Everything might seem perfect, all tests pass, production health-check is also positive but the Payment component had some packaging issue and only the /Payment route is not rendering
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
 
 <br/>
 
@@ -1209,6 +1252,11 @@ it('When doing smoke testing over all page, should load them all successfully', 
   })
 ```
 
+</details>
+
+
+
+
 
 ## ⚪ ️ 3.9 Have very few end-to-end tests that spans the whole system
 
@@ -1225,6 +1273,11 @@ it('When doing smoke testing over all page, should load them all successfully', 
 :white_check_mark: **Do:** Besides increasing app reliability, tests brings another attractive opprtunity to the table - serve as a live app documentation. Since tests inherently speak at a less-technical and product/UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers and their customers. For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as 'acceptance test' as it allows the customer to define his acceptance criteria in plain languae. This is [BDD (behaviour-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) at its purest form. One of the popular frameworks that enable this is [Cocumber which has a JavaScript flavour](https://github.com/cucumber/cucumber-js), see example below. Another similar yet different opprtunity, [StoryBook](https://storybook.js.org/), allows exposing UI components as a graphic catalog where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc), see how it looks like, and how to trigger that state - this can appeal also to product folks but mostly serves as live doc for developers who consume those components.
 
 :negative_squared_cross_mark: **Otherwise:** After investing top resources on testing, it's just a pity not to leverage this investment and win great value
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
 
 <br/>
 
@@ -1251,6 +1304,11 @@ Feature: Twitter new tweet
 ![alt text](assets/story-book.jpg "Visualizing component with storybook")
 
 
+</details>
+
+
+
+
 ## ⚪ ️ 3.11 Detect visual issues with automated tools
 
 
@@ -1259,6 +1317,11 @@ Feature: Twitter new tweet
 <br/>
 
 :negative_squared_cross_mark: **Otherwise:** How good is a content page that display great content (100% tests passed), loads instantly but half of the content area is hidden?
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
 
 <br/>
 
@@ -1295,6 +1358,11 @@ paths:
       selector: '.subscribe'​
     path: /subscribe
 ```
+
+
+</details>
+
+
 
 <br/><br/>
 
