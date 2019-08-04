@@ -22,18 +22,18 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 * ### [`Section 0: The Golden Rule`](/)
 
-A single advice that inspires all the others
+A single advice that inspires all the others (1 bullet)
 
-1️⃣ bullet
+* ### [`Section 1: The Test Anatomy`](/)
 
-* ### [`Section 1: The Test Anatomy`](/
-
-Strucuturing clean tests
-
-1️⃣0️⃣ bullets
+Strucuturing clean tests (10 tests)
 
 
-* ### [`Section 2: Backend`](/) - Writing backend and Microservices tests efficiently (9 bullets)
+* ### [`Section 2: Backend`](/)
+
+Writing backend and Microservices tests efficiently (9 bullets)
+
+
 * ### [`Section 3: Frontend Tests`](/) - Writing UI tests the right way (10 bullets)
 * ### [`Section 4: Measuring Tests Effectivenss`](/) - How to measure your tests relability (4 bullets)
 * ### [`Section 5: Continous Integration`](/) - Guideliness for CI in the JS world (6 bullets)
