@@ -782,10 +782,21 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 
 :negative_squared_cross_mark: **Otherwise:** With poor code quality, bugs and performance will always be an issue that no shiny new library or state of the art features can fix
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap: Doing It Right Example:  CodeClimat, a commercial tool that can identify complex methods:
 ![alt text](assets/bp-16-yoni-goldberg-quality.png " CodeClimat, a commercial tool that can identify complex methods:")
+
+</details>
+
+
+
 
 <br/><br/>
 
@@ -795,10 +806,21 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 
 :negative_squared_cross_mark: **Otherwise:**  No escape here, Murphy’s law will hit your production without mercy
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
 <br/>
 
 ### :clap: Doing It Right Example: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
 ![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
+
+</details>
+
+
+
 
 <br/><br/>
 
@@ -811,6 +833,11 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 <br/>
 
 :negative_squared_cross_mark: **Otherwise:** The pure calculated data of your test might be ready in 10ms, but then the whole test will last 500ms (100 tests = 1 min) due to some fancy and irrelevant animation
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
 
 <br/>
 
@@ -850,6 +877,11 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 
 ```
 
+</details>
+
+
+
+
 <br/><br/>
 
 
@@ -861,8 +893,12 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 
 :negative_squared_cross_mark: **Otherwise:** You want to test the login functionality that spans many components, logic and services, everything is setup perfectly - stubs, spies, Ajax calls are isolated. All seems perfect. Then the test fails because the designer changed the div css class from 'thick-border' to 'thin-border'
 
+
 <br/>
 
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
 
 ### :clap: Doing It Right Example: Querying an element using a dedicated attrbiute for testing
 ```html
@@ -904,6 +940,12 @@ test('Whenever no data is passed, error metric shows zero', () => {
     expect(wrapper.find("[className='d-flex-column']").text()).toBe("0");
   });
 ```
+
+
+</details>
+
+
+
 
 <br/>
 
