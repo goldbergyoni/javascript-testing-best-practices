@@ -4,6 +4,8 @@
 
 # 👇 Why this guide can take your testing skills to the next level 
 
+<br/>
+
 ## 📗 43+ best practices: Super-comprehensive and exhaustive
 This is a guide for JavaScript & Node.js reliability from A-Z. It summarizes and curates for you dozens of the best blog posts, books and tools the market has to offer
 
@@ -49,6 +51,21 @@ Guideliness for CI in the JS world (6 bullets)
 
 <br/><br/>
 
+
+# Section 0️⃣  : The Golden Principle
+
+<br/>
+
+## ⚪️ 0. The Golden Rule: Testing must stay dead-simple and clear as day
+
+:white_check_mark: **Do:**  Are you familiar with that smiley friend, family member or maybe a movie character who is always available to spare his good working hands, 24/7 assisting when you need him tuned with positive energy yet asking so little for himself? This how a testing code should be designed - easy, valuable and fun. This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+Testing should not be treated as a traditional application code - a typical team is challenged with maintaining its main application anyway (the features we code and sell), it could not tolerate additional complex "project". Should testing grow to be an additional source of pain - it will get abandoned or greatly slow down the development.
+In that sense, the testing code must stay dead-simple, with minimal dependencies, abstractions, and levels of indirection. One should look at a test and get the intent instantly. Most of the advice below are derivatives of this principle
+
+Ready to start?
+
+
+<br/><br/>
 
 # Section 1️⃣ : The Test Anatomy
 
