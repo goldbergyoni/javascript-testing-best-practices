@@ -1,18 +1,20 @@
 <h1 align="center">
-  <img src="assets/header-alt.png" alt="JavaScript & Node.JS Testing Best Practices">
+  <img src="/assets/header-alt.pnnbptest.jpeg" alt="JavaScript & Node.JS Testing Best Practices">
 </h1>
 
 <br/>
 
-<h2 align="center"> 👇 Why this guide can take your testing skills to the next level 👇</h2>
+<h2 align="center"># 👇 Why this guide can take your testing skills to the next level 👇</h2>
 
-### 🎓 40+ testing best practices: Super-comprehensive and exhaustive
+### 🎓
+
+## 📗 40+ testing best practices: Super-comprehensive and exhaustive
 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
 
 ### 🚢 Advanced: Goes 10,000 miles beyond the basics
 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 
-### 📚 Full-stack: front, backend, CI, ops, anything
+### 📚 🌐 Full-stack: front, backend, CI, ops, anything
 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
 
 <br/><br/>
@@ -29,9 +31,9 @@ is simply dummy text of the printing and typesetting industry. Lorem Ipsum has b
 
 
 
-# 1. The Test Anatomy 
+# 1.Section 1️⃣ : The Test Anatomy 
 
-##  ️ 1.1 Include 3 parts in each test name
+## ⚪ ️ 1.1 Include 3 parts in each test name
 
 :white_check_mark: **Do:** A test report should tell whether the current application revision satisfies the requirements for the people who are not necessarily familiar with the code: the tester, the DevOps engineer who is deploying and the future you two years from now. This can be achieved best if the tests speak at the requirements level and include 3 parts:
 
@@ -1216,3 +1218,6 @@ license-checker --summary --failOn BSD
 <h3 name="b0ef" id="b0ef" class="graf graf--h3 graf-after--pre">Thank You. Other articles you might&nbsp;like</h3>
 
 </li><li name="ed06" id="ed06" class="graf graf--li graf-after--li"><a href="https://medium.com/@me_37286/19-ways-to-become-a-better-node-js-developer-in-2019-ffd3a8fbfe38" data-href="https://medium.com/@me_37286/19-ways-to-become-a-better-node-js-developer-in-2019-ffd3a8fbfe38" class="markup--anchor markup--li-anchor" target="_blank">19 ways to become a better Node.js developer in 2019</a></li><li name="c446" id="c446" class="graf graf--li graf-after--li"><a href="https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d" data-href="https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d" class="markup--anchor markup--li-anchor" target="_blank">Node.js security best practices (September 2018)</a></li><li name="98bf" id="98bf" class="graf graf--li graf-after--li"><a href="https://youtu.be/-2zP494wdUY" data-href="https://youtu.be/-2zP494wdUY" class="markup--anchor markup--li-anchor" rel="noopener nofollow" target="_blank">YouTube: 5 advanced and shiny testing techniques</a></li><li name="34cf" id="34cf" class="graf graf--li graf-after--li"><a href="https://github.com/i0natan/nodebestpractices" data-href="https://github.com/i0natan/nodebestpractices" class="markup--anchor markup--li-anchor" rel="noopener nofollow" target="_blank">Node.js best practices — 79 best practices for a robust Node application</a></li></ul><p name="ae52" id="ae52" class="graf graf--p graf-after--li"><em class="markup--em markup--p-em">⭐ </em>Want more? <a href="https://twitter.com/goldbergyoni" data-href="https://twitter.com/goldbergyoni" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">follow me on Twitter</a><em class="markup--em markup--p-em">⭐</em></p><p name="3182" id="3182" class="graf graf--p graf-after--p graf--trailing">✏️ Have your own testing tip? <a href="https://github.com/i0natan/nodebestpractices" data-href="https://github.com/i0natan/nodebestpractices" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">PR here and I</a>’ll be sure to update this article ✏️</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1OTQzOTgyOTddfQ==
+-->
