@@ -4,15 +4,15 @@
 
 <br/>
 
-# 👇 Why this guide can take your testing skills to the next level 
+## 👇 Why this guide can take your testing skills to the next level 
 
-## 🎓 40+ testing best practices: Super-comprehensive and exhaustive
+### 🎓 40+ testing best practices: Super-comprehensive and exhaustive
 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
 
-## 🚢 Advanced: Goes 10,000 miles beyond the basics
+### 🚢 Advanced: Goes 10,000 miles beyond the basics
 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 
-## 📚 Full-stack: front, backend, CI, ops, anything
+### 📚 Full-stack: front, backend, CI, ops, anything
 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
 
 <br/><br/>
