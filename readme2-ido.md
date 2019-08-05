@@ -1,37 +1,37 @@
 <h1 align="center">
-  <img src="/assets/nbptest.jpeg" alt="JavaScript & Node.JS Testing Best Practices">
+  <img src="assets/header-alt.png" alt="JavaScript & Node.JS Testing Best Practices">
 </h1>
 
 <br/>
 
 # 👇 Why this guide can take your testing skills to the next level 
 
-## 📗 40+ testing best practices: Super-comprehensive and exhaustive
+## 🎓 40+ testing best practices: Super-comprehensive and exhaustive
 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
 
 ## 🚢 Advanced: Goes 10,000 miles beyond the basics
 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 
-## 🌐 Full-stack: front, backend, CI, ops, anything
+## 📚 Full-stack: front, backend, CI, ops, anything
 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
 
 <br/><br/>
 
 ## Table of Contents
 
-1.  [The Test Anatomy (5)](#1-project-structure-practices)
-2.  [Backend Testing (11) ](#2-error-handling-practices)
-3.  [Frontend Testing (12) ](#3-code-style-practices)
-4.  [Measuring Test Effectiveness (11) ](#4-testing-and-overall-quality-practices)
-5.  [CI And Other Quality Measures (18) ](#5-going-to-production-practices)
+## 1.  [The Test Anatomy (5)](#1-project-structure-practices)
+## 2.  [Backend Testing (11) ](#2-error-handling-practices)
+## 3.  [Frontend Testing (12) ](#3-code-style-practices)
+## 4.  [Measuring Test Effectiveness (11) ](#4-testing-and-overall-quality-practices)
+## 5.  [CI And Other Quality Measures (18) ](#5-going-to-production-practices)
 
 <br/><br/>
 
 
 
-# Section 1️⃣ : The Test Anatomy
+# 1. The Test Anatomy 
 
-## ⚪ ️ 1.1 Include 3 parts in each test name
+##  ️ 1.1 Include 3 parts in each test name
 
 :white_check_mark: **Do:** A test report should tell whether the current application revision satisfies the requirements for the people who are not necessarily familiar with the code: the tester, the DevOps engineer who is deploying and the future you two years from now. This can be achieved best if the tests speak at the requirements level and include 3 parts:
 
