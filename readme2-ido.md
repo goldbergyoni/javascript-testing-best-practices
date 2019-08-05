@@ -19,11 +19,11 @@ is simply dummy text of the printing and typesetting industry. Lorem Ipsum has b
 
 ## Table of Contents
 
-## 1.  [The Test Anatomy (5)](#1-project-structure-practices)
-## 2.  [Backend Testing (11) ](#2-error-handling-practices)
-## 3.  [Frontend Testing (12) ](#3-code-style-practices)
-## 4.  [Measuring Test Effectiveness (11) ](#4-testing-and-overall-quality-practices)
-## 5.  [CI And Other Quality Measures (18) ](#5-going-to-production-practices)
+### 1.  [The Test Anatomy (5)](#1-project-structure-practices)
+### 2.  [Backend Testing (11) ](#2-error-handling-practices)
+### 3.  [Frontend Testing (12) ](#3-code-style-practices)
+### 4.  [Measuring Test Effectiveness (11) ](#4-testing-and-overall-quality-practices)
+### 5.  [CI And Other Quality Measures (18) ](#5-going-to-production-practices)
 
 <br/><br/>
 
