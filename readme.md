@@ -1,4 +1,4 @@
-<img src="/assets/tbp.png" width="1920px"/>
+<img src="/assets/jtbp-header-with-checklist.png" width="1920px"/>
 
 <br/>
 
