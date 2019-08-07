@@ -72,6 +72,8 @@ Our minds are full with the main production code, we don't have 'headspace' for 
 The tests are an opportunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a  small investment.  Science tells we have two brain systems: system 2 which is used for effortless activities like driving a car on an empty road and system 1 which is meant for complex and conscious operations like solving a math equation. Design your test for system 2, when looking at test code it should *feel* as easy as modifying an HTML document and not like solving 2X(17 × 24).
 
 This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+
+![alt text](/assets/headspace.png "We have no head room for additional complexity")
  
 Most of the advice below are derivatives of this principle.
 
@@ -1844,8 +1846,8 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDEyMTQ0MjQxLDE5MjEwNDcxMDUsLTE5MT
-Y0NTA2OTUsODc2NDM2MTY0LDEzODgyOTY0MDgsLTcyMzQ3Mjk0
-OSwxMzE2OTAyNjIyLC0xNzM2NjE0NTM1LC0xMTY5NTYxMTYxXX
-0=
+eyJoaXN0b3J5IjpbMjMyMjY0NDQzLDQxMjE0NDI0MSwxOTIxMD
+Q3MTA1LC0xOTE2NDUwNjk1LDg3NjQzNjE2NCwxMzg4Mjk2NDA4
+LC03MjM0NzI5NDksMTMxNjkwMjYyMiwtMTczNjYxNDUzNSwtMT
+E2OTU2MTE2MV19
 -->
