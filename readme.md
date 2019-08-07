@@ -471,7 +471,7 @@ describe('Product service', () => {
 
 :white_check_mark: **Do:** When valuable, use short snapshots only (i.e. 3-7 lines) that are part of the test=inline. Keeping this, make test self-explanatory and less fragile. Inline tests are basically just...
 
-On the other end, classic snapshots store big files in ext medium, then a single test is coupled to the values within 1000 lines document the writer never read. Why is this wrong? now there are 1000 reasons for your test to fail as it's enough that one line will change, it's likely to happen a lot. Not only this, the test name wouldn't give a clue about the d
+On the other end, classic snapshots store big files in ext medium, then a single test is coupled to the values within 1000 lines document the writer never read. Why is this wrong? now there are 1000 reasons for your test to fail as it's enough that one line will change, it's likely to happen a lot. Not only this, the test name wouldn't give a clue about the failure as it just check that 1000 lines didn't change, also it encourage to the test writter to accept as the desired true a long doc he didn't realy inspec and verify. All of these are symptoms of 
 
 There are few cases where long & external snapshots are acceptable - when 
 
@@ -1817,6 +1817,6 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0NzM4NjY2NiwxMzE2OTAyNjIyLC0xNz
+eyJoaXN0b3J5IjpbLTcyMzQ3Mjk0OSwxMzE2OTAyNjIyLC0xNz
 M2NjE0NTM1LC0xMTY5NTYxMTYxXX0=
 -->
