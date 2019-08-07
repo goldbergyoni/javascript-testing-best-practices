@@ -471,7 +471,7 @@ describe('Product service', () => {
 
 :white_check_mark: **Do:** When there is a need for [snapshot testing](https://jestjs.io/docs/en/snapshot-testing), use only short and focused snapshots (i.e. 3-7 lines) that are included as part of the test and not within external files. Keeping this guidelines will ensure your tests remain self-explanatory and less fragile. 
 
-On the other hand, 'classic snapshots' tutorials encourage to store big files in ext medium, then a single test is coupled to the values within 1000 lines document the writer never read. Why is this wrong? now there are 1000 reasons for your test to fail as it's enough that one line will change, it's likely to happen a lot. Not only this, the test name wouldn't give a clue about the failure as it just check that 1000 lines didn't change, also it encourage to the test writter to accept as the desired true a long doc he didn't realy inspec and verify. All of these are symptoms of 
+On the other hand, 'classic snapshots' tutorials and tools encourage to store big files (e.g. component rendering markup, API JSON result) over some external medium and ensure each time when the test run to compare the received result with the saved version. This for example can implictly couple our test to 1000 lines with 30 document the writer never read. Why is this wrong? now there are 1000 reasons for your test to fail as it's enough that one line will change, it's likely to happen a lot. Not only this, the test name wouldn't give a clue about the failure as it just check that 1000 lines didn't change, also it encourage to the test writter to accept as the desired true a long doc he didn't realy inspec and verify. All of these are symptoms of 
 
 There are few cases where long & external snapshots are acceptable - when asserting on schema and not data (extracting out values and focusing on fields) or when the received document rarely changes
 
@@ -1832,7 +1832,7 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUxOTY2MDMxNiw4NzY0MzYxNjQsMTM4OD
+eyJoaXN0b3J5IjpbMTkxNDM2NjUwNyw4NzY0MzYxNjQsMTM4OD
 I5NjQwOCwtNzIzNDcyOTQ5LDEzMTY5MDI2MjIsLTE3MzY2MTQ1
 MzUsLTExNjk1NjExNjFdfQ==
 -->
