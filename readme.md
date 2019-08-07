@@ -66,9 +66,10 @@ Guideliness for CI in the JS world (9 bullets)
 
 :white_check_mark: **Do:** Testing code is not like production-code - design it be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should look at a test and get the intent instantly. 
 
-Our minds are full with the main production code, we don't have headspace for additional comlexity. Should we try to squeeze yet another challenges and code into our brain it will slow the team which is the opposite from the testing goal. Practically this is where manyusually and justfully the team will abandon. 
+Our minds are full with the main production code, we don't have headspace for additional comlexity. Should we try to squeeze yet another challenging code into our poor brain it will slow the team down which works against the reason we do testing in the first place. Practically this is where many teams just abandon testing
 
  Are you familiar with that smiley friend, family member or maybe a movie character who is always available to spare his good working hands, 24/7 assisting when you need him tuned with positive energy yet asking so little for himself? This how a testing code should be designed - easy, valuable and fun. This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+ 
 Testing should not be treated as a traditional application code - a typical team is challenged with maintaining its main application anyway (the features we code and sell), it could not tolerate additional complex "project". Should testing grow to be an additional source of pain - it will get abandoned or greatly slow down the development.
 In that sense, the testing code must stay dead-simple, with minimal dependencies, abstractions, and levels of indirection. One should look at a test and get the intent instantly. Most of the advice below are derivatives of this principle
 
@@ -1843,7 +1844,7 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3NDE3Mzc5LC0xOTE2NDUwNjk1LDg3Nj
+eyJoaXN0b3J5IjpbMTA1MTYyNTY4LC0xOTE2NDUwNjk1LDg3Nj
 QzNjE2NCwxMzg4Mjk2NDA4LC03MjM0NzI5NDksMTMxNjkwMjYy
 MiwtMTczNjYxNDUzNSwtMTE2OTU2MTE2MV19
 -->
