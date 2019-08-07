@@ -64,11 +64,13 @@ Guideliness for CI in the JS world (9 bullets)
 
 ## ⚪️ 0. The Golden Rule: Testing must stay dead-simple and clear as day
 
-:white_check_mark: **Do:**  Are you familiar with that smiley friend, family member or maybe a movie character who is always available to spare his good working hands, 24/7 assisting when you need him tuned with positive energy yet asking so little for himself? This how a testing code should be designed - easy, valuable and fun. This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+:white_check_mark: **Do:** Testing code is not like production-code, design it be dead-simple, short
+
+ Are you familiar with that smiley friend, family member or maybe a movie character who is always available to spare his good working hands, 24/7 assisting when you need him tuned with positive energy yet asking so little for himself? This how a testing code should be designed - easy, valuable and fun. This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
 Testing should not be treated as a traditional application code - a typical team is challenged with maintaining its main application anyway (the features we code and sell), it could not tolerate additional complex "project". Should testing grow to be an additional source of pain - it will get abandoned or greatly slow down the development.
 In that sense, the testing code must stay dead-simple, with minimal dependencies, abstractions, and levels of indirection. One should look at a test and get the intent instantly. Most of the advice below are derivatives of this principle
 
-Not like production code, make it dead-simple, delightful to work with, short, abstraction-free even at cost of not testing everything. Our minds are full, already care to... we don't have headspace for additional monster. Should we try to squeeze too much it will slow the team which is against, usually and justfully the team will abandon. The tests are an opprtunity for something else - a friendly assistant that... Science says we have two systems in our brain... Design tests for system 2, as easy as driving,  
+Not like production code, make it dead-simple, delightful to work with, short, abstraction-free even at cost of not testing everything. Our minds are full, already care to... we don't have headspace for additional monster. Should we try to squeeze too much it will slow the team which is against, usually and justfully the team will abandon. The tests are an opprtunity for something else - a friendly assistant that... Science says we have two systems in our brain... Design tests for system 2, as easy as driving or modifying HTML.
 
 ### Ready to start?
 
@@ -1839,7 +1841,7 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzg2OTgxNTUsLTE5MTY0NTA2OTUsOD
-c2NDM2MTY0LDEzODgyOTY0MDgsLTcyMzQ3Mjk0OSwxMzE2OTAy
-NjIyLC0xNzM2NjE0NTM1LC0xMTY5NTYxMTYxXX0=
+eyJoaXN0b3J5IjpbLTQ4NTg2NjA4MCwtMTkxNjQ1MDY5NSw4Nz
+Y0MzYxNjQsMTM4ODI5NjQwOCwtNzIzNDcyOTQ5LDEzMTY5MDI2
+MjIsLTE3MzY2MTQ1MzUsLTExNjk1NjExNjFdfQ==
 -->
