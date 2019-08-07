@@ -467,20 +467,13 @@ describe('Product service', () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.9 Use inlineAvoid long and external sna
+## ⚪ ️ 1.9 Use short & inline snapshots
 
-:white_check_mark: **Do:** Let the reader get the whole story without leaving the test, minimize utils, hooks, or any external effect on a test case. Too many repetitions and copy-pasting? OK, a test can leave with one external helper and stay obvious. But when it grows to three and four helpers and hooks it implies that it a complex structure is slowly forming
-
-By now, it’s probably obvious that I’m advocating for dead-simple tests: The team can’t afford another software project that demands a mental effort to understand the code. Michael Lync explains this in his great post ['Why Good Developers Write Bad Unit Tests'](https://mtlynch.io/good-developers-bad-tests/):
-
-> Good production code is well-factored; good test code is obvious…When you write a test, think about the next developer who will see the test break. They don’t want to read your entire test suite, and they certainly don’t want to read a whole inheritance tree of test utilities.
-
+:white_check_mark: **Do:** 
 
 <br/>
 
-
-:negative_squared_cross_mark: **Otherwise:** Suddenly found yourself with 4 helpers per test suite, 2 of them inheriting from base util, a lot of setup and tearing-up hooks? congratulation, you just won another challenging project to maintain, you might write tests soon against your test suite
-
+:negative_squared_cross_mark: **Otherwise:** Sud
 
 <br/>
 
@@ -1818,6 +1811,6 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0MTI0NzY4MCwxMzE2OTAyNjIyLC0xNz
+eyJoaXN0b3J5IjpbMjAxNzgzNDYyMSwxMzE2OTAyNjIyLC0xNz
 M2NjE0NTM1LC0xMTY5NTYxMTYxXX0=
 -->
