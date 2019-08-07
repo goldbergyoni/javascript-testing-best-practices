@@ -19,7 +19,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 <br/>
 
-![nodepractices](/assets/twitter.png)[**Follow me on Twitter**](https://twitter.com/nodepractices/)
+![nodepractices](/assets/twitter.png)[**Follow me on Twitter**](https://twitter.com/goldbergyoni/)
 
 
 <br/><br/>
