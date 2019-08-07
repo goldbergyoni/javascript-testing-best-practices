@@ -471,7 +471,7 @@ describe('Product service', () => {
 
 :white_check_mark: **Do:** When there is a need for [snapshot testing](https://jestjs.io/docs/en/snapshot-testing), use only short and focused snapshots (i.e. 3-7 lines) that are included as part of the test ([Inline Snapshot](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots)) and not within external files. Keeping this guidelines will ensure your tests remain self-explanatory and less fragile. 
 
-On the other hand, 'classic snapshots' tutorials and tools encourage to store big files (e.g. component rendering markup, API JSON result) over some external medium and ensure each time when the test run to compare the received result with the saved version. This for example can implictly couple our test to 1000 lines with 3000 data values that the test writer never read and reasoned about. Why is this wrong? By doing so, there are 1000 reasons for your test to fail as it's enough for one line to change to invalidate the snapshot and this is likely to happen a lot. How frequently? for every space, comment or minor CSS/HTML change. Not only this, the test name wouldn't give a clue about the failure as it just check that 1000 lines didn't change, also it encourage to the test writter to accept as the desired true a long document he couldn't really inspect and verify. All of these are symptoms of obscure and eager test that is not focused and aims to achieve too much 
+On the other hand, 'classic snapshots' tutorials and tools encourage to store big files (e.g. component rendering markup, API JSON result) over some external medium and ensure each time when the test run to compare the received result with the saved version. This for example can implictly couple our test to 1000 lines with 3000 data values that the test writer never read and reasoned about. Why is this wrong? By doing so, there are 1000 reasons for your test to fail - it's enough for a single line to change for the  snapshot to get invalid and this is likely to happen a lot. How frequently? for every space, comment or minor CSS/HTML change. Not only this, the test name wouldn't give a clue about the failure as it just check that 1000 lines didn't change, also it encourage to the test writter to accept as the desired true a long document he couldn't really inspect and verify. All of these are symptoms of obscure and eager test that is not focused and aims to achieve too much 
 
 It's worth noting that there are few cases where long & external snapshots are acceptable - when asserting on schema and not data (extracting out values and focusing on fields) or when the received document rarely changes
 
@@ -1830,7 +1830,7 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ5MjE3MTc4LDg3NjQzNjE2NCwxMzg4Mj
-k2NDA4LC03MjM0NzI5NDksMTMxNjkwMjYyMiwtMTczNjYxNDUz
-NSwtMTE2OTU2MTE2MV19
+eyJoaXN0b3J5IjpbMTc2ODA3NDY2MSw4NzY0MzYxNjQsMTM4OD
+I5NjQwOCwtNzIzNDcyOTQ5LDEzMTY5MDI2MjIsLTE3MzY2MTQ1
+MzUsLTExNjk1NjExNjFdfQ==
 -->
