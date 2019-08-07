@@ -487,36 +487,51 @@ There are few cases where long & external snapshots are acceptable - when assert
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Fancy and indirect test structure. Do you understand the test case without navigating to external dependencies?
+### :thumbsdown: Anti-Pattern Example: Coupling our test to unseen 2000 lines of code
 
 ```javascript
-test("When getting orders report, get the existing orders", () => {
-    const queryObject = QueryHelpers.getQueryObject(config.DBInstanceURL);
-    const reportConfiguration = ReportHelpers.getReportConfig();//What report config did we get? have to leave the test and read
-    userHelpers.prepareQueryPermissions(reportConfiguration);//what this one is doing? have to leave the test and read
-    const result = queryObject.query(reportConfiguration);
-    assertThatReportIsValid();//I wonder what this one does, have to leave the test and read
-    expect(result).to.be.an('array').that.does.include({id:1, productd:2, orderStatus:"approved"});
-    //how do we know this order exist? have to leave the test and check
-})
+it('TestJavaScript.com is renderd correctly', ()  => {
 
+//Arrange
+
+//Act
+const receivedPage = renderer
+.create(  <DisplayPage page  =  "http://www.testjavascript.com"  > Test JavaScript < /DisplayPage>)
+.toJSON();
+
+//Assert
+expect(receivedPage).toMatchSnapshot();
+//We now implicitly maintain a 2000 lines long document
+//every additional line break or comment - will break this test
+
+});
 ```
 <br/>
 
-### :clap: Doing It Right Example: A test you may understand without hopping through different files
+### :clap: Doing It Right Example: Expectation are visible and focused
 ```javascript
-it("When getting orders report, get the existing orders", () => {
-    //This one hopefully is telling a direct and explicit story
-    const orderWeJustAdded = ordersTestHelpers.addRandomNewOrder();
-    const queryObject = newQueryObject(config.DBInstanceURL, queryOptions.deep, useCache:false);
-    const result = queryObject.query(config.adminUserToken, reports.orders, pageSize:200);
-    expect(result).to.be.an('array').that.does.include(orderWeJustAdded);
-})
+it('When visiting TestJavaScript.com home page, a menu is displayed', () => {
+//Arrange
 
+//Act
+receivedPage tree = renderer
+.create(  <DisplayPage page  =  "http://www.testjavascript.com"  > Test JavaScript < /DisplayPage>)
+.toJSON();
+
+//Assert
+
+const menu = receivedPage.content.menu;
+expect(tree).toMatchInlineSnapshot(`
+<ul>
+<li>Home</li>
+<li> About </li>
+<li> Contact </li>
+</ul>
+`);
+});
 ```
 
 </details>
-
 
 
 <br/><br/>
@@ -1817,6 +1832,7 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4ODI5NjQwOCwtNzIzNDcyOTQ5LDEzMT
-Y5MDI2MjIsLTE3MzY2MTQ1MzUsLTExNjk1NjExNjFdfQ==
+eyJoaXN0b3J5IjpbODc2NDM2MTY0LDEzODgyOTY0MDgsLTcyMz
+Q3Mjk0OSwxMzE2OTAyNjIyLC0xNzM2NjE0NTM1LC0xMTY5NTYx
+MTYxXX0=
 -->
