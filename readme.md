@@ -130,7 +130,7 @@ describe('Products Service', function() {
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Not only you spend long daily hours on understanding the main code, now also what should have been the simple part of the day (testing) stretches your brain
+❌ **Otherwise:** Not only you spend long daily hours on understanding the main code, now also what should have been the simple part of the day (testing) stretches your brain
 
 <br/>
 
@@ -187,7 +187,7 @@ test('Should be classified as premium', () => {
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** The team will write less test and decorate the annoying ones with .skip()
+❌ **Otherwise:** The team will write less test and decorate the annoying ones with .skip()
 
 <br/>
 
@@ -246,7 +246,7 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
+❌ **Otherwise:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
 
 
 <br/>
@@ -284,7 +284,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Your test behaves like the child who cries wolf: shoot out loud false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday a real bug will get ignored…
+❌ **Otherwise:** Your test behaves like the child who cries wolf: shoot out loud false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday a real bug will get ignored…
 
 <br/>
 <details><summary>✏ <b>Code Examples</b></summary>
@@ -332,7 +332,7 @@ For example, if you want to test what your app behaves reasonably when the payme
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Any refactoring of code mandates searching for all the mocks in the code and updating accordingly. Tests become a burden rather than a helpful friend
+❌ **Otherwise:** Any refactoring of code mandates searching for all the mocks in the code and updating accordingly. Tests become a burden rather than a helpful friend
 
 <br/>
 
@@ -376,7 +376,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** All your development testing will falsely seem green when you use synthetic inputs like “Foo” but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
+❌ **Otherwise:** All your development testing will falsely seem green when you use synthetic inputs like “Foo” but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
 
 
 <br/>
@@ -432,7 +432,7 @@ it("Better: When adding new valid product, get successful confirmation", async (
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Unconsciously, you choose the test inputs that cover only code paths that work well. Unfortunately, this decreases the efficiency of testing as a vehicle to expose bugs
+❌ **Otherwise:** Unconsciously, you choose the test inputs that cover only code paths that work well. Unfortunately, this decreases the efficiency of testing as a vehicle to expose bugs
 
 
 <br/>
@@ -476,7 +476,7 @@ On the other hand, ‘classic snapshots’ tutorials and tools encourage to stor
 It’s worth noting that there are few cases where long & external snapshots are acceptable - when asserting on schema and not data (extracting out values and focusing on fields) or when the received document rarely changes
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** A UI test fails. The code seems right, the screen renders perfect pixels, what happened? your snapshot testing just found a difference from the origin document to current received one - a single space character was added to the markdown... 
+❌ **Otherwise:** A UI test fails. The code seems right, the screen renders perfect pixels, what happened? your snapshot testing just found a difference from the origin document to current received one - a single space character was added to the markdown... 
 
 <br/>
 
@@ -539,7 +539,7 @@ expect(menu).toMatchInlineSnapshot(`
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
+❌ **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
 
 
 <br/>
@@ -596,7 +596,7 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:**It will be challenging to infer from the test reports (e.g. CI reports) what went wrong
+❌ **Otherwise:**It will be challenging to infer from the test reports (e.g. CI reports) what went wrong
 
 
 <br/>
@@ -645,7 +645,7 @@ it.only("When no product name, it throws error 400", async() => {
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Running all the tests, including tests that perform dozens of DB queries, any time a developer makes a small change can be extremely slow and keeps developers away from running tests
+❌ **Otherwise:** Running all the tests, including tests that perform dozens of DB queries, any time a developer makes a small change can be extremely slow and keeps developers away from running tests
 
 
 <br/>
@@ -683,7 +683,7 @@ Learn and practice TDD principles — they are extremely valuable for many b
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** You‘ll miss pearls of wisdom that were collected for decades
+❌ **Otherwise:** You‘ll miss pearls of wisdom that were collected for decades
 
 <br/><br/>
 
@@ -703,7 +703,7 @@ A word of caution: the TDD argument in the software world takes a typical false-
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** You’re going to miss some tools with amazing ROI, some like Fuzz, lint, and mutation can provide value in 10 minutes
+❌ **Otherwise:** You’re going to miss some tools with amazing ROI, some like Fuzz, lint, and mutation can provide value in 10 minutes
 
 
 <br/>
@@ -737,7 +737,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
+❌ **Otherwise:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
 
 
 <br/>
@@ -762,7 +762,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** The alternatives are exhausting manual testing or deployment fear
+❌ **Otherwise:** The alternatives are exhausting manual testing or deployment fear
 
 
 <br/>
@@ -788,7 +788,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** A bug in Express middleware === a bug in all or most requests
+❌ **Otherwise:** A bug in Express middleware === a bug in all or most requests
 
 
 <br/>
@@ -833,7 +833,7 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** With poor code quality, bugs and performance will always be an issue that no shiny new library or state of the art features can fix
+❌ **Otherwise:** With poor code quality, bugs and performance will always be an issue that no shiny new library or state of the art features can fix
 
 
 <br/>
@@ -857,7 +857,7 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:**  No escape here, Murphy’s law will hit your production without mercy
+❌ **Otherwise:**  No escape here, Murphy’s law will hit your production without mercy
 
 
 <br/>
@@ -879,7 +879,7 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
+❌ **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
 
 
 <br/>
@@ -941,7 +941,7 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** The pure calculated data of your test might be ready in 10ms, but then the whole test will last 500ms (100 tests = 1 min) due to some fancy and irrelevant animation
+❌ **Otherwise:** The pure calculated data of your test might be ready in 10ms, but then the whole test will last 500ms (100 tests = 1 min) due to some fancy and irrelevant animation
 
 
 <br/>
@@ -1000,7 +1000,7 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** You want to test the login functionality that spans many components, logic and services, everything is set up perfectly - stubs, spies, Ajax calls are isolated. All seems perfect. Then the test fails because the designer changed the div CSS class from 'thick-border' to 'thin-border'
+❌ **Otherwise:** You want to test the login functionality that spans many components, logic and services, everything is set up perfectly - stubs, spies, Ajax calls are isolated. All seems perfect. Then the test fails because the designer changed the div CSS class from 'thick-border' to 'thin-border'
 
 <br/>
 
@@ -1065,7 +1065,7 @@ With all that said, a word of caution is in order: this technique works for smal
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** When poking into a component's internal by invoking its private methods, and checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have a capacity for this level of maintenance?
+❌ **Otherwise:** When poking into a component's internal by invoking its private methods, and checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have a capacity for this level of maintenance?
 
 
 <br/>
@@ -1134,7 +1134,7 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 :white_check_mark: **Do:** In many cases, the unit under test completion time is just unknown (e.g. animation suspends element appearance) - in that case, avoid sleeping (e.g. setTimeOut) and prefer more deterministic methods that most platforms provide. Some libraries allows awaiting on operations (e.g. [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), other provide API for waiting like [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance). Sometimes a more elegant way is to stub the slow resource, like API for example, and then once the response moment becomes deterministic the component can be explicitly re-rendered. When depending upon some external component that sleeps, it might turn useful to [hurry-up the clock](https://jestjs.io/docs/en/timer-mocks). Sleeping is a pattern to avoid because it forces your test to be slow or risky (when waiting for a too short period). Whenever sleeping and polling is inevitable and there's no support from the testing framework, some npm libraries like [wait-for-expect](https://www.npmjs.com/package/wait-for-expect) can help with a semi-deterministic solution 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** When sleeping for a long time, tests will be an order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't respond in a timely fashion. So it boils down to a trade-off between flakiness and bad performance
+❌ **Otherwise:** When sleeping for a long time, tests will be an order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't respond in a timely fashion. So it boils down to a trade-off between flakiness and bad performance
 
 
 <br/>
@@ -1226,7 +1226,7 @@ test('movie title appears', async () => {
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** The average test runs no longer than few ms, a typical API call last 100ms>, this makes each test ~20x slower
+❌ **Otherwise:** The average test runs no longer than few ms, a typical API call last 100ms>, this makes each test ~20x slower
 
 
 <br/>
@@ -1281,7 +1281,7 @@ test('When no products exist, show the appropriate message', () => {
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** Given 200 test cases and assuming login=100ms = 20 seconds only for logging-in again and again
+❌ **Otherwise:** Given 200 test cases and assuming login=100ms = 20 seconds only for logging-in again and again
 
 
 <br/>
@@ -1331,7 +1331,7 @@ beforeEach(setUser => () {
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** Everything might seem perfect, all tests pass, production health-check is also positive but the Payment component had some packaging issue and only the /Payment route is not rendering
+❌ **Otherwise:** Everything might seem perfect, all tests pass, production health-check is also positive but the Payment component had some packaging issue and only the /Payment route is not rendering
 
 
 <br/>
@@ -1368,7 +1368,7 @@ Although E2E (end-to-end) usually means UI-only testing with a real browser, the
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very differnt than expected
+❌ **Otherwise:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very differnt than expected
 
 <br/>
 
@@ -1376,7 +1376,7 @@ Although E2E (end-to-end) usually means UI-only testing with a real browser, the
 
 :white_check_mark: **Do:** Besides increasing app reliability, tests bring another attractive opportunity to the table - serve as live app documentation. Since tests inherently speak at a less-technical and product/UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers and their customers. For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as 'acceptance test' as it allows the customer to define his acceptance criteria in plain language. This is [BDD (behavior-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) at its purest form. One of the popular frameworks that enable this is [Cocumber which has a JavaScript flavor](https://github.com/cucumber/cucumber-js), see example below. Another similar yet different opportunity, [StoryBook](https://storybook.js.org/), allows exposing UI components as a graphic catalog where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc), see how it looks like, and how to trigger that state - this can appeal also to product folks but mostly serves as live doc for developers who consume those components.
 
-:negative_squared_cross_mark: **Otherwise:** After investing top resources on testing, it's just a pity not to leverage this investment and win great value
+❌ **Otherwise:** After investing top resources on testing, it's just a pity not to leverage this investment and win great value
 
 
 <br/>
@@ -1420,7 +1420,7 @@ Feature: Twitter new tweet
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** How good is a content page that display great content (100% tests passed), loads instantly but half of the content area is hidden?
+❌ **Otherwise:** How good is a content page that display great content (100% tests passed), loads instantly but half of the content area is hidden?
 
 
 <br/>
@@ -1484,7 +1484,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:**  Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear. and fear will slow you down
+❌ **Otherwise:**  Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear. and fear will slow you down
 
 
 <br/>
@@ -1513,7 +1513,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** If you don’t know which parts of your code are left un-tested, you don’t know where the issues might come from
+❌ **Otherwise:** If you don’t know which parts of your code are left un-tested, you don’t know where the issues might come from
 
 
 <br/>
@@ -1545,7 +1545,7 @@ Knowing that all or most of the mutations were killed gives much higher confiden
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** You’ll be fooled to believe that 85% coverage means your test will detect bugs in 85% of your code
+❌ **Otherwise:** You’ll be fooled to believe that 85% coverage means your test will detect bugs in 85% of your code
 
 <br/>
 
@@ -1590,7 +1590,7 @@ it("Test addNewOrder, don't use such test names", () => {
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Consider a rainy day where your production keeps crashing but the logs don’t display the error stack trace. What happened? Your code mistakenly threw a non-error object and the stack trace was lost, a good reason for banging your head against a brick wall. A 5min linter setup could detect this TYPO and save your day
+❌ **Otherwise:** Consider a rainy day where your production keeps crashing but the logs don’t display the error stack trace. What happened? Your code mistakenly threw a non-error object and the stack trace was lost, a good reason for banging your head against a brick wall. A 5min linter setup could detect this TYPO and save your day
 
 
 <br/>
@@ -1617,7 +1617,7 @@ Practically, some CI vendors (Example: CircleCI load CLI) allow running the pipe
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** When the quality results arrive the day after the code, testing doesn’t become a fluent part of development rather an after the fact formal artifact
+❌ **Otherwise:** When the quality results arrive the day after the code, testing doesn’t become a fluent part of development rather an after the fact formal artifact
 
 
 <br/>
@@ -1661,7 +1661,7 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Using different technologies for production and testing demands maintaining two deployment models and keeps the developers and the ops team separated
+❌ **Otherwise:** Using different technologies for production and testing demands maintaining two deployment models and keeps the developers and the ops team separated
 
 
 <br/>
@@ -1686,7 +1686,7 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 :white_check_mark: **Do:**    When done right, testing is your 24/7 friend providing almost instant feedback. In practice, executing 500 CPU-bounded unit test on a single thread can take too long. Luckily, modern test runners and CI platforms (like Jest, AVA and Mocha extensions) can parallelize the test into multiple processes and achieve significant improvement in feedback time. Some CI vendors do also parallelize tests across containers (!) which shortens the feedback loop even further. Whether locally over multiple processes, or over some cloud CLI using multiple machines — parallelizing demand keeping the tests autonomous as each might run on different processes
 
 
-:negative_squared_cross_mark: **Otherwise:** Getting test results 1 hour long after pushing new code, as you already code the next features, is a great recipe for making testing less relevant
+❌ **Otherwise:** Getting test results 1 hour long after pushing new code, as you already code the next features, is a great recipe for making testing less relevant
 
 
 <br/>
@@ -1708,7 +1708,7 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 ## ⚪ ️5.5 Stay away from legal issues using license and plagiarism check
 :white_check_mark: **Do:**    Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like license check and plagiarism check (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stackoverflow and apparently violates some copyrights
 
-:negative_squared_cross_mark: **Otherwise:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
+❌ **Otherwise:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
 
 
 <br/>
@@ -1743,7 +1743,7 @@ license-checker --summary --failOn BSD
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Even the most reputable dependencies such as Express have known vulnerabilities. This can get easily tamed using community tools such as npm audit, or commercial tools like snyk (offer also a free community version). Both can be invoked from your CI on every build
+❌ **Otherwise:** Even the most reputable dependencies such as Express have known vulnerabilities. This can get easily tamed using community tools such as npm audit, or commercial tools like snyk (offer also a free community version). Both can be invoked from your CI on every build
 
 
 <br/>
@@ -1767,7 +1767,7 @@ license-checker --summary --failOn BSD
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** Your production will run packages that have been explicitly tagged by their author as risky
+❌ **Otherwise:** Your production will run packages that have been explicitly tagged by their author as risky
 
 
 <br/>
@@ -1792,7 +1792,7 @@ license-checker --summary --failOn BSD
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** You‘ll miss years of wisdom
+❌ **Otherwise:** You‘ll miss years of wisdom
 
 <br/><br/>
 
@@ -1801,7 +1801,7 @@ license-checker --summary --failOn BSD
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
+❌ **Otherwise:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
 
 
 <br/>
