@@ -668,13 +668,14 @@ describe('Order service', function() {
 ## ⚪ ️1.13 Other generic good testing hygiene
 :white_check_mark: **Do:**  This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
 
-Learn and practice TDD principles — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a red-green-refactor style, ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, avoid any dependency on the environment (paths, OS, etc)
+Learn and practice TDD principles — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a red-green-refactor style, ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, start a module by writing a quick and simplistic code that satsifies the test - then refactor gradually and take it to a prdoction grade level, avoid any dependency on the environment (paths, OS, etc)
 <br/>
 
 
-:negative_squared_cross_mark: **Otherwise:**You‘ll miss pearls of wisdom that were collected for decades
+:negative_squared_cross_mark: **Otherwise:** You‘ll miss pearls of wisdom that were collected for decades
 
 <br/><br/>
+
 
 # Section 2️⃣ : Backend Testing
 
