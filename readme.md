@@ -353,7 +353,8 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
 ```
 <br/>
 
-### :thumbsdown: Anti-pattern example: Mocks focus on the internals
+### ### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
+
 ```javascript
 it("When a valid product is about to be deleted, ensure an email is sent", async () => {
     //Assume we already added here a product
@@ -371,7 +372,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 ## ⚪ ️1.7 Don’t “foo”, use realistic input dataing
 
-:white_check_mark: **Do:**  Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like Faker to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries will generate random yet realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. Consider even importing real data from your production environment and use in your tests. Want to take it to the next level? see next bullet (property-based testing)
+:white_check_mark: **Do:**  Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not instead) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? see next bullet (property-based testing).
 <br/>
 
 
