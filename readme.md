@@ -6,7 +6,7 @@
 
 <br/>
 
-## 📗 43+ best practices: Super-comprehensive and exhaustive
+## 📗 45+ best practices: Super-comprehensive and exhaustive
 This is a guide for JavaScript & Node.js reliability from A-Z. It summarizes and curates for you dozens of the best blog posts, books and tools the market has to offer
 
 
