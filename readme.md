@@ -479,7 +479,7 @@ There are few cases where long & external snapshots are acceptable - when assert
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** A UI test fails. The code seems right, the screen renders perfect pixels, what happened? your snapshot testing just found a difference from the origin document to current received one - a single space character was added... 
+:negative_squared_cross_mark: **Otherwise:** A UI test fails. The code seems right, the screen renders perfect pixels, what happened? your snapshot testing just found a difference from the origin document to current received one - a single space character was added to the markdown... 
 
 <br/>
 
@@ -1817,6 +1817,6 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA1Njc5MTk1LC03MjM0NzI5NDksMTMxNj
-kwMjYyMiwtMTczNjYxNDUzNSwtMTE2OTU2MTE2MV19
+eyJoaXN0b3J5IjpbMTM4ODI5NjQwOCwtNzIzNDcyOTQ5LDEzMT
+Y5MDI2MjIsLTE3MzY2MTQ1MzUsLTExNjk1NjExNjFdfQ==
 -->
