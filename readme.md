@@ -68,7 +68,7 @@ Guideliness for CI in the JS world (9 bullets)
 Testing should not be treated as a traditional application code - a typical team is challenged with maintaining its main application anyway (the features we code and sell), it could not tolerate additional complex "project". Should testing grow to be an additional source of pain - it will get abandoned or greatly slow down the development.
 In that sense, the testing code must stay dead-simple, with minimal dependencies, abstractions, and levels of indirection. One should look at a test and get the intent instantly. Most of the advice below are derivatives of this principle
 
-Not like production code, make it dead-simple, short, abstraction-free even at cost of not testing everything. Our minds
+Not like production code, make it dead-simple, delightful to work with, short, abstraction-free even at cost of not testing everything. Our minds are full, already care to... we don't have headspace for additional monster. Should we try to squeeze too much it will slow the team which is against, usually and justfully the team will abandon. 
 
 ### Ready to start?
 
@@ -1839,7 +1839,7 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjczOTY2ODUsLTE5MTY0NTA2OTUsOD
+eyJoaXN0b3J5IjpbLTE2NzI4MjQ1NDMsLTE5MTY0NTA2OTUsOD
 c2NDM2MTY0LDEzODgyOTY0MDgsLTcyMzQ3Mjk0OSwxMzE2OTAy
 NjIyLC0xNzM2NjE0NTM1LC0xMTY5NTYxMTYxXX0=
 -->
