@@ -469,7 +469,7 @@ describe('Product service', () => {
 
 ## ⚪ ️ 1.9 Use short & inline snapshots
 
-:white_check_mark: **Do:** When valuable, use short snapshots only (i.e.. 3-7 lines) that are part of the test=inline. Keeping this, make test self
+:white_check_mark: **Do:** When valuable, use short snapshots only (i.e.. 3-7 lines) that are part of the test=inline. Keeping this, make test self-explanatory and less fragile. On the other end, classic snapshots store big files in ext medium, then a single test is coupled to 1000 lines document the writer never read. Why is this wrong? 
 
 <br/>
 
@@ -1811,6 +1811,6 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjAzNzgyNjAxLDEzMTY5MDI2MjIsLTE3Mz
-Y2MTQ1MzUsLTExNjk1NjExNjFdfQ==
+eyJoaXN0b3J5IjpbLTkyMTA5MDU3OCwxMzE2OTAyNjIyLC0xNz
+M2NjE0NTM1LC0xMTY5NTYxMTYxXX0=
 -->
