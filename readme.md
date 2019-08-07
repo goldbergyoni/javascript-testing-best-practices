@@ -473,13 +473,13 @@ describe('Product service', () => {
 
 On the other end, classic snapshots store big files in ext medium, then a single test is coupled to the values within 1000 lines document the writer never read. Why is this wrong? now there are 1000 reasons for your test to fail as it's enough that one line will change, it's likely to happen a lot. Not only this, the test name wouldn't give a clue about the failure as it just check that 1000 lines didn't change, also it encourage to the test writter to accept as the desired true a long doc he didn't realy inspec and verify. All of these are symptoms of 
 
-There are few cases where long & external snapshots are acceptable - when 
+There are few cases where long & external snapshots are acceptable - when asserting on schema and not data (extracting out values and focusing on fields) or when the received document rarely changes
 
 [https://jestjs.io/docs/en/snapshot-testing#inline-snapshots](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots)[https://jestjs.io/docs/en/snapshot-testing](https://jestjs.io/docs/en/snapshot-testing)
 
 <br/>
 
-:negative_squared_cross_mark: **Otherwise:** Sud
+:negative_squared_cross_mark: **Otherwise:** Your UI test fails, the code seems right, the screen renders the 
 
 <br/>
 
@@ -1817,6 +1817,6 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyMzQ3Mjk0OSwxMzE2OTAyNjIyLC0xNz
-M2NjE0NTM1LC0xMTY5NTYxMTYxXX0=
+eyJoaXN0b3J5IjpbLTEyNjgwODQwOTYsLTcyMzQ3Mjk0OSwxMz
+E2OTAyNjIyLC0xNzM2NjE0NTM1LC0xMTY5NTYxMTYxXX0=
 -->
