@@ -469,7 +469,7 @@ describe('Product service', () => {
 
 ## ⚪ ️ 1.9 Use short & inline snapshots
 
-:white_check_mark: **Do:** 
+:white_check_mark: **Do:** When valuable, use short snapshots only (i.e.. 3-7 lines) that are part of the test=inline. Keeping this, make test self
 
 <br/>
 
@@ -1811,6 +1811,6 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxNzgzNDYyMSwxMzE2OTAyNjIyLC0xNz
-M2NjE0NTM1LC0xMTY5NTYxMTYxXX0=
+eyJoaXN0b3J5IjpbNjAzNzgyNjAxLDEzMTY5MDI2MjIsLTE3Mz
+Y2MTQ1MzUsLTExNjk1NjExNjFdfQ==
 -->
