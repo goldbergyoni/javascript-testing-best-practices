@@ -17,6 +17,8 @@ Hop into a journey that travells way beyond the basics into advanced topics like
 ## 🌐 Full-stack: front, backend, CI, anything
 Start by understanding the ubiquitous testing practices that are the foundation for any application tier. Then, delve into your area of choice: frontend/UI, backend, CI or maybe all of them?
 
+[![nodepractices](/assets/twitter.png)][**Follow me on Twitter**](https://twitter.com/nodepractices/)
+
 
 <br/><br/>
 
