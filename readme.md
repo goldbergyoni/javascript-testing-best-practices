@@ -70,7 +70,7 @@ Our minds are full with the main production code, we don't have headspace for ad
 
  Are you familiar with that smiley friend, family member or maybe a movie character who is always available to spare his good working hands, 24/7 assisting when you need him tuned with positive energy yet asking so little for himself? This how a testing code should be designed - easy, valuable and fun. This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
  
-The tests are an opprtunity for something else - a friendly and smiley assistant, one that it's delightful to work with, that always deliver great value for small investment.  Science tells we have actually two brain systems: system 1  in our brain... Design tests for system 2, as easy as driving or modifying HTML.
+The tests are an opprtunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a  small investment.  Science tells we have actually two brain systems: system 2 which is used for effortless activities like driving a car on an empty road   in our brain... Design tests for system 2, as easy as driving or modifying HTML.
  
 Testing should not be treated as a traditional application code - a typical team is challenged with maintaining its main application anyway (the features we code and sell), it could not tolerate additional complex "project". Should testing grow to be an additional source of pain - it will get abandoned or greatly slow down the development.
 In that sense, the testing code must stay dead-simple, with minimal dependencies, abstractions, and levels of indirection. One should look at a test and get the intent instantly. Most of the advice below are derivatives of this principle
@@ -1846,7 +1846,7 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzOTgzNjc4NCwtMTkxNjQ1MDY5NSw4Nz
-Y0MzYxNjQsMTM4ODI5NjQwOCwtNzIzNDcyOTQ5LDEzMTY5MDI2
-MjIsLTE3MzY2MTQ1MzUsLTExNjk1NjExNjFdfQ==
+eyJoaXN0b3J5IjpbLTE1MjQxMjU5MTQsLTE5MTY0NTA2OTUsOD
+c2NDM2MTY0LDEzODgyOTY0MDgsLTcyMzQ3Mjk0OSwxMzE2OTAy
+NjIyLC0xNzM2NjE0NTM1LC0xMTY5NTYxMTYxXX0=
 -->
