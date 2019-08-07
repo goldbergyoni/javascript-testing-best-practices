@@ -1,4 +1,4 @@
-<img src="/assets/jtbp-header-with-pipeline.png" width="1920px"/>
+<img src="/assets/jtbp-header-blue.png" width="1920px"/>
 
 <br/>
 
@@ -24,29 +24,31 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 * ### [`Section 0: The Golden Rule`](/)
 
-A single advice that inspires all the others (1 bullet)
+A single advice that inspires all the others (1 special bullet)
 
 * ### [`Section 1: The Test Anatomy`](/)
 
-Strucuturing clean tests (10 tests)
+The foundation - strucuturing clean tests (12 bullets)
 
 
 * ### [`Section 2: Backend`](/)
 
-Writing backend and Microservices tests efficiently (9 bullets)
+Writing backend and Microservices tests efficiently (8 bullets)
 
 
-* ### [`Section 3: Frontend/UI`](/)
+* ### [`Section 3: Frontend, UI, E2E`](/)
 
-Writing UI tests the right way (10 bullets)
+Writing tests for web UI including component and E2E tests (11 bullets)
+
 
 * ### [`Section 4: Measuring Tests Effectivenss`](/)
 
-How to measure your tests relability (4 bullets)
+Watching the watchman - measuring test quality (4 bullets)
+
 
 * ### [`Section 5: Continous Integration`](/)
 
-Guideliness for CI in the JS world (6 bullets)
+Guideliness for CI in the JS world (9 bullets)
 
 
 <br/><br/>
@@ -239,46 +241,7 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 <br/><br/>
 
 
-## ⚪ ️1.4 Lint with testing-dedicated plugins
-
-:white_check_mark: **Do:**  A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, eslint-plugin-mocha will warn when a test is written at the global level (not a son of a describe() statement) or when tests are skipped which might lead to a false belief that all tests are passing. Similarly, eslint-plugin-jest can, for example, warn when a test has no assertions at all (not checking anything)
-
-<br/>
-
-
-❌ **Otherwise:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
-
-
-<br/>
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :thumbsdown: Anti Pattern Example: A test case full of errors, luckily all are caught by Linters
-
-```javascript
-describe("Too short description", () => {
-  const userToken = userService.getDefaultToken() // *error:no-setup-in-describe, use hooks (sparingly) instead
-  it("Some description", () => {});//* error: valid-test-description. Must include the word "Should" + at least 5 words
-});
-
-it.skip("Test name", () => {// *error:no-skipped-tests, error:error:no-global-tests. Put tests only under describe or suite
-  expect("somevalue"); // error:no-assert
-});
-
-it("Test name", () => {*//error:no-identical-title. Assign unique titles to tests
-});
-```
-
-</details>
-
-
-
-
-
-<br/><br/>
-
-## ⚪ ️  1.5 Stick to black-box testing: Test only public methods
+## ⚪ ️  1.4 Stick to black-box testing: Test only public methods
 
 :white_check_mark: **Do:** Testing the internals brings huge overhead for almost nothing. If your code/API deliver the right results, should you really invest your next 3 hours in testing HOW it worked internally and then maintain these fragile tests? Whenever a public behavior is checked, the private implementation is also implicitly tested and your tests will break only if there is a certain problem (e.g. wrong output). This approach is also referred to as behavioral testing. On the other side, should you test the internals (white box approach) — your focus shifts from planning the component outcome to nitty-gritty details and your test might break because of minor code refactors although the results are fine- this dramatically increases the maintenance burden
 <br/>
@@ -322,7 +285,7 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 
 <br/><br/>
 
-## ⚪ ️ ️1.6 Choose the right test doubles: Avoid mocks in favor of stubs and spies
+## ⚪ ️ ️1.5 Choose the right test doubles: Avoid mocks in favor of stubs and spies
 
 :white_check_mark: **Do:**  Test doubles are a necessary evil because they are coupled to the application internals, yet some provide an immense valuespie <p name="becf" id="becf" class="graf graf--p graf-after--h3"><strong class="markup--strong markup--p-strong">✅ Do: </strong>Test doubles are a necessary evil because they are coupled to the application internals, yet some provide an immense value (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">Read here a reminder about test doubles: mocks vs stubs vs spies</a>). However, the various techniques were not born equal: some of them, spies and stubs, are focused on testing the requirements but as an <strong class="markup--strong markup--p-strong">inevitable side-effect</strong> they also slightly touch the internals. Mocks, on the contrary side, <strong class="markup--strong markup--p-strong">are focused on testing the internals</strong> — this brings huge overhead as explained in the bullet “Stick to black box testing”.</p>. However, the various techniques were not born equal: some of them, spies and stubs, are focused on testing the requirements but as an inevitable side-effect they also slightly touch the internals. Mocks, on the contrary side, are focused on testing the internals — this brings huge overhead as explained in the bullet “Stick to black box testing”.
 
@@ -370,7 +333,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## ⚪ ️1.7 Don’t “foo”, use realistic input dataing
+## ⚪ ️1.6 Don’t “foo”, use realistic input dataing
 
 :white_check_mark: **Do:**  Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not instead) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? see next bullet (property-based testing).
 <br/>
@@ -426,7 +389,7 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/><br/>
 
-## ⚪ ️ 1.8 Test many input combinations using Property-based testing
+## ⚪ ️ 1.7 Test many input combinations using Property-based testing
 
 :white_check_mark: **Do:** Typically we choose a few input samples for each test. Even when the input format resembles real-world data (see bullet ‘Don’t foo’), we cover only a few input combinations (method(‘’, true, 1), method(“string” , false” , 0)), However, in production, an API that is called with 5 parameters can be invoked with thousands of different permutations, one of them might render our process down (see Fuzz Testing). What if you could write a single test that sends 1000 permutations of different inputs automatically and catches for which input our code fails to return the right response? Property-based testing is a technique that does exactly that: by sending all the possible input combinations to your unit under test it increases the serendipity of finding a bug. For example, given a method — addNewProduct(id, name, isDiscount) — the supporting libraries will call this method with many combinations of (number, string, boolean) like (1, “iPhone”, false), (2, “Galaxy”, true). You can run property-based testing using your favorite test runner (Mocha, Jest, etc) using libraries like js-verify or testcheck (much better documentation). Update: Nicolas Dubien suggests in the comments below to checkout fast-check which seems to offer some additional features and also to be actively maintained
 <br/>
@@ -467,7 +430,7 @@ describe('Product service', () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.9 If needed, use only short & inline snapshots
+## ⚪ ️ 1.8 If needed, use only short & inline snapshots
 
 :white_check_mark: **Do:** When there is a need for [snapshot testing](https://jestjs.io/docs/en/snapshot-testing), use only short and focused snapshots (i.e. 3-7 lines) that are included as part of the test ([Inline Snapshot](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots)) and not within external files. Keeping this guideline will ensure your tests remain self-explanatory and less fragile.
 
@@ -533,7 +496,7 @@ expect(menu).toMatchInlineSnapshot(`
 
 <br/><br/>
 
-## ⚪ ️1.10 Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️1.9 Avoid global test fixtures and seeds, add data per-test
 
 :white_check_mark: **Do:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests (also known as ‘test fixture’) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
 <br/>
@@ -589,7 +552,7 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/>
 
-## ⚪ ️ 1.11 Don’t catch errors, expect them
+## ⚪ ️ 1.10 Don’t catch errors, expect them
 :white_check_mark: **Do:**   When trying to assert that some input triggers an error, it might look right to use try-catch-finally and asserts that the catch clause was entered. The result is an awkward and verbose test case (example below) that hides the simple test intent and the result expectations
 
 A more elegant alternative is the using the one-line dedicated Chai assertion: expect(method).to.throw (or in Jest: expect(method).toThrow()). It’s absolutely mandatory to also ensure the exception contains a property that tells the error type, otherwise given just a generic error the application won’t be able to do much rather than show a disappointing message to the user
@@ -639,7 +602,7 @@ it.only("When no product name, it throws error 400", async() => {
 
 <br/><br/>
 
-## ⚪ ️ 1.12 Tag your tests
+## ⚪ ️ 1.11 Tag your tests
 
 :white_check_mark: **Do:**  Different tests must run on different scenarios: quick smoke, IO-less, tests should run when a developer saves or commits a file, full end-to-end tests usually run when a new pull request is submitted, etc. This can be achieved by tagging tests with keywords like #cold #api #sanity so you can grep with your testing harness and invoke the desired subset. For example, this is how you would invoke only the sanity test group with Mocha: mocha — grep ‘sanity’
 <br/>
@@ -676,7 +639,7 @@ describe('Order service', function() {
 
 <br/><br/>
 
-## ⚪ ️1.13 Other generic good testing hygiene
+## ⚪ ️1.12 Other generic good testing hygiene
 :white_check_mark: **Do:**  This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
 
 Learn and practice TDD principles — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a red-green-refactor style, ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, start a module by writing a quick and simplistic code that satsifies the test - then refactor gradually and take it to a prdoction grade level, avoid any dependency on the environment (paths, OS, etc)
@@ -1578,6 +1541,47 @@ it("Test addNewOrder, don't use such test names", () => {
 
 
 <br/><br/>
+
+## ⚪ ️4.4 Preventing test code issues with Test linters
+
+:white_check_mark: **Do:**  A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, eslint-plugin-mocha will warn when a test is written at the global level (not a son of a describe() statement) or when tests are skipped which might lead to a false belief that all tests are passing. Similarly, eslint-plugin-jest can, for example, warn when a test has no assertions at all (not checking anything)
+
+<br/>
+
+
+❌ **Otherwise:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
+
+
+<br/>
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
+
+### :thumbsdown: Anti Pattern Example: A test case full of errors, luckily all are caught by Linters
+
+```javascript
+describe("Too short description", () => {
+  const userToken = userService.getDefaultToken() // *error:no-setup-in-describe, use hooks (sparingly) instead
+  it("Some description", () => {});//* error: valid-test-description. Must include the word "Should" + at least 5 words
+});
+
+it.skip("Test name", () => {// *error:no-skipped-tests, error:error:no-global-tests. Put tests only under describe or suite
+  expect("somevalue"); // error:no-assert
+});
+
+it("Test name", () => {*//error:no-identical-title. Assign unique titles to tests
+});
+```
+
+</details>
+
+
+
+
+
+<br/><br/>
+
+
 
   
 # Section 5️⃣ CI and Other Quality Measures
