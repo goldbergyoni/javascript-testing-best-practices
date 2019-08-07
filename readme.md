@@ -67,12 +67,12 @@ Guideliness for CI in the JS world (9 bullets)
 :white_check_mark: **Do:** Testing code is not like production-code - design it to be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should look at a test and get the intent instantly. 
 
 Our minds are full with the main production code, we don't have headspace for additional comlexity. Should we try to squeeze yet another challenging code into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
+ 
+The tests are an opprtunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a  small investment.  Science tells we have actually two brain systems: system 2 which is used for effortless activities like driving a car on an empty road and system 1 which is meant for complex and conscious operations like solving a math equtation. Design your test for system 2, when looking at test code it should *feel* as easy as modifying an HTML document and not like solving 2X(17 × 24).
 
-Are you familiar with that smiley friend, family member or maybe a movie character who is always available to spare his good working hands, 24/7 assisting when you need him tuned with positive energy yet asking so little for himself? This how a testing code should be designed - easy, valuable and fun. This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
  
-The tests are an opprtunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a  small investment.  Science tells we have actually two brain systems: system 2 which is used for effortless activities like driving a car on an empty road and system 1 which is meant for complex and conscious operations like solving a math equtation. Design your test for system 2, so when looking at test code it feels as easy as modifying an HTML document and not like solving 17 × 24.
- 
-Most of the advice below are derivatives of this principle
+Most of the advice below are derivatives of this principle.
 
 
 ### Ready to start?
@@ -1844,7 +1844,7 @@ E5MTg0MTk4OTFdfQ==
 </details>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NTcxNjc5MywtMTkxNjQ1MDY5NSw4Nz
+eyJoaXN0b3J5IjpbMTkyMTA0NzEwNSwtMTkxNjQ1MDY5NSw4Nz
 Y0MzYxNjQsMTM4ODI5NjQwOCwtNzIzNDcyOTQ5LDEzMTY5MDI2
 MjIsLTE3MzY2MTQ1MzUsLTExNjk1NjExNjFdfQ==
 -->
