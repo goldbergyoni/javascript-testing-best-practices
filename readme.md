@@ -26,7 +26,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 # `Table of contents`
 
-* ### [`Section 0: The Golden Rule`](#The-Golden-Rule:-Design-for-lean-testing)
+* ### [`Section 0: The Golden Rule`](#section-0️⃣)
 
 A single advice that inspires all the others (1 special bullet)
 
