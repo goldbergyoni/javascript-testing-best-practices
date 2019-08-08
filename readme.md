@@ -26,11 +26,11 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 # `Table of contents`
 
-* ### [`Section 0: The Golden Rule`](#section-0️⃣)
+* ### [`Section 0: The Golden Rule`](#section-1-the-test-anatomy)
 
 A single advice that inspires all the others (1 special bullet)
 
-* ### [`Section 1: The Test Anatomy`](#the-test-anatomy)
+* ### [`Section 1: The Test Anatomy`](#1-the-test-anatomy)
 
 The foundation - strucuturing clean tests (12 bullets)
 
@@ -82,7 +82,7 @@ Most of the advice below are derivatives of this principle.
 
 <br/><br/>
 
-# Section 1️⃣ : The Test Anatomy
+# Section 1. The Test Anatomy
 
 <br/>
 
