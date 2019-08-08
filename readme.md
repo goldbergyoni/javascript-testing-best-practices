@@ -1258,12 +1258,13 @@ test('When no products exist, show the appropriate message', () => {
 
 ## ⚪ ️ 3.7 Speed-up E2E tests by reusing login credentials
 
-:white_check_mark: **Do:** In E2E more flexible due to perf concern, cache or reuse repetitive actions like login so they happen only once. Practically, log in on before all and set valid token on local storage. This violates, might interfere, but the perf penalty might be crucial. Mitigate this by never rely on users' previous data.
+:white_check_mark: **Do:** WIP: this bullet is being written these days
+
+TOC: In E2E more flexible due to perf concern, cache or reuse repetitive actions like login so they happen only once. Practically, log in on before all and set valid token on local storage. This violates, might interfere, but the perf penalty might be crucial. Mitigate this by never rely on users' previous data.
 
 <br/>
 
 ❌ **Otherwise:** Given 200 test cases and assuming login=100ms = 20 seconds only for logging-in again and again
-
 
 <br/>
 
@@ -1838,5 +1839,5 @@ license-checker --summary --failOn BSD
 <br/><br/>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbNzc1NTYxMDE5LC0yMTAzMjE4MzMzXX0=
 -->
