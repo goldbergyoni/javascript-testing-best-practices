@@ -30,7 +30,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 A single advice that inspires all the others (1 special bullet)
 
-* ### [`Section 1: The Test Anatomy`](#section-1️⃣)
+* ### [`Section 1: The Test Anatomy`](#the-test-anatomy)
 
 The foundation - strucuturing clean tests (12 bullets)
 
