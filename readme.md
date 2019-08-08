@@ -103,7 +103,7 @@ Most of the advice below are derivatives of this principle.
 
 <br/>
 
-**👇 Note:** Each bullet has code examples and sometime also image illustration. Click to expand
+**👇 Note:** Each bullet has code examples and sometime also an image illustration. Click to expand
 <details><summary>✏ <b>Code Examples</b></summary>
   
 <br/>
@@ -1838,5 +1838,5 @@ license-checker --summary --failOn BSD
 <br/><br/>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzI0MjI5NzEwXX0=
+eyJoaXN0b3J5IjpbLTIxMDMyMTgzMzNdfQ==
 -->
