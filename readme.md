@@ -912,7 +912,7 @@ it("When updating site name, get successful confirmation", async () => {
 
 ## ⚪ ️ 3.1. Separate UI from functionality
 
-:white_check_mark: **Do:** When focused on testing component's logic, the UI details becomes a noise that should be extracted-out so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only the back part of the UI (e.g. services, actions, store) but this will result in fictional tests that don't resemble the reality and won't reveal cases where the right data doesn't even arrive in the UI
+:white_check_mark: **Do:** When focusing on testing component logic, UI details become a noise that should be extracted, so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only the back part of the UI (e.g. services, actions, store) but this will result in fictional tests that don't resemble the reality and won't reveal cases where the right data doesn't even arrive in the UI
 
 
 <br/>
@@ -929,17 +929,19 @@ it("When updating site name, get successful confirmation", async () => {
 ### :clap: Doing It Right Example: Separating out the UI details
 ```javascript
 test('When users-list is flagged to show only VIP, should display only VIP members', () => {
-  //Arrange
-  const allUsers = [{id:1 , name: 'Yoni Goldberg', vip: false}, 
-   {id:2 , name: 'John Doe', vip: true}];
+  // Arrange
+  const allUsers = [
+   { id: 1, name: 'Yoni Goldberg', vip: false }, 
+   { id: 2, name: 'John Doe', vip: true }
+  ];
 
-  //Act
-  const {getAllByTestId} = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
+  // Act
+  const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
 
-  //Assert - Extract the data from the UI first
+  // Assert - Extract the data from the UI first
   const allRenderedUsers = getAllByTestId('user').map(uiElement => uiElement.textContent);
   const allRealVIPUsers = allUsers.filter((user) => user.vip).map((user) => user.name);
-  expect(allRenderedUsers).toEqual(allRealVIPUsers);//compare data with data, no UI here
+  expect(allRenderedUsers).toEqual(allRealVIPUsers); //compare data with data, no UI here
 });
 
 ```
@@ -949,14 +951,16 @@ test('When users-list is flagged to show only VIP, should display only VIP membe
 ### :thumbsdown: Anti Pattern Example: Assertion mix UI details and data
 ```javascript
 test('When flagging to show only VIP, should display only VIP members', () => {
-  //Arrange
-  const allUsers = [{id:1 , name: 'Yoni Goldberg', vip: false}, 
-   {id:2 , name: 'John Doe', vip: true}];
+  // Arrange
+  const allUsers = [
+   {id: 1, name: 'Yoni Goldberg', vip: false }, 
+   {id: 2, name: 'John Doe', vip: true }
+  ];
 
-  //Act
-  const {getAllByTestId} = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
+  // Act
+  const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
 
-  //Assert - Mix UI & data in assertion
+  // Assert - Mix UI & data in assertion
   expect(getAllByTestId('user')).toEqual('[<li data-testid="user">John Doe</li>]');
 });
 
@@ -972,7 +976,7 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 
 ## ⚪ ️ 3.2 Query HTML elements based on attributes that are unlikely to change
 
-:white_check_mark: **Do:** Query HTML elements based on attributes that are likely to survive graphic changes unlike CSS selectors and like form labels. If the designated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your functional/logic tests never break because of look&feel changes but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
+:white_check_mark: **Do:** Query HTML elements based on attributes that are likely to survive graphic changes unlike CSS selectors and like form labels. If the designated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your functional/logic tests never break because of look & feel changes but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
 
 <br/>
 
@@ -986,21 +990,21 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 
 ### :clap: Doing It Right Example: Querying an element using a dedicated attrbiute for testing
 ```html
-//the markup code (part of React component)
+// the markup code (part of React component)
 <h3>
-              <Badge pill className="fixed_badge" variant="dark">
-                <span data-testid="errorsLabel">{value}</span> //note the attribute data-testid
-              </Badge>
-            </h3>
+  <Badge pill className="fixed_badge" variant="dark">
+    <span data-testid="errorsLabel">{value}</span> <!-- note the attribute data-testid -->
+  </Badge>
+</h3>
 ```
 
 ```javascript
-//this example is using react-testing-library
+// this example is using react-testing-library
   test('Whenever no data is passed to metric, show 0 as default', () => {
-    //Arrange
+    // Arrange
     const metricValue = undefined;
 
-    //Act
+    // Act
     const { getByTestId } = render(<dashboardMetric value={undefined}/>);    
     
     expect(getByTestId('errorsLabel')).text()).toBe("0");
@@ -1012,14 +1016,14 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 
 ### :thumbsdown: Anti-Pattern Example: Relying on CSS attributes
 ```html
-//the markup code (part of React component)
-<span id="metric" className="d-flex-column">{value}</span>//what if the designer changes the classs?
+<!-- the markup code (part of React component) -->
+<span id="metric" className="d-flex-column">{value}</span> <!-- what if the designer changes the classs? -->
 ```
 
 ```javascript
-//this exammple is using enzyme
+// this exammple is using enzyme
 test('Whenever no data is passed, error metric shows zero', () => {
-    //...
+    // ...
     
     expect(wrapper.find("[className='d-flex-column']").text()).toBe("0");
   });
@@ -1068,15 +1072,15 @@ class Calendar extends React.Component {
 
 //Examples use React & Enzyme
 test('Realistic approach: When clicked to show filters, filters are displayed', () => {
-    //Arrange
+    // Arrange
     const wrapper = mount(<Calendar showFilters={false} />)
 
-    //Act
+    // Act
     wrapper.find('button').simulate('click');
 
-    //Assert
+    // Assert
     expect(wrapper.text().includes('Choose Filter'));
-    //This is how the user will approach this element: by text
+    // This is how the user will approach this element: by text
 })
 
 
@@ -1086,16 +1090,16 @@ test('Realistic approach: When clicked to show filters, filters are displayed', 
 ```javascript
 
 test('Shallow/mocked approach: When clicked to show filters, filters are displayed', () => {
-    //Arrange
+    // Arrange
     const wrapper = shallow(<Calendar showFilters={false} title='Choose Filter'/>)
 
-    //Act
+    // Act
     wrapper.find('filtersPanel').instance().showFilters();
-    //Tap into the internals, bypass the UI and invoke a method. White-box approach
+    // Tap into the internals, bypass the UI and invoke a method. White-box approach
 
-    //Assert
+    // Assert
     expect(wrapper.find('Filter').props()).toEqual({title: 'Choose Filter'});
-    //what if we change the prop name or don't pass anything relevant?
+    // what if we change the prop name or don't pass anything relevant?
 })
 
 ```
@@ -1122,17 +1126,17 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 ### :clap: Doing It Right Example: E2E API that resolves only when the async operations is done (Cypress)
 
 ```javascript
-//using Cypress
-cy.get('#show-products').click()//navigate
-cy.wait('@products')//wait for route to appear
-//this line will get executed only when the route is ready
+// using Cypress
+cy.get('#show-products').click()// navigate
+cy.wait('@products')// wait for route to appear
+// this line will get executed only when the route is ready
 
 ```
 
 ### :clap: Doing It Right Example: Testing library that waits for DOM elements (@testing-library/dom)
 
 ```javascript
-//@testing-library/dom
+// @testing-library/dom
 test('movie title appears', async () => {
     // element is initially not present...
 
@@ -1215,7 +1219,7 @@ test('movie title appears', async () => {
 
 ```javascript
 
-//unit under test
+// unit under test
 export default function ProductsList() { 
     const [products, setProducts] = useState(false)
 
@@ -1231,17 +1235,17 @@ export default function ProductsList() {
   return products ? <div>{products}</div> : <div data-testid='no-products-message'>No products</div>
 }
 
-//test
+// test
 test('When no products exist, show the appropriate message', () => {
-    //Arrange
+    // Arrange
     nock("api")
             .get(`/products`)
             .reply(404);
 
-    //Act
+    // Act
     const {getByTestId} = render(<ProductsList/>);
 
-    //Assert
+    // Assert
     expect(getByTestId('no-products-message')).toBeTruthy();
 });
 
@@ -1271,7 +1275,7 @@ test('When no products exist, show the appropriate message', () => {
 ```javascript
 let authenticationToken;
 
-//happens before ALL tests run
+// happens before ALL tests run
 before(() => {
   cy.request('POST', 'http://localhost:3000/login', {
     username: Cypress.env('username'),
@@ -1283,7 +1287,7 @@ before(() => {
   })
 })
 
-//happens before EACH test
+// happens before EACH test
 beforeEach(setUser => () {
   cy.visit('/home', {
     onBeforeLoad (win) {
@@ -1320,8 +1324,8 @@ beforeEach(setUser => () {
 
 ```javascript
 it('When doing smoke testing over all page, should load them all successfully', () => {
-    //exemplified using Cypress but can be implemented easily
-    //using any E2E suite
+    // exemplified using Cypress but can be implemented easily
+    // using any E2E suite
     cy.visit('https://mysite.com/home');
     cy.contains('Home');
     cy.contains('https://mysite.com/Login');
@@ -1350,7 +1354,7 @@ Although E2E (end-to-end) usually means UI-only testing with a real browser, the
 
 ## ⚪ ️ 3.10 Expose the tests as a live collaborative document
 
-:white_check_mark: **Do:** Besides increasing app reliability, tests bring another attractive opportunity to the table - serve as live app documentation. Since tests inherently speak at a less-technical and product/UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers and their customers. For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as 'acceptance test' as it allows the customer to define his acceptance criteria in plain language. This is [BDD (behavior-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) at its purest form. One of the popular frameworks that enable this is [Cocumber which has a JavaScript flavor](https://github.com/cucumber/cucumber-js), see example below. Another similar yet different opportunity, [StoryBook](https://storybook.js.org/), allows exposing UI components as a graphic catalog where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc), see how it looks like, and how to trigger that state - this can appeal also to product folks but mostly serves as live doc for developers who consume those components.
+:white_check_mark: **Do:** Besides increasing app reliability, tests bring another attractive opportunity to the table - serve as live app documentation. Since tests inherently speak at a less-technical and product/UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers and their customers. For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as 'acceptance test' as it allows the customer to define his acceptance criteria in plain language. This is [BDD (behavior-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) at its purest form. One of the popular frameworks that enable this is [Cucumber which has a JavaScript flavor](https://github.com/cucumber/cucumber-js), see example below. Another similar yet different opportunity, [StoryBook](https://storybook.js.org/), allows exposing UI components as a graphic catalog where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc), see how it looks like, and how to trigger that state - this can appeal also to product folks but mostly serves as live doc for developers who consume those components.
 
 ❌ **Otherwise:** After investing top resources on testing, it's just a pity not to leverage this investment and win great value
 
@@ -1364,7 +1368,7 @@ Although E2E (end-to-end) usually means UI-only testing with a real browser, the
 ### :clap: Doing It Right Example: Describing tests in human-language using cocumber-js
 
 ```javascript
-//this is how one can describe tests using cocumber: plain language that allows anyone to understand and collaborate
+// this is how one can describe tests using cocumber: plain language that allows anyone to understand and collaborate
 
 Feature: Twitter new tweet
  
@@ -1380,7 +1384,7 @@ Feature: Twitter new tweet
     
 ```
 
-### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using storybook
+### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using Storybook
 ![alt text](assets/story-book.jpg "Visualizing component with storybook")
 
 
@@ -1419,7 +1423,7 @@ Feature: Twitter new tweet
 domains:
   english: "http://www.mysite.com"​
 
-​#Type screen widths below, here are a couple of examples​
+​# Type screen widths below, here are a couple of examples​
 
 screen_widths:
 
@@ -1429,7 +1433,7 @@ screen_widths:
   - 1280​
 
 
-​#Type page URL paths below, here are a couple of examples​
+​# Type page URL paths below, here are a couple of examples​
 paths:
   about:
     path: /about
