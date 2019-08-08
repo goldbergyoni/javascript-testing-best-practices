@@ -198,7 +198,7 @@ test('Should be classified as premium', () => {
 
 ## ⚪ ️1.3 Describe expectations in a product language: use BDD-style assertions
 
-:white_check_mark: **Do:** Coding your tests in a declarative-style allows the reader to get the grab instantly without spending even a single brain-CPU cycle. When you write an imperative code that is packed with conditional logic the reader is thrown away to an effortful mental mood. In that sense, code the expectation in a human-like language, declarative BDD style using expect or should and not using custom code. If Chai & Jest don’t include the desired assertion and it’s highly repeatable, consider [extending Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) or writing a custom Chai plugin
+:white_check_mark: **Do:** Coding your tests in a declarative-style allows the reader to get the grab instantly without spending even a single brain-CPU cycle. When you write an imperative code that is packed with conditional logic the reader is thrown away to an effortful mental mood. In that sense, code the expectation in a human-like language, declarative BDD style using expect or should and not using custom code. If Chai & Jest don’t include the desired assertion and it’s highly repeatable, consider [extending Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) or writing a [custom Chai plugin](https://www.chaijs.com/guide/plugins/)
 <br/>
 
 
@@ -260,7 +260,7 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 <br/>
 
 
-❌ **Otherwise:** Your test behaves like the child who cries wolf: shoot out loud false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday a real bug will get ignored…
+❌ **Otherwise:** Your test behaves like the [child who cries wolf](https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf): shoot out loud false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday a real bug will get ignored…
 
 <br/>
 <details><summary>✏ <b>Code Examples</b></summary>
@@ -300,7 +300,7 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 
 ## ⚪ ️ ️1.5 Choose the right test doubles: Avoid mocks in favor of stubs and spies
 
-:white_check_mark: **Do:**  Test doubles are a necessary evil because they are coupled to the application internals, yet some provide an immense valuespie <p name="becf" id="becf" class="graf graf--p graf-after--h3"><strong class="markup--strong markup--p-strong">✅ Do: </strong>Test doubles are a necessary evil because they are coupled to the application internals, yet some provide an immense value (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">Read here a reminder about test doubles: mocks vs stubs vs spies</a>). However, the various techniques were not born equal: some of them, spies and stubs, are focused on testing the requirements but as an <strong class="markup--strong markup--p-strong">inevitable side-effect</strong> they also slightly touch the internals. Mocks, on the contrary side, <strong class="markup--strong markup--p-strong">are focused on testing the internals</strong> — this brings huge overhead as explained in the bullet “Stick to black box testing”.</p>. However, the various techniques were not born equal: some of them, spies and stubs, are focused on testing the requirements but as an inevitable side-effect they also slightly touch the internals. Mocks, on the contrary side, are focused on testing the internals — this brings huge overhead as explained in the bullet “Stick to black box testing”.
+:white_check_mark: **Do:**  Test doubles are a necessary evil because they are coupled to the application internals, yet some provide an immense valuespie <p name="becf" id="becf" class="graf graf--p graf-after--h3"><strong class="markup--strong markup--p-strong">✅ Do: </strong>Test doubles are a necessary evil because they are coupled to the application internals, yet some provide an immense value (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Read here a reminder about test doubles: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>). However, the various techniques were not born equal: some of them, spies and stubs, are focused on testing the requirements but as an <strong class="markup--strong markup--p-strong">inevitable side-effect</strong> they also slightly touch the internals. Mocks, on the contrary side, <strong class="markup--strong markup--p-strong">are focused on testing the internals</strong> — this brings huge overhead as explained in the bullet “Stick to black box testing”.</p>. However, the various techniques were not born equal: some of them, spies and stubs, are focused on testing the requirements but as an inevitable side-effect they also slightly touch the internals. Mocks, on the contrary side, are focused on testing the internals — this brings huge overhead as explained in the bullet “Stick to black box testing”.
 
 Before using test doubles, ask a very simple question: Do I use it to test functionality that appears, or could appear, in the requirements document? If no, it’s a smell of white-box testing.
 
@@ -1557,7 +1557,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 ## ⚪ ️4.4 Preventing test code issues with Test linters
 
-:white_check_mark: **Do:**  A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, eslint-plugin-mocha will warn when a test is written at the global level (not a son of a describe() statement) or when tests are skipped which might lead to a false belief that all tests are passing. Similarly, eslint-plugin-jest can, for example, warn when a test has no assertions at all (not checking anything)
+:white_check_mark: **Do:**  A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) will warn when a test is written at the global level (not a son of a describe() statement) or when tests are [skipped](https://mochajs.org/#inclusive-tests) which might lead to a false belief that all tests are passing. Similarly, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) can, for example, warn when a test has no assertions at all (not checking anything)
 
 <br/>
 
