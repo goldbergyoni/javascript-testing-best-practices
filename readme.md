@@ -30,7 +30,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 A single advice that inspires all the others (1 special bullet)
 
-* ### [`Section 1: The Test Anatomy`](/)
+* ### [`Section 1: The Test Anatomy`](#section-1️⃣)
 
 The foundation - strucuturing clean tests (12 bullets)
 
@@ -58,7 +58,7 @@ Guideliness for CI in the JS world (9 bullets)
 <br/><br/>
 
 
-# Section 0️⃣  : The Golden Principle
+# Section 0️⃣  : The Golden Rule
 
 <br/>
 
