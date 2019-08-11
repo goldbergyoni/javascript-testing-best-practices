@@ -1860,11 +1860,13 @@ license-checker --summary --failOn BSD
 <br/>
 
 Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/)
+<hr/>
 <br/>
+
 
 ##  Bruno Scheufler
 
-**Role:** Tech reviewer. 
+**Role:** Tech reviewer and advisor
 
 Took care to revise, improve, lint and polish all the texts 
 
@@ -1872,9 +1874,9 @@ Took care to revise, improve, lint and polish all the texts
 
 <br/>
 
-### Ido Richter
+## Ido Richter
 
-**Role:** Concept, design and general advisor
+**Role:** Concept, design and great advice
 
 As a savvy frontend developer, responsible for the great layout, UX and neat emojis
 
@@ -1885,7 +1887,7 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODEyMzIxNzEsNDM1MTk1ODgwLDE3Nj
-U5NjcxMzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3
-OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbODQyNTI3NDExLDQzNTE5NTg4MCwxNzY1OT
+Y3MTMwLDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4Nzks
+Nzc1NTYxMDE5LC0yMTAzMjE4MzMzXX0=
 -->
