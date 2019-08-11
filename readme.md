@@ -1282,6 +1282,8 @@ test('When no products exist, show the appropriate message', () => {
 
 ### :clap: Doing It Right Example: Logging-in before-all and not before-each (using Cypress)
 
+!https://img.shields.io/badge/🔨%20Example%Cypress-lightgrey.svg
+
 ```javascript
 let authenticationToken;
 
@@ -1835,6 +1837,6 @@ license-checker --summary --failOn BSD
 <br/><br/>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDA1NTUwMDYsOTM1MTI0ODc5LDc3NT
-U2MTAxOSwtMjEwMzIxODMzM119
+eyJoaXN0b3J5IjpbMTk1OTkzMTM2LC0xODAwNTU1MDA2LDkzNT
+EyNDg3OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
 -->
