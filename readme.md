@@ -285,8 +285,8 @@ There are no examples yet for this tool, would you like to contribute these exam
 <br/>
 
 ### :thumbsdown: Anti Pattern Example: A test case is testing the internals for no good reason
-![](https://img.shields.io/badge/✏%20Example%20using%20Mocha-lightgrey.svg
- "Using Cypress to illustrate the idea")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-lightgreen.svg
+ "Examples with Mocha & Chai")
 ```javascript
 class ProductService{
   //this method is only used internally
@@ -336,6 +336,8 @@ For example, if you want to test what your app behaves reasonably when the payme
 <br/>
 
 ### :thumbsdown: Anti-pattern example: Mocks focus on the internals
+![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-lightgreen.svg
+ "Examples with Mocha & Chai")
 ```javascript
 it("When a valid product is about to be deleted, ensure data access DAL was called once, with the right product and right config", async () => {
     //Assume we already added a product
@@ -1908,8 +1910,8 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA4NjQ1ODIyLDIxMDM0MzAxNjYsLTM3NT
-Y2Mzg0LC0xMjg2NTMxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgw
-LDE3NjU5NjcxMzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNT
-EyNDg3OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbMTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNz
+U2NjM4NCwtMTI4NjUzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4
+MCwxNzY1OTY3MTMwLDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5Mz
+UxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4MzMzXX0=
 -->
