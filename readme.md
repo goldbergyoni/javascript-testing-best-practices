@@ -1841,7 +1841,7 @@ license-checker --summary --failOn BSD
 # Team
 
 
-<img align="left" width="300px" src="assets/yoni-goldberg.jpg">
+<img align="left" width="350px" src="assets/yoni-goldberg.jpg">
 
 ## Yoni Goldberg
 
@@ -1851,15 +1851,17 @@ I'm an independent consultant who works with 500 fortune corporates and garage s
 
 [🐦Follow me on Twitter](https://twitter.com/goldbergyoni/)
 
-Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/(https://testjavascript.com/contact-2/)
+Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/)
 
 <br/>
 
 
 
 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTMyMjcwMywxNzY1OTY3MTMwLDc5ND
+eyJoaXN0b3J5IjpbMjEyMjY4MTQ2NCwxNzY1OTY3MTMwLDc5ND
 g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
 LC0yMTAzMjE4MzMzXX0=
 -->
