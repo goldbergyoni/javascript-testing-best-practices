@@ -1256,7 +1256,56 @@ test('When no products exist, show the appropriate message', () => {
 
 
 
-## ⚪ ️ 3.7 Speed-up E2E tests by reusing login credentials
+## ⚪ ️ 3.7 Have one E2E smoke test that just travells across the site map
+
+:white_check_mark: **Do:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
+
+<br/>
+
+❌ **Otherwise:** Everything might seem perfect, all tests pass, production health-check is also positive but the Payment component had some packaging issue and only the /Payment route is not rendering
+
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
+
+### :clap: Doing It Right Example: Smoke travelling across all pages
+
+```javascript
+it('When doing smoke testing over all page, should load them all successfully', () => {
+    // exemplified using Cypress but can be implemented easily
+    // using any E2E suite
+    cy.visit('https://mysite.com/home');
+    cy.contains('Home');
+    cy.contains('https://mysite.com/Login');
+    cy.contains('Login');
+    cy.contains('https://mysite.com/About');
+    cy.contains('About');
+  })
+```
+
+</details>
+
+
+
+
+
+## ⚪ ️ 3.8 Have very few end-to-end tests that spans the whole system
+
+:white_check_mark: **Do:** 
+Although E2E (end-to-end) usually means UI-only testing with a real browser, they also mean tests that stretch the entire system including the real backend. The latter type of tests is highly valuable as they cover integration bugs between frontend and backend that might happen due to a wrong understanding of the exchange schema. They are also an efficient method to discover backend-to-backend integration issues (e.g. Microservice A sends the wrong message to Microservice B) and even to detect deployment failures - there are no backend frameworks for E2E testing that are as friendly and mature as UI frameworks like [Cypress](https://www.cypress.io/) and [Pupeteer](https://github.com/GoogleChrome/puppeteer). The downside of such tests is the high cost of configuring an environment with so many components, and mostly their brittleness - given 50 microservices, even if one fails then the entire E2E just failed. For that reason, we should use this technique sparingly and probably have 1-10 of those and no more. That said, even a small number of E2E tests are likely to catch the type of issues they are targeted for - deployment & integration faults. It's advisable to run those over a production-like staging environment
+
+<br/>
+
+❌ **Otherwise:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very differnt than expected
+
+<br/>
+
+<br/>
+
+## ⚪ ️ 3.9 Speed-up E2E tests by reusing login credentials
 
 :white_check_mark: **Do:** In E2E tests that involve a real backend and rely on a valid user token for API calls, it doesn't payoff to isolate the test to a level where a user is created and logged-in in every request. Instead, login only once before the tests execution start (i.e. before-all hook), save the token in some local storage and reuse it across requests. This seem to violate one of the core testing principle - keep the test autonomous without resources coupling. While this is a valid worry, in E2E tests performance is a key concern and creating 1-3 API requests before starting each individial tests might lead to horrible execution time. Reusing credentials doesn't mean the tests have to act on the same user records - if relying on user records (e.g. test user payments history) than make sure to generate those records as part of the test and avoid sharing their existence with other tests. Also remember that the backend can be faked - if your tests are focused on the frontend it might be better to isolate it and stub the backend API (see bullet 3.6). 
 
@@ -1302,53 +1351,6 @@ beforeEach(setUser => () {
 
 
 
-
-
-
-## ⚪ ️ 3.8 Have one E2E smoke test that just travells across the site map
-
-:white_check_mark: **Do:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
-
-<br/>
-
-❌ **Otherwise:** Everything might seem perfect, all tests pass, production health-check is also positive but the Payment component had some packaging issue and only the /Payment route is not rendering
-
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example: Smoke travelling across all pages
-
-```javascript
-it('When doing smoke testing over all page, should load them all successfully', () => {
-    // exemplified using Cypress but can be implemented easily
-    // using any E2E suite
-    cy.visit('https://mysite.com/home');
-    cy.contains('Home');
-    cy.contains('https://mysite.com/Login');
-    cy.contains('Login');
-    cy.contains('https://mysite.com/About');
-    cy.contains('About');
-  })
-```
-
-</details>
-
-
-
-
-
-## ⚪ ️ 3.9 Have very few end-to-end tests that spans the whole system
-
-:white_check_mark: **Do:** 
-Although E2E (end-to-end) usually means UI-only testing with a real browser, they also mean tests that stretch the entire system including the real backend. The latter type of tests is highly valuable as they cover integration bugs between frontend and backend that might happen due to a wrong understanding of the exchange schema. They are also an efficient method to discover backend-to-backend integration issues (e.g. Microservice A sends the wrong message to Microservice B) and even to detect deployment failures - there are no backend frameworks for E2E testing that are as friendly and mature as UI frameworks like [Cypress](https://www.cypress.io/) and [Pupeteer](https://github.com/GoogleChrome/puppeteer). The downside of such tests is the high cost of configuring an environment with so many components, and mostly their brittleness - given 50 microservices, even if one fails then the entire E2E just failed. For that reason, we should use this technique sparingly and probably have 1-10 of those and no more. That said, even a small number of E2E tests are likely to catch the type of issues they are targeted for - deployment & integration faults. It's advisable to run those over a production-like staging environment
-
-<br/>
-
-❌ **Otherwise:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very differnt than expected
 
 <br/>
 
@@ -1837,6 +1839,6 @@ license-checker --summary --failOn BSD
 <br/><br/>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODk5MzA4MjgsNzc1NTYxMDE5LC0yMT
-AzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbNDc0Nzg4ODA2LDc3NTU2MTAxOSwtMjEwMz
+IxODMzM119
 -->
