@@ -275,7 +275,7 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 <br/>
 
 ### :thumbsdown: Anti Pattern Example: A test case is testing the internals for no good reason
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-lightgreen.svg
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Mocha & Chai")
 ```javascript
 class ProductService{
@@ -326,7 +326,7 @@ For example, if you want to test what your app behaves reasonably when the payme
 <br/>
 
 ### :thumbsdown: Anti-pattern example: Mocks focus on the internals
-![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-lightgreen.svg
+![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg
  "Examples with Mocha & Chai")
 ```javascript
 it("When a valid product is about to be deleted, ensure data access DAL was called once, with the right product and right config", async () => {
@@ -373,6 +373,11 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 <br/>
 
 ### :thumbsdown: Anti-Pattern Example: A test suite that passes due to non-realistic data
+
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
+ "Examples with Jest")
+ 
+ 
 ```javascript
 const addProduct = (name, price) =>{
   const productNameRegexNoSpace = /^\S*$/;//no white-space allowd
@@ -384,7 +389,7 @@ const addProduct = (name, price) =>{
     return true;
 };
 
-it("Wrong: When adding new product with valid properties, get successful confirmation", async () => {
+test("Wrong: When adding new product with valid properties, get successful confirmation", async () => {
     //The string "Foo" which is used in all tests never triggers a false result
     const addProductResult = addProduct("Foo", 5);
     expect(addProductResult).to.be.true;
@@ -1900,9 +1905,9 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzIyNTE4NDQsMTU5NzI0MDc3NSwyMT
-AzNDMwMTY2LC0zNzU2NjM4NCwtMTI4NjUzMTYwMCwtMjk3NTAy
-NjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5NDg4ODUxNywtMT
-gwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4
-MzMzXX0=
+eyJoaXN0b3J5IjpbNzk0ODA5NDY3LDE1OTcyNDA3NzUsMjEwMz
+QzMDE2NiwtMzc1NjYzODQsLTEyODY1MzE2MDAsLTI5NzUwMjYy
+Myw0MzUxOTU4ODAsMTc2NTk2NzEzMCw3OTQ4ODg1MTcsLTE4MD
+A1NTUwMDYsOTM1MTI0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMz
+M119
 -->
