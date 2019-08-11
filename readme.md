@@ -1876,16 +1876,16 @@ Took care to revise, improve, lint and polish all the texts
 
 **Role:** Concept, design and general advisor
 
-As a frontend Responsible for the great layout, UX and neat emojis
+As a savvy frontend developer, responsible for the great layout, UX and neat emojis
 
-**About:** 
+**About:** ?
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2OTgwNDM5MiwxNzY1OTY3MTMwLDc5ND
-g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
-LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbNDM1MTk1ODgwLDE3NjU5NjcxMzAsNzk0OD
+g4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3NzU1NjEwMTks
+LTIxMDMyMTgzMzNdfQ==
 -->
