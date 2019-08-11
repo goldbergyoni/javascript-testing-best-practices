@@ -209,7 +209,7 @@ test('Should be classified as premium', () => {
 
 <details><summary>✏ <b>Code Examples</b></summary><br/>
 
-<details><summary>🔧 Cy</summary>
+<details open='open'><summary><b>🔧 Cypress</b></summary>
 
   
   ### :thumbsdown: Anti Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
@@ -252,6 +252,7 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 });
 
 ```
+</details>
 </details>
 
 
@@ -1893,7 +1894,7 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5NTIxOTAzMywtMTI4NjUzMTYwMCwtMj
+eyJoaXN0b3J5IjpbLTEyMjUyNzgzNywtMTI4NjUzMTYwMCwtMj
 k3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5NDg4ODUx
 NywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5LC0yMT
 AzMjE4MzMzXX0=
