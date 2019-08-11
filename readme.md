@@ -1843,7 +1843,7 @@ license-checker --summary --failOn BSD
 
 
 ## Yoni Goldberg
-<br/>
+
 [testjavascript.com](https://www.testjavascript.com)
 <br/>
 <img width="480px" src="assets/yoni-goldberg.jpg"/>
@@ -1891,7 +1891,7 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4OTQ4NjA0MSwtMjk3NTAyNjIzLDQzNT
-E5NTg4MCwxNzY1OTY3MTMwLDc5NDg4ODUxNywtMTgwMDU1NTAw
-Niw5MzUxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbNTIxMTE5NTI0LC0yOTc1MDI2MjMsNDM1MT
+k1ODgwLDE3NjU5NjcxMzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2
+LDkzNTEyNDg3OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
 -->
