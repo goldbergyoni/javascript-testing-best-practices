@@ -1844,9 +1844,8 @@ Meet the steering committee members - the people who work together to provide gu
 
 <img align="left" width="100" height="100" src="assets/images/members/yoni.png">
 
-[Yoni Goldberg](https://github.com/goldbergyoni)
-<a href="https://twitter.com/goldbergyoni"><img src="assets/images/twitter-s.png" width="16" height="16"></img></a>
-<a href="https://goldbergyoni.com"><img src="assets/images/www.png" width="16" height="16"></img></a>
+## Yoni Goldberg
+
 
 Independent Node.js consultant who works with customers in USA, Europe, and Israel on building large scale scalable Node applications. Many of the best practices above were first published at [goldbergyoni.com](https://goldbergyoni.com). Reach Yoni at @goldbergyoni or me@goldbergyoni.com
 
@@ -1856,7 +1855,7 @@ Independent Node.js consultant who works with customers in USA, Europe, and Isra
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODM4MjQ1MjEsNzk0ODg4NTE3LC0xOD
-AwNTU1MDA2LDkzNTEyNDg3OSw3NzU1NjEwMTksLTIxMDMyMTgz
-MzNdfQ==
+eyJoaXN0b3J5IjpbMjk4NDEyMTQzLDc5NDg4ODUxNywtMTgwMD
+U1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4MzMz
+XX0=
 -->
