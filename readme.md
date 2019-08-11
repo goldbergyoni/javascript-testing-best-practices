@@ -1857,11 +1857,10 @@ license-checker --summary --failOn BSD
 <br/>
 
 **Follow:**:
-[🐦Twitter](https://twitter.com/goldbergyoni/)
+[🐦 Twitter](https://twitter.com/goldbergyoni/)
 <br/>
-[📞Contact
+[📞 Contact](https://testjavascript.com/contact-2/)
 
-Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/)
 <hr/>
 <br/>
 
@@ -1889,7 +1888,7 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg4ODMwMTAzLDQzNTE5NTg4MCwxNzY1OT
-Y3MTMwLDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4Nzks
-Nzc1NTYxMDE5LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbLTI5NzUwMjYyMyw0MzUxOTU4ODAsMTc2NT
+k2NzEzMCw3OTQ4ODg1MTcsLTE4MDA1NTUwMDYsOTM1MTI0ODc5
+LDc3NTU2MTAxOSwtMjEwMzIxODMzM119
 -->
