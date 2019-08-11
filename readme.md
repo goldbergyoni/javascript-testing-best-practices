@@ -1851,17 +1851,17 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-👨‍🏫 Want to learn all these practices and techniques at your offices (Europe & USA)? [register here for my testing workshop](https://testjavascript.com/](https://testjavascript.com/)
+### 👨‍🏫 Want to learn all these practices and techniques at your offices (Europe & USA)? [register here for my testing workshop](https://testjavascript.com/](https://testjavascript.com/)
 <br/>
 
-[🐦Follow me on Twitter](https://twitter.com/goldbergyoni/)
+### [🐦Follow me on Twitter](https://twitter.com/goldbergyoni/)
 <br/>
 
-Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/)
+### Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/)
 <br/>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzM0MjU2MSwxNzY1OTY3MTMwLDc5ND
+eyJoaXN0b3J5IjpbMTgwNDE3MDYyMCwxNzY1OTY3MTMwLDc5ND
 g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
 LC0yMTAzMjE4MzMzXX0=
 -->
