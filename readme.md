@@ -1860,7 +1860,7 @@ license-checker --summary --failOn BSD
 <br/>
 
 Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/)
-<br/><br/>
+<br/>
 
 ###  Bruno Scheufler
 
@@ -1870,20 +1870,22 @@ Took care to revise, improve, lint and polish all the texts
 
 **About:** full-stack web engineer, Node.js & GraphQL enthusiast
 
+<br/>
+
 ### Ido Richter
 
-**Role:** Concept, design and gene
+**Role:** Concept, design and general advisor
 
-Took care to revise, improve, lint and polish all the texts 
+As a frontend Responsible for the great layout, UX and neat emojis
 
-**About:** full-stack web engineer, Node.js & GraphQL enthusiast
+**About:** 
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4MTM2NDQ2MywxNzY1OTY3MTMwLDc5ND
+eyJoaXN0b3J5IjpbLTU2OTgwNDM5MiwxNzY1OTY3MTMwLDc5ND
 g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
 LC0yMTAzMjE4MzMzXX0=
 -->
