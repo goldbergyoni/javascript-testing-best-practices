@@ -1856,11 +1856,12 @@ license-checker --summary --failOn BSD
 **Workshop:** 👨‍🏫 Want to learn all these practices and techniques at your offices (Europe & USA)? [register here for my testing workshop](https://testjavascript.com/)
 <br/>
 
-**Follow:**:
+**Follow:**
+<br/>
 [🐦 Twitter](https://twitter.com/goldbergyoni/)
 <br/>
 [📞 Contact](https://testjavascript.com/contact-2/)
-
+<br/>
 <hr/>
 <br/>
 
@@ -1888,7 +1889,7 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5NzUwMjYyMyw0MzUxOTU4ODAsMTc2NT
-k2NzEzMCw3OTQ4ODg1MTcsLTE4MDA1NTUwMDYsOTM1MTI0ODc5
-LDc3NTU2MTAxOSwtMjEwMzIxODMzM119
+eyJoaXN0b3J5IjpbLTM2OTYzMjA1OSwtMjk3NTAyNjIzLDQzNT
+E5NTg4MCwxNzY1OTY3MTMwLDc5NDg4ODUxNywtMTgwMDU1NTAw
+Niw5MzUxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4MzMzXX0=
 -->
