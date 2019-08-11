@@ -1842,7 +1842,7 @@ license-checker --summary --failOn BSD
 
 
 
-
+## Yoni Goldberg
 <table>
 <tr>
 	<td><img align="left" width="350px" src="assets/yoni-goldberg.jpg"></td>
@@ -1858,7 +1858,7 @@ Want to discuss anything else? [approach me here](https://testjavascript.com/con
 </td>
 </tr>
 </table>
-## Yoni Goldberg
+
 
 
 <br/>
@@ -1869,7 +1869,7 @@ Want to discuss anything else? [approach me here](https://testjavascript.com/con
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0Mzk3MjQyMiwxNzY1OTY3MTMwLDc5ND
-g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
-LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbLTE5MDk3MTc3MzYsMTc2NTk2NzEzMCw3OT
+Q4ODg1MTcsLTE4MDA1NTUwMDYsOTM1MTI0ODc5LDc3NTU2MTAx
+OSwtMjEwMzIxODMzM119
 -->
