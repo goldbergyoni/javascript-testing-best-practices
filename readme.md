@@ -285,6 +285,8 @@ There are no examples yet for this tool, would you like to contribute these exam
 <br/>
 
 ### :thumbsdown: Anti Pattern Example: A test case is testing the internals for no good reason
+![](https://img.shields.io/badge/✏%20Example%20using%20Mocha-lightgrey.svg
+ "Using Cypress to illustrate the idea")
 ```javascript
 class ProductService{
   //this method is only used internally
@@ -1906,8 +1908,8 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwMzQzMDE2NiwtMzc1NjYzODQsLTEyOD
-Y1MzE2MDAsLTI5NzUwMjYyMyw0MzUxOTU4ODAsMTc2NTk2NzEz
-MCw3OTQ4ODg1MTcsLTE4MDA1NTUwMDYsOTM1MTI0ODc5LDc3NT
-U2MTAxOSwtMjEwMzIxODMzM119
+eyJoaXN0b3J5IjpbNjA4NjQ1ODIyLDIxMDM0MzAxNjYsLTM3NT
+Y2Mzg0LC0xMjg2NTMxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgw
+LDE3NjU5NjcxMzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNT
+EyNDg3OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
 -->
