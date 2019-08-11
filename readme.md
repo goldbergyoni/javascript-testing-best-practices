@@ -1842,7 +1842,7 @@ license-checker --summary --failOn BSD
 
 Meet the steering committee members - the people who work together to provide guidance and future direction to the project. In addition, each member of the committee leads a project tracked under our [Github projects](https://github.com/i0natan/nodebestpractices/projects).
 
-<img align="left" width="100" height="100" src="assets/images/members/yoni.png">
+<img align="left" width="300px src="assets/yoni-goldberg.jpg">
 
 ## Yoni Goldberg
 
@@ -1855,7 +1855,7 @@ Independent Node.js consultant who works with customers in USA, Europe, and Isra
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjk4NDEyMTQzLDc5NDg4ODUxNywtMTgwMD
-U1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4MzMz
-XX0=
+eyJoaXN0b3J5IjpbMTg5ODYzMDU0OCw3OTQ4ODg1MTcsLTE4MD
+A1NTUwMDYsOTM1MTI0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMz
+M119
 -->
