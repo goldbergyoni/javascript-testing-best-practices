@@ -1841,12 +1841,13 @@ license-checker --summary --failOn BSD
 # Team
 
 
-Meet the steering committee members - the people who work together to provide guidance and future direction to the project. In addition, each member of the committee leads a project tracked under our [Github projects](https://github.com/i0natan/nodebestpractices/projects).
-
 <img align="left" width="300px" src="assets/yoni-goldberg.jpg">
 
 ## Yoni Goldberg
 
+I'm an independent consultant who works with 500 fortune corporates and garage startups on polishing their JS & Node.js applications. He's the author of Node's largest best practices collection (link below). More than any other topic he is fascinated by and aims to master the art of testing. At his spare time, he likes to write in his blog and debug production application using console.log
+
+https://github.com/i0natan/nodebestpractices
 
 Independent Node.js consultant who works with customers in USA, Europe, and Israel on building large scale scalable Node applications. Many of the best practices above were first published at [goldbergyoni.com](https://goldbergyoni.com). Reach Yoni at @goldbergyoni or me@goldbergyoni.com
 
@@ -1856,7 +1857,7 @@ Independent Node.js consultant who works with customers in USA, Europe, and Isra
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1MzM3OTQxOSwxNzY1OTY3MTMwLDc5ND
+eyJoaXN0b3J5IjpbLTk4NjAxODI0NCwxNzY1OTY3MTMwLDc5ND
 g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
 LC0yMTAzMjE4MzMzXX0=
 -->
