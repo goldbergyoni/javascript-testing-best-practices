@@ -1282,7 +1282,8 @@ test('When no products exist, show the appropriate message', () => {
 
 ### :clap: Doing It Right Example: Logging-in before-all and not before-each (using Cypress)
 
-!https://img.shields.io/badge/🔨%20Example%Cypress-lightgrey.svg
+![alt text](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-lightgrey.svg
+ "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
 
 ```javascript
 let authenticationToken;
@@ -1837,6 +1838,6 @@ license-checker --summary --failOn BSD
 <br/><br/>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1OTkzMTM2LC0xODAwNTU1MDA2LDkzNT
-EyNDg3OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbLTE1MjEyMzM0NDMsLTE4MDA1NTUwMDYsOT
+M1MTI0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMzM119
 -->
