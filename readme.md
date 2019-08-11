@@ -1258,7 +1258,9 @@ test('When no products exist, show the appropriate message', () => {
 
 ## ⚪ ️ 3.7 Speed-up E2E tests by reusing login credentials
 
-:white_check_mark: **Do:** In E2E tests that rely on a valid user token for API calls, it doesn't payoff to isolate the test to a level where a user is created and logged-in in every request. Instead, login only once before the tests execution start (i.e. before-all hook), save the token in some local storage and reuse it across requests. This seem to violate one of the core testing principle - keep the test autonomous without resources coupling. While this is a valid worry, in E2E tests performance is a key concern and creating 1-3 API requests before starting each individial tests might lead to horrible execution time. To Reusing credentials doesn't mean the tests have to act on the same user records - if relying on user records (e.g. a test that modify the user address
+:white_check_mark: **Do:** In E2E tests that involve a real backend and rely on a valid user token for API calls, it doesn't payoff to isolate the test to a level where a user is created and logged-in in every request. Instead, login only once before the tests execution start (i.e. before-all hook), save the token in some local storage and reuse it across requests. This seem to violate one of the core testing principle - keep the test autonomous without resources coupling. While this is a valid worry, in E2E tests performance is a key concern and creating 1-3 API requests before starting each individial tests might lead to horrible execution time. That said, if your te
+
+To Reusing credentials doesn't mean the tests have to act on the same user records - if relying on user records (e.g. a test that modify the user address
 
  In E2E more flexible due to perf concern, cache or reuse repetitive actions like login so they happen only once. Practically, log in on before all and set valid token on local storage. This violates, might interfere, but the perf penalty might be crucial. Mitigate this by never rely on users' previous data.
 
@@ -1839,6 +1841,6 @@ license-checker --summary --failOn BSD
 <br/><br/>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDcwOTEwODEsNzc1NTYxMDE5LC0yMT
+eyJoaXN0b3J5IjpbLTE5Mjg1NzkxMTMsNzc1NTYxMDE5LC0yMT
 AzMjE4MzMzXX0=
 -->
