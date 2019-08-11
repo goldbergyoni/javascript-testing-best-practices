@@ -256,6 +256,15 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 <details><summary>🔧<b>⭕ Jest - Not ready, please contribute </b></summary><br/>
 There are no examples yet for this tool, would you like to contribute these examples?
 </details>
+<br/>
+<details><summary>🔧<b>⭕ Tape - Not ready, please contribute </b></summary><br/>
+There are no examples yet for this tool, would you like to contribute these examples?
+</details>
+<br/>
+<details><summary>🔧<b>⭕ AVA - Not ready, please contribute </b></summary><br/>
+There are no examples yet for this tool, would you like to contribute these examples?
+</details>
+
 </details>
 
 
@@ -1897,8 +1906,8 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU2ODYxNTEyLC0zNzU2NjM4NCwtMTI4Nj
-UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
-LDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NT
-YxMDE5LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbMjEwMzQzMDE2NiwtMzc1NjYzODQsLTEyOD
+Y1MzE2MDAsLTI5NzUwMjYyMyw0MzUxOTU4ODAsMTc2NTk2NzEz
+MCw3OTQ4ODg1MTcsLTE4MDA1NTUwMDYsOTM1MTI0ODc5LDc3NT
+U2MTAxOSwtMjEwMzIxODMzM119
 -->
