@@ -1837,7 +1837,26 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
+# Team
+
+
+Meet the steering committee members - the people who work together to provide guidance and future direction to the project. In addition, each member of the committee leads a project tracked under our [Github projects](https://github.com/i0natan/nodebestpractices/projects).
+
+<img align="left" width="100" height="100" src="assets/images/members/yoni.png">
+
+[Yoni Goldberg](https://github.com/goldbergyoni)
+<a href="https://twitter.com/goldbergyoni"><img src="assets/images/twitter-s.png" width="16" height="16"></img></a>
+<a href="https://goldbergyoni.com"><img src="assets/images/www.png" width="16" height="16"></img></a>
+
+Independent Node.js consultant who works with customers in USA, Europe, and Israel on building large scale scalable Node applications. Many of the best practices above were first published at [goldbergyoni.com](https://goldbergyoni.com). Reach Yoni at @goldbergyoni or me@goldbergyoni.com
+
+<br/>
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNT
-EyNDg3OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbLTEwODM4MjQ1MjEsNzk0ODg4NTE3LC0xOD
+AwNTU1MDA2LDkzNTEyNDg3OSw3NzU1NjEwMTksLTIxMDMyMTgz
+MzNdfQ==
 -->
