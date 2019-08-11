@@ -253,7 +253,9 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 
 ```
 </details>
-<details><summary>🔧<b>Jest - Not ready, please contribute 💁</b></summary><br/></details>
+<details><summary>🔧<b>⭕ Jest - Not ready, please contribute </b></summary><br/>
+
+</details>
 </details>
 
 
@@ -1895,8 +1897,8 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3NTY2Mzg0LC0xMjg2NTMxNjAwLC0yOT
-c1MDI2MjMsNDM1MTk1ODgwLDE3NjU5NjcxMzAsNzk0ODg4NTE3
-LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3NzU1NjEwMTksLTIxMD
-MyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbLTEzOTcxMDYyOTEsLTM3NTY2Mzg0LC0xMj
+g2NTMxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3NjU5Njcx
+MzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3Nz
+U1NjEwMTksLTIxMDMyMTgzMzNdfQ==
 -->
