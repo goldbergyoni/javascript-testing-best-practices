@@ -1842,12 +1842,14 @@ license-checker --summary --failOn BSD
 
 
 
-## Written By: Yoni Goldberg
+## Yoni Goldberg
 <br/>
 <img width="480px" src="assets/yoni-goldberg.jpg"/>
 <br/>
 
-I'm an independent consultant who works with 500 fortune corporates and garage startups on polishing their JS & Node.js applications. More than any other topic I'm fascinated by and aims to master the art of testing. I'm also the author of '[Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)'
+**Role:** Writer
+
+**About:**: I'm an independent consultant who works with 500 fortune corporates and garage startups on polishing their JS & Node.js applications. More than any other topic I'm fascinated by and aims to master the art of testing. I'm also the author of '[Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)'
 
 <br/>
 
@@ -1860,18 +1862,28 @@ I'm an independent consultant who works with 500 fortune corporates and garage s
 Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/)
 <br/><br/>
 
-###  Tech review: Bruno Scheufler
+###  Bruno Scheufler
 
 **Role:** Tech reviewer. 
 
 Took care to revise, improve, lint and polish all the texts 
+
+**About:** full-stack web engineer, Node.js & GraphQL enthusiast
+
+### Ido Richter
+
+**Role:** Concept, design and gene
+
+Took care to revise, improve, lint and polish all the texts 
+
+**About:** full-stack web engineer, Node.js & GraphQL enthusiast
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4NTc4NTIyOSwxNzY1OTY3MTMwLDc5ND
+eyJoaXN0b3J5IjpbMTY4MTM2NDQ2MywxNzY1OTY3MTMwLDc5ND
 g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
 LC0yMTAzMjE4MzMzXX0=
 -->
