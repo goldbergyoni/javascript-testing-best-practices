@@ -1862,10 +1862,16 @@ Want to discuss anything else? [approach me here](https://testjavascript.com/con
 
 ###  Tech review: Bruno Scheufler
 
-full-stack web engineer, Node.js & GraphQL enthusiast
+**Role:** Tech reviewer. 
+
+Took care to revise, improve, lint and polish all the texts 
+
+
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzMTk0MTg2MSwxNzY1OTY3MTMwLDc5ND
+eyJoaXN0b3J5IjpbMTA4NTc4NTIyOSwxNzY1OTY3MTMwLDc5ND
 g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
 LC0yMTAzMjE4MzMzXX0=
 -->
