@@ -1862,7 +1862,7 @@ license-checker --summary --failOn BSD
 Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/)
 <br/>
 
-###  Bruno Scheufler
+###  [Bruno Scheufler](https://github.com/BrunoScheufler)
 
 **Role:** Tech reviewer. 
 
