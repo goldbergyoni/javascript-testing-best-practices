@@ -1851,7 +1851,7 @@ I'm an independent consultant who works with 500 fortune corporates and garage s
 
 <br/>
 
-### 👨‍🏫 Want to learn all these practices and techniques at your offices (Europe & USA)? [register here for my testing workshop](https://testjavascript.com/](https://testjavascript.com/)
+### 👨‍🏫 Want to learn all these practices and techniques at your offices (Europe & USA)? [register here for my testing workshop](https://testjavascript.com/)
 <br/>
 
 [🐦Follow me on Twitter](https://twitter.com/goldbergyoni/)
@@ -1861,7 +1861,7 @@ Want to discuss anything else? [approach me here](https://testjavascript.com/con
 <br/>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwNDIxMTI3MCwxNzY1OTY3MTMwLDc5ND
+eyJoaXN0b3J5IjpbMjE0NDk5MDg3NSwxNzY1OTY3MTMwLDc5ND
 g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
 LC0yMTAzMjE4MzMzXX0=
 -->
