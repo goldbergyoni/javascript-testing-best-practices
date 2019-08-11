@@ -254,7 +254,7 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 ```
 </details>
 <details><summary>🔧<b>⭕ Jest - Not ready, please contribute </b></summary><br/>
-
+There are no examples yet for this tool, would you like to contribute these examples?
 </details>
 </details>
 
@@ -1897,8 +1897,8 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTcxMDYyOTEsLTM3NTY2Mzg0LC0xMj
-g2NTMxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3NjU5Njcx
-MzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3Nz
-U1NjEwMTksLTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbOTU2ODYxNTEyLC0zNzU2NjM4NCwtMTI4Nj
+UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
+LDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NT
+YxMDE5LC0yMTAzMjE4MzMzXX0=
 -->
