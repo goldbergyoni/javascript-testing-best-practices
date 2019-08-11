@@ -1862,7 +1862,7 @@ license-checker --summary --failOn BSD
 Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/)
 <br/>
 
-###  Bruno Scheufler
+##  Bruno Scheufler
 
 **Role:** Tech reviewer. 
 
@@ -1885,7 +1885,7 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDM1MTk1ODgwLDE3NjU5NjcxMzAsNzk0OD
-g4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3NzU1NjEwMTks
-LTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbLTE3ODEyMzIxNzEsNDM1MTk1ODgwLDE3Nj
+U5NjcxMzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3
+OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
 -->
