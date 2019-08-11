@@ -105,6 +105,8 @@ Most of the advice below are derivatives of this principle.
 
 **👇 Note:** Each bullet has code examples and sometime also an image illustration. Click to expand
 <details><summary>✏ <b>Code Examples</b></summary>
+
+<details><summary>✏ <b>Code Examples</b></summary>
   
 <br/>
   
@@ -1890,7 +1892,8 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyODY1MzE2MDAsLTI5NzUwMjYyMyw0Mz
-UxOTU4ODAsMTc2NTk2NzEzMCw3OTQ4ODg1MTcsLTE4MDA1NTUw
-MDYsOTM1MTI0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMzM119
+eyJoaXN0b3J5IjpbLTcyMjk4OTEyMSwtMTI4NjUzMTYwMCwtMj
+k3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5NDg4ODUx
+NywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5LC0yMT
+AzMjE4MzMzXX0=
 -->
