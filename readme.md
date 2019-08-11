@@ -209,8 +209,8 @@ test('Should be classified as premium', () => {
 
 <details><summary>✏ <b>Code Examples</b></summary><br/>
 
-<details open='true'><summary><b>🔧 Mocha & Chai</b></summary><br/>
-
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+ "Examples with Mocha & Chai")
   
   ### :thumbsdown: Anti Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
 
@@ -242,6 +242,8 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 <br/>
 
 ### :clap: Doing It Right Example: Skimming through the following declarative test is a breeze
+
+
 ```javascript
 it("When asking for an admin, ensure only ordered admins in results" , ()={
     //assuming we've added here two admins
@@ -252,18 +254,6 @@ it("When asking for an admin, ensure only ordered admins in results" , ()={
 });
 
 ```
-</details>
-<details><summary>🔧<b>⭕ Jest - Not ready, please contribute </b></summary><br/>
-There are no examples yet for this tool, would you like to contribute these examples?
-</details>
-<br/>
-<details><summary>🔧<b>⭕ Tape - Not ready, please contribute </b></summary><br/>
-There are no examples yet for this tool, would you like to contribute these examples?
-</details>
-<br/>
-<details><summary>🔧<b>⭕ AVA - Not ready, please contribute </b></summary><br/>
-There are no examples yet for this tool, would you like to contribute these examples?
-</details>
 
 </details>
 
@@ -1910,8 +1900,9 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNz
-U2NjM4NCwtMTI4NjUzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4
-MCwxNzY1OTY3MTMwLDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5Mz
-UxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbLTE5MzIyNTE4NDQsMTU5NzI0MDc3NSwyMT
+AzNDMwMTY2LC0zNzU2NjM4NCwtMTI4NjUzMTYwMCwtMjk3NTAy
+NjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5NDg4ODUxNywtMT
+gwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4
+MzMzXX0=
 -->
