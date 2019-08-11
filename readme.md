@@ -1834,6 +1834,7 @@ license-checker --summary --failOn BSD
 
 ### :clap:   Example: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
 <pre name="f909" id="f909" class="graf graf--pre graf-after--p">language: node_js<br>node_js:<br>  - "7"<br>  - "6"<br>  - "5"<br>  - "4"<br>install:<br>  - npm install<br>script:<br>  - npm run test</pre>
+</details>
 
 <br/><br/>
 
@@ -1855,7 +1856,7 @@ Independent Node.js consultant who works with customers in USA, Europe, and Isra
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2NTk2NzEzMCw3OTQ4ODg1MTcsLTE4MD
-A1NTUwMDYsOTM1MTI0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMz
-M119
+eyJoaXN0b3J5IjpbMTg1MzM3OTQxOSwxNzY1OTY3MTMwLDc5ND
+g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
+LC0yMTAzMjE4MzMzXX0=
 -->
