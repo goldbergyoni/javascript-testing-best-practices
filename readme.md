@@ -1847,11 +1847,11 @@ license-checker --summary --failOn BSD
 
 I'm an independent consultant who works with 500 fortune corporates and garage startups on polishing their JS & Node.js applications. More than any other topic I'm fascinated by and aims to master the art of testing. I'm also the author of ['Node.js Best Practices'](https://github.com/goldbergyoni/nodebestpractices)
 
-Workshop 👨‍🏫 Want to learn all these practices and techniques at your offices (Europe & USA)? register here for my testing workshop
+👨‍🏫 Want to learn all these practices and techniques at your offices (Europe & USA)? [register here for my testing workshop](https://testjavascript.com/](https://testjavascript.com/)
 
-![nodepractices](/assets/twitter.png)[**Follow me on Twitter**](https://twitter.com/goldbergyoni/)
+[🐦Follow me on Twitter](https://twitter.com/goldbergyoni/)
 
-Want to discuss anything else? approach me here
+Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/(https://testjavascript.com/contact-2/)
 
 <br/>
 
@@ -1859,7 +1859,7 @@ Want to discuss anything else? approach me here
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwMTY4NTU1MSwxNzY1OTY3MTMwLDc5ND
+eyJoaXN0b3J5IjpbLTE2OTMyMjcwMywxNzY1OTY3MTMwLDc5ND
 g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
 LC0yMTAzMjE4MzMzXX0=
 -->
