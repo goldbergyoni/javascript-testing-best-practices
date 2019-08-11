@@ -1841,17 +1841,25 @@ license-checker --summary --failOn BSD
 # Team
 
 
-<img align="left" width="350px" src="assets/yoni-goldberg.jpg">
 
-## Yoni Goldberg
 
-I'm an independent consultant who works with 500 fortune corporates and garage startups on polishing their JS & Node.js applications. More than any other topic I'm fascinated by and aims to master the art of testing. I'm also the author of ['Node.js Best Practices'](https://github.com/goldbergyoni/nodebestpractices)
+<table>
+<tr>
+	<td><img align="left" width="350px" src="assets/yoni-goldberg.jpg"></td>
+	<td>
+	I'm an independent consultant who works with 500 fortune corporates and garage startups on polishing their JS & Node.js applications. More than any other topic I'm fascinated by and aims to master the art of testing. I'm also the author of ['Node.js Best Practices'](https://github.com/goldbergyoni/nodebestpractices)
 
 👨‍🏫 Want to learn all these practices and techniques at your offices (Europe & USA)? [register here for my testing workshop](https://testjavascript.com/](https://testjavascript.com/)
 
 [🐦Follow me on Twitter](https://twitter.com/goldbergyoni/)
 
 Want to discuss anything else? [approach me here](https://testjavascript.com/contact-2/)
+
+</td>
+</tr>
+</table>
+## Yoni Goldberg
+
 
 <br/>
 
@@ -1861,7 +1869,7 @@ Want to discuss anything else? [approach me here](https://testjavascript.com/con
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyMjY4MTQ2NCwxNzY1OTY3MTMwLDc5ND
+eyJoaXN0b3J5IjpbMjA0Mzk3MjQyMiwxNzY1OTY3MTMwLDc5ND
 g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
 LC0yMTAzMjE4MzMzXX0=
 -->
