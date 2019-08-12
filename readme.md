@@ -20,8 +20,8 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 <br/>
 
 ### Written By Yoni Goldberg
-Follow me on Twitter [🐦](https://emojipedia.org/bird/)
-![nodepractices](/assets/twitter.png)[**Follow me on Twitter**](https://twitter.com/goldbergyoni/)
+* [Follow me on Twitter 🐦](https://twitter.com/goldbergyoni/)
+* Learn all these testing practices and techniques [in an interactive workshop 👨‍🏫](https://www.testjavascript.com)
 
 
 <br/><br/>
@@ -1907,9 +1907,9 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwOTAzNTI3NSwtMzQ4Njk5MjE3LDc5ND
-gwOTQ2NywxNTk3MjQwNzc1LDIxMDM0MzAxNjYsLTM3NTY2Mzg0
-LC0xMjg2NTMxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3Nj
-U5NjcxMzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3
-OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbNTgzNTQ2NDY4LC0zNDg2OTkyMTcsNzk0OD
+A5NDY3LDE1OTcyNDA3NzUsMjEwMzQzMDE2NiwtMzc1NjYzODQs
+LTEyODY1MzE2MDAsLTI5NzUwMjYyMyw0MzUxOTU4ODAsMTc2NT
+k2NzEzMCw3OTQ4ODg1MTcsLTE4MDA1NTUwMDYsOTM1MTI0ODc5
+LDc3NTU2MTAxOSwtMjEwMzIxODMzM119
 -->
