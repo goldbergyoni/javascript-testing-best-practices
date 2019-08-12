@@ -590,7 +590,7 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 <br/>
 
 
-❌ **Otherwise:**It will be challenging to infer from the test reports (e.g. CI reports) what went wrong
+❌ **Otherwise:** It will be challenging to infer from the test reports (e.g. CI reports) what went wrong
 
 
 <br/>
