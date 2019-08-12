@@ -1882,7 +1882,7 @@ license-checker --summary --failOn BSD
 <br/>
 
 
-##  Bruno Scheufler
+##  [Bruno Scheufler](https://github.com/BrunoScheufler)
 
 **Role:** Tech reviewer and advisor
 
@@ -1905,9 +1905,9 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzk0ODA5NDY3LDE1OTcyNDA3NzUsMjEwMz
-QzMDE2NiwtMzc1NjYzODQsLTEyODY1MzE2MDAsLTI5NzUwMjYy
-Myw0MzUxOTU4ODAsMTc2NTk2NzEzMCw3OTQ4ODg1MTcsLTE4MD
-A1NTUwMDYsOTM1MTI0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMz
-M119
+eyJoaXN0b3J5IjpbLTM0ODY5OTIxNyw3OTQ4MDk0NjcsMTU5Nz
+I0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4NjUzMTYw
+MCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5ND
+g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
+LC0yMTAzMjE4MzMzXX0=
 -->
