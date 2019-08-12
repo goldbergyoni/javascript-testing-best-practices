@@ -19,6 +19,8 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 <br/>
 
+### Written By Yoni Goldberg
+Follow me on Twitter [🐦](https://emojipedia.org/bird/)
 ![nodepractices](/assets/twitter.png)[**Follow me on Twitter**](https://twitter.com/goldbergyoni/)
 
 
@@ -1905,9 +1907,9 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0ODY5OTIxNyw3OTQ4MDk0NjcsMTU5Nz
-I0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4NjUzMTYw
-MCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5ND
-g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
-LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbMTcwOTAzNTI3NSwtMzQ4Njk5MjE3LDc5ND
+gwOTQ2NywxNTk3MjQwNzc1LDIxMDM0MzAxNjYsLTM3NTY2Mzg0
+LC0xMjg2NTMxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3Nj
+U5NjcxMzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3
+OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
 -->
