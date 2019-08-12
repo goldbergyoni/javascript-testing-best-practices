@@ -342,7 +342,7 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
 ```
 <br/>
 
-### ### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
+### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
 
 ```javascript
 it("When a valid product is about to be deleted, ensure an email is sent", async () => {
