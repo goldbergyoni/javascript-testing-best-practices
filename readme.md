@@ -334,10 +334,10 @@ For example, if you want to test what your app behaves reasonably when the payme
 it("When a valid product is about to be deleted, ensure data access DAL was called once, with the right product and right config", async () => {
     //Assume we already added a product
     const dataAccessMock = sinon.mock(DAL);
-    //hmmm BAD: testing the internals is actually our main goal here, not just a side-effecr
+    //hmmm BAD: testing the internals is actually our main goal here, not just a side-effect
     dataAccessMock.expects("deleteProduct").once().withArgs(DBConfig, theProductWeJustAdded, true, false);
     new ProductService().deletePrice(theProductWeJustAdded);
-    mock.verify();
+    dataAccessMock.verify();
 });
 ```
 <br/>
