@@ -34,7 +34,7 @@ A single advice that inspires all the others (1 special bullet)
 
 * ### `Section 1: The Test Anatomy`
 
-The foundation - strucuturing clean tests (12 bullets)
+The foundation - structuring clean tests (12 bullets)
 
 
 * ### `Section 2: Backend`
