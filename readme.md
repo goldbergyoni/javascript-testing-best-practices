@@ -984,8 +984,8 @@ it("When updating site name, get successful confirmation", async () => {
 
 ### :clap: Doing It Right Example: Separating out the UI details
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg
- "Examples with react-testing-library") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg
+![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
+ "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg
  "Examples with react-testing-library")
 
 ```javascript
@@ -1050,6 +1050,10 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 <br/>
 
 ### :clap: Doing It Right Example: Querying an element using a dedicated attrbiute for testing
+
+![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
+ "Examples with React")
+ 
 ```html
 // the markup code (part of React component)
 <h3>
@@ -1117,6 +1121,10 @@ With all that said, a word of caution is in order: this technique works for smal
 
 ### :clap: Doing It Right Example: Working realstically with a fully rendered component
 
+![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
+ "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg
+ "Examples with Enzyme")
+ 
 ```javascript
 class Calendar extends React.Component {
   static defaultProps = {showFilters: false}
@@ -1947,7 +1955,7 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4MTk2NTgzNywxNTg1ODY1NjMyLDI5OD
+eyJoaXN0b3J5IjpbLTQyMzMxNjk3OSwxNTg1ODY1NjMyLDI5OD
 A3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0Njcs
 MTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4Nj
 UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
