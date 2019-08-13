@@ -161,8 +161,12 @@ describe('Products Service', function() {
 
 ### :clap: Doing It Right Example: A test strcutured with the AAA pattern
 
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+ "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+ "Examples with Jest")
+  
 ```javascript
-describe.skip('Customer classifier', () => {
+describe('Customer classifier', () => {
     test('When customer spent more than 500$, should be classified as premium', () => {
         //Arrange
         const customerToClassify = {spent:505, joined: new Date(), id:1}
@@ -1880,10 +1884,9 @@ license-checker --summary --failOn BSD
 <br/>
 
 **Follow:**
-<br/>
-[🐦 Twitter](https://twitter.com/goldbergyoni/)
-<br/>
-[📞 Contact](https://testjavascript.com/contact-2/)
+
+* [🐦 Twitter](https://twitter.com/goldbergyoni/)
+* [📞 Contact](https://testjavascript.com/contact-2/)
 <br/>
 <hr/>
 <br/>
@@ -1910,10 +1913,10 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk1ODA4ODgyLDE1ODU4NjU2MzIsMjk4MD
-czNzAzLDU4MzU0NjQ2OCwtMzQ4Njk5MjE3LDc5NDgwOTQ2Nywx
-NTk3MjQwNzc1LDIxMDM0MzAxNjYsLTM3NTY2Mzg0LC0xMjg2NT
-MxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3NjU5NjcxMzAs
-Nzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3NzU1Nj
-EwMTksLTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbLTMwOTg0MjQzMSwxNTg1ODY1NjMyLDI5OD
+A3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0Njcs
+MTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4Nj
+UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
+LDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NT
+YxMDE5LC0yMTAzMjE4MzMzXX0=
 -->
