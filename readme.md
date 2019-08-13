@@ -404,7 +404,7 @@ const addProduct = (name, price) =>{
 test("Wrong: When adding new product with valid properties, get successful confirmation", async () => {
     //The string "Foo" which is used in all tests never triggers a false result
     const addProductResult = addProduct("Foo", 5);
-    expect(addProductResult).to.be.true;
+    expect(addProductResult).toBe(true);
     //Positive-false: the operation succeeded because we never tried with long
     //product name including spaces
 });
@@ -446,6 +446,9 @@ it("Better: When adding new valid product, get successful confirmation", async (
 <br/>
 
 ### :clap:  Doing It Right Example: Testing many input permutations with “mocha-testcheck”
+
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+ "Examples with Jest")
 
 ```javascript
 require('mocha-testcheck').install();
@@ -490,6 +493,9 @@ It’s worth noting that there are few cases where long & external snapshots are
 
 ### :thumbsdown: Anti-Pattern Example: Coupling our test to unseen 2000 lines of code
 
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
+ "Examples with Jest")
+ 
 ```javascript
 it('TestJavaScript.com is renderd correctly', ()  => {
 
@@ -554,6 +560,9 @@ expect(menu).toMatchInlineSnapshot(`
 
 ### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
 
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+ "Examples with Jest")
+ 
 ```javascript
 before(() => {
   //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
@@ -610,6 +619,10 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 <br/>
 
 ### :thumbsdown: Anti-pattern Example: A long test case that tries to assert the existence of error with try-catch
+
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+ "Examples with Jest")
+ 
 ```javascript
 /it("When no product name, it throws error 400", async() => {
 let errorWeExceptFor = null;
@@ -659,12 +672,15 @@ it.only("When no product name, it throws error 400", async() => {
 <br/>
 
 ### :clap: Doing It Right Example: Tagging tests as ‘#cold-test’ allows the test runner to execute only fast tests (Cold===quick tests that are doing no IO and can be executed frequently even as the developer is typing)
+
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
+ "Examples with Jest")
 ```javascript
 //this test is fast (no DB) and we're tagging it correspondigly
 //now the user/CI can run it frequently
 describe('Order service', function() {
   describe('Add new order #cold-test #sanity', function() {
-    it('Scenario - no currency was supplied. Excpectation - Use the default currency #sanity', function() {
+    test('Scenario - no currency was supplied. Excpectation - Use the default currency #sanity', function() {
       //code logic here
     });
   });
@@ -1914,10 +1930,10 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3MzI4Njc4LDE1ODU4NjU2MzIsMjk4MD
-czNzAzLDU4MzU0NjQ2OCwtMzQ4Njk5MjE3LDc5NDgwOTQ2Nywx
-NTk3MjQwNzc1LDIxMDM0MzAxNjYsLTM3NTY2Mzg0LC0xMjg2NT
-MxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3NjU5NjcxMzAs
-Nzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3NzU1Nj
-EwMTksLTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbMTQzNjQ4MTEzOCwxNTg1ODY1NjMyLDI5OD
+A3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0Njcs
+MTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4Nj
+UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
+LDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NT
+YxMDE5LC0yMTAzMjE4MzMzXX0=
 -->
