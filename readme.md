@@ -1358,9 +1358,9 @@ test('When no products exist, show the appropriate message', () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Logging-in before-all and not before-each (using Cypress)
+### :clap: Doing It Right Example: Logging-in before-all and not before-each
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-lightgrey.svg
+![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
  "Using Cypress to illustrate the idea")
 
 ```javascript
@@ -1412,7 +1412,8 @@ beforeEach(setUser => () {
 <br/>
 
 ### :clap: Doing It Right Example: Smoke travelling across all pages
-
+![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
+ "Using Cypress to illustrate the idea")
 ```javascript
 it('When doing smoke testing over all page, should load them all successfully', () => {
     // exemplified using Cypress but can be implemented easily
@@ -1446,6 +1447,7 @@ it('When doing smoke testing over all page, should load them all successfully', 
 
 ### :clap: Doing It Right Example: Describing tests in human-language using cocumber-js
 
+![](https://img.shields.io/badge/🔨%20Example%20using%20Cocumber-blue.svg  "Examples using Cocumber")
 ```javascript
 // this is how one can describe tests using cocumber: plain language that allows anyone to understand and collaborate
 
@@ -1464,7 +1466,7 @@ Feature: Twitter new tweet
 ```
 
 ### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using Storybook
-![alt text](assets/story-book.jpg "Visualizing component with storybook")
+![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
 
 </details>
@@ -1496,6 +1498,10 @@ Feature: Twitter new tweet
 
 
 ### :clap: Doing It Right Example: Configuring wraith to capture and compare UI snapshots
+
+![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
+ "Using Cypress to illustrate the idea")
+
 ```
 ​# Add as many domains as necessary. Key will act as a label​
 
@@ -1965,10 +1971,10 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk4NTQxMzgzLDE1ODU4NjU2MzIsMjk4MD
-czNzAzLDU4MzU0NjQ2OCwtMzQ4Njk5MjE3LDc5NDgwOTQ2Nywx
-NTk3MjQwNzc1LDIxMDM0MzAxNjYsLTM3NTY2Mzg0LC0xMjg2NT
-MxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3NjU5NjcxMzAs
-Nzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3NzU1Nj
-EwMTksLTIxMDMyMTgzMzNdfQ==
+eyJoaXN0b3J5IjpbMTc0MTc0MzI0NSwxNTg1ODY1NjMyLDI5OD
+A3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0Njcs
+MTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4Nj
+UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
+LDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NT
+YxMDE5LC0yMTAzMjE4MzMzXX0=
 -->
