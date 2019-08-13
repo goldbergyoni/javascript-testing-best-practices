@@ -1499,7 +1499,7 @@ Feature: Twitter new tweet
 
 ### :clap: Doing It Right Example: Configuring wraith to capture and compare UI snapshots
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
+![](https://img.shields.io/badge/🔨%20Example%20using%20Wraith-blue.svg
  "Using Cypress to illustrate the idea")
 
 ```
@@ -1564,7 +1564,11 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 <br/>
 
 ### :clap: Doing It Right Example: Setting up coverage per component (using Jest)
-![alt text](assets/bp-18-code-coverage2.jpeg "Setting up coverage per component (using Jest)")
+
+![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg
+ "Using Cypress to illustrate the idea")
+
+![alt text](assets/bp-18-code-coverage2.jpeg "Setting up coverage per component (using Jest)
 
 </details>
 
@@ -1588,7 +1592,8 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 <br/>
 
 ### :thumbsdown: Anti-Pattern Example: What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
-![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)")
+
+![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
 
 </details>
 
@@ -1971,7 +1976,7 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0MTc0MzI0NSwxNTg1ODY1NjMyLDI5OD
+eyJoaXN0b3J5IjpbMTEzMDI2NzQ0NiwxNTg1ODY1NjMyLDI5OD
 A3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0Njcs
 MTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4Nj
 UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
