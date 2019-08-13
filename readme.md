@@ -114,6 +114,9 @@ Most of the advice below are derivatives of this principle.
   
 ### :clap: Doing It Right Example: A test name that constitutes 3 parts
 
+![](https://img.shields.io/badge/🔨%20Example%20using%20Mocha-blue.svg
+ "Using Mocha to illustrate the idea")
+
 ```javascript
 //1. unit under test
 describe('Products Service', function() {
@@ -1972,10 +1975,11 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNzIyMDAxLDExMzAyNjc0NDYsMTU4NT
-g2NTYzMiwyOTgwNzM3MDMsNTgzNTQ2NDY4LC0zNDg2OTkyMTcs
-Nzk0ODA5NDY3LDE1OTcyNDA3NzUsMjEwMzQzMDE2NiwtMzc1Nj
-YzODQsLTEyODY1MzE2MDAsLTI5NzUwMjYyMyw0MzUxOTU4ODAs
-MTc2NTk2NzEzMCw3OTQ4ODg1MTcsLTE4MDA1NTUwMDYsOTM1MT
-I0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMzM119
+eyJoaXN0b3J5IjpbMTAyNTk1NDUwOSwtNjI3MjIwMDEsMTEzMD
+I2NzQ0NiwxNTg1ODY1NjMyLDI5ODA3MzcwMyw1ODM1NDY0Njgs
+LTM0ODY5OTIxNyw3OTQ4MDk0NjcsMTU5NzI0MDc3NSwyMTAzND
+MwMTY2LC0zNzU2NjM4NCwtMTI4NjUzMTYwMCwtMjk3NTAyNjIz
+LDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5NDg4ODUxNywtMTgwMD
+U1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4MzMz
+XX0=
 -->
