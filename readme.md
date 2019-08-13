@@ -161,7 +161,7 @@ describe('Products Service', function() {
 
 ### :clap: Doing It Right Example: A test strcutured with the AAA pattern
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Jest")
   
@@ -219,12 +219,13 @@ test('Should be classified as premium', () => {
 <details><summary>✏ <b>Code Examples</b></summary><br/>
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
- "Examples with Mocha & Chai")
+ "Examples with Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
+ "Examples with Jest")
   
   ### :thumbsdown: Anti Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
 
 ```javascript
-it("When asking for an admin, ensure only ordered admins in results" , ()={
+test("When asking for an admin, ensure only ordered admins in results" , ()={
     //assuming we've added here two admins "admin1", "admin2" and "user1"
     const allAdmins = getUsers({adminOnly:true});
 
@@ -1913,10 +1914,10 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwOTg0MjQzMSwxNTg1ODY1NjMyLDI5OD
-A3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0Njcs
-MTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4Nj
-UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
-LDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NT
-YxMDE5LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbMTY3MzI4Njc4LDE1ODU4NjU2MzIsMjk4MD
+czNzAzLDU4MzU0NjQ2OCwtMzQ4Njk5MjE3LDc5NDgwOTQ2Nywx
+NTk3MjQwNzc1LDIxMDM0MzAxNjYsLTM3NTY2Mzg0LC0xMjg2NT
+MxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3NjU5NjcxMzAs
+Nzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3NzU1Nj
+EwMTksLTIxMDMyMTgzMzNdfQ==
 -->
