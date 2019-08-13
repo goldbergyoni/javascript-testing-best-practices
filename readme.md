@@ -354,7 +354,7 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
 ```
 <br/>
 
-### ### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
+### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
 
 ```javascript
 it("When a valid product is about to be deleted, ensure an email is sent", async () => {
@@ -1975,11 +1975,11 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyNTk1NDUwOSwtNjI3MjIwMDEsMTEzMD
-I2NzQ0NiwxNTg1ODY1NjMyLDI5ODA3MzcwMyw1ODM1NDY0Njgs
-LTM0ODY5OTIxNyw3OTQ4MDk0NjcsMTU5NzI0MDc3NSwyMTAzND
-MwMTY2LC0zNzU2NjM4NCwtMTI4NjUzMTYwMCwtMjk3NTAyNjIz
-LDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5NDg4ODUxNywtMTgwMD
-U1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4MzMz
-XX0=
+eyJoaXN0b3J5IjpbLTEyMjU0NjI0MjIsLTYyNzIyMDAxLDExMz
+AyNjc0NDYsMTU4NTg2NTYzMiwyOTgwNzM3MDMsNTgzNTQ2NDY4
+LC0zNDg2OTkyMTcsNzk0ODA5NDY3LDE1OTcyNDA3NzUsMjEwMz
+QzMDE2NiwtMzc1NjYzODQsLTEyODY1MzE2MDAsLTI5NzUwMjYy
+Myw0MzUxOTU4ODAsMTc2NTk2NzEzMCw3OTQ4ODg1MTcsLTE4MD
+A1NTUwMDYsOTM1MTI0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMz
+M119
 -->
