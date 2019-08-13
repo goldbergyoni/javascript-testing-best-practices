@@ -23,7 +23,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 * A JavaScript & Node.js consultant
 * [Follow me on Twitter 🐦](https://twitter.com/goldbergyoni/)
 * Learn all these testing practices and techniques [in an interactive workshop 👨‍🏫](https://www.testjavascript.com)
-* Come here me speak at [LA](https://js.la/), [Verona](https://2019.nodejsday.it/), Tel-Aviv, Kharkiv, free webinar
+* Come here me speak at [LA](https://js.la/), [Verona](https://2019.nodejsday.it/), [Kharkiv](https://kharkivjs.org/), free webinar. Future events TBD
 
 
 <br/><br/>
@@ -1911,9 +1911,9 @@ As a savvy frontend developer, responsible for the great layout, UX and neat emo
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODk1MTkyNDEsNTgzNTQ2NDY4LC0zNDg2OT
-kyMTcsNzk0ODA5NDY3LDE1OTcyNDA3NzUsMjEwMzQzMDE2Niwt
-Mzc1NjYzODQsLTEyODY1MzE2MDAsLTI5NzUwMjYyMyw0MzUxOT
-U4ODAsMTc2NTk2NzEzMCw3OTQ4ODg1MTcsLTE4MDA1NTUwMDYs
-OTM1MTI0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMzM119
+eyJoaXN0b3J5IjpbMjk4MDczNzAzLDU4MzU0NjQ2OCwtMzQ4Nj
+k5MjE3LDc5NDgwOTQ2NywxNTk3MjQwNzc1LDIxMDM0MzAxNjYs
+LTM3NTY2Mzg0LC0xMjg2NTMxNjAwLC0yOTc1MDI2MjMsNDM1MT
+k1ODgwLDE3NjU5NjcxMzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2
+LDkzNTEyNDg3OSw3NzU1NjEwMTksLTIxMDMyMTgzMzNdfQ==
 -->
