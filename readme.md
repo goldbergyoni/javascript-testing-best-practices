@@ -767,12 +767,13 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 <br/>
 
 ### :clap: Doing It Right Example: Supertest allows approaching Express API in-process (fast and cover many layers)
+
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+ "Examples with Jest")
+
 ![alt text](assets/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) allows approaching Express API in-process (fast and cover many layers)")
 
 </details>
-
-
-=
 
 <br/><br/>
 
@@ -792,6 +793,10 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 <br/>
 
 ### :clap: Doing It Right Example:
+
+![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg
+ "Examples with PACT")
+ 
 ![alt text](assets/bp-14-testing-best-practices-contract-flow.png )
 
 
@@ -818,6 +823,10 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 <br/>
 
 ### :clap:Doing It Right Example: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
+
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
+ "Examples with Jest")
+
 ```javascript
 //the middleware we want to test
 const unitUnderTest = require('./middleware')
@@ -863,6 +872,10 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 <br/>
 
 ### :clap: Doing It Right Example:  CodeClimat, a commercial tool that can identify complex methods:
+
+![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg
+ "Examples with CodeClimate")
+ 
 ![alt text](assets/bp-16-yoni-goldberg-quality.png " CodeClimat, a commercial tool that can identify complex methods:")
 
 </details>
@@ -910,6 +923,9 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 ### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
 
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+ "Examples with Jest")
+ 
 ```javascript
 before(() => {
   //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
@@ -1930,10 +1946,10 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3NzQ3OTAyOSwxNTg1ODY1NjMyLDI5OD
-A3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0Njcs
-MTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4Nj
-UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
-LDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NT
-YxMDE5LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbOTk4MzE5ODk3LDE1ODU4NjU2MzIsMjk4MD
+czNzAzLDU4MzU0NjQ2OCwtMzQ4Njk5MjE3LDc5NDgwOTQ2Nywx
+NTk3MjQwNzc1LDIxMDM0MzAxNjYsLTM3NTY2Mzg0LC0xMjg2NT
+MxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3NjU5NjcxMzAs
+Nzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3NzU1Nj
+EwMTksLTIxMDMyMTgzMzNdfQ==
 -->
