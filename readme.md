@@ -1685,13 +1685,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 </details>
 
-
-
-
-
 <br/><br/>
-
-
 
   
 # Section 5️⃣ CI and Other Quality Measures
@@ -1979,7 +1973,7 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDQ5NjA0ODAsMTEzMDI2NzQ0NiwxNT
+eyJoaXN0b3J5IjpbLTE3MzA4OTgyOTIsMTEzMDI2NzQ0NiwxNT
 g1ODY1NjMyLDI5ODA3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIx
 Nyw3OTQ4MDk0NjcsMTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNz
 U2NjM4NCwtMTI4NjUzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4
