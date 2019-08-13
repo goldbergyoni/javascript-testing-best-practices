@@ -1598,7 +1598,6 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 </details>
 
 
-
 <br/><br/>
 
 ## ⚪ ️ 4.3 Measure logical coverage using mutation testing
@@ -1624,6 +1623,9 @@ Knowing that all or most of the mutations were killed gives much higher confiden
 <br/>
 
 ### :thumbsdown: Anti Pattern Example: 100% coverage, 0% testing
+
+![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg
+ "Using Cypress to illustrate the idea")
 ```javascript
 function addNewOrder(newOrder) {
     logger.log(`Adding new order ${newOrder}`);
@@ -1976,10 +1978,10 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzMDI2NzQ0NiwxNTg1ODY1NjMyLDI5OD
-A3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0Njcs
-MTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4Nj
-UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
-LDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NT
-YxMDE5LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbODM3NjEwMzQ5LDExMzAyNjc0NDYsMTU4NT
+g2NTYzMiwyOTgwNzM3MDMsNTgzNTQ2NDY4LC0zNDg2OTkyMTcs
+Nzk0ODA5NDY3LDE1OTcyNDA3NzUsMjEwMzQzMDE2NiwtMzc1Nj
+YzODQsLTEyODY1MzE2MDAsLTI5NzUwMjYyMyw0MzUxOTU4ODAs
+MTc2NTk2NzEzMCw3OTQ4ODg1MTcsLTE4MDA1NTUwMDYsOTM1MT
+I0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMzM119
 -->
