@@ -1899,20 +1899,18 @@ Took care to revise, improve, lint and polish all the texts
 <hr/>
 <br/>
 
-## Ido Richter
+## [Ido Richter](https://github.com/idori)
 
 **Role:** Concept, design and great advice
 
-As a savvy frontend developer, responsible for the great layout, UX and neat emojis
-
-**About:** ?
+**About:** A savvy frontend developer, CSS expert and emojis freak
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzEzNjMyNzgxLDE1ODU4NjU2MzIsMjk4MD
+eyJoaXN0b3J5IjpbOTk1ODA4ODgyLDE1ODU4NjU2MzIsMjk4MD
 czNzAzLDU4MzU0NjQ2OCwtMzQ4Njk5MjE3LDc5NDgwOTQ2Nywx
 NTk3MjQwNzc1LDIxMDM0MzAxNjYsLTM3NTY2Mzg0LC0xMjg2NT
 MxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3NjU5NjcxMzAs
