@@ -1643,7 +1643,8 @@ it("Test addNewOrder, don't use such test names", () => {
 <br/>
 
 ### :clap: Doing It Right Example: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
-![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
+
+![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
 
 </details>
 
@@ -1978,10 +1979,10 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODM3NjEwMzQ5LDExMzAyNjc0NDYsMTU4NT
-g2NTYzMiwyOTgwNzM3MDMsNTgzNTQ2NDY4LC0zNDg2OTkyMTcs
-Nzk0ODA5NDY3LDE1OTcyNDA3NzUsMjEwMzQzMDE2NiwtMzc1Nj
-YzODQsLTEyODY1MzE2MDAsLTI5NzUwMjYyMyw0MzUxOTU4ODAs
-MTc2NTk2NzEzMCw3OTQ4ODg1MTcsLTE4MDA1NTUwMDYsOTM1MT
-I0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMzM119
+eyJoaXN0b3J5IjpbLTEwMDQ5NjA0ODAsMTEzMDI2NzQ0NiwxNT
+g1ODY1NjMyLDI5ODA3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIx
+Nyw3OTQ4MDk0NjcsMTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNz
+U2NjM4NCwtMTI4NjUzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4
+MCwxNzY1OTY3MTMwLDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5Mz
+UxMjQ4NzksNzc1NTYxMDE5LC0yMTAzMjE4MzMzXX0=
 -->
