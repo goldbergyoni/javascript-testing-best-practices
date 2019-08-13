@@ -1194,6 +1194,10 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 ### :clap: Doing It Right Example: E2E API that resolves only when the async operations is done (Cypress)
 
+![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
+ "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg
+ "Examples with react-testing-library")
+
 ```javascript
 // using Cypress
 cy.get('#show-products').click()// navigate
@@ -1202,7 +1206,7 @@ cy.wait('@products')// wait for route to appear
 
 ```
 
-### :clap: Doing It Right Example: Testing library that waits for DOM elements (@testing-library/dom)
+### :clap: Doing It Right Example: Testing library that waits for DOM elements
 
 ```javascript
 // @testing-library/dom
@@ -1249,6 +1253,9 @@ test('movie title appears', async () => {
 
 ## ⚪ ️ 3.5. Watch how the content is served over the network
 
+![](https://img.shields.io/badge/🔧%20Example%20using%20Google%20LightHouse-blue.svg
+ "Examples with Lighthouse")
+
 ✅ **Do:** Apply some active monitor that ensures the page load under real network is optimized - this includes any UX concern like slow page load or un-minified bundle. The inspection tools market is no short: basic tools like [pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) can be easily configured to watch whether the server is alive and response under a reasonable SLA. This only scratches the surface of what might get wrong, hence it's preferable to opt for tools that specialize in frontend (e.g. [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) and perform richer analysis. The focus should be on symptoms, metrics that directly affect the UX, like page load time, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [time until the page gets interactive (TTI)](https://calibreapp.com/blog/time-to-interactive/). On top of that, one may also watch for technical causes like ensuring the content is compressed, time to the first byte, optimize images, ensuring reasonable DOM size, SSL and many others. It's advisable to have these rich monitors both during development, as part of the CI and most important - 24x7 over the production's servers/CDN
 
 <br/>
@@ -1285,7 +1292,10 @@ test('movie title appears', async () => {
 <br/>
 
 ### :clap: Doing It Right Example: Stubbing or intercepting API calls
-
+![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
+ "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
+ "Examples with react-testing-library")
+ 
 ```javascript
 
 // unit under test
@@ -1955,10 +1965,10 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyMzMxNjk3OSwxNTg1ODY1NjMyLDI5OD
-A3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0Njcs
-MTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4Nj
-UzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMw
-LDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NT
-YxMDE5LC0yMTAzMjE4MzMzXX0=
+eyJoaXN0b3J5IjpbOTk4NTQxMzgzLDE1ODU4NjU2MzIsMjk4MD
+czNzAzLDU4MzU0NjQ2OCwtMzQ4Njk5MjE3LDc5NDgwOTQ2Nywx
+NTk3MjQwNzc1LDIxMDM0MzAxNjYsLTM3NTY2Mzg0LC0xMjg2NT
+MxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3NjU5NjcxMzAs
+Nzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3OSw3NzU1Nj
+EwMTksLTIxMDMyMTgzMzNdfQ==
 -->
