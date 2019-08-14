@@ -11,7 +11,7 @@ This is a guide for JavaScript & Node.js reliability from A-Z. It summarizes and
 
 
 ## 🚢 Advanced: Goes 10,000 miles beyond the basics
-Hop into a journey that travells way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
+Hop into a journey that travels way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
 
 
 ## 🌐 Full-stack: front, backend, CI, anything
@@ -54,7 +54,7 @@ Watching the watchman - measuring test quality (4 bullets)
 
 * ### `Section 5: Continous Integration`
 
-Guideliness for CI in the JS world (9 bullets)
+Guidelines for CI in the JS world (9 bullets)
 
 
 <br/><br/>
@@ -361,7 +361,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## ⚪ ️1.6 Don’t “foo”, use realistic input dataing
+## ⚪ ️1.6 Don’t “foo”, use realistic input data
 
 :white_check_mark: **Do:**  Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not instead) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? see next bullet (property-based testing).
 <br/>
@@ -1337,7 +1337,7 @@ beforeEach(setUser => () {
 
 <br/>
 
-## ⚪ ️ 3.9 Have one E2E smoke test that just travells across the site map
+## ⚪ ️ 3.9 Have one E2E smoke test that just travels across the site map
 
 :white_check_mark: **Do:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
 
