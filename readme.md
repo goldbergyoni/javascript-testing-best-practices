@@ -24,6 +24,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 * [My testing workshop](https://www.testjavascript.com) -  Learn all these testing practices and techniques live 
 * [Follow me on Twitter ](https://twitter.com/goldbergyoni/)
 * Come hear me speak at [LA](https://js.la/), [Verona](https://2019.nodejsday.it/), [Kharkiv](https://kharkivjs.org/), [free webinar](https://zoom.us/webinar/register/1015657064375/WN_Lzvnuv4oQJOYey2jXNqX6A). Future events TBD
+* [My JavaScript Quality newsletter](https://testjavascript.com/newsletter/) - insights and content only on strategic matters
 
 
 <br/><br/>
