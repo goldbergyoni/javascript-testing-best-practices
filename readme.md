@@ -874,7 +874,7 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 <br/>
 
-### :clap: Doing It Right Example:  CodeClimat, a commercial tool that can identify complex methods:
+### :clap: Doing It Right Example:  CodeClimate, a commercial tool that can identify complex methods:
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg
  "Examples with CodeClimate")
