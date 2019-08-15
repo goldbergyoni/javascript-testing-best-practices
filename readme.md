@@ -1531,58 +1531,53 @@ paths:
     path: /subscribe
 ```
 
-### :clap: Doing It Right Example: Using AppliTools to get snapshot comaprison and other advanced features
+### :clap: Doing It Right Example: Using Applitools to get snapshot comaprison and other advanced features
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg
  "Using Cypress to illustrate the idea") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
  "Using Cypress to illustrate the idea")
 
+```javascript
+import  *  as todoPage from  '../page-objects/todo-page';
+
+describe('visual validation',  ()  =>  {
+
+before(()  =>  todoPage.navigate());
+
+beforeEach(()  =>  cy.eyesOpen({ appName:  'TAU TodoMVC'  }));
+
+afterEach(()  =>  cy.eyesClose());
+
+  
+
+it('should look good',  ()  =>  {
+
+cy.eyesCheckWindow('empty todo list');
+
+  
+
+todoPage.addTodo('Clean room');
+
+  
+
+todoPage.addTodo('Learn javascript');
+
+  
+
+cy.eyesCheckWindow('two todos');
+
+  
+
+todoPage.toggleTodo(0);
+
+  
+
+cy.eyesCheckWindow('mark as completed');
+
+});
+
+});
 ```
-​import * as todoPage from '../page-objects/todo-page'
-
-  
-
-describe('visual validation', () => {
-
-before(() => todoPage.navigate())
-
-  
-
-beforeEach(() =>
-
-cy.eyesOpen({ appName: 'TAU TodoMVC' }) )
-
-  
-
-afterEach(() => cy.eyesClose())
-
-  
-
-it('should look good', () => {
-
-cy.eyesCheckWindow('empty todo list')
-
-  
-
-todoPage.addTodo('Clean room')
-
-todoPage.addTodo('Learn javascript')
-
-  
-
-cy.eyesCheckWindow('two todos')
-
-  
-
-todoPage.toggleTodo(0)
-
-  
-
-cy.eyesCheckWindow('mark as completed')
-
-})
-
-})```
 
 
 
@@ -2031,11 +2026,11 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NDg5MjYsLTEyMjU0NjI0MjIsLTYyNz
-IyMDAxLDExMzAyNjc0NDYsMTU4NTg2NTYzMiwyOTgwNzM3MDMs
-NTgzNTQ2NDY4LC0zNDg2OTkyMTcsNzk0ODA5NDY3LDE1OTcyND
-A3NzUsMjEwMzQzMDE2NiwtMzc1NjYzODQsLTEyODY1MzE2MDAs
-LTI5NzUwMjYyMyw0MzUxOTU4ODAsMTc2NTk2NzEzMCw3OTQ4OD
-g1MTcsLTE4MDA1NTUwMDYsOTM1MTI0ODc5LDc3NTU2MTAxOV19
-
+eyJoaXN0b3J5IjpbMTgyMzc3OTkyMCwtMTIyNTQ2MjQyMiwtNj
+I3MjIwMDEsMTEzMDI2NzQ0NiwxNTg1ODY1NjMyLDI5ODA3Mzcw
+Myw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0NjcsMTU5Nz
+I0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4NjUzMTYw
+MCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5ND
+g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
+XX0=
 -->
