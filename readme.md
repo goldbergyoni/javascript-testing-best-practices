@@ -1448,11 +1448,11 @@ it('When doing smoke testing over all page, should load them all successfully', 
 
 <br/>
 
-### :clap: Doing It Right Example: Describing tests in human-language using cocumber-js
+### :clap: Doing It Right Example: Describing tests in human-language using cucumber-js
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Cocumber-blue.svg  "Examples using Cocumber")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Cocumber-blue.svg  "Examples using Cucumber")
 ```javascript
-// this is how one can describe tests using cocumber: plain language that allows anyone to understand and collaborate
+// this is how one can describe tests using cucumber: plain language that allows anyone to understand and collaborate
 
 Feature: Twitter new tweet
  
