@@ -683,7 +683,7 @@ it.only("When no product name, it throws error 400", async() => {
 //now the user/CI can run it frequently
 describe('Order service', function() {
   describe('Add new order #cold-test #sanity', function() {
-    test('Scenario - no currency was supplied. Excpectation - Use the default currency #sanity', function() {
+    test('Scenario - no currency was supplied. Expectation - Use the default currency #sanity', function() {
       //code logic here
     });
   });
