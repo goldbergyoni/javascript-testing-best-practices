@@ -1531,6 +1531,61 @@ paths:
     path: /subscribe
 ```
 
+### :clap: Doing It Right Example: Using AppliTools to get snapshot comaprison and other advanced features
+
+![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg
+ "Using Cypress to illustrate the idea") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
+ "Using Cypress to illustrate the idea")
+
+```
+​import * as todoPage from '../page-objects/todo-page'
+
+  
+
+describe('visual validation', () => {
+
+before(() => todoPage.navigate())
+
+  
+
+beforeEach(() =>
+
+cy.eyesOpen({ appName: 'TAU TodoMVC' }) )
+
+  
+
+afterEach(() => cy.eyesClose())
+
+  
+
+it('should look good', () => {
+
+cy.eyesCheckWindow('empty todo list')
+
+  
+
+todoPage.addTodo('Clean room')
+
+todoPage.addTodo('Learn javascript')
+
+  
+
+cy.eyesCheckWindow('two todos')
+
+  
+
+todoPage.toggleTodo(0)
+
+  
+
+cy.eyesCheckWindow('mark as completed')
+
+})
+
+})```
+
+
+
 
 </details>
 
@@ -1976,11 +2031,11 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjU0NjI0MjIsLTYyNzIyMDAxLDExMz
-AyNjc0NDYsMTU4NTg2NTYzMiwyOTgwNzM3MDMsNTgzNTQ2NDY4
-LC0zNDg2OTkyMTcsNzk0ODA5NDY3LDE1OTcyNDA3NzUsMjEwMz
-QzMDE2NiwtMzc1NjYzODQsLTEyODY1MzE2MDAsLTI5NzUwMjYy
-Myw0MzUxOTU4ODAsMTc2NTk2NzEzMCw3OTQ4ODg1MTcsLTE4MD
-A1NTUwMDYsOTM1MTI0ODc5LDc3NTU2MTAxOSwtMjEwMzIxODMz
-M119
+eyJoaXN0b3J5IjpbLTU4NDg5MjYsLTEyMjU0NjI0MjIsLTYyNz
+IyMDAxLDExMzAyNjc0NDYsMTU4NTg2NTYzMiwyOTgwNzM3MDMs
+NTgzNTQ2NDY4LC0zNDg2OTkyMTcsNzk0ODA5NDY3LDE1OTcyND
+A3NzUsMjEwMzQzMDE2NiwtMzc1NjYzODQsLTEyODY1MzE2MDAs
+LTI5NzUwMjYyMyw0MzUxOTU4ODAsMTc2NTk2NzEzMCw3OTQ4OD
+g1MTcsLTE4MDA1NTUwMDYsOTM1MTI0ODc5LDc3NTU2MTAxOV19
+
 -->
