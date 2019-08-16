@@ -2000,6 +2000,8 @@ license-checker --summary --failOn BSD
 
 * [🐦 Twitter](https://twitter.com/goldbergyoni/)
 * [📞 Contact](https://testjavascript.com/contact-2/)
+* [✉️ Newsletter](https://testjavascript.com/newsletter//)
+
 <br/>
 <hr/>
 <br/>
