@@ -594,7 +594,9 @@ it("When updating site name, get successful confirmation", async () => {
   const siteUnderTest = await SiteService.addSite({
     name: "siteForUpdateTest"
   });
+  
   const updateNameResult = await SiteService.changeName(siteUnderTest, "newName");
+  
   expect(updateNameResult).to.be(true);
 });
 
