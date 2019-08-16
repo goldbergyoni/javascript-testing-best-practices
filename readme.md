@@ -55,7 +55,7 @@ Writing tests for web UI including component and E2E tests (11 bullets)
 Watching the watchman - measuring test quality (4 bullets)
 
 
-* ### `Section 5: Continous Integration`
+* ### `Section 5: Continuous Integration`
 
 Guideliness for CI in the JS world (9 bullets)
 
