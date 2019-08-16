@@ -4,6 +4,8 @@
 
 # 👇 Why this guide can take your testing skills to the next level 
 
+
+
 <br/>
 
 ## 📗 45+ best practices: Super-comprehensive and exhaustive
@@ -76,7 +78,9 @@ Our minds are full with the main production code, we don't have 'headspace' for 
  
 The tests are an opportunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a  small investment.  Science tells we have two brain systems: system 1 which is used for effortless activities like driving a car on an empty road and system 2 which is meant for complex and conscious operations like solving a math equation. Design your test for system 1, when looking at test code it should *feel* as easy as modifying an HTML document and not like solving 2X(17 × 24).
 
-This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+This can be achieved by selectively cherry-picking techniques, too
+
+ls and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
 
 ![alt text](/assets/headspace.png "We have no head room for additional complexity")
  
@@ -623,13 +627,17 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 
 <br/>
 
-### :thumbsdown: Anti-pattern Example: A long test case that tries to assert the existence of error with try-catch
+### :thumbsdown: 
+
+
+
+
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Jest")
  
 ```javascript
-/it("When no product name, it throws error 400", async() => {
+it("When no product name, it throws error 400", async() => {
 let errorWeExceptFor = null;
 try {
   const result = await addNewProduct({name:'nest'});}
