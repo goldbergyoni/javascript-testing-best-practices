@@ -21,7 +21,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 ### Written By Yoni Goldberg
 * A JavaScript & Node.js consultant
-* [My testing workshop](https://www.testjavascript.com) -  Learn all these testing practices and techniques live 
+* ## 👨‍🏫 [My testing workshop](https://www.testjavascript.com) -  learn about [my workshops](https://www.testjavascript.com) in Europe & US
 * [Follow me on Twitter ](https://twitter.com/goldbergyoni/)
 * Come hear me speak at [LA](https://js.la/), [Verona](https://2019.nodejsday.it/), [Kharkiv](https://kharkivjs.org/), [free webinar](https://zoom.us/webinar/register/1015657064375/WN_Lzvnuv4oQJOYey2jXNqX6A). Future events TBD
 * [My JavaScript Quality newsletter](https://testjavascript.com/newsletter/) - insights and content only on strategic matters
@@ -2028,11 +2028,11 @@ Took care to revise, improve, lint and polish all the texts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyMzc3OTkyMCwtMTIyNTQ2MjQyMiwtNj
-I3MjIwMDEsMTEzMDI2NzQ0NiwxNTg1ODY1NjMyLDI5ODA3Mzcw
-Myw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0NjcsMTU5Nz
-I0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4NjUzMTYw
-MCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5ND
-g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
-XX0=
+eyJoaXN0b3J5IjpbLTE3MDExMjkwNTMsMTgyMzc3OTkyMCwtMT
+IyNTQ2MjQyMiwtNjI3MjIwMDEsMTEzMDI2NzQ0NiwxNTg1ODY1
+NjMyLDI5ODA3MzcwMyw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OT
+Q4MDk0NjcsMTU5NzI0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4
+NCwtMTI4NjUzMTYwMCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNz
+Y1OTY3MTMwLDc5NDg4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4
+NzldfQ==
 -->
