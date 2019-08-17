@@ -162,7 +162,7 @@ describe('Products Service', function() {
 
 <br/>
 
-### :clap: Doing It Right Example: A test strcutured with the AAA pattern
+### :clap: Doing It Right Example: A test structured with the AAA pattern
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
