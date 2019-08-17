@@ -456,7 +456,6 @@ it("Better: When adding new valid product, get successful confirmation", async (
 ```javascript
 require('mocha-testcheck').install();
 const {expect} = require('chai');
-const faker = require('faker');
 
 describe('Product service', () => {
   describe('Adding new', () => {
