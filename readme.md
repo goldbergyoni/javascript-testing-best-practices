@@ -11,7 +11,7 @@ This is a guide for JavaScript & Node.js reliability from A-Z. It summarizes and
 
 
 ## 🚢 Advanced: Goes 10,000 miles beyond the basics
-Hop into a journey that travells way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
+Hop into a journey that travels way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
 
 
 ## 🌐 Full-stack: front, backend, CI, anything
@@ -1399,7 +1399,7 @@ beforeEach(setUser => () {
 
 <br/>
 
-## ⚪ ️ 3.9 Have one E2E smoke test that just travells across the site map
+## ⚪ ️ 3.9 Have one E2E smoke test that just travels across the site map
 
 :white_check_mark: **Do:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
 
