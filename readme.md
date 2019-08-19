@@ -350,7 +350,7 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
     //hmmm BAD: testing the internals is actually our main goal here, not just a side-effect
     dataAccessMock.expects("deleteProduct").once().withArgs(DBConfig, theProductWeJustAdded, true, false);
     new ProductService().deletePrice(theProductWeJustAdded);
-    mock.verify();
+    dataAccessMock.verify();
 });
 ```
 <br/>
