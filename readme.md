@@ -11,7 +11,7 @@ This is a guide for JavaScript & Node.js reliability from A-Z. It summarizes and
 
 
 ## 🚢 Advanced: Goes 10,000 miles beyond the basics
-Hop into a journey that travells way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
+Hop into a journey that travels way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
 
 
 ## 🌐 Full-stack: front, backend, CI, anything
@@ -37,7 +37,7 @@ A single advice that inspires all the others (1 special bullet)
 
 * ### `Section 1: The Test Anatomy`
 
-The foundation - strucuturing clean tests (12 bullets)
+The foundation - structuring clean tests (12 bullets)
 
 
 * ### `Section 2: Backend`
@@ -55,9 +55,9 @@ Writing tests for web UI including component and E2E tests (11 bullets)
 Watching the watchman - measuring test quality (4 bullets)
 
 
-* ### `Section 5: Continous Integration`
+* ### `Section 5: Continuous Integration`
 
-Guideliness for CI in the JS world (9 bullets)
+Guidelines for CI in the JS world (9 bullets)
 
 
 <br/><br/>
@@ -348,7 +348,7 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
     //hmmm BAD: testing the internals is actually our main goal here, not just a side-effect
     dataAccessMock.expects("deleteProduct").once().withArgs(DBConfig, theProductWeJustAdded, true, false);
     new ProductService().deletePrice(theProductWeJustAdded);
-    mock.verify();
+    dataAccessMock.verify();
 });
 ```
 <br/>
@@ -1279,7 +1279,7 @@ test('movie title appears', async () => {
 
 ## ⚪ ️ 3.6 Stub flakky and slow resources like backend APIs
 
-:white_check_mark: **Do:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practically, instead of real network calls to APIs, use some test double library (like [Sinon]https://sinonjs.org/, [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttles requests). Doing this will allow simulating various API behavior that should drive your component behavior as when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
+:white_check_mark: **Do:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practically, instead of real network calls to APIs, use some test double library (like [Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttles requests). Doing this will allow simulating various API behavior that should drive your component behavior as when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
 
 <br/>
 
@@ -1397,7 +1397,7 @@ beforeEach(setUser => () {
 
 <br/>
 
-## ⚪ ️ 3.9 Have one E2E smoke test that just travells across the site map
+## ⚪ ️ 3.9 Have one E2E smoke test that just travels across the site map
 
 :white_check_mark: **Do:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
 
@@ -1956,7 +1956,7 @@ license-checker --summary --failOn BSD
 <br/><br/>
 
 ## ⚪ ️ 5.9 Build matrix: Run the same CI steps using multiple Node versions
-:white_check_mark: **Do:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use mySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of mySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
+:white_check_mark: **Do:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use MySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of MySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
 <br/>
 
 
@@ -2020,17 +2020,3 @@ Took care to revise, improve, lint and polish all the texts
 **Role:** Concept, design and great advice
 
 **About:** A savvy frontend developer, CSS expert and emojis freak
-
-
-
-
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0NDA1ODIwOSwxODIzNzc5OTIwLC0xMj
-I1NDYyNDIyLC02MjcyMjAwMSwxMTMwMjY3NDQ2LDE1ODU4NjU2
-MzIsMjk4MDczNzAzLDU4MzU0NjQ2OCwtMzQ4Njk5MjE3LDc5ND
-gwOTQ2NywxNTk3MjQwNzc1LDIxMDM0MzAxNjYsLTM3NTY2Mzg0
-LC0xMjg2NTMxNjAwLC0yOTc1MDI2MjMsNDM1MTk1ODgwLDE3Nj
-U5NjcxMzAsNzk0ODg4NTE3LC0xODAwNTU1MDA2LDkzNTEyNDg3
-OV19
--->
