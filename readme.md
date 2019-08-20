@@ -162,7 +162,7 @@ describe('Products Service', function() {
 
 <br/>
 
-### :clap: Doing It Right Example: A test strcutured with the AAA pattern
+### :clap: Doing It Right Example: A test structured with the AAA pattern
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
@@ -456,7 +456,6 @@ it("Better: When adding new valid product, get successful confirmation", async (
 ```javascript
 require('mocha-testcheck').install();
 const {expect} = require('chai');
-const faker = require('faker');
 
 describe('Product service', () => {
   describe('Adding new', () => {
@@ -702,7 +701,7 @@ describe('Order service', function() {
 ## ⚪ ️1.12 Other generic good testing hygiene
 :white_check_mark: **Do:**  This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
 
-Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a [red-green-refactor style](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, start a module by writing a quick and simplistic code that satsifies the test - then refactor gradually and take it to a prdoction grade level, avoid any dependency on the environment (paths, OS, etc)
+Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a [red-green-refactor style](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, start a module by writing a quick and simplistic code that satsifies the test - then refactor gradually and take it to a production grade level, avoid any dependency on the environment (paths, OS, etc)
 <br/>
 
 
@@ -2027,4 +2026,4 @@ Took care to revise, improve, lint and polish all the texts
 
 **Role:** Concept, design and great advice
 
-**About:** A savvy frontend developer, CSS expert and emojis freak
+**About:** A savvy frontend developer, CSS expert and emojis frea
