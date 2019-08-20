@@ -11,7 +11,7 @@ This is a guide for JavaScript & Node.js reliability from A-Z. It summarizes and
 
 
 ## 🚢 Advanced: Goes 10,000 miles beyond the basics
-Hop into a journey that travells way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
+Hop into a journey that travels way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
 
 
 ## 🌐 Full-stack: front, backend, CI, anything
@@ -21,7 +21,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 ### Written By Yoni Goldberg
 * A JavaScript & Node.js consultant
-* [My testing workshop](https://www.testjavascript.com) -  Learn all these testing practices and techniques live 
+* 👨‍🏫 [My testing workshop](https://www.testjavascript.com) -  learn about [my workshops](https://www.testjavascript.com) in Europe & US
 * [Follow me on Twitter ](https://twitter.com/goldbergyoni/)
 * Come hear me speak at [LA](https://js.la/), [Verona](https://2019.nodejsday.it/), [Kharkiv](https://kharkivjs.org/), [free webinar](https://zoom.us/webinar/register/1015657064375/WN_Lzvnuv4oQJOYey2jXNqX6A). Future events TBD
 * [My JavaScript Quality newsletter](https://testjavascript.com/newsletter/) - insights and content only on strategic matters
@@ -37,7 +37,7 @@ A single advice that inspires all the others (1 special bullet)
 
 * ### `Section 1: The Test Anatomy`
 
-The foundation - strucuturing clean tests (12 bullets)
+The foundation - structuring clean tests (12 bullets)
 
 
 * ### `Section 2: Backend`
@@ -55,9 +55,9 @@ Writing tests for web UI including component and E2E tests (11 bullets)
 Watching the watchman - measuring test quality (4 bullets)
 
 
-* ### `Section 5: Continous Integration`
+* ### `Section 5: Continuous Integration`
 
-Guideliness for CI in the JS world (9 bullets)
+Guidelines for CI in the JS world (9 bullets)
 
 
 <br/><br/>
@@ -350,7 +350,7 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
     //hmmm BAD: testing the internals is actually our main goal here, not just a side-effect
     dataAccessMock.expects("deleteProduct").once().withArgs(DBConfig, theProductWeJustAdded, true, false);
     new ProductService().deletePrice(theProductWeJustAdded);
-    mock.verify();
+    dataAccessMock.verify();
 });
 ```
 <br/>
@@ -372,7 +372,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## ⚪ ️1.6 Don’t “foo”, use realistic input dataing
+## ⚪ ️1.6 Don’t “foo”, use realistic input data
 
 :white_check_mark: **Do:**  Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not instead) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? see next bullet (property-based testing).
 <br/>
@@ -1283,7 +1283,7 @@ test('movie title appears', async () => {
 
 ## ⚪ ️ 3.6 Stub flakky and slow resources like backend APIs
 
-:white_check_mark: **Do:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practically, instead of real network calls to APIs, use some test double library (like [Sinon]https://sinonjs.org/, [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttles requests). Doing this will allow simulating various API behavior that should drive your component behavior as when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
+:white_check_mark: **Do:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practically, instead of real network calls to APIs, use some test double library (like [Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttles requests). Doing this will allow simulating various API behavior that should drive your component behavior as when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
 
 <br/>
 
@@ -1401,7 +1401,7 @@ beforeEach(setUser => () {
 
 <br/>
 
-## ⚪ ️ 3.9 Have one E2E smoke test that just travells across the site map
+## ⚪ ️ 3.9 Have one E2E smoke test that just travels across the site map
 
 :white_check_mark: **Do:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
 
@@ -1749,7 +1749,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 ## ⚪ ️ 5.1 Enrich your linters and abort builds that have linting issues
 
-:white_check_mark: **Do:**  Linters are a free lunch, with 5 min setup you get for free an auto-pilot guarding your code and catching significant issue as you type. Gone are the days where linting was about cosmetics (no semi-colons!). Nowadays, Linters can catch severe issues like errors that are not thrown correctly and losing information. On top of your basic set of rules (like [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) or [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), consider including some specializing Linters like [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) that can discover tests without assertions, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) can discover promises with no resolve (your code will never continue), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) which can discover eager regex expressions that might get used for DOS attacks, and [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) is capable of alarming when the code uses utility library methods that are part of the V8 core methods like Lodash._map(…)
+:white_check_mark: **Do:**  Linters are a free lunch, with 5 min setup you get for free an auto-pilot guarding your code and catching significant issue as you type. Gone are the days where linting was about cosmetics (no semi-colons!). Nowadays, Linters can catch severe issues like errors that are not thrown correctly and losing information. On top of your basic set of rules (like [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) or [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), consider including some specializing Linters like [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) that can discover tests without assertions, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) can discover promises with no resolve (your code will never continue), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) which can discover eager regex expressions that might get used for DOS attacks, and [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) is capable of alarming when the code uses utility library methods that are part of the V8 core methods like Lodash._map(…)
 <br/>
 
 
@@ -1926,7 +1926,13 @@ license-checker --summary --failOn BSD
 <br/><br/>
 
 ## ⚪ ️5.7 Automate dependency updates
-:white_check_mark: **Do:**   Yarn and npm latest introduction of package-lock.json introduced a serious challenge (the road to hell is paved with good intentions) — by default now, packages are no longer getting updates. Even a team running many fresh deployments with ‘npm install’ & ‘npm update’ won’t get any new updates. This leads to subpar dependent packages versions at best or to vulnerable code at worst. Teams now rely on developers goodwill and memory to manually update the package.json or use tools [like ncu](https://www.npmjs.com/package/npm-check-updates) manually. A more reliable way could be to automate the process of getting the most reliable dependency versions, though there are no silver bullet solutions yet there are two possible automation roads: (1) CI can fail builds that have obsolete dependencies — using tools like [‘npm outdated’](https://docs.npmjs.com/cli/outdated) or ‘npm-check-updates (ncu)’ . Doing so will enforce developers to update dependencies. (2) Use commercial tools that scan the code and automatically send pull requests with updated dependencies. One interesting question remaining is what should be the dependency update policy — updating on every patch generates too many overhead, updating right when a major is released might point to an unstable version (many packages found vulnerable on the very first days after being released, [see the](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope incident). An efficient update policy may allow some ‘vesting period’ — let the code lag behind the @latest for some time and versions before considering the local copy as obsolete (e.g. local version is 1.3.1 and repository version is 1.3.8)
+:white_check_mark: **Do:**   Yarn and npm latest introduction of package-lock.json introduced a serious challenge (the road to hell is paved with good intentions) — by default now, packages are no longer getting updates. Even a team running many fresh deployments with ‘npm install’ & ‘npm update’ won’t get any new updates. This leads to subpar dependent packages versions at best or to vulnerable code at worst. Teams now rely on developers goodwill and memory to manually update the package.json or use tools [like ncu](https://www.npmjs.com/package/npm-check-updates) manually. A more reliable way could be to automate the process of getting the most reliable dependency versions, though there are no silver bullet solutions yet there are two possible automation roads:
+
+(1) CI can fail builds that have obsolete dependencies — using tools like [‘npm outdated’](https://docs.npmjs.com/cli/outdated) or ‘npm-check-updates (ncu)’ . Doing so will enforce developers to update dependencies.
+
+(2) Use commercial tools that scan the code and automatically send pull requests with updated dependencies. One interesting question remaining is what should be the dependency update policy — updating on every patch generates too many overhead, updating right when a major is released might point to an unstable version (many packages found vulnerable on the very first days after being released, [see the](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope incident).
+
+An efficient update policy may allow some ‘vesting period’ — let the code lag behind the @latest for some time and versions before considering the local copy as obsolete (e.g. local version is 1.3.1 and repository version is 1.3.8)
 <br/>
 
 
@@ -1960,7 +1966,7 @@ license-checker --summary --failOn BSD
 <br/><br/>
 
 ## ⚪ ️ 5.9 Build matrix: Run the same CI steps using multiple Node versions
-:white_check_mark: **Do:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use mySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of mySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
+:white_check_mark: **Do:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use MySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of MySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
 <br/>
 
 
@@ -2002,6 +2008,8 @@ license-checker --summary --failOn BSD
 
 * [🐦 Twitter](https://twitter.com/goldbergyoni/)
 * [📞 Contact](https://testjavascript.com/contact-2/)
+* [✉️ Newsletter](https://testjavascript.com/newsletter//)
+
 <br/>
 <hr/>
 <br/>
@@ -2022,17 +2030,3 @@ Took care to revise, improve, lint and polish all the texts
 **Role:** Concept, design and great advice
 
 **About:** A savvy frontend developer, CSS expert and emojis freak
-
-
-
-
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyMzc3OTkyMCwtMTIyNTQ2MjQyMiwtNj
-I3MjIwMDEsMTEzMDI2NzQ0NiwxNTg1ODY1NjMyLDI5ODA3Mzcw
-Myw1ODM1NDY0NjgsLTM0ODY5OTIxNyw3OTQ4MDk0NjcsMTU5Nz
-I0MDc3NSwyMTAzNDMwMTY2LC0zNzU2NjM4NCwtMTI4NjUzMTYw
-MCwtMjk3NTAyNjIzLDQzNTE5NTg4MCwxNzY1OTY3MTMwLDc5ND
-g4ODUxNywtMTgwMDU1NTAwNiw5MzUxMjQ4NzksNzc1NTYxMDE5
-XX0=
--->
