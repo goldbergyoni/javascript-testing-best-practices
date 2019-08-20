@@ -593,7 +593,9 @@ it("When updating site name, get successful confirmation", async () => {
   const siteUnderTest = await SiteService.addSite({
     name: "siteForUpdateTest"
   });
+  
   const updateNameResult = await SiteService.changeName(siteUnderTest, "newName");
+  
   expect(updateNameResult).to.be(true);
 });
 
@@ -626,7 +628,7 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
  "Examples with Jest")
  
 ```javascript
-/it("When no product name, it throws error 400", async() => {
+it("When no product name, it throws error 400", async() => {
 let errorWeExceptFor = null;
 try {
   const result = await addNewProduct({name:'nest'});}
