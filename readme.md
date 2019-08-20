@@ -50,7 +50,7 @@ Writing backend and Microservices tests efficiently (8 bullets)
 Writing tests for web UI including component and E2E tests (11 bullets)
 
 
-* ### `Section 4: Measuring Tests Effectivenss`
+* ### `Section 4: Measuring Tests Effectiveness`
 
 Watching the watchman - measuring test quality (4 bullets)
 
