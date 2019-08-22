@@ -31,7 +31,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 ## Table of Contents
 
-#### [Section 0: The Golden Rule](#section-0️⃣---the-golden-rule)
+#### [Section 0: The Golden Rule](#section-0️⃣-the-golden-rule)
 
 A single advice that inspires all the others (1 special bullet)
 
@@ -39,7 +39,7 @@ A single advice that inspires all the others (1 special bullet)
 
 The foundation - structuring clean tests (12 bullets)
 
-#### [Section 2: Backend](#section-2️⃣--backend-testing)
+#### [Section 2: Backend](#section-2️⃣-backend-testing)
 
 Writing backend and Microservices tests efficiently (8 bullets)
 
