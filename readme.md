@@ -29,7 +29,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 <br/><br/>
 
-## Table of Contents
+## `Table of Contents`
 
 #### [`Section 0: The Golden Rule`](#section-0️⃣-the-golden-rule)
 
