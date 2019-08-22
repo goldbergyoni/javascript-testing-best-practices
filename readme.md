@@ -31,30 +31,27 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 ## Table of Contents
 
-* ####[Section 0: The Golden Rule](#Section-0️⃣-:-The-Golden-Rule)
+#### [Section 0: The Golden Rule](#section-0️⃣---the-golden-rule)
 
 A single advice that inspires all the others (1 special bullet)
 
-* ####[Section 1: The Test Anatomy](#Section-1:-The-Test-Anatomy)
+#### [Section 1: The Test Anatomy](#section-1-the-test-anatomy-1)
 
 The foundation - structuring clean tests (12 bullets)
 
-* ####[Section 2: Backend](#Section-2️⃣-:-Backend-Testing)
+#### [Section 2: Backend](#section-2️⃣--backend-testing)
 
 Writing backend and Microservices tests efficiently (8 bullets)
 
-
-* ####[Section 3: Frontend](#Section-3️⃣:-Frontend-Testing)
+#### [Section 3: Frontend](#section-3️⃣-frontend-testing)
 
 Writing tests for web UI including component and E2E tests (11 bullets)
 
-
-* ####[Section 4: Measuring Tests Effectiveness](#Section-4️⃣:-Measuring-Test-Effectiveness)
+#### [Section 4: Measuring Tests Effectiveness](#section-4️⃣-measuring-test-effectiveness)
 
 Watching the watchman - measuring test quality (4 bullets)
 
-
-* ####[Section 5: Continuous Integration](#Section-5️⃣-CI-and-Other-Quality-Measures)
+#### [Section 5: Continuous Integration](#section-5️⃣-ci-and-other-quality-measures)
 
 Guidelines for CI in the JS world (9 bullets)
 
