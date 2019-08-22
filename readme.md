@@ -59,7 +59,7 @@ Guidelines for CI in the JS world (9 bullets)
 <br/><br/>
 
 
-# Section 0️⃣  : The Golden Rule
+# Section 0️⃣: The Golden Rule
 
 <br/>
 
@@ -706,7 +706,7 @@ Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-dr
 <br/><br/>
 
 
-# Section 2️⃣ : Backend Testing
+# Section 2️⃣: Backend Testing
 
 ## ⚪ ️2.1 Enrich your testing portfolio: Look beyond unit tests and the pyramid
 
@@ -1736,7 +1736,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 <br/><br/>
 
   
-# Section 5️⃣ CI and Other Quality Measures
+# Section 5️⃣: CI and Other Quality Measures
 
 <br/><br/>
 
