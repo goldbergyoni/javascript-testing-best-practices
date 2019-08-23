@@ -29,33 +29,29 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 <br/><br/>
 
-# `Table of contents`
+## `Table of Contents`
 
-* ### `Section 0: The Golden Rule`
+#### [`Section 0: The Golden Rule`](#section-0️⃣-the-golden-rule)
 
 A single advice that inspires all the others (1 special bullet)
 
-* ### `Section 1: The Test Anatomy`
+#### [`Section 1: The Test Anatomy`](#section-1-the-test-anatomy-1)
 
 The foundation - structuring clean tests (12 bullets)
 
-
-* ### `Section 2: Backend`
+#### [`Section 2: Backend`](#section-2️⃣-backend-testing)
 
 Writing backend and Microservices tests efficiently (8 bullets)
 
-
-* ### `Section 3: Frontend, UI, E2E`
+#### [`Section 3: Frontend`](#section-3️⃣-frontend-testing)
 
 Writing tests for web UI including component and E2E tests (11 bullets)
 
-
-* ### `Section 4: Measuring Tests Effectivenss`
+#### [`Section 4: Measuring Tests Effectiveness`](#section-4️⃣-measuring-test-effectiveness)
 
 Watching the watchman - measuring test quality (4 bullets)
 
-
-* ### `Section 5: Continuous Integration`
+#### [`Section 5: Continuous Integration`](#section-5️⃣-ci-and-other-quality-measures)
 
 Guidelines for CI in the JS world (9 bullets)
 
@@ -63,7 +59,7 @@ Guidelines for CI in the JS world (9 bullets)
 <br/><br/>
 
 
-# Section 0️⃣  : The Golden Rule
+# Section 0️⃣: The Golden Rule
 
 <br/>
 
@@ -87,7 +83,7 @@ Most of the advice below are derivatives of this principle.
 
 <br/><br/>
 
-# Section 1. The Test Anatomy
+# Section 1: The Test Anatomy
 
 <br/>
 
@@ -710,7 +706,7 @@ Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-dr
 <br/><br/>
 
 
-# Section 2️⃣ : Backend Testing
+# Section 2️⃣: Backend Testing
 
 ## ⚪ ️2.1 Enrich your testing portfolio: Look beyond unit tests and the pyramid
 
@@ -1740,7 +1736,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 <br/><br/>
 
   
-# Section 5️⃣ CI and Other Quality Measures
+# Section 5️⃣: CI and Other Quality Measures
 
 <br/><br/>
 
