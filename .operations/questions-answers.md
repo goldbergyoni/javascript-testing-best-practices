@@ -1,18 +1,17 @@
 # Common questions and answers
 
-### Q: How do I start a new translation?
+## Q: How do I start a new translation?
 
-**Answer: ** 
+**Answer:** 
 
-welcome aboard , having a {language} translation would be awesome 🔥
+welcome aboard! Having a {language} translation would be awesome 🔥. I'll be glad to collaborate with you on this and help wherever I can
 
-Having a Hungarian translation would be great 👍
+Before you start with this, I've prepared some basic workflow guidelines:
 
-Before you start with this, we've prepared some basic workflow guidelines:
+**Where to do the translation?** - Fork and work your own copy, create a readme-{language}.md file (e.g. readme-fr.md) and do the translation work over there
 
-Work on your own fork - fork, create a branch, translate & collaborate with other translators, then open a PR
-Focus on translation, not content editing - the focus is on translation, should anyone want to modify the content or the graphics - let's PR a draft in English first and then translate to other languages. Also the format of the text should remain intact (same design)
-Duplicate the readme and the inner pages - the content should be translated over at a duplicated page, step by step. As an example, README.md would be come README.{translated-language}.md (e.g. README.french.md), all other files should be duplicated similarly. So the number of English & translated pages should be the same
-Collaborate - once you setup the translation foundation (branch, duplicate pages), we can announce the work on a new language and get others involved to support you in translating (if you wish so, of course)
-We're here to help - let us know whether we can do anything to support you. We can Tweet about this work, etc. 🚀
+**How to push changes?** - I will create a dedicated branch for you translations-{language}-staging (e.g. translations-fr-staging), whenever you want to save some changes or share with the team - just PR to this branch
 
+**How & when to publish to master?** - The content can be published once it's 70% translated and 100% language proofed. Kindly run it through spell checker. Whenever you feel that the content stands to these guidelines, just a raise a flag and I'll merge the language branch into the master
+
+**Will I get credit for the translation work?** - Obviously! Your name will appear nearby the langauge flag in the main readme.md, added to the repo team, appear boldly at the top of the translation page - 'Translated, adapted and reviewed by {Your name}'. We will also publish a medium article with the translation with your name at the top
