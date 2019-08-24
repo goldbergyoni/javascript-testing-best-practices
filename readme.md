@@ -159,7 +159,7 @@ describe('Products Service', function() {
 
 ![Jest example](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest") ![Mocha example](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
- "Examples with Moch")
+ "Examples with Mocha")
   
 ```javascript
 describe('Customer classifier', () => {
@@ -218,7 +218,7 @@ test("When asking for an admin, ensure only ordered admins in results" , () => {
     //assuming we've added here two admins "admin1", "admin2" and "user1"
     const allAdmins = getUsers({adminOnly:true});
 
-    const admin1Found, adming2Found = false;
+    const admin1Found, admin2Found = false;
 
     allAdmins.forEach(aSingleUser => {
         if(aSingleUser === "user1"){
@@ -372,7 +372,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 ```javascript
 const addProduct = (name, price) =>{
-  const productNameRegexNoSpace = /^\S*$/;//no white-space allowd
+  const productNameRegexNoSpace = /^\S*$/;//no white-space allowed
 
   if(!productNameRegexNoSpace.test(name))
     return false;//this path never reached due to dull input
@@ -470,7 +470,7 @@ It’s worth noting that there are few cases where long & external snapshots are
  "Examples with Jest")
 
 ```javascript
-it('TestJavaScript.com is renderd correctly', () => {
+it('TestJavaScript.com is rendered correctly', () => {
 
 //Arrange
 
@@ -1051,7 +1051,7 @@ With all that said, a word of caution is in order: this technique works for smal
 
 <br/>
 
-### :clap: Doing It Right Example: Working realstically with a fully rendered component
+### :clap: Doing It Right Example: Working realistically with a fully rendered component
 
 ![Examples with React](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React") ![Examples with Enzyme](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg
@@ -1083,7 +1083,6 @@ test('Realistic approach: When clicked to show filters, filters are displayed', 
     expect(wrapper.text().includes('Choose Filter'));
     // This is how the user will approach this element: by text
 })
-
 
 ```
 
