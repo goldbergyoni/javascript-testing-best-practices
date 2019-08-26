@@ -75,95 +75,93 @@ This can be achieved by selectively cherry-picking techniques, tools and test ta
  
 Most of the advice below are derivatives of this principle.
 
-### Ready to start?
-
+### 시작할 준비 되셨나요?
 
 <br/><br/>
 
-# Section 1: The Test Anatomy
+# 섹션 1: 테스트 해부
 
 <br/>
 
-## ⚪ ️ 1.1 Include 3 parts in each test name
+## ⚪ ️ 1.1 각 테스트 이름은 세 부분으로 구성된다.
 
-:white_check_mark: **Do:** A test report should tell whether the current application revision satisfies the requirements for the people who are not necessarily familiar with the code: the tester, the DevOps engineer who is deploying and the future you two years from now. This can be achieved best if the tests speak at the requirements level and include 3 parts:
+:white_check_mark: **이렇게 해라:** 테스트는 현재 애플리케이션의 개정판이 요구 사항을 충족하는지 여부를 다음과 같은 사람들에게 알려야합니다: 배포를 할 테스터, DevOps 엔지니어, 2년 후의 미래에 코드가 익숙하지 않은 사람. 테스트가 요구 사항 수준에서 작성되어 있고 세 부분으로 구성되어 있다면, 목적을 이룰 수 있습니다:
 
-(1) What is being tested? For example, the ProductsService.addNewProduct method
+(1) 무엇을 테스트하고 있는가? 예) 제품서비스.새제품추가 메서드
 
-(2) Under what circumstances and scenario? For example, no price is passed to the method
+(2) 어떤 상황과 시나리오에서? 예) 메서드에 가격이 전달되지 않는다.
 
-(3) What is the expected result? For example, the new product is not approved
-
-<br/>
-
-
-❌ **Otherwise:** A deployment just failed, a test named “Add product” failed. Does this tell you what exactly is malfunctioning?
+(3) 예상되는 결과는 무엇인가? 예) 신제품은 승인되지 않는다.
 
 <br/>
 
-**👇 Note:** Each bullet has code examples and sometime also an image illustration. Click to expand
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 배포에 실패하였고 "제품 추가" 라는 테스트에 실패하였다. 이것이 정확히 어떤 오작동 인지를 알려주나요?
+
+<br/>
+
+**👇 주의:** 각 글에는 코드 예제가 있으며 때로는 이미지도 있습니다. 클릭하여 확장
+
+<details><summary>✏ <b>코드 예제</b></summary>
   
 <br/>
   
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: 올바른 예: 세 부분으로 구성된 테스트 이름
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Mocha-blue.svg
  "Using Mocha to illustrate the idea")
 
 ```javascript
-//1. unit under test
-describe('Products Service', function() {
-  describe('Add new product', function() {
-    //2. scenario and 3. expectation
-    it('When no price is specified, then the product status is pending approval', ()=> {
+//1. 단위 테스트
+describe('제품 서비스', function() {
+  describe('새 제품 추가', function() {
+    //2. 시나리오 3. 예상
+    it('가격을 지정하지 않으면 제품 상태는 승인 대기중이다.', ()=> {
       const newProduct = new ProductService().add(...);
-      expect(newProduct.status).to.equal('pendingApproval');
+      expect(newProduct.status).to.equal('승인 대기');
     });
   });
 });
-
 ```
+
 <br/>
 
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: 올바른 예: 세 부분으로 구성된 테스트 이름
+
 ![alt text](/assets/bp-1-3-parts.jpeg "A test name that constitutes 3 parts")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️ 1.2 Structure tests by the AAA pattern
+## ⚪ ️ 1.2 AAA 패턴에 의한 테스트 구조
 
-:white_check_mark: **Do:** Structure your tests with 3 well-separated sections Arrange, Act & Assert (AAA). Following this structure guarantees that the reader spends no brain CPU on understanding the test plan:
+:white_check_mark: **이렇게 해라:** 3개의 잘 잘 구분된 섹션 AAA(Arrange, Act, Assert)으로 테스트를 구성하십시오. 이 구조를 따르면 테스트를 쉽게 읽을 수 있습니다:
 
-1st A - Arrange: All the setup code to bring the system to the scenario the test aims to simulate. This might include instantiating the unit under test constructor, adding DB records, mocking/stubbing on objects and any other preparation code
+첫번째 A - Arrange(준비): 테스트가 목표로 하는 시나리오에 필요한 시스템을 제공하기 위한 모든 설정 코드. 여기에는 테스트 생성자의 단위 인스턴스화, DB 데이터 추가, 객체에 대한 mock/stub 및 기타 준비 코드가 포함될 수 있습니다.
 
-2nd A - Act: Execute the unit under test. Usually 1 line of code
+두번째 A - Act(행동): 단위 테스트를 실행. 일반적으로 코드 한줄
 
-3rd A - Assert: Ensure that the received value satisfies the expectation. Usually 1 line of code
-
-
-<br/>
-
-
-❌ **Otherwise:** Not only you spend long daily hours on understanding the main code, now also what should have been the simple part of the day (testing) stretches your brain
+세번째 A - Assert(주장, 예상): 받은 예상값이 충족하는지 확인하십시오. 일반적으로 코드 한줄
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 테스트는 오늘 일의 아주 단순한 부분에 불과하지만, 메인 코드를 이해하는데 많은 시간을 낭비 할 것입니다.
 
 <br/>
 
-### :clap: Doing It Right Example: A test structured with the AAA pattern
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: AAA 패턴으로 구성된 테스트
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Jest")
-  
+
 ```javascript
-describe('Customer classifier', () => {
-    test('When customer spent more than 500$, should be classified as premium', () => {
+describe('고객 분류기', () => {
+    test('고객이 500달러 이상을 소비한 경우 프리미엄으로 분류해야 합니다.', () => {
         //Arrange
         const customerToClassify = {spent:505, joined: new Date(), id:1}
         const DBStub = sinon.stub(dataAccess, "getCustomer")
@@ -180,10 +178,10 @@ describe('Customer classifier', () => {
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: No separation, one bulk, harder to interpret
+### :thumbsdown: 올바르지 않은 예: 분리가 없고 한 벌로 작성되어 있어 해석하기 어렵다.
 
 ```javascript
-test('Should be classified as premium', () => {
+test('프리미엄으로 분류해야 합니다.', () => {
         const customerToClassify = {spent:505, joined: new Date(), id:1}
         const DBStub = sinon.stub(dataAccess, "getCustomer")
             .reply({id:1, classification: 'regular'});
@@ -192,15 +190,9 @@ test('Should be classified as premium', () => {
     });
 ```
 
-
 </details>
 
-
-
 <br/><br/>
-
-
-
 
 ## ⚪ ️1.3 Describe expectations in a product language: use BDD-style assertions
 
