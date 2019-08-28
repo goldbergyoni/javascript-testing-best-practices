@@ -19,6 +19,7 @@ JavaScript 및 Node.js에 대한 A부터 Z까지의 믿음직한 가이드입니
 <br/>
 
 ### Yoni Goldberg 작성
+
 * JavaScript & Node.js 컨설턴트
 * 👨‍🏫 [나의 테스팅 워크샵](https://www.testjavascript.com) -  유럽과 미국에서의 [제 워크샵](https://www.testjavascript.com)에 대해서 알아보십시오.
 * [트위터 팔로우 하기](https://twitter.com/goldbergyoni/)
@@ -178,50 +179,47 @@ describe('고객 분류기', () => {
 
 <br/>
 
-### :thumbsdown: 올바르지 않은 예: 분리가 없고 한 벌로 작성되어 있어 해석하기 어렵다.
+### :thumbsdown: 올바르지 않은 예: 분리 되어있지 않고 한 벌로 작성되어 있어 해석하기 어렵다.
 
 ```javascript
 test('프리미엄으로 분류해야 합니다.', () => {
-        const customerToClassify = {spent:505, joined: new Date(), id:1}
-        const DBStub = sinon.stub(dataAccess, "getCustomer")
-            .reply({id:1, classification: 'regular'});
-        const receivedClassification = customerClassifier.classifyCustomer(customerToClassify);
-        expect(receivedClassification).toMatch('premium');
-    });
+    const customerToClassify = {spent:505, joined: new Date(), id:1}
+    const DBStub = sinon.stub(dataAccess, "getCustomer")
+        .reply({id:1, classification: 'regular'});
+    const receivedClassification = customerClassifier.classifyCustomer(customerToClassify);
+    expect(receivedClassification).toMatch('premium');
+});
 ```
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️1.3 Describe expectations in a product language: use BDD-style assertions
-
-:white_check_mark: **Do:** Coding your tests in a declarative-style allows the reader to get the grab instantly without spending even a single brain-CPU cycle. When you write an imperative code that is packed with conditional logic the reader is thrown away to an effortful mental mood. In that sense, code the expectation in a human-like language, declarative BDD style using expect or should and not using custom code. If Chai & Jest don’t include the desired assertion and it’s highly repeatable, consider [extending Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) or writing a [custom Chai plugin](https://www.chaijs.com/guide/plugins/)
-<br/>
-
-
-❌ **Otherwise:** The team will write less test and decorate the annoying ones with .skip()
+## ⚪ ️1.3 제품의 언어로 예상값을 설명: BDD 스타일의 Assertion을 사용
+테스트를 선언적 스타일로 작성하면 읽는 사람이 즉시 파악할 수 있습니다. 조건부 논리로 채워진 명령형 코드로 작성하면 테스트를 읽기가 쉽지 않습니다. 그런 의미에서 임의의 사용자 정의 코드를 사용하지 말고, 선언적 BDD 스타일의 expect 또는 should를 사용하여 인간과 같은 언어로 테스트를 작성하십시오. Chai & Jest에 원하는 Assertion이 포함되어 있지 않고 반복성이 높은 경우 [extending Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) 혹은 [custom Chai plugin](https://www.chaijs.com/guide/plugins/) 작성을 고려하십시오.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary><br/>
+❌ **그렇지 않으면:** 팀은 테스트를 덜 작성하고 성가신 것들을 .skip() 으로 장식합니다.
+
+<br/>
+
+<details><summary>✏ <b>코드 예제</b></summary><br/>
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
   
-  ### :thumbsdown: Anti Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
+  ### :thumbsdown: 올바르지 않은 예: 읽는 사람은 테스트 스토리를 이해하기 위해 짧지않은 명령형 코드를 훑어봐야 합니다.
 
 ```javascript
-test("When asking for an admin, ensure only ordered admins in results" , () => {
-    //assuming we've added here two admins "admin1", "admin2" and "user1"
+test("관리자 요청이 들어오면 정렬된 관리자 목록만 결과에 포함된다." , () => {
+    // 여기에 두 명의 관리자 "admin1", "admin2" 및 "user1" 을 추가했다고 가정합니다.
     const allAdmins = getUsers({adminOnly:true});
-
     const admin1Found, adming2Found = false;
-
     allAdmins.forEach(aSingleUser => {
         if(aSingleUser === "user1"){
-            assert.notEqual(aSingleUser, "user1", "A user was found and not admin");
+            assert.notEqual(aSingleUser, "user1", "관리자가 아닌 사용자를 찾았다.");
         }
         if(aSingleUser==="admin1"){
             admin1Found = true;
@@ -230,78 +228,71 @@ test("When asking for an admin, ensure only ordered admins in results" , () => {
             admin2Found = true;
         }
     });
-
     if(!admin1Found || !admin2Found ){
-        throw new Error("Not all admins were returned");
+        throw new Error("모든 관리자가 반환되지 않았다.");
     }
 });
-
 ```
+
 <br/>
 
-### :clap: Doing It Right Example: Skimming through the following declarative test is a breeze
-
+### :clap: 올바른 예: 다음과 같은 선언적 테스트는 이해하기 쉽습니다.
 
 ```javascript
-it("When asking for an admin, ensure only ordered admins in results" , () => {
-    //assuming we've added here two admins
+it("관리자 요청이 들어오면 정렬된 관리자 목록만 결과에 포함된다." , () => {
+    // 여기에 두 명의 관리자를 추가했다고 가정합니다.
     const allAdmins = getUsers({adminOnly:true});
-
     expect(allAdmins).to.include.ordered.members(["admin1" , "admin2"])
-  .but.not.include.ordered.members(["user1"]);
+                     .but.not.include.ordered.members(["user1"]);
 });
-
 ```
 
 </details>
-
 
 <br/><br/>
 
+## ⚪ ️  1.4 블랙박스 테스트에 충실: public method만 테스트
 
-## ⚪ ️  1.4 Stick to black-box testing: Test only public methods
-
-:white_check_mark: **Do:** Testing the internals brings huge overhead for almost nothing. If your code/API deliver the right results, should you really invest your next 3 hours in testing HOW it worked internally and then maintain these fragile tests? Whenever a public behavior is checked, the private implementation is also implicitly tested and your tests will break only if there is a certain problem (e.g. wrong output). This approach is also referred to as behavioral testing. On the other side, should you test the internals (white box approach) — your focus shifts from planning the component outcome to nitty-gritty details and your test might break because of minor code refactors although the results are fine- this dramatically increases the maintenance burden
-<br/>
-
-
-❌ **Otherwise:** Your test behaves like the [child who cries wolf](https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf): shoot out loud false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday a real bug will get ignored…
-
-<br/>
-<details><summary>✏ <b>Code Examples</b></summary>
+내부테스트는 거의 아무것도 하지 않는 엄청난 오버헤드를 발생시킵니다. 만약 당신의 코드 혹은 API가 올바른 결과를 반환한다면, 내부적으로 어떻게 동작했는지의 테스트에 3시간을 투자해야 합니까? 깨지기 쉬운 테스트를 유지해야 합니까? public method가 잘 동작할 때마다 private method 또한 암시적으로 테스트가 되고, 특정 문제(예. 잘못된 출력)가 있는 경우에만 테스트가 깨집니다. 이 접근법은 행동 테스트라고도 합니다. 다른 한편으로 당신은 내부 테스트를 해야합니까?(화이트박스 접근) - 컴포넌트를 설계하는 것에서 핵심 세부 사항으로 초점이 이동하거나 작은 코드의 리펙토링으로 인해 테스트가 중단 될 수 있지만, 결과는 훌륭합니다. - 이는 유지보수 부담을 크게 증가시킵니다.
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: A test case is testing the internals for no good reason
+❌ **그렇지 않으면:** 당신의 테스트는 다음과 같이 동작합니다. [양치기 소년](https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf): 늑대가 나타났다!(예. private 변수가 변경되어 테스트에 실패하였습니다). 당연히 사람들은, 언젠가 진짜 버그가 무시될 때 까지 CI 알람을 무시하기 시작할 것입니다...
+
+<br/>
+
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :thumbsdown: 올바르지 않은 예: 테스트 케이스는 이유없이 내부를 테스트합니다.
+
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Mocha & Chai")
+
 ```javascript
 class ProductService{
-  //this method is only used internally
-  //Change this name will make the tests fail
-  calculateVAT(priceWithoutVAT){
-    return {finalPrice: priceWithoutVAT * 1.2};
-    //Change the result format or key name above will make the tests fail
-  }
-  //public method
-  getPrice(productId){
-    const desiredProduct= DB.getProduct(productId);
-    finalPrice = this.calculateVATAdd(desiredProduct.price).finalPrice;
-  }
+    // 이 method 는 내부에서만 사용됩니다.
+    // 이 이름을 변경하면 테스트가 실패합니다.
+    calculateVAT(priceWithoutVAT){
+        return {finalPrice: priceWithoutVAT * 1.2};
+        // 결과 형식이나 키 이름을 변경하면 테스트가 실패합니다.
+    }
+    // public method
+    getPrice(productId){
+        const desiredProduct= DB.getProduct(productId);
+        finalPrice = this.calculateVATAdd(desiredProduct.price).finalPrice;
+    }
 }
 
-
-it("White-box test: When the internal methods get 0 vat, it return 0 response", async () => {
-    //There's no requirement to allow users to calculate the VAT, only show the final price. Nevertheless we falsely insist here to test the class internals
+it("화이트박스 테스트: 내부 method가 VAT 0을 받으면 0을 반환합니다.", async () => {
+    // 사용자가 VAT를 계산할 수 있게 하는 요구사항은 없으며, 최종 가격만 표시합니다.
+    // 그럼에도 불구하고 여기에서 내부 테스트 수행
     expect(new ProductService().calculateVATAdd(0).finalPrice).to.equal(0);
 });
-
 ```
 
 </details>
-
-
-
 
 <br/><br/>
 
