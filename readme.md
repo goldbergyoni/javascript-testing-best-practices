@@ -2023,3 +2023,9 @@ Took care to revise, improve, lint and polish all the texts
 **Role:** Concept, design and great advice
 
 **About:** A savvy frontend developer, CSS expert and emojis freak
+
+## [Kyle Martin](https://github.com/js-kyle)
+
+**Role:** Helps keep this project running, and reviews security related practices
+
+**About:** Loves working on Node.js projects and web application security.
