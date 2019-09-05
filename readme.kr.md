@@ -69,7 +69,7 @@ JavaScript 및 Node.js에 대한 A부터 Z까지의 믿음직한 가이드입니
 
 테스트는 친절하고 웃는 동료와 함께 일하는 것이 즐거울 수 있는 기회이고, 적은 투자로 큰 가치를 제공하는 것입니다. 과학은 우리에게 두 개의 뇌 시스템이 있다고 말합니다. 빈 도로에서 자동차를 운전하는 등의 간편한 활동에 사용되는 시스템 1, 그리고 수학 방정식을 푸는 것과 같이 복잡하고 의식적인 연산을 위한 시스템 2. 테스트 코드를 볼 때 수학 문제를 푸는 것 같은게 아닌, HTML 문서를 수정하는 것만 큼 쉬워야하는 시스템 1에 맞게 테스트를 설계하십시오.
 
-선택적인 체리픽 기술, 툴 그리고 비용-효율적이고 뛰어난 ROI를 제공하는 테스트 대상 선정으로 목적을 이러한 달성할 수 있습니다. 필요한 만큼의 테스트, 융통성 있게 유자하려는 노력, 때로는 애자일함과 단순성을 위해 일부 테스트와 신뢰성을 포기하는 것도 가치가 있습니다.
+선택적인 체리픽 기술, 툴 그리고 비용-효율적이고 뛰어난 ROI를 제공하는 테스트 대상 선정으로 이러한 목적을 달성할 수 있습니다. 필요한 만큼의 테스트, 융통성 있게 유지하려는 노력, 때로는 애자일함과 단순성을 위해 일부 테스트와 신뢰성을 포기하는 것도 가치가 있습니다.
 
 ![alt text](/assets/headspace.png "우리 머리속은 부가적인 복잡한 것들을 생각할 여유가 없습니다.")
  
@@ -295,53 +295,54 @@ it("화이트박스 테스트: 내부 method가 VAT 0을 받으면 0을 반환�
 
 <br/><br/>
 
-## ⚪ ️ ️1.5 Choose the right test doubles: Avoid mocks in favor of stubs and spies
+## ⚪ ️ 1.5 올바른 테스트 더블 선택: Stub과 Spy를 위한 Mock을 피하십시오.
 
-:white_check_mark: **Do:**  Test doubles are a necessary evil because they are coupled to the application internals, yet some provide an immense value (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Read here a reminder about test doubles: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
+:white_check_mark: **이렇게 해라:**  테스트 더블은 어플리케이션 내부에 연결되어 있기때문에 필요악이지만 일부는 엄청난 가치를 제공합니다(<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[테스트 더블에 대한 알림: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
 
-Before using test doubles, ask a very simple question: Do I use it to test functionality that appears, or could appear, in the requirements document? If no, it’s a smell of white-box testing.
+테스트 더블을 사용하기 전에 간단한 질문: 요구사항 문서에 있거나 있을 수 있는 기능을 테스트하는 데 테스트 더블을 사용합니까? 만약 아니라면 화이트박스 테스트 낌새가 보입니다.
 
-For example, if you want to test what your app behaves reasonably when the payment service is down, you might stub the payment service and trigger some ‘No Response’ return to ensure that the unit under test returns the right value. This checks our application behavior/response/outcome under certain scenarios. You might also use a spy to assert that an email was sent when that service is down — this is again a behavioral check which is likely to appear in a requirements doc (“Send an email if payment couldn’t be saved”). On the flip side, if you mock the Payment service and ensure that it was called with the right JavaScript types — then your test is focused on internal things that got nothing with the application functionality and are likely to change frequently
+예를 들어, 결제 서비스가 중단되었을 때 앱이 적절하게 작동하는 것을 테스트하려는 경우, 테스트중인 단위가 올바른 값을 반환하도록, 결제 서비스를 stub하고 '응답 없음' 반환을 트리거 할 수 있습니다.
+이것은 특정 시나리오에서 애플리케이션의 동작/응답/결과를 확인합니다. 그리고 spy를 사용하여 해당 서비스가 중단되었을 때 메일이 보내지는지를 assert 할 수 있습니다. 이것은 다시 요구사항 문서에 있을 수 있는 행동에 대한 점검입니다(결제가 저장되지 않으면 메일은 보낸다). 반대로, 결제 서비스를 mock 하고 올바른 JavaScript 타입으로 호출 되었는지를 확인한다면 - 당신의 테스트는 애플리케이션 기능에 전혀 영향을 받지 않고 자주 변경될 수 있는 내부 구현에 초점을 둔 경우입니다.
 <br/>
 
-
-❌ **Otherwise:** Any refactoring of code mandates searching for all the mocks in the code and updating accordingly. Tests become a burden rather than a helpful friend
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 코드를 리펙토링 할 때, 모든 mock을 찾아서 수정해야 합니다. 테스트가 도움이 아닌 부담이 됩니다.
 
 <br/>
 
-### :thumbsdown: Anti-pattern example: Mocks focus on the internals
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :thumbsdown: 올바르지 않은 예: 내부에 초점을 둔 mock
+
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg
  "Examples with Mocha & Chai")
+ 
 ```javascript
-it("When a valid product is about to be deleted, ensure data access DAL was called once, with the right product and right config", async () => {
-    //Assume we already added a product
-    const dataAccessMock = sinon.mock(DAL);
-    //hmmm BAD: testing the internals is actually our main goal here, not just a side-effect
+it("유효한 제품을 삭제하려고 할 때, 올바른 제품과 올바른 구성 정보로 데이터 액세스 DAL을 한 번 호출했는지 확인한다", async () => {
+    // 이미 제품을 추가했다고 가정
+    const dataAccessMock = sinon.mock(DAL);
+    // 좋지 않음: 내부 테스트는 side-effect를 위해서가 주요 목적을 위해서 입니다.
     dataAccessMock.expects("deleteProduct").once().withArgs(DBConfig, theProductWeJustAdded, true, false);
     new ProductService().deletePrice(theProductWeJustAdded);
     dataAccessMock.verify();
 });
 ```
+
 <br/>
 
-### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
+### :clap:올바른 예: spy는 요구사항을 테스트하는데 초점을 두고있지만, 내부를 건드리는 side-effect를 피할 순 없습니다.
 
 ```javascript
-it("When a valid product is about to be deleted, ensure an email is sent", async () => {
-    //Assume we already added here a product
+it("유효한 제품을 삭제하려고 할 때, 메일을 보낸다", async () => {
+    // 이미 제품을 추가했다고 가정
     const spy = sinon.spy(Emailer.prototype, "sendEmail");
     new ProductService().deletePrice(theProductWeJustAdded);
-    //hmmm OK: we deal with internals? Yes, but as a side effect of testing the requirements (sending an email)
+    // 좋음: 우리는 내부를 다루는가? 그렇다, 그러나 요구사항(이메일을 보낸다)에 대한 테스트의 side-effect이다.
 });
 ```
 
 </details>
-
-
 
 <br/><br/>
 
