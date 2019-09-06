@@ -1338,7 +1338,7 @@ test('When no products exist, show the appropriate message', () => {
 
 <br/>
 
-❌ **Otherwise:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very differnt than expected
+❌ **Otherwise:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very different than expected
 
 <br/>
 
