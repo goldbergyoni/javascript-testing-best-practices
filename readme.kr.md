@@ -419,7 +419,7 @@ it("더 나은 것: 유효한 제품이 추가된다면, 성공을 얻는다.", 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>코드 예제</b></summary>
 
 <br/>
 
