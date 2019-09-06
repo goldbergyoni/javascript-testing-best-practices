@@ -388,7 +388,7 @@ test("잘못된 예제: 유효한 속성과 함께 제품을 추가한다면, �
 ```
 <br/>
 
-### :clap:올바른 예: 무작위한 현실적인 인풋Randomizing realistic input
+### :clap:올바른 예: 무작위한 현실적인 인풋
 ```javascript
 it("더 나은 것: 유효한 제품이 추가된다면, 성공을 얻는다.", async () => {
     const addProductResult = addProduct(faker.commerce.productName(), faker.random.number());
