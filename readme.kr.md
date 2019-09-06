@@ -346,22 +346,22 @@ it("유효한 제품을 삭제하려고 할 때, 메일을 보낸다", async () 
 
 <br/><br/>
 
-## ⚪ ️1.6 Don’t “foo”, use realistic input data
+## ⚪ ️1.6 의미없는 인풋 데이터를 사용하지 말고, 실제와 같은 인풋 데이터를 사용해라
 
-:white_check_mark: **Do:**  Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not instead) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? see next bullet (property-based testing).
+:white_check_mark: **이렇게 해라:**  흔히 제품의 버그들은 매우 특수한 인풋데이터를 통해 나타납니다 - 테스트 인풋이 혈실적일 수록 버그를 조기에 발견할 가능성이 높아집니다. 실제 데이터와 다양성 및 형태가 유사한 데이터를 생성해 주는 [Faker](https://www.npmjs.com/package/faker) 같은 전용 라이브러리들을 사용하십시오. 이런 라이브러리들은 실제같은 전화번호, 사용자 이름, 신용카드, 회사명 그리고 심지어 'lorem ipsum'같은 문자등을 생성할 수도 있습니다. 당신은 가상의 데이터를 사용하여 테스트(단위 테스트 위에서)를 무작위화 하거나 심지어 실제 환경으로부터의 실제 데이터를 임포트 할수도 있습니다. 다음 단계를 얻기를 원하십니까? 그렇다면 아래로 가십시오 (property-based testing).
 <br/>
 
 
-❌ **Otherwise:** All your development testing will falsely seem green when you use synthetic inputs like “Foo” but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
+❌ **그렇지 않다면:** "Foo"와 같은 인풋을 사용하면 당신의 모든 테스트가 모두 통과한것 처럼 표시되지만, 실제 환경에서는 해커가 “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA” 같은 인풋을 전달해 실패 할수도 있습니다.
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>코드 예제</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test suite that passes due to non-realistic data
+### :thumbsdown: 올바르지 않은 예: 현실적이지 않은 데이터 때문에 통과하는 테스트
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
@@ -369,34 +369,33 @@ it("유효한 제품을 삭제하려고 할 때, 메일을 보낸다", async () 
  
 ```javascript
 const addProduct = (name, price) =>{
-  const productNameRegexNoSpace = /^\S*$/;//no white-space allowd
+  const productNameRegexNoSpace = /^\S*$/;// 공백은 허용되지 않음
 
   if(!productNameRegexNoSpace.test(name))
-    return false;//this path never reached due to dull input
+    return false;//도달하지 않는 곳
 
     //some logic here
     return true;
 };
 
-test("Wrong: When adding new product with valid properties, get successful confirmation", async () => {
-    //The string "Foo" which is used in all tests never triggers a false result
+test("잘못된 예제: 유효한 속성과 함께 제품을 추가한다면, 성공을 얻는다.", async () => {
+    //모든 테스트에서 false 가 리턴되지 않는 "Foo" 인풋을 사용
     const addProductResult = addProduct("Foo", 5);
     expect(addProductResult).toBe(true);
-    //Positive-false: the operation succeeded because we never tried with long
-    //product name including spaces
+    //거짓된 성공: 공백을 포함하는 문자열을 사용하지 않았기 때문에 테스트는 성공한다.
 });
 
 ```
 <br/>
 
-### :clap:Doing It Right Example: Randomizing realistic input
+### :clap:올바른 예: 무작위한 현실적인 인풋Randomizing realistic input
 ```javascript
-it("Better: When adding new valid product, get successful confirmation", async () => {
+it("더 나은 것: 유효한 제품이 추가된다면, 성공을 얻는다.", async () => {
     const addProductResult = addProduct(faker.commerce.productName(), faker.random.number());
-    //Generated random input: {'Sleek Cotton Computer',  85481}
+    //생성된 무작위 인풋: {'Sleek Cotton Computer',  85481}
     expect(addProductResult).to.be.true;
-    //Test failed, the random input triggered some path we never planned for.
-    //We discovered a bug early!
+    //테스트는 실패한다, 무작위 인풋은 우리가 계획하지 않은 일이 일어나도록 만든다.
+    //우리는 조기에 버그를 발견했다!
 });
 ```
 
