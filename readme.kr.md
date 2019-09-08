@@ -443,30 +443,31 @@ describe('Product service', () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.8 If needed, use only short & inline snapshots
+## ⚪ ️ 1.8 필요한 경우 짧거나 인라인 스냅샷만 사용하십시오.
 
-:white_check_mark: **Do:** When there is a need for [snapshot testing](https://jestjs.io/docs/en/snapshot-testing), use only short and focused snapshots (i.e. 3-7 lines) that are included as part of the test ([Inline Snapshot](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots)) and not within external files. Keeping this guideline will ensure your tests remain self-explanatory and less fragile.
+:white_check_mark: **이렇게 해라:** [스냅샷 테스트](https://jestjs.io/docs/en/snapshot-testing)가 필요한 경우 외부 파일이 아닌 테스트의 일부 ([인라인 스냅샷](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots))에 포함 된 짧고 집중된 스냅샷(3~7 라인)만 사용하십시오. 이 지침을 따르면 따로 설명이 필요없고 잘 깨지지 않는 테스트가 됩니다.
 
-On the other hand, ‘classic snapshots’ tutorials and tools encourage to store big files (e.g. component rendering markup, API JSON result) over some external medium and ensure each time when the test run to compare the received result with the saved version. This, for example, can implicitly couple our test to 1000 lines with 3000 data values that the test writer never read and reasoned about. Why is this wrong? By doing so, there are 1000 reasons for your test to fail - it’s enough for a single line to change for the snapshot to get invalid and this is likely to happen a lot. How frequently? for every space, comment or minor CSS/HTML change. Not only this, the test name wouldn’t give a clue about the failure as it just checks that 1000 lines didn’t change, also it encourages to the test writer to accept as the desired true a long document he couldn’t inspect and verify. All of these are symptoms of obscure and eager test that is not focused and aims to achieve too much
+반면에, '고전적인 스냅샷' 튜토리얼 및 도구는 외부에 큰 파일(예: 구성 요소 랜더링 마크업, API JSON 결과)를 저장하고, 테스트를 실행할 때 마다 수신된 결과를 저장된 버전과 비교하기를 권장합니다. 예를 들어, 이것은 1,000 라인(우리가 절대 읽지 않고 추론하지 않을 3,000개의 데이터 값을 가진)의 코드를 우리 테스트에 암시적으로 연결할 수 있습니다. 왜 이것이 잘못 되었을까요? 이렇게하면 테스트에 실패할 1,000 가지 이유가 생깁니다. 한줄만 변경되어도 스냅샷이 유효하지 않게 되고, 이런일이 일어날 가능성이 높습니다. 얼마나 자주? 모든 공백, 주석에서 혹은 사소한 CSS/HTML 변경에 대해서. 뿐만 아니라 테스트 이름은 1,000 라인이 변경되지 않았는지를 나타내기 때분에, 실패에 대한 단서를 제공하지 않습니다. 또한 테스트 작성자가 긴 문서(검사하고 확인할 수 없는)를 받아들이게끔 합니다. 이 모든 것은 초점이 맞지않고 너무 많은 것을 달성하려는 모호하고 간절한 테스트 증상입니다.
 
-It’s worth noting that there are few cases where long & external snapshots are acceptable - when asserting on schema and not data (extracting out values and focusing on fields) or when the received document rarely changes
-<br/>
-
-❌ **Otherwise:** A UI test fails. The code seems right, the screen renders perfect pixels, what happened? your snapshot testing just found a difference from the origin document to current received one - a single space character was added to the markdown... 
+긴 외부 스냅샷이 허용되는 경우가 거의 없다는 점은 주목할 가치가 있습니다 - 데이터가 아닌 스키마를 assert 할 때(값 추출 및 필드에 집중) 또는 수신된 문서가 거의 변경되지 않는 경우
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않다면:** UI 테스트가 실패합니다. 코드가 문제없어 보이고 화면이 완벽한 픽셀을 렌더링합니다. 어떻게 되었습니까? 스냅샷 테스트에서 원본 문서와 현재 수신된 문서와의 차이점을 발견했습니다. 빈칸 하나가 마크 다운에 추가되었습니다...
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Coupling our test to unseen 2000 lines of code
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :thumbsdown: 올바르지 않은 예: 보이지 않는 2,000 라인의 코드를 우리 테스트에 연결
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
  
 ```javascript
-it('TestJavaScript.com is renderd correctly', ()  => {
+it('TestJavaScript.com 이 올바르게 랜더링 된다.', ()  => {
 
 //Arrange
 
@@ -477,16 +478,18 @@ const receivedPage = renderer
 
 //Assert
 expect(receivedPage).toMatchSnapshot();
-//We now implicitly maintain a 2000 lines long document
-//every additional line break or comment - will break this test
+// 이제 2,000 라인의 문서를 암묵적으로 유지합니다.
+// 모든 줄바꿈 또는 주석이 테스트를 망가뜨립니다.
 
 });
 ```
+
 <br/>
 
-### :clap: Doing It Right Example: Expectations are visible and focused
+### :clap: 올바른 예: expectation이 잘 보이고 집중된다.
+
 ```javascript
-it('When visiting TestJavaScript.com home page, a menu is displayed', () => {
+it('TestJavaScript.com 홈페이지를 방문하면 메뉴가 보인다.', () => {
 //Arrange
 
 //Act
@@ -508,7 +511,6 @@ expect(menu).toMatchInlineSnapshot(`
 ```
 
 </details>
-
 
 <br/><br/>
 
