@@ -99,9 +99,9 @@ JavaScript 및 Node.js에 대한 A부터 Z까지의 믿음직한 가이드입니
 
 <br/>
 
-**👇 주의:** 각 글에는 코드 예제가 있으며 때로는 이미지도 있습니다. 클릭하여 확장
+**👇 주의:** 각 글에는 예제 코드가 있으며 때로는 이미지도 있습니다. 클릭하여 확장
 
-<details><summary>✏ <b>코드 예제</b></summary>
+<details><summary>✏ <b>예제 코드</b></summary>
   
 <br/>
   
@@ -149,7 +149,7 @@ describe('제품 서비스', function() {
 
 <br/>
 
-<details><summary>✏ <b>코드 예제</b></summary>
+<details><summary>✏ <b>예제 코드</b></summary>
 
 <br/>
 
@@ -203,7 +203,7 @@ test('프리미엄으로 분류해야 합니다.', () => {
 
 <br/>
 
-<details><summary>✏ <b>코드 예제</b></summary><br/>
+<details><summary>✏ <b>예제 코드</b></summary><br/>
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
@@ -260,7 +260,7 @@ it("관리자 요청이 들어오면 정렬된 관리자 목록만 결과에 포
 
 <br/>
 
-<details><summary>✏ <b>코드 예제</b></summary>
+<details><summary>✏ <b>예제 코드</b></summary>
 
 <br/>
 
@@ -309,7 +309,7 @@ it("화이트박스 테스트: 내부 method가 VAT 0을 받으면 0을 반환�
 
 <br/>
 
-<details><summary>✏ <b>코드 예제</b></summary>
+<details><summary>✏ <b>예제 코드</b></summary>
 
 <br/>
 
@@ -356,7 +356,7 @@ it("유효한 제품을 삭제하려고 할 때, 메일을 보낸다", async () 
 
 <br/>
 
-<details><summary>✏ <b>코드 예제</b></summary>
+<details><summary>✏ <b>예제 코드</b></summary>
 
 <br/>
 
@@ -415,7 +415,7 @@ it("더 나은 것: 유효한 제품이 추가된다면, 성공을 얻는다.", 
 
 <br/>
 
-<details><summary>✏ <b>코드 예제</b></summary>
+<details><summary>✏ <b>예제 코드</b></summary>
 
 <br/>
 
@@ -457,7 +457,7 @@ describe('Product service', () => {
 
 <br/>
 
-<details><summary>✏ <b>코드 예제</b></summary>
+<details><summary>✏ <b>예제 코드</b></summary>
 
 <br/>
 
@@ -514,51 +514,50 @@ expect(menu).toMatchInlineSnapshot(`
 
 <br/><br/>
 
-## ⚪ ️1.9 Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️ 1.9 테스트 데이터를 글로벌로 하지말고 테스트별로 따로 추가하라.
 
-:white_check_mark: **Do:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests ([also known as ‘test fixture’](https://en.wikipedia.org/wiki/Test_fixture)) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
-<br/>
-
-
-❌ **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
-
+:white_check_mark: **이렇게 해라:** 황금률에 따르면(섹션 0), 각 테스트는 커플링을 방지하고 테스트 흐름을 쉽게 추론하기 위해 자체 DB 데이터를 추가하고 실행해야 합니다. 실제로 성능 향상(테스트를 실행하기 전에 DB 데이터를 준비(['테스트 픽스쳐'라고도 합니다](https://en.wikipedia.org/wiki/Test_fixture)))을 위해 이를 위반하는 테스터들이 많습니다. 성능은 실제로 유효한 문제이지만 완화될 수 있습니다(2.2 컴포넌트 테스트 참고). 그러나 테스트 복잡성은 대부분의 다른 고려사항들을 통제해야 하는 고통을 수반합니다. 각 테스트에 필요한 DB 레코드를 명시적으로 추가하고, 해당 데이터에 대해서만 테스트를 수행하십시오. 성능이 중요한 문제가 되는 경우 - 데이터를 변경하지 않는 테스트 모음(예: 쿼리)에 대해서 데이터를 준비하는 형태로 타협할 수 있습니다.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 테스트 실패, 배포 중단으로 팀원들이 귀중한 시간을 소비할 것입니다. 버그가 있습니까? 조사해보니 '없습니다' - 두 테스트에서 동일한 테스트 데이터를 변겨안 것으로 보입니다.
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :thumbsdown: 올바르지 않은 예: 테스트는 독립적이지 않으며 글로벌 훅에 의한 DB 데이터에 의존
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Jest")
  
 ```javascript
 before(() => {
-  //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
+  // 사이트 및 관리자 데이터를 DB에 추가. 데이터는 어디에 있습니까? 외부에. 외부 JSON 또는 마이그레이션 프레임워크에
   await DB.AddSeedDataFromJson('seed.json');
 });
-it("When updating site name, get successful confirmation", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+it("사이트 이름을 업데이트 할 때, 성공을 확인한다.", async () => {
+  // 사이트 이름 "portal"이 존재한다는 것을 알고있습니다. 시드파일에서 봤습니다.
   const siteToUpdate = await SiteService.getSiteByName("Portal");
   const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
   expect(updateNameResult).to.be(true);
 });
-it("When querying by site name, get the right site", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+it("사이트 이름을 쿼리할 때, 올바른 사이트 이름을 얻는다.", async () => {
+  // 사이트 이름 "portal"이 존재한다는 것을 알고있습니다. 시드파일에서 봤습니다.
   const siteToCheck = await SiteService.getSiteByName("Portal");
-  expect(siteToCheck.name).to.be.equal("Portal"); //Failure! The previous test change the name :[
+  expect(siteToCheck.name).to.be.equal("Portal"); // 실패! 이전 테스트에서 이름이 변경되었습니다. ㅠㅠ
 });
-
 ```
+
 <br/>
 
-### :clap: Doing It Right Example: We can stay within the test, each test acts on its own set of data
+### :clap: 올바른 예: 우리는 테스트 내부에만 머물 수 있으며, 각 테스트는 자체 데이터 세트에서 동작합니다.
 
 ```javascript
-it("When updating site name, get successful confirmation", async () => {
-  //test is adding a fresh new records and acting on the records only
+it("사이트 이름을 업데이트 할 때, 성공을 확인한다.", async () => {
+  // 테스트는 새로운 레코드를 새로 추가하고 해당 레코드에 대해서만 동작합니다.
   const siteUnderTest = await SiteService.addSite({
     name: "siteForUpdateTest"
   });
@@ -567,13 +566,11 @@ it("When updating site name, get successful confirmation", async () => {
   
   expect(updateNameResult).to.be(true);
 });
-
 ```
 
 </details>
 
-
-<br/>
+<br/><br/>
 
 ## ⚪ ️ 1.10 Don’t catch errors, expect them
 :white_check_mark: **Do:**   When trying to assert that some input triggers an error, it might look right to use try-catch-finally and asserts that the catch clause was entered. The result is an awkward and verbose test case (example below) that hides the simple test intent and the result expectations
