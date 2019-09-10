@@ -572,97 +572,87 @@ it("사이트 이름을 업데이트 할 때, 성공을 확인한다.", async ()
 
 <br/><br/>
 
-## ⚪ ️ 1.10 Don’t catch errors, expect them
-:white_check_mark: **Do:**   When trying to assert that some input triggers an error, it might look right to use try-catch-finally and asserts that the catch clause was entered. The result is an awkward and verbose test case (example below) that hides the simple test intent and the result expectations
+## ⚪ ️ 1.10 오류를 catch 하지말고 expect 하십시오.
 
-A more elegant alternative is the using the one-line dedicated Chai assertion: expect(method).to.throw (or in Jest: expect(method).toThrow()). It’s absolutely mandatory to also ensure the exception contains a property that tells the error type, otherwise given just a generic error the application won’t be able to do much rather than show a disappointing message to the user
-<br/>
+:white_check_mark: **이렇게 해라:** 오류를 발생시키는 입력값을 assert 할 때, try-catch-finally를 사용하고 catch 블럭에서 assert 하는게 맞아 보일수도 있습니다. 아래 예는 테스트 의도와 결과 expectation을 숨기는 어색하고 장황한 테스트 사례입니다.
 
-
-❌ **Otherwise:** It will be challenging to infer from the test reports (e.g. CI reports) what went wrong
-
+보다 우아한 대안은 한줄짜리 Chai assertion을 사용하는 것 입니다: expect(method).to.throw (혹은 Jest: expect(method).toThrow()). 오류 유형을 알려주는 속성이 예외에 포함되어야 합니다. 그렇지 않고 일반적인 오류를 발생시키면 어플리케이션은 사용자에게 실망스러운 메시지를 표시하는 것 밖에 할 수 없습니다.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 무엇이 잘못되었는지 테스트 보고서(예: CI 보고서)에서 추론하기 어려울 것입니다.
 
 <br/>
 
-### :thumbsdown: Anti-pattern Example: A long test case that tries to assert the existence of error with try-catch
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :thumbsdown: 올바르지 않은 예: try-catch로 오류가 존재한다고 assert 하는 긴 테스트 사례
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Jest")
  
 ```javascript
-it("When no product name, it throws error 400", async() => {
-let errorWeExceptFor = null;
-try {
-  const result = await addNewProduct({name:'nest'});}
-catch (error) {
-  expect(error.code).to.equal('InvalidInput');
-  errorWeExceptFor = error;
-}
-expect(errorWeExceptFor).not.to.be.null;
-//if this assertion fails, the tests results/reports will only show
-//that some value is null, there won't be a word about a missing Exception
+it("제품명이 없으면 400 오류를 던진다.", async() => {
+  let errorWeExceptFor = null;
+  try {
+    const result = await addNewProduct({name:'nest'});}
+  catch (error) {
+    expect(error.code).to.equal('InvalidInput');
+    errorWeExceptFor = error;
+  }
+  expect(errorWeExceptFor).not.to.be.null;
+  // 이 asserting이 실패하면, 테스트 결과에서 누락된 입력값에 대한 단어는 알 수 없고
+  // 입력값이 null 이라는 것만 알 수 있습니다.
 });
-
 ```
+
 <br/>
 
-### :clap: Doing It Right Example: A human-readable expectation that could be understood easily, maybe even by QA or technical PM
+### :clap: 올바른 예: QA나 PM이라도 쉽게 이해할 수 있고 읽기 쉬운 expectation
 
 ```javascript
-it.only("When no product name, it throws error 400", async() => {
+it.only("제품명이 없으면 400 오류를 던진다.", async() => {
   expect(addNewProduct)).to.eventually.throw(AppError).with.property('code', "InvalidInput");
 });
-
 ```
 
 </details>
-
-
-
 
 <br/><br/>
 
-## ⚪ ️ 1.11 Tag your tests
+## ⚪ ️ 1.11 테스트에 태깅하십시오.
 
-:white_check_mark: **Do:**  Different tests must run on different scenarios: quick smoke, IO-less, tests should run when a developer saves or commits a file, full end-to-end tests usually run when a new pull request is submitted, etc. This can be achieved by tagging tests with keywords like #cold #api #sanity so you can grep with your testing harness and invoke the desired subset. For example, this is how you would invoke only the sanity test group with Mocha: mocha — grep ‘sanity’
-<br/>
-
-
-❌ **Otherwise:** Running all the tests, including tests that perform dozens of DB queries, any time a developer makes a small change can be extremely slow and keeps developers away from running tests
-
+:white_check_mark: **이렇게 해라:** 다른 테스트는 꼭 다른 시나리오에서 실행해야 합니다: 개발자가 파일을 저장하거나 커밋을 할 때 빠르고, IO가 많이 없는 테스트를 실행해야 합니다. 전체 end-to-end 테스트는 일반적으로 새로운 Pull Request가 제출되었을 때 실행됩니다. 등.. 이러한 경우에 #cold #api #sanity와 같은 키워드로 테스트에 태깅하면 테스트를 효율적으로 grep 할 수 있고, 원하는 하위세트를 호출할 수 있습니다. 예) Mocha를 이용해서 sanity 테스트 그룹만 실행하는 방법입니다: mocha - grep 'sanity'
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 앟으면:** 개발자가 작은 변경을 할 때마다 수십 개의 DB 쿼리를 수행하는 테스트를 포함한 모든 테스트를 실행한다면, 속도가 매우 느려져 개발자가 테스트를 수행하지 않게 만들 것입니다.
 
 <br/>
 
-### :clap: Doing It Right Example: Tagging tests as ‘#cold-test’ allows the test runner to execute only fast tests (Cold===quick tests that are doing no IO and can be executed frequently even as the developer is typing)
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: 테스트를 '#cold-test'로 태깅하면 테스트를 수행하는 사람이 빠른 테스트만 실행할 수 있습니다(IO를 수행하지 않고 개발자가 코딩하는 중에도 자주 실행할 수 있는 테스트 cold === quick).
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
+
 ```javascript
-//this test is fast (no DB) and we're tagging it correspondigly
-//now the user/CI can run it frequently
-describe('Order service', function() {
-  describe('Add new order #cold-test #sanity', function() {
-    test('Scenario - no currency was supplied. Expectation - Use the default currency #sanity', function() {
-      //code logic here
+// 이 테스트는 빠르고(DB 없음) 현재 사용자/CI가 자주 실행할 수 있는 태그를 지정하고 있습니다.
+describe('주문 서비스', function() {
+  describe('새 주문 추가 #cold-test #sanity', function() {
+    test('시나리오 - 통화가 제공되지 않음. 예외 - 기본 통화 사용 #sanity', function() {
+      // code logic here
     });
   });
 });
-
-
 ```
 
 </details>
-
-
-
 
 <br/><br/>
 
