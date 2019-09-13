@@ -656,21 +656,21 @@ describe('주문 서비스', function() {
 
 <br/><br/>
 
-## ⚪ ️1.12 Other generic good testing hygiene
-:white_check_mark: **Do:**  This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
+## ⚪ ️ 1.12 일반적인 좋은 테스트 기법들
+
+:white_check_mark: **이렇게 해라:** 이 글은 Node.js와 관련이 있거나 최소한 Node.js로 예를 들 수 있는 테스트 조언에 중점을두고 있습니다. 그러나 이번에는 Node.js가 아니지만 잘 알려진 팁들을 포함하고 있습니다.
 
-Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a [red-green-refactor style](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, start a module by writing a quick and simplistic code that satsifies the test - then refactor gradually and take it to a production grade level, avoid any dependency on the environment (paths, OS, etc)
+[TDD 원칙](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/)을 배우고 연습하십시오 - 많은 사람들에게 매우 가치가 있지만, 자신의 스타일에 맞지 않을 수 있습니다. [실패-성공-리페토링 스타일](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html)로 코드 작성 전에 테스트를 작성하는 것을 고려하십시오. 버그를 발견하면 각 테스트에서 정확히 한 가지만 확인하도록 하십시오. 수정하기 전에 앞으로 이 버그를 발견 할 테스트를 작성하십시오. 테스트가 성공하기 전에 각 테스트가 한번 이상 실패하도록 하십시오. 테스트를 만족시키는 간단한 코드를 작성하여 빠르게 모듈을 시작하십시오 - 점신적으로 리펙토링하여 프로덕션 등급의 수준으로 가져가십시오. 환경(경로, OS 등)에 대한 종속성을 피하십시오.
+
 <br/>
 
-
-❌ **Otherwise:** You‘ll miss pearls of wisdom that were collected for decades
+❌ **그렇지 않으면:** 수십 년 동안 수집 된 아주 소중한 조언을 놓치게 될 것입니다.
 
 <br/><br/>
 
+# 섹션 2️⃣: 백엔드 테스트
 
-# Section 2️⃣: Backend Testing
-
-## ⚪ ️2.1 당신의 테스트 포트폴리오를 풍부하게 하십시오: 단위 테스트와 피라미드를 넘어서세요.
+## ⚪ ️ 2.1 당신의 테스트 포트폴리오를 풍부하게 하십시오: 단위 테스트와 피라미드를 넘어서세요.
 
 :white_check_mark: **이렇게 해라:** 10년이 넘은 모델인 [테스트 피라미드](https://martinfowler.com/bliki/TestPyramid.html)는 세 가지 테스트 유형을 제시하고 대다수 개발자의 테스트 전략에 영향을 주는 훌륭한 모델입니다. 동시에, 몇 가지 반짝이는 새로운 테스트 기술들이 등장하였지만 모두 테스트 피라미드의 그림자 뒤로 사라졌습니다. 우리가 최근 10년간 보아 온 극적인 기술의 변화들(Microservices, cloud, serverless)을 고려할 때, 아주 오래된 모델 하나가 *모든* 어플리케이션 유형에 적합하다는 것이 가능한가요? 테스트 세계는 새로운 기술을 받아들이는 것을 고려하지 않나요?
 
@@ -682,8 +682,7 @@ Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-dr
 
 <br/>
 
-
-❌ **그렇지 않으면:** 당신은 굉장한 RIO를 주는 몇 가지 툴들을 놓칠 것입니다. Fuzz, lint, mutation 테스트들은 단 10분만에 당신에게 가치를 제공할 수 있습니다. 
+❌ **그렇지 않으면:** 당신은 굉장한 ROI를 주는 몇 가지 툴들을 놓칠 것입니다. Fuzz, lint, mutation 테스트들은 단 10분만에 당신에게 가치를 제공할 수 있습니다. 
 
 <br/>
 
@@ -699,11 +698,7 @@ Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-dr
 
 ![alt text](assets/bp-12-Yoni-Goldberg-Testing.jpeg "A test name that constitutes 3 parts")
 
-
 </details>
-
-
-
 
 <br/><br/>
 
