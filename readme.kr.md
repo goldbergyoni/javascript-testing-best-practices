@@ -917,32 +917,32 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/><br/>
 
-# Section 3️⃣: Frontend Testing
+# 섹션 3️⃣: 프론트엔드 테스트
 
-## ⚪ ️ 3.1. Separate UI from functionality
+## ⚪ ️ 3.1. 기능으로부터 화면을 분리하십시오
 
-:white_check_mark: **Do:** When focusing on testing component logic, UI details become a noise that should be extracted, so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only the back part of the UI (e.g. services, actions, store) but this will result in fictional tests that don't resemble the reality and won't reveal cases where the right data doesn't even arrive in the UI
-
-
-<br/>
-
-❌ **Otherwise:** The pure calculated data of your test might be ready in 10ms, but then the whole test will last 500ms (100 tests = 1 min) due to some fancy and irrelevant animation
+:white_check_mark: **이렇게 해라:** 컴포넌트 로직을 테스트할때, 화면의 세부사항들은 제외되어야할 노이즈가 됩니다. 그것을 제외함으로써 당신의 테스트들은 순수한 데이터에 집중할 수 있습니다. 실제로, 그래픽 구현에 너무 결합되지 않는 추상적인 방법을 통해 요구되어지는 데이터를 마크업으로부터 추출하십시오. 그리고 느리게 만드는 애니메이션들을 제외한 오직 순수한 데이터를 검증하십시오(vs HTML/CSS 화면 세부사항). 당신은 렌더링하는 것을 피하고 오직 화면의 뒷부분(서비스, 액션, 스토어등과 같은)만을 테스트 하려고 할 수도 있습니다. 하지만, 이것은 실제와 같지도 않으며 심지어 화면에 올바른 데이터가 도달하지 않은 경우를 나타내지도 않는 가짜 테스트에서의 결과가 될 것 입니다.
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 당신의 테스트의 순수하게 계산된 데이터는 10ms 내에 준비될수도 있지만, 전체 테스트는 화려하고 불필요한 애니메이션 때문에 500ms(100 테스트 = 1분) 동안 지속될 것 입니다.
+
 
 <br/>
 
-### :clap: Doing It Right Example: Separating out the UI details
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: 화면의 세부사항을 빼내는 것
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg
  "Examples with react-testing-library")
 
 ```javascript
-test('When users-list is flagged to show only VIP, should display only VIP members', () => {
+test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 멤버들만 보여져야 한다', () => {
   // Arrange
   const allUsers = [
    { id: 1, name: 'Yoni Goldberg', vip: false }, 
@@ -952,19 +952,19 @@ test('When users-list is flagged to show only VIP, should display only VIP membe
   // Act
   const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
 
-  // Assert - Extract the data from the UI first
+  // Assert - 우선 화면으로부터 데이터를 추출
   const allRenderedUsers = getAllByTestId('user').map(uiElement => uiElement.textContent);
   const allRealVIPUsers = allUsers.filter((user) => user.vip).map((user) => user.name);
-  expect(allRenderedUsers).toEqual(allRealVIPUsers); //compare data with data, no UI here
+  expect(allRenderedUsers).toEqual(allRealVIPUsers); // 화면에 아닌 데이터를 비교
 });
 
 ```
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: Assertion mix UI details and data
+### :thumbsdown: 잘못된 예: 화면 세부사항들과 데이터를 섞어서 검증
 ```javascript
-test('When flagging to show only VIP, should display only VIP members', () => {
+test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 멤버들만 보여져야 한다', () => {
   // Arrange
   const allUsers = [
    {id: 1, name: 'Yoni Goldberg', vip: false }, 
@@ -974,7 +974,7 @@ test('When flagging to show only VIP, should display only VIP members', () => {
   // Act
   const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
 
-  // Assert - Mix UI & data in assertion
+  // Assert - 화면과 데이터를 섞어서 검증
   expect(getAllByTestId('user')).toEqual('[<li data-testid="user">John Doe</li>]');
 });
 
@@ -988,21 +988,21 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 <br/><br/>
 
 
-## ⚪ ️ 3.2 Query HTML elements based on attributes that are unlikely to change
+## ⚪ ️ 3.2 변하지 않은 요소들에 기반해서 HTML 엘리먼트들을 찾으십시오
 
-:white_check_mark: **Do:** Query HTML elements based on attributes that are likely to survive graphic changes unlike CSS selectors and like form labels. If the designated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your functional/logic tests never break because of look & feel changes but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
-
-<br/>
-
-❌ **Otherwise:** You want to test the login functionality that spans many components, logic and services, everything is set up perfectly - stubs, spies, Ajax calls are isolated. All seems perfect. Then the test fails because the designer changed the div CSS class from 'thick-border' to 'thin-border'
+:white_check_mark: **이렇게 해라:** CSS 검색자들과 다르게 양식 레이블들과 같이 그래픽 변경에도 살아남을 요소들을 기반으로 HTML 엘리먼트들을 찾으십시오. 만약 설계된 엘리먼트가 이와 같은 요소들을 가지고 있지 않다면, 'test-id-submit-button' 과 같이 테스트에 한정된 요소를 만드십시오. 이 방법은 당신의 기능/로직 테스트들이 룩앤필때문에 절대 망가지지 않을 것을 보장할 뿐만 아니라, 이 엘리먼트와 요소가 테스트에 의해 사용되어지고 제거되어서는 안된다는것을 팀 전체에게 명확하게 합니다.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 당신은 로그인 기능을 테스트하기를 원합니다. 이 기능은 많은 컴포넌트들, 로직 그리고 서비스들에 걸쳐져 있고 모든 것은 완벽하게 준비되어 있습니다 - 스텁, 스파이, Ajax 호출은 격리되어져 있습니다. 모든것은 완벽한 것 처럼 보입니다. 그렇지만, 이 테스트는 디자이너에 의해 div 클래스 이름이 'thick-border' 에서 'thin-border'로 바뀌었기 때문에 실패합니다.
 
 <br/>
 
-### :clap: Doing It Right Example: Querying an element using a dedicated attrbiute for testing
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: 테스트를 위해 한정된 요소를 사용해서 엘리먼트를 찾으십시오
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React")
@@ -1017,8 +1017,8 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 ```
 
 ```javascript
-// this example is using react-testing-library
-  test('Whenever no data is passed to metric, show 0 as default', () => {
+// react-testing-library를 사용한 예제
+  test('metric에 데이터가 전달되지 않으면, 0을 기본값으로 보여준다', () => {
     // Arrange
     const metricValue = undefined;
 
@@ -1032,15 +1032,15 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Relying on CSS attributes
+### :thumbsdown: 잘못된 예: CSS 요소들에 의존
 ```html
 <!-- the markup code (part of React component) -->
-<span id="metric" className="d-flex-column">{value}</span> <!-- what if the designer changes the classs? -->
+<span id="metric" className="d-flex-column">{value}</span> <!-- 만약 디자이너가 클래스를 변경한다면? -->
 ```
 
 ```javascript
-// this exammple is using enzyme
-test('Whenever no data is passed, error metric shows zero', () => {
+// enzyme을 사용한 예제
+test('데이터가 전달되지 않으면, 0을 보여준다', () => {
     // ...
     
     expect(wrapper.find("[className='d-flex-column']").text()).toBe("0");
