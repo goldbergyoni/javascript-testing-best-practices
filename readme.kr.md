@@ -702,24 +702,23 @@ describe('주문 서비스', function() {
 
 <br/><br/>
 
-## ⚪ ️2.2 Component testing might be your best affair
+## ⚪ ️2.2 컴포넌트 테스트가 최선의 방법일 수 있다.
 
-:white_check_mark: **Do:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung song of the testing world — they provide the best from both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
+:white_check_mark: **이렇게 해라:** 각각의 단위 테스트는 어플리케이션의 매우 작은 부분만을 커버하고 전체를 모두 커버하기에는 비용이 많이 듭니다. 반면에, end-to-end 테스트는 간단하게 많은 부분을 커버할 수 있지만 깊이가 얕고 더 느립니다. 그렇다면 균형 잡힌 접근법을 적용하여 단위 테스트보다는 크지만 end-to-end 테스트보다는 작은 테스트를 작성하는 것은 어떨까요? 컴포넌트 테스트는 테스트 세계에서 잘 알려지지 않은 방법입니다. - 컴포넌트 테스트는 다음의 두 가지 이점을 모두 제공합니다: 합리적인 성능과 TDD 패턴을 적용할 수 있는 가능성 + 현실적이면서 훌륭한 커버리지
 
-Component tests focus on the Microservice ‘unit’, they work against the API, don’t mock anything which belongs to the Microservice itself (e.g. real DB, or at least the in-memory version of that DB) but stub anything that is external like calls to other Microservices. By doing so, we test what we deploy, approach the app from outwards to inwards and gain great confidence in a reasonable amount of time.
+컴포넌트 테스트는 마이크로 서비스 '단위'에 중점을 두고 API에 대하여 동작합니다. 마이크로서비스 그 자체에 속한 것들 (예를들면, 실제 DB 또는 해당 DB의 인-메모리 버전)은 모킹(Mock)하지 않고, 다른 마이크로서비스 호출과 같은 외부적인 것은 스텁(Stub)합니다. 그렇게 함으로써 우리는 우리가 배포하는 것을 테스트하고 어플리케이션의 바깥쪽에서 안쪽으로 접근하며, 적당한 시간 안에서 큰 자신감을 얻을 수 있습니다. 
 <br/>
 
 
-❌ **Otherwise:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
-
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 시스템 커버리지가 20%에 불과하다는 것을 깨닫기까지 단위 테스트를 작성하는 데 오랜 시간이 걸릴 수 있습니다. 
 
 <br/>
 
-### :clap: Doing It Right Example: Supertest allows approaching Express API in-process (fast and cover many layers)
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: Supertest를 통해 프로세스 내 Express API에 접근할 수 있습니다. (빠르고 다양한 계층을 커버함)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Jest")
@@ -730,22 +729,23 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/><br/>
 
-## ⚪ ️2.3 Ensure new releases don’t break the API using
+## ⚪ ️2.3 신규 릴리즈가 API 사용을 깨지게 하지 마십시오.
 
-:white_check_mark: **Do:**  So your Microservice has multiple clients, and you run multiple versions of the service for compatibility reasons (keeping everyone happy). Then you change some field and ‘boom!’, some important client who relies on this field is angry. This is the Catch-22 of the integration world: It’s very challenging for the server side to consider all the multiple client expectations — On the other hand, the clients can’t perform any testing because the server controls the release dates. [Consumer-driven contracts and the framework PACT](https://docs.pact.io/) were born to formalize this process with a very disruptive approach — not the server defines the test plan of itself rather the client defines the tests of the… server! PACT can record the client expectation and put in a shared location, “broker”, so the server can pull the expectations and run on every build using PACT library to detect broken contracts — a client expectation that is not met. By doing so, all the server-client API mismatches are caught early during build/CI and might save you a great deal of frustration
-<br/>
-
-
-❌ **Otherwise:** The alternatives are exhausting manual testing or deployment fear
-
+:white_check_mark: **이렇게 해라:** 당신의 마이크로서비스는 다수의 클라이언트를 가지고 있고 호환성의 이유로 여러 버전의 서비스를 운영합니다 (모든 사람을 만족시키기 위해서). 그런 상황에서 당신이 일부 필드를 변경하면 이 필드를 믿고 사용하던 일부 중요한 클라이언트는 화가 날 것입니다. 이것은 통합(integration) 세계에서 해결하기 어려운 진퇴양난에 놓인 문제입니다: 서버 사이드가 여러 클라이언트들의 모든 기댓값을 고려하는 것은 매우 어려운 일입니다. - 반면에, 서버가 릴리즈 날짜를 결정하기 때문에 클라이언트는 어떠한 테스트도 수행할 수 없습니다. 
+[소비자 주도 계약 테스트(Consumer-driven contracts)와 PACT 프레임워크](https://docs.pact.io/)는 매우 파괴적인 방법으로 이러한 프로세스를 표준화하기 위해 나타났습니다. - 서버가 서버의 테스트 계획을 결정하지 않고, 클라이언트가 서버의 테스트를 결정합니다! PACT는 클라이언트의 기댓값을 기록하여 "브로커"라는 공유된 위치에 올려둘 수 있습니다. 그러면 서버는 그 기댓값을 당겨 받을 수 있고 빌드할 때마다 PACT 라이브러리를 사용하여 깨진 계약(contract - 충족되지 않은 클라이언트의 기댓값)을 감지할 수 있습니다. 이렇게 함으로써, 모든 서버-클라이언트 API 간 일치하지 않은 것들을 빌드/CI 환경에서 조기에 잡을 수 있고 당신의 큰 절망감을 줄여줄 수 있을 것입니다. 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+
+❌ **그렇지 않으면:** 대안은 수동 배포나 배포에 대한 두려움을 안고 가는 것 뿐입니다. 
 
 <br/>
 
-### :clap: Doing It Right Example:
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :clap: 올바른 예:
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg
  "Examples with PACT")
