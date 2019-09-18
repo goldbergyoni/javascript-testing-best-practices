@@ -35,81 +35,81 @@ Comece entendendo as práticas de teste onipresentes que são a base para qualqu
 
 Um único conselho que inspira todos os outros (1 marcador especial)
 
-#### [`Section 1: The Test Anatomy`](#section-1-the-test-anatomy-1)
+#### [`Seção 1: A Anatomia do Teste`](#section-1-the-test-anatomy-1)
 
-The foundation - structuring clean tests (12 bullets)
+A fundação - estruturando testes limpos (12 marcadores)
 
-#### [`Section 2: Backend`](#section-2️⃣-backend-testing)
+#### [`Seção 2: Backend`](#section-2️⃣-backend-testing)
 
-Writing backend and Microservices tests efficiently (8 bullets)
+Escrevendo testes de back-end e microsserviços com eficiência (8 marcadores)
 
-#### [`Section 3: Frontend`](#section-3️⃣-frontend-testing)
+#### [`Seção 3: Frontend`](#section-3️⃣-frontend-testing)
 
-Writing tests for web UI including component and E2E tests (11 bullets)
+Escrevendo testes para interface do usuário da web, incluindo testes de componentes e E2E (11 marcadores)
 
-#### [`Section 4: Measuring Tests Effectiveness`](#section-4️⃣-measuring-test-effectiveness)
+#### [`Seção 4: Metrificando Testes Efetivamente`](#section-4️⃣-measuring-test-effectiveness)
 
-Watching the watchman - measuring test quality (4 bullets)
+Observando o vigia - medindo a qualidade do teste (4 marcadores)
 
-#### [`Section 5: Continuous Integration`](#section-5️⃣-ci-and-other-quality-measures)
+#### [`Seção 5: Integração Contínua`](#section-5️⃣-ci-and-other-quality-measures)
 
-Guidelines for CI in the JS world (9 bullets)
+Diretrizes para CI no mundo JS (9 marcadores)
 
 
 <br/><br/>
 
 
-# Section 0️⃣: The Golden Rule
+# Seção 0️⃣: A Regra de Ouro
 
 <br/>
 
-## ⚪️ 0. The Golden Rule: Design for lean testing
+## ⚪️ 0. A Regra de Ouro: Design para testes enxutos
 
-:white_check_mark: **Do:** 
-Testing code is not like production-code - design it to be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should look at a test and get the intent instantly. 
+:white_check_mark: **Faça:**
+O código de teste não é como o código de produção - projete-o para ser simples, curto, sem abstrações, plano, agradável de se trabalhar, enxuto. Deve-se olhar para um teste e obter a intenção instantaneamente.
 
-Our minds are full with the main production code, we don't have 'headspace' for additional complexity. Should we try to squeeze yet another challenging code into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
- 
-The tests are an opportunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a  small investment.  Science tells we have two brain systems: system 1 which is used for effortless activities like driving a car on an empty road and system 2 which is meant for complex and conscious operations like solving a math equation. Design your test for system 1, when looking at test code it should *feel* as easy as modifying an HTML document and not like solving 2X(17 × 24).
+Nossas mentes estão cheias com o código principal de produção, não temos 'espaço de sobra' para complexidade adicional. Se tentarmos espremer outro código desafiador em nosso cérebro fraco, a equipe ficará mais lenta, o que vai de encontro com a razão pela qual fazemos os testes. Praticamente é aqui que muitas equipes abandonam os testes.
 
-This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+Os testes são uma oportunidade para outra coisa - um assistente amigável e sorridente, que é agradável de trabalhar e oferece grande valor para um investimento tão pequeno. A ciência diz que temos dois sistemas cerebrais: o sistema 1, usado para atividades sem esforço, como dirigir um carro em uma estrada vazia, e o sistema 2, destinado a operações complexas e conscientes, como resolver uma equação matemática. Projete seu teste para o sistema 1, ao analisar o código de teste, ele deve parecer tão fácil quanto modificar um documento HTML e não como resolver um equação 2X (17 × 24).
+
+Isso pode ser alcançado através de técnicas, ferramentas e alvos de teste selecionados de forma econômica, que são econômicos e proporcionam um ótimo ROI. Teste apenas o necessário, esforce-se para mantê-lo ágil, às vezes vale a pena abandonar alguns testes e trocar a confiabilidade por agilidade e simplicidade.
 
 ![alt text](/assets/headspace.png "We have no head room for additional complexity")
  
-Most of the advice below are derivatives of this principle.
+A maioria dos conselhos abaixo são derivados desse princípio.
 
-### Ready to start?
+### Pronto para começar?
 
 
 <br/><br/>
 
-# Section 1: The Test Anatomy
+# Seção 1: A Anatomia do Teste
 
 <br/>
 
-## ⚪ ️ 1.1 Include 3 parts in each test name
+## ⚪ ️ 1.1 Inclua 3 partes em cada nome de teste
 
-:white_check_mark: **Do:** A test report should tell whether the current application revision satisfies the requirements for the people who are not necessarily familiar with the code: the tester, the DevOps engineer who is deploying and the future you two years from now. This can be achieved best if the tests speak at the requirements level and include 3 parts:
+:white_check_mark: **Faça:** Um relatório de teste deve informar se a revisão atual do aplicativo atende aos requisitos para as pessoas que não estão necessariamente familiarizadas com o código: o testador, o engenheiro DevOps que está implantando e você daqui a dois anos. Isso pode ser melhor alcançado se os testes falarem no nível de requisitos e incluirem 3 partes:
 
-(1) What is being tested? For example, the ProductsService.addNewProduct method
+(1) O que está sendo testado? Por exemplo, o método ProductsService.addNewProduct
 
-(2) Under what circumstances and scenario? For example, no price is passed to the method
+(2) Sob que circunstâncias e cenário? Por exemplo, nenhum preço é passado para o método
 
-(3) What is the expected result? For example, the new product is not approved
-
-<br/>
-
-
-❌ **Otherwise:** A deployment just failed, a test named “Add product” failed. Does this tell you what exactly is malfunctioning?
+(3) Qual é o resultado esperado? Por exemplo, o novo produto não é aprovado
 
 <br/>
 
-**👇 Note:** Each bullet has code examples and sometime also an image illustration. Click to expand
-<details><summary>✏ <b>Code Examples</b></summary>
+
+❌ **De outra forma:** Uma implantação acabou de falhar, um teste chamado "Adicionar produto" falhou. Isso diz o que exatamente está com defeito?
+
+<br/>
+
+**👇 Nota:** Cada marcador possui exemplos de código e alguns tem ilustrações. Clique para expandir
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
   
 <br/>
   
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: Exemplo: um nome de teste que constitui 3 partes
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Mocha-blue.svg
  "Using Mocha to illustrate the idea")
@@ -129,32 +129,32 @@ describe('Products Service', function() {
 ```
 <br/>
 
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: Exemplo: um nome de teste que constitui 3 partes
 ![alt text](/assets/bp-1-3-parts.jpeg "A test name that constitutes 3 parts")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️ 1.2 Structure tests by the AAA pattern
+## ⚪ ️ 1.2 Testes de estrutura pelo padrão em inglês AAA
 
-:white_check_mark: **Do:** Structure your tests with 3 well-separated sections Arrange, Act & Assert (AAA). Following this structure guarantees that the reader spends no brain CPU on understanding the test plan:
+:white_check_mark: **Faça:** Estruture seus testes com 3 seções bem separadas: Organizar, Atuar e Afirmar (OAA). Seguir essa estrutura garante que o leitor não gaste CPU do cérebro na compreensão do plano de teste:
 
-1st A - Arrange: All the setup code to bring the system to the scenario the test aims to simulate. This might include instantiating the unit under test constructor, adding DB records, mocking/stubbing on objects and any other preparation code
+1st O - Organizar: todo o código de configuração para levar o sistema ao cenário que o teste pretende simular. Isso pode incluir instanciar a unidade sob o construtor de teste, adicionar registros de banco de dados, mockar/stubbing de objetos e qualquer outro código de preparação
 
-2nd A - Act: Execute the unit under test. Usually 1 line of code
+2nd A - Ato: Execute teste em unidade. Geralmente 1 linha de código
 
-3rd A - Assert: Ensure that the received value satisfies the expectation. Usually 1 line of code
+3rd A - Afirmar: Garanta que o valor recebido satisfaça a expectativa. Geralmente 1 linha de código
 
 
 <br/>
 
 
-❌ **Otherwise:** Not only you spend long daily hours on understanding the main code, now also what should have been the simple part of the day (testing) stretches your brain
+❌ **De outra forma:** Você não gata apenas longas horas diárias para entender o código principal, agora também o que deveria ter sido a parte simples do dia (teste) estica seu cérebro
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
