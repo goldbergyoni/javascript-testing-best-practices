@@ -760,32 +760,32 @@ describe('주문 서비스', function() {
 <br/><br/>
 
 
-## ⚪ ️ 2.4 Test your middlewares in isolation
+## ⚪ ️ 2.4 당신의 미들웨어를 독립적으로 테스트 하십시오.
 
-:white_check_mark: **Do:** Many avoid Middleware testing because they represent a small portion of the system and require a live Express server. Both reasons are wrong — Middlewares are small but affect all or most of the requests and can be tested easily as pure functions that get {req,res} JS objects. To test a middleware function one should just invoke it and spy ([using Sinon for example](https://www.npmjs.com/package/sinon)) on the interaction with the {req,res} objects to ensure the function performed the right action. The library [node-mock-http](https://www.npmjs.com/package/node-mocks-http) takes it even further and factors the {req,res} objects along with spying on their behavior. For example, it can assert whether the http status that was set on the res object matches the expectation (See example below)
+:white_check_mark: **Do:** 많은 사람들은 미들웨어(Middleware) 테스트를 피합니다. 왜냐하면 미들웨어 테스트는 시스템의 작은 부분일 뿐이고 라이브 Express 서버가 필요하기 때문입니다. 하지만 두 가지 이유 모두 틀렸습니다. - 미들웨어는 작지만 모든 요청 또는 대부분의 요청에 영향을 미치고, {req,res} JS 객체를 가지는 순수한 함수로 쉽게 테스트할 수 있기 때문입니다. 미들웨어 함수를 테스트하기 위해서는 단지 함수를 불러오고 함수가 올바르게 동작하는 것을 확인하기 위해 {req, res} 객체에 대한 인터렉션을 스파이(spy)([예를들어 Sinon을 사용](https://www.npmjs.com/package/sinon))하면 됩니다. 라이브러리 [node-mock-http](https://www.npmjs.com/package/node-mocks-http)는 더 나아가서 행위에 대한 스파이와 함께 {req, res} 객체도 테스트할 수 있습니다. 예를 들어, response 객체의 http 상태가 기대했던 값과 일치하는지 여부를 확인(assert)할 수 있습니다. (아래 예제를 보세요)
 <br/>
 
 
-❌ **Otherwise:** A bug in Express middleware === a bug in all or most requests
+❌ **Otherwise:** Express 미들웨어에서의 버그 === 모든 요청 또는 대부분의 요청에서의 버그
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>코드 예제</b></summary>
 
 <br/>
 
-### :clap:Doing It Right Example: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
+### :clap:올바른 예: 네트워크 호출 없이 전체 Express 시스템도 깨우지 않으면서 미들웨어를 독립적으로 테스트
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
 
 ```javascript
-//the middleware we want to test
+//테스트하고 싶은 미들웨어
 const unitUnderTest = require('./middleware')
 const httpMocks = require('node-mocks-http');
-//Jest syntax, equivelant to describe() & it() in Mocha
-test('A request without authentication header, should return http status 403', () => {
+//Jest 문법으로 Mocha의 describe() & it()과 동일
+test('헤더에 인증정보가 없는 요청은, http status 403을 리턴해야한다.', () => {
   const request = httpMocks.createRequest({
     method: 'GET',
     url: '/user/42',
@@ -807,24 +807,24 @@ test('A request without authentication header, should return http status 403', (
 
 <br/><br/>
 
-## ⚪ ️2.5 Measure and refactor using static analysis tools
-:white_check_mark: **Do:** Using static analysis tools helps by giving objective ways to improve code quality and keep your code maintainable. You can add static analysis tools to your CI build to abort when it finds code smells. Its main selling points over plain linting are the ability to inspect quality in the context of multiple files (e.g. detect duplications), perform advanced analysis (e.g. code complexity) and follow the history and progress of code issues. Two examples of tools you can use are [Sonarqube](https://www.sonarqube.org/) (2,600+ [stars](https://github.com/SonarSource/sonarqube)) and [Code Climate](https://codeclimate.com/) (1,500+ [stars](https://github.com/codeclimate/codeclimate))
+## ⚪ ️2.5 정적 분석 도구를 사용하여 측정하고 리팩토링 하십시오.
+:white_check_mark: **이렇게 해라:** 정적 분석 도구를 사용하면 코드 품질을 개선하고 코드를 유지 관리할 수 있는 객관적인 방법을 제공할 수 있습니다. 정적 분석 도구를 당신의 CI 빌드에 추가하여 코드 냄새(code smell)가 발견되면 중단되도록 할 수 있습니다. 정적 분석 도구가 일반적인 린트(lint) 도구보다 더 좋은 점은 여러 파일들의 컨텍스트 안에서 품질을 검사하고(예: 중복 탐지), 고급 분석(예: 코드 복잡성)을 할 수 있으며 코드 이슈에 대한 히스토리와 프로세스를 추적할 수 있다는 것입니다. 사용할 수 있는 정적 분석 도구 두 가지는 [Sonarqube](https://www.sonarqube.org/) (2,600+ [stars](https://github.com/SonarSource/sonarqube))와 [Code Climate](https://codeclimate.com/) (1,500+ [stars](https://github.com/codeclimate/codeclimate))입니다. 
 
 Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.com/TheHollidayInn" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Keith Holliday](https://github.com/TheHollidayInn)</a>
 
 <br/>
 
 
-❌ **Otherwise:** With poor code quality, bugs and performance will always be an issue that no shiny new library or state of the art features can fix
+❌ **그렇지 않으면:** 코드 품질이 좋지 않으면 버그와 성능은 빛나는 새 라이브러리나 최신 기능으로 해결할 수 없는 문제가 될 것입니다.
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>코드 예제</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example:  CodeClimate, a commercial tool that can identify complex methods:
+### :clap: 올바른 예:  복잡도가 높은 함수를 찾아내는 상용 도구인 CodeClimate:
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg
  "Examples with CodeClimate")
