@@ -676,7 +676,7 @@ describe('주문 서비스', function() {
 
 오해는 하지 마세요. 2019 테스트 피라미드에서 TDD와 단위 테스트는 여전히 강력한 기술이고 아마도 많은 어플리케이션에 가장 어울리는 기술입니다. 다른 모델과 마찬가지로, 테스트 미라미드는 유용하지만 [그것이 항상 맞는 것은 아닙니다](https://en.wikipedia.org/wiki/All_models_are_wrong). 예를 들어, 어떤 IOT 어플리케이션을 생각해 봅시다. 이 어플리케이션은 다수의 이벤트를 Kafka/RabbitMQ 같은 메세지 버스로 보내고 다시 데이터 웨어하우스로 흘려보냅니다. 그리고 이 데이터들은 어떤 분석 UI에서 조회됩니다. 우리는 정말 우리의 테스트 예산의 50%를 통합 중심적(intergration-centric)이고 로직이 거의 없는 어플리케이션의 단위 테스트를 작성하는데 할애해야 할까요? 어플리케이션 유형들이 다양해질 수록(bots, crypto, Alexa-skills) 테스트 피라미드가 적합하지 않은 시나리오들을 발견할 가능성이 커집니다.  
 
-지금이 당신의 테스트 포트폴리오를 넓히고 더 많은 테스트 유형들에 익숙해질 시간입니다. (다음 총알에서 몇 가지 아이디어들을 제안합니다.) 테스트 피라미드 같은 모델들도 염두에 둘 뿐만 아니라 당신이 직면하고 있는 현실 세계의 문제들에 적합한 테스트 유형들을 찾으세요. ("우리 API 깨졌어. Consumer-driven contract 테스트 작성하자!" 처럼요.) 위험성 분석을 기반으로 포르폴리오를 구축하는 투자자처럼 당신의 테스트를 다양화하세요 - 문제가 발생할 수 있는 부분을 가늠하고 잠재적 위험성을 줄일 수 있는 예방 방법을 찾으세요. 
+지금이 당신의 테스트 포트폴리오를 넓히고 더 많은 테스트 유형들에 익숙해질 시간입니다. (다음 항목에서 몇 가지 아이디어들을 제안합니다.) 테스트 피라미드 같은 모델들도 염두에 둘 뿐만 아니라 당신이 직면하고 있는 현실 세계의 문제들에 적합한 테스트 유형들을 찾으세요. ("우리 API 깨졌어. Consumer-driven contract 테스트 작성하자!" 처럼요.) 위험성 분석을 기반으로 포르폴리오를 구축하는 투자자처럼 당신의 테스트를 다양화하세요 - 문제가 발생할 수 있는 부분을 가늠하고 잠재적 위험성을 줄일 수 있는 예방 방법을 찾으세요. 
 
 주의 사항 : 소프트웨어 세계에서의 TDD 논쟁은 전형적인 잘못된 이분법입니다. 어떤 사람들은 TDD를 모든 곳에 적용하라고 주장하지만, 다른 일부는 TDD를 악마라고 생각합니다. 절대적으로 한쪽만 주장하는 사람들은 모두 틀렸습니다 :]
 
@@ -838,72 +838,70 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 <br/><br/>
 
-## ⚪ ️ 2.6 Check your readiness for Node-related chaos
-:white_check_mark: **Do:** Weirdly, most software testings are about logic & data only, but some of the worst things that happen (and are really hard to mitigate ) are infrastructural issues. For example, did you ever test what happens when your process memory is overloaded, or when the server/process dies, or does your monitoring system realizes when the API becomes 50% slower?. To test and mitigate these type of bad things — [Chaos engineering](https://principlesofchaos.org/) was born by Netflix. It aims to provide awareness, frameworks and tools for testing our app resiliency for chaotic issues. For example, one of its famous tools, [the chaos monkey](https://github.com/Netflix/chaosmonkey), randomly kills servers to ensure that our service can still serve users and not relying on a single server (there is also a Kubernetes version, [kube-monkey](https://github.com/asobti/kube-monkey), that kills pods). All these tools work on the hosting/platform level, but what if you wish to test and generate pure Node chaos like check how your Node process copes with uncaught errors, unhandled promise rejection, v8 memory overloaded with the max allowed of 1.7GB or whether your UX stays satisfactory when the event loop gets blocked often? to address this I’ve written, [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha) which provides all sort of Node-related chaotic acts
-<br/>
-
-
-❌ **Otherwise:**  No escape here, Murphy’s law will hit your production without mercy
-
+## ⚪ ️ 2.6 노드 혼돈(chaos)대한 준비상태를 확인하십시오.
+:white_check_mark: **이렇게 해라:** 이상하게도 대부분의 소프트웨어 테스트는 오직 로직과 데이터를 대상으로 합니다. 하지만 최악의 상황(정말 해결하기 어렵기도 한 상황) 중 일부는 인프라 이슈입니다. 예를 들어, 프로세스 메모리가 과부하 되거나 서버/프로세스가 죽는 상황, 또는 API 속도가 50% 아래로 떨어질 때 모니터링 시스템이 인식하는 상황에 대해서 테스트한 적이 있나요? 이러한 문제 상황들을 테스트하고 줄이기 위해서 - [카오스 엔지니어링(Chaos engineering)](https://principlesofchaos.org/)이 넷플릭스에 의해 탄생했습니다. 카오스 엔지니어링은 혼돈(chaos) 상황에 대한 어플리케이션의 복원력을 테스트하기 위해서 상황에 대한 인식, 프레임워크, 툴들을 제공하는 것을 목표로 합니다. 예를 들어, 유명한 툴 중에 하나인 [카오스 몽키(chaos monkey)](https://github.com/Netflix/chaosmonkey)는 서버를 무작위로 종료시키고 이러한 상황에도 사용자는 서비스를 계속 사용할 수 있어 시스템이 단일 서버에 의존하지 않고 있다는 것을 테스트합니다. (쿠버네티스 버전인 [kube-monkey](https://github.com/asobti/kube-monkey)는 팟(Pod)을 종료시킴) 이러한 툴들은 모두 호스팅/플랫폼 레벨에서 동작합니다. 하지만 당신이 순수 노드 혼돈을 테스트하고 발생시키고 싶으면 어떻게 해야 할까요? 예를 들면, 노드 프로세스가 어떻게 잡히지 않은 오류, 처리되지 않은 프로미스 거부(promise rejection), 최대로 허용된 1.7GB에 대한 v8 메모리 과부하를 처리하는지. 혹은 이벤트 루프가 자주 차단될 때 UX가 만족스럽게 유지되는지 여부 같은 것들이요. 이 문제를 해결하기 위해 제가 모든 종류의 노드 관련된 카오스 행위를 제공하는 [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha)를 만들었습니다.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+
+❌ **그렇지 않으면:** 탈출구는 없습니다. 머피의 법칙은 자비없이 당신의 시스템에 타격을 줄 것입니다. 
 
 <br/>
 
-### :clap: Doing It Right Example: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: Node-chaos는 모든 종류의 Node.js 행위들을 발생시켜서 당신의 어플리케이션이 얼마나 혼돈 상태에 대한 복원력이 있는지 테스트 할 수 있습니다.
 ![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
 
 </details>
 
 <br/>
 
-## ⚪ ️2.7 Avoid global test fixtures and seeds, add data per-test
-
-:white_check_mark: **Do:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests (also known as ‘test fixture’) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
+## ⚪ ️2.7 글로벌한 초기 테스트 데이터 집합을 만들지 말고 각 테스트 마다 데이터를 추가하십시오. 
+:white_check_mark: **이렇게 해라:** 황금률(섹션 0)에 따르면 각 테스트는 커플링을 방지하고 테스트 흐름에 대해서 쉽게 추론하기 위해 자신의 DB 데이터들을 추가하고 해당 데이터로 테스트되어야 합니다. 하지만 현실 세계에선 성능 향상을 위해 테스트를 실행하기 전에 초기 데이터를 DB에 추가하는(‘test fixture’라고 알려져 있음) 테스터들에 의해서 이 규칙은 종종 깨지곤 합니다. 성능은 실제로 중요한 문제입니다. - 이 문제는 완화될 수 있습니다 ('컴포넌트 테스트' 섹션을 보세요). 하지만 테스트 복잡성은 대부분의 다른 고려사항들을 지배해 버리는 더욱 고통스런 문제입니다. 실질적으로 각 테스트 케이스에 필요한 DB 레코드만 명시적으로 추가하고 해당 레코드를 가지고만 테스트하세요. 만약 성능이 중요한 문제라면 - 데이터를 변경하지 않는 테스트들에 대해서만 초기 데이터를 채우는 형태로 타협할 수 있습니다. (예: 쿼리)
 <br/>
 
 
-❌ **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
-
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 테스트가 실패하고 배포는 중단되어 팀원들은 지금 소중한 시간을 할애해야 합니다. 버그가 있습니까? 찾아봅시다, 오 이런 - 두 개의 테스트가 동일한 테스트 데이터(seed data)를 변경한 것으로 보입니다. 
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :thumbsdown: 올바르지 않은 예: 테스트는 독립적이지 않고 테스트마다 글로벌 DB 데이터를 사용하도록 훅이 걸려있습니다. 
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Mocha")
  
 ```javascript
 before(() => {
-  //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
+  // DB에 사이트와 어드민 데이터를 추가합니다. 데이터는 어디에 있나요? 외부에 있습니다. 외부 json 파일이나 마이그레이션 프레임워크에 있습니다. 
   await DB.AddSeedDataFromJson('seed.json');
 });
-it("When updating site name, get successful confirmation", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+it("사이트 이름을 변경하면, 성공 결과값을 받아온다", async () => {
+  //"portal"이라는 이름의 사이트가 있다는 것을 알고 있습니다. - 씨드 파일에서 봤습니다. 
   const siteToUpdate = await SiteService.getSiteByName("Portal");
   const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
   expect(updateNameResult).to.be(true);
 });
-it("When querying by site name, get the right site", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+it("사이트 이름으로 조회했을때, 해당 사이트를 가져온다", async () => {
+  //"portal"이라는 이름의 사이트가 있다는 것을 알고 있습니다. - 씨드 파일에서 봤습니다. 
   const siteToCheck = await SiteService.getSiteByName("Portal");
-  expect(siteToCheck.name).to.be.equal("Portal"); //Failure! The previous test change the name :[
+  expect(siteToCheck.name).to.be.equal("Portal"); //실패! 이전 테스트에서 이름이 변경되었습니다 :[
 });
 
 ```
 <br/>
 
-### :clap: Doing It Right Example: We can stay within the test, each test acts on its own set of data
+### :clap: 올바른 예: 테스트 안에서만 머물며 각 테스트는 자신의 데이터 세트 안에서만 동작합니다. 
 
 ```javascript
-it("When updating site name, get successful confirmation", async () => {
-  //test is adding a fresh new records and acting on the records only
+it("사이트 이름을 변경하면, 성공 결과값을 받아온다", async () => {
+  //테스트는 새로운 신규 레코드를 추가하고 그 레코드를 가지고 동작합니다.
   const siteUnderTest = await SiteService.addSite({
     name: "siteForUpdateTest"
   });
