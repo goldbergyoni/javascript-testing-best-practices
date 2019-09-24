@@ -1537,34 +1537,32 @@ cy.eyesCheckWindow('mark as completed');
 <br/><br/>
 
   
-# Section 4️⃣: Measuring Test Effectiveness
+# Section 4️⃣: 테스트 효과 측정
 
 <br/><br/>
 
-## ⚪ ️ 4.1 Get enough coverage for being confident, ~80% seems to be the lucky number
+## ⚪ ️ 4.1 자신감을 갖기에 충분한 커버리지를 확보하십시오. ~80%가 이상적인 것 같습니다.
 
-:white_check_mark: **Do:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380 than 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) that presumably should satisfy most of the applications.
+:white_check_mark: **이렇게 해라:** 테스트의 목적은 빠른 변경에 대한 충분한 자신감을 갖기 위한 것입니다. 분명히 더 많은 코드가 테스트 될수록 팀은 더 자신감을 가질 수 있습니다. 커버리지는 얼마나 많은 라인(브랜치, 구문(statements) 등)이 테스트에 의해 커버되었는지에 대한 지표입니다. 그렇다면 어느 정도가 충분할까요? 10–30%는 빌드 정확성에 대해 판단하기에는 분명히 너무 낮습니다. 반면에 100%는 비용이 많이 들고 정작 당신의 관심을 중요한 부분이 아닌 테스트 코드로 옮겨버릴지도 모릅니다. 이것에 대한 답은 수치는 어플리케이션 유형과 같은 다양한 요소들에 따라 달라진다는 것입니다. - 만약 당신이 Airbus A380의 차세대 버전을 만들면 100%로 맞춰야 하지만 웹툰 사이트라면 50%면 충분합니다. 비록 테스트에 열성인 대부분의 사람들은 적절한 커버리지 임계값이 상황에 따라 달라져야 한다고 하지만, 그들 중 대부분은 대다수의 어플리케이션을 만족하기 위해서 경험상으로 80%([마틴 파울러: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html))가 적절하다고 얘기합니다.
 
-Implementation tips: You may want to configure your continuous integration (CI) to have a coverage threshold ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) and stop a build that doesn’t stand to this standard (it’s also possible to configure threshold per component, see code example below). On top of this, consider detecting build coverage decrease (when a newly committed code has less coverage) — this will push developers raising or at least preserving the amount of tested code. All that said, coverage is only one measure, a quantitative based one, that is not enough to tell the robustness of your testing. And it can also be fooled as illustrated in the next bullets
-
+구현 팁: 당신의 CI 환경에서 커버리지 임계치를 설정하여 그 기준에 미치지 못하면 빌드를 멈추도록 하고 싶을 것입니다. (컴포넌트 당 임계치를 설정하는 것도 가능합니다. 아래 예제 코드를 보세요). 이 위에, 빌드 커버리지 감소에 대한 감지도 고려해 보세요. (새로 커밋 된 코드가 커버리지에 못 미칠 때) - 이렇게 함으로써 개발자들이 커버리지를 올리거나 적어도 유지하도록 압박할 수 있습니다. 말한대로 커버리지는 오직 하나의 양적 지표일 뿐 테스트의 견고성을 나타내기에는 충분하지 않습니다. 그리고 다음 항목에 나와있는 것처럼 당신을 속일 수 있습니다.
 <br/>
 
 
-❌ **Otherwise:**  Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear. and fear will slow you down
-
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:**  Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear. and fear will slow you down
 
 <br/>
 
-### :clap: Example: A typical coverage report
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :clap: 예제: 일반적인 커버리지 보고서
 ![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "A typical coverage report")
 
 <br/>
 
-### :clap: Doing It Right Example: Setting up coverage per component (using Jest)
+### :clap: 올바른 예: 컴포넌트 당 커버리지를 설정하십시오. (Jest를 사용하여)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg
  "Using Cypress to illustrate the idea")
