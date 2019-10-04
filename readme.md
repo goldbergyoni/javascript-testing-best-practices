@@ -1616,7 +1616,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg
  "Using Cypress to illustrate the idea")
 
-![alt text](assets/bp-18-code-coverage2.jpeg "Setting up coverage per component (using Jest)
+![alt text](assets/bp-18-code-coverage2.jpeg "Setting up coverage per component (using Jest)")
 
 </details>
 
