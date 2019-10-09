@@ -31,27 +31,27 @@
 
 ## `内容列表`
 
-#### [`第 0 章：黄金法则`](#section-0️⃣-the-golden-rule)
+#### [`第 0 章：黄金法则`](#第-0-章黄金法则-1)
 
 一条启发所有人的建议（特殊的 1 条）
 
-#### [`第一章：测试剖析`](#section-1-the-test-anatomy-1)
+#### [`第一章：测试剖析`](#第一章-测试剖析)
 
 基础 - 搭建干净的测试（12 条）
 
-#### [`第二章：后端`](#section-2️⃣-backend-testing)
+#### [`第二章：后端测试`](#第二章-后端测试)
 
 高效地编写后端和微服务的测试（8 条）
 
-#### [`第三章：前端`](#section-3️⃣-frontend-testing)
+#### [`第三章：前端测试`](#第三章-前端测试)
 
 为 UI（包括组件和 E2E 测试）编写测试（11 条）
 
-#### [`第四章：度量测试效果`](#section-4️⃣-measuring-test-effectiveness)
+#### [`第四章：度量测试效果`](#第四章-度量测试效果)
 
 度量测试质量（4 条）
 
-#### [`第五章：持续集成（CI）`](#section-5️⃣-ci-and-other-quality-measures)
+#### [`第五章：持续集成（CI）`](#第五章持续集成ci-1)
 
 JS 领域的 CI 指南（9 条）
 
@@ -1718,11 +1718,11 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 <br/><br/>
 
 
-# 第五章：持续集成（CI）
+# 第五章：持续集成（CI）以及其他质量度量手段
 
 <br/><br/>
 
-## ⚪ ️ 5.1 Enrich your linters and abort builds that have linting issues
+## ⚪ ️ 5.1 丰富你的 linter 并丢弃有 lint 问题的构建
 
 :white_check_mark: **建议:**  只需五分钟配置，即可免费获取自动保护代码的工具来捕获代码中的显著问题。Lint 不再只是样式工具，现在的 linter 可以捕获很多严重的问题比如 error 没有被正确抛出以及信息丢失。在基础 rule(如 [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) 或 [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb))之上，我们可以考虑加入一些特殊的 linter，例如 [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) 可以发现用例没有写断言，[eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) 可以发现 promise 没有 resolve，[eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) 可以发现可能被 DOS 攻击的正则表达式，以及 [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) 擅长在代码使用 V8 核心方法后给出告警，如 Lodash._map(…)。
 
