@@ -1053,24 +1053,23 @@ test('데이터가 전달되지 않으면, 0을 보여준다', () => {
 
 <br/>
 
-## ⚪ ️ 3.3 Whenever possible, test with a realistic and fully rendered component
+## ⚪ ️ 3.3 가능한한, 실제와 같고 완전히 렌더링된 컴포넌트를 테스트하십시오
 
-:white_check_mark: **Do:** Whenever reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet 'Favour blackbox testing'). If one of the child components is significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
+:white_check_mark: **이렇게 해라:** 적당한 크기가 때마다 사용자가 하는 것처럼 외부로부터 컴포넌트를 테스트하고, 화면를 완전히 렌더링하고, 그에 따라 조치를 취하고 렌더링 된 화면이 예상대로 작동하는지 확인하십시오. 모든 종류의 목킹, 부분 및 얕은 렌더링을 피하십시오. 이 접근은 세부정보의 부족으로 인해 걸리지 않는 버그가 발생할 수 있으며, 내부요소들과 함께 지저분해진 테스트들과 같이 유지보수를 하기 어렵게 만들 수도 있습니다. (see bullet 'Favour blackbox testing'). 만약 자식 컴포넌트들중 하나가 심각하게 느려지게 하거나(예: 애니메이션)) 설정을 복잡하게 하는 경우에는, 해당요소를 가상으로 처리하는 것이 좋습니다.
 
-With all that said, a word of caution is in order: this technique works for small/medium components that pack a reasonable size of child components. Fully rendering a component with too many children will make it hard to reason about test failures (root cause analysis) and might get too slow. In such cases, write only a few tests against that fat parent component and more tests against its children
-
-<br/>
-
-❌ **Otherwise:** When poking into a component's internal by invoking its private methods, and checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have a capacity for this level of maintenance?
-
+주의할 점: 이 기술은 자식 컴포넌트들의 크기가 적당하게 묶여있는, 소형 혹은 중형 컴포넌트들에게 적합합니다. 너무 많은 자식들과 함께 렌더링된 컴포넌트는, 테스트가 실패한 원인(근본원인 분석)을 추론하기도 어렵고 매우 느려질 수도 있습니다. 이러한 경우들에서는, 부모에 대해서는 몇가지 테스트만을 작성하고, 자식들에 대해서 더 많은 테스트를 작성하십시오.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 내부 메소드를 호출하여 컴포넌트의 내부에 영향을 주고 그리고 내부의 상태를 확인한다면 - 당신이 컴포넌트의 구현을 리팩토링할때, 모든 테스트도 함께 변경해야 합니다. 당신은 유지보수를 위한 그런 여유가 있습니까?
 
 <br/>
 
-### :clap: Doing It Right Example: Working realstically with a fully rendered component
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: 완전하게 렌더링된 컴포넌트와 함께 실제와 같은 동작
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg
@@ -1091,7 +1090,7 @@ class Calendar extends React.Component {
 }
 
 //Examples use React & Enzyme
-test('Realistic approach: When clicked to show filters, filters are displayed', () => {
+test('실제적인 접근: 필터들을 클릭하면, 필터들이 화면에 표시된다', () => {
     // Arrange
     const wrapper = mount(<Calendar showFilters={false} />)
 
@@ -1100,26 +1099,26 @@ test('Realistic approach: When clicked to show filters, filters are displayed', 
 
     // Assert
     expect(wrapper.text().includes('Choose Filter'));
-    // This is how the user will approach this element: by text
+    // 사용자가 요소에 접근하는 방법: 텍스트를 이용
 })
 
 
 ```
 
-### :thumbsdown: Anti-Pattern Example: Mocking the reality with shallow rendering
+### :thumbsdown: 잘못된 예: 얕은 렌더링과 함께 실제를 목킹
 ```javascript
 
-test('Shallow/mocked approach: When clicked to show filters, filters are displayed', () => {
+test('얕은/목킹 접근: 필터들을 클릭하면, 필터들이 화면에 표시된다', () => {
     // Arrange
     const wrapper = shallow(<Calendar showFilters={false} title='Choose Filter'/>)
 
     // Act
     wrapper.find('filtersPanel').instance().showFilters();
-    // Tap into the internals, bypass the UI and invoke a method. White-box approach
+    // 내부를 탭하고, 화면을 무시한채 메소드를 호출. 화이트박스 접근
 
     // Assert
     expect(wrapper.find('Filter').props()).toEqual({title: 'Choose Filter'});
-    // what if we change the prop name or don't pass anything relevant?
+    // name을 변경하거나, 관련된 다른 것들을 전달하지 않는다면 어떻게 될까?
 })
 
 ```
@@ -1129,21 +1128,21 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 <br/>
 
 
-## ⚪ ️ 3.4 Don't sleep, use frameworks built-in support for async events. Also try to speed things up
+## ⚪ ️ 3.4 슬립을 사용하지 마십시오. 프레임워크에서 비동기 이벤트들을 위해 지원하는 내장 기능을 사용하십시오. 그리고 속도를 높이려 노력하십시오
 
-:white_check_mark: **Do:** In many cases, the unit under test completion time is just unknown (e.g. animation suspends element appearance) - in that case, avoid sleeping (e.g. setTimeOut) and prefer more deterministic methods that most platforms provide. Some libraries allows awaiting on operations (e.g. [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), other provide API for waiting like [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance). Sometimes a more elegant way is to stub the slow resource, like API for example, and then once the response moment becomes deterministic the component can be explicitly re-rendered. When depending upon some external component that sleeps, it might turn useful to [hurry-up the clock](https://jestjs.io/docs/en/timer-mocks). Sleeping is a pattern to avoid because it forces your test to be slow or risky (when waiting for a too short period). Whenever sleeping and polling is inevitable and there's no support from the testing framework, some npm libraries like [wait-for-expect](https://www.npmjs.com/package/wait-for-expect) can help with a semi-deterministic solution 
+:white_check_mark: **이렇게 해라:** 대부분의 경우에 테스트 완료시간은 알 수 없습니다. (예: 애니메이션은 요소의 출현을 지연시킴) - 이런 경우에는 슬립(예: setTimeout)을 피하고, 대부분의 플랫폼들이 제공하는 더 결정적인 메소드들을 사용하십시오. 몇몇 라이브러리들은 awaiting 기능을 허용합니다. (예: [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), 대기를 위한 다른 API [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance). 때때로, 더 우아한 방법은 API같이 느린 자원을 스텁하는 것입니다. 그런 후 응답순간이 결정적이 되면, 컴포넌트를 명시적으로 다시 렌더링 할 수 있습니다. 외부 컴포넌트가 슬립상태일때는, [hurry-up the clock](https://jestjs.io/docs/en/timer-mocks)가 유용할 수 있습니다. 슬립은 당신의 테스트를 느리고 위험하게 만들기 때문에 피해야할 패턴입니다(너무 짧은 시간 기다려야할 경우). 만약 슬립과 폴링이 필연적이고 테스트 프레임워크의 지원이 없다면, [wait-for-expect](https://www.npmjs.com/package/wait-for-expect)와 같은 라이브러리들이 준결정 솔루션으로서 도움을 줄 수도 있습니다. 
 <br/>
 
-❌ **Otherwise:** When sleeping for a long time, tests will be an order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't respond in a timely fashion. So it boils down to a trade-off between flakiness and bad performance
+❌ **그렇지 않으면:** 오랜 시간동안 슬립하는 경우, 테스트는 더 느려질 것 입니다. 슬립할때, 테스트중인 유닛이 제 시간에 반응하지 않으면 테스트는 실패할 것 입니다. 그래서 그것은 테스트가 실패하는 약점과 나쁜 성능간의 트레이드 오프를 가지게 됩니다.
 
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: E2E API that resolves only when the async operations is done (Cypress)
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: 비동기 실행이 완료될때 처리되는 E2E API (Cypress)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg
@@ -1153,35 +1152,35 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 // using Cypress
 cy.get('#show-products').click()// navigate
 cy.wait('@products')// wait for route to appear
-// this line will get executed only when the route is ready
+// 라우트가 준비되면 실행 됩니다.
 
 ```
 
-### :clap: Doing It Right Example: Testing library that waits for DOM elements
+### :clap: 올바른 예: DOM 요소를 기다리는 테스트 라이브러리
 
 ```javascript
 // @testing-library/dom
 test('movie title appears', async () => {
-    // element is initially not present...
+    // 요소는 초기에 존재 하지 않음...
 
-    // wait for appearance
+    // 출현을 대기
     await wait(() => {
         expect(getByText('the lion king')).toBeInTheDocument()
     })
 
-    // wait for appearance and return the element
+    // 출현을 기다린 후 요소를 리턴
     const movie = await waitForElement(() => getByText('the lion king'))
 })
 
 ```
 
-### :thumbsdown: Anti-Pattern Example: custom sleep code
+### :thumbsdown: 잘못된 예: 사용자 정의 슬립 코드
 ```javascript
 
 test('movie title appears', async () => {
-    // element is initially not present...
+    // 초기에 요소가 존재 하지 않음...
 
-    // custom wait logic (caution: simplistic, no timeout)
+    // 사용자 정의 대기 로직 (주의: 매우 단순, 타임아웃이 아님)
     const interval = setInterval(() => {
         const found = getByText('the lion king');
         if(found){
@@ -1191,7 +1190,7 @@ test('movie title appears', async () => {
         
     }, 100);
 
-    // wait for appearance and return the element
+    // 출현을 기다린 후 요소를 리턴
     const movie = await waitForElement(() => getByText('the lion king'))
 })
 
@@ -1575,7 +1574,7 @@ cy.eyesCheckWindow('mark as completed');
 
 <br/><br/>
 
-## ⚪ ️ 4.2 커버리지 리포트를 확인하여 테스트 되지 않은 부분과 기타 이상한 점들을 감지하십시오.
+## ⚪ ️ 4.2 커버리지 리포트를 확인하여 테스트 되지 않은 부분과 기타 이상한 점들을 감지하십시오.
 
 :white_check_mark: **이렇게 해라:** 일부 문제들은 레이더망 아래로 숨어버려 기존의 툴들을 사용하여 찾기 매우 어렵습니다. 이것들은 실제로 버그는 아니지만 심각한 영향을 줄 수 있는 생각지 못 한 어플리케이션 동작들입니다. 예를 들어, 일부 코드 영역은 절대 또는 거의 호출되지 않습니다. - ‘PricingCalculator’라는 상품 가격을 설정하는 클래스가 있다고 생각해 보세요. DB에 100000개의 상품이 있고 판매도 많지만 이 클래스는 실제로 절대 호출되지 않는 것으로 밝혀졌습니다... 코드 커버리지 리포트를 통해 어플리케이션이 당신이 원하는 대로 동작하는지 확인할 수 있습니다. 그 외에도 리포트는 어떤 코드들이 테스트되지 않았는지를 강조해서 보여줄 수도 있습니다. - 코드의 80%가 테스트 되었다는 알림이 중요한 부분이 커버되었는지에 대한 여부를 나타내진 않습니다. 리포트를 만드는 것은 쉽습니다. - 운영 또는 테스트를 할 때 커버리지 트래킹을 하면서 어플리케이션을 실행하세요. 그러고 나서 각 코드 영역이 얼마나 자주 호출됐는지를 나타내는 형형색색의 리포트를 보세요. 잠깐 시간을 내서 이 데이터들을 보면 몇 가지 문제점들을 발견하게 될 수도 있습니다. 
 <br/>
