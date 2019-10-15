@@ -1686,27 +1686,27 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 <br/><br/>
 
   
-# Section 5️⃣: CI and Other Quality Measures
+# Section 5️⃣: 지속적인 통합
 
 <br/><br/>
 
-## ⚪ ️ 5.1 Enrich your linters and abort builds that have linting issues
+## ⚪ ️ 5.1 린터를 풍성하게 구성하고 린트 문제가 있는 빌드를 중단하십시오
 
-:white_check_mark: **Do:**  Linters are a free lunch, with 5 min setup you get for free an auto-pilot guarding your code and catching significant issue as you type. Gone are the days where linting was about cosmetics (no semi-colons!). Nowadays, Linters can catch severe issues like errors that are not thrown correctly and losing information. On top of your basic set of rules (like [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) or [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), consider including some specializing Linters like [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) that can discover tests without assertions, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) can discover promises with no resolve (your code will never continue), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) which can discover eager regex expressions that might get used for DOS attacks, and [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) is capable of alarming when the code uses utility library methods that are part of the V8 core methods like Lodash._map(…)
+:white_check_mark: **이렇게 해라:**  린터는 공짜 점심이며, 5분의 설정만으로 코드를 지켜주고 입력과 동시에 중요한 문제를 포착하는 자동 조종 장치를 거저 얻을 수 있습니다. 린터가 장식(세미콜론)에 지나지 않던 시대는 지나갔습니다. 요즘의 린터는 올바르게 throw되지 않고 정보가 손실되는 오류와 같은 심각한 문제를 포착 할 수 있습니다. 기본 규칙 세트 ([ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) 혹은 [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)) 위에, 단언문이 빠진 테스트를 발견해주는 [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect)와 같은 특화된 린터를 포함하는 것을 고려하십시오. [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) 는 resolve되지 않는 Promise를 발견해줍니다 (이런 코드는 계속해서 실행되는것이 불가능합니다), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme)는 DOS 공격에 사용될 수 있는 취약한 정규식을 발견해주며, [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore)는 코드가 Lodash._map(...)과 같은 V8 코어 메소드의 일부인 유틸리티 라이브러리 메소드를 사용할 때 경고해줍니다.
 <br/>
 
 
-❌ **Otherwise:** Consider a rainy day where your production keeps crashing but the logs don’t display the error stack trace. What happened? Your code mistakenly threw a non-error object and the stack trace was lost, a good reason for banging your head against a brick wall. A 5min linter setup could detect this TYPO and save your day
+❌ **그렇지 않으면:** 프로덕션이 계속 깨지는데 로그에 에러의 stack trace가 표시되지 않는 우울한 날을 상상해봅시다. 어떻게 된 걸까요? 실수로 코드가 에러가 아닌 객체를 던지고 있어서 stack trace가 손실되었다면, 벽에 머리를 들이박기 딱 좋을것입니다. 5분의 린터 설정으로 이런 오타를 감지하고 하루를 지켜낼 수 있습니다.
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>코드 예제</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
-![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
+### :thumbsdown: 올바르지 않은 예: 잘못된 Error 객체가 실수로 throw되어 이 오류에 대한 stack trace가 나타나지 않습니다. 운 좋게도 ESLint는 다음과 같은 프로덕션 버그를 잡아냅니다.
+![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "잘못된 Error 객체가 실수로 throw되어 이 오류에 대한 stack trace가 나타나지 않습니다. 운 좋게도 ESLint는 다음과 같은 프로덕션 버그를 잡아냅니다.")
 
 </details>
 
