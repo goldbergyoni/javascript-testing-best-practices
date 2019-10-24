@@ -1,0 +1,8 @@
+{
+  "files": ["readme.md"],
+  "imageSize": 100,
+  "contributorsPerLine": 7,
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)",
+  "skipCi": "true",
+  "contributors": []
+}
