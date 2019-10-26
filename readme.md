@@ -1466,6 +1466,8 @@ Feature: Twitter new tweet
 ### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using Storybook
 ![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
+![alt text](assets/story-book.jpg "Storybook")
+
 
 </details>
 
