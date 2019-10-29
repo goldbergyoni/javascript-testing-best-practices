@@ -357,6 +357,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
     const spy = sinon.spy(Emailer.prototype, "sendEmail");
     new ProductService().deletePrice(theProductWeJustAdded);
     //hmmm OK: we deal with internals? Yes, but as a side effect of testing the requirements (sending an email)
+    expect(spy.calledOnce).to.be.true;
 });
 ```
 
