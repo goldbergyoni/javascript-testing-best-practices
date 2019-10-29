@@ -625,8 +625,8 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 it("When no product name, it throws error 400", async() => {
 let errorWeExceptFor = null;
 try {
-  const result = await addNewProduct({name:'nest'});}
-catch (error) {
+  const result = await addNewProduct({});
+} catch (error) {
   expect(error.code).to.equal('InvalidInput');
   errorWeExceptFor = error;
 }
@@ -642,7 +642,7 @@ expect(errorWeExceptFor).not.to.be.null;
 
 ```javascript
 it.only("When no product name, it throws error 400", async() => {
-  expect(addNewProduct)).to.eventually.throw(AppError).with.property('code', "InvalidInput");
+  await expect(addNewProduct({})).to.eventually.throw(AppError).with.property('code', "InvalidInput");
 });
 
 ```
