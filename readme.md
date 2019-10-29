@@ -517,7 +517,7 @@ it('When visiting TestJavaScript.com home page, a menu is displayed', () => {
 //Arrange
 
 //Act
-receivedPage tree = renderer
+const receivedPage = renderer
 .create(  <DisplayPage page  =  "http://www.testjavascript.com"  > Test JavaScript < /DisplayPage>)
 .toJSON();
 
