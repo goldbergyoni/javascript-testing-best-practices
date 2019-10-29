@@ -389,7 +389,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
  
 ```javascript
 const addProduct = (name, price) =>{
-  const productNameRegexNoSpace = /^\S*$/;//no white-space allowd
+  const productNameRegexNoSpace = /^\S*$/; //no white-space allowed
 
   if(!productNameRegexNoSpace.test(name))
     return false;//this path never reached due to dull input
