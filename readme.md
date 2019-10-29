@@ -290,7 +290,7 @@ it("When asking for an admin, ensure only ordered admins in results" , () => {
 class ProductService{
   //this method is only used internally
   //Change this name will make the tests fail
-  calculateVAT(priceWithoutVAT){
+  calculateVATAdd(priceWithoutVAT){
     return {finalPrice: priceWithoutVAT * 1.2};
     //Change the result format or key name above will make the tests fail
   }
@@ -298,6 +298,7 @@ class ProductService{
   getPrice(productId){
     const desiredProduct= DB.getProduct(productId);
     finalPrice = this.calculateVATAdd(desiredProduct.price).finalPrice;
+    return finalPrice;
   }
 }
 
