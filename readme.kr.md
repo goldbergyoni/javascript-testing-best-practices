@@ -1728,7 +1728,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>예제 코드</b></summary>
 
 <br/>
 
@@ -1897,40 +1897,47 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 <br/><br/>
 
-## ⚪ ️ 5.8 Other, non-Node related, CI tips
-:white_check_mark: **Do:**    This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
+## ⚪ ️ 5.8 기타, 노드와 관련없는 CI 팁
 
- <ol class="postList"><li name="e3e4" id="e3e4" class="graf graf--li graf-after--p">Use a declarative syntax. This is the only option for most vendors but older versions of Jenkins allows using code or UI</li><li name="1fdc" id="1fdc" class="graf graf--li graf-after--li">Opt for a vendor that has native Docker support</li><li name="edcd" id="edcd" class="graf graf--li graf-after--li">Fail early, run your fastest tests first. Create a ‘Smoke testing’ step/milestone that groups multiple fast inspections (e.g. linting, unit tests) and provide snappy feedback to the code committer</li><li name="0375" id="0375" class="graf graf--li graf-after--li">Make it easy to skim-through all build artifacts including test reports, coverage reports, mutation reports, logs, etc</li><li name="df82" id="df82" class="graf graf--li graf-after--li">Create multiple pipelines/jobs for each event, reuse steps between them. For example, configure a job for feature branch commits and a different one for master PR. Let each reuse logic using shared steps (most vendors provide some mechanism for code reuse</li><li name="19b0" id="19b0" class="graf graf--li graf-after--li">Never embed secrets in a job declaration, grab them from a secret store or from the job’s configuration</li><li name="b70d" id="b70d" class="graf graf--li graf-after--li">Explicitly bump version in a release build or at least ensure the developer did so</li><li name="957c" id="957c" class="graf graf--li graf-after--li">Build only once and perform all the inspections over the single build artifact (e.g. Docker image)</li><li name="339b" id="339b" class="graf graf--li graf-after--li">Test in an ephemeral environment that doesn’t drift state between builds. Caching node_modules might be the only exception</li></ol>
-<br/>
+:white_check_mark: **이렇게 해라:** 이 글은 Node.js와 관련이 있거나 최소한 Node.js로 예를 들 수 있는 테스트 조언에 중점을 두고 있습니다. 그러나 이번에는 Node.js와 관련없지만 잘 알려진 팁 몇개를 그룹화 하였습니다.
 
+1. 선언적 구문을 사용하십시오. 대부분의 벤더에서는 선택할 수 없지만, 이전 버전의 Jenkins에서 코드 또는 UI를 사용할 수 있습니다.
+2. 고유 Docker를 지원하는 벤더를 선택하십시오.
+3. 일찍 실패하고 가장 빠른 테스트를 먼저 실행하십시오. 다양한 빠른 Inspection(예: 린트, 단위테스트)를 그룹화 하고 코드 커미터에 대한 신속한 피드백을 제공할 수 잇는 [스모크 테스트](https://terms.naver.com/entry.nhn?docId=864587&cid=42346&categoryId=42346) 단계/마일스톤을 만드십시오.
+4. 테스트 보고서, 커버리지, 변화, 로그 등의 모든 결과물을 훑어보기 쉽게 하십시오.
+5. 각 이벤트에 대해 여러 파이프라인/작업을 작성하고, 그 사이 단계를 재사용 하십시오. 예를 들면, feature 브랜치 커밋이나 마스터 PR에 대한 작업 구성. 각 재사용 로직이 공유 단계를 사용하게 하십시오.(대부분의 벤더는 코드 재사용을 위한 메커니즘을 제공합니다)
+6. 작업 선언에 어떤한것도 숨겨놓지 마십시오.
+7. 릴리스 빌드에서 명시적으로 버전을 충돌 시켜보거나 최소한 개발자가 그렇게했는지 확인하십시오.
+8. 한번만 빌드하고 단일 빌드 결과물(예: Docker 이미지)에 대해 모든 검사를 수행하십시오.
+9. 빌드간에 상태가 변하지 않는 임시 환경에서 테스트하십시오. node_modules 캐싱은 유일한 예외 일 수 있습니다.
 
-❌ **Otherwise:** You‘ll miss years of wisdom
+❌ **그렇지 않으면:** 수년간의 노하우를 놓치는 것과 같습니다.
 
 <br/><br/>
 
-## ⚪ ️ 5.9 Build matrix: Run the same CI steps using multiple Node versions
-:white_check_mark: **Do:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use MySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of MySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
-<br/>
+## ⚪ ️ 5.9 빌드 매트릭스: 여러 노드 버전을 사용해서 동일한 CI 단계를 실행 하십시오.
 
-
-❌ **Otherwise:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
-
+:white_check_mark: **이렇게 해라:** 품질 검사는 [세런디피티](https://ko.wikipedia.org/wiki/%EC%84%B8%EB%9F%B0%EB%94%94%ED%94%BC%ED%8B%B0)에 관한 것으로, 문제를 조기에 발견하는데 도움이 되는 더 많은 기회를 제공합니다. 재사용 가능한 패키지를 개발하거나 다양한 구성 및 노드 버전으로 여러 고객의 제품을 실행하는 경우, CI는 모든 구성의 순열에 대해 테스트 파이프 라인을 실행해야합니다. 예를 들어, 일부 고객은 MySQL을 사용하고 다른 고객은 PostgreSQL을 사용한다고 가정합시다. 일부 CI 벤더는 '매트릭스'라는 기능을 제공하여 MySQL, PostgreSQL 및 8, 9, 10과 같은 여러 노드 버전의 모든 순열에 대해 테스트를 실행할 수 있습니다. 이 경우에는 어떠한 추가 노력없이 구성(설정)만을 사용하여 가능합니다(테스트 또는 기타 품질 검사가 있다고 가정). 매트릭스를 지원하지 않는 다른 CI는 확장이나 조정이 필요할 수 있습니다.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
+
 
 <br/>
 
-### :clap:   Example: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: Travis(CI 벤더) 빌드 정의를 사용하여 여러 노드 버전에 대한 동일한 테스트를 실행하십시오.
+
 <pre name="f909" id="f909" class="graf graf--pre graf-after--p">language: node_js<br>node_js:<br>  - "7"<br>  - "6"<br>  - "5"<br>  - "4"<br>install:<br>  - npm install<br>script:<br>  - npm run test</pre>
 </details>
 
 <br/><br/>
 
 # Team
-
-
 
 ## Yoni Goldberg
 
