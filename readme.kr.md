@@ -1868,32 +1868,30 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.7 Automate dependency updates
-:white_check_mark: **Do:**   Yarn and npm latest introduction of package-lock.json introduced a serious challenge (the road to hell is paved with good intentions) — by default now, packages are no longer getting updates. Even a team running many fresh deployments with ‘npm install’ & ‘npm update’ won’t get any new updates. This leads to subpar dependent packages versions at best or to vulnerable code at worst. Teams now rely on developers goodwill and memory to manually update the package.json or use tools [like ncu](https://www.npmjs.com/package/npm-check-updates) manually. A more reliable way could be to automate the process of getting the most reliable dependency versions, though there are no silver bullet solutions yet there are two possible automation roads:
+## ⚪ ️ 5.7 종속성 업데이트 자동화
 
-(1) CI can fail builds that have obsolete dependencies — using tools like [‘npm outdated’](https://docs.npmjs.com/cli/outdated) or ‘npm-check-updates (ncu)’ . Doing so will enforce developers to update dependencies.
+:white_check_mark: **이렇게 해라:** yarn과 npm이 최근 소개한 package-lock.json는 중대한 도전입니다(지옥으로 가는 길은 좋은 의도로 포장되어 있습니다). 기본적으로 이제 패키지는 더이상 업데이트되지 않습니다. 'npm install'과 'npm update'을 통해 새로운 배포를 많이 수행하는 팀도 새로운 업데이트를 받지 않습니다. 이로 인해 하위 종속 패키지 버전이 최상이거나, 최악의 경우에는 취약한 코드가 됩니다. 팀은 이제 패키지를 수동으로 업데이트하기 위해 개발자의 의지와 기억에 의존하거나 [ncu](https://www.npmjs.com/package/npm-check-updates)같은 도구를 수동으로 사용하게 됩니다. 보다 안정적인 방법은 가장 안정적인 종속성 버전을 얻는 프로세스를 자동화하는 것입니다. 묘책은 없지만 가능한 두가지 자동화 방법이 있습니다:
 
-(2) Use commercial tools that scan the code and automatically send pull requests with updated dependencies. One interesting question remaining is what should be the dependency update policy — updating on every patch generates too many overhead, updating right when a major is released might point to an unstable version (many packages found vulnerable on the very first days after being released, [see the](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope incident).
+(1) CI는 ['npm outdated'](https://docs.npmjs.com/cli/outdated) 또는 'npm-check-updates(ncu)'같은 툴을 사용하여 오래된 종속성을 가진 빌드를 실패하게 할 수 있습니다. 그렇게하면 개발자가 종속성 업데이트를 해야합니다.
 
-An efficient update policy may allow some ‘vesting period’ — let the code lag behind the @latest for some time and versions before considering the local copy as obsolete (e.g. local version is 1.3.1 and repository version is 1.3.8)
-<br/>
+(2) 코드를 스캔하고 업데이트된 종속성으로 PR을 자동으로 보내주는 상용 도구를 사용하십시오. 남아있는 흥미로운 질문 하나는 종속성 업데이트 정책입니다. 모든 패치에서 업데이트를 하면 너무 많은 오버헤드가 발생합니다. 메이저 버전이 공개될 때 바로 업데이트 하면 불안정한 버전을 가리킬 수 있습니다.(많은 패키지가 출시된 직후 첫 날에 취약한 것으로 밝혀 짐 [esline-scope](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/)사건 참조)
 
-
-❌ **Otherwise:** Your production will run packages that have been explicitly tagged by their author as risky
-
+효율적인 업데이트 정책은 일부 '투자 기간'을 허용할 수 있습니다. 로컬 사본을 버리기 전에 종속성의 시간과 버전을 @latest보다 약간 뒤쳐지게 하십시오. (예: 로컬 버전은 1.3.1 레파지토리 버전은 1.3.8)
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 당신의 제품은 작성자가 위험하다고 명시적으로 태그한 패키지를 실행할 것입니다.
 
 <br/>
 
-### :clap:  Example: [ncu](https://www.npmjs.com/package/npm-check-updates) can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions
-![alt text](assets/bp-27-yoni-goldberg-npm.png "Nncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
+<details><summary>✏ <b>예제 코드</b></summary>
 
+<br/>
+
+### :clap: 올바른 예: 코드가 최신 버전보다 어느정도 뒤쳐지는지 감지하기 위하여 [ncu](https://www.npmjs.com/package/npm-check-updates)를 수동으로 또는 CI 파이프라인 내에서 사용할 수 있습니다.
+![alt text](assets/bp-27-yoni-goldberg-npm.png "코드가 최신 버전보다 어느정도 뒤쳐지는지 감지하기 위하여 ncu를 수동으로 또는 CI 파이프라인 내에서 사용할 수 있습니다.")
 
 </details>
-
 
 <br/><br/>
 
