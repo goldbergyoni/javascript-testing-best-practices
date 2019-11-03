@@ -1844,27 +1844,25 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.6 Constantly inspect for vulnerable dependencies
-:white_check_mark: **Do:**    Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like license check and plagiarism check (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stackoverflow and apparently violates some copyrights
-<br/>
+## ⚪ ️ 5.6 취약한 종속성을 지속적으로 검사
 
-
-❌ **Otherwise:** Even the most reputable dependencies such as Express have known vulnerabilities. This can get easily tamed using community tools such as [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), or commercial tools like [snyk](https://snyk.io/) (offer also a free community version). Both can be invoked from your CI on every build
-
+:white_check_mark: **이렇게 해라:** 라이센싱과 표절 문제는 당장 당신의 주요 관심사가 아닐 수 있지만, 10분 안에 이 내용을 확인하지 않으시겠습니까? 많은 npm 패키지의 라이센스 및 표절 확인(상용 도구의 무료 플랜)을 CI 파이프라인에 쉽게 포함시킬 수 있습니다. 그리고 제한적인 라이센스의 종속성이나 Stack Overflow에서 복사하여 붙여넣은 일부 저작권을 위반한 것으로 보이는 코드를 점검하십시오.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** Express와 같이 상당히 평판이 좋은 종속성 조차도 취약점이 있습니다. [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit)과 같은 커뮤니티 도구 또는 [snyk](https://snyk.io/)같은 상용 도구를 사용하여 쉽게 알 수 있습니다(무료 커뮤니티 버전도 제공). 둘다 당신의 CI의 모든 빌드에서 사용할 수 있습니다.
 
 <br/>
 
-### :clap: Example: NPM Audit result
-![alt text](assets/bp-26-npm-audit-snyk.png "NPM Audit result")
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: NPM Audit 결과
+
+![alt text](assets/bp-26-npm-audit-snyk.png "NPM Audit 결과")
 
 </details>
-
-
-
 
 <br/><br/>
 
@@ -1889,6 +1887,7 @@ license-checker --summary --failOn BSD
 <br/>
 
 ### :clap: 올바른 예: 코드가 최신 버전보다 어느정도 뒤쳐지는지 감지하기 위하여 [ncu](https://www.npmjs.com/package/npm-check-updates)를 수동으로 또는 CI 파이프라인 내에서 사용할 수 있습니다.
+
 ![alt text](assets/bp-27-yoni-goldberg-npm.png "코드가 최신 버전보다 어느정도 뒤쳐지는지 감지하기 위하여 ncu를 수동으로 또는 CI 파이프라인 내에서 사용할 수 있습니다.")
 
 </details>
@@ -1908,6 +1907,8 @@ license-checker --summary --failOn BSD
 7. 릴리스 빌드에서 명시적으로 버전을 충돌 시켜보거나 최소한 개발자가 그렇게했는지 확인하십시오.
 8. 한번만 빌드하고 단일 빌드 결과물(예: Docker 이미지)에 대해 모든 검사를 수행하십시오.
 9. 빌드간에 상태가 변하지 않는 임시 환경에서 테스트하십시오. node_modules 캐싱은 유일한 예외 일 수 있습니다.
+
+<br/>
 
 ❌ **그렇지 않으면:** 수년간의 노하우를 놓치는 것과 같습니다.
 
