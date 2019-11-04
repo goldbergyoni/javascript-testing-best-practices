@@ -1693,11 +1693,10 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 ## ⚪ ️ 5.1 린터를 풍성하게 구성하고 린트 문제가 있는 빌드를 중단하십시오
 
 :white_check_mark: **이렇게 해라:**  린터는 공짜 점심이며, 5분의 설정만으로 코드를 지켜주고 입력과 동시에 중요한 문제를 포착하는 자동 조종 장치를 거저 얻을 수 있습니다. 린터가 장식(세미콜론)에 지나지 않던 시대는 지나갔습니다. 요즘의 린터는 올바르게 throw되지 않고 정보가 손실되는 오류와 같은 심각한 문제를 포착 할 수 있습니다. 기본 규칙 세트 ([ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) 혹은 [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)) 위에, 단언문이 빠진 테스트를 발견해주는 [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect)와 같은 특화된 린터를 포함하는 것을 고려하십시오. [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) 는 resolve되지 않는 Promise를 발견해줍니다 (이런 코드는 계속해서 실행되는것이 불가능합니다), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme)는 DOS 공격에 사용될 수 있는 취약한 정규식을 발견해주며, [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore)는 코드가 Lodash._map(...)과 같은 V8 코어 메소드의 일부인 유틸리티 라이브러리 메소드를 사용할 때 경고해줍니다.
+
 <br/>
 
-
 ❌ **그렇지 않으면:** 프로덕션이 계속 깨지는데 로그에 에러의 stack trace가 표시되지 않는 우울한 날을 상상해봅시다. 어떻게 된 걸까요? 실수로 코드가 에러가 아닌 객체를 던지고 있어서 stack trace가 손실되었다면, 벽에 머리를 들이박기 딱 좋을것입니다. 5분의 린터 설정으로 이런 오타를 감지하고 하루를 지켜낼 수 있습니다.
-
 
 <br/>
 
@@ -1706,25 +1705,22 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 <br/>
 
 ### :thumbsdown: 올바르지 않은 예: 잘못된 Error 객체가 실수로 throw되어 이 오류에 대한 stack trace가 나타나지 않습니다. 운 좋게도 ESLint는 다음과 같은 프로덕션 버그를 잡아냅니다.
+
 ![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "잘못된 Error 객체가 실수로 throw되어 이 오류에 대한 stack trace가 나타나지 않습니다. 운 좋게도 ESLint는 다음과 같은 프로덕션 버그를 잡아냅니다.")
 
 </details>
 
-
-
-
 <br/><br/>
 
-# ⚪ ️ 5.2 로컬 개발자 CI로 피드백 주기 단축
+## ⚪ ️ 5.2 로컬 개발자 CI로 피드백 주기 단축
 
-:white_check_mark: **이렇게 해라:**   테스트, 린트, 취약점 확인 등과 같은 근사한 품질 검사가 포함된 CI를 사용합니까? 개발자가 이 파이프라인을 로컬에서도 실행할 수 있도록 해서 [피드백 주기](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/)를 단축하십시오. 왜? 효율적인 테스트 프로세스는 많은 반복 루프를 구성합니다. (1) 시도 -> (2) 피드백 -> (3) 리팩터링. 피드백이 빠를수록 개발자가 모듈 각각을 개선하며 결과를 완벽하게 할 수 있습니다. 한편, 피드백이 늦어지면서 하루에 개선이 반복되는 빈도가 적어진다면, 팀은 이미 다른 주제 / 작업 / 모듈로 넘어갈 수 있으며 해당 모듈의 수정이 이루어지지 않을 수 있습니다.
+:white_check_mark: **이렇게 해라:**  테스트, 린트, 취약점 확인 등과 같은 근사한 품질 검사가 포함된 CI를 사용합니까? 개발자가 이 파이프라인을 로컬에서도 실행할 수 있도록 해서 [피드백 주기](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/)를 단축하십시오. 왜? 효율적인 테스트 프로세스는 많은 반복 루프를 구성합니다. (1) 시도 -> (2) 피드백 -> (3) 리팩터링. 피드백이 빠를수록 개발자가 모듈 각각을 개선하며 결과를 완벽하게 할 수 있습니다. 한편, 피드백이 늦어지면서 하루에 개선이 반복되는 빈도가 적어진다면, 팀은 이미 다른 주제 / 작업 / 모듈로 넘어갈 수 있으며 해당 모듈의 수정이 이루어지지 않을 수 있습니다.
 
 실제로 몇몇 CI 공급 업체 (예: [CircleCI load CLI](https://circleci.com/docs/2.0/local-cli/)) 는 파이프라인의 로컬 실행을 허용합니다. [wallaby](https://wallabyjs.com/)와 같은 몇몇 상용 도구는 개발자 프로토타입으로 높은 가치의 테스트 통찰력을 제공합니다(협찬 아님). 또는 모든 품질 관련 명령어(예 : test, lint, vulnerabilities)를 실행하는 npm 스크립트를 package.json에 추가 할 수 있습니다. 병렬화를 위해 [concurrently](https://www.npmjs.com/package/concurrently)와 같은 도구를 사용하고 명령어 중 하나가 실패할 경우에는 0이 아닌 종료 코드를 사용하십시오. 이제 개발자는 하나의 명령을 호출해야 합니다. ‘npm run quality’— 즉각적인 피드백을 받습니다. githook을 사용하여 품질 검사에 실패한 경우 커밋을 중단하는 것도 고려하십시오 ([husky가 도움될 수 있음](https://github.com/typicode/husky))
+
 <br/>
 
-
 ❌ **그렇지 않으면:** 코드를 작성한 다음 날에 품질 결과가 도착한다면 테스트는 개발 과정에 자연스럽게 포함될 수 없습니다
-
 
 <br/>
 
@@ -1732,7 +1728,8 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :clap:  올바른 예: 코드 품질 검사를 수행하는 npm 스크립트는 요청 시 또는 개발자가 새 코드를 푸시하려고 할 때 모두 병렬로 실행됩니다.
+### :clap: 올바른 예: 코드 품질 검사를 수행하는 npm 스크립트는 요청 시 또는 개발자가 새 코드를 푸시하려고 할 때 모두 병렬로 실행됩니다.
+
 ```javascript
 "scripts": {
     "inspect:sanity-testing": "mocha **/**--test.js --grep \"sanity\"",
@@ -1754,103 +1751,89 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 </details>
 
-
-
-
 <br/><br/>
 
-# ⚪ ️5.3 Perform e2e testing over a true production-mirror
+## ⚪ ️ 5.3 실제 프로덕션 미러를 통해 e2e 테스트 수행
 
-:white_check_mark: **Do:**   End to end (e2e) testing are the main challenge of every CI pipeline — creating an identical ephemeral production mirror on the fly with all the related cloud services can be tedious and expensive. Finding the best compromise is your game: [Docker-compose](https://serverless.com/) allows crafting isolated dockerized environment with identical containers using a single plain text file but the backing technology (e.g. networking, deployment model) is different from real-world productions. You may combine it with [‘AWS Local’](https://github.com/localstack/localstack) to work with a stub of the real AWS services. If you went [serverless](https://serverless.com/) multiple frameworks like serverless and [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) allows the local invocation of Faas code.
+:white_check_mark: **이렇게 해라:** e2e 테스트는 모든 CI 파이프라인의 주요 과제입니다. 모든 관련 클라우드 서비스가 동일한 임시 프로덕션 미러를 즉석에서 생성하는 것은 지루하고 비용이 많이 들 수 있습니다. 최고의 타협점을 찾는것이 게임입니다. [Docker-compose](https://serverless.com)를 사용하면 단일 텍스트 파일로 동일한 컨테이너로 격리된 도커 환경을 만들 수 있지만 백업 기술(예: 네트워킹, 배포 모델)은 실제 프로덕션과 다릅니다. 실제 AWS 서비스 기능과 함께 동작하게 하기 위해 이를 ['AWS Local'](https://github.com/localstack/localstack)과 결합할 수 있습니다. [Serverless](https://serverless.com)와 Serverless같은 여러 프레임워크를 사용하는 경우 [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html)을 이용해 로컬에서 FaaS 코드를 호출할 수 있습니다.
 
-The huge Kubernetes eco-system is yet to formalize a standard convenient tool for local and CI-mirroring though many new tools are launched frequently. One approach is running a ‘minimized-Kubernetes’ using tools like [Minikube](https://kubernetes.io/docs/setup/minikube/) and [MicroK8s](https://microk8s.io/) which resemble the real thing only come with less overhead. Another approach is testing over a remote ‘real-Kubernetes’, some CI providers (e.g. [Codefresh](https://codefresh.io/)) has native integration with Kubernetes environment and make it easy to run the CI pipeline over the real thing, others allow custom scripting against a remote Kubernetes.
-<br/>
-
-
-❌ **Otherwise:** Using different technologies for production and testing demands maintaining two deployment models and keeps the developers and the ops team separated
-
+거대한 쿠버네티스 생태계는 많은 새로운 도구가 자주 나오지만, 아직 로컬 및 CI 미러링을 위한 편리한 도구의 표준을 공식화하지 않았습니다. 한가지 방법은 실제와 비슷하지만 오버헤드가 적은 [Minikube](https://kubernetes.io/docs/setup/minikube) 및 [MicroK8s](https://microk8s.io)과 같은 도구를 사용하여 '최소화된 쿠버네티스'를 실행하는 것입니다. 또 다른 방법은 원격 '실제 쿠버네티스'를 테스트하는 것입니다. 일부 CI 벤더(예: [Codefresh](https://codefresh.io)은 쿠버네티스 환경과 통합되어 있어서 실제 상황에서 CI 파이프라인을 쉽게 실행할 수 있으며, 또 원격 쿠버네티스에 대한 사용자 지정 스크립팅을 허용합니다.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 프로덕션 및 테스트에 서로 다른 기술을 사용하면 두 가지 배포 모델의 관리가 필요하고 개발자와 운영 팀이 분리됩니다.
 
 <br/>
 
-### :clap:  Example: a CI pipeline that generates Kubernetes cluster on the fly <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([Credit: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: 쿠버네티스 클러스터를 즉시 생성하는 CI 파이프라인 ([동적 환경 쿠버네티스](https://blog.container-solutions.com/dynamic-environments-kubernetes)
 
 <pre name="38d9" id="38d9" class="graf graf--pre graf-after--p">deploy:<br>stage: deploy<br>image: registry.gitlab.com/gitlab-examples/kubernetes-deploy<br>script:<br>- ./configureCluster.sh $KUBE_CA_PEM_FILE $KUBE_URL $KUBE_TOKEN<br>- kubectl create ns $NAMESPACE<br>- kubectl create secret -n $NAMESPACE docker-registry gitlab-registry --docker-server="$CI_REGISTRY" --docker-username="$CI_REGISTRY_USER" --docker-password="$CI_REGISTRY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL"<br>- mkdir .generated<br>- echo "$CI_BUILD_REF_NAME-$CI_BUILD_REF"<br>- sed -e "s/TAG/$CI_BUILD_REF_NAME-$CI_BUILD_REF/g" templates/deals.yaml | tee ".generated/deals.yaml"<br>- kubectl apply --namespace $NAMESPACE -f .generated/deals.yaml<br>- kubectl apply --namespace $NAMESPACE -f templates/my-sock-shop.yaml<br>environment:<br>name: test-for-ci</pre>
 
 </details>
 
-
-
-
-
 <br/><br/>
 
-## ⚪ ️5.4 Parallelize test execution
-:white_check_mark: **Do:**    When done right, testing is your 24/7 friend providing almost instant feedback. In practice, executing 500 CPU-bounded unit test on a single thread can take too long. Luckily, modern test runners and CI platforms (like [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) and [Mocha extensions](https://github.com/yandex/mocha-parallel-tests)) can parallelize the test into multiple processes and achieve significant improvement in feedback time. Some CI vendors do also parallelize tests across containers (!) which shortens the feedback loop even further. Whether locally over multiple processes, or over some cloud CLI using multiple machines — parallelizing demand keeping the tests autonomous as each might run on different processes
+## ⚪ ️ 5.4 테스트 실행의 병렬화
 
+:white_check_mark: **이렇게 해라:** 제대로만 하면 테스트는 거의 즉각적인 피드백을 주는 24/7 친구입니다. 실제로 단일 스레드에서 500개의 CPU 제한 단위 테스트를 실행하는데는 시간이 오래 걸릴 수 있습니다. 운좋게도 최신 테스트 러너와 CI 플랫폼(예: [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava), [Mocha extension](https://github.com/yandex/mocha-parallel-tests))은 테스트를 여러 프로세스로 병렬화하여 피드백 시간을 크게 개선할 수 있습니다. 일부 CI 벤더는 테스트를 컨테이너 간 병렬화하여(!) 피드백 시간을 더욱 단축시킵니다. 각각 다른 프로세스에서 테스트를 실행(로컬에서 여러 프로세스로 혹은 여러 머신을 사용하는 일부 클라우드 CLI를 통해)하여 테스트를 자동화 하십시오.
 
-❌ **Otherwise:** Getting test results 1 hour long after pushing new code, as you already code the next features, is a great recipe for making testing less relevant
-
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 새 코드를 푸쉬하고 이미 다음 기능을 코딩 할 때, (한 시간 후에) 테스트 결과를 얻는 것은 테스트의 관련성을 떨어뜨리기 위한 훌륭한 방법입니다.
 
 <br/>
 
-### :clap: Doing It Right Example: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: Mocha Parallel과 Jest 는 테스트 병렬화 덕분에 덕분에 기존의 Mocha를 쉽게 능가합니다. ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+
 ![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
 
 </details>
 
-
-
-
 <br/><br/>
 
-## ⚪ ️5.5 Stay away from legal issues using license and plagiarism check
-:white_check_mark: **Do:**    Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like [license check](https://www.npmjs.com/package/license-checker) and [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stackoverflow and apparently violates some copyrights
+## ⚪ ️ 5.5 라이센스 및 표절을 검사하여 법적 문제를 피하십시오.
 
-❌ **Otherwise:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
+:white_check_mark: **이렇게 해라:** 라이센싱과 표절 문제는 당장 당신의 주요 관심사가 아닐 수 있지만, 10분 안에 이 내용을 확인하지 않으시겠습니까? 많은 npm 패키지의 [라이센스 체크](https://www.npmjs.com/package/license-checker) 및 [표절 확인](https://www.npmjs.com/package/plagiarism-checker)(상용 도구의 무료 플랜)을 CI 파이프라인에 쉽게 포함시킬 수 있습니다. 그리고 제한적인 라이센스의 종속성이나 Stack Overflow에서 복사하여 붙여넣은 일부 저작권을 위반한 것으로 보이는 코드를 점검하십시오.
 
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 개발자가 의도치 않게 부적절한 라이센스가 포함된 패키지를 사용하거나 상용 코드를 복사하여 법적 문제가 발생할 수 있습니다.
 
 <br/>
 
-### :clap: Doing It Right Example:
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :clap: 올바른 예:
+
 ```javascript
 //install license-checker in your CI environment or also locally
 npm install -g license-checker
 
 //ask it to scan all licenses and fail with exit code other than 0 if it found unauthorized license. The CI system should catch this failure and stop the build
 license-checker --summary --failOn BSD
-
 ```
 
 <br/>
 
 ![alt text](assets/bp-25-nodejs-licsense.png)
 
-
 </details>
-
-
 
 <br/><br/>
 
 ## ⚪ ️ 5.6 취약한 종속성을 지속적으로 검사
 
-:white_check_mark: **이렇게 해라:** 라이센싱과 표절 문제는 당장 당신의 주요 관심사가 아닐 수 있지만, 10분 안에 이 내용을 확인하지 않으시겠습니까? 많은 npm 패키지의 라이센스 및 표절 확인(상용 도구의 무료 플랜)을 CI 파이프라인에 쉽게 포함시킬 수 있습니다. 그리고 제한적인 라이센스의 종속성이나 Stack Overflow에서 복사하여 붙여넣은 일부 저작권을 위반한 것으로 보이는 코드를 점검하십시오.
+:white_check_mark: **이렇게 해라:** Express와 같이 상당히 평판이 좋은 종속성 조차도 취약점이 있습니다. [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit)과 같은 커뮤니티 도구 또는 [snyk](https://snyk.io/)같은 상용 도구를 사용하여 쉽게 알 수 있습니다(무료 커뮤니티 버전도 제공). 둘다 당신의 CI의 모든 빌드에서 사용할 수 있습니다.
 
 <br/>
 
-❌ **그렇지 않으면:** Express와 같이 상당히 평판이 좋은 종속성 조차도 취약점이 있습니다. [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit)과 같은 커뮤니티 도구 또는 [snyk](https://snyk.io/)같은 상용 도구를 사용하여 쉽게 알 수 있습니다(무료 커뮤니티 버전도 제공). 둘다 당신의 CI의 모든 빌드에서 사용할 수 있습니다.
+❌ **그렇지 않으면:** 전용 도구 없이 코드를 취약점으로부터 안전하게 유지하려면 새로운 위협에 대한 최신 소식을 지속적으로 쫓아야 해서 매우 지루합니다.
 
 <br/>
 
