@@ -1769,7 +1769,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :clap: 올바른 예: 쿠버네티스 클러스터를 즉시 생성하는 CI 파이프라인 ([동적 환경 쿠버네티스](https://blog.container-solutions.com/dynamic-environments-kubernetes)
+### :clap: 올바른 예: 쿠버네티스 클러스터를 즉시 생성하는 CI 파이프라인 ([동적 환경 쿠버네티스](https://blog.container-solutions.com/dynamic-environments-kubernetes))
 
 <pre name="38d9" id="38d9" class="graf graf--pre graf-after--p">deploy:<br>stage: deploy<br>image: registry.gitlab.com/gitlab-examples/kubernetes-deploy<br>script:<br>- ./configureCluster.sh $KUBE_CA_PEM_FILE $KUBE_URL $KUBE_TOKEN<br>- kubectl create ns $NAMESPACE<br>- kubectl create secret -n $NAMESPACE docker-registry gitlab-registry --docker-server="$CI_REGISTRY" --docker-username="$CI_REGISTRY_USER" --docker-password="$CI_REGISTRY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL"<br>- mkdir .generated<br>- echo "$CI_BUILD_REF_NAME-$CI_BUILD_REF"<br>- sed -e "s/TAG/$CI_BUILD_REF_NAME-$CI_BUILD_REF/g" templates/deals.yaml | tee ".generated/deals.yaml"<br>- kubectl apply --namespace $NAMESPACE -f .generated/deals.yaml<br>- kubectl apply --namespace $NAMESPACE -f templates/my-sock-shop.yaml<br>environment:<br>name: test-for-ci</pre>
 
@@ -1919,21 +1919,24 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-# Team
+# 팀
 
 ## Yoni Goldberg
 
 <br/>
+
 <img width="480px" src="assets/yoni-goldberg.jpg"/>
-<br/>
-
-**Role:** Writer
-
-**About:** I'm an independent consultant who works with 500 fortune corporates and garage startups on polishing their JS & Node.js applications. More than any other topic I'm fascinated by and aims to master the art of testing. I'm also the author of [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
 
 <br/>
 
-**Workshop:** 👨‍🏫 Want to learn all these practices and techniques at your offices (Europe & USA)? [Register here for my testing workshop](https://testjavascript.com/)
+**Role:** 저자
+
+**About:** 저는 포춘 500대 기업 및 스타트업과 함께 JS 및 Node.js 어플리케이션을 개발하는 독립 컨설턴트입니다. 다른 어떤 주제보다 더 흥미를 끄는 테스트 기술을 습득하는 것을 목표로 합니다. 또한 [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)의 저자이기도 합니다.
+
+<br/>
+
+**Workshop:** 👨‍🏫 이러한 모든 프랙티스와 기술을 배우고 싶습니까?(유럽 & 미국) [테스트 워크샵에 등록하십시오](https://testjavascript.com)
+
 <br/>
 
 **Follow:**
@@ -1943,22 +1946,25 @@ license-checker --summary --failOn BSD
 * [✉️ Newsletter](https://testjavascript.com/newsletter//)
 
 <br/>
-<hr/>
-<br/>
 
+<hr/>
+
+<br/>
 
 ##  [Bruno Scheufler](https://github.com/BrunoScheufler)
 
-**Role:** Tech reviewer and advisor
+**Role:** 기술 검토 및 고문
 
-Took care to revise, improve, lint and polish all the texts 
+모든 텍스트를 수정, 개선, lint 및 다듬었습니다.
 
-**About:** full-stack web engineer, Node.js & GraphQL enthusiast
+**About:** 풀 스택 웹 엔지니어, Node.js 및 GraphQL의 열렬한 지지자
+
 <hr/>
+
 <br/>
 
 ## [Ido Richter](https://github.com/idori)
 
-**Role:** Concept, design and great advice
+**Role:** 컨셉, 디자인 및 훌륭한 조언
 
-**About:** A savvy frontend developer, CSS expert and emojis freak
+**About:** 정통한 프론트 엔드 개발자, CSS 전문가 및 이모티콘에 관심이 많은 사람
