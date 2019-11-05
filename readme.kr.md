@@ -1424,10 +1424,10 @@ Feature: Twitter new tweet
 
 
 
-## ⚪ ️ 3.11 Detect visual issues with automated tools
+## ⚪ ️ 3.11 자동화된 툴을 사용하여 시각적 문제(Visual Issues)를 감지해라.
 
 
-:white_check_mark: **Do:** Setup automated tools to capture UI screenshots when changes are presented and detect visual issues like content overlapping or breaking. This ensures that not only the right data is prepared but also the user can conveniently see it. This technique is not widely adopted, our testing mindset leans toward functional tests but it's the visuals what the user experience and with so many device types it's very easy to overlook some nasty UI bug. Some free tools can provide the basics - generate and save screenshots for the inspection of human eyes. While this approach might be sufficient for small apps, it's flawed as any other manual testing that demands human labor anytime something changes. On the other hand, it's quite challenging to detect UI issues automatically due to the lack of clear definition - this is where the field of 'Visual Regression' chime in and solve this puzzle by comparing old UI with the latest changes and detect differences. Some OSS/free tools can provide some of this functionality (e.g. [wraith](https://github.com/BBC-News/wraith), [PhantomCSS]([https://github.com/HuddleEng/PhantomCSS](https://github.com/HuddleEng/PhantomCSS)) but might charge signficant setup time. The commercial line of tools (e.g. [Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) takes is a step further by smoothing the installation and packing advanced features like management UI, alerting, smart capturing by elemeinating  'visual noise' (e.g. ads, animations) and even root cause analysis of the DOM/css changes that led to the issue
+:white_check_mark: **이렇게 해라:** 컨테츠가 겹치거나 깨지는 등의 시각적 문제들이 감지될 때, UI 스크린 샷을 캡처하기 위해 자동화 도구를 셋업하세요. 이를 통해, 올바른 데이터가 준비 될 뿐만 아니라 사용자가 편리하게 변경을 확인할 수 있습니다. 이러한 기술은 현재 널리 채택되지는 않았습니다. 우리의 테스트 사고 방식은 여전히 기능 테스트에 의존하지만 사용자가 실제로 경험하는 것은 시각적 요소이며 다양한 디바이스 유형때문에 일부 UI 버그들은 간과되기 쉽습니다. 일부 무료 툴들은 육안 검사를 위한 스크린 샷을 생성하거나 저장하는 기능과 같은 기본적인 기능들을 제공합니다. 이 방법은 작은 크기의 App에는 충분하지만, 변경이 발생할 때마다 사람의 손길이 필요한 다른 수동 테스트를 수행하기에는 제약이 있습니다. 반면에, 명확한 정의가 없기 때문에 UI 문제를 자동으로 감지하는 것은 상당히 어려운 일입니다. - 이 부분이 Visual Regression 테스트 영역입니다. 이전 버전의 UI를 최근 변경과 비교하여 차이점을 감지하여 문제를 해결합니다. 일부 오픈소스/무료 툴들은 이 기능들의 일부를 제공해 주지만(예. [wraith](https://github.com/BBC-News/wraith), [PhantomCSS](https://github.com/HuddleEng/PhantomCSS)) 상당한 셋업 시간이 필요합니다. 상용 툴들은(예. [Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) 설치가 간편하고 관리 UI, 알람, ‘시각적 노이즈(예. 광고, 애니메이션)’를 제거하는 스마트 캡쳐와 문제를 일으키는 DOM/css의 근본 원인을 분석하는 고급 기능들을 제공합니다.
 
 <br/>
 
@@ -1436,7 +1436,7 @@ Feature: Twitter new tweet
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>코드 예제</b></summary>
 
 <br/>
 
