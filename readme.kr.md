@@ -1284,31 +1284,31 @@ test('When no products exist, show the appropriate message', () => {
 
 <br/>
 
-## ⚪ ️ 3.7 Have very few end-to-end tests that spans the whole system
+## ⚪ ️ 3.7 전체 시스템에 걸친 엔드-투-엔드 테스트가 거의 없습니다.
 
-:white_check_mark: **Do:** Although E2E (end-to-end) usually means UI-only testing with a real browser (See bullet 3.6), for other they mean tests that stretch the entire system including the real backend. The latter type of tests is highly valuable as they cover integration bugs between frontend and backend that might happen due to a wrong understanding of the exchange schema. They are also an efficient method to discover backend-to-backend integration issues (e.g. Microservice A sends the wrong message to Microservice B) and even to detect deployment failures - there are no backend frameworks for E2E testing that are as friendly and mature as UI frameworks like [Cypress](https://www.cypress.io/) and [Pupeteer](https://github.com/GoogleChrome/puppeteer). The downside of such tests is the high cost of configuring an environment with so many components, and mostly their brittleness - given 50 microservices, even if one fails then the entire E2E just failed. For that reason, we should use this technique sparingly and probably have 1-10 of those and no more. That said, even a small number of E2E tests are likely to catch the type of issues they are targeted for - deployment & integration faults. It's advisable to run those over a production-like staging environment
-
-<br/>
-
-❌ **Otherwise:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very differnt than expected
+:white_check_mark: **이렇게 해라:** E2E(end-to-end)는 일반적으로 실제 브라우저를 사용한 UI를 위한 테스트를 의미하지만(3.6 참고), 다른 의미로 실제 백엔드를 포함하여 전체 시스템을 확장하는 테스트를 의미합니다. 후자의 테스트 유형은 교환 스키마에 대한 잘못된 이해로 인해 발생할 수 있는 프론트엔드와 백엔드간의 통합 버그를 커버하기 때문에 상당히 유용합니다. 또한 백엔드간 통합 문제(예 : 마이크로서비스 A가 마이크로서비스 B에 잘못된 메시지를 보낸다)를 발견하고 배포 실패를 감지하는 효과적인 방법입니다. [Cypress](https://www.cypress.io)와 [Pupeteer](https://github.com/GoogleChrome/puppeteer)같은 UI 프레임워크만큼 친숙하고 성숙한 E2E 테스트 백엔드 프레임워크는 없습니다. 이러한 테스트의 단점은 구성 요소가 많은 환경을 구성하는 데 드는 높은 비용과 주로 불안정성 입니다 - 50개의 마이크로서비스가 제공되는데, 하나가 실패하더라도 전체 E2E가 실패. 따라서 이 기법을 적절히 사용해야 하며, 그 중 1~10개 정도만 사용해야 합니다. 즉, 소수의 E2E 테스트 일지라도 배포 및 통합 오류와 같은 유형의 문제를 잡을 수 있습니다. 프로덕션과 같은 스테이징 환경에서 실행하는 것이 좋습니다.
 
 <br/>
 
-## ⚪ ️ 3.8 Speed-up E2E tests by reusing login credentials
-
-:white_check_mark: **Do:** In E2E tests that involve a real backend and rely on a valid user token for API calls, it doesn't payoff to isolate the test to a level where a user is created and logged-in in every request. Instead, login only once before the tests execution start (i.e. before-all hook), save the token in some local storage and reuse it across requests. This seem to violate one of the core testing principle - keep the test autonomous without resources coupling. While this is a valid worry, in E2E tests performance is a key concern and creating 1-3 API requests before starting each individial tests might lead to horrible execution time. Reusing credentials doesn't mean the tests have to act on the same user records - if relying on user records (e.g. test user payments history) than make sure to generate those records as part of the test and avoid sharing their existence with other tests. Also remember that the backend can be faked - if your tests are focused on the frontend it might be better to isolate it and stub the backend API (see bullet 3.6). 
+❌ **그렇지 않으면:** UI는 백엔드에서 리턴하는 페이로드가 예상과 매우 다르다는 것을 알아차리기 위하여 기능 테스트에 많은 투자를 할 수 있습니다.
 
 <br/>
 
-❌ **Otherwise:** Given 200 test cases and assuming login=100ms = 20 seconds only for logging-in again and again
+## ⚪ ️ 3.8 로그인 자격 증명을 재사용하여 E2E 테스트 속도 향상
+
+:white_check_mark: **이렇게 해라:** 실제 백엔드를 포함하고 API 호출이 가능한 사용자 토큰을 사용하는 E2E 테스트에서, 모든 요청에서 사용자가 생성되고 로그인이 되는 수준으로 테스트를 격리하는 것은 아닙니다. 대신 테스트가 시작되기 전에 한 번만 로그인하고(즉, before-all), 토큰을 로컬 저장소에 저장해서 여러 요청에 재사용하십시오. 이것은 핵심 테스트 원칙 중 하나를 위반하는 것 같습니다 - 리소스 커플링 없이 테스트를 자율적으로 유지하십시오. 이것은 우려할 만 하지만 E2E 테스트에서 성능은 핵심 관심사이며, 개별 테스트를 시작하기 전에 매번 1~3개의 API 요청을 보내게 되면 실행 시간이 끔직해질 수 있습니다. 자격 증명을 재사용한다고해서 테스트가 동일한 사용자 레코드에 대해 수행되어야 한다는 의미는 아닙니다. 사용자 레코드(예: 테스트 유저 결제 내역)에 의존하는 경우 해당 레코드를 테스트의 일부로 생성하고 다른 테스트와의 공유를 피하십시오. 또한 백엔드가 위조될 수 있음을 기억하십시오 - 테스트가 프론트엔드에 중점을 둔 경우, 테스트를 분리하고 백엔드 API를 스텁하는 것이 좋습니다.(3.6 참고)
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 200개의 테스트 케이스가 주어졌고 로그인에 100ms가 소요된다고 가정하면 매번 로그인에만 20초가 소요된다.
 
 <br/>
 
-### :clap: Doing It Right Example: Logging-in before-all and not before-each
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: before-each가 아닌 before-all에 로그인
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
  "Using Cypress to illustrate the idea")
@@ -1316,7 +1316,7 @@ test('When no products exist, show the appropriate message', () => {
 ```javascript
 let authenticationToken;
 
-// happens before ALL tests run
+// 모든 테스트가 실행되기 전에 발생
 before(() => {
   cy.request('POST', 'http://localhost:3000/login', {
     username: Cypress.env('username'),
@@ -1328,7 +1328,7 @@ before(() => {
   })
 })
 
-// happens before EACH test
+// 각 테스트 전에 발생
 beforeEach(setUser => () {
   cy.visit('/home', {
     onBeforeLoad (win) {
@@ -1336,13 +1336,9 @@ beforeEach(setUser => () {
     },
   })
 })
-
 ```
 
 </details>
-
-
-
 
 <br/>
 
@@ -1557,6 +1553,7 @@ cy.eyesCheckWindow('mark as completed');
 <br/>
 
 ### :clap: 예제: 일반적인 커버리지 보고서
+
 ![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "A typical coverage report")
 
 <br/>
@@ -1570,15 +1567,12 @@ cy.eyesCheckWindow('mark as completed');
 
 </details>
 
-
-
 <br/><br/>
 
 ## ⚪ ️ 4.2 커버리지 리포트를 확인하여 테스트 되지 않은 부분과 기타 이상한 점들을 감지하십시오.
 
 :white_check_mark: **이렇게 해라:** 일부 문제들은 레이더망 아래로 숨어버려 기존의 툴들을 사용하여 찾기 매우 어렵습니다. 이것들은 실제로 버그는 아니지만 심각한 영향을 줄 수 있는 생각지 못 한 어플리케이션 동작들입니다. 예를 들어, 일부 코드 영역은 절대 또는 거의 호출되지 않습니다. - ‘PricingCalculator’라는 상품 가격을 설정하는 클래스가 있다고 생각해 보세요. DB에 100000개의 상품이 있고 판매도 많지만 이 클래스는 실제로 절대 호출되지 않는 것으로 밝혀졌습니다... 코드 커버리지 리포트를 통해 어플리케이션이 당신이 원하는 대로 동작하는지 확인할 수 있습니다. 그 외에도 리포트는 어떤 코드들이 테스트되지 않았는지를 강조해서 보여줄 수도 있습니다. - 코드의 80%가 테스트 되었다는 알림이 중요한 부분이 커버되었는지에 대한 여부를 나타내진 않습니다. 리포트를 만드는 것은 쉽습니다. - 운영 또는 테스트를 할 때 커버리지 트래킹을 하면서 어플리케이션을 실행하세요. 그러고 나서 각 코드 영역이 얼마나 자주 호출됐는지를 나타내는 형형색색의 리포트를 보세요. 잠깐 시간을 내서 이 데이터들을 보면 몇 가지 문제점들을 발견하게 될 수도 있습니다. 
 <br/>
-
 
 ❌ **그렇지 않으면:** 어떤 코드가 테스트되지 않았는지 알 수 없으면 문제의 원인도 알 수 없습니다.  
 
@@ -1590,40 +1584,39 @@ cy.eyesCheckWindow('mark as completed');
 
 ### :thumbsdown: 올바르지 않은 예: 이 커버리지 리포트에는 어떤 문제가 있나요? 현실 세계 시나리오로 QA에서 어플리케이션 사용을 추적했고 흥미로운 로그인 패턴을 찾았습니다. (힌트: 로그인 실패 횟수가 비례하지 않습니다. 분명히 무언가 잘못되었습니다.) 마침내 일부 프론트엔드 버그가 백엔드 로그인 API를 계속 호출하고 있다는 것이 밝혀졌습니다. 
 
-
 ![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
 
 </details>
 
-
 <br/><br/>
 
-## ⚪ ️ 4.3 Measure logical coverage using mutation testing
+## ⚪ ️ 4.3 mutation 테스트를 사용하여 논리적인 범위를 측정
 
-:white_check_mark: **Do:**  The Traditional Coverage metric often lies: It may show you 100% code coverage, but none of your functions, even not one, return the right response. How come? it simply measures over which lines of code the test visited, but it doesn’t check if the tests actually tested anything — asserted for the right response. Like someone who’s traveling for business and showing his passport stamps — this doesn’t prove any work done, only that he visited few airports and hotels.
+:white_check_mark: **이렇게 해라:** 전통적인 커버리지 측정은 거짓말쟁이: 100%의 코드 커버리지를 표시할 수 있지만, 함수 중 올바른 응답을 반환하는 기능은 없습니다. 심지어 하나도. 어찌하여? 테스트가 방문한 코드 라인을 단순하게 측정하지만, 테스트에서 실제로 테스트(올바른 응답을 assertion) 한 것이 있는지 확인하지는 않습니다. 출장을 위해 여행하고 여권 스템프를 보여주는 사람처럼 - 이것은 단지 공항과 호텔을 방문했을 뿐, 일을 했는지 어떤 것도 증명하지 못한다.
 
-Mutation-based testing is here to help by measuring the amount of code that was actually TESTED not just VISITED. [Stryker](https://stryker-mutator.io/) is a JavaScript library for mutation testing and the implementation is really neat:
+mutation 기반의 테스트는 단순한 '방문'이 아닌 실제로 테스트 '된' 코드의 양을 측정하는데 도움이 됩니다. [Stryker](https://stryker-mutator.io)는 mutation 테스트를 위한 JavaScript 라이브러리이며 구현이 정말 깔끔합니다:
 
-(1) it intentionally changes the code and “plants bugs”. For example the code newOrder.price===0 becomes newOrder.price!=0. This “bugs” are called mutations
+(1) 의도적으로 코드를 변경하고 "버그를 심습니다". 예를 들면, newOrder.price === 0 는 newOrder.price != 0이 됩니다. 이 "버그"를 mutation이라고 합니다.
 
-(2) it runs the tests, if all succeed then we have a problem — the tests didn’t serve their purpose of discovering bugs, the mutations are so-called survived. If the tests failed, then great, the mutations were killed.
+(2) 모든 테스트가 성공하면 우리는 문제가 있다 - 테스트는 버그를 발견하는 목적을 달성하지 못했고, mutation은 살아남았다. 테스트가 실패하면 엄청난 mutation이 죽었다.
 
-Knowing that all or most of the mutations were killed gives much higher confidence than traditional coverage and the setup time is similar
-<br/>
-
-
-❌ **Otherwise:** You’ll be fooled to believe that 85% coverage means your test will detect bugs in 85% of your code
+모든 혹은 대부분의 mutation이 죽었다는 것을 알면 전통적인 커버리지보다 훨씬 더 높은 신뢰를 얻을 수 있으며 구성 시간은 비슷합니다.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 85%의 커버리지는 테스트에서 코드의 85%에서 버그를 감지한다는 의미입니다.
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: 100% coverage, 0% testing
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :thumbsdown: 올바르지 않은 예: 100% 커버리지, 0% 테스트
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg
- "Using Cypress to illustrate the idea")
+"Using Cypress to illustrate the idea")
+
 ```javascript
 function addNewOrder(newOrder) {
     logger.log(`Adding new order ${newOrder}`);
@@ -1635,37 +1628,34 @@ function addNewOrder(newOrder) {
 
 it("Test addNewOrder, don't use such test names", () => {
     addNewOrder({asignee: "John@mailer.com",price: 120});
-});//Triggers 100% code coverage, but it doesn't check anything
-
+}); // 100% 커버리지가 나오지만 아무것도 확인하지 않습니다.
 ```
+
 <br/>
 
-### :clap: Doing It Right Example: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
+### :clap: 올바른 예: mutation 테스트 도구인 Stryker 보고서는 테스트 되지 않은 코드의 양을 감지하고 계산합니다.
 
-![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
+![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "mutation 테스트 도구인 Stryker 보고서는 테스트 되지 않은 코드의 양을 감지하고 계산합니다.")
 
 </details>
 
-
-
 <br/><br/>
 
-## ⚪ ️4.4 Preventing test code issues with Test linters
+## ⚪ ️ 4.4 테스트 린터로 테스트 코드 문제 방지
 
-:white_check_mark: **Do:**  A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) will warn when a test is written at the global level (not a son of a describe() statement) or when tests are [skipped](https://mochajs.org/#inclusive-tests) which might lead to a false belief that all tests are passing. Similarly, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) can, for example, warn when a test has no assertions at all (not checking anything)
-
-<br/>
-
-
-❌ **Otherwise:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
-
-
-<br/>
-<details><summary>✏ <b>Code Examples</b></summary>
+:white_check_mark: **이렇게 해라:** ESLint 플러그인 세트는 테스트 코드 패턴을 검사하고 문제를 발견하기 위해 특별히 제작되었습니다. 예를 들어 [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha)는 테스트가 글로벌 수준에서 작성될 때(describe() 문 아래에 있지 않음) 또는 테스트를 건너 뛰고 모든 테스트가 통과되었다는 잘못된 믿음을 가질 때 경고합니다. 유사하게, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest)는 예를 들어 테스트에 아무런 assertion이 없을 때 경고합니다.(아무것도 확인하지 않음)
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: A test case full of errors, luckily all are caught by Linters
+❌ **그렇지 않으면:** 90%의 코드 커버리지와 100%의 녹색 테스트를 보며 미소짓는 것은 많은 테스트가 아무것도 assertion하지 않고 많은 테스트 스위트가 건너 뛰어진다는 것을 알 때 까지만입니다. 이 잘못된 결과를 바탕으로 어떤 것도 배포하지 않았기를 바랍니다.
+
+<br/>
+
+<details><summary>✏ <b>예제 코드</b></summary>
+
+<br/>
+
+### :thumbsdown: 올바르지 않은 예: 오류로 가득 찬 테스트 케이스, 운 좋게도 린터가 잡았습니다.
 
 ```javascript
 describe("Too short description", () => {
@@ -1684,7 +1674,6 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 </details>
 
 <br/><br/>
-
   
 # Section 5️⃣: 지속적인 통합
 
@@ -1883,7 +1872,7 @@ license-checker --summary --failOn BSD
 
 1. 선언적 구문을 사용하십시오. 대부분의 벤더에서는 선택할 수 없지만, 이전 버전의 Jenkins에서 코드 또는 UI를 사용할 수 있습니다.
 2. 고유 Docker를 지원하는 벤더를 선택하십시오.
-3. 일찍 실패하고 가장 빠른 테스트를 먼저 실행하십시오. 다양한 빠른 Inspection(예: 린트, 단위테스트)를 그룹화 하고 코드 커미터에 대한 신속한 피드백을 제공할 수 잇는 [스모크 테스트](https://terms.naver.com/entry.nhn?docId=864587&cid=42346&categoryId=42346) 단계/마일스톤을 만드십시오.
+3. 일찍 실패하고 가장 빠른 테스트를 먼저 실행하십시오. 다양한 빠른 Inspection(예: 린트, 단위테스트)를 그룹화 하고 코드 커미터에 대한 신속한 피드백을 제공할 수 있는 [스모크 테스트](https://terms.naver.com/entry.nhn?docId=864587&cid=42346&categoryId=42346) 단계/마일스톤을 만드십시오.
 4. 테스트 보고서, 커버리지, 변화, 로그 등의 모든 결과물을 훑어보기 쉽게 하십시오.
 5. 각 이벤트에 대해 여러 파이프라인/작업을 작성하고, 그 사이 단계를 재사용 하십시오. 예를 들면, feature 브랜치 커밋이나 마스터 PR에 대한 작업 구성. 각 재사용 로직이 공유 단계를 사용하게 하십시오.(대부분의 벤더는 코드 재사용을 위한 메커니즘을 제공합니다)
 6. 작업 선언에 어떤한것도 숨겨놓지 마십시오.
