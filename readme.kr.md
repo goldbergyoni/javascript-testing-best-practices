@@ -1201,22 +1201,22 @@ test('movie title appears', async () => {
 
 <br/>
 
-## ⚪ ️ 3.5. Watch how the content is served over the network
+## ⚪ ️ 3.5. 화면의 내용이 네트워크를 통해 어떻게 제공될지 확인하십시오
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Google%20LightHouse-blue.svg
  "Examples with Lighthouse")
 
-✅ **Do:** Apply some active monitor that ensures the page load under real network is optimized - this includes any UX concern like slow page load or un-minified bundle. The inspection tools market is no short: basic tools like [pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) can be easily configured to watch whether the server is alive and response under a reasonable SLA. This only scratches the surface of what might get wrong, hence it's preferable to opt for tools that specialize in frontend (e.g. [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) and perform richer analysis. The focus should be on symptoms, metrics that directly affect the UX, like page load time, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [time until the page gets interactive (TTI)](https://calibreapp.com/blog/time-to-interactive/). On top of that, one may also watch for technical causes like ensuring the content is compressed, time to the first byte, optimize images, ensuring reasonable DOM size, SSL and many others. It's advisable to have these rich monitors both during development, as part of the CI and most important - 24x7 over the production's servers/CDN
+✅ **이렇게 해라:** 네트워크를 점검하고 페이지로드 상태를 확인 할 수 있는 네트워크 액티브 모니터를 적용하십시오. [pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) 를 사용하면 쉽게 서버의 상태와 response 내용을 모니터링 하도록 설정 할 수 있고, 화면에서의 오류는 최소화 하면서 테스트를 진행 할 수 있습니다. 이들은 프론트엔드에 최적화 된 다른 도구([lighthouse](https://developers.google.com/speed/pagespeed/insights/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) 보다 선호되고 있고, 더 다양한 분석 기능을 제공 합니다. 테스트는 페이지 로딩시간이나, [주요 항목의 로딩](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [화면이 인터렉티브 하게 되는 시간](https://calibreapp.com/blog/time-to-interactive/)과 같이 화면에 직접적으로 영향을 주는 항목이나 상태에 중점을 둬야 합니다. 무엇보다 contents가 압축 되었는지, 첫 byte 응답까지의 시간, image 최적화, 적절한 DOM 의 크기 파악, SSL 등의 기술적 이슈에 중점을 둬야 합니다. 이런 항목에 대한 모니터링은 개발시점이나, CI, 24x7 운영 중 수행할 것을 권장 합니다.
 
 <br/>
 
-❌ **Otherwise:** It must be disappointing to realize that after such great care for crafting a UI, 100% functional tests passing and sophisticated bundling - the UX is horrible and slow due to CDN misconfiguration
+❌  **그렇지 않으면:** 완벽한 UI 를 개발해 두고, 100% 기능 테스트까지 완료 했지만, 최악의 UX를 제공하게 되거나 CDN의 설정 오류 등의 이유 때문에 너무 느린 서비스를 제공하게 될 수 있습니다.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>코드 예제</b></summary>
 
-### :clap: Doing It Right Example: Lighthouse page load inspection report
+### :clap: 올바른 예: Lighthouse 페이지 로딩 검사 보고서
 
 ![](/assets/lighthouse2.png "Lighthouse page load inspection report")
 
