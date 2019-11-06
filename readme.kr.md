@@ -1226,22 +1226,22 @@ test('movie title appears', async () => {
 
 <br/>
 
-## ⚪ ️ 3.6 Stub flakky and slow resources like backend APIs
+## ⚪ ️ 3.6 백엔드 API와 같이 자주 멈출 수 있거나 느린 리소스는 stub 하십시오.
 
-:white_check_mark: **Do:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practically, instead of real network calls to APIs, use some test double library (like [Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttles requests). Doing this will allow simulating various API behavior that should drive your component behavior as when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
-
-<br/>
-
-❌ **Otherwise:** The average test runs no longer than few ms, a typical API call last 100ms>, this makes each test ~20x slower
-
+:white_check_mark: **이렇게 해라:** 주요 기능에 대한 테스트 코드(E2E테스트 아님) 작성 시, backend API 처럼 그 기능의 주 역할에서 벗어나는 항목은 제외할 수 있도록 stub(예: test double) 하십시오. 실제 네트워크를 호출하지 말고, test double 라이브러리([Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble))를 사용하십시오. 이 경우 가장 큰 장점은 예상치 못한 테스트 실패를 예방 할 수 있습니다. 코드단에서 API 정의에 따라 test를 적용하는 작업은 안정적이지 않고 당신의 component는 문제가 없지만 수시로 test가 실패 할 수 있습니다.(운영 상태의 env 설정은 testing에서는 사용하지 마세요. API 요청에 병목이 발생 할 수 있습니다.) 이런식으로 해서 API 응답 데이터가 없는 경우, 에러가 응답되는 경우 등의 다양한 API 상태에 따른 테스트를 진행 할 수 있습니다. 다시한번 강조하지만 실제 네트워크 호출은 test를 매우 느리게 만들것입니다.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 평균 테스트 실행 시간이 몇 ms 인 경우, API 호출로 개당 최소 100ms 시간이 걸리게 되고 테스트는 약 20배 느려지게 됩니다.
+
 
 <br/>
 
-### :clap: Doing It Right Example: Stubbing or intercepting API calls
+<details><summary>✏ <b>코드 예제</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: Stubbing 하거나 API 응답값 변조
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with react-testing-library")
@@ -1265,7 +1265,7 @@ export default function ProductsList() {
 }
 
 // test
-test('When no products exist, show the appropriate message', () => {
+test('products가 없는 경우, 적절한 메시지 표시하기', () => {
     // Arrange
     nock("api")
             .get(`/products`)
