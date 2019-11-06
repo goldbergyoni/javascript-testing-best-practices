@@ -1304,7 +1304,7 @@ test('products가 없는 경우, 적절한 메시지 표시하기', () => {
 
 <br/>
 
-<details><summary>✏ <b>예제 코드</b></summary>
+<details><summary>✏ <b>코드 예제</b></summary>
 
 <br/>
 
@@ -1384,7 +1384,7 @@ it('모든 페이지를 smoke 테스트 할때, 페이지들이 정상적으로 
 
 <br/>
 
-<details><summary>✏ <b>코드 여제</b></summary>
+<details><summary>✏ <b>코드 예제</b></summary>
 
 <br/>
 
