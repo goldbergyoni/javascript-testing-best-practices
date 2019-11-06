@@ -1530,7 +1530,7 @@ cy.eyesCheckWindow('mark as completed');
 <br/><br/>
 
   
-# Section 4️⃣: 테스트 효과 측정
+# 섹션 4️⃣: 테스트 효과 측정
 
 <br/><br/>
 
@@ -1673,7 +1673,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
   
-# Section 5️⃣: 지속적인 통합
+# 섹션 5️⃣: 지속적인 통합
 
 <br/><br/>
 
