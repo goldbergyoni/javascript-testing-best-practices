@@ -1376,24 +1376,23 @@ it('모든 페이지를 smoke 테스트 할때, 페이지들이 정상적으로 
 
 <br/>
 
-## ⚪ ️ 3.10 Expose the tests as a live collaborative document
+## ⚪ ️ 3.10 다같이 협업가능한 문서로 테스트 내용을 내보내기 하십시오
 
-:white_check_mark: **Do:** Besides increasing app reliability, tests bring another attractive opportunity to the table - serve as live app documentation. Since tests inherently speak at a less-technical and product/UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers and their customers. For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as 'acceptance test' as it allows the customer to define his acceptance criteria in plain language. This is [BDD (behavior-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) at its purest form. One of the popular frameworks that enable this is [Cucumber which has a JavaScript flavor](https://github.com/cucumber/cucumber-js), see example below. Another similar yet different opportunity, [StoryBook](https://storybook.js.org/), allows exposing UI components as a graphic catalog where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc), see how it looks like, and how to trigger that state - this can appeal also to product folks but mostly serves as live doc for developers who consume those components.
+:white_check_mark: **이렇게 해라:** App의 신뢰도를 높일 수 있고, 테스트를 통해 또 다른 개선의 기회가 될 수 있습니다. 테스트 내용은 덜 기술적이면서 제품/UX와 관련된 표현으로 되어 있어서, 다양한 협업자들(개발자, 고객 등)간에 의사소통 수단으로 사용될 수 있습니다. 예를 들어, 어떤 프레임워크들은 비즈니스 흐름과 예상되는 결과들을 누구나(스테이크홀더, PM) 이해할 수 있는 언어로 표현하여 같이 확인하고 협업 할 수 있게 도움을 주는 필수적인 문서가 될 수 있습니다. 고객은 자신의 인수조건을 같이 정의해 나가면서 테스트를 작성하고 이것은 결국 ‘인수 테스트’ 가 됩니다. 이게 바로 [BDD (behavior-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) 입니다. 가장 유명한 프레임워크로는 [Cucumber(자바향)](https://github.com/cucumber/cucumber-js)가 있습니다. 아래의 예제를 참고하세요. 이와 비슷하면도 좀 다른 프레임워크로는 UI 각 컴포넌트의 다양한 상태별 실제 화면을 확인하고 어떤 경우 그런 상태가 렌더링 되는지 확인 할 수 있는 [StoryBook](https://storybook.js.org/) 이 있습니다.(예. Grid를 데이터가 있는 경우와 없는 경우, 필터된 경우로 렌더링해 볼 수 있습니다.) 이런 것들은 제품 관계자에게 매력적일 수도 있지만 보통 개발자들에게 개발 문서 처럼 사용됩니다.
 
-❌ **Otherwise:** After investing top resources on testing, it's just a pity not to leverage this investment and win great value
-
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **그렇지 않으면:** 테스트 작성을 위해 많은 공수를 들였지만 결과적으로 위와 같은 장점을 놓치지 됩니다.
 
 <br/>
 
-### :clap: Doing It Right Example: Describing tests in human-language using cucumber-js
+<details><summary>✏ <b>코드 여제</b></summary>
+
+<br/>
+
+### :clap: 올바른 예: cucumber-js 의 humnan 언어를 사용한 테스트 코드
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cocumber-blue.svg  "Examples using Cucumber")
 ```javascript
-// this is how one can describe tests using cucumber: plain language that allows anyone to understand and collaborate
+// Cucumber 를 사용하여 테스트를 설명: 평문을 사용하여 누구든 이해하고 협업 할 수 있다
 
 Feature: Twitter new tweet
  
@@ -1409,7 +1408,8 @@ Feature: Twitter new tweet
     
 ```
 
-### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using Storybook
+### :clap: 올바른 예: Storybook을 이용한 components 상태, 입력 값별 visualizing
+
 ![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
 
