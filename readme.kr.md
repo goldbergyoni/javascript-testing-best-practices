@@ -1342,28 +1342,26 @@ beforeEach(setUser => () {
 
 <br/>
 
-## ⚪ ️ 3.9 Have one E2E smoke test that just travels across the site map
+## ⚪ ️ 3.9 사이트 전체 페이지를 테스트 할 수 있는 E2E smoke 테스트를 만드십시오
 
-:white_check_mark: **Do:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
+:white_check_mark: **이렇게 해라:** 운영중인 서비스를 모니터링 하거나 개발중에도 전체 페이지를 점검할 수 있는 E2E 테스트를 실행하십시오. 이런 유형의 테스트는 간단히 작성하고 유지보수 할 수 있지만 그에 따른 효과는 거대합니다. 기능적이거나 네트워크, 개발 관련 이슈를 발견할 수 있습니다. 다른 종류의 테스트들은 E2E 만큼 신뢰할 수는 없고 완벽하지 않습니다.(일부 운영팀에서는 단순히 운영 서버로 ping을 하고있고, 개발자들이 단순 기능 테스트만을 실행하여 패키징이나 브라우져 관련 이슈는 확인 할 수 없습니다.) smoke 테스트는 기능 테스트를 대체하기 보다는 smoke 발견을 위한 도구로 볼수 있습니다.
+<br/>
+
+❌ **그렇지 않으면:** 모든 테스트도 패스하고 서비스 핼스체크도 정상이라 모든것이 완벽해 보일수 있지만, Payment component가 패키징 이슈가 있어서 페이지 이동 시 화면 랜더링이 안될 수 있습니다.
 
 <br/>
 
-❌ **Otherwise:** Everything might seem perfect, all tests pass, production health-check is also positive but the Payment component had some packaging issue and only the /Payment route is not rendering
-
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>코드 예제</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: Smoke travelling across all pages
+### :clap: 올바른 예: 모든 페이지의 smoke 탐색하기
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
  "Using Cypress to illustrate the idea")
 ```javascript
-it('When doing smoke testing over all page, should load them all successfully', () => {
-    // exemplified using Cypress but can be implemented easily
-    // using any E2E suite
+it('모든 페이지를 smoke 테스트 할때, 페이지들이 정상적으로 로드 되어야 한다', () => {
+    // Cypress를 이용한 예제 입니다
+    // 다른 E2E 도구로도 쉽게 구현이 가능합니다
     cy.visit('https://mysite.com/home');
     cy.contains('Home');
     cy.contains('https://mysite.com/Login');
