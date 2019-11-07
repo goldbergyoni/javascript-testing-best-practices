@@ -1070,7 +1070,7 @@ test('When flagging to show only VIP, should display only VIP members', () => {
     // Act
     const { getByTestId } = render(<dashboardMetric value={undefined}/>);    
     
-    expect(getByTestId('errorsLabel')).text()).toBe("0");
+    expect(getByTestId('errorsLabel').text()).toBe("0");
   });
 
 ```
