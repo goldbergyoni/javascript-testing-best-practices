@@ -1,8 +1,24 @@
 {
-  "files": ["readme.md"],
+  "files": [
+    "readme.md"
+  ],
   "imageSize": 100,
   "contributorsPerLine": 7,
   "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)",
   "skipCi": "true",
-  "contributors": []
+  "contributors": [
+    {
+      "login": "stdavis",
+      "name": "Scott Davis",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1326248?v=4",
+      "profile": "http://geospatialscott.blogspot.com/",
+      "contributions": [
+        "content"
+      ]
+    }
+  ],
+  "projectName": "javascript-testing-best-practices",
+  "projectOwner": "goldbergyoni",
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
