@@ -1453,7 +1453,7 @@ it('When doing smoke testing over all page, should load them all successfully', 
 
 ### :clap: Doing It Right Example: Describing tests in human-language using cucumber-js
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Cocumber-blue.svg  "Examples using Cucumber")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Cucumber-blue.svg  "Examples using Cucumber")
 ```javascript
 // this is how one can describe tests using cucumber: plain language that allows anyone to understand and collaborate
 
@@ -1508,7 +1508,7 @@ Feature: Twitter new tweet
 ### :clap: Doing It Right Example: Configuring wraith to capture and compare UI snapshots
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Wraith-blue.svg
- "Using Cypress to illustrate the idea")
+ "Using Wraith")
 
 ```
 ​# Add as many domains as necessary. Key will act as a label​
@@ -1539,7 +1539,7 @@ paths:
 ### :clap: Doing It Right Example: Using Applitools to get snapshot comaprison and other advanced features
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg
- "Using Cypress to illustrate the idea") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
+ "Using AppliTools") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
  "Using Cypress to illustrate the idea")
 
 ```javascript
@@ -1601,7 +1601,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 ### :clap: Doing It Right Example: Setting up coverage per component (using Jest)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg
- "Using Cypress to illustrate the idea")
+ "Using Jest")
 
 ![alt text](assets/bp-18-code-coverage2.jpeg "Setting up coverage per component (using Jest)")
 
