@@ -2022,8 +2022,14 @@ Took care to revise, improve, lint and polish all the texts
 Thanks goes to these wonderful people who have contributed to this repository!
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
+  <tr>
+    <td align="center"><a href="https://medium.com/@kyle_martin"><img src="https://avatars3.githubusercontent.com/u/23022619?v=4" width="100px;" alt="Kyle Martin"/><br /><sub><b>Kyle Martin</b></sub></a><br /><a href="#content-js-kyle" title="Content">🖋</a></td>
+  </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
