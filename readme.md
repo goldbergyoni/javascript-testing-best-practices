@@ -1995,8 +1995,7 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 <hr/>
 <br/>
 
-
-##  [Bruno Scheufler](https://github.com/BrunoScheufler)
+## [Bruno Scheufler](https://github.com/BrunoScheufler)
 
 **Role:** Tech reviewer and advisor
 
@@ -2017,3 +2016,14 @@ Took care to revise, improve, lint and polish all the texts
 **Role:** Helps keep this project running, and reviews security related practices
 
 **About:** Loves working on Node.js projects and web application security.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people who have contributed to this repository!
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
