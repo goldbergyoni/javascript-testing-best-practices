@@ -105,6 +105,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "haakonmb",
+      "name": "Haakon Borch",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7099302?v=4",
+      "profile": "https://github.com/haakonmb",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
