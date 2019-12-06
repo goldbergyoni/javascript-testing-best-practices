@@ -141,6 +141,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "aurelijusrozenas",
+      "name": "Aurelijus Rožėnas",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3273544?v=4",
+      "profile": "https://github.com/aurelijusrozenas",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
