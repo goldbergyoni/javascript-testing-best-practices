@@ -78,6 +78,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "jacklee814",
+      "name": "Jack",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/9951291?v=4",
+      "profile": "https://github.com/jacklee814",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
