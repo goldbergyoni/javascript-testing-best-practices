@@ -159,6 +159,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "tomanagle",
+      "name": "Tom Nagle",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/8683577?v=4",
+      "profile": "https://tomdoes.tech/",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
