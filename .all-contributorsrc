@@ -69,6 +69,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "ruxandrafed",
+      "name": "Ruxandra Fediuc",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11021586?v=4",
+      "profile": "http://www.ruxandrafediuc.com",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
