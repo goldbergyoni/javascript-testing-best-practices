@@ -177,6 +177,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "Userbit",
+      "name": "Userbit",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/34487074?v=4",
+      "profile": "https://github.com/Userbit",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
