@@ -42,6 +42,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "jhonnymoreira",
+      "name": "Jhonny Moreira",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2177742?v=4",
+      "profile": "http://jhonnymoreira.dev",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
