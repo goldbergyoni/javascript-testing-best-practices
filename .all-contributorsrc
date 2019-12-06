@@ -33,6 +33,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "yjoer",
+      "name": "Yeoh Joer",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/47742486?v=4",
+      "profile": "https://www.joer.im",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
