@@ -132,6 +132,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "shadowspawn",
+      "name": "John Gee",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15719847?v=4",
+      "profile": "https://github.com/shadowspawn",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
