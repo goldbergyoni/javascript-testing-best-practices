@@ -419,23 +419,24 @@ it("더 나은 것: 유효한 제품이 추가된다면, 성공을 얻는다.", 
 
 <br/>
 
-### :clap:  올바른 예: “mocha-testcheck”를 사용하여 다양한 인풋 조합으로 테스트 하십시오.
+### :clap:  올바른 예: “fast-check”를 사용하여 다양한 인풋 조합으로 테스트 하십시오.
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
 
 ```javascript
-require('mocha-testcheck').install();
-const {expect} = require('chai');
+import fc from "fast-check";
 
-describe('Product service', () => {
-  describe('Adding new', () => {
-    //서로 다른 무작위 값으로 100회 호출됩니다. 
-    check.it('Add new product with random yet valid properties, always successful',
-      gen.int, gen.string, (id, name) => {
-        expect(addNewProduct(id, name).status).to.equal('approved');
-      });
-  })
+describe("Product service", () => {
+  describe("Adding new", () => {
+    //서로 다른 무작위 값으로 100회 호출됩니다.
+    it("Add new product with random yet valid properties, always successful", () =>
+      fc.assert(
+        fc.property(fc.integer(), fc.string(), (id, name) => {
+          expect(addNewProduct(id, name).status).toEqual("approved");
+        })
+      ));
+  });
 });
 ```
 

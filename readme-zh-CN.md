@@ -441,25 +441,25 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/>
 
-### :clap:  正例: 使用“mocha-testcheck”测试输入的组合
+### :clap:  正例: 使用“fast-check”测试输入的组合
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
 
 ```javascript
-require('mocha-testcheck').install();
-const {expect} = require('chai');
+import fc from "fast-check";
 
-describe('Product service', () => {
-  describe('Adding new', () => {
+describe("Product service", () => {
+  describe("Adding new", () => {
     //this will run 100 times with different random properties
-    check.it('Add new product with random yet valid properties, always successful',
-      gen.int, gen.string, (id, name) => {
-        expect(addNewProduct(id, name).status).to.equal('approved');
-      });
-  })
+    it("Add new product with random yet valid properties, always successful", () =>
+      fc.assert(
+        fc.property(fc.integer(), fc.string(), (id, name) => {
+          expect(addNewProduct(id, name).status).toEqual("approved");
+        })
+      ));
+  });
 });
-
 ```
 
 </details>
