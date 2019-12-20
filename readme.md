@@ -235,7 +235,7 @@ test("When asking for an admin, ensure only ordered admins in results" , () => {
     //assuming we've added here two admins "admin1", "admin2" and "user1"
     const allAdmins = getUsers({adminOnly:true});
 
-    const admin1Found, adming2Found = false;
+    let admin1Found, adming2Found = false;
 
     allAdmins.forEach(aSingleUser => {
         if(aSingleUser === "user1"){
