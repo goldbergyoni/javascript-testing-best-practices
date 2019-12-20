@@ -1584,39 +1584,39 @@ cy.eyesCheckWindow('mark as completed');
 <br/><br/>
 
   
-# Section 4️⃣: Measuring Test Effectiveness
+# Section 4️⃣: Medindo a eficácia dos testes
 
 <br/><br/>
 
-## ⚪ ️ 4.1 Get enough coverage for being confident, ~80% seems to be the lucky number
+## ⚪ ️ 4.1 Obtenha cobertura suficiente para ter confiança, ~ 80% parece ser o número da sorte
 
-:white_check_mark: **Do:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380 than 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) that presumably should satisfy most of the applications.
+:white_check_mark: **Faça:** O objetivo do teste é obter confiança suficiente para avançar rapidamente, obviamente, quanto mais código for testado, mais confiante a equipe pode ter. Cobertura é uma medida de quantas linhas de código (e ramificações, instruções etc.) estão sendo alcançadas pelos testes. Então, quanto é suficiente? 10-30% é obviamente muito baixo para ter noção da correção da compilação, por outro lado, 100% é muito caro e pode mudar seu foco dos caminhos críticos para os cantos exóticos do código. A resposta longa é que depende de muitos fatores, como o tipo de aplicativo - se você está construindo a próxima geração do Airbus A380, 100% é uma obrigação, para um site de imagens de desenhos animados 50% pode ser demais. Embora a maioria dos entusiastas do teste afirme que o limite de cobertura correto é contextual, a maioria deles também menciona o número 80% como a regra de ouro ([Fowler: “na casa dos 80% ou 90%”](https://martinfowler.com/bliki/TestCoverage.html)) que presumivelmente, deve satisfazer a maioria das aplicações.
 
-Implementation tips: You may want to configure your continuous integration (CI) to have a coverage threshold ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) and stop a build that doesn’t stand to this standard (it’s also possible to configure threshold per component, see code example below). On top of this, consider detecting build coverage decrease (when a newly committed code has less coverage) — this will push developers raising or at least preserving the amount of tested code. All that said, coverage is only one measure, a quantitative based one, that is not enough to tell the robustness of your testing. And it can also be fooled as illustrated in the next bullets
-
-<br/>
-
-
-❌ **Otherwise:**  Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear. and fear will slow you down
-
+Dicas de implementação: Convém configurar sua integração contínua (CI) para ter um limite mínimo de cobertura ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) e interrompa uma compilação que não atenda a esse padrão (também é possível configurar o limite por componente, veja o exemplo de código abaixo). Além disso, considere detectar uma diminuição na cobertura da construção (quando um código recém-confirmado tem menos cobertura) — isso fará com que os desenvolvedores aumentem ou, pelo menos, preservem a quantidade de código testado. Tudo isso dito, a cobertura é apenas uma medida, quantitativa, que não é suficiente para demonstrar a robustez dos seus testes. E também pode ser enganada, como ilustrado nos próximos tópicos
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+
+❌ **Caso contrário:**  Confiança e números andam de mãos dadas, sem realmente saber que você testou a maior parte do sistema - haverá também algum medo. e o medo vai atrasá-lo
+
 
 <br/>
 
-### :clap: Example: A typical coverage report
-![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "A typical coverage report")
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: Setting up coverage per component (using Jest)
+### :clap: Exemplo: um relatório de cobertura típico
+![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "Um relatório de cobertura típico")
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg
- "Using Cypress to illustrate the idea")
+<br/>
 
-![alt text](assets/bp-18-code-coverage2.jpeg "Setting up coverage per component (using Jest)
+### :clap: Exemplo Fazendo Certo: Configurando a cobertura por componente (usando o Jest)
+
+![](https://img.shields.io/badge/🔨%20Exemplo%20usando%20Jest-blue.svg
+ "Usando Jest")
+
+![alt text](assets/bp-18-code-coverage2.jpeg "Configurando a cobertura por componente (usando o Jest)")
 
 </details>
 
@@ -1624,56 +1624,58 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/><br/>
 
-## ⚪ ️ 4.2 Inspect coverage reports to detect untested areas and other oddities
+## ⚪ ️ 4.2 Inspecionar relatórios de cobertura para detectar áreas não testadas e outras esquisitices
 
-:white_check_mark: **Do:** Some issues sneak just under the radar and are really hard to find using traditional tools. These are not really bugs but more of surprising application behavior that might have a severe impact. For example, often some code areas are never or rarely being invoked — you thought that the ‘PricingCalculator’ class is always setting the product price but it turns out it is actually never invoked although we have 10000 products in DB and many sales… Code coverage reports help you realize whether the application behaves the way you believe it does. Other than that, it can also highlight which types of code is not tested — being informed that 80% of the code is tested doesn’t tell whether the critical parts are covered. Generating reports is easy — just run your app in production or during testing with coverage tracking and then see colorful reports that highlight how frequent each code area is invoked. If you take your time to glimpse into this data — you might find some gotchas
+:white_check_mark: **Faça:** Alguns problemas se escondem logo abaixo do radar e são realmente difíceis de encontrar usando ferramentas tradicionais. Esses não são realmente erros, mas um comportamento surpreendente do aplicativo que pode ter um impacto grave. Por exemplo, geralmente algumas áreas de código nunca ou raramente são invocadas — você pensou que a classe 'PricingCalculator' está sempre definindo o preço do produto, mas, na verdade, nunca é invocada, embora tenhamos 10000 produtos no banco de dados e muitas vendas... Os relatórios de cobertura de código ajudam a perceber se o aplicativo se comporta da maneira que você acredita. Além disso, ele também pode destacar quais tipos de código não foram testados—ser informado que 80% do código é testado não informa se as partes críticas estão cobertas. Gerar relatórios é fácil—basta executar seu aplicativo em produção ou durante o teste com rastreamento de cobertura e ver relatórios coloridos que destacam a frequência com que cada área de código é invocada. Se você dedicar um tempo para vislumbrar esses dados—poderá encontrar algumas pegadinhas
 <br/>
 
 
-❌ **Otherwise:** If you don’t know which parts of your code are left un-tested, you don’t know where the issues might come from
+❌ **Caso contrário:** Se você não sabe quais partes do seu código são deixadas sem teste, não sabe de onde os problemas podem surgir
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
+### :thumbsdown: Exemplo Anti-padrão: O que há de errado com este relatório de cobertura?
 
-![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
+Com base em um cenário do mundo real, onde rastreamos o uso de nossos aplicativos no controle de qualidade e descobrimos padrões de login interessantes (Dica: a quantidade de falhas de login não é proporcional, algo está claramente errado. Por fim, verificou-se que algum bug do frontend continua atingindo a API de login do back-end)
+
+![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png " que há de errado com este relatório de cobertura?")
 
 </details>
 
 
 <br/><br/>
 
-## ⚪ ️ 4.3 Measure logical coverage using mutation testing
+## ⚪ ️ 4.3 Meça a cobertura lógica usando teste de mutação
 
-:white_check_mark: **Do:**  The Traditional Coverage metric often lies: It may show you 100% code coverage, but none of your functions, even not one, return the right response. How come? it simply measures over which lines of code the test visited, but it doesn’t check if the tests actually tested anything — asserted for the right response. Like someone who’s traveling for business and showing his passport stamps — this doesn’t prove any work done, only that he visited few airports and hotels.
+:white_check_mark: **Faça:**  A métrica de cobertura tradicional geralmente mente: Pode mostrar 100% de cobertura do código, mas nenhuma de suas funções, nem mesmo uma, retorna a resposta correta. Por quê? Ele simplesmente mede sobre quais linhas de código o teste visitou, mas não verifica se os testes realmente testaram alguma coisa— afirmou para a resposta certa. Como alguém que viaja a negócios e mostra seus carimbos de passaporte—isso não prova nenhum trabalho, apenas que ele visitou alguns aeroportos e hotéis.
 
-Mutation-based testing is here to help by measuring the amount of code that was actually TESTED not just VISITED. [Stryker](https://stryker-mutator.io/) is a JavaScript library for mutation testing and the implementation is really neat:
+O teste baseado em mutação está aqui para ajudar, medindo a quantidade de código que foi realmente TESTADO e não apenas VISITADO. [Stryker](https://stryker-mutator.io/) é uma biblioteca JavaScript para teste de mutação e a implementação é realmente legal:
 
-(1) it intentionally changes the code and “plants bugs”. For example the code newOrder.price===0 becomes newOrder.price!=0. This “bugs” are called mutations
+(1) intencionalmente altera o código e "planta bugs". Por exemplo, o código newOrder.price===0 torna-se newOrder.price!=0. Esses "bugs" são chamados de mutações
 
-(2) it runs the tests, if all succeed then we have a problem — the tests didn’t serve their purpose of discovering bugs, the mutations are so-called survived. If the tests failed, then great, the mutations were killed.
+(2) executa os testes, se todos tiverem sucesso, então temos um problema— os testes não serviram ao seu propósito de descobrir bugs, as mutações são chamadas sobreviventes. Se os testes falharem, então ótimo, as mutações foram mortas.
 
-Knowing that all or most of the mutations were killed gives much higher confidence than traditional coverage and the setup time is similar
+Saber que todas ou a maioria das mutações foram mortas dá uma confiança muito maior do que a cobertura tradicional e o tempo de instalação é semelhante
 <br/>
 
 
-❌ **Otherwise:** You’ll be fooled to believe that 85% coverage means your test will detect bugs in 85% of your code
+❌ **Caso contrário:** Você ficará enganado ao acreditar que 85% de cobertura significa que seu teste detectará bugs em 85% do seu código
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: 100% coverage, 0% testing
+### :thumbsdown: Exemplo Anti-padrão: 100% de cobertura, 0% de teste
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg
- "Using Cypress to illustrate the idea")
+![](https://img.shields.io/badge/🔨%20Exemplo%20usando%20Stryker-blue.svg
+ "Usando Stryker")
 ```javascript
 function addNewOrder(newOrder) {
     logger.log(`Adding new order ${newOrder}`);
@@ -1690,9 +1692,9 @@ it("Test addNewOrder, don't use such test names", () => {
 ```
 <br/>
 
-### :clap: Doing It Right Example: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
+### :clap: Exemplo Fazendo Certo: Stryker reports, uma ferramenta para teste de mutação, detecta e conta a quantidade de código que não foi testado (mutações)
 
-![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
+![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, uma ferramenta para teste de mutação, detecta e conta a quantidade de código que não foi testado (mutações)")
 
 </details>
 
@@ -1700,22 +1702,22 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/><br/>
 
-## ⚪ ️4.4 Preventing test code issues with Test linters
+## ⚪ ️4.4 Impedindo problemas de código de teste com os linters de teste
 
-:white_check_mark: **Do:**  A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) will warn when a test is written at the global level (not a son of a describe() statement) or when tests are [skipped](https://mochajs.org/#inclusive-tests) which might lead to a false belief that all tests are passing. Similarly, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) can, for example, warn when a test has no assertions at all (not checking anything)
-
-<br/>
-
-
-❌ **Otherwise:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
-
-
-<br/>
-<details><summary>✏ <b>Code Examples</b></summary>
+:white_check_mark: **Faça:**  Um conjunto de plugins ESLint foi construído especificamente para inspecionar os padrões de código de testes e descobrir problemas. Por exemplo, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) avisará quando um teste for escrito em nível global (não é filho de uma declaração describe()) ou quando os testes são [pulados](https://mochajs.org/#inclusive-tests) o que pode levar a uma falsa crença de que todos os testes estão passando. Similarmente, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) pode, por exemplo, avisar quando um teste não tem asserções (não verificando nada)
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: A test case full of errors, luckily all are caught by Linters
+
+❌ **Caso contrário:** Ver 90% de cobertura de código e 100% de testes verdes fará com que seu rosto seja um grande sorriso apenas até você perceber que muitos testes não afirmam nada e que muitos conjuntos de testes foram ignorados. Tomara que você não tenha implantado nada com base nessa observação falsa
+
+
+<br/>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
+
+<br/>
+
+### :thumbsdown: Exemplo Anti-padrão: Um caso de teste cheio de erros, felizmente, todos são pegos por Linters
 
 ```javascript
 describe("Too short description", () => {
