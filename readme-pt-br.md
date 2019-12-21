@@ -31,23 +31,23 @@ Comece entendendo as práticas de teste onipresentes que são a base para qualqu
 
 ## `Índice`
 
-#### [`Seção 0: A Regra de ouro`](#section-0️⃣-the-golden-rule)
+#### [`Seção 0: A Regra de ouro`](#seção-0️⃣-a-regra-de-ouro)
 
 Um único conselho que inspira todos os outros (1 tópico especial)
 
-#### [`Seção 1: A Anatomia do Teste`](#section-1-the-test-anatomy-1)
+#### [`Seção 1: A Anatomia do Teste`](#seção-1-a-anatomia-do-teste)
 
 A fundação - estruturando testes limpos (12 tópicos)
 
-#### [`Seção 2: Backend`](#section-2️⃣-backend-testing)
+#### [`Seção 2: Teste de Backend`](#seção-2️⃣-teste-de-backend)
 
 Escrevendo testes de back-end e microsserviços com eficiência (8 tópicos)
 
-#### [`Seção 3: Frontend`](#section-3️⃣-frontend-testing)
+#### [`Seção 3: Teste de Frontend`](#seção-3️⃣-teste-de-frontend)
 
 Escrevendo testes para interface do usuário da web, incluindo testes de componentes e E2E (11 tópicos)
 
-#### [`Seção 4: Metrificando Testes Efetivamente`](#section-4️⃣-measuring-test-effectiveness)
+#### [`Seção 4: Medindo a Eficácia dos Testes`](#seção-4️⃣-medindo-a-eficácia-dos-testes)
 
 Observando o vigia - medindo a qualidade do teste (4 tópicos)
 
@@ -583,7 +583,7 @@ it("When querying by site name, get the right site", async () => {
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
-  //teste está adicionando novos registros novos e atuando apenas nos registros
+  //teste está adicionando registros novos e atuando apenas nos registros
   const siteUnderTest = await SiteService.addSite({
     name: "siteForUpdateTest"
   });
@@ -706,38 +706,38 @@ Aprenda e pratique [princípios TDD](https://www.sm-cloud.com/book-review-test-d
 <br/><br/>
 
 
-# Section 2️⃣: Backend Testing
+# Seção 2️⃣: Teste de Backend
 
-## ⚪ ️2.1 Enrich your testing portfolio: Look beyond unit tests and the pyramid
+## ⚪ ️2.1 Enriqueça seu portfólio de testes: Olhe além dos testes de unidade e da pirâmide
 
-:white_check_mark: **Do:**  The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit *all* types of applications? shouldn’t the testing world consider welcoming new testing techniques?
+:white_check_mark: **Faça:**  A [pirâmide de testes](https://martinfowler.com/bliki/TestPyramid.html), apesar de ter 10> anos de idade, é um modelo excelente e relevante que sugere três tipos de teste e influencia a estratégia de teste da maioria dos desenvolvedores. Ao mesmo tempo, mais de um punhado de novas e brilhantes técnicas de teste surgiram e estão escondidas nas sombras da pirâmide de testes. Dadas todas as mudanças dramáticas que vimos nos últimos 10 anos (Microsserviços, cloud, serverless), é possível que um modelo bastante antigo seja adequado a *todos* os tipos de aplicações? O mundo dos testes não deveria considerar acolher novas técnicas de teste?
 
-Don’t get me wrong, in 2019 the testing pyramid, TDD and unit tests are still a powerful technique and are probably the best match for many applications. Only like any other model, despite its usefulness, [it must be wrong sometimes](https://en.wikipedia.org/wiki/All_models_are_wrong). For example, consider an IOT application that ingests many events into a message-bus like Kafka/RabbitMQ, which then flow into some data-warehouse and are eventually queried by some analytics UI. Should we really spend 50% of our testing budget on writing unit tests for an application that is integration-centric and has almost no logic? As the diversity of application types increase (bots, crypto, Alexa-skills) greater are the chances to find scenarios where the testing pyramid is not the best match.
+Não me interpretem mal, em 2019 a pirâmide de testes, TDD e testes de unidade ainda são técnicas poderosas e provavelmente são as mais compatíveis para muitas aplicações. Apenas como qualquer outro modelo, apesar de sua utilidade, [às vezes está errado](https://en.wikipedia.org/wiki/All_models_are_wrong). Por exemplo, considere um aplicativo IOT que ingere muitos eventos em um padronizador de mensagens como Kafka/RabbitMQ, que fluem para algum armazenamento de dados e, eventualmente, são consultados por algum UI. Deveríamos realmente gastar 50% do nosso orçamento em testes escrevendo testes de unidade para um aplicativo centrado na integração e quase sem lógica? À medida que a diversidade de tipos de aplicativos aumenta (bots, crypto, Alexa-skills) maiores são as chances de encontrar cenários em que a pirâmide de teste não é a melhor correspondência.
 
-It’s time to enrich your testing portfolio and become familiar with more testing types (the next bullets suggest few ideas), mind models like the testing pyramid but also match testing types to real-world problems that you’re facing (‘Hey, our API is broken, let’s write consumer-driven contract testing!’), diversify your tests like an investor that build a portfolio based on risk analysis — assess where problems might arise and match some prevention measures to mitigate those potential risks
+É hora de enriquecer seu portfólio de testes e se familiarizar com mais tipos de modelos mentais de testes (os próximos tópicos sugerem poucas idéias), como a pirâmide de testes, mas também combinar tipos de teste com problemas do mundo real que você está enfrentando (‘Ei, nossa API está quebrada, vamos escrever testes de contrato orientados ao consumidor!’), diversifique seus testes como um investidor que constrói um portfólio com base na análise de risco — avaliar onde os problemas podem surgir e combinar algumas medidas de prevenção para mitigar esses riscos potenciais
 
-A word of caution: the TDD argument in the software world takes a typical false-dichotomy face, some preach to use it everywhere, others think it’s the devil. Everyone who speaks in absolutes is wrong :]
-
-<br/>
-
-
-❌ **Otherwise:** You’re going to miss some tools with amazing ROI, some like Fuzz, lint, and mutation can provide value in 10 minutes
-
+Uma palavra de cautela: o argumento TDD no mundo do software tem uma cara típica de dicotomia, alguns pregam para usá-lo em todo lugar, outros acham que ele é o diabo. Todo mundo que fala em absoluto está errado :]
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+
+❌ **Caso Contrário:** Você perderá algumas ferramentas com um ROI incrível, algumas como Fuzz, lint e mutation podem fornecer valor em 10 minutos
+
 
 <br/>
 
-### :clap: Doing It Right Example: Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’
-![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’")
-
-<strong class="markup--strong markup--p-strong">☺️Example: </strong><a href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtube" data-href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtu.be" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">[YouTube: “Beyond Unit Tests: 5 Shiny Node.JS Test Types (2018)” (Yoni Goldberg)](https://www.youtube.com/watch?v=-2zP494wdUY&feature=youtu.be)</a>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-![alt text](assets/bp-12-Yoni-Goldberg-Testing.jpeg "A test name that constitutes 3 parts")
+### :clap: Exemplo Fazendo Certo: Cindy Sridharan sugere um rico portfólio de testes em seu incrível post "Testing Microservices - the sane way"
+![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan sugere um rico portfólio de testes em seu incrível post ‘Testing Microservices — the sane way’")
+
+<strong class="markup--strong markup--p-strong">☺️Example: </strong><a href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtube" data-href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtu.be" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">[YouTube: “Além dos testes de unidade: 5 tipos de teste Node.JS brilhante (2018)” (Yoni Goldberg)](https://www.youtube.com/watch?v=-2zP494wdUY&feature=youtu.be)</a>
+
+<br/>
+
+![alt text](assets/bp-12-Yoni-Goldberg-Testing.jpeg "Um nome de teste que constitui 3 partes")
 
 
 </details>
@@ -747,53 +747,53 @@ A word of caution: the TDD argument in the software world takes a typical false-
 
 <br/><br/>
 
-## ⚪ ️2.2 Component testing might be your best affair
+## ⚪ ️2.2 O teste de componentes pode ser o seu melhor caso
 
-:white_check_mark: **Do:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung song of the testing world — they provide the best from both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
+:white_check_mark: **Faça:** Cada teste de unidade cobre uma pequena parte do aplicativo e é caro cobrir o todo, enquanto os testes de ponta-a-ponta cobrem muito terreno, mas são escamosos e mais lentos, por que não aplicar uma abordagem equilibrada e escrever testes maiores que os testes unitários, mas menores que os testes de ponta-a-ponta? Teste de componentes é a música desconhecida do mundo dos testes— eles fornecem o melhor dos dois mundos: desempenho razoável e possibilidade de aplicar padrões TDD + cobertura realista e ótima.
 
-Component tests focus on the Microservice ‘unit’, they work against the API, don’t mock anything which belongs to the Microservice itself (e.g. real DB, or at least the in-memory version of that DB) but stub anything that is external like calls to other Microservices. By doing so, we test what we deploy, approach the app from outwards to inwards and gain great confidence in a reasonable amount of time.
+Os testes de componentes concentram-se na 'unidade' do Microsservico, eles trabalham contra a API, não fazem mock de nada que pertença ao próprio Microsserviço (por exemplo. banco de dados real ou pelo menos a versão na memória desse banco de dados) mas fazem stub (desconsideram) qualquer coisa externa como chamadas para outros Microsserviços. Ao fazer isso, testamos o que implementamos, abordamos o aplicativo de fora para dentro e obtemos grande confiança em um período de tempo razoável.
 <br/>
 
 
-❌ **Otherwise:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
+❌ **Caso Contrário:** Você pode passar longos dias escrevendo testes de unidade para descobrir que possui apenas 20% de cobertura do sistema
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: Supertest allows approaching Express API in-process (fast and cover many layers)
+### :clap: Exemplo Fazendo Certo: O Supertest permite abordar a API Express em processo (rápido e cobre muitas camadas)
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
- "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20Mocha-blue.svg
+ "Exemplos com Mocha")
 
-![alt text](assets/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) allows approaching Express API in-process (fast and cover many layers)")
+![alt text](assets/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) permite abordar a API Express em processo (rápido e cobre muitas camadas)")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️2.3 Ensure new releases don’t break the API using
+## ⚪ ️2.3 Verifique se os novos releases não quebram a API em uso
 
-:white_check_mark: **Do:**  So your Microservice has multiple clients, and you run multiple versions of the service for compatibility reasons (keeping everyone happy). Then you change some field and ‘boom!’, some important client who relies on this field is angry. This is the Catch-22 of the integration world: It’s very challenging for the server side to consider all the multiple client expectations — On the other hand, the clients can’t perform any testing because the server controls the release dates. [Consumer-driven contracts and the framework PACT](https://docs.pact.io/) were born to formalize this process with a very disruptive approach — not the server defines the test plan of itself rather the client defines the tests of the… server! PACT can record the client expectation and put in a shared location, “broker”, so the server can pull the expectations and run on every build using PACT library to detect broken contracts — a client expectation that is not met. By doing so, all the server-client API mismatches are caught early during build/CI and might save you a great deal of frustration
+:white_check_mark: **Faça:**  Então, seu Microsserviço possui vários clientes e você executa várias versões do serviço por motivos de compatibilidade (mantendo todos felizes). Então você muda algum campo e ‘boom!’, algum cliente importante que depende desse campo fica irritado. Este é o Catch-22 do mundo da integração: É muito desafiador para o lado do servidor considerar todas as múltiplas expectativas dos clientes— Por outro lado, os clientes não podem realizar nenhum teste porque o servidor controla as datas de lançamento. [Contratos orientados ao consumidor e o framework PACT](https://docs.pact.io/) nasceram para formalizar esse processo com uma abordagem muito perturbadora — não é o servidor que define o plano de teste por si mesmo, mas o cliente define os testes do… servidor! PACT pode gravar a expectativa do cliente e colocar em um local compartilhado, “corretor”, para que o servidor possa puxar as expectativas e executar em cada build usando a biblioteca PACT para detectar contratos quebrados— uma expectativa do cliente que não é atendida. Ao fazer isso, todas as incompatibilidades da API do servidor-cliente são detectadas cedo durante a compilação/IC e podem poupar muita frustração
 <br/>
 
 
-❌ **Otherwise:** The alternatives are exhausting manual testing or deployment fear
+❌ **Caso Contrário:** As alternativas são exaustivos testes manuais ou medo de implantação
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example:
+### :clap: Exemplo Fazendo Certo:
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg
- "Examples with PACT")
+![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20PACT-blue.svg
+ "Exemplos com PACT")
  
 ![alt text](assets/bp-14-testing-best-practices-contract-flow.png )
 
@@ -805,31 +805,31 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 <br/><br/>
 
 
-## ⚪ ️ 2.4 Test your middlewares in isolation
+## ⚪ ️ 2.4 Teste seus Middlewares isoladamente
 
-:white_check_mark: **Do:** Many avoid Middleware testing because they represent a small portion of the system and require a live Express server. Both reasons are wrong — Middlewares are small but affect all or most of the requests and can be tested easily as pure functions that get {req,res} JS objects. To test a middleware function one should just invoke it and spy ([using Sinon for example](https://www.npmjs.com/package/sinon)) on the interaction with the {req,res} objects to ensure the function performed the right action. The library [node-mock-http](https://www.npmjs.com/package/node-mocks-http) takes it even further and factors the {req,res} objects along with spying on their behavior. For example, it can assert whether the http status that was set on the res object matches the expectation (See example below)
+:white_check_mark: **Faça:** Muitos evitam os testes de Middleware porque representam uma pequena parte do sistema e requerem um servidor Express ativo. Ambas as razões estão erradas — Os Middlewares são pequenos, mas afetam todas ou a maioria das solicitações e podem ser testados facilmente como funções puras que recebem objetos JS {req, res}. Para testar uma função de middleware, basta invocá-la e espionar ([usando o Sinon por exemplo](https://www.npmjs.com/package/sinon)) na interação com os objetos {req, res} para garantir que a função executou a ação correta. A biblioteca [node-mock-http](https://www.npmjs.com/package/node-mocks-http) vai ainda mais longe e fatora os objetos {req, res}, além de espionar seu comportamento. Por exemplo, ela pode afirmar se o status http que foi definido no objeto res corresponde à expectativa (veja o exemplo abaixo)
 <br/>
 
 
-❌ **Otherwise:** A bug in Express middleware === a bug in all or most requests
+❌ **Caso Contrário:** Um bug no middleware Express === um bug em todas ou na maioria das solicitações
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :clap:Doing It Right Example: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
+### :clap: Exemplo Fazendo Certo: Testando o middleware isoladamente sem emitir chamadas de rede e acordar toda a máquina Express
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
- "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20Jest-blue.svg
+ "Exemplos com Jest")
 
 ```javascript
-//the middleware we want to test
+//o middleware que queremos testar
 const unitUnderTest = require('./middleware')
 const httpMocks = require('node-mocks-http');
-//Jest syntax, equivelant to describe() & it() in Mocha
+//Sintaxe Jest, equivalente a describe() & it() no Mocha
 test('A request without authentication header, should return http status 403', () => {
   const request = httpMocks.createRequest({
     method: 'GET',
@@ -852,29 +852,29 @@ test('A request without authentication header, should return http status 403', (
 
 <br/><br/>
 
-## ⚪ ️2.5 Measure and refactor using static analysis tools
-:white_check_mark: **Do:** Using static analysis tools helps by giving objective ways to improve code quality and keep your code maintainable. You can add static analysis tools to your CI build to abort when it finds code smells. Its main selling points over plain linting are the ability to inspect quality in the context of multiple files (e.g. detect duplications), perform advanced analysis (e.g. code complexity) and follow the history and progress of code issues. Two examples of tools you can use are [Sonarqube](https://www.sonarqube.org/) (2,600+ [stars](https://github.com/SonarSource/sonarqube)) and [Code Climate](https://codeclimate.com/) (1,500+ [stars](https://github.com/codeclimate/codeclimate))
+## ⚪ ️2.5 Meça e refatore usando ferramentas de análise estática
+:white_check_mark: **Faça:** O uso de ferramentas de análise estática ajuda a fornecer maneiras objetivas de melhorar a qualidade do código e manter seu código sustentável. Você pode adicionar ferramentas de análise estática à sua compilação de IC para abortar quando encontrar mal cheiros no código. Suas principais vantagens em relação a usar simplesmente um linter são a capacidade de inspecionar a qualidade no contexto de vários arquivos (por exemplo. detectar duplicações), executar análise avançada (por exemplo, complexidade do código) e seguir o histórico e o progresso dos problemas de código. Dois exemplos de ferramentas que você pode usar são: [Sonarqube](https://www.sonarqube.org/) (2,600+ [stars](https://github.com/SonarSource/sonarqube)) e [Code Climate](https://codeclimate.com/) (1,500+ [stars](https://github.com/codeclimate/codeclimate))
 
-Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.com/TheHollidayInn" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Keith Holliday](https://github.com/TheHollidayInn)</a>
-
-<br/>
-
-
-❌ **Otherwise:** With poor code quality, bugs and performance will always be an issue that no shiny new library or state of the art features can fix
-
+Créditos:: <a href="https://github.com/TheHollidayInn" data-href="https://github.com/TheHollidayInn" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Keith Holliday](https://github.com/TheHollidayInn)</a>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+
+❌ **Caso Contrário:** Com baixa qualidade de código, bugs e desempenho sempre serão um problema que nenhuma nova biblioteca brilhante ou recursos avançados podem corrigir
+
 
 <br/>
 
-### :clap: Doing It Right Example:  CodeClimate, a commercial tool that can identify complex methods:
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg
- "Examples with CodeClimate")
+<br/>
+
+### :clap: Exemplo Fazendo Certo:  CodeClimate, uma ferramenta comercial que pode identificar métodos complexos:
+
+![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20Code%20Climate-blue.svg
+ "Exemplos com CodeClimate")
  
-![alt text](assets/bp-16-yoni-goldberg-quality.png " CodeClimat, a commercial tool that can identify complex methods:")
+![alt text](assets/bp-16-yoni-goldberg-quality.png " CodeClimat, uma ferramenta comercial que pode identificar métodos complexos:")
 
 </details>
 
@@ -883,72 +883,72 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 <br/><br/>
 
-## ⚪ ️ 2.6 Check your readiness for Node-related chaos
-:white_check_mark: **Do:** Weirdly, most software testings are about logic & data only, but some of the worst things that happen (and are really hard to mitigate ) are infrastructural issues. For example, did you ever test what happens when your process memory is overloaded, or when the server/process dies, or does your monitoring system realizes when the API becomes 50% slower?. To test and mitigate these type of bad things — [Chaos engineering](https://principlesofchaos.org/) was born by Netflix. It aims to provide awareness, frameworks and tools for testing our app resiliency for chaotic issues. For example, one of its famous tools, [the chaos monkey](https://github.com/Netflix/chaosmonkey), randomly kills servers to ensure that our service can still serve users and not relying on a single server (there is also a Kubernetes version, [kube-monkey](https://github.com/asobti/kube-monkey), that kills pods). All these tools work on the hosting/platform level, but what if you wish to test and generate pure Node chaos like check how your Node process copes with uncaught errors, unhandled promise rejection, v8 memory overloaded with the max allowed of 1.7GB or whether your UX stays satisfactory when the event loop gets blocked often? to address this I’ve written, [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha) which provides all sort of Node-related chaotic acts
+## ⚪ ️ 2.6 Verifique sua preparação para o caos relacionado ao Node
+:white_check_mark: **Faça:** Estranhamente, a maioria dos testes de software trata apenas de lógica e dados, mas algumas das piores coisas que acontecem (e são realmente difíceis de mitigar) são questões de infra-estrutura. Por exemplo, você já testou o que acontece quando a memória do processo está sobrecarregada, ou quando o servidor/processo morre, ou o seu sistema de monitoramento percebe quando a API fica 50% mais lenta?. Para testar e mitigar esse tipo de coisas ruins — [Chaos engineering](https://principlesofchaos.org/) nasceu pela Netflix. O objetivo é fornecer conscientização, frameworks e ferramentas para testar a resiliência de nosso aplicativo para problemas caóticos. Por exemplo, uma de suas famosas ferramentas, [o chaos monkey](https://github.com/Netflix/chaosmonkey), mata servidores aleatoriamente para garantir que nosso serviço ainda possa atender usuários e não depender em um único servidor (existe também uma versão para Kubernetes, [kube-monkey](https://github.com/asobti/kube-monkey), que mata pods). Todas essas ferramentas funcionam no nível de hospedagem/plataforma, mas e se você quiser testar e gerar o caos puro do Node, por exemplo verificar como o processo do nó lida com erros não detectados, rejeições de promises não tratadas, Memória do v8 sobrecarregada com o máximo permitido de 1,7 GB ou se o seu UX permanece satisfatório quando o loop de eventos é bloqueado com frequência? para resolver isso que escrevi, [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha) que fornece todos os tipos de atos caóticos relacionados ao Node
 <br/>
 
 
-❌ **Otherwise:**  No escape here, Murphy’s law will hit your production without mercy
+❌ **Caso Contrário:**  Não há escapatória aqui, a lei de Murphy afetará sua produção sem piedade
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
-![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
+### :clap: Exemplo Fazendo Certo: : O Node-Chaos pode gerar todo tipo de pegadinha do Node.js, para que você possa testar a resiliência do seu aplicativo ao caos
+![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "O Node-Chaos pode gerar todo tipo de pegadinha do Node.js, para que você possa testar a resiliência do seu aplicativo ao caos")
 
 </details>
 
 <br/>
 
-## ⚪ ️2.7 Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️2.7 Evite acessórios de teste e sementes globais, adicione dados por teste
 
-:white_check_mark: **Do:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests (also known as ‘test fixture’) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
+:white_check_mark: **Faça:** Seguindo a regra de ouro (tópico 0), cada teste deve adicionar e agir em seu próprio conjunto de linhas de banco de dados para evitar o acoplamento e raciocinar facilmente sobre o fluxo de teste. Na realidade, isso geralmente é violado por testadores que propagam o banco de dados com dados antes de executar os testes (também conhecido como "acessórios de teste") por uma questão de melhoria de desempenho. Embora o desempenho seja realmente uma preocupação válida— pode ser mitigado (consulte o tópico "Teste de componentes"), no entanto, a complexidade do teste é uma tarefa muito dolorosa que deve governar outras considerações na maioria das vezes. Na prática, faça com que cada caso de teste inclua explicitamente os registros do banco de dados necessários e atue somente nesses registros. Se o desempenho se tornar uma preocupação crítica — um compromisso equilibrado pode vir na forma de propagação do único conjunto de testes que não está alterando dados (por exemplo, consultas)
 <br/>
 
 
-❌ **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
+❌ **Caso Contrário:** Poucos testes falham, uma implantação é abortada, nossa equipe gastará um tempo precioso agora, temos um bug? Vamos investigar, oh não - parece que dois testes estavam modificando os mesmos dados iniciais
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+### :thumbsdown: exemplo Anti-padrão: testes não são independentes e dependem de algum gancho global para alimentar dados globais de banco de dados
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
- "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20Mocha-blue.svg
+ "Exemplos com Mocha")
  
 ```javascript
 before(() => {
-  //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
+  //adicionando dados de sites e administradores ao nosso banco de dados. Onde estão os dados? Do lado de fora. Em alguma estrutura json ou de migração externa
   await DB.AddSeedDataFromJson('seed.json');
 });
 it("When updating site name, get successful confirmation", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+  //Eu sei que o nome do site "portal" existe - eu vi nos arquivos de sementes
   const siteToUpdate = await SiteService.getSiteByName("Portal");
   const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
   expect(updateNameResult).to.be(true);
 });
 it("When querying by site name, get the right site", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+  //Eu sei que o nome do site "portal" existe - eu vi nos arquivos de sementes
   const siteToCheck = await SiteService.getSiteByName("Portal");
-  expect(siteToCheck.name).to.be.equal("Portal"); //Failure! The previous test change the name :[
+  expect(siteToCheck.name).to.be.equal("Portal"); //Falha! O teste anterior altera o nome :[
 });
 
 ```
 <br/>
 
-### :clap: Doing It Right Example: We can stay within the test, each test acts on its own set of data
+### :clap: Exemplo Fazendo Certo: Podemos permanecer dentro do teste, cada teste atua em seu próprio conjunto de dados
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
-  //test is adding a fresh new records and acting on the records only
+  //teste está adicionando registros novos e atuando apenas nos registros
   const siteUnderTest = await SiteService.addSite({
     name: "siteForUpdateTest"
   });
@@ -1584,7 +1584,7 @@ cy.eyesCheckWindow('mark as completed');
 <br/><br/>
 
   
-# Section 4️⃣: Medindo a eficácia dos testes
+# Seção 4️⃣: Medindo a Eficácia dos Testes
 
 <br/><br/>
 
