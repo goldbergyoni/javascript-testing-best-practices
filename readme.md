@@ -169,7 +169,7 @@ describe('Products Service', function() {
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
- "Examples with Jest")
+ "Examples with Mocha")
   
 ```javascript
 describe('Customer classifier', () => {
@@ -344,7 +344,7 @@ For example, if you want to test that your app behaves reasonably when the payme
 
 ### :thumbsdown: Anti-pattern example: Mocks focus on the internals
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg
- "Examples with Mocha & Chai")
+ "Examples with Sinon")
 ```javascript
 it("When a valid product is about to be deleted, ensure data access DAL was called once, with the right product and right config", async () => {
     //Assume we already added a product
@@ -566,7 +566,7 @@ expect(menu).toMatchInlineSnapshot(`
 ### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
- "Examples with Jest")
+ "Examples with Mocha")
  
 ```javascript
 before(() => {
@@ -628,7 +628,7 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 ### :thumbsdown: Anti-pattern Example: A long test case that tries to assert the existence of error with try-catch
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
- "Examples with Jest")
+ "Examples with Mocha")
  
 ```javascript
 it("When no product name, it throws error 400", async() => {
@@ -776,7 +776,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 ### :clap: Doing It Right Example: Supertest allows approaching Express API in-process (fast and cover many layers)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
- "Examples with Jest")
+ "Examples with Mocha")
 
 ![alt text](assets/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) allows approaching Express API in-process (fast and cover many layers)")
 
@@ -1201,8 +1201,9 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 ### :clap: Doing It Right Example: E2E API that resolves only when the async operations is done (Cypress)
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
- "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg
+![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
+ "Using Cypress to illustrate the idea")
+![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg
  "Examples with react-testing-library")
 
 ```javascript
@@ -1300,7 +1301,7 @@ test('movie title appears', async () => {
 
 ### :clap: Doing It Right Example: Stubbing or intercepting API calls
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
- "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
+ "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg
  "Examples with react-testing-library")
  
 ```javascript
@@ -1663,7 +1664,7 @@ Knowing that all or most of the mutations were killed gives much higher confiden
 ### :thumbsdown: Anti Pattern Example: 100% coverage, 0% testing
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg
- "Using Cypress to illustrate the idea")
+ "Using Stryker")
 ```javascript
 function addNewOrder(newOrder) {
     logger.log(`Adding new order ${newOrder}`);
@@ -1759,7 +1760,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 :white_check_mark: **Do:**   Using a CI with shiny quality inspections like testing, linting, vulnerabilities check, etc? Help developers run this pipeline also locally to solicit instant feedback and shorten the [feedback loop](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Why? an efficient testing process constitutes many and iterative loops: (1) try-outs -> (2) feedback -> (3) refactor. The faster the feedback is, the more improvement iterations a developer can perform per-module and perfect the results. On the flip, when the feedback is late to come fewer improvement iterations could be packed into a single day, the team might already move forward to another topic/task/module and might not be up for refining that module.
 
-Practically, some CI vendors (Example: [CircleCI load CLI](https://circleci.com/docs/2.0/local-cli/)) allow running the pipeline locally. Some commercial tools like [wallaby provide highly-valuable & testing insights](https://wallabyjs.com/) as a developer prototype (no affiliation). Alternatively, you may just add npm script to package.json that runs all the quality commands (e.g. test, lint, vulnerabilities) — use tools like [concurrently](https://www.npmjs.com/package/concurrently) for parallelization and non-zero exit code if one of the tools failed. Now the developer should just invoke one command — e.g. ‘npm run quality’ — to get instant feedback. Consider also aborting a commit if the quality check failed using a githook ([husky can help](https://github.com/typicode/husky))
+Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) allow running the pipeline locally. Some commercial tools like [wallaby provide highly-valuable & testing insights](https://wallabyjs.com/) as a developer prototype (no affiliation). Alternatively, you may just add npm script to package.json that runs all the quality commands (e.g. test, lint, vulnerabilities) — use tools like [concurrently](https://www.npmjs.com/package/concurrently) for parallelization and non-zero exit code if one of the tools failed. Now the developer should just invoke one command — e.g. ‘npm run quality’ — to get instant feedback. Consider also aborting a commit if the quality check failed using a githook ([husky can help](https://github.com/typicode/husky))
 <br/>
 
 
@@ -1927,7 +1928,7 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 <br/>
 
 ### :clap:  Example: [ncu](https://www.npmjs.com/package/npm-check-updates) can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions
-![alt text](assets/bp-27-yoni-goldberg-npm.png "Nncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
+![alt text](assets/bp-27-yoni-goldberg-npm.png "ncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
 
 
 </details>
