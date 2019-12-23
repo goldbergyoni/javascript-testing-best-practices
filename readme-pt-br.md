@@ -1201,8 +1201,9 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 ### :clap: Exemplo Fazendo Certo: API E2E que resolve somente quando as operações assíncronas são concluídas (Cypress)
 
-![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20React-blue.svg
- "Exemplos com React") ![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20React%20Testing%20Library-blue.svg
+![](https://img.shields.io/badge/🔨%20Exemplo%20usando%20Cypress-blue.svg
+ "Usando Cypress para ilustrar a ideia")
+![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20React%20Testing%20Library-blue.svg
  "Exemplos com react-testing-library")
 
 ```javascript
@@ -1300,7 +1301,7 @@ test('movie title appears', async () => {
 
 ### :clap: Exemplo Fazendo Certo: fazendo o esboço ou interceptando chamadas de API
 ![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20React-blue.svg
- "Exemplos com React") ![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20Jest-blue.svg
+ "Exemplos com React") ![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20React%20Testing%20Library.svg
  "Exemplos com react-testing-library")
  
 ```javascript
