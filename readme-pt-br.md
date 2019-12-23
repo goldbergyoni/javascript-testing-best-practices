@@ -26,6 +26,13 @@ Comece entendendo as práticas de teste onipresentes que são a base para qualqu
 * Venha me ouvir falar em [LA](https://js.la/), [Verona](https://2019.nodejsday.it/), [Kharkiv](https://kharkivjs.org/), [free webinar](https://zoom.us/webinar/register/1015657064375/WN_Lzvnuv4oQJOYey2jXNqX6A). Eventos futuros TBD
 * [Newsletter informativo de qualidade sobre JavaScript](https://testjavascript.com/newsletter/) - insights e conteúdo apenas em assuntos estratégicos
 
+<br/>
+
+### Traduções - leia em seu próprio idioma
+* 🇨🇳[Chinese](readme-zh-CN.md) - cortesia de [Yves yao](https://github.com/yvesyao)
+* 🇰🇷[Korean](readme.kr.md) - cortesia de [Rain Byun](https://github.com/ragubyun)
+* Deseja traduzir para o seu próprio idioma? abra uma issue 💜
+
 
 <br/><br/>
 
@@ -228,7 +235,7 @@ test("When asking for an admin, ensure only ordered admins in results" , () => {
     //supondo que adicionamos aqui dois administradores "admin1", "admin2" e "user1"
     const allAdmins = getUsers({adminOnly:true});
 
-    const admin1Found, adming2Found = false;
+    let admin1Found, adming2Found = false;
 
     allAdmins.forEach(aSingleUser => {
         if(aSingleUser === "user1"){
@@ -290,7 +297,7 @@ it("When asking for an admin, ensure only ordered admins in results" , () => {
 class ProductService{
   //esse método é usado apenas internamente
   //Alterar este nome fará com que os testes falhem
-  calculateVAT(priceWithoutVAT){
+  calculateVATAdd(priceWithoutVAT){
     return {finalPrice: priceWithoutVAT * 1.2};
     //Alterar o formato do resultado ou o nome da chave acima fará com que os testes falhem
   }
@@ -298,6 +305,7 @@ class ProductService{
   getPrice(productId){
     const desiredProduct= DB.getProduct(productId);
     finalPrice = this.calculateVATAdd(desiredProduct.price).finalPrice;
+    return finalPrice;
   }
 }
 
@@ -357,6 +365,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
     const spy = sinon.spy(Emailer.prototype, "sendEmail");
     new ProductService().deletePrice(theProductWeJustAdded);
     //hmmm OK: lidamos com internos? Sim, mas como efeito colateral do teste dos requisitos (envio de um email)
+    expect(spy.calledOnce).to.be.true;
 });
 ```
 
@@ -442,25 +451,25 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/>
 
-### :clap:  Exemplo Fazendo Certo: Testando muitas permutações de entrada com “mocha-testcheck”
+### :clap:  Exemplo Fazendo Certo: Testando muitas permutações de entrada com “fast-check”
 
-![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20Mocha-blue.svg
- "Exemplos usando Mocha")
+![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20Jest-blue.svg
+ "Exemplos usando Jest")
 
 ```javascript
-require('mocha-testcheck').install();
-const {expect} = require('chai');
+import fc from "fast-check";
 
-describe('Product service', () => {
-  describe('Adding new', () => {
+describe("Product service", () => {
+  describe("Adding new", () => {
     //isso será executado 100 vezes com diferentes propriedades aleatórias
-    check.it('Add new product with random yet valid properties, always successful',
-      gen.int, gen.string, (id, name) => {
-        expect(addNewProduct(id, name).status).to.equal('approved');
-      });
-  })
-});
-
+    it("Add new product with random yet valid properties, always successful", () =>
+      fc.assert(
+        fc.property(fc.integer(), fc.string(), (id, name) => {
+          expect(addNewProduct(id, name).status).toEqual("approved");
+        })
+      ));
+    });
+  });
 ```
 
 </details>
@@ -517,7 +526,7 @@ it('When visiting TestJavaScript.com home page, a menu is displayed', () => {
 //Ajeitar
 
 //Atuar
-receivedPage tree = renderer
+const receivedPage tree = renderer
 .create(  <DisplayPage page  =  "http://www.testjavascript.com"  > Test JavaScript < /DisplayPage>)
 .toJSON();
 
@@ -625,8 +634,8 @@ Uma alternativa mais elegante é o uso da asserção Chai dedicada de uma linha:
 it("When no product name, it throws error 400", async() => {
 let errorWeExceptFor = null;
 try {
-  const result = await addNewProduct({name:'nest'});}
-catch (error) {
+  const result = await addNewProduct({});
+  } catch (error) {
   expect(error.code).to.equal('InvalidInput');
   errorWeExceptFor = error;
 }
@@ -642,7 +651,7 @@ expect(errorWeExceptFor).not.to.be.null;
 
 ```javascript
 it.only("When no product name, it throws error 400", async() => {
-  expect(addNewProduct)).to.eventually.throw(AppError).with.property('code', "InvalidInput");
+  await expect(addNewProduct({})).to.eventually.throw(AppError).with.property('code', "InvalidInput");
 });
 
 ```
@@ -1070,7 +1079,7 @@ test('When flagging to show only VIP, should display only VIP members', () => {
     // Act
     const { getByTestId } = render(<dashboardMetric value={undefined}/>);    
     
-    expect(getByTestId('errorsLabel')).text()).toBe("0");
+    expect(getByTestId('errorsLabel').text()).toBe("0");
   });
 
 ```
@@ -1445,7 +1454,7 @@ it('When doing smoke testing over all page, should load them all successfully', 
 
 ### :clap: Exemplo Fazendo Certo: Descrevendo testes em linguagem humana usando cucumber-js
 
-![](https://img.shields.io/badge/🔨%20Exemplo%20usando%20Cocumber-blue.svg  "Exemplos usando Cucumber")
+![](https://img.shields.io/badge/🔨%20Exemplo%20usando%20Cucumber-blue.svg  "Exemplos usando Cucumber")
 ```javascript
 // this is how one can describe tests using cucumber: plain language that allows anyone to understand and collaborate
 
@@ -1466,10 +1475,12 @@ Feature: Twitter new tweet
 ### :clap: Exemplo Fazendo Certo: Visualizando nossos componentes, seus vários estados e entradas usando o Storybook
 ![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Usando StoryBook")
 
+![alt text](assets/story-book.jpg "Storybook")
+
 
 </details>
 
-
+<br/><br/>
 
 
 ## ⚪ ️ 3.11 Detecte problemas visuais com ferramentas automatizadas
@@ -1498,7 +1509,7 @@ Feature: Twitter new tweet
 ### :clap: Exemplo Fazendo Certo: Configurando o wraith para capturar e comparar instantâneos da UI
 
 ![](https://img.shields.io/badge/🔨%20Exemplo%20usando%20Wraith-blue.svg
- "Usando Cypress para ilustrar a idea")
+ "Usando Wraith")
 
 ```
 ​# Add as many domains as necessary. Key will act as a label​
@@ -1529,48 +1540,25 @@ paths:
 ### :clap: Exemplo Fazendo Certo: Usando Applitools para obter comparação de captura instantânea e outros recursos avançados
 
 ![](https://img.shields.io/badge/🔨%20Exemplo%20usando%20AppliTools-blue.svg
- "Usando Cypress to para ilustrar a idea") ![](https://img.shields.io/badge/🔨%20Exemplo%20usando%20Cypress-blue.svg
+ "Usando AppliTools") ![](https://img.shields.io/badge/🔨%20Exemplo%20usando%20Cypress-blue.svg
  "Usando Cypress para illustrar idea")
 
 ```javascript
 import  *  as todoPage from  '../page-objects/todo-page';
 
 describe('visual validation',  ()  =>  {
+  before(()  =>  todoPage.navigate());
+  beforeEach(()  =>  cy.eyesOpen({ appName: 'TAU TodoMVC' }));
+  afterEach(()  =>  cy.eyesClose());
 
-before(()  =>  todoPage.navigate());
-
-beforeEach(()  =>  cy.eyesOpen({ appName:  'TAU TodoMVC'  }));
-
-afterEach(()  =>  cy.eyesClose());
-
-  
-
-it('should look good',  ()  =>  {
-
-cy.eyesCheckWindow('empty todo list');
-
-  
-
-todoPage.addTodo('Clean room');
-
-  
-
-todoPage.addTodo('Learn javascript');
-
-  
-
-cy.eyesCheckWindow('two todos');
-
-  
-
-todoPage.toggleTodo(0);
-
-  
-
-cy.eyesCheckWindow('mark as completed');
-
-});
-
+  it('should look good',  ()  =>  {
+      cy.eyesCheckWindow('empty todo list');
+      todoPage.addTodo('Clean room');
+      todoPage.addTodo('Learn javascript');
+      cy.eyesCheckWindow('two todos');
+      todoPage.toggleTodo(0);
+      cy.eyesCheckWindow('mark as completed');
+  });
 });
 ```
 
@@ -1738,27 +1726,27 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 <br/><br/>
 
   
-# Section 5️⃣: CI and Other Quality Measures
+# Seção 5️⃣: IC e Outras Medidas de Qualidade
 
 <br/><br/>
 
-## ⚪ ️ 5.1 Enrich your linters and abort builds that have linting issues
+## ⚪ ️ 5.1 Enriqueça seus linters e aborte construções que tenham problemas de lint
 
-:white_check_mark: **Do:**  Linters are a free lunch, with 5 min setup you get for free an auto-pilot guarding your code and catching significant issue as you type. Gone are the days where linting was about cosmetics (no semi-colons!). Nowadays, Linters can catch severe issues like errors that are not thrown correctly and losing information. On top of your basic set of rules (like [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) or [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), consider including some specializing Linters like [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) that can discover tests without assertions, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) can discover promises with no resolve (your code will never continue), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) which can discover eager regex expressions that might get used for DOS attacks, and [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) is capable of alarming when the code uses utility library methods that are part of the V8 core methods like Lodash._map(…)
+:white_check_mark: **Faça:**  Linters são um almoço grátis, com 5 minutos de configuração, você obtém gratuitamente um piloto automático que protege seu código e captura de problemas significativos enquanto digita. Já se foram os dias em que linting era apenas por beleza (sem ponto e vírgula!). Hoje em dia, Linters podem detectar problemas graves, como erros que não são lançados corretamente e perda de informações. Além do seu conjunto básico de regras (como [ESLint padrão](https://www.npmjs.com/package/eslint-plugin-standard) ou [estilo Airbnb](https://www.npmjs.com/package/eslint-config-airbnb)), considere incluir alguns Linters especializados como [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) que pode descobrir testes sem asserções, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) pode descobrir promessas sem resolução (seu código nunca vai continuar), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) que pode descobrir expressões regulares inseguras que podem ser usadas para ataques do DOS e[eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) é capaz de alarmar quando o código usa métodos da biblioteca de utilitários que fazem parte dos métodos principais do V8, como Lodash._map(…)
 <br/>
 
 
-❌ **Otherwise:** Consider a rainy day where your production keeps crashing but the logs don’t display the error stack trace. What happened? Your code mistakenly threw a non-error object and the stack trace was lost, a good reason for banging your head against a brick wall. A 5min linter setup could detect this TYPO and save your day
+❌ **Caso Contrário:** Considere um dia chuvoso em que sua produção continua travando, mas os logs não exibem o rastreamento do stack de erros. O que aconteceu? Seu código lançou um objeto sem erro por engano e o rastreamento do stack foi perdido, uma boa razão para bater a cabeça contra uma parede de tijolos. Uma configuração de linter de 5 minutos pode detectar esse erro de DIGITAÇÃO e salvar seu dia
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
-![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
+### :thumbsdown: Exemplo Anti-padrão: O objeto sem a propriedade erro é lançado por engano, nenhum rastreamento do stack será exibido para esse erro. Felizmente, o ESLint capta o próximo bug de produção
+![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "O objeto sem a propriedade erro é lançado por engano, nenhum rastreamento do stack será exibido para esse erro. Felizmente, o ESLint capta o próximo bug de produção")
 
 </details>
 
@@ -1767,24 +1755,24 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-# ⚪ ️ 5.2 Shorten the feedback loop with local developer-CI
+# ⚪ ️ 5.2 Encurte o ciclo de feedback com o IC de desenvolvedor local
 
-:white_check_mark: **Do:**   Using a CI with shiny quality inspections like testing, linting, vulnerabilities check, etc? Help developers run this pipeline also locally to solicit instant feedback and shorten the [feedback loop](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Why? an efficient testing process constitutes many and iterative loops: (1) try-outs -> (2) feedback -> (3) refactor. The faster the feedback is, the more improvement iterations a developer can perform per-module and perfect the results. On the flip, when the feedback is late to come fewer improvement iterations could be packed into a single day, the team might already move forward to another topic/task/module and might not be up for refining that module.
+:white_check_mark: **Faça:**   Usando uma IC com inspeções de qualidade brilhantes, como testes, linting, verificação de vulnerabilidades, etc? Ajude os desenvolvedores a executar esse pipeline também localmente para solicitar feedback instantâneo e diminuir o [ciclo de feedback](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Por quê? um processo de teste eficiente constitui muitos loops iterativos: (1) tentativas -> (2) feedback -> (3) refatoração. Quanto mais rápido o feedback, mais iterações de aprimoramento um desenvolvedor pode executar por módulo e aperfeiçoar os resultados. Por outro lado, quando o feedback chegar atrasado, menos iterações de melhoria poderão ser agrupadas em um único dia, a equipe já pode ter avançado para outro tópico/tarefa/módulo e pode não estar apta a refinar esse módulo.
 
-Practically, some CI vendors (Example: [CircleCI load CLI](https://circleci.com/docs/2.0/local-cli/)) allow running the pipeline locally. Some commercial tools like [wallaby provide highly-valuable & testing insights](https://wallabyjs.com/) as a developer prototype (no affiliation). Alternatively, you may just add npm script to package.json that runs all the quality commands (e.g. test, lint, vulnerabilities) — use tools like [concurrently](https://www.npmjs.com/package/concurrently) for parallelization and non-zero exit code if one of the tools failed. Now the developer should just invoke one command — e.g. ‘npm run quality’ — to get instant feedback. Consider also aborting a commit if the quality check failed using a githook ([husky can help](https://github.com/typicode/husky))
+Na prática alguns fornecedores de IC (exemplo: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) permitir a execução do pipeline localmente. Algumas ferramentas comerciais como [wallaby fornece informações valiosas e intuições de teste](https://wallabyjs.com/) como um protótipo de desenvolvedor (sem afiliação). Como alternativa, você pode apenas adicionar um npm script no package.json que executa todos os comandos de qualidade (por exemplo teste, lint, vulnerabilidades) — use ferramentas como [concurrently](https://www.npmjs.com/package/concurrently) para paralelismo e código de saída diferente de zero, se uma das ferramentas falhar. Agora o desenvolvedor deve apenas chamar um comando— por exemplo ‘npm run quality’ — para obter feedback instantâneo. Considere também abortar um commit se a verificação de qualidade falhar usando um githook ([husky pode ajudar](https://github.com/typicode/husky))
 <br/>
 
 
-❌ **Otherwise:** When the quality results arrive the day after the code, testing doesn’t become a fluent part of development rather an after the fact formal artifact
+❌ **Caso Contrário:** Quando os resultados da qualidade chegam no dia seguinte ao código, o teste não se torna uma parte fluente do desenvolvimento, e sim um artefato formal após o fato
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :clap:  Doing It Right Example: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
+### :clap:  Exemplo Fazendo Certo: npm scripts que realizam inspeção de qualidade de código, todos são executados em paralelo sob demanda ou quando um desenvolvedor está tentando enviar um novo código
 ```javascript
 "scripts": {
     "inspect:sanity-testing": "mocha **/**--test.js --grep \"sanity\"",
@@ -1811,24 +1799,24 @@ Practically, some CI vendors (Example: [CircleCI load CLI](https://circleci.com/
 
 <br/><br/>
 
-# ⚪ ️5.3 Perform e2e testing over a true production-mirror
+# ⚪ ️5.3 Realize testes e2eem um verdadeiro espelho de produção
 
-:white_check_mark: **Do:**   End to end (e2e) testing are the main challenge of every CI pipeline — creating an identical ephemeral production mirror on the fly with all the related cloud services can be tedious and expensive. Finding the best compromise is your game: [Docker-compose](https://serverless.com/) allows crafting isolated dockerized environment with identical containers using a single plain text file but the backing technology (e.g. networking, deployment model) is different from real-world productions. You may combine it with [‘AWS Local’](https://github.com/localstack/localstack) to work with a stub of the real AWS services. If you went [serverless](https://serverless.com/) multiple frameworks like serverless and [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) allows the local invocation of Faas code.
+:white_check_mark: **Faça:**   Os testes de ponta a ponta (e2e) são o principal desafio de cada pipeline de IC—criar um espelho efêmero idêntico de produção em tempo real com todos os serviços em nuvem relacionados pode ser entediante e caro. Encontrar o melhor comprometimento é o seu jogo: [Docker-compose](https://serverless.com/) permite criar ambiente docker isolado com contêineres idênticos usando um único arquivo de texto sem formatação, mas as tecnologias de suporte (por exemplo. rede, modelo de implantação) é diferente das produções do mundo real. Você pode combiná-lo com [‘AWS Local’](https://github.com/localstack/localstack) para trabalhar com um esboço dos serviços reais da AWS. Se você usar [serverless](https://serverless.com/) vários frameworks como serverless e [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) permite a chamada local de códigos FaaS.
 
-The huge Kubernetes eco-system is yet to formalize a standard convenient tool for local and CI-mirroring though many new tools are launched frequently. One approach is running a ‘minimized-Kubernetes’ using tools like [Minikube](https://kubernetes.io/docs/setup/minikube/) and [MicroK8s](https://microk8s.io/) which resemble the real thing only come with less overhead. Another approach is testing over a remote ‘real-Kubernetes’, some CI providers (e.g. [Codefresh](https://codefresh.io/)) has native integration with Kubernetes environment and make it easy to run the CI pipeline over the real thing, others allow custom scripting against a remote Kubernetes.
+O enorme ecossistema Kubernetes ainda não formalizou uma ferramenta conveniente padrão para espelhamento local e de IC, embora muitas novas ferramentas sejam lançadas com frequência. Uma abordagem é executar ‘minimized-Kubernetes’ usando ferramentas como [Minikube](https://kubernetes.io/docs/setup/minikube/) e [MicroK8s](https://microk8s.io/) que se assemelham-se à coisa real só vêm com menos sobrecarga. Outra abordagem é testar em um ambiente remoto ‘real-Kubernetes’, alguns provedores de IC (por exemplo, [Codefresh](https://codefresh.io/)) possuem integração nativa com ambiente Kubernetes e facilitam a execução do pipeline do IC sobre o ambiente real, outros permitem scripts personalizados em um Kubernetes remoto.
 <br/>
 
 
-❌ **Otherwise:** Using different technologies for production and testing demands maintaining two deployment models and keeps the developers and the ops team separated
+❌ **Caso Contrário:** O uso de tecnologias diferentes para demandas de produção e teste mantém dois modelos de implantação e mantém os desenvolvedores e a equipe de operações separados
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :clap:  Example: a CI pipeline that generates Kubernetes cluster on the fly <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([Credit: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
+### :clap:  Exemplo: um pipeline de IC que gera clusters Kubernetes em tempo real <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([Créditos: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
 
 <pre name="38d9" id="38d9" class="graf graf--pre graf-after--p">deploy:<br>stage: deploy<br>image: registry.gitlab.com/gitlab-examples/kubernetes-deploy<br>script:<br>- ./configureCluster.sh $KUBE_CA_PEM_FILE $KUBE_URL $KUBE_TOKEN<br>- kubectl create ns $NAMESPACE<br>- kubectl create secret -n $NAMESPACE docker-registry gitlab-registry --docker-server="$CI_REGISTRY" --docker-username="$CI_REGISTRY_USER" --docker-password="$CI_REGISTRY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL"<br>- mkdir .generated<br>- echo "$CI_BUILD_REF_NAME-$CI_BUILD_REF"<br>- sed -e "s/TAG/$CI_BUILD_REF_NAME-$CI_BUILD_REF/g" templates/deals.yaml | tee ".generated/deals.yaml"<br>- kubectl apply --namespace $NAMESPACE -f .generated/deals.yaml<br>- kubectl apply --namespace $NAMESPACE -f templates/my-sock-shop.yaml<br>environment:<br>name: test-for-ci</pre>
 
@@ -1840,21 +1828,21 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 
 <br/><br/>
 
-## ⚪ ️5.4 Parallelize test execution
-:white_check_mark: **Do:**    When done right, testing is your 24/7 friend providing almost instant feedback. In practice, executing 500 CPU-bounded unit test on a single thread can take too long. Luckily, modern test runners and CI platforms (like [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) and [Mocha extensions](https://github.com/yandex/mocha-parallel-tests)) can parallelize the test into multiple processes and achieve significant improvement in feedback time. Some CI vendors do also parallelize tests across containers (!) which shortens the feedback loop even further. Whether locally over multiple processes, or over some cloud CLI using multiple machines — parallelizing demand keeping the tests autonomous as each might run on different processes
+## ⚪ ️5.4 Paralelizar a execução do teste
+:white_check_mark: **Faça:**    Quando bem feito, o teste é seu amigo 24/7, fornecendo feedback quase instantâneo. Na prática, a execução de 500 testes de unidade limitados à CPU em um único thread pode levar muito tempo. Felizmente, executores de teste modernos e plataformas de IC (como [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) e [extenções Mocha](https://github.com/yandex/mocha-parallel-tests)) podem paralelizar os testes em vários processos e obter uma melhoria significativa no tempo de feedback. Alguns fornecedores de IC também paralelam testes entre contêineres (!) o que reduz ainda mais o ciclo de feedback. Seja localmente em vários processos ou em alguma ILC na nuvem usando várias máquinas— paralelizando a demanda, mantendo os testes autônomos, pois cada um pode ser executado em diferentes processos
 
 
-❌ **Otherwise:** Getting test results 1 hour long after pushing new code, as you already code the next features, is a great recipe for making testing less relevant
+❌ **Caso Contrário:** Obter resultados de testes 1 hora após o envio do novo código, enquanto você codifica os próximos recursos, é uma ótima receita para tornar os testes menos relevantes
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
-![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
+### :clap: Exemplo Fazendo Certo: Mocha parallel & Jest superam facilmente o Mocha tradicional graças ao teste de paralelização ([Créditos: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest superam facilmente o Mocha tradicional graças ao teste de paralelização (Créditos: JavaScript Test-Runners Benchmark)")
 
 </details>
 
@@ -1863,24 +1851,24 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 
 <br/><br/>
 
-## ⚪ ️5.5 Stay away from legal issues using license and plagiarism check
-:white_check_mark: **Do:**    Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like [license check](https://www.npmjs.com/package/license-checker) and [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stackoverflow and apparently violates some copyrights
+## ⚪ ️5.5 Fique longe de questões legais usando licença e verificação de plágio
+:white_check_mark: **Faça:**    Problemas de licenciamento e plágio provavelmente não são sua principal preocupação no momento, mas por que não resolver isso também em 10 minutos? Um monte de pacotes npm como [license check](https://www.npmjs.com/package/license-checker) e [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (comercial com plano gratuito) podem ser facilmente incorporado ao seu pipeline de IC e inspecionar problemas, como dependências com licenças restritivas ou código que foi copiado e colado do Stackoverflow e aparentemente viola alguns direitos autorais
 
-❌ **Otherwise:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
+❌ **Caso Contrário:** Involuntariamente, os desenvolvedores podem usar pacotes com licenças inadequadas ou copiar e colar código comercial e enfrentar problemas legais
 
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example:
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
+
+<br/>
+
+### :clap: Exemplo Fazendo Certo:
 ```javascript
-//install license-checker in your CI environment or also locally
+//instale license-checker no seu ambiente IC ou também localmente
 npm install -g license-checker
 
-//ask it to scan all licenses and fail with exit code other than 0 if it found unauthorized license. The CI system should catch this failure and stop the build
+//solicite que verifique todas as licenças e falhe com o código de saída diferente de 0 se encontrar uma licença não autorizada. O sistema de IC deve detectar essa falha e interromper a construção
 license-checker --summary --failOn BSD
 
 ```
@@ -1896,22 +1884,20 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.6 Constantly inspect for vulnerable dependencies
-:white_check_mark: **Do:**    Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like license check and plagiarism check (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stackoverflow and apparently violates some copyrights
-<br/>
+## ⚪ ️5.6 Inspecionar constantemente as dependências vulneráveis
+:white_check_mark: **Faça:**  Mesmo as dependências mais respeitáveis, como o Express, têm vulnerabilidades conhecidas. Isso pode ser facilmente domado usando ferramentas da comunidade, como [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), ou ferramentas comerciais como [snyk](https://snyk.io/) (oferece também uma versão comunitária gratuita). Ambos podem ser chamados a partir do seu IC em cada build
 
+❌ **Caso Contrário:** Para manter seu código livre de vulnerabilidades sem ferramentas dedicadas, é necessário seguir constantemente as publicações on-line sobre novas ameaças. Bastante tedioso
 
-❌ **Otherwise:** Even the most reputable dependencies such as Express have known vulnerabilities. This can get easily tamed using community tools such as [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), or commercial tools like [snyk](https://snyk.io/) (offer also a free community version). Both can be invoked from your CI on every build
-
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
 
 <br/>
 
-### :clap: Example: NPM Audit result
-![alt text](assets/bp-26-npm-audit-snyk.png "NPM Audit result")
+<details><summary>✏ <b>Códigos de Exemplos</b></summary>
+
+<br/>
+
+### :clap: Exemplo: Resultado de NPM Audit
+![alt text](assets/bp-26-npm-audit-snyk.png "Resultado de NPM Audit")
 
 </details>
 
@@ -1920,28 +1906,28 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.7 Automate dependency updates
-:white_check_mark: **Do:**   Yarn and npm latest introduction of package-lock.json introduced a serious challenge (the road to hell is paved with good intentions) — by default now, packages are no longer getting updates. Even a team running many fresh deployments with ‘npm install’ & ‘npm update’ won’t get any new updates. This leads to subpar dependent packages versions at best or to vulnerable code at worst. Teams now rely on developers goodwill and memory to manually update the package.json or use tools [like ncu](https://www.npmjs.com/package/npm-check-updates) manually. A more reliable way could be to automate the process of getting the most reliable dependency versions, though there are no silver bullet solutions yet there are two possible automation roads:
+## ⚪ ️5.7 Automatize atualizações de dependência
+:white_check_mark: **Faça:**   Yarn e npm recentemente incluiram package-lock.json que introduziu um sério desafio (o caminho para o inferno é pavimentado com boas intenções) — por padrão agora, os pacotes não estão mais recebendo atualizações. Mesmo uma equipe executando muitas implantações novas com ‘npm install’ & ‘npm update’ não receberão novas atualizações. Isso leva a versões abaixo dos pacotes de dependência, na melhor das hipóteses, ou ao código vulnerável, na pior das hipóteses. As equipes agora contam com a boa vontade e a memória dos desenvolvedores para atualizar manualmente o package.json ou usar ferramentas [como ncu](https://www.npmjs.com/package/npm-check-updates) manualmente. Uma maneira mais confiável seria automatizar o processo de obtenção das versões de dependência mais confiáveis, embora não haja uma solução certeira ainda, existem duas vias de automação possíveis:
 
-(1) CI can fail builds that have obsolete dependencies — using tools like [‘npm outdated’](https://docs.npmjs.com/cli/outdated) or ‘npm-check-updates (ncu)’ . Doing so will enforce developers to update dependencies.
+(1) O IC pode falhar nas construções que possuem dependências obsoletas — usando ferramentas como [‘npm outdated’](https://docs.npmjs.com/cli/outdated) ou ‘npm-check-updates (ncu)’ . Fazer isso forçará os desenvolvedores a atualizar dependências.
 
-(2) Use commercial tools that scan the code and automatically send pull requests with updated dependencies. One interesting question remaining is what should be the dependency update policy — updating on every patch generates too many overhead, updating right when a major is released might point to an unstable version (many packages found vulnerable on the very first days after being released, [see the](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope incident).
+(2) Use ferramentas comerciais que varrem o código e enviam automaticamente pull requests com dependências atualizadas. Uma questão interessante que resta é qual deve ser a política de atualização de dependência— a atualização em cada patch gera muitos custos indiretos; a atualização quando uma versão nova é lançado pode apontar para uma versão instável (muitos pacotes são descobertos como vulneráveis ​​nos primeiros dias após o lançamento, [veja o](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) incidente do eslint-scope).
 
-An efficient update policy may allow some ‘vesting period’ — let the code lag behind the @latest for some time and versions before considering the local copy as obsolete (e.g. local version is 1.3.1 and repository version is 1.3.8)
+Uma política de atualização eficiente pode permitir um ‘período de acomodação’ — deixe o código ficar atrás do @latest por algum tempo e versões antes de considerar a cópia local como obsoleta (por exemplo. versão local é 1.3.1 e a versão do repositório é 1.3.8)
 <br/>
 
 
-❌ **Otherwise:** Your production will run packages that have been explicitly tagged by their author as risky
+❌ **Caso Contrário:** Sua produção executará pacotes que foram explicitamente marcados pelo autor como arriscados
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :clap:  Example: [ncu](https://www.npmjs.com/package/npm-check-updates) can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions
-![alt text](assets/bp-27-yoni-goldberg-npm.png "Nncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
+### :clap:  Exemplo: [ncu](https://www.npmjs.com/package/npm-check-updates) pode ser usado manualmente ou em um pipeline de IC para detectar quanto o código está atrasado em relação às versões mais recentes
+![alt text](assets/bp-27-yoni-goldberg-npm.png "ncu pode ser usado manualmente ou em um pipeline de IC para detectar quanto o código está atrasado em relação às versões mais recentes")
 
 
 </details>
@@ -1949,32 +1935,32 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 <br/><br/>
 
-## ⚪ ️ 5.8 Other, non-Node related, CI tips
-:white_check_mark: **Do:**    This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
+## ⚪ ️ 5.8 Outras dicas de IC não relacionadas ao Node
+:white_check_mark: **Faça:**    Esta postagem é focada em conselhos de teste relacionados ou pelo menos podem ser exemplificados com o Node JS. Este marcador, no entanto, agrupa algumas dicas não relacionadas ao nó que são bem conhecidas
 
- <ol class="postList"><li name="e3e4" id="e3e4" class="graf graf--li graf-after--p">Use a declarative syntax. This is the only option for most vendors but older versions of Jenkins allows using code or UI</li><li name="1fdc" id="1fdc" class="graf graf--li graf-after--li">Opt for a vendor that has native Docker support</li><li name="edcd" id="edcd" class="graf graf--li graf-after--li">Fail early, run your fastest tests first. Create a ‘Smoke testing’ step/milestone that groups multiple fast inspections (e.g. linting, unit tests) and provide snappy feedback to the code committer</li><li name="0375" id="0375" class="graf graf--li graf-after--li">Make it easy to skim-through all build artifacts including test reports, coverage reports, mutation reports, logs, etc</li><li name="df82" id="df82" class="graf graf--li graf-after--li">Create multiple pipelines/jobs for each event, reuse steps between them. For example, configure a job for feature branch commits and a different one for master PR. Let each reuse logic using shared steps (most vendors provide some mechanism for code reuse</li><li name="19b0" id="19b0" class="graf graf--li graf-after--li">Never embed secrets in a job declaration, grab them from a secret store or from the job’s configuration</li><li name="b70d" id="b70d" class="graf graf--li graf-after--li">Explicitly bump version in a release build or at least ensure the developer did so</li><li name="957c" id="957c" class="graf graf--li graf-after--li">Build only once and perform all the inspections over the single build artifact (e.g. Docker image)</li><li name="339b" id="339b" class="graf graf--li graf-after--li">Test in an ephemeral environment that doesn’t drift state between builds. Caching node_modules might be the only exception</li></ol>
+ <ol class="postList"><li name="e3e4" id="e3e4" class="graf graf--li graf-after--p">Use uma sintaxe declarativa. Essa é a única opção para a maioria dos fornecedores, mas as versões mais antigas do Jenkins permitem o uso de código ou interface do usuário.</li><li name="1fdc" id="1fdc" class="graf graf--li graf-after--li">Opte por um fornecedor que tenha suporte nativo ao Docker</li><li name="edcd" id="edcd" class="graf graf--li graf-after--li">Falhe cedo, execute seus testes mais rápidos primeiro. Crie uma etapa/meta de "Teste de fumaça" que agrupe várias inspeções rápidas (por exemplo linting, testes unitários) e fornecer feedback instantâneo para o responsável pelo código</li><li name="0375" id="0375" class="graf graf--li graf-after--li">Facilite a varredura de todos os artefatos de construção, incluindo relatórios de teste, relatórios de cobertura, relatórios de mutação, logs, etc.</li><li name="df82" id="df82" class="graf graf--li graf-after--li">Crie vários pipelines/trabalhos para cada evento, reutilize as etapas entre eles. Por exemplo, configure um trabalho para commits de branches de recursos e outro para PR na master. Permita que cada uma reutilize a lógica usando etapas compartilhadas (a maioria dos fornecedores fornece algum mecanismo para reutilização de código)</li><li name="19b0" id="19b0" class="graf graf--li graf-after--li">Nunca incorpore segredos em uma declaração de trabalho, pegue-os em um armazenamento secreto ou na configuração do trabalho</li><li name="b70d" id="b70d" class="graf graf--li graf-after--li">Explicitamente aumente a versão em uma compilação de versão ou pelo menos garanta que o desenvolvedor o fez</li><li name="957c" id="957c" class="graf graf--li graf-after--li">Compileapenas uma vez e execute todas as inspeções no artefato de construção único (por exemplo, imagem do Docker)</li><li name="339b" id="339b" class="graf graf--li graf-after--li">Teste em um ambiente efêmero que não varia de estado entre compilações. Armazenar em cache node_modules pode ser a única exceção</li></ol>
 <br/>
 
 
-❌ **Otherwise:** You‘ll miss years of wisdom
+❌ **Caso Contrário:** Você perderá anos de sabedoria
 
 <br/><br/>
 
-## ⚪ ️ 5.9 Build matrix: Run the same CI steps using multiple Node versions
-:white_check_mark: **Do:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use MySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of MySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
+## ⚪ ️ 5.9 Matriz de construção: execute as mesmas etapas de IC usando várias versões do Node
+:white_check_mark: **Faça:** A verificação da qualidade é sobre acaso, quanto mais você cobrir, mais sorte terá na detecção de problemas mais cedo. Ao desenvolver pacotes reutilizáveis ​​ou executar uma produção de vários clientes com várias configurações e versões do Node, o IC deve executar o pipeline de testes em todas as permutações de configurações. Por exemplo, supondo que usamos o MySQL para alguns clientes e o Postgres para outros — alguns fornecedores de IC suportam um recurso chamado "Matriz" que permitem executar o processo de teste contra todas as permutações do MySQL, Postgres e várias versões do Node, como 8, 9 e 10. Isso é feito usando a configuração apenas sem nenhum esforço adicional (supondo que você tenha testes ou quaisquer outras verificações de qualidade). Outros ICs que não suportam Matrix podem ter extensões ou ajustes para permitir isso
 <br/>
 
 
-❌ **Otherwise:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
+❌ **Caso Contrário:** Então, depois de fazer todo esse trabalho duro de escrever testes, vamos permitir que os bugs entrem apenas por causa de problemas de configuração?
 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Códigos de Exemplo</b></summary>
 
 <br/>
 
-### :clap:   Example: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
+### :clap:   Exemplo: Usando a definição de construção do Travis (fornecedor de IC) para executar o mesmo teste em várias versões do Node
 <pre name="f909" id="f909" class="graf graf--pre graf-after--p">language: node_js<br>node_js:<br>  - "7"<br>  - "6"<br>  - "5"<br>  - "4"<br>install:<br>  - npm install<br>script:<br>  - npm run test</pre>
 </details>
 
@@ -2009,8 +1995,7 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 <hr/>
 <br/>
 
-
-##  [Bruno Scheufler](https://github.com/BrunoScheufler)
+## [Bruno Scheufler](https://github.com/BrunoScheufler)
 
 **Função:** Revisor e consultor técnico
 
@@ -2025,3 +2010,49 @@ Teve o cuidado de revisar, melhorar, usar lint e polir todos os textos
 **Função:** Conceito, design e ótimos conselhos
 
 **Sobre:** Um desenvolvedor front-end esclarecido, especialista em CSS e emojis
+
+## [Kyle Martin](https://github.com/js-kyle)
+
+**Função:** Ajuda a manter esse projeto em execução e analisa práticas relacionadas à segurança
+
+**Sobre:** Adora trabalhar em projetos Node.js. e segurança de aplicativos da web.
+
+## Contribuidores ✨
+Agradecemos a essas pessoas maravilhosas que contribuíram para este repositório!
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+</table>
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+<table>
+  <tr>
+    <td align="center"><a href="http://geospatialscott.blogspot.com/"><img src="https://avatars3.githubusercontent.com/u/1326248?v=4" width="100px;" alt="Scott Davis"/><br /><sub><b>Scott Davis</b></sub></a><br /><a href="#content-stdavis" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/AdrienRedon"><img src="https://avatars2.githubusercontent.com/u/5978436?v=4" width="100px;" alt="Adrien REDON"/><br /><sub><b>Adrien REDON</b></sub></a><br /><a href="#content-AdrienRedon" title="Content">🖋</a></td>
+    <td align="center"><a href="https://twitter.com/NoriSte"><img src="https://avatars0.githubusercontent.com/u/173663?v=4" width="100px;" alt="Stefano Magni"/><br /><sub><b>Stefano Magni</b></sub></a><br /><a href="#content-NoriSte" title="Content">🖋</a></td>
+    <td align="center"><a href="https://www.joer.im"><img src="https://avatars2.githubusercontent.com/u/47742486?v=4" width="100px;" alt="Yeoh Joer"/><br /><sub><b>Yeoh Joer</b></sub></a><br /><a href="#content-yjoer" title="Content">🖋</a></td>
+    <td align="center"><a href="http://jhonnymoreira.dev"><img src="https://avatars0.githubusercontent.com/u/2177742?v=4" width="100px;" alt="Jhonny Moreira"/><br /><sub><b>Jhonny Moreira</b></sub></a><br /><a href="#content-jhonnymoreira" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/Germanika"><img src="https://avatars2.githubusercontent.com/u/8846678?v=4" width="100px;" alt="Ian Germann"/><br /><sub><b>Ian Germann</b></sub></a><br /><a href="#content-Germanika" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/AbdelrahmanHafez"><img src="https://avatars3.githubusercontent.com/u/19984935?v=4" width="100px;" alt="Hafez"/><br /><sub><b>Hafez</b></sub></a><br /><a href="#content-AbdelrahmanHafez" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://www.ruxandrafediuc.com"><img src="https://avatars1.githubusercontent.com/u/11021586?v=4" width="100px;" alt="Ruxandra Fediuc"/><br /><sub><b>Ruxandra Fediuc</b></sub></a><br /><a href="#content-ruxandrafed" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/jacklee814"><img src="https://avatars0.githubusercontent.com/u/9951291?v=4" width="100px;" alt="Jack"/><br /><sub><b>Jack</b></sub></a><br /><a href="#content-jacklee814" title="Content">🖋</a></td>
+    <td align="center"><a href="https://www.petercarrero.com"><img src="https://avatars0.githubusercontent.com/u/231727?v=4" width="100px;" alt="Peter Carrero"/><br /><sub><b>Peter Carrero</b></sub></a><br /><a href="#content-aloyr" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/huhgawz"><img src="https://avatars3.githubusercontent.com/u/369338?v=4" width="100px;" alt="Huhgawz"/><br /><sub><b>Huhgawz</b></sub></a><br /><a href="#content-huhgawz" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/haakonmb"><img src="https://avatars1.githubusercontent.com/u/7099302?v=4" width="100px;" alt="Haakon Borch"/><br /><sub><b>Haakon Borch</b></sub></a><br /><a href="#content-haakonmb" title="Content">🖋</a></td>
+    <td align="center"><a href="https://jaimemendoza.com/"><img src="https://avatars3.githubusercontent.com/u/5395811?v=4" width="100px;" alt="Jaime Mendoza"/><br /><sub><b>Jaime Mendoza</b></sub></a><br /><a href="#content-jaimemendozadev" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/camerondunford"><img src="https://avatars0.githubusercontent.com/u/840612?v=4" width="100px;" alt="Cameron Dunford"/><br /><sub><b>Cameron Dunford</b></sub></a><br /><a href="#content-camerondunford" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/shadowspawn"><img src="https://avatars1.githubusercontent.com/u/15719847?v=4" width="100px;" alt="John Gee"/><br /><sub><b>John Gee</b></sub></a><br /><a href="#content-shadowspawn" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/aurelijusrozenas"><img src="https://avatars0.githubusercontent.com/u/3273544?v=4" width="100px;" alt="Aurelijus Rožėnas"/><br /><sub><b>Aurelijus Rožėnas</b></sub></a><br /><a href="#content-aurelijusrozenas" title="Content">🖋</a></td>
+    <td align="center"><a href="http://aaronshivers.com"><img src="https://avatars2.githubusercontent.com/u/42848750?v=4" width="100px;" alt="Aaron"/><br /><sub><b>Aaron</b></sub></a><br /><a href="#content-aaronshivers" title="Content">🖋</a></td>
+    <td align="center"><a href="https://tomdoes.tech/"><img src="https://avatars1.githubusercontent.com/u/8683577?v=4" width="100px;" alt="Tom Nagle"/><br /><sub><b>Tom Nagle</b></sub></a><br /><a href="#content-tomanagle" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/yvesyao"><img src="https://avatars0.githubusercontent.com/u/7723729?v=4" width="100px;" alt="Yves yao"/><br /><sub><b>Yves yao</b></sub></a><br /><a href="#content-yvesyao" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/Userbit"><img src="https://avatars1.githubusercontent.com/u/34487074?v=4" width="100px;" alt="Userbit"/><br /><sub><b>Userbit</b></sub></a><br /><a href="#content-Userbit" title="Content">🖋</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
