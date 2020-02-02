@@ -186,6 +186,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "glaucia86",
+      "name": "Glaucia Lemos",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1631477?v=4",
+      "profile": "https://glaucialemos.netlify.com/",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
