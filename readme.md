@@ -606,7 +606,7 @@ expect(errorWeExceptFor).not.to.be.null;
 ### :clap: Doing It Right Example: A human-readable expectation that could be understood easily, maybe even by QA or technical PM
 
 ```javascript
-it.only("When no product name, it throws error 400", async() => {
+it("When no product name, it throws error 400", async() => {
   await expect(addNewProduct({})).to.eventually.throw(AppError).with.property('code', "InvalidInput");
 });
 
