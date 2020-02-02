@@ -19,9 +19,8 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 ### Written By Yoni Goldberg
 * A JavaScript & Node.js consultant
-* 👨‍🏫 [My testing workshop](https://www.testjavascript.com) -  learn about [my workshops](https://www.testjavascript.com) in Europe & US
+* 📗 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com) - My comprehensive online course with more than [10 hours of video](https://www.testjavascript.com), 14 test types and more than 40 best practices
 * [Follow me on Twitter ](https://twitter.com/goldbergyoni/)
-* [My JavaScript Quality newsletter](https://testjavascript.com/newsletter/) - insights and content only on strategic matters
 
 <br/>
 
@@ -344,6 +343,12 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 ```
 
 </details>
+
+<br/><br/>
+
+## 📗 Want to learn all these practices with live video?
+
+### Visit my online course [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
 
 <br/><br/>
 
@@ -1811,9 +1816,8 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 **About:** I'm an independent consultant who works with 500 fortune corporates and garage startups on polishing their JS & Node.js applications. More than any other topic I'm fascinated by and aims to master the art of testing. I'm also the author of [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
 
-<br/>
+**📗 Online Course:** Liked this guide and wish to take your testing skills to the extreme? Consider visiting my comprehensive course [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
 
-**Workshop:** 👨‍🏫 Want to learn all these practices and techniques at your offices (Europe & USA)? [Register here for my testing workshop](https://testjavascript.com/)
 <br/>
 
 **Follow:**
