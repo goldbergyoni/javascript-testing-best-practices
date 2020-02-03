@@ -1887,6 +1887,9 @@ Thanks goes to these wonderful people who have contributed to this repository!
     <td align="center"><a href="https://github.com/Userbit"><img src="https://avatars1.githubusercontent.com/u/34487074?v=4" width="100px;" alt=""/><br /><sub><b>Userbit</b></sub></a><br /><a href="#content-Userbit" title="Content">🖋</a></td>
     <td align="center"><a href="https://glaucialemos.netlify.com/"><img src="https://avatars0.githubusercontent.com/u/1631477?v=4" width="100px;" alt=""/><br /><sub><b>Glaucia Lemos</b></sub></a><br /><a href="#maintenance-glaucia86" title="Maintenance">🚧</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://www.GoldbergYoni.com"><img src="https://avatars2.githubusercontent.com/u/8571500?v=4" width="100px;" alt=""/><br /><sub><b>Yoni Goldberg</b></sub></a><br /><a href="#content-goldbergyoni" title="Content">🖋</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
