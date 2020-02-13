@@ -63,7 +63,7 @@ Guidelines for CI in the JS world (9 bullets)
 
 <br/>
 
-## ⚪️ 0. The Golden Rule: Design for lean testing
+## ⚪️ 0 The Golden Rule: Design for lean testing
 
 :white_check_mark: **Do:** 
 Testing code is not like production-code - design it to be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should look at a test and get the intent instantly. 
@@ -895,7 +895,7 @@ it("When updating site name, get successful confirmation", async () => {
 
 # Section 3️⃣: Frontend Testing
 
-## ⚪ ️ 3.1. Separate UI from functionality
+## ⚪ ️ 3.1 Separate UI from functionality
 
 :white_check_mark: **Do:** When focusing on testing component logic, UI details become a noise that should be extracted, so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only the back part of the UI (e.g. services, actions, store) but this will result in fictional tests that don't resemble the reality and won't reveal cases where the right data doesn't even arrive in the UI
 
@@ -1166,7 +1166,7 @@ test('movie title appears', async () => {
 
 <br/>
 
-## ⚪ ️ 3.5. Watch how the content is served over the network
+## ⚪ ️ 3.5 Watch how the content is served over the network
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Google%20LightHouse-blue.svg
  "Examples with Lighthouse")
