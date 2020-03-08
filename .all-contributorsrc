@@ -195,6 +195,15 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "koooge",
+      "name": "koooge",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/7419215?v=4",
+      "profile": "https://twitter.com/koooge",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
