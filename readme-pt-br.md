@@ -70,7 +70,7 @@ Diretrizes para CI no mundo JS (9 tópicos)
 
 <br/>
 
-## ⚪️ 0. A Regra de Ouro: Design para testes enxutos
+## ⚪️ 0 A Regra de Ouro: Design para testes enxutos
 
 :white_check_mark: **Faça:**
 O código de teste não é como o código de produção - projete-o para ser simples, curto, sem abstrações, plano, agradável de se trabalhar, enxuto. Deve-se olhar para um teste e obter a intenção instantaneamente.
@@ -973,7 +973,7 @@ it("When updating site name, get successful confirmation", async () => {
 
 # Seção 3️⃣: Teste de Frontend
 
-## ⚪ ️ 3.1. Separar UI da funcionalidade
+## ⚪ ️ 3.1 Separar UI da funcionalidade
 
 :white_check_mark: **Faça:** Ao focar no teste da lógica dos componentes, os detalhes da interface do usuário se tornam um ruído que deve ser extraído, para que seus testes possam se concentrar em dados puros. Na prática, extraia os dados desejados da marcação de uma maneira abstrata que não seja muito acoplada à implementação gráfica, afirme apenas dados puros (vs detalhes gráficos de HTML/CSS) e desative animações que diminuem a velocidade. Você pode cair na tentação de evitar renderizar e testar apenas a parte de trás da interface do usuário (por exemplo, serviços, ações, armazenamento), mas isso resultará em testes fictícios que não se assemelham à realidade e não revelam casos em que os dados corretos nem chegam na interface do usuário
 
@@ -1259,7 +1259,7 @@ test('movie title appears', async () => {
 
 <br/>
 
-## ⚪ ️ 3.5. Veja como o conteúdo é servido na rede
+## ⚪ ️ 3.5 Veja como o conteúdo é servido na rede
 
 ![](https://img.shields.io/badge/🔧%20Exemplo%20usando%20Google%20LightHouse-blue.svg
  "Exemplo com Lighthouse")
