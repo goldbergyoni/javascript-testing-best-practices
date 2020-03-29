@@ -661,7 +661,6 @@ describe("Order service", function() {
 
 :white_check_mark: **Do:** Apply some structure to your test suite so an occasional visitor could easily understand the requirements (tests are the best documentation) and the various scenarios that are being tested. A common method for this is by placing at least 2 'describe' blocks above your tests: the 1st is for the name of the unit under test and the 2nd for additional level of categorization like the scenario or custom categories (see code examples and prtscn below). Doing so will also greatly improve the test reports: The reader will easily infer the tests categories, delve into the desired section and correlate failing tests. In addition, it will get much easier for a developer to navigate through the code of a suite with many tests. There are multiple alternative structures for test suite that you may consider like [given-when-then](https://github.com/searls/jasmine-given) and [RITE](https://github.com/ericelliott/riteway)
 
-
 <br/>
 
 ❌ **Otherwise:** When looking at a report with flat and long list of tests, the reader have to skim-read through long texts to conclude the major scenarios and correlate the commonality of failing tests. Consider the following case: When 7/100 tests fail, looking at a flat list will demand reading the failing tests text to see how they relate to each other. However, in an hierarchical report all of them could be under the same flow or category and the reader will quickly infer what or at least where is the root failure cause
@@ -690,7 +689,7 @@ describe("Transfer service", () => {
 });
 ```
 
-![alt text](assets/hirearchical-report.png)
+![alt text](assets/hierarchical-report.png)
 
 <br/>
 
@@ -699,17 +698,11 @@ describe("Transfer service", () => {
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Mocha")
 
 ```javascript
-    test('Then the response status should decline', () => {
+test("Then the response status should decline", () => {});
 
-    });
+test("Then it should send email", () => {});
 
-    test('Then it should send email', () => {
-
-    });
-
-    test('Then there should not be a new transfer record', () => {
-
-    });
+test("Then there should not be a new transfer record", () => {});
 ```
 
 ![alt text](assets/flat-report.png)
@@ -735,7 +728,7 @@ Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-dr
 
 ## ⚪ ️2.1 Enrich your testing portfolio: Look beyond unit tests and the pyramid
 
-:white_check_mark: **Do:** The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit _all_ types of applications? shouldn’t the testing world consider welcoming new testing techniques?
+:white*check_mark: **Do:** The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit \_all* types of applications? shouldn’t the testing world consider welcoming new testing techniques?
 
 Don’t get me wrong, in 2019 the testing pyramid, TDD and unit tests are still a powerful technique and are probably the best match for many applications. Only like any other model, despite its usefulness, [it must be wrong sometimes](https://en.wikipedia.org/wiki/All_models_are_wrong). For example, consider an IOT application that ingests many events into a message-bus like Kafka/RabbitMQ, which then flow into some data-warehouse and are eventually queried by some analytics UI. Should we really spend 50% of our testing budget on writing unit tests for an application that is integration-centric and has almost no logic? As the diversity of application types increase (bots, crypto, Alexa-skills) greater are the chances to find scenarios where the testing pyramid is not the best match.
 
