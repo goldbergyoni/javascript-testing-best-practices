@@ -1234,13 +1234,14 @@ test("movie title appears", async () => {
 
 <br/>
 
-## ⚪ ️ 3.6 Stub niestabilne i wolne zasoby, takie jak interfejsy API zaplecza
+## ⚪ ️ 3.6 Stub dla niestabilnych i wolnych zasobów, takich jak interfejsy zaplecza API
 
-:white_check_mark: **Opis:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practically, instead of real network calls to APIs, use some test double library (like [Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttles requests). Doing this will allow simulating various API behavior that should drive your component behavior as when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
+:white_check_mark: **Opis:** Kodując swoje główne testy (nie testy E2E), unikaj angażowania zasobów, które są poza twoją odpowiedzialnością i kontroluj, takie jak backend API i zamiast tego używaj stubs (np. test double). Praktycznie, zamiast prawdziwych wywołań sieciowych interfejsów API, użyj biblioteki test double (np [Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble), etc) dla stubbingu odpowiedzi API. Główną zaletą jest zapobieganie niestabilności - testowanie lub przemieszczanie interfejsów API z definicji nie jest wysoce stabilne i od czasu do czasu zawiedzie testy, chociaż TWÓJ komponent zachowuje się dobrze (środowisko env nie było przeznaczone do testowania i zwykle ogranicza żądania). Pozwoli to na symulację różnych zachowań API, które powinny kierować zachowaniem twojego komponentu, tak jak w przypadku braku danych lub w przypadku, gdy API zgłasza błąd. Wreszcie połączenia sieciowe znacznie spowolnią testy
 
 <br/>
 
-❌ **W przeciwnym razie:** The average test runs no longer than few ms, a typical API call last 100ms>, this makes each test ~20x slower
+❌ **W przeciwnym razie:** Średni test trwa nie dłużej niż kilka ms, typowe wywołanie API trwa 100 ms>, co powoduje, że każdy test ~20x wolniej
+
 
 <br/>
 
@@ -1248,7 +1249,7 @@ test("movie title appears", async () => {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Stubbing or intercepting API calls
+### :clap: Przykład robienia tego dobrze: Stubbing lub przechwytywanie wywołań API
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
@@ -1288,23 +1289,23 @@ test("When no products exist, show the appropriate message", () => {
 
 <br/>
 
-## ⚪ ️ 3.7 Have very few end-to-end tests that spans the whole system
+## ⚪ ️ 3.7 Mieć bardzo mało kompleksowych testów obejmujących cały system
 
-:white_check_mark: **Do:** Although E2E (end-to-end) usually means UI-only testing with a real browser (See bullet 3.6), for other they mean tests that stretch the entire system including the real backend. The latter type of tests is highly valuable as they cover integration bugs between frontend and backend that might happen due to a wrong understanding of the exchange schema. They are also an efficient method to discover backend-to-backend integration issues (e.g. Microservice A sends the wrong message to Microservice B) and even to detect deployment failures - there are no backend frameworks for E2E testing that are as friendly and mature as UI frameworks like [Cypress](https://www.cypress.io/) and [Pupeteer](https://github.com/GoogleChrome/puppeteer). The downside of such tests is the high cost of configuring an environment with so many components, and mostly their brittleness - given 50 microservices, even if one fails then the entire E2E just failed. For that reason, we should use this technique sparingly and probably have 1-10 of those and no more. That said, even a small number of E2E tests are likely to catch the type of issues they are targeted for - deployment & integration faults. It's advisable to run those over a production-like staging environment
-
-<br/>
-
-❌ **Otherwise:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very different than expected
+:white_check_mark: **Opis:** Chociaż E2E (end-to-end) zwykle oznacza testowanie tylko interfejsu użytkownika z prawdziwą przeglądarką (patrz punkt 3.6), dla innych oznacza testy rozciągające cały system, w tym prawdziwy backend. Ten ostatni rodzaj testów jest bardzo cenny, ponieważ obejmuje błędy integracyjne między frontendem a backendem, które mogą się zdarzyć z powodu niewłaściwego zrozumienia schematu wymiany. Są również skuteczną metodą wykrywania problemów z integracją backend-to-backend (np. Microservice A wysyła niewłaściwy komunikat do Microservice B), a nawet wykrywania błędów wdrażania - nie ma struktur zaplecza dla testów E2E, które byłyby tak przyjazne i dojrzałe jak frameworki UI takie jak [Cypress](https://www.cypress.io/) oraz [Pupeteer](https://github.com/GoogleChrome/puppeteer). Minusem takich testów jest wysoki koszt konfiguracji środowiska z tyloma komponentami, a przede wszystkim ich kruchość - biorąc pod uwagę 50 mikrousług, nawet jeśli jeden się nie powiedzie, cały E2E po prostu zawiódł. Z tego powodu powinniśmy stosować tę technikę oszczędnie i prawdopodobnie mieć 1-10 z nich i nie więcej. To powiedziawszy, nawet niewielka liczba testów E2E może wychwycić rodzaj problemów, do których są skierowane - błędy wdrażania i integracji. Wskazane jest, aby uruchamiać je w środowisku produkcyjnym podobnym do produkcyjnego.
 
 <br/>
 
-## ⚪ ️ 3.8 Speed-up E2E tests by reusing login credentials
-
-:white_check_mark: **Opis:** In E2E tests that involve a real backend and rely on a valid user token for API calls, it doesn't payoff to isolate the test to a level where a user is created and logged-in in every request. Instead, login only once before the tests execution start (i.e. before-all hook), save the token in some local storage and reuse it across requests. This seem to violate one of the core testing principle - keep the test autonomous without resources coupling. While this is a valid worry, in E2E tests performance is a key concern and creating 1-3 API requests before starting each individial tests might lead to horrible execution time. Reusing credentials doesn't mean the tests have to act on the same user records - if relying on user records (e.g. test user payments history) than make sure to generate those records as part of the test and avoid sharing their existence with other tests. Also remember that the backend can be faked - if your tests are focused on the frontend it might be better to isolate it and stub the backend API (see bullet 3.6).
+❌ **W przeciwnym razie:** Interfejs użytkownika może dużo zainwestować w testowanie jego funkcjonalności, aby zdać sobie sprawę bardzo późno, że backend zwrócił payload (schemat danych, z którym musi pracować interfejs użytkownika) jest bardzo różny od oczekiwanego
 
 <br/>
 
-❌ **W przeciwnym razie:** Given 200 test cases and assuming login=100ms = 20 seconds only for logging-in again and again
+## ⚪ ️ 3.8 Przyspiesz testy E2E poprzez ponowne użycie danych logowania
+
+:white_check_mark: **Opis:** W testach E2E, które obejmują prawdziwy backend i opierają się na prawidłowym tokenie użytkownika dla wywołań API, izolacja testu do poziomu, na którym użytkownik jest tworzony i logowany w każdym żądaniu, nie opłaca się. Zamiast tego zaloguj się tylko raz, zanim rozpocznie się wykonywanie testu (np. before-all hook), zapisz token w lokalnej pamięci i użyj go ponownie w żądaniach. Wydaje się to naruszać jedną z podstawowych zasad testowania - zachowaj autonomię testu bez łączenia zasobów. Chociaż jest to uzasadnione zmartwienie, w testach E2E kluczowe znaczenie ma wydajność, a utworzenie 1-3 zapytań API przed rozpoczęciem każdego indywidualnego testu może prowadzić do okropnego czasu wykonania. Ponowne użycie poświadczeń nie oznacza, że testy muszą działać na tych samych rekordach użytkownika - jeśli polegasz na rekordach użytkownika (np. historii płatności użytkownika testowego), to upewnij się, że wygenerujesz te rekordy w ramach testu i unikniesz dzielenia się ich istnieniem z innymi testami. Pamiętaj również, że backend może być sfałszowany - jeśli twoje testy koncentrują się na frontendzie, może lepiej być go wyodrębnić i zablokować API backendu (patrz punkt 3.6).
+
+<br/>
+
+❌ **W przeciwnym razie:** Biorąc pod uwagę 200 przypadków testowych i zakładając login = 100ms = 20 sekund tylko samego ponownego logowania
 
 <br/>
 
@@ -1312,7 +1313,7 @@ test("When no products exist, show the appropriate message", () => {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Logging-in before-all and not before-each
+### :clap: Przykład robienia tego dobrze: Logging-in before-all i nie before-each
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
@@ -1346,13 +1347,14 @@ beforeEach(setUser => () {
 
 <br/>
 
-## ⚪ ️ 3.9 Have one E2E smoke test that just travels across the site map
+## ⚪ ️ 3.9 Zrób jeden smoke test E2E, który podróżuje po mapie witryny
 
-:white_check_mark: **Opis:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
+
+:white_check_mark: **Opis:** W celu monitorowania produkcji i kontroli poprawności w czasie programowania uruchom pojedynczy test E2E, który odwiedzi wszystkie / większość stron witryny i zapewni, że nic się nie zepsuje. Ten rodzaj testu zapewnia duży zwrot z inwestycji, ponieważ jest bardzo łatwy do napisania i utrzymania, ale może wykryć wszelkiego rodzaju awarie, w tym problemy z funkcjonowaniem, siecią i wdrażaniem. Inne style sprawdzania smoke i sanity nie są tak niezawodne i wyczerpujące - niektóre zespoły ops po prostu pingują stronę główną (produkcję) lub programistów, którzy przeprowadzają wiele testów integracyjnych, które nie wykrywają problemów z pakowaniem i przeglądarką. Oczywiste jest, że smoke test nie zastępuje testów funkcjonalnych, a jedynie służy jako quick smoke detector
 
 <br/>
 
-❌ **W przeciwnym razie:** Everything might seem perfect, all tests pass, production health-check is also positive but the Payment component had some packaging issue and only the /Payment route is not rendering
+❌ **W przeciwnym razie:** Wszystko może wydawać się idealne, wszystkie testy przeszły pomyślnie, kontrola kondycji produkcji również jest pozytywna, ale komponent płatności miał problem z pakowaniem i tylko trasa płatności się nie wyświetla
 
 <br/>
 
@@ -1360,7 +1362,7 @@ beforeEach(setUser => () {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Smoke travelling across all pages
+### :clap: Przykład robienia tego dobrze: Smoke podróżujący po wszystkich stronach
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
@@ -1381,11 +1383,11 @@ it("When doing smoke testing over all page, should load them all successfully", 
 
 <br/>
 
-## ⚪ ️ 3.10 Expose the tests as a live collaborative document
+## ⚪ ️ 3.10 Ujawnij testy jako dokument współpracy na żywo
 
-:white_check_mark: **Opis:** Besides increasing app reliability, tests bring another attractive opportunity to the table - serve as live app documentation. Since tests inherently speak at a less-technical and product/UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers and their customers. For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as 'acceptance test' as it allows the customer to define his acceptance criteria in plain language. This is [BDD (behavior-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) at its purest form. One of the popular frameworks that enable this is [Cucumber which has a JavaScript flavor](https://github.com/cucumber/cucumber-js), see example below. Another similar yet different opportunity, [StoryBook](https://storybook.js.org/), allows exposing UI components as a graphic catalog where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc), see how it looks like, and how to trigger that state - this can appeal also to product folks but mostly serves as live doc for developers who consume those components.
+:white_check_mark: **Opis:** Oprócz zwiększenia niezawodności aplikacji testy przynoszą kolejną atrakcyjną okazję na stół - służą jako dokumentacja aplikacji na żywo. Ponieważ testy z natury mówią w mniej technicznym i produktowym języku UX, przy użyciu odpowiednich narzędzi mogą służyć jako artefakt komunikacyjny, który w znacznym stopniu dopasowuje wszystkich współpracowników - programistów i ich klientów. Na przykład niektóre platformy umożliwiają wyrażanie przepływu i oczekiwań (np. plan testów) przy użyciu języka czytelnego dla człowieka, aby każdy interesariusz, w tym PM, mógł czytać, zatwierdzać i współpracować przy testach, które właśnie stały się dokumentem wymagań na żywo. Technikę tę określa się również mianem „testu akceptacji”, ponieważ pozwala klientowi zdefiniować kryteria akceptacji w prostym języku. To jest [BDD (behavior-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) w swojej najczystszej formie. Jednym z popularnych frameworków które to umożliwiają jest [Cucumber który ma aromat JavaScript](https://github.com/cucumber/cucumber-js), zobacz przykład poniżej. Kolejna podobna, ale inna możliwość, [StoryBook](https://storybook.js.org/), umożliwia eksponowanie komponentów interfejsu użytkownika jako katalogu graficznego, w którym można przechodzić przez różne stany każdego komponentu (np. renderować siatkę bez filtrów, renderować tę siatkę z wieloma wierszami lub bez, itp.), zobaczyć, jak to wygląda i jak aby wywołać ten stan - może to spodobać się także ludziom od produktu, ale służy głównie jako dokumentacja na żywo dla programistów, którzy używają tych składników.
 
-❌ **W przeciwnym razie:** After investing top resources on testing, it's just a pity not to leverage this investment and win great value
+❌ **W przeciwnym razie:** Po zainwestowaniu najlepszych zasobów w testowanie, szkoda tylko nie wykorzystać tej inwestycji i zyskać świetną wartość
 
 <br/>
 
@@ -1393,7 +1395,7 @@ it("When doing smoke testing over all page, should load them all successfully", 
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Describing tests in human-language using cucumber-js
+### :clap: Przykład robienia tego dobrze: Opisywanie testów w języku zrozumiałym dla człowieka używając cucumber-js
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cucumber-blue.svg "Examples using Cucumber")
 
@@ -1414,7 +1416,7 @@ Feature: Twitter new tweet
 
 ```
 
-### :clap: Przykład robienia tego dobrze: Visualizing our components, their various states and inputs using Storybook
+### :clap: Przykład robienia tego dobrze: Wizualizacja naszych komponentów, ich różnych stanów i danych wejściowych używając Storybook
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
@@ -1424,13 +1426,13 @@ Feature: Twitter new tweet
 
 <br/><br/>
 
-## ⚪ ️ 3.11 Detect visual issues with automated tools
+## ⚪ ️ 3.11 Wykrywanie problemów wizualnych za pomocą zautomatyzowanych narzędzi
 
-:white_check_mark: **Opis:** Setup automated tools to capture UI screenshots when changes are presented and detect visual issues like content overlapping or breaking. This ensures that not only the right data is prepared but also the user can conveniently see it. This technique is not widely adopted, our testing mindset leans toward functional tests but it's the visuals what the user experience and with so many device types it's very easy to overlook some nasty UI bug. Some free tools can provide the basics - generate and save screenshots for the inspection of human eyes. While this approach might be sufficient for small apps, it's flawed as any other manual testing that demands human labor anytime something changes. On the other hand, it's quite challenging to detect UI issues automatically due to the lack of clear definition - this is where the field of 'Visual Regression' chime in and solve this puzzle by comparing old UI with the latest changes and detect differences. Some OSS/free tools can provide some of this functionality (e.g. [wraith](https://github.com/BBC-News/wraith), [PhantomCSS](<[https://github.com/HuddleEng/PhantomCSS](https://github.com/HuddleEng/PhantomCSS)>) but might charge signficant setup time. The commercial line of tools (e.g. [Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) takes is a step further by smoothing the installation and packing advanced features like management UI, alerting, smart capturing by elemeinating 'visual noise' (e.g. ads, animations) and even root cause analysis of the DOM/css changes that led to the issue
+:white_check_mark: **Opis:** Skonfiguruj zautomatyzowane narzędzia do przechwytywania zrzutów ekranu interfejsu użytkownika podczas prezentacji zmian i wykrywania problemów wizualnych, takich jak nakładanie się lub łamanie zawartości. Zapewnia to, że nie tylko odpowiednie dane są przygotowane, ale także użytkownik może je wygodnie zobaczyć. Ta technika nie jest powszechnie stosowana, nasze podejście do testowania skłania się ku testom funkcjonalnym, ale jest to wizualne doświadczenie użytkownika i przy tak wielu typach urządzeń bardzo łatwo jest przeoczyć jakiś paskudny błąd interfejsu użytkownika. Niektóre bezpłatne narzędzia mogą dostarczyć podstaw - generować i zapisywać zrzuty ekranu do kontroli ludzkich oczu. Chociaż takie podejście może być wystarczające w przypadku małych aplikacji, jest wadliwe, jak każde inne ręczne testowanie, które wymaga ludzkiej pracy za każdym razem, gdy coś się zmienia. Z drugiej strony automatyczne wykrywanie problemów z interfejsem jest dość trudne ze względu na brak jasnej definicji - w tym miejscu pojawia się pole „regresji wizualnej” i rozwiązuje tę zagadkę, porównując stary interfejs z najnowszymi zmianami i wykrywając różnice. Niektóre narzędzia OSS / darmowe mogą zapewniać niektóre z tych funkcji (np. [wraith](https://github.com/BBC-News/wraith), [PhantomCSS](<[https://github.com/HuddleEng/PhantomCSS](https://github.com/HuddleEng/PhantomCSS)>) ale mogą wymagać znacznego czasu instalacji. Linia narzędzi komercyjnych (np. [Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) idzie o krok dalej, usprawniając instalację i pakując zaawansowane funkcje, takie jak interfejs zarządzania, alarmowanie, inteligentne przechwytywanie poprzez eliminację szumów wizualnych (np. reklamy, animacje), a nawet analizę pierwotnych przyczyn zmian DOM/CSS, które doprowadziły do problemu
 
 <br/>
 
-❌ **W przeciwnym razie:** How good is a content page that display great content (100% tests passed), loads instantly but half of the content area is hidden?
+❌ **W przeciwnym razie:** Jak dobra jest strona z treściami, która wyświetla świetną treść (100% testów), ładuje się natychmiast, ale połowa obszaru zawartości jest ukryta?
 
 <br/>
 
@@ -1438,13 +1440,13 @@ Feature: Twitter new tweet
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: A typical visual regression - right content that is served badly
+### :thumbsdown: Przykład antywzorca: Typowa regresja wizualna - właściwa treść, która jest źle wyświetlana
 
 ![alt text](assets/amazon-visual-regression.jpeg "Amazon page breaks")
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Configuring wraith to capture and compare UI snapshots
+### :clap: Przykład robienia tego dobrze: Konfigurowanie Wraith do przechwytywania i porównywania migawek interfejsu użytkownika
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Wraith-blue.svg "Using Wraith")
 
@@ -1473,7 +1475,7 @@ paths:
     path: /subscribe
 ```
 
-### :clap: Przykład robienia tego dobrze: Using Applitools to get snapshot comaprison and other advanced features
+### :clap: Przykład robienia tego dobrze: Używanie Applitools aby uzyskać porównanie migawek i inne zaawansowane funkcje
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg "Using AppliTools") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
@@ -1500,19 +1502,19 @@ describe("visual validation", () => {
 
 <br/><br/>
 
-# Sekcja 4️⃣: Measuring Test Effectiveness
+# Sekcja 4️⃣: Pomiar skuteczności testu
 
 <br/><br/>
 
-## ⚪ ️ 4.1 Get enough coverage for being confident, ~80% seems to be the lucky number
+## ⚪ ️ 4.1 Zdobądź wystarczające pokrycie, aby mieć pewność siebie, ~80% wydaje się być szczęśliwą liczbą
 
-:white_check_mark: **Opis:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380 than 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) that presumably should satisfy most of the applications.
+:white_check_mark: **Opis:** Celem testowania jest uzyskanie pewności siebie do szybkiego poruszania się, oczywiście im więcej kodu jest testowane, tym większa pewność zespołu. Pokrycie jest miarą tego, ile wierszy kodu (i gałęzi, instrukcji itp.) jest osiąganych przez testy. Ile wystarczy? 10–30% jest oczywiście zbyt niskie, aby mieć jakiekolwiek pojęcie o poprawności kompilacji, z drugiej strony 100% jest bardzo drogie i może przesunąć uwagę z krytycznych ścieżek na egzotyczne zakątki kodu. Długa odpowiedź jest taka, że zależy to od wielu czynników, takich jak rodzaj aplikacji - jeśli budujesz następną generację Airbusa A380, to 100% jest koniecznością, dla witryny ze zdjęciami z kreskówkami 50% może być za dużo. Chociaż większość entuzjastów testowania twierdzi, że odpowiedni próg pokrycia jest kontekstowy, większość z nich wspomina również o liczbie 80% ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) które prawdopodobnie powinny spełniać większość aplikacji.
 
-Implementation tips: You may want to configure your continuous integration (CI) to have a coverage threshold ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) and stop a build that doesn’t stand to this standard (it’s also possible to configure threshold per component, see code example below). On top of this, consider detecting build coverage decrease (when a newly committed code has less coverage) — this will push developers raising or at least preserving the amount of tested code. All that said, coverage is only one measure, a quantitative based one, that is not enough to tell the robustness of your testing. And it can also be fooled as illustrated in the next bullets
+Wskazówki dotyczące implementacji: możesz skonfigurować ciągłą integrację (CI) tak, aby mieć próg pokrycia ([link Jest](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) i zatrzymać kompilację, która nie jest zgodna z tym standardem (można również skonfigurować próg na komponent, patrz przykład kodu poniżej). Ponadto rozważ wykrycie zmniejszenia pokrycia kompilacji (gdy nowo zatwierdzony kod ma mniejsze pokrycie) - spowoduje to, że programiści zwiększą lub przynajmniej zachowają ilość testowanego kodu. To powiedziawszy, pokrycie jest tylko jedną miarą, opartą na danych ilościowych, która nie wystarczy, aby powiedzieć o solidności twoich testów. Można go również oszukać, jak pokazano w następnych punktach.
 
 <br/>
 
-❌ **W przeciwnym razie:** Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear. and fear will slow you down
+❌ **W przeciwnym razie:** Pewność siebie i liczby idą ze sobą w parze, tak naprawdę nie wiedząc, że przetestowałeś większość systemu - będzie też trochę strachu, a strach cię spowolni
 
 <br/>
 
@@ -1520,13 +1522,13 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
-### :clap: Example: A typical coverage report
+### :clap: Przykład: typowy raport pokrycia
 
 ![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "A typical coverage report")
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Setting up coverage per component (using Jest)
+### :clap: Przykład robienia tego dobrze: Konfigurowanie pokrycia dla każdego komponentu (za pomocą Jest)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg "Using Jest")
 
@@ -1536,12 +1538,12 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/><br/>
 
-## ⚪ ️ 4.2 Inspect coverage reports to detect untested areas and other oddities
+## ⚪ ️ 4.2 Sprawdź raporty pokrycia, aby wykryć nietestowane obszary i inne osobliwości
 
-:white_check_mark: **Opis:** Some issues sneak just under the radar and are really hard to find using traditional tools. These are not really bugs but more of surprising application behavior that might have a severe impact. For example, often some code areas are never or rarely being invoked — you thought that the ‘PricingCalculator’ class is always setting the product price but it turns out it is actually never invoked although we have 10000 products in DB and many sales… Code coverage reports help you realize whether the application behaves the way you believe it does. Other than that, it can also highlight which types of code is not tested — being informed that 80% of the code is tested doesn’t tell whether the critical parts are covered. Generating reports is easy — just run your app in production or during testing with coverage tracking and then see colorful reports that highlight how frequent each code area is invoked. If you take your time to glimpse into this data — you might find some gotchas
+:white_check_mark: **Opis:** Niektóre problemy wymykają się tuż pod radarem i naprawdę trudno je znaleźć przy użyciu tradycyjnych narzędzi. To nie są tak naprawdę błędy, ale bardziej zaskakujące zachowanie aplikacji, które może mieć poważny wpływ. Na przykład często niektóre obszary kodu nie są wywoływane lub rzadko są wywoływane - myślałeś, że klasa 'PriceCalculator' zawsze ustala cenę produktu, ale okazuje się, że tak naprawdę nigdy nie jest wywoływana, chociaż mamy 10000 produktów w BD i wiele sprzedaży… Raporty pokrycia kodu pomagają zrozumieć, czy aplikacja zachowuje się tak, jak myślisz. Poza tym może także podkreślić, które typy kodu nie są testowane - informacja, że 80% kodu jest testowane, nie mówi, czy kluczowe części są objęte testem. Generowanie raportów jest łatwe - po prostu uruchom aplikację na produkcji lub podczas testowania ze śledzeniem pokrycia, a następnie wyświetl kolorowe raporty, które podkreślają częstotliwość wywoływania każdego obszaru kodu. Jeśli nie spieszysz się, aby zajrzeć do tych danych - możesz znaleźć nieco
 <br/>
 
-❌ **W przeciwnym razie:** If you don’t know which parts of your code are left un-tested, you don’t know where the issues might come from
+❌ **W przeciwnym razie:** Jeśli nie wiesz, które części kodu nie zostały przetestowane, nie wiesz, skąd mogą wynikać problemy.
 
 <br/>
 
@@ -1549,9 +1551,9 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
-### :thumbsdown: Przykład antywzorca: What’s wrong with this coverage report?
+### :thumbsdown: Przykład antywzorca: Co jest nie tak z tym raportem pokrycia?
 
-Based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
+W oparciu o scenariusz z rzeczywistego świata, w którym śledziliśmy użycie naszej aplikacji w ramach kontroli jakości i znajdowaliśmy ciekawe wzorce logowania (wskazówka: liczba niepowodzeń logowania jest nieproporcjonalna, coś jest wyraźnie nie tak. W końcu okazało się, że jakiś błąd interfejsu użytkownika ciągle uderza w backend login API)
 
 ![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report?")
 
@@ -1559,20 +1561,20 @@ Based on a real-world scenario where we tracked our application usage in QA and 
 
 <br/><br/>
 
-## ⚪ ️ 4.3 Measure logical coverage using mutation testing
+## ⚪ ️ 4.3 Zmierz pokrycie logiczne za pomocą testu mutacji
 
-:white_check_mark: **Opis:** The Traditional Coverage metric often lies: It may show you 100% code coverage, but none of your functions, even not one, return the right response. How come? it simply measures over which lines of code the test visited, but it doesn’t check if the tests actually tested anything — asserted for the right response. Like someone who’s traveling for business and showing his passport stamps — this doesn’t prove any work done, only that he visited few airports and hotels.
+:white_check_mark: **Opis:** Metryka tradycyjnego pokrycia często zakłamuje, tzn. może pokazywać 100% pokrycia kodu, ale żadna z twoich funkcji, nawet jedna, nie zwraca właściwej odpowiedzi. Dlaczego? Po prostu mierzy, które wiersze kodu odwiedził test, ale nie sprawdza, czy testy faktycznie coś testowały - stwierdzając, że ma właściwą odpowiedź. Jak ktoś, kto podróżuje w interesach i pokazuje swoje znaczki paszportowe - nie świadczy to o żadnej pracy, tylko że odwiedził kilka lotnisk i hoteli.
 
-Mutation-based testing is here to help by measuring the amount of code that was actually TESTED not just VISITED. [Stryker](https://stryker-mutator.io/) is a JavaScript library for mutation testing and the implementation is really neat:
+Testy oparte na mutacjach są tutaj pomocne, mierząc ilość kodu, który był TESTOWANY, a nie tylko ODWIEDZANY. [Stryker](https://stryker-mutator.io/) jest biblioteką JavaScript do testowania mutacji, a implementacja jest naprawdę fajna:
 
-(1) it intentionally changes the code and “plants bugs”. For example the code newOrder.price===0 becomes newOrder.price!=0. This “bugs” are called mutations
+(1) celowo zmienia kod i "zasadza błędy". Na przykład kod newOrder.price===0 staje się newOrder.price!=0. Te "bugi" nazywane są mutacjami
 
-(2) it runs the tests, if all succeed then we have a problem — the tests didn’t serve their purpose of discovering bugs, the mutations are so-called survived. If the tests failed, then great, the mutations were killed.
+(2) uruchamia testy, jeśli wszystko się powiedzie, wówczas mamy problem - testy nie służyły wykrywaniu błędów, mutacje są tzw. survived. Jeśli testy się nie powiodły, to świetnie, mutacje zostały zabite.
 
-Knowing that all or most of the mutations were killed gives much higher confidence than traditional coverage and the setup time is similar
+Wiedza, że wszystkie lub większość mutacji została zabita, daje znacznie większą pewność niż tradycyjne pokrycie, a czas przygotowania jest podobny
 <br/>
 
-❌ **W przeciwnym razie:** You’ll be fooled to believe that 85% coverage means your test will detect bugs in 85% of your code
+❌ **W przeciwnym razie:** Będziesz oszukiwany, że 85% pokrycia oznacza, że Twój test wykryje błędy w 85% twojego kodu
 
 <br/>
 
@@ -1580,7 +1582,7 @@ Knowing that all or most of the mutations were killed gives much higher confiden
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: 100% coverage, 0% testing
+### :thumbsdown: Przykład antywzorca: 100% pokrycia, 0% testowania
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg "Using Stryker")
 
@@ -1600,7 +1602,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
+### :clap: Przykład robienia tego dobrze: Stryker raportuje, narzędzie do testowania mutacji, wykrywa i zlicza ilość kodu, który nie jest testowany (mutacje)
 
 ![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
 
@@ -1608,20 +1610,20 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/><br/>
 
-## ⚪ ️4.4 Preventing test code issues with Test linters
+## ⚪ ️4.4 Zapobieganie problemom z kodem testowym z Test linters
 
-:white_check_mark: **Opis:** A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) will warn when a test is written at the global level (not a son of a describe() statement) or when tests are [skipped](https://mochajs.org/#inclusive-tests) which might lead to a false belief that all tests are passing. Similarly, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) can, for example, warn when a test has no assertions at all (not checking anything)
+:white_check_mark: **Opis:** Zestaw wtyczek ESLint został zbudowany specjalnie do sprawdzania wzorców kodów testów i wykrywania problemów. Na przykład, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) ostrzeże, gdy test zostanie napisany na poziomie globalnym (nie pochodna deklaracji describe()) lub gdy testy są [pomijane](https://mochajs.org/#inclusive-tests) co może prowadzić do fałszywego przekonania, że wszystkie testy przebiegają pomyślnie. Podobnie, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) może na przykład ostrzegać, gdy test nie ma żadnych asercji (niczego nie sprawdza)
 
 <br/>
 
-❌ **W przeciwnym razie:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
+❌ **W przeciwnym razie:** Widok 90% pokrycia kodu i 100% zielonych testów sprawi, że twoja twarz będzie się uśmiechać tylko do momentu, gdy zdasz sobie sprawę, że wiele testów niczego nie potwierdza, a wiele pakietów testowych zostało właśnie pominiętych. Mamy nadzieję, że nie wdrożyłeś niczego w oparciu o tę fałszywą obserwację
 
 <br/>
 <details><summary>✏ <b>Przykłady kodu</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: A test case full of errors, luckily all are caught by Linters
+### :thumbsdown: Przykład antywzorca: Przypadek testowy pełen błędów, na szczęście wszystkie zostają złapane przez Linters
 
 ```javascript
 describe("Too short description", () => {
@@ -1641,16 +1643,16 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-# Sekcja 5️⃣: CI and Other Quality Measures
+# Sekcja 5️⃣: CI oraz inne miary jakości
 
 <br/><br/>
 
-## ⚪ ️ 5.1 Enrich your linters and abort builds that have linting issues
+## ⚪ ️ 5.1 Wzbogać swoje linters i przerwij buildy, które mają problemy z linters
 
-:white_check_mark: **Opis:** Linters are a free lunch, with 5 min setup you get for free an auto-pilot guarding your code and catching significant issue as you type. Gone are the days where linting was about cosmetics (no semi-colons!). Nowadays, Linters can catch severe issues like errors that are not thrown correctly and losing information. On top of your basic set of rules (like [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) or [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), consider including some specializing Linters like [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) that can discover tests without assertions, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) can discover promises with no resolve (your code will never continue), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) which can discover eager regex expressions that might get used for DOS attacks, and [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) is capable of alarming when the code uses utility library methods that are part of the V8 core methods like Lodash.\_map(…)
+:white_check_mark: **Opis:** Linters to bezpłatny lunch, z 5-minutową konfiguracją otrzymujesz za darmo auto-pilota pilnującego twojego kodu i wychwytującego poważny problem podczas pisania. Dawno minęły czasy, w których linting było związane z kosmetycznymi poprawkami (brak średników!). Obecnie Linters mogą wykrywać poważne problemy, takie jak błędy, które nie są poprawnie zgłaszane i gubią informacje. Oprócz podstawowego zestawu zasad (jak [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) lub [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), rozważ włączenie pewnych specjalizacji Linters jak [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect), które mogą wykryć testy bez asercji, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) może odkryć obietnice (promises) bez rozwiązania (twój kod nigdy nie będzie kontynuowany), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme), które mogą odkryć chciwe wyrażenia regularne, które mogą zostać wykorzystane do ataków DOS, oraz [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) może alarmować, gdy kod korzysta z metod utility biblioteki, które są częścią podstawowych metod V8, takich jak Lodash.\_map(…)
 <br/>
 
-❌ **W przeciwnym razie:** Consider a rainy day where your production keeps crashing but the logs don’t display the error stack trace. What happened? Your code mistakenly threw a non-error object and the stack trace was lost, a good reason for banging your head against a brick wall. A 5min linter setup could detect this TYPO and save your day
+❌ **W przeciwnym razie:** Weź pod uwagę deszczowy dzień, w którym Twoja produkcja ulega awarii, ale dzienniki nie wyświetlają śladu stosu błędów. Co się stało? Twój kod przez pomyłkę rzucił obiekt niebędący błędem, a ślad stosu został utracony, co jest dobrym powodem uderzenia głową o ścianę z cegły. 5-minutowa konfiguracja linijek może wykryć tę LITERÓWKĘ i uratować Twój dzień
 
 <br/>
 
@@ -1658,7 +1660,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
+### :thumbsdown: Przykład antywzorca: Błędnie rzucony niewłaściwy obiekt Error, dla tego błędu nie pojawi się śledzenie stosu. Na szczęście ESLint łapie kolejny błąd produkcyjny
 
 ![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
 
@@ -1666,14 +1668,14 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-## ⚪ ️ 5.2 Shorten the feedback loop with local developer-CI
+## ⚪ ️ 5.2 Skróć pętlę sprzężenia zwrotnego z lokalnym developer-CI
 
-:white_check_mark: **Opis:** Using a CI with shiny quality inspections like testing, linting, vulnerabilities check, etc? Help developers run this pipeline also locally to solicit instant feedback and shorten the [feedback loop](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Why? an efficient testing process constitutes many and iterative loops: (1) try-outs -> (2) feedback -> (3) refactor. The faster the feedback is, the more improvement iterations a developer can perform per-module and perfect the results. On the flip, when the feedback is late to come fewer improvement iterations could be packed into a single day, the team might already move forward to another topic/task/module and might not be up for refining that module.
+:white_check_mark: **Opis:** Używasz CI z błyszczącymi inspekcjami jakości, takimi jak testowanie, linting, sprawdzanie podatności itp.? Pomóż programistom uruchomić ten pipeline również lokalnie, aby uzyskać natychmiastowe informacje zwrotne i skrócić [feedback loop](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Czemu? Wydajny proces testowania składa się z wielu iteracyjnych pętli: (1) próby -> (2) informacje zwrotne -> (3) refaktor. Im szybsze jest sprzężenie zwrotne, tym więcej iteracji ulepszeń może wykonać programista na moduł i uzyskać doskonałe wyniki. Z drugiej strony, gdy informacje zwrotne są spóźnione, mniej ulepszeń można by spakować w jeden dzień, zespół może już przejść do innego tematu / zadania / modułu i może nie być gotowy na udoskonalenie tego modułu.
 
-Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) allow running the pipeline locally. Some commercial tools like [wallaby provide highly-valuable & testing insights](https://wallabyjs.com/) as a developer prototype (no affiliation). Alternatively, you may just add npm script to package.json that runs all the quality commands (e.g. test, lint, vulnerabilities) — use tools like [concurrently](https://www.npmjs.com/package/concurrently) for parallelization and non-zero exit code if one of the tools failed. Now the developer should just invoke one command — e.g. ‘npm run quality’ — to get instant feedback. Consider also aborting a commit if the quality check failed using a githook ([husky can help](https://github.com/typicode/husky))
+Praktycznie, niektórzy dostawcy CI (przykład: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) zezwalają na lokalne uruchomienie pipeline'a. Niektóre komercyjne narzędzia jak [wallaby zapewniają cenne i spostrzeżenia testowania](https://wallabyjs.com/) jako developer prototype (bez przynależności). Alternatywnie, możesz po prostu dodać skrypt npm do package.json który uruchamia wszystkie polecenia jakości (np. test, lint, vulnerabilities) — użyj narzędzi jak [concurrently](https://www.npmjs.com/package/concurrently) do równoległości i niezerowego kodu wyjścia, jeśli jedno z narzędzi uległo awarii. Teraz programista powinien po prostu wywołać jedno polecenie - np. ‘npm run quality’ — aby uzyskać natychmiastową informację zwrotną. Rozważ także przerwanie commita, jeśli sprawdzenie jakości nie powiodło się przy użyciu githook ([husky może pomóc](https://github.com/typicode/husky))
 <br/>
 
-❌ **W przeciwnym razie:** When the quality results arrive the day after the code, testing doesn’t become a fluent part of development rather an after the fact formal artifact
+❌ **W przeciwnym razie:** Gdy wyniki jakości pojawiają się następnego dnia po kodzie, testowanie nie staje się płynną częścią rozwoju, a raczej formalnym artefaktem
 
 <br/>
 
@@ -1681,7 +1683,7 @@ Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
+### :clap: Przykład robienia tego dobrze: skrypty npm, które przeprowadzają kontrolę jakości kodu, wszystkie są uruchamiane równolegle na żądanie lub gdy programista próbuje wypchnąć nowy kod
 
 ```javascript
 "scripts": {
@@ -1706,14 +1708,14 @@ Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com
 
 <br/><br/>
 
-## ⚪ ️5.3 Perform e2e testing over a true production-mirror
+## ⚪ ️5.3 Przeprowadź testy e2e na prawdziwym production-mirror
 
-:white_check_mark: **Opis:** End to end (e2e) testing are the main challenge of every CI pipeline — creating an identical ephemeral production mirror on the fly with all the related cloud services can be tedious and expensive. Finding the best compromise is your game: [Docker-compose](https://serverless.com/) allows crafting isolated dockerized environment with identical containers using a single plain text file but the backing technology (e.g. networking, deployment model) is different from real-world productions. You may combine it with [‘AWS Local’](https://github.com/localstack/localstack) to work with a stub of the real AWS services. If you went [serverless](https://serverless.com/) multiple frameworks like serverless and [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) allows the local invocation of Faas code.
+:white_check_mark: **Opis:** Testowanie end to end (e2e) są głównym wyzwaniem każdego CI pipeline — tworzenie w locie identycznego efemerycznego lustra produkcyjnego ze wszystkimi powiązanymi usługami chmurowymi może być uciążliwe i kosztowne. Znalezienie najlepszego kompromisu to Twoja gra: [Docker-compose](https://serverless.com/) umożliwia tworzenie izolowanego, zadokowanego środowiska z identycznymi kontenerami przy użyciu jednego zwykłego pliku tekstowego, ale technologia tworzenia kopii zapasowych (np. sieci, model wdrażania) różni się od rzeczywistych produkcji. Możesz to połączyć z [‘AWS Local’](https://github.com/localstack/localstack) do pracy ze stub prawdziwych usług AWS. Jeśli poszedłeś drogą [serverless](https://serverless.com/) wiele frameworków jak serverless i [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) umożliwia lokalne wywołanie kodu Faas.
 
-The huge Kubernetes eco-system is yet to formalize a standard convenient tool for local and CI-mirroring though many new tools are launched frequently. One approach is running a ‘minimized-Kubernetes’ using tools like [Minikube](https://kubernetes.io/docs/setup/minikube/) and [MicroK8s](https://microk8s.io/) which resemble the real thing only come with less overhead. Another approach is testing over a remote ‘real-Kubernetes’, some CI providers (e.g. [Codefresh](https://codefresh.io/)) has native integration with Kubernetes environment and make it easy to run the CI pipeline over the real thing, others allow custom scripting against a remote Kubernetes.
+Ogromny ekosystem Kubernetes ma jeszcze sformalizować standardowe wygodne narzędzie do lokalnego i CI-mirroring, choć wiele nowych narzędzi jest często uruchamianych. Jednym z podejść jest uruchomienie ‘minimized-Kubernetes’ używając narzędzi jak [Minikube](https://kubernetes.io/docs/setup/minikube/) i [MicroK8s](https://microk8s.io/) które przypominają prawdziwe, pochodzą tylko z mniejszym nakładem. Innym podejściem jest testowanie za pomocą zdalnego ‘real-Kubernetes’, niektórzy CI dostawcy (np. [Codefresh](https://codefresh.io/)) mają natywną integrację ze środowiskiem Kubernetes i ułatwiają uruchamianie pipeline CI w rzeczywistości, inne pozwalają na niestandardowe skrypty na zdalnym Kubernetes.
 <br/>
 
-❌ **W przeciwnym razie:** Using different technologies for production and testing demands maintaining two deployment models and keeps the developers and the ops team separated
+❌ **W przeciwnym razie:** Korzystanie z różnych technologii do produkcji i testowania wymaga utrzymania dwóch modeli wdrażania oraz oddzielenia programistów i zespołu Ops.
 
 <br/>
 
@@ -1721,7 +1723,7 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 
 <br/>
 
-### :clap: Example: a CI pipeline that generates Kubernetes cluster on the fly <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([Credit: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
+### :clap: Przykład: pipeline CI który generuje klaster Kubernetes w locie <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([Credit: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
 
 <pre name="38d9" id="38d9" class="graf graf--pre graf-after--p">deploy:<br>stage: deploy<br>image: registry.gitlab.com/gitlab-examples/kubernetes-deploy<br>script:<br>- ./configureCluster.sh $KUBE_CA_PEM_FILE $KUBE_URL $KUBE_TOKEN<br>- kubectl create ns $NAMESPACE<br>- kubectl create secret -n $NAMESPACE docker-registry gitlab-registry --docker-server="$CI_REGISTRY" --docker-username="$CI_REGISTRY_USER" --docker-password="$CI_REGISTRY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL"<br>- mkdir .generated<br>- echo "$CI_BUILD_REF_NAME-$CI_BUILD_REF"<br>- sed -e "s/TAG/$CI_BUILD_REF_NAME-$CI_BUILD_REF/g" templates/deals.yaml | tee ".generated/deals.yaml"<br>- kubectl apply --namespace $NAMESPACE -f .generated/deals.yaml<br>- kubectl apply --namespace $NAMESPACE -f templates/my-sock-shop.yaml<br>environment:<br>name: test-for-ci</pre>
 
