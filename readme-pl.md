@@ -43,7 +43,7 @@ Zacznij od zrozumienia wszechobecnych praktyk testowania, które są podstawą k
 
 Jedna rada, która inspiruje wszystkich innych (1 specjalny punkt)
 
-#### [`Sekcja 1: Anatomia testu`](#sekcja-1-anatomia-testu)
+#### [`Sekcja 1: Anatomia testu`](#sekcja-1-anatomia-testu-1)
 
 Podstawa - konstruowanie czystych testów (12 wypunktowań)
 
@@ -55,11 +55,11 @@ Pisanie backendu i wydajne testy Mikroserwisów (8 wypunktowań)
 
 Pisanie testów dla webowego interfejsu użytkownika, w tym testy komponentów i testy E2E (11 wypunktowań)
 
-#### [`Sekcja 4: Pomiary skuteczności testów`](#sekcja-4️⃣-pomiary-skuteczności-testów)
+#### [`Sekcja 4: Pomiary skuteczności testów`](#sekcja-4%EF%B8%8F%E2%83%A3-pomiar-skuteczno%C5%9Bci-testu)
 
 Watching the watchman - pomiar jakości testu (4 wypunktowania)
 
-#### [`Sekcja 5: Continuous Integration`](#sekcja-5️⃣-ci-and-other-quality-measures)
+#### [`Sekcja 5: Continuous Integration`](#sekcja-5️⃣-ci-oraz-inne-miary-jakości)
 
 Wytyczne dla CI w świecie JS (9 wypunktowań)
 
