@@ -1672,7 +1672,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 :white_check_mark: **Opis:** Używasz CI z błyszczącymi inspekcjami jakości, takimi jak testowanie, linting, sprawdzanie podatności itp.? Pomóż programistom uruchomić ten pipeline również lokalnie, aby uzyskać natychmiastowe informacje zwrotne i skrócić [feedback loop](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Czemu? Wydajny proces testowania składa się z wielu iteracyjnych pętli: (1) próby -> (2) informacje zwrotne -> (3) refaktor. Im szybsze jest sprzężenie zwrotne, tym więcej iteracji ulepszeń może wykonać programista na moduł i uzyskać doskonałe wyniki. Z drugiej strony, gdy informacje zwrotne są spóźnione, mniej ulepszeń można by spakować w jeden dzień, zespół może już przejść do innego tematu / zadania / modułu i może nie być gotowy na udoskonalenie tego modułu.
 
-Praktycznie, niektórzy dostawcy CI (przykład: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) zezwalają na lokalne uruchomienie pipeline'a. Niektóre komercyjne narzędzia jak [wallaby zapewniają cenne i spostrzeżenia testowania](https://wallabyjs.com/) jako developer prototype (bez przynależności). Alternatywnie, możesz po prostu dodać skrypt npm do package.json który uruchamia wszystkie polecenia jakości (np. test, lint, vulnerabilities) — użyj narzędzi jak [concurrently](https://www.npmjs.com/package/concurrently) do równoległości i niezerowego kodu wyjścia, jeśli jedno z narzędzi uległo awarii. Teraz programista powinien po prostu wywołać jedno polecenie - np. ‘npm run quality’ — aby uzyskać natychmiastową informację zwrotną. Rozważ także przerwanie commita, jeśli sprawdzenie jakości nie powiodło się przy użyciu githook ([husky może pomóc](https://github.com/typicode/husky))
+W praktyce, niektórzy dostawcy CI (przykład: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) zezwalają na lokalne uruchomienie pipeline'a. Niektóre komercyjne narzędzia jak [wallaby zapewniają cenne i spostrzeżenia testowania](https://wallabyjs.com/) jako developer prototype (bez przynależności). Alternatywnie, możesz po prostu dodać skrypt npm do package.json który uruchamia wszystkie polecenia jakości (np. test, lint, vulnerabilities) — użyj narzędzi jak [concurrently](https://www.npmjs.com/package/concurrently) do równoległości i niezerowego kodu wyjścia, jeśli jedno z narzędzi uległo awarii. Teraz programista powinien po prostu wywołać jedno polecenie - np. ‘npm run quality’ — aby uzyskać natychmiastową informację zwrotną. Rozważ także przerwanie commita, jeśli sprawdzenie jakości nie powiodło się przy użyciu githook ([husky może pomóc](https://github.com/typicode/husky))
 <br/>
 
 ❌ **W przeciwnym razie:** Gdy wyniki jakości pojawiają się następnego dnia po kodzie, testowanie nie staje się płynną częścią rozwoju, a raczej formalnym artefaktem
@@ -1731,11 +1731,11 @@ Ogromny ekosystem Kubernetes ma jeszcze sformalizować standardowe wygodne narz�
 
 <br/><br/>
 
-## ⚪ ️5.4 Parallelize test execution
+## ⚪ ️5.4 Równoległe wykonywanie testu
 
-:white_check_mark: **Opis:** When done right, testing is your 24/7 friend providing almost instant feedback. In practice, executing 500 CPU-bounded unit test on a single thread can take too long. Luckily, modern test runners and CI platforms (like [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) and [Mocha extensions](https://github.com/yandex/mocha-parallel-tests)) can parallelize the test into multiple processes and achieve significant improvement in feedback time. Some CI vendors do also parallelize tests across containers (!) which shortens the feedback loop even further. Whether locally over multiple processes, or over some cloud CLI using multiple machines — parallelizing demand keeping the tests autonomous as each might run on different processes
+:white_check_mark: **Opis:** Po prawidłowym przeprowadzeniu, testowanie to twój przyjaciel 24/7, który zapewnia niemal natychmiastową informację zwrotną. W praktyce wykonanie 500 testów jednostkowych powiązanych z CPU na jednym wątku może potrwać zbyt długo. Na szczęście nowoczesne test runners i platformy CI (takie jak [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) oraz [rozszerzenia Mocha](https://github.com/yandex/mocha-parallel-tests)) potrafią równolegle przeprowadzić test w wiele procesów i osiągnąć znaczną poprawę czasu reakcji. Niektórzy dostawcy CI również przeprowadzają testy równoległe w kontenerach (!), co jeszcze bardziej skraca pętlę sprzężenia zwrotnego. Niezależnie od tego, czy lokalnie w wielu procesach, czy w niektórych interfejsach CLI w chmurze na wielu komputerach - równolegle do popytu, zachowując autonomię testów, ponieważ każdy może działać na różnych procesach
 
-❌ **W przeciwnym razie:** Getting test results 1 hour long after pushing new code, as you already code the next features, is a great recipe for making testing less relevant
+❌ **W przeciwnym razie:** Uzyskanie wyników testu w 1 godzinę po opublikowaniu nowego kodu, gdy już kodujesz kolejne funkcje, to świetny przepis na uczynienie testowania mniej istotnym
 
 <br/>
 
@@ -1743,7 +1743,7 @@ Ogromny ekosystem Kubernetes ma jeszcze sformalizować standardowe wygodne narz�
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+### :clap: Przykład robienia tego dobrze: Mocha parallel & Jest łatwo prześcigną tradycyjne Mocha dzięki testowaniu równoległości ([Źródło: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
 
 ![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
 
@@ -1751,11 +1751,11 @@ Ogromny ekosystem Kubernetes ma jeszcze sformalizować standardowe wygodne narz�
 
 <br/><br/>
 
-## ⚪ ️5.5 Stay away from legal issues using license and plagiarism check
+## ⚪ ️5.5 Unikaj problemów prawnych dzięki sprawdzeniu licencji i unikaniu plagiatu
 
-:white_check_mark: **Opis:** Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like [license check](https://www.npmjs.com/package/license-checker) and [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stackoverflow and apparently violates some copyrights
+:white_check_mark: **Opis:** Problemy z licencjonowaniem i plagiatem nie są teraz prawdopodobnie Twoim głównym problemem, ale dlaczego nie zaznaczyć tego pola również za 10 minut? Kilka pakietów npm jak [kontrola licencji](https://www.npmjs.com/package/license-checker) i [kontrola plagiatu](https://www.npmjs.com/package/plagiarism-checker) (komercyjny z bezpłatnym planem) można łatwo wypalić w pipeline CI i sprawdzić, czy nie ma smutków, takich jak zależności, z restrykcyjnymi licencjami lub kodem, który został skopiowany z Stackoverflow i najwyraźniej narusza niektóre prawa autorskie
 
-❌ **W przeciwnym razie:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
+❌ **W przeciwnym razie:** Nieumyślnie programiści mogą używać pakietów z nieodpowiednimi licencjami lub kopiować wklejony kod komercyjny i napotykać problemy prawne
 
 <br/>
 
@@ -1782,11 +1782,11 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.6 Constantly inspect for vulnerable dependencies
+## ⚪ ️5.6 Nieustannie sprawdzaj wrażliwe zależności
 
-:white_check_mark: **Opis:** Even the most reputable dependencies such as Express have known vulnerabilities. This can get easily tamed using community tools such as [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), or commercial tools like [snyk](https://snyk.io/) (offer also a free community version). Both can be invoked from your CI on every build
+:white_check_mark: **Opis:** Nawet najbardziej renomowane zależności, takie jak Express, mają znane luki w zabezpieczeniach. Można to łatwo oswoić za pomocą narzędzi community, takich jak [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), lub komercyjnych narzędzi takich jak [snyk](https://snyk.io/) (oferuje również darmową wersję community). Oba mogą być wywoływane z twojego CI na każdej kompilacji
 
-❌ **Otherwise:** Keeping your code clean from vulnerabilities without dedicated tools will require to constantly follow online publications about new threats. Quite tedious
+❌ **W przeciwnym razie:** Utrzymywanie kodu w czystości przed lukami bez dedykowanych narzędzi będzie wymagało ciągłego śledzenia publikacji online na temat nowych zagrożeń. Dość nudne
 
 <br/>
 
@@ -1794,7 +1794,7 @@ license-checker --summary --failOn BSD
 
 <br/>
 
-### :clap: Example: NPM Audit result
+### :clap: Przykład: wynik NPM Audit
 
 ![alt text](assets/bp-26-npm-audit-snyk.png "NPM Audit result")
 
@@ -1802,18 +1802,18 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.7 Automate dependency updates
+## ⚪ ️5.7 Zautomatyzuj aktualizacje zależności
 
-:white_check_mark: **Opis:** Yarn and npm latest introduction of package-lock.json introduced a serious challenge (the road to hell is paved with good intentions) — by default now, packages are no longer getting updates. Even a team running many fresh deployments with ‘npm install’ & ‘npm update’ won’t get any new updates. This leads to subpar dependent packages versions at best or to vulnerable code at worst. Teams now rely on developers goodwill and memory to manually update the package.json or use tools [like ncu](https://www.npmjs.com/package/npm-check-updates) manually. A more reliable way could be to automate the process of getting the most reliable dependency versions, though there are no silver bullet solutions yet there are two possible automation roads:
+:white_check_mark: **Opis:** Yarn i npm ostatnie wprowadzenie Package-lock.json wprowadziło poważne wyzwanie (droga do piekła jest wybrukowana dobrymi intencjami) - domyślnie teraz pakiety nie otrzymują już aktualizacji. Nawet zespół prowadzący wiele nowych wdrożeń z ‘npm install’ & ‘npm update’ nie otrzyma nowych aktualizacji. Prowadzi to w najlepszym razie do obniżonych wersji pakietów lub w najgorszym przypadku do podatnego kodu. Zespoły polegają teraz na dobrej woli programistów i pamięci, aby ręcznie aktualizować package.json lub korzystać ręcznie z narzędzi [taki jak ncu](https://www.npmjs.com/package/npm-check-updates). Bardziej niezawodnym sposobem może być zautomatyzowanie procesu uzyskiwania najbardziej niezawodnych wersji zależności, chociaż nie ma jeszcze srebrnych rozwiązań, istnieją dwie możliwe drogi automatyzacji:
 
-(1) CI can fail builds that have obsolete dependencies — using tools like [‘npm outdated’](https://docs.npmjs.com/cli/outdated) or ‘npm-check-updates (ncu)’ . Doing so will enforce developers to update dependencies.
+(1) CI może zawieść buildy, które mają przestarzałe zależności - przy użyciu narzędzi takich jak [‘npm outdated’](https://docs.npmjs.com/cli/outdated) lub ‘npm-check-updates (ncu)’. Takie postępowanie zmusi programistów do aktualizacji zależności.
 
-(2) Use commercial tools that scan the code and automatically send pull requests with updated dependencies. One interesting question remaining is what should be the dependency update policy — updating on every patch generates too many overhead, updating right when a major is released might point to an unstable version (many packages found vulnerable on the very first days after being released, [see the](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope incident).
+(2) Użyj komercyjnych narzędzi, które skanują kod i automatycznie wysyłają pull requesty ze zaktualizowanymi zależnościami. Pozostaje jedno interesujące pytanie: jaka powinna być zasada aktualizacji zależności - aktualizacja każdej poprawki generuje zbyt wiele narzutów, aktualizowanie zaraz po wydaniu wersji głównej może wskazywać na niestabilną wersję (wiele pakietów było podatnych na atak już w pierwszych dniach po wydaniu, [zobacz](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope incident).
 
-An efficient update policy may allow some ‘vesting period’ — let the code lag behind the @latest for some time and versions before considering the local copy as obsolete (e.g. local version is 1.3.1 and repository version is 1.3.8)
+Skuteczne zasady aktualizacji mogą pozwolić na pewien 'okres nabywania uprawnień' - pozwól, aby kod pozostawał w tyle za @latest przez pewien czas i wersjami, zanim uzna lokalną kopię za przestarzałą (np. wersja lokalna to 1.3.1, a wersja repozytorium to 1.3.8)
 <br/>
 
-❌ **W przeciwnym razie:** Your production will run packages that have been explicitly tagged by their author as risky
+❌ **W przeciwnym razie:** Produkcja będzie uruchamiać pakiety, które zostały wyraźnie oznaczone przez autora jako ryzykowne
 
 <br/>
 
@@ -1821,7 +1821,7 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 <br/>
 
-### :clap: Example: [ncu](https://www.npmjs.com/package/npm-check-updates) can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions
+### :clap: Przykład: [ncu](https://www.npmjs.com/package/npm-check-updates) może być używany ręcznie lub w pipeline CI, aby wykryć, w jakim stopniu kod opóźnia się w stosunku do najnowszych wersji
 
 ![alt text](assets/bp-27-yoni-goldberg-npm.png "ncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
 
@@ -1829,23 +1829,23 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 <br/><br/>
 
-## ⚪ ️ 5.8 Other, non-Node related, CI tips
+## ⚪ ️ 5.8 Inne, niezwiązane z Node'm, porady CI
 
-:white_check_mark: **Opis:** This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
+:white_check_mark: **Opis:** Ten post skupia się na poradach dotyczących testowania, które są związane lub przynajmniej mogą być zilustrowane przykładem Node JS. Ten punkt zawiera jednak kilka dobrze znanych wskazówek niezwiązanych z Node
 
  <ol class="postList"><li name="e3e4" id="e3e4" class="graf graf--li graf-after--p">Use a declarative syntax. This is the only option for most vendors but older versions of Jenkins allows using code or UI</li><li name="1fdc" id="1fdc" class="graf graf--li graf-after--li">Opt for a vendor that has native Docker support</li><li name="edcd" id="edcd" class="graf graf--li graf-after--li">Fail early, run your fastest tests first. Create a ‘Smoke testing’ step/milestone that groups multiple fast inspections (e.g. linting, unit tests) and provide snappy feedback to the code committer</li><li name="0375" id="0375" class="graf graf--li graf-after--li">Make it easy to skim-through all build artifacts including test reports, coverage reports, mutation reports, logs, etc</li><li name="df82" id="df82" class="graf graf--li graf-after--li">Create multiple pipelines/jobs for each event, reuse steps between them. For example, configure a job for feature branch commits and a different one for master PR. Let each reuse logic using shared steps (most vendors provide some mechanism for code reuse)</li><li name="19b0" id="19b0" class="graf graf--li graf-after--li">Never embed secrets in a job declaration, grab them from a secret store or from the job’s configuration</li><li name="b70d" id="b70d" class="graf graf--li graf-after--li">Explicitly bump version in a release build or at least ensure the developer did so</li><li name="957c" id="957c" class="graf graf--li graf-after--li">Build only once and perform all the inspections over the single build artifact (e.g. Docker image)</li><li name="339b" id="339b" class="graf graf--li graf-after--li">Test in an ephemeral environment that doesn’t drift state between builds. Caching node_modules might be the only exception</li></ol>
 <br/>
 
-❌ **W przeciwnym razie:** You‘ll miss years of wisdom
+❌ **W przeciwnym razie:** Będziesz tęsknić za latami mądrości
 
 <br/><br/>
 
-## ⚪ ️ 5.9 Build matrix: Run the same CI steps using multiple Node versions
+## ⚪ ️ 5.9 Build matrix: Uruchom te same kroki CI, używając wielu wersji Node
 
-:white_check_mark: **Opis:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use MySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of MySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
+:white_check_mark: **Opis:** W kontroli jakości chodzi o przypadkowość, im więcej masz miejsca, tym więcej masz szczęścia we wczesnym wykrywaniu problemów. Podczas opracowywania pakietów wielokrotnego użytku lub uruchamiania produkcji dla wielu klientów z różnymi wersjami konfiguracji i wersji Node'a, CI musi uruchomić pipeline testów na wszystkich kombinacjach konfiguracji. Na przykład, zakładając, że używamy MySQL dla niektórych klientów i Postgres dla innych - niektórzy dostawcy CI obsługują funkcję o nazwie 'Matrix', która pozwala na uruchomienie zestawu testów dla wszystkich permutacji MySQL, Postgres i wielu wersji Node, takich jak 8, 9 i 10. Odbywa się to przy użyciu konfiguracji tylko bez dodatkowego wysiłku (zakładając, że masz testy lub inne kontrole jakości). Inne CI, które nie obsługują Matrix, mogą mieć rozszerzenia lub poprawki, aby to umożliwić
 <br/>
 
-❌ **W przeciwnym razie:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
+❌ **W przeciwnym razie:** Czy po tak ciężkiej pracy związanej z pisaniem testów pozwolimy, aby błędy wkradły się tylko z powodu problemów z konfiguracją?
 
 <br/>
 
@@ -1853,7 +1853,7 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 <br/>
 
-### :clap: Example: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
+### :clap: Przykład: użycie definicji kompilacji Travis (dostawca CI) do uruchomienia tego samego testu w wielu wersjach Node
 
 <pre name="f909" id="f909" class="graf graf--pre graf-after--p">language: node_js<br>node_js:<br>  - "7"<br>  - "6"<br>  - "5"<br>  - "4"<br>install:<br>  - npm install<br>script:<br>  - npm run test</pre>
 </details>
