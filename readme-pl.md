@@ -416,10 +416,10 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 ## ⚪ ️ 1.7 Testowanie wielu kombinacji danych wejściowych za pomocą testów opartych na właściwościach
 
-:white_check_mark: **Opis:** Typically we choose a few input samples for each test. Even when the input format resembles real-world data (see bullet ‘Don’t foo’), we cover only a few input combinations (method(‘’, true, 1), method(“string” , false” , 0)), However, in production, an API that is called with 5 parameters can be invoked with thousands of different permutations, one of them might render our process down ([see Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)). What if you could write a single test that sends 1000 permutations of different inputs automatically and catches for which input our code fails to return the right response? Property-based testing is a technique that does exactly that: by sending all the possible input combinations to your unit under test it increases the serendipity of finding a bug. For example, given a method — addNewProduct(id, name, isDiscount) — the supporting libraries will call this method with many combinations of (number, string, boolean) like (1, “iPhone”, false), (2, “Galaxy”, true). You can run property-based testing using your favorite test runner (Mocha, Jest, etc) using libraries like [js-verify](https://github.com/jsverify/jsverify) or [testcheck](https://github.com/leebyron/testcheck-js) (much better documentation). Update: Nicolas Dubien suggests in the comments below to [checkout fast-check](https://github.com/dubzzz/fast-check#readme) which seems to offer some additional features and also to be actively maintained
+  :white_check_mark: **Opis:** Zazwyczaj wybieramy kilka próbek wejściowych dla każdego testu. Nawet jeśli format wejściowy przypomina dane rzeczywiste (zobacz punkt ‘Nie foo’), obejmujemy tylko kilka kombinacji danych wejściowych (method(‘’, true, 1), method(“string” , false” , 0)). Jednak w produkcji interfejs API, który jest wywoływany z 5 parametrami, może być wywoływany z tysiącami różnych kombinacji, jeden z nich może spowolnić nasz proces ([zobacz Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)). Co jeśli mógłbyś napisać pojedynczy test, który automatycznie wysyła 1000 permutacji różnych danych wejściowych i wyłapuje, dla których danych wejściowych nasz kod nie zwraca poprawnej odpowiedzi? Testowanie oparte na właściwościach jest techniką, która robi dokładnie to: wysyłając wszystkie możliwe kombinacje danych wejściowych do testowanego urządzenia, zwiększa to prawdopodobieństwo znalezienia błędu. Na przykład, biorąc pod uwagę metodę - addNewProduct (identyfikator, nazwa, isDiscount) - biblioteki obsługujące będą wywoływać tę metodę z wieloma kombinacjami (liczba, łańcuch, wartość logiczna), takich jak (1, „iPhone”, false), (2, „Galaxy ", prawdziwe). Możesz uruchomić testy oparte na właściwościach, używając swojego ulubionego test runnera (Mocha, Jest, etc) za pomocą bibliotek takich jak [js-verify](https://github.com/jsverify/jsverify) lub [testcheck](https://github.com/leebyron/testcheck-js) (znacznie lepsza dokumentacja). Aktualizacja: Nicolas Dubien sugeruje w komentarzach poniżej [sprawdzenie fast-check](https://github.com/dubzzz/fast-check#readme) który wydaje się oferować dodatkowe funkcje, a także jest aktywnie utrzymywany
 <br/>
 
-❌ **W przeciwnym razie:** Unconsciously, you choose the test inputs that cover only code paths that work well. Unfortunately, this decreases the efficiency of testing as a vehicle to expose bugs
+❌ **W przeciwnym razie:** Nieświadomie wybierasz wejścia testowe, które obejmują tylko dobrze działające ścieżki kodu. Niestety obniża to efektywność testowania jako pojazdu do wykrywania błędów
 
 <br/>
 
@@ -451,16 +451,16 @@ describe("Product service", () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.8 If needed, use only short & inline snapshots
+## ⚪ ️ 1.8 Jeśli potrzeba, użyj tylko short & inline snapshots
 
-:white_check_mark: **Opis:** When there is a need for [snapshot testing](https://jestjs.io/docs/en/snapshot-testing), use only short and focused snapshots (i.e. 3-7 lines) that are included as part of the test ([Inline Snapshot](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots)) and not within external files. Keeping this guideline will ensure your tests remain self-explanatory and less fragile.
+:white_check_mark: **Opis:** Gdzie jest potrzeba na [testy snapshot](https://jestjs.io/docs/en/snapshot-testing), używaj tylko krótkich i skoncentrowanych snapshotów (np. 3-7 linie), które są uwzględnione w ramach testu ([Inline Snapshot](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots)) i nie w plikach zewnętrznych. Przestrzeganie tych wytycznych sprawi, że testy będą zrozumiałe i mniej kruche.
 
-On the other hand, ‘classic snapshots’ tutorials and tools encourage to store big files (e.g. component rendering markup, API JSON result) over some external medium and ensure each time when the test run to compare the received result with the saved version. This, for example, can implicitly couple our test to 1000 lines with 3000 data values that the test writer never read and reasoned about. Why is this wrong? By doing so, there are 1000 reasons for your test to fail - it’s enough for a single line to change for the snapshot to get invalid and this is likely to happen a lot. How frequently? for every space, comment or minor CSS/HTML change. Not only this, the test name wouldn’t give a clue about the failure as it just checks that 1000 lines didn’t change, also it encourages to the test writer to accept as the desired true a long document he couldn’t inspect and verify. All of these are symptoms of obscure and eager test that is not focused and aims to achieve too much
+Z drugiej strony, poradniki ‘klasycznych snapshotów’ i narzędzia zachęcają do przechowywania dużych plików (np. znaczników renderowania komponentu, wyniku API JSON) na jakimś zewnętrznym nośniku i zapewniają za każdym razem, gdy uruchamiany jest test w celu porównania otrzymanego wyniku z zapisaną wersją. To, na przykład, może pośrednio powiązać nasz test z 1000 liniami z 3000 wartościami danych, o których twórca testów nigdy nie czytał i nie uzasadniał. Dlaczego to źle? W ten sposób istnieje 1000 powodów niepowodzenia testu - wystarczy zmienić jedną linię, aby migawka stała się nieważna, i prawdopodobnie zdarzy się to często. Jak często? Dla każdej przestrzeni, komentarza lub drobnej zmiany CSS / HTML. Nie tylko to, nazwa testu nie dałaby informacji o niepowodzeniu, ponieważ po prostu sprawdza, czy 1000 wierszy się nie zmieniło, zachęca także twórcy testu do zaakceptowania jako pożądanego prawdziwego długiego dokumentu, którego nie mógł sprawdzić i zweryfikować. Wszystko to są objawy niejasnego i niecierpliwego testu, który nie jest skoncentrowany i ma na celu osiągnięcie zbyt wiele
 
-It’s worth noting that there are few cases where long & external snapshots are acceptable - when asserting on schema and not data (extracting out values and focusing on fields) or when the received document rarely changes
+Warto zauważyć, że istnieje kilka przypadków, w których dopuszczalne są długie i zewnętrzne migawki - podczas potwierdzania schematu, a nie danych (wyodrębnianie wartości i skupianie się na polach) lub gdy otrzymany dokument rzadko się zmienia
 <br/>
 
-❌ **W przeciwnym razie:** A UI test fails. The code seems right, the screen renders perfect pixels, what happened? your snapshot testing just found a difference from the origin document to current received one - a single space character was added to the markdown...
+❌ **W przeciwnym razie:** Test interfejsu użytkownika kończy się niepowodzeniem. Kod wydaje się prawidłowy, ekran wyświetla idealne piksele, co się stało? Twoje testowanie migawek właśnie znalazło różnicę między dokumentem źródłowym, a aktualnie otrzymanym - do znacznika została dodana pojedyncza spacja...
 
 <br/>
 
@@ -468,7 +468,7 @@ It’s worth noting that there are few cases where long & external snapshots are
 
 <br/>
 
-### :thumbsdown: Przykład antywzorca: Coupling our test to unseen 2000 lines of code
+### :thumbsdown: Przykład antywzorca: Łączymy nasz test z niewidzialnymi 2000 liniami kodu
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
@@ -490,7 +490,7 @@ it("TestJavaScript.com is renderd correctly", () => {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Expectations are visible and focused
+### :clap: Przykład robienia tego dobrze: Oczekiwania są widoczne i skoncentrowane
 
 ```javascript
 it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
@@ -518,12 +518,12 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/><br/>
 
-## ⚪ ️1.9 Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️1.9 Unikaj globalnych test fixture i seeds, dodawaj dane na test
 
-:white_check_mark: **Do:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests ([also known as ‘test fixture’](https://en.wikipedia.org/wiki/Test_fixture)) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
+:white_check_mark: **Opis:** Kierując się złotą zasadą (punkt 0), każdy test powinien dodawać i działać na swoim własnym zestawie wierszy BD, aby zapobiec sprzężeniu i łatwo uzasadnić przebieg testu. W rzeczywistości jest to często naruszane przez testerów, którzy zapełniają bazę danych danymi przed uruchomieniem testów ([znany również jako ‘test fixture’](https://en.wikipedia.org/wiki/Test_fixture)) w celu poprawy wydajności. Chociaż wydajność jest istotnym problemem - można ją złagodzić (patrz punkt „Testowanie komponentów”), jednak złożoność testów jest bardzo bolesnym smutkiem, który powinien rządzić innymi względami przez większość czasu. Praktycznie spraw, aby każdy przypadek testowy wyraźnie dodał potrzebne rekordy BD i działał tylko na tych rekordach. Jeśli wydajność stanie się kluczowym problemem - zrównoważony kompromis może przyjść w postaci inicjowania jedynego zestawu testów, które nie powodują mutacji danych (np. zapytania)
 <br/>
 
-❌ **W przeciwnym razie:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
+❌ **W przeciwnym razie:** Niewiele testów kończy się niepowodzeniem, wdrożenie zostało przerwane, nasz zespół spędza teraz cenny czas, czy mamy błąd? Zbadajmy, och nie - wydaje się, że dwa testy mutowały te same dane seed
 
 <br/>
 
@@ -531,7 +531,7 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+### :thumbsdown: Przykład antywzorca: testy nie są niezależne i polegają na pewnym globalnym hook do zasilania globalnych danych BD
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -556,7 +556,7 @@ it("When querying by site name, get the right site", async () => {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: We can stay within the test, each test acts on its own set of data
+### :clap: Przykład robienia tego dobrze: Możemy pozostać w teście, każdy test działa na własny zestaw danych
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
@@ -575,14 +575,14 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/>
 
-## ⚪ ️ 1.10 Don’t catch errors, expect them
+## ⚪ ️ 1.10 Nie wychwytuj błędów, oczekuj ich
 
-:white_check_mark: **Opis:** When trying to assert that some input triggers an error, it might look right to use try-catch-finally and asserts that the catch clause was entered. The result is an awkward and verbose test case (example below) that hides the simple test intent and the result expectations
+:white_check_mark: **Opis:** Podczas próby stwierdzenia, że niektóre dane wejściowe powodują błąd, może być właściwe użycie try-catch-finally i zapewnienie, że wprowadzono klauzulę catch. Wynikiem jest niezręczny i pełny przypadek testowy (przykład poniżej), który ukrywa prosty cel testu i oczekiwania na wynik
 
-A more elegant alternative is the using the one-line dedicated Chai assertion: expect(method).to.throw (or in Jest: expect(method).toThrow()). It’s absolutely mandatory to also ensure the exception contains a property that tells the error type, otherwise given just a generic error the application won’t be able to do much rather than show a disappointing message to the user
+Bardziej elegancką alternatywą jest użycie dedykowanego asercji Chai w jednym wierszu: expect (method).to.throw (lub w Jest: expect(method).toThrow()). Absolutnie obowiązkowe jest również upewnienie się, że wyjątek zawiera właściwość określającą typ błędu, w przeciwnym razie biorąc pod uwagę tylko ogólny błąd, aplikacja nie będzie w stanie zrobić wiele, zamiast wyświetlać rozczarowujący komunikat użytkownikowi
 <br/>
 
-❌ **W przeciwnym razie:** It will be challenging to infer from the test reports (e.g. CI reports) what went wrong
+❌ **W przeciwnym razie:** Trudno będzie wnioskować z raportów testów (np. raportów CI), co poszło nie tak
 
 <br/>
 
@@ -590,7 +590,7 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 
 <br/>
 
-### :thumbsdown: Przykład antywzorca: A long test case that tries to assert the existence of error with try-catch
+### :thumbsdown: Przykład antywzorca: Długi przypadek testowy, który próbuje potwierdzić istnienie błędu z try-catch
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -611,7 +611,7 @@ it("When no product name, it throws error 400", async () => {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: A human-readable expectation that could be understood easily, maybe even by QA or technical PM
+### :clap: Przykład robienia tego dobrze: Oczekiwanie czytelne dla człowieka, które może być łatwo zrozumiane, może nawet przez QA lub technicznego PM
 
 ```javascript
 it("When no product name, it throws error 400", async () => {
@@ -625,12 +625,12 @@ it("When no product name, it throws error 400", async () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.11 Tag your tests
+## ⚪ ️ 1.11 Taguj twoje testy
 
-:white_check_mark: **Opis:** Different tests must run on different scenarios: quick smoke, IO-less, tests should run when a developer saves or commits a file, full end-to-end tests usually run when a new pull request is submitted, etc. This can be achieved by tagging tests with keywords like #cold #api #sanity so you can grep with your testing harness and invoke the desired subset. For example, this is how you would invoke only the sanity test group with Mocha: mocha — grep ‘sanity’
+:white_check_mark: **Opis:** Różne testy muszą być uruchamiane w różnych scenariuszach: quick smoke, IO-less, testy powinny być uruchamiane, gdy programista zapisuje lub commituje plik, pełne kompleksowe testy zwykle uruchamiane są po przesłaniu nowego pull requesta itp. Można to osiągnąć poprzez oznaczenie testów słowami kluczowymi takimi jak #cold #api #sanity, aby można było grepować za pomocą uprzęży testującej i wywołać pożądany podzbiór. Na przykład w ten sposób można wywołać tylko grupę sanity test z Mocha: mocha — grep ‘sanity’
 <br/>
 
-❌ **W przeciwnym razie:** Running all the tests, including tests that perform dozens of DB queries, any time a developer makes a small change can be extremely slow and keeps developers away from running tests
+❌ **W przeciwnym razie:** Uruchamianie wszystkich testów, w tym testów, które wykonują dziesiątki zapytań BD, za każdym razem, gdy programista wprowadzi małą zmianę, może być bardzo powolny i powstrzymuje programistów przed uruchomieniem testów
 
 <br/>
 
@@ -638,7 +638,7 @@ it("When no product name, it throws error 400", async () => {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Tagging tests as ‘#cold-test’ allows the test runner to execute only fast tests (Cold===quick tests that are doing no IO and can be executed frequently even as the developer is typing)
+### :clap: Przykład robienia tego dobrze: Tagowanie testów jako ‘#cold-test’ umożliwia test runnerowi wykonywanie tylko szybkich testów (testy cold===quick które nie wykonują operacji wejścia/wyjścia i mogą być wykonywane często, nawet gdy programista pisze)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
@@ -658,13 +658,13 @@ describe("Order service", function() {
 
 <br/><br/>
 
-## ⚪ ️ 1.12 Categorize tests under at least 2 levels
+## ⚪ ️ 1.12 Kategoryzuj testy na co najmniej 2 poziomach
 
-:white_check_mark: **Opis:** Apply some structure to your test suite so an occasional visitor could easily understand the requirements (tests are the best documentation) and the various scenarios that are being tested. A common method for this is by placing at least 2 'describe' blocks above your tests: the 1st is for the name of the unit under test and the 2nd for additional level of categorization like the scenario or custom categories (see code examples and prtscn below). Doing so will also greatly improve the test reports: The reader will easily infer the tests categories, delve into the desired section and correlate failing tests. In addition, it will get much easier for a developer to navigate through the code of a suite with many tests. There are multiple alternative structures for test suite that you may consider like [given-when-then](https://github.com/searls/jasmine-given) and [RITE](https://github.com/ericelliott/riteway)
+:white_check_mark: **Opis:** Zastosuj pewną strukturę do swojego zestawu testów, aby od czasu do czasu odwiedzający mógł łatwo zrozumieć wymagania (testy to najlepsza dokumentacja) i różne testowane scenariusze. Powszechną metodą jest umieszczanie co najmniej 2 bloków 'opisz' nad testami: pierwszy to nazwa testowanej jednostki, a drugi to dodatkowy poziom kategoryzacji, taki jak scenariusz lub kategorie niestandardowe (patrz przykłady kodu i prtscn poniżej). Takie postępowanie znacznie poprawi również raporty z testów: Czytelnik łatwo wywnioskuje kategorie testów, zagłębi się w żądaną sekcję i skoreluje testy zakończone niepowodzeniem. Ponadto programistom łatwiej będzie poruszać się po kodzie pakietu z wieloma testami. Istnieje wiele alternatywnych struktur dla zestawu testów, które możesz rozważyć, jak [given-when-then](https://github.com/searls/jasmine-given) oraz [RITE](https://github.com/ericelliott/riteway)
 
 <br/>
 
-❌ **W przeciwnym razie:** When looking at a report with flat and long list of tests, the reader have to skim-read through long texts to conclude the major scenarios and correlate the commonality of failing tests. Consider the following case: When 7/100 tests fail, looking at a flat list will demand reading the failing tests text to see how they relate to each other. However, in an hierarchical report all of them could be under the same flow or category and the reader will quickly infer what or at least where is the root failure cause
+❌ **W przeciwnym razie:** Patrząc na raport z płaską i długą listą testów, czytelnik musi przejrzeć długie teksty, aby zakończyć główne scenariusze i skorelować powszechność nieudanych testów. Rozważ następujący przypadek: gdy testy 7/100 zakończą się niepowodzeniem, przeglądanie płaskiej listy będzie wymagało przeczytania tekstu testów zakończonych niepowodzeniem, aby zobaczyć, jak się ze sobą wiążą. Jednak w hierarchicznym raporcie wszystkie z nich mogą podlegać temu samemu przepływowi lub kategorii, a czytelnik szybko zorientuje się, co lub gdzie jest źródło przyczyny awarii
 
 <br/>
 
@@ -672,7 +672,7 @@ describe("Order service", function() {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Structuring suite with the name of unit under test and scenarios will lead to the convenient report that is shown below
+### :clap: Przykład robienia tego dobrze: Strukturyzacja pakietu z nazwą jednostki pod test i scenariuszy doprowadzi do wygodnego raportu pokazanego poniżej
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
@@ -694,7 +694,7 @@ describe("Transfer service", () => {
 
 <br/>
 
-### :thumbsdown: Przykład antywzorca: A flat list of tests will make it harder for the reader to identify the user stories and correlate failing tests
+### :thumbsdown: Przykład antywzorca: Płaska lista testów utrudni czytelnikowi identyfikację historii użytkowników i skorelowanie testów zakończonych niepowodzeniem
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Mocha")
 
@@ -714,32 +714,33 @@ test("Then there should not be a new transfer record", () => {});
 
 <br/><br/>
 
-## ⚪ ️1.13 Other generic good testing hygiene
+## ⚪ ️1.13 Inne ogólne dobre zasady higieny testowania
 
-:white_check_mark: **Opis:** This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
+:white_check_mark: **Opis:** Ten post skupia się na poradach dotyczących testowania, które są związane lub przynajmniej mogą być zilustrowane przykładem Node JS. Ten punkt zawiera jednak kilka dobrze znanych wskazówek niezwiązanych z Node
 
-Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a [red-green-refactor style](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, start a module by writing a quick and simplistic code that satsifies the test - then refactor gradually and take it to a production grade level, avoid any dependency on the environment (paths, OS, etc)
+
+Uczyć się i ćwiczyć [zasady TDD](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) — dla wielu są niezwykle cenne, ale nie przestrasz się, jeśli nie pasują do Twojego stylu, nie tylko tobie. Rozważ napisanie testów przed kodem w [style red-green-refactor](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), upewnij się, że każdy test sprawdza dokładnie jedną rzecz, gdy znajdziesz błąd - przed naprawą napisz test, który wykryje ten błąd w przyszłości, pozwól każdemu testowi zawieść co najmniej raz, zanim zmieni kolor na zielony, uruchom moduł, pisząc szybki i uproszczony kod, który satysfakcjonuje test - następnie stopniowo refaktoryzuj i przenieś go do poziomu klasy produkcyjnej, unikaj jakiejkolwiek zależności od środowiska (ścieżki, systemu operacyjnego itp.)
 <br/>
 
-❌ **W przeciwnym razie:** You‘ll miss pearls of wisdom that were collected for decades
+❌ **W przeciwnym razie:** Będziesz tęsknić za perłami mądrości zbieranymi przez dziesięciolecia
 
 <br/><br/>
 
 # Sekcja 2️⃣: Backend Testing
 
-## ⚪ ️2.1 Enrich your testing portfolio: Look beyond unit tests and the pyramid
+## ⚪ ️2.1 Wzbogać swoje portfolio testowe: wyjdź poza testy jednostkowe i piramidę
 
-:white*check_mark: **Opis:** The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit \_all* types of applications? shouldn’t the testing world consider welcoming new testing techniques?
+:white*check_mark: **Opis:** [Piramida testowania](https://martinfowler.com/bliki/TestPyramid.html), pomimo że 10> lat starsza, to świetny i odpowiedni model, który sugeruje trzy typy testowania i wpływa na strategię testowania większości programistów. Jednocześnie pojawiła się ponad garstka nowych, błyszczących technik testowania, które ukrywają się w cieniu piramidy testowania. Biorąc pod uwagę wszystkie dramatyczne zmiany, które widzieliśmy w ciągu ostatnich 10 lat (Microservices, cloud, serverless), czy jest możliwe, że jeden dość stary model będzie odpowiedni \_wszystkim* typom aplikacji? Czy świat testowania nie powinien rozważyć przyjęcia nowych technik testowania?
 
-Don’t get me wrong, in 2019 the testing pyramid, TDD and unit tests are still a powerful technique and are probably the best match for many applications. Only like any other model, despite its usefulness, [it must be wrong sometimes](https://en.wikipedia.org/wiki/All_models_are_wrong). For example, consider an IOT application that ingests many events into a message-bus like Kafka/RabbitMQ, which then flow into some data-warehouse and are eventually queried by some analytics UI. Should we really spend 50% of our testing budget on writing unit tests for an application that is integration-centric and has almost no logic? As the diversity of application types increase (bots, crypto, Alexa-skills) greater are the chances to find scenarios where the testing pyramid is not the best match.
+Nie zrozumcie mnie źle, w 2019 roku piramida testowania, TDD i testy jednostkowe są nadal potężną techniką i prawdopodobnie najlepiej pasują do wielu aplikacji. Tylko jak każdy inny model, pomimo swojej przydatności, [czasem musi się mylić](https://en.wikipedia.org/wiki/All_models_are_wrong). Rozważmy na przykład aplikację IOT, która pobiera wiele zdarzeń do magistrali komunikatów, takiej jak Kafka/RabbitMQ, która następnie przepływa do jakiejś hurtowni danych i jest w końcu odpytywana przez interfejs analityczny. Czy naprawdę powinniśmy wydać 50% naszego budżetu z testów na pisanie testów jednostkowych dla aplikacji, która jest zorientowana na integrację i prawie nie ma logiki? Wraz ze wzrostem różnorodności typów aplikacji (boty, krypto, Alexa-skills) rośnie szansa na znalezienie scenariuszy, w których piramida testowania nie jest najlepszym rozwiązaniem.
 
-It’s time to enrich your testing portfolio and become familiar with more testing types (the next bullets suggest few ideas), mind models like the testing pyramid but also match testing types to real-world problems that you’re facing (‘Hey, our API is broken, let’s write consumer-driven contract testing!’), diversify your tests like an investor that build a portfolio based on risk analysis — assess where problems might arise and match some prevention measures to mitigate those potential risks
+Nadszedł czas, aby wzbogacić swoje portfolio testowania i zapoznać się z większą liczbą typów testów (następne punkty sugerują kilka pomysłów), modelami umysłu, takimi jak piramida testowania, ale także dopasować typy testowania do rzeczywistych problemów, z którymi się borykasz (‘Hej, nasz interfejs API jest zepsuty, napiszmy testowanie umów konsumenckich!’), zdywersyfikuj swoje testy jak inwestor, który buduje portfel na podstawie analizy ryzyka - oceń, gdzie mogą pojawić się problemy i dopasuj niektóre środki zapobiegawcze, aby zmniejszyć potencjalne ryzyko
 
-A word of caution: the TDD argument in the software world takes a typical false-dichotomy face, some preach to use it everywhere, others think it’s the devil. Everyone who speaks in absolutes is wrong :]
+Słowo ostrzeżenia: argument TDD w świecie oprogramowania ma typową fałszywą dychotomię, niektórzy głoszą, że można go używać wszędzie, inni uważają, że to diabeł. Każdy, kto mówi w absolutach, jest w błędzie :]
 
 <br/>
 
-❌ **W przeciwnym razie:** You’re going to miss some tools with amazing ROI, some like Fuzz, lint, and mutation can provide value in 10 minutes
+❌ **W przeciwnym razie:** Będziesz tęsknić za niektórymi narzędziami z niesamowitym ROI, takimi jak Fuzz, lint, i mutacją która może zapewnić wartość w 10 minut
 
 <br/>
 
@@ -747,11 +748,11 @@ A word of caution: the TDD argument in the software world takes a typical false-
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’
+### :clap: Przykład robienia tego dobrze: Cindy Sridharan sugeruje wzbogacić portfolio testowania w swoim niesamowitym poście 'Testowanie mikrousług - w ten sam sposób'
 
 ![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’")
 
-<strong class="markup--strong markup--p-strong">☺️Example: </strong><a href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtube" data-href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtu.be" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">[YouTube: “Beyond Unit Tests: 5 Shiny Node.JS Test Types (2018)” (Yoni Goldberg)](https://www.youtube.com/watch?v=-2zP494wdUY&feature=youtu.be)</a>
+<strong class="markup--strong markup--p-strong">☺️Przykład: </strong><a href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtube" data-href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtu.be" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">[YouTube: “Beyond Unit Tests: 5 Shiny Node.JS Test Types (2018)” (Yoni Goldberg)](https://www.youtube.com/watch?v=-2zP494wdUY&feature=youtu.be)</a>
 
 <br/>
 
@@ -761,14 +762,14 @@ A word of caution: the TDD argument in the software world takes a typical false-
 
 <br/><br/>
 
-## ⚪ ️2.2 Component testing might be your best affair
+## ⚪ ️2.2 Testowanie komponentów może być Twoją najlepszą kwestią
 
-:white_check_mark: **Opis:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung song of the testing world — they provide the best from both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
+:white_check_mark: **Opis:** Każdy test jednostkowy obejmuje niewielką część aplikacji i jest to kosztowne, aby pokryć całość, podczas gdy kompleksowe testy z łatwością obejmują dużo gruntu, ale są niestabilne i wolniejsze, dlaczego nie zastosować zrównoważonego podejścia i napisać testy, które są większe niż testy jednostkowe, ale mniejsze niż testy kompleksowe? Testowanie komponentów to nieoceniona piosenka świata testowego - zapewniają to, co najlepsze z obu światów: rozsądną wydajność i możliwość zastosowania wzorców TDD + realistyczne i doskonałe pokrycie.
 
-Component tests focus on the Microservice ‘unit’, they work against the API, don’t mock anything which belongs to the Microservice itself (e.g. real DB, or at least the in-memory version of that DB) but stub anything that is external like calls to other Microservices. By doing so, we test what we deploy, approach the app from outwards to inwards and gain great confidence in a reasonable amount of time.
+Testy komponentów koncentrują się na mikroserwisowej ‘jednostce’, działają przeciwko interfejsowi API, nie mockują niczego, co należy do samego mikroserwisu (np. prawdziwa baza danych lub przynajmniej wersja tej bazy danych w pamięci), ale usuwają wszystko, co jest zewnętrzne, jak wywołania innych mikrousług. W ten sposób testujemy to, co wdrażamy, podchodzimy do aplikacji od zewnątrz do wewnątrz i zyskujemy dużą pewność w rozsądnym czasie.
 <br/>
 
-❌ **W przeciwnym razie:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
+❌ **W przeciwnym razie:** Możesz spędzać długie dni na pisaniu testów jednostkowych, aby dowiedzieć się, że masz tylko 20% zasięgu systemu
 
 <br/>
 
@@ -776,7 +777,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Supertest allows approaching Express API in-process (fast and cover many layers)
+### :clap: Przykład robienia tego dobrze: Supertest pozwala zbliżyć się do Express API w trakcie procesu (szybki i obejmuje wiele warstw)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -786,12 +787,12 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/><br/>
 
-## ⚪ ️2.3 Ensure new releases don’t break the API using
+## ⚪ ️2.3 Upewnij się, że nowe wersje nie psują interfejsu API
 
-:white_check_mark: **Opis:** So your Microservice has multiple clients, and you run multiple versions of the service for compatibility reasons (keeping everyone happy). Then you change some field and ‘boom!’, some important client who relies on this field is angry. This is the Catch-22 of the integration world: It’s very challenging for the server side to consider all the multiple client expectations — On the other hand, the clients can’t perform any testing because the server controls the release dates. [Consumer-driven contracts and the framework PACT](https://docs.pact.io/) were born to formalize this process with a very disruptive approach — not the server defines the test plan of itself rather the client defines the tests of the… server! PACT can record the client expectation and put in a shared location, “broker”, so the server can pull the expectations and run on every build using PACT library to detect broken contracts — a client expectation that is not met. By doing so, all the server-client API mismatches are caught early during build/CI and might save you a great deal of frustration
+:white_check_mark: **Opis:** Tak więc twój mikroserwis ma wielu klientów i uruchamiasz wiele wersji usługi ze względu na kompatybilność (aby wszyscy byli zadowoleni). Potem zmieniasz jakieś pole i 'buum!'. Jakiś ważny klient, który działa na tym, jest zły. Oto Catch-22 w świecie integracji: po stronie serwera bardzo trudne jest uwzględnienie wszystkich oczekiwań wielu klientów - z drugiej strony klienci nie mogą przeprowadzać żadnych testów, ponieważ serwer kontroluje daty wydania. [Umowy konsumenckie i framework PACT](https://docs.pact.io/) stworzone zostały, aby sformalizować ten proces z bardzo destrukcyjnym podejściem - nie serwer sam określa plan testów, a klient określa testy… serwera! PACT może rejestrować oczekiwania klienta i umieszczać je we wspólnej lokalizacji, „brokerze”, dzięki czemu serwer może wyciągać oczekiwania i uruchamiać każdą kompilację za pomocą biblioteki PACT, aby wykrywać zerwane umowy - oczekiwanie klienta, które nie jest spełnione. W ten sposób wszystkie niedopasowania API serwer-klient zostaną wykryte wcześnie podczas kompilacji / CI i mogą zaoszczędzić sporo frustracji.
 <br/>
 
-❌ **W przeciwnym razie:** The alternatives are exhausting manual testing or deployment fear
+❌ **W przeciwnym razie:** Alternatywami są wyczerpujące testy ręczne lub strach przed wdrożeniem
 
 <br/>
 
@@ -809,7 +810,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/><br/>
 
-## ⚪ ️ 2.4 Test your middlewares in isolation
+## ⚪ ️ 2.4 Przetestuj swoje middleware w izolacji
 
 :white_check_mark: **Opis:** Many avoid Middleware testing because they represent a small portion of the system and require a live Express server. Both reasons are wrong — Middlewares are small but affect all or most of the requests and can be tested easily as pure functions that get {req,res} JS objects. To test a middleware function one should just invoke it and spy ([using Sinon for example](https://www.npmjs.com/package/sinon)) on the interaction with the {req,res} objects to ensure the function performed the right action. The library [node-mock-http](https://www.npmjs.com/package/node-mocks-http) takes it even further and factors the {req,res} objects along with spying on their behavior. For example, it can assert whether the http status that was set on the res object matches the expectation (See example below)
 <br/>
