@@ -730,7 +730,7 @@ Uczyć się i ćwiczyć [zasady TDD](https://www.sm-cloud.com/book-review-test-d
 
 ## ⚪ ️2.1 Wzbogać swoje portfolio testowe: wyjdź poza testy jednostkowe i piramidę
 
-:white*check_mark: **Opis:** [Piramida testowania](https://martinfowler.com/bliki/TestPyramid.html), pomimo że 10> lat starsza, to świetny i odpowiedni model, który sugeruje trzy typy testowania i wpływa na strategię testowania większości programistów. Jednocześnie pojawiła się ponad garstka nowych, błyszczących technik testowania, które ukrywają się w cieniu piramidy testowania. Biorąc pod uwagę wszystkie dramatyczne zmiany, które widzieliśmy w ciągu ostatnich 10 lat (Microservices, cloud, serverless), czy jest możliwe, że jeden dość stary model będzie odpowiedni \_wszystkim* typom aplikacji? Czy świat testowania nie powinien rozważyć przyjęcia nowych technik testowania?
+:white_check_mark: **Opis:** [Piramida testowania](https://martinfowler.com/bliki/TestPyramid.html), pomimo że 10> lat starsza, to świetny i odpowiedni model, który sugeruje trzy typy testowania i wpływa na strategię testowania większości programistów. Jednocześnie pojawiła się ponad garstka nowych, błyszczących technik testowania, które ukrywają się w cieniu piramidy testowania. Biorąc pod uwagę wszystkie dramatyczne zmiany, które widzieliśmy w ciągu ostatnich 10 lat (Microservices, cloud, serverless), czy jest możliwe, że jeden dość stary model będzie odpowiedni _wszystkim_ typom aplikacji? Czy świat testowania nie powinien rozważyć przyjęcia nowych technik testowania?
 
 Nie zrozumcie mnie źle, w 2019 roku piramida testowania, TDD i testy jednostkowe są nadal potężną techniką i prawdopodobnie najlepiej pasują do wielu aplikacji. Tylko jak każdy inny model, pomimo swojej przydatności, [czasem musi się mylić](https://en.wikipedia.org/wiki/All_models_are_wrong). Rozważmy na przykład aplikację IOT, która pobiera wiele zdarzeń do magistrali komunikatów, takiej jak Kafka/RabbitMQ, która następnie przepływa do jakiejś hurtowni danych i jest w końcu odpytywana przez interfejs analityczny. Czy naprawdę powinniśmy wydać 50% naszego budżetu z testów na pisanie testów jednostkowych dla aplikacji, która jest zorientowana na integrację i prawie nie ma logiki? Wraz ze wzrostem różnorodności typów aplikacji (boty, krypto, Alexa-skills) rośnie szansa na znalezienie scenariuszy, w których piramida testowania nie jest najlepszym rozwiązaniem.
 
@@ -812,10 +812,11 @@ Testy komponentów koncentrują się na mikroserwisowej ‘jednostce’, działa
 
 ## ⚪ ️ 2.4 Przetestuj swoje middleware w izolacji
 
-:white_check_mark: **Opis:** Many avoid Middleware testing because they represent a small portion of the system and require a live Express server. Both reasons are wrong — Middlewares are small but affect all or most of the requests and can be tested easily as pure functions that get {req,res} JS objects. To test a middleware function one should just invoke it and spy ([using Sinon for example](https://www.npmjs.com/package/sinon)) on the interaction with the {req,res} objects to ensure the function performed the right action. The library [node-mock-http](https://www.npmjs.com/package/node-mocks-http) takes it even further and factors the {req,res} objects along with spying on their behavior. For example, it can assert whether the http status that was set on the res object matches the expectation (See example below)
+:white_check_mark: **Opis:** Wiele osób unika testowania oprogramowania pośredniego, ponieważ stanowią one niewielką część systemu i wymagają aktywnego serwera Express. Oba powody są błędne - oprogramowanie pośrednie jest małe, ale wpływa na wszystkie lub większość żądań i można je łatwo przetestować jako dostępne funkcje {req,res} obiekty JS. Aby przetestować funkcję oprogramowania pośredniego, należy ją po prostu wywołać i szpiegować ([używając na przykład Sinon](https://www.npmjs.com/package/sinon)) w połączeniu z obiektami {req,res} aby upewnić się, że funkcja wykonała właściwą akcję.
+Biblioteka [node-mock-http](https://www.npmjs.com/package/node-mocks-http) posuwa się jeszcze dalej i uwzględnia obiekty {req, res} wraz ze szpiegowaniem ich zachowania. Na przykład można sprawdzić, czy status HTTP ustawiony w obiekcie res jest zgodny z oczekiwaniami (patrz przykład poniżej)
 <br/>
 
-❌ **W przeciwnym razie:** A bug in Express middleware === a bug in all or most requests
+❌ **W przeciwnym razie:** Błąd w middleware Express === błąd we wszystkich lub większości żądań
 
 <br/>
 
@@ -823,7 +824,7 @@ Testy komponentów koncentrują się na mikroserwisowej ‘jednostce’, działa
 
 <br/>
 
-### :clap:Przykład robienia tego dobrze: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
+### :clap:Przykład robienia tego dobrze: Tesowanie middleware w izolacji, bez wykonywania połączeń sieciowych i budzenia całej maszyny Express
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
@@ -850,15 +851,15 @@ test("A request without authentication header, should return http status 403", (
 
 <br/><br/>
 
-## ⚪ ️2.5 Measure and refactor using static analysis tools
+## ⚪ ️2.5 Pomiar i refaktoryzacja za pomocą narzędzi do analizy statycznej
 
-:white_check_mark: **Opis:** Using static analysis tools helps by giving objective ways to improve code quality and keep your code maintainable. You can add static analysis tools to your CI build to abort when it finds code smells. Its main selling points over plain linting are the ability to inspect quality in the context of multiple files (e.g. detect duplications), perform advanced analysis (e.g. code complexity) and follow the history and progress of code issues. Two examples of tools you can use are [Sonarqube](https://www.sonarqube.org/) (2,600+ [stars](https://github.com/SonarSource/sonarqube)) and [Code Climate](https://codeclimate.com/) (1,500+ [stars](https://github.com/codeclimate/codeclimate))
+:white_check_mark: **Opis:** Korzystanie z narzędzi do analizy statycznej pomaga, zapewniając obiektywne sposoby poprawy jakości kodu i utrzymania kodu w stanie możliwym do utrzymania. Możesz dodać narzędzia analizy statycznej do kompilacji CI, aby przerwać, gdy wykryje code smells. Jego głównymi zaletami w stosunku do zwykłego lintowania jest możliwość kontroli jakości w kontekście wielu plików (np. wykrywanie duplikacji), przeprowadzania zaawansowanej analizy (np. złożoności kodu) oraz śledzenia historii i postępu problemów z kodem. Są dwa przykłady narzędzi, których możesz użyć [Sonarqube](https://www.sonarqube.org/) (2,600+ [gwiazdek](https://github.com/SonarSource/sonarqube)) oraz [Code Climate](https://codeclimate.com/) (1,500+ [gwiazdek](https://github.com/codeclimate/codeclimate))
 
-Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.com/TheHollidayInn" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Keith Holliday](https://github.com/TheHollidayInn)</a>
+Źródło: <a href="https://github.com/TheHollidayInn" data-href="https://github.com/TheHollidayInn" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Keith Holliday](https://github.com/TheHollidayInn)</a>
 
 <br/>
 
-❌ **Otherwise:** With poor code quality, bugs and performance will always be an issue that no shiny new library or state of the art features can fix
+❌ **W przeciwnym razie:** Przy złej jakości kodu błędy i wydajność zawsze będą stanowić problem, którego nie będzie w stanie naprawić żadna nowa błyszcząca biblioteka ani najnowocześniejsze funkcje
 
 <br/>
 
@@ -866,7 +867,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: CodeClimate, a commercial tool that can identify complex methods:
+### :clap: Przykład robienia tego dobrze: CodeClimate, komercyjne narzędzie, które potrafi zidentyfikować złożone metody:
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Examples with CodeClimate")
 
@@ -876,12 +877,12 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/><br/>
 
-## ⚪ ️ 2.6 Check your readiness for Node-related chaos
+## ⚪ ️ 2.6 Sprawdź swoją gotowość na chaos związany z Node
 
-:white_check_mark: **Opis:** Weirdly, most software testings are about logic & data only, but some of the worst things that happen (and are really hard to mitigate) are infrastructural issues. For example, did you ever test what happens when your process memory is overloaded, or when the server/process dies, or does your monitoring system realizes when the API becomes 50% slower?. To test and mitigate these type of bad things — [Chaos engineering](https://principlesofchaos.org/) was born by Netflix. It aims to provide awareness, frameworks and tools for testing our app resiliency for chaotic issues. For example, one of its famous tools, [the chaos monkey](https://github.com/Netflix/chaosmonkey), randomly kills servers to ensure that our service can still serve users and not relying on a single server (there is also a Kubernetes version, [kube-monkey](https://github.com/asobti/kube-monkey), that kills pods). All these tools work on the hosting/platform level, but what if you wish to test and generate pure Node chaos like check how your Node process copes with uncaught errors, unhandled promise rejection, v8 memory overloaded with the max allowed of 1.7GB or whether your UX stays satisfactory when the event loop gets blocked often? to address this I’ve written, [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha) which provides all sort of Node-related chaotic acts
+:white_check_mark: **Opis:** Co dziwne, większość testów oprogramowania dotyczy wyłącznie logiki i danych, ale jednymi z najgorszych rzeczy, które się zdarzają (i naprawdę trudno je złagodzić) są problemy infrastrukturalne. Na przykład, czy kiedykolwiek testowałeś, co dzieje się, gdy pamięć procesowa jest przeciążona lub kiedy serwer/proces umiera, czy też twój system monitorowania zdaje sobie sprawę, kiedy API staje się o 50% wolniejsze? Aby przetestować i złagodzić tego rodzaju złe rzeczy — [Chaos engineering](https://principlesofchaos.org/) został stworzony przez Netflix. Ma na celu zapewnienie świadomości, frameworków i narzędzi do testowania odporności naszej aplikacji na chaotyczne problemy. Na przykład jedno z jego słynnych narzędzi, [the chaos monkey](https://github.com/Netflix/chaosmonkey), losowo zabija serwery, aby mieć pewność, że nasza usługa może nadal obsługiwać użytkowników i nie polegać na jednym serwerze (istnieje również wersja Kubernetes, [kube-monkey](https://github.com/asobti/kube-monkey), która zabija pods). Wszystkie te narzędzia działają na poziomie hosta / platformy, ale co zrobić, jeśli chcesz przetestować i wygenerować czysty chaos w Node, na przykład sprawdzić, jak proces Node'a radzi sobie z nieprzechwyconymi błędami, nieobsługiwanym odrzuceniem obietnicy (promise), pamięci v8 przeciążonej maksymalną dozwoloną wartością 1,7 GB lub czy Twój UX pozostaje zadowalający, gdy pętla zdarzeń jest często blokowana? Aby rozwiązać ten problem, napisałem, [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha) który zapewnia wszelkiego rodzaju chaotyczne akty związane z Node'm.
 <br/>
 
-❌ **W przeciwnym razie:** No escape here, Murphy’s law will hit your production without mercy
+❌ **W przeciwnym razie:** Nie ma ucieczki, prawo Murphy'ego uderzy w twoją produkcję bez litości
 
 <br/>
 
@@ -889,7 +890,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
+### :clap: Przykład robienia tego dobrze: : Node-chaos może generować różnego rodzaju pranki z Node.js, dzięki czemu możesz przetestować odporność aplikacji na chaos
 
 ![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
 
@@ -897,12 +898,12 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-## ⚪ ️2.7 Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️2.7 Unikaj global test fixtures oraz seeds, dodawaj dane na test
 
-:white_check_mark: **Opis:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests (also known as ‘test fixture’) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
+:white_check_mark: **Opis:** Przestrzeganie złotej zasady (punkt 0), każdy test powinien dodawać i działać na swoim własnym zestawie wierszy BD, aby zapobiec sprzężeniu i łatwo uzasadnić przebieg testu. W rzeczywistości jest to często naruszane przez testerów, którzy zapełniają bazę danych danymi przed uruchomieniem testów (znany również jako ‘test fixture’) w celu poprawy wydajności. Chociaż wydajność jest istotnym problemem - można ją złagodzić (patrz punkt “Component testing”), jednak złożoność testu jest bardzo bolesnym smutkiem, który przez większość czasu powinien rządzić innymi rozważaniami. Spraw praktycznie, aby każdy przypadek testowy wyraźnie dodał potrzebne rekordy BD i działał tylko na tych rekordach. Jeśli wydajność stanie się kluczowym problemem - zrównoważony kompromis może przyjść w postaci inicjowania jedynego zestawu testów, które nie powodują mutacji danych (np. zapytania)
 <br/>
 
-❌ **W przeciwnym razie:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
+❌ **W przeciwnym razie:** Niewiele testów kończy się niepowodzeniem, wdrożenie zostało przerwane, nasz zespół spędza teraz cenny czas, czy mamy błąd? Zbadajmy, och nie - wydaje się, że dwa testy mutowały te same dane seed
 
 <br/>
 
@@ -910,7 +911,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+### :thumbsdown: Przykład antywzorca: testy nie są niezależne i polegają na pewnym globalnym hook do zasilania globalnych danych BD
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -935,7 +936,7 @@ it("When querying by site name, get the right site", async () => {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: We can stay within the test, each test acts on its own set of data
+### :clap: Przykład robienia tego dobrze: Możemy pozostać w teście, każdy test działa na własny zestaw danych
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
@@ -954,13 +955,13 @@ it("When updating site name, get successful confirmation", async () => {
 
 # Sekcja 3️⃣: Frontend Testing
 
-## ⚪ ️ 3.1 Separate UI from functionality
+## ⚪ ️ 3.1 Oddziel interfejs użytkownika od funkcjonalności
 
-:white_check_mark: **Opis:** When focusing on testing component logic, UI details become a noise that should be extracted, so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only the back part of the UI (e.g. services, actions, store) but this will result in fictional tests that don't resemble the reality and won't reveal cases where the right data doesn't even arrive in the UI
+:white_check_mark: **Opis:** Podczas koncentrowania się na testowaniu logiki komponentu szczegóły interfejsu użytkownika stają się szumem, który należy wyodrębnić, aby testy mogły koncentrować się na czystych danych. Praktycznie wyodrębnij pożądane dane ze znaczników w abstrakcyjny sposób, który nie jest zbyt sprzężony z implementacją graficzną, potwierdzaj tylko na czystych danych (vs szczegóły graficzne HTML / CSS) i wyłącz spowalniające animacje. Możesz ulec pokusie unikania renderowania i testowania tylko tylnej części interfejsu użytkownika (np. usług, akcji, store), ale spowoduje to testy fikcyjne, które nie przypominają rzeczywistości i nie ujawnią przypadków, w których właściwe dane nie są nawet przybyć do interfejsu użytkownika
 
 <br/>
 
-❌ **W przeciwnym razie:** The pure calculated data of your test might be ready in 10ms, but then the whole test will last 500ms (100 tests = 1 min) due to some fancy and irrelevant animation
+❌ **W przeciwnym razie:** Czysto obliczone dane z testu mogą być gotowe za 10 ms, ale wtedy cały test potrwa 500 ms (100 testów = 1 minuta) z powodu jakiejś wymyślnej i nieistotnej animacji
 
 <br/>
 
@@ -968,7 +969,7 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Separating out the UI details
+### :clap: Przykład robienia tego dobrze: Oddzielanie szczegółów interfejsu użytkownika
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
@@ -989,7 +990,7 @@ test("When users-list is flagged to show only VIP, should display only VIP membe
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: Assertion mix UI details and data
+### :thumbsdown: Przykład antywzorca: asercja miesza szczegóły interfejsu użytkownika i dane
 
 ```javascript
 test("When flagging to show only VIP, should display only VIP members", () => {
@@ -1008,13 +1009,13 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 <br/><br/>
 
-## ⚪ ️ 3.2 Query HTML elements based on attributes that are unlikely to change
+## ⚪ ️ 3.2 Zapytaj elementy HTML na podstawie atrybutów, których zmiana jest mało prawdopodobna
 
-:white_check_mark: **Opis:** Query HTML elements based on attributes that are likely to survive graphic changes unlike CSS selectors and like form labels. If the designated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your functional/logic tests never break because of look & feel changes but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
+:white_check_mark: **Opis:** Zapytaj elementy HTML na podstawie atrybutów, które prawdopodobnie przetrwają zmiany graficzne, w przeciwieństwie do selektorów CSS i podobnych etykiet formularzy. Jeśli wyznaczony element nie ma takich atrybutów, utwórz dedykowany atrybut testowy, taki jak 'test-id-submit-button'. Podążanie tą drogą nie tylko gwarantuje, że testy funkcjonalne / logiczne nigdy nie psują się z powodu zmian wyglądu i odczuć, ale także staje się jasne dla całego zespołu, że ten element i atrybut są wykorzystywane przez testy i nie należy ich usuwać
 
 <br/>
 
-❌ **W przeciwnym razie:** You want to test the login functionality that spans many components, logic and services, everything is set up perfectly - stubs, spies, Ajax calls are isolated. All seems perfect. Then the test fails because the designer changed the div CSS class from 'thick-border' to 'thin-border'
+❌ **W przeciwnym razie:** Chcesz przetestować funkcjonalność logowania obejmującą wiele komponentów, logikę i usługi, wszystko jest skonfigurowane idealnie - stubs, spies, połączenia Ajax są izolowane. Wszystko wydaje się idealne. Następnie test kończy się niepowodzeniem, ponieważ projektant zmienił klasę CSS div 'thick-border' do 'thin-border'
 
 <br/>
 
@@ -1022,7 +1023,7 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Querying an element using a dedicated attrbiute for testing
+### :clap: Przykład robienia tego dobrze: Zapytanie o element przy użyciu dedykowanego atrybutu do testowania
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React")
 
@@ -1051,7 +1052,7 @@ test("Whenever no data is passed to metric, show 0 as default", () => {
 
 <br/>
 
-### :thumbsdown: Przykład antywzorca: Relying on CSS attributes
+### :thumbsdown: Przykład antywzorca: Poleganie na atrybutach CSS
 
 ```html
 <!-- the markup code (part of React component) -->
@@ -1072,15 +1073,15 @@ test("Whenever no data is passed, error metric shows zero", () => {
 
 <br/>
 
-## ⚪ ️ 3.3 Whenever possible, test with a realistic and fully rendered component
+## ⚪ ️ 3.3 O ile to możliwe, testuj z realistycznym i w pełni renderowanym komponentem
 
-:white_check_mark: **Opis:** Whenever reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet 'Favour blackbox testing'). If one of the child components is significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
+:white_check_mark: **Opis:** Kiedy tylko rozsądny rozmiar, przetestuj komponent z zewnątrz, tak jak robią to użytkownicy, w pełni renderuj interfejs użytkownika, działaj na nim i upewnij się, że renderowany interfejs zachowuje się zgodnie z oczekiwaniami. Unikaj wszelkiego rodzaju mockowania, częściowego i płytkiego renderowania - takie podejście może skutkować niezakłóconymi błędami z powodu braku szczegółów i utrudniać konserwację, gdy testy brudzą się z elementów wewnętrznych (patrz punkt 'Preferuj testowanie czarnej skrzynki'). Jeśli jeden z elementów potomnych znacznie spowalnia (np. animacja) lub komplikuje konfigurację - zastanów się nad wyraźnym zastąpieniem go fake'm
 
-With all that said, a word of caution is in order: this technique works for small/medium components that pack a reasonable size of child components. Fully rendering a component with too many children will make it hard to reason about test failures (root cause analysis) and might get too slow. In such cases, write only a few tests against that fat parent component and more tests against its children
+Biorąc to wszystko pod uwagę, należy zachować ostrożność: ta technika działa w przypadku małych / średnich komponentów, które pakują rozsądne rozmiary komponentów potomnych. Pełne renderowanie komponentu ze zbyt dużą liczbą potomnych utrudni rozumowanie na temat błędów testów (analiza przyczyn) i może być zbyt wolne. W takich przypadkach napisz tylko kilka testów z tym głównym składnikiem macierzystym i więcej testów z jego potomnymi.
 
 <br/>
 
-❌ **W przeciwnym razie:** When poking into a component's internal by invoking its private methods, and checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have a capacity for this level of maintenance?
+❌ **W przeciwnym razie:** Podczas wbijania się w wewnętrzne komponenty przez wywoływanie ich prywatnych metod i sprawdzania stanu wewnętrznego - podczas refaktoryzacji implementacji komponentów musiałbyś przefakturować wszystkie testy. Czy naprawdę masz możliwości takiego poziomu konserwacji?
 
 <br/>
 
@@ -1088,7 +1089,7 @@ With all that said, a word of caution is in order: this technique works for smal
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Working realstically with a fully rendered component
+### :clap: Przykład robienia tego dobrze: Praca w trybie rzeczywistym z całkowicie renderowanym komponentem
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg "Examples with Enzyme")
 
@@ -1120,7 +1121,7 @@ test("Realistic approach: When clicked to show filters, filters are displayed", 
 });
 ```
 
-### :thumbsdown: Przykład antywzorca: Mocking the reality with shallow rendering
+### :thumbsdown: Przykład antywzorca: Mockowanie rzeczywistości z płytkim renderowaniem
 
 ```javascript
 test("Shallow/mocked approach: When clicked to show filters, filters are displayed", () => {
@@ -1144,12 +1145,12 @@ test("Shallow/mocked approach: When clicked to show filters, filters are display
 
 <br/>
 
-## ⚪ ️ 3.4 Don't sleep, use frameworks built-in support for async events. Also try to speed things up
+## ⚪ ️ 3.4 Nie śpij, użyj wbudowanej obsługi frameworków dla zdarzeń asynchronicznych. Spróbuj także przyspieszyć
 
-:white_check_mark: **Do:** In many cases, the unit under test completion time is just unknown (e.g. animation suspends element appearance) - in that case, avoid sleeping (e.g. setTimeOut) and prefer more deterministic methods that most platforms provide. Some libraries allows awaiting on operations (e.g. [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), other provide API for waiting like [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance). Sometimes a more elegant way is to stub the slow resource, like API for example, and then once the response moment becomes deterministic the component can be explicitly re-rendered. When depending upon some external component that sleeps, it might turn useful to [hurry-up the clock](https://jestjs.io/docs/en/timer-mocks). Sleeping is a pattern to avoid because it forces your test to be slow or risky (when waiting for a too short period). Whenever sleeping and polling is inevitable and there's no support from the testing framework, some npm libraries like [wait-for-expect](https://www.npmjs.com/package/wait-for-expect) can help with a semi-deterministic solution
+:white_check_mark: **Opis:** W wielu przypadkach czas zakończenia testu jest po prostu nieznany (np. animacja wstrzymuje wygląd elementu) - w takim przypadku unikaj spania (np. SetTimeOut) i preferuj bardziej deterministyczne metody, które zapewnia większość platform. Niektóre biblioteki pozwalają na oczekiwanie na operacje (np. [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), inne zapewniają API do czekania jak [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance). Czasami bardziej eleganckim sposobem jest zlikwidowanie wolnego zasobu, na przykład API, a następnie, gdy moment odpowiedzi staje się deterministyczny, komponent można jawnie ponownie renderować. Gdy zależy od jakiegoś zewnętrznego komponentu, który śpi, może się przydać [hurry-up the clock](https://jestjs.io/docs/en/timer-mocks). Spanie to schemat, którego należy unikać, ponieważ wymusza powolny lub ryzykowny test (podczas oczekiwania na zbyt krótki okres). Ilekroć spanie i odpytywanie jest nieuniknione i nie ma wsparcia ze strony środowiska testowego, niektóre biblioteki npm jak [wait-for-expect](https://www.npmjs.com/package/wait-for-expect) mogą pomóc w rozwiązaniu pół-deterministycznym
 <br/>
 
-❌ **W przeciwnym razie:** When sleeping for a long time, tests will be an order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't respond in a timely fashion. So it boils down to a trade-off between flakiness and bad performance
+❌ **W przeciwnym razie:** Podczas snu przez długi czas testy będą o rząd wielkości wolniejsze. Podczas próby spania dla małych liczb test nie powiedzie się, gdy testowana jednostka nie zareagowała w odpowiednim czasie. Sprowadza się to zatem do kompromisu między flakiness, a złą wydajnością
 
 <br/>
 
@@ -1157,7 +1158,7 @@ test("Shallow/mocked approach: When clicked to show filters, filters are display
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: E2E API that resolves only when the async operations is done (Cypress)
+### :clap: Przykład robienia tego dobrze: E2E API rozwiązuje to dopiero po zakończeniu operacji asynchronicznych (Cypress)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
@@ -1169,7 +1170,8 @@ cy.wait("@products"); // wait for route to appear
 // this line will get executed only when the route is ready
 ```
 
-### :clap: Przykład robienia tego dobrze: Testing library that waits for DOM elements
+### :clap: Przykład robienia tego dobrze: Biblioteka testująca, która czeka na elementy DOM
+
 
 ```javascript
 // @testing-library/dom
@@ -1186,7 +1188,7 @@ test("movie title appears", async () => {
 });
 ```
 
-### :thumbsdown: Przykład antywzorca: custom sleep code
+### :thumbsdown: Przykład antywzorca: niestandardowy sleep code
 
 ```javascript
 test("movie title appears", async () => {
@@ -1210,15 +1212,15 @@ test("movie title appears", async () => {
 
 <br/>
 
-## ⚪ ️ 3.5 Watch how the content is served over the network
+## ⚪ ️ 3.5 Zobacz, jak treść jest udostępniana przez sieć
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Google%20LightHouse-blue.svg "Examples with Lighthouse")
 
-✅ **Do:** Apply some active monitor that ensures the page load under real network is optimized - this includes any UX concern like slow page load or un-minified bundle. The inspection tools market is no short: basic tools like [pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) can be easily configured to watch whether the server is alive and response under a reasonable SLA. This only scratches the surface of what might get wrong, hence it's preferable to opt for tools that specialize in frontend (e.g. [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) and perform richer analysis. The focus should be on symptoms, metrics that directly affect the UX, like page load time, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [time until the page gets interactive (TTI)](https://calibreapp.com/blog/time-to-interactive/). On top of that, one may also watch for technical causes like ensuring the content is compressed, time to the first byte, optimize images, ensuring reasonable DOM size, SSL and many others. It's advisable to have these rich monitors both during development, as part of the CI and most important - 24x7 over the production's servers/CDN
+✅ **Opis:** Zastosuj aktywny monitor, który zapewnia optymalizację ładowania strony w rzeczywistej sieci - obejmuje to wszelkie problemy związane z UX, takie jak powolne ładowanie strony lub niezminimalizowany pakiet. Rynek narzędzi inspekcyjnych nie jest krótki: podstawowe narzędzia, takie jak [pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) można łatwo skonfigurować, aby sprawdzał, czy serwer żyje i reagował na podstawie rozsądnej SLA. To tylko rysuje powierzchnię tego, co może się nie udać, dlatego lepiej wybrać narzędzia specjalizujące się we frontendzie (np. [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) i wykonać bogatszą analizę. Należy skoncentrować się na objawach, wskaźnikach, które bezpośrednio wpływają na UX, takich jak czas ładowania strony, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [czas, aż strona stanie się interaktywna (TTI)](https://calibreapp.com/blog/time-to-interactive/). Ponadto można również zwrócić uwagę na przyczyny techniczne, takie jak zapewnienie kompresji zawartości, czas do pierwszego bajtu, optymalizacja obrazów, zapewnienie rozsądnego rozmiaru DOM, SSL i wiele innych. Wskazane jest, aby mieć te bogate monitory zarówno podczas projektowania, jako część CI, a co najważniejsze - 24x7 przez serwery produkcji / CDN
 
 <br/>
 
-❌ **W przeciwnym razie:** It must be disappointing to realize that after such great care for crafting a UI, 100% functional tests passing and sophisticated bundling - the UX is horrible and slow due to CDN misconfiguration
+❌ **W przeciwnym razie:** Musi być rozczarowujące, gdy zda się sobie sprawę, że po tak wielkiej dbałości o interfejs użytkownika, 100% testy funkcjonalne zdały i wyrafinowane pakowanie - UX jest straszny i powolny z powodu błędnej konfiguracji CDN
 
 <br/>
 
@@ -1232,7 +1234,7 @@ test("movie title appears", async () => {
 
 <br/>
 
-## ⚪ ️ 3.6 Stub flaky and slow resources like backend APIs
+## ⚪ ️ 3.6 Stub niestabilne i wolne zasoby, takie jak interfejsy API zaplecza
 
 :white_check_mark: **Opis:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practically, instead of real network calls to APIs, use some test double library (like [Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttles requests). Doing this will allow simulating various API behavior that should drive your component behavior as when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
 
