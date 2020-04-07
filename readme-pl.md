@@ -1081,7 +1081,7 @@ Biorąc to wszystko pod uwagę, należy zachować ostrożność: ta technika dzi
 
 <br/>
 
-❌ **W przeciwnym razie:** Podczas wbijania się w wewnętrzne komponenty przez wywoływanie ich prywatnych metod i sprawdzania stanu wewnętrznego - podczas refaktoryzacji implementacji komponentów musiałbyś przefakturować wszystkie testy. Czy naprawdę masz możliwości takiego poziomu konserwacji?
+❌ **W przeciwnym razie:** Podczas wbijania się w wewnętrzne komponenty przez wywoływanie ich prywatnych metod i sprawdzania stanu wewnętrznego - podczas refaktoryzacji implementacji komponentów musiałbyś przerefakturować wszystkie testy. Czy naprawdę masz możliwości takiego poziomu konserwacji?
 
 <br/>
 
