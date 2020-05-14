@@ -536,7 +536,7 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
 ```javascript
-before(() => {
+before(async () => {
   //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
   await DB.AddSeedDataFromJson('seed.json');
 });
@@ -914,7 +914,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
 ```javascript
-before(() => {
+before(async () => {
   //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
   await DB.AddSeedDataFromJson('seed.json');
 });
