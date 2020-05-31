@@ -140,6 +140,11 @@ describe('Products Service', function() {
 
 </details>
 
+<br/>
+<details><summary>©<b>Credits</b></summary>
+  [Roy Osherove - The Art of Unit Testing with examples in JavaScript](https://www.manning.com/books/the-art-of-unit-testing-third-edition)
+  </details>
+
 <br/><br/>
 
 ## ⚪ ️ 1.2 Structure tests by the AAA pattern
