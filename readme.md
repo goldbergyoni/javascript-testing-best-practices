@@ -109,6 +109,7 @@ Most of the advice below are derivatives of this principle.
 <br/>
 
 **👇 Note:** Each bullet has code examples and sometime also an image illustration. Click to expand
+<br/>
 
 <details><summary>✏ <b>Code Examples</b></summary>
   
@@ -141,9 +142,9 @@ describe('Products Service', function() {
 </details>
 
 <br/>
-<details><summary>©<b>Credits</b></summary>
-  [Roy Osherove - The Art of Unit Testing with examples in JavaScript](https://www.manning.com/books/the-art-of-unit-testing-third-edition)
-  </details>
+<details><summary>© <b>Credits</b></summary>
+  1. <a href='https://www.manning.com/books/the-art-of-unit-testing-third-edition'>Roy Osherove - The Art of Unit Testing with examples in JavaScript</a>
+</details>
 
 <br/><br/>
 
