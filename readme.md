@@ -142,8 +142,8 @@ describe('Products Service', function() {
 </details>
 
 <br/>
-<details><summary>© <b>Credits</b></summary>
-  1. <a href='https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html'>Roy Osherove - The Art of Unit Testing with examples in JavaScript</a>
+<details><summary>© <b>Credits & read-more</b></summary>
+  1. <a href='https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html'>Roy Osherove - Naming standards for unit tests</a>
 </details>
 
 <br/><br/>
