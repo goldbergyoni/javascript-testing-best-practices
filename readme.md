@@ -143,7 +143,7 @@ describe('Products Service', function() {
 
 <br/>
 <details><summary>© <b>Credits</b></summary>
-  1. <a href='https://www.manning.com/books/the-art-of-unit-testing-third-edition'>Roy Osherove - The Art of Unit Testing with examples in JavaScript</a>
+  1. <a href='https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html'>Roy Osherove - The Art of Unit Testing with examples in JavaScript</a>
 </details>
 
 <br/><br/>
