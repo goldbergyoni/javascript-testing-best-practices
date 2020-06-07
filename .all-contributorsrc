@@ -222,6 +222,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "dangen-effy",
+      "name": "dangen",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/23185799?v=4",
+      "profile": "https://dangen-effy.github.io/",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
