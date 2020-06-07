@@ -231,6 +231,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "biesiadamich",
+      "name": "biesiadamich",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/60202305?v=4",
+      "profile": "https://dev.to/mbiesiad",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
