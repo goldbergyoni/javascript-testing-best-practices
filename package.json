@@ -1,0 +1,33 @@
+{
+  "name": "javascript-testing-best-practices",
+  "version": "1.0.0",
+  "description": "📗🌐 🚢 Comprehensive and exhaustive JavaScript & Node.js testing best practices (April 2020) https://testjavascript.com/",
+  "main": "index.js",
+  "scripts": {
+    "test": "t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i0natan/javascript-testing-best-practices.git"
+  },
+  "keywords": [
+    "test",
+    "tdd",
+    "javascript",
+    "mocha",
+    "jest",
+    "aaa",
+    "coverage",
+    "confidence",
+    "unit",
+    "test",
+    "integration",
+    "e2e"
+  ],
+  "author": "Yoni Goldberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i0natan/javascript-testing-best-practices/issues"
+  },
+  "homepage": "https://github.com/i0natan/javascript-testing-best-practices#readme"
+}
