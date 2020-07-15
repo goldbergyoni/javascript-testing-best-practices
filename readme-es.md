@@ -92,38 +92,38 @@ La mayoría de los siguientes consejos son derivados de este principio.
 
 <br/>
 
-## ⚪ ️ 1.1 Include 3 parts in each test name
+## ⚪ ️ 1.1 Incluye 3 partes en los nombres de tus test
 
-:white_check_mark: **Haz:** A test report should tell whether the current application revision satisfies the requirements for the people who are not necessarily familiar with the code: the tester, the DevOps engineer who is deploying and the future you two years from now. This can be achieved best if the tests speak at the requirements level and include 3 parts:
+:white_check_mark: **Haz:** El reporte de un test debe indicar si la revisión de la aplicación actual cumple los requisitos para las personas que no están necesariamente familiarizadas con el código: el tester, el DevOps que está desplegangolo y el futuro tú de dentro de dos años. Esto se puede lograr si las pruebas hablan al nivel de los requisitos e incluyen 3 partes:
 
-(1) What is being tested? For example, the ProductsService.addNewProduct method
+(1) ¿Qué se está testeando? Por ejemplo, el método ProductsService.addNewProduct
 
-(2) Under what circumstances and scenario? For example, no price is passed to the method
+(2) ¿Bajo qué escenario y circunstancias? Por ejemplo, no se pasa ningún precio al método
 
-(3) What is the expected result? For example, the new product is not approved
-
-<br/>
-
-❌ **De lo contrario:** A deployment just failed, a test named “Add product” failed. Does this tell you what exactly is malfunctioning?
+(3) ¿Cuál es el resultado esperado? Por ejemplo, el nuevo producto no está aprobado
 
 <br/>
 
-**👇 Nota:** Each bullet has code examples and sometime also an image illustration. Click to expand
+❌ **De lo contrario:** Un despliegue simplemente ha fallado, un test llamado "Agregar producto" ha fallado. ¿Esto te dice exactamente qué está funcionando mal?
+
+<br/>
+
+**👇 Nota:** Cada apartado tiene ejemplos de código y, en ocasiones, también una imagen ilustrativa. Haga clic para ampliar
 <br/>
 
 <details><summary>✏ <b>Código de Ejemplo</b></summary>
   
 <br/>
   
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: Ejemplo de cómo hacerlo correctamente: Un nombre de test que consta de 3 partes
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Mocha-blue.svg "Using Mocha to illustrate the idea")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Mocha-blue.svg "Ejemplo usando Mocha para ilustrar la idea")
 
 ```javascript
-//1. unit under test
+//1. unidad que esta siendo testeada
 describe('Products Service', function() {
   describe('Add new product', function() {
-    //2. scenario and 3. expectation
+    //2. escenario y 3. quá se espera
     it('When no price is specified, then the product status is pending approval', ()=> {
       const newProduct = new ProductService().add(...);
       expect(newProduct.status).to.equal('pendingApproval');
@@ -135,14 +135,14 @@ describe('Products Service', function() {
 
 <br/>
 
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: Ejemplo de cómo hacerlo correctamente: Un nombre de test que consta de 3 partes
 
-![alt text](/assets/bp-1-3-parts.jpeg "A test name that constitutes 3 parts")
+![alt text](/assets/bp-1-3-parts.jpeg "Un nombre de test que consta de 3 partes")
 
 </details>
 
 <br/>
-<details><summary>© <b>Credits & read-more</b></summary>
+<details><summary>© <b>Creditos y más información</b></summary>
   1. <a href='https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html'>Roy Osherove - Naming standards for unit tests</a>
 </details>
 
@@ -168,7 +168,7 @@ describe('Products Service', function() {
 
 <br/>
 
-### :clap: Doing It Right Example: A test structured with the AAA pattern
+### :clap: Ejemplo de cómo hacerlo correctamente: A test structured with the AAA pattern
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -248,7 +248,7 @@ test("When asking for an admin, ensure only ordered admins in results", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Skimming through the following declarative test is a breeze
+### :clap: Ejemplo de cómo hacerlo correctamente: Skimming through the following declarative test is a breeze
 
 ```javascript
 it("When asking for an admin, ensure only ordered admins in results", () => {
@@ -344,7 +344,7 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
 
 <br/>
 
-### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
+### :clap:Ejemplo de cómo hacerlo correctamente: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
 
 ```javascript
 it("When a valid product is about to be deleted, ensure an email is sent", async () => {
@@ -404,7 +404,7 @@ test("Wrong: When adding new product with valid properties, get successful confi
 
 <br/>
 
-### :clap:Doing It Right Example: Randomizing realistic input
+### :clap:Ejemplo de cómo hacerlo correctamente: Randomizing realistic input
 
 ```javascript
 it("Better: When adding new valid product, get successful confirmation", async () => {
@@ -433,7 +433,7 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/>
 
-### :clap: Doing It Right Example: Testing many input permutations with “fast-check”
+### :clap: Ejemplo de cómo hacerlo correctamente: Testing many input permutations with “fast-check”
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
@@ -496,7 +496,7 @@ it("TestJavaScript.com is renderd correctly", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Expectations are visible and focused
+### :clap: Ejemplo de cómo hacerlo correctamente: Expectations are visible and focused
 
 ```javascript
 it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
@@ -562,7 +562,7 @@ it("When querying by site name, get the right site", async () => {
 
 <br/>
 
-### :clap: Doing It Right Example: We can stay within the test, each test acts on its own set of data
+### :clap: Ejemplo de cómo hacerlo correctamente: We can stay within the test, each test acts on its own set of data
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
@@ -617,7 +617,7 @@ it("When no product name, it throws error 400", async () => {
 
 <br/>
 
-### :clap: Doing It Right Example: A human-readable expectation that could be understood easily, maybe even by QA or technical PM
+### :clap: Ejemplo de cómo hacerlo correctamente: A human-readable expectation that could be understood easily, maybe even by QA or technical PM
 
 ```javascript
 it("When no product name, it throws error 400", async () => {
@@ -644,7 +644,7 @@ it("When no product name, it throws error 400", async () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Tagging tests as ‘#cold-test’ allows the test runner to execute only fast tests (Cold===quick tests that are doing no IO and can be executed frequently even as the developer is typing)
+### :clap: Ejemplo de cómo hacerlo correctamente: Tagging tests as ‘#cold-test’ allows the test runner to execute only fast tests (Cold===quick tests that are doing no IO and can be executed frequently even as the developer is typing)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
@@ -678,7 +678,7 @@ describe("Order service", function() {
 
 <br/>
 
-### :clap: Doing It Right Example: Structuring suite with the name of unit under test and scenarios will lead to the convenient report that is shown below
+### :clap: Ejemplo de cómo hacerlo correctamente: Structuring suite with the name of unit under test and scenarios will lead to the convenient report that is shown below
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
@@ -753,7 +753,7 @@ A word of caution: the TDD argument in the software world takes a typical false-
 
 <br/>
 
-### :clap: Doing It Right Example: Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the same way’
+### :clap: Ejemplo de cómo hacerlo correctamente: Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the same way’
 
 ![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’")
 
@@ -782,7 +782,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap: Doing It Right Example: Supertest allows approaching Express API in-process (fast and cover many layers)
+### :clap: Ejemplo de cómo hacerlo correctamente: Supertest allows approaching Express API in-process (fast and cover many layers)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -805,7 +805,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap: Doing It Right Example:
+### :clap: Ejemplo de cómo hacerlo correctamente:
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Examples with PACT")
 
@@ -828,7 +828,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap:Doing It Right Example: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
+### :clap:Ejemplo de cómo hacerlo correctamente: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
@@ -871,7 +871,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :clap: Doing It Right Example: CodeClimate, a commercial tool that can identify complex methods:
+### :clap: Ejemplo de cómo hacerlo correctamente: CodeClimate, a commercial tool that can identify complex methods:
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Examples with CodeClimate")
 
@@ -894,7 +894,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :clap: Doing It Right Example: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
+### :clap: Ejemplo de cómo hacerlo correctamente: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
 
 ![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
 
@@ -940,7 +940,7 @@ it("When querying by site name, get the right site", async () => {
 
 <br/>
 
-### :clap: Doing It Right Example: We can stay within the test, each test acts on its own set of data
+### :clap: Ejemplo de cómo hacerlo correctamente: We can stay within the test, each test acts on its own set of data
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
@@ -973,7 +973,7 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Separating out the UI details
+### :clap: Ejemplo de cómo hacerlo correctamente: Separating out the UI details
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
@@ -1027,7 +1027,7 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Querying an element using a dedicated attrbiute for testing
+### :clap: Ejemplo de cómo hacerlo correctamente: Querying an element using a dedicated attrbiute for testing
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React")
 
@@ -1093,7 +1093,7 @@ With all that said, a word of caution is in order: this technique works for smal
 
 <br/>
 
-### :clap: Doing It Right Example: Working realstically with a fully rendered component
+### :clap: Ejemplo de cómo hacerlo correctamente: Working realstically with a fully rendered component
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg "Examples with Enzyme")
 
@@ -1162,7 +1162,7 @@ test("Shallow/mocked approach: When clicked to show filters, filters are display
 
 <br/>
 
-### :clap: Doing It Right Example: E2E API that resolves only when the async operations is done (Cypress)
+### :clap: Ejemplo de cómo hacerlo correctamente: E2E API that resolves only when the async operations is done (Cypress)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
@@ -1174,7 +1174,7 @@ cy.wait("@products"); // wait for route to appear
 // this line will get executed only when the route is ready
 ```
 
-### :clap: Doing It Right Example: Testing library that waits for DOM elements
+### :clap: Ejemplo de cómo hacerlo correctamente: Testing library that waits for DOM elements
 
 ```javascript
 // @testing-library/dom
@@ -1229,7 +1229,7 @@ test("movie title appears", async () => {
 
 <details><summary>✏ <b>Código de Ejemplo</b></summary>
 
-### :clap: Doing It Right Example: Lighthouse page load inspection report
+### :clap: Ejemplo de cómo hacerlo correctamente: Lighthouse page load inspection report
 
 ![](/assets/lighthouse2.png "Lighthouse page load inspection report")
 
@@ -1251,7 +1251,7 @@ test("movie title appears", async () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Stubbing or intercepting API calls
+### :clap: Ejemplo de cómo hacerlo correctamente: Stubbing or intercepting API calls
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
@@ -1315,7 +1315,7 @@ test("When no products exist, show the appropriate message", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Logging-in before-all and not before-each
+### :clap: Ejemplo de cómo hacerlo correctamente: Logging-in before-all and not before-each
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
@@ -1363,7 +1363,7 @@ beforeEach(setUser => () {
 
 <br/>
 
-### :clap: Doing It Right Example: Smoke travelling across all pages
+### :clap: Ejemplo de cómo hacerlo correctamente: Smoke travelling across all pages
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
@@ -1396,7 +1396,7 @@ it("When doing smoke testing over all page, should load them all successfully", 
 
 <br/>
 
-### :clap: Doing It Right Example: Describing tests in human-language using cucumber-js
+### :clap: Ejemplo de cómo hacerlo correctamente: Describing tests in human-language using cucumber-js
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cucumber-blue.svg "Examples using Cucumber")
 
@@ -1417,7 +1417,7 @@ Feature: Twitter new tweet
 
 ```
 
-### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using Storybook
+### :clap: Ejemplo de cómo hacerlo correctamente: Visualizing our components, their various states and inputs using Storybook
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
@@ -1447,7 +1447,7 @@ Feature: Twitter new tweet
 
 <br/>
 
-### :clap: Doing It Right Example: Configuring wraith to capture and compare UI snapshots
+### :clap: Ejemplo de cómo hacerlo correctamente: Configuring wraith to capture and compare UI snapshots
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Wraith-blue.svg "Using Wraith")
 
@@ -1476,7 +1476,7 @@ paths:
     path: /subscribe
 ```
 
-### :clap: Doing It Right Example: Using Applitools to get snapshot comaprison and other advanced features
+### :clap: Ejemplo de cómo hacerlo correctamente: Using Applitools to get snapshot comaprison and other advanced features
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg "Using AppliTools") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
@@ -1529,7 +1529,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
-### :clap: Doing It Right Example: Setting up coverage per component (using Jest)
+### :clap: Ejemplo de cómo hacerlo correctamente: Setting up coverage per component (using Jest)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg "Using Jest")
 
@@ -1603,7 +1603,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
+### :clap: Ejemplo de cómo hacerlo correctamente: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
 
 ![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
 
@@ -1684,7 +1684,7 @@ Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com
 
 <br/>
 
-### :clap: Doing It Right Example: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
+### :clap: Ejemplo de cómo hacerlo correctamente: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
 
 ```javascript
 "scripts": {
@@ -1744,7 +1744,7 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 
 <br/>
 
-### :clap: Doing It Right Example: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+### :clap: Ejemplo de cómo hacerlo correctamente: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
 
 ![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
 
@@ -1764,7 +1764,7 @@ The huge Kubernetes eco-system is yet to formalize a standard convenient tool fo
 
 <br/>
 
-### :clap: Doing It Right Example:
+### :clap: Ejemplo de cómo hacerlo correctamente:
 
 ```javascript
 //install license-checker in your CI environment or also locally
