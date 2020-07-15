@@ -186,6 +186,60 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "glaucia86",
+      "name": "Glaucia Lemos",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1631477?v=4",
+      "profile": "https://glaucialemos.netlify.com/",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "koooge",
+      "name": "koooge",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/7419215?v=4",
+      "profile": "https://twitter.com/koooge",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "mbiesiad",
+      "name": "Michal",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/18367606?v=4",
+      "profile": "https://twitter.com/michalbiesiada",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "roywalker",
+      "name": "roywalker",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/611846?v=4",
+      "profile": "http://roywalker.me",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "dangen-effy",
+      "name": "dangen",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/23185799?v=4",
+      "profile": "https://dangen-effy.github.io/",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "biesiadamich",
+      "name": "biesiadamich",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/60202305?v=4",
+      "profile": "https://dev.to/mbiesiad",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
