@@ -16,7 +16,7 @@ Súbete a un viaje que va más allá de lo básico, llegando a temas avanzados c
 
 ## 🌐 Full-stack: front, backend, CI, cualquier cosa
 
-Empieza por comprender las tecnicas de testing ubicuas que son la base de cualquier nivel de aplicación. Luego, profundice en su área de elección: frontend/UI, backend, CI o tal vez todos.
+Empieza por comprender las tecnicas de testing ubicuas que son la base de cualquier nivel de aplicación. Luego, profundice en tu área de elección: frontend/UI, backend, CI o tal vez todos.
 
 <br/>
 
@@ -72,7 +72,7 @@ Pautas para Integracion Continua en el mundo de JS (9 apartados)
 ## ⚪️ 0 La Regla de Oro: Diseñando testing ligero
 
 :white_check_mark: **Haz:**
-El codigo de los test no es como el código de producción - diséñelo para que sea simple, corto, sin abstracciones, plano, agradable de trabajar, ligero. Uno debe mirar un test y entender la intención al instante.
+El código de los test no es como el código de producción - diséñelo para que sea simple, corto, sin abstracciones, plano, agradable de trabajar, ligero. Uno debe mirar un test y entender la intención al instante.
 
 Nuestras mentes están llenas por el código de producción, no tenemos espacio de cabeza para añadir más cosas complejas. Si intentamos introducir otro código desafiante en nuestro cerebro, ralentizará al todo el equipo, lo que va en contra de la razón por la que hacemos testing. Prácticamente aquí es donde muchos equipos simplemente abandonan el testing.
 
@@ -148,19 +148,19 @@ describe('Products Service', function() {
 
 <br/><br/>
 
-## ⚪ ️ 1.2 Structure tests by the AAA pattern
+## ⚪ ️ 1.2 Estructura tus test con el patron AAA
 
-:white_check_mark: **Haz:** Structure your tests with 3 well-separated sections Arrange, Act & Assert (AAA). Following this structure guarantees that the reader spends no brain-CPU on understanding the test plan:
+:white_check_mark: **Haz:** Estructura tus test con 3 secciones bien separadas Arreglar u organizar, Actuar y Afirmar (AAA en inglés Arrange, Act & Assert). Seguir esta estructura garantiza que quien lea nuestro test  no gaste CPU-cerebro en comprender el plan de prueba:
 
-1st A - Arrange: All the setup code to bring the system to the scenario the test aims to simulate. This might include instantiating the unit under test constructor, adding DB records, mocking/stubbing on objects and any other preparation code
+1st A - Arreglar: configura el código acercarte al escenario que el test pretende simular. Esto podría incluir crear instancias de la unidad bajo el constructor del test, agregar registros de base de datos, mocks y stubs de objetos y cualquier otro código necesario
 
-2nd A - Act: Execute the unit under test. Usually 1 line of code
+2nd A - Actuar: Ejecuta la unidad en test. Normalmente 1 línea de código
 
-3rd A - Assert: Ensure that the received value satisfies the expectation. Usually 1 line of code
+3rd A - Afirmar: Comprobar que el valor recibido satisface las expectativas. Normalmente 1 línea de código
 
 <br/>
 
-❌ **De lo contrario:** Not only do you spend hours understanding the main code, but what should have been the simplest part of the day (testing) stretches your brain
+❌ **De lo contrario:** No solo emplearas horas comprendiendo el código principal, si no que lo que deberia haber sido la parate mas simple del día (testing) ha estrujado tu cerebro
 
 <br/>
 
@@ -168,21 +168,21 @@ describe('Products Service', function() {
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: A test structured with the AAA pattern
+### :clap: Ejemplo de cómo hacerlo correctamente: Un test estructurado con el patron AAA
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha")
 
 ```javascript
 describe("Customer classifier", () => {
   test("When customer spent more than 500$, should be classified as premium", () => {
-    //Arrange
+    //Arreglar / organizar
     const customerToClassify = { spent: 505, joined: new Date(), id: 1 };
     const DBStub = sinon.stub(dataAccess, "getCustomer").reply({ id: 1, classification: "regular" });
 
-    //Act
+    //Actuar
     const receivedClassification = customerClassifier.classifyCustomer(customerToClassify);
 
-    //Assert
+    //Afirmar
     expect(receivedClassification).toMatch("premium");
   });
 });
@@ -190,7 +190,7 @@ describe("Customer classifier", () => {
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: No separation, one bulk, harder to interpret
+### :thumbsdown: Ejemplo Anti Patrón: Sin separación, una pieza, más dificil de interpretar
 
 ```javascript
 test("Should be classified as premium", () => {
@@ -205,24 +205,24 @@ test("Should be classified as premium", () => {
 
 <br/><br/>
 
-## ⚪ ️1.3 Describe expectations in a product language: use BDD-style assertions
+## ⚪ ️1.3 Describe las expectativas en el lenguaje del producto.: usa aserciones estilo BDD
 
-:white_check_mark: **Haz:** Coding your tests in a declarative-style allows the reader to get the grab instantly without spending even a single brain-CPU cycle. When you write imperative code that is packed with conditional logic, the reader is forced to exert more brain-CPU cycles. In that case, code the expectation in a human-like language, declarative BDD style using `expect` or `should` and not using custom code. If Chai & Jest doesn't include the desired assertion and it’s highly repeatable, consider [extending Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) or writing a [custom Chai plugin](https://www.chaijs.com/guide/plugins/)
+:white_check_mark: **Haz:** Escribir el código de tus test de forma declarativa permite que aquel que lo lea tenga al instante la idea sin tener que catar CPU-cerebro. Cuando escribes el código de los test de forma imperativa estará lleno de condiciones lógicas y obligas al que lo lee a gastar mucho más tiempo en comprenderlo. En este caso, escribe el código de la forma más humana, de forma declarativa BDD usando `expect` o `should` y sin usar código personalizado. Si Chai o Jest no incluyen las aserciones que deseas y se hace muy repetitivo, siempre puede usar [extender Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) o escribir un [plugin de Chai](https://www.chaijs.com/guide/plugins/)
 <br/>
 
-❌ **De lo contrario:** The team will write less tests and decorate the annoying ones with .skip()
+❌ **De lo contrario:** El equipo escribirá menos test y acabará marcando los test más molestos con .skip()
 
 <br/>
 
 <details><summary>✏ <b>Código de Ejemplo</b></summary><br/>
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha y Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
-### :thumbsdown: Anti Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
+### :thumbsdown: Ejemplo Anti Patrón: quien lea nuestro test deberá hojear un código largo e imperativo para conocer la historia del test
 
 ```javascript
 test("When asking for an admin, ensure only ordered admins in results", () => {
-  //assuming we've added here two admins "admin1", "admin2" and "user1"
+  //presuponiendo que hayamos agregado aquí dos administradores "admin1", "admin2" y "user1"
   const allAdmins = getUsers({ adminOnly: true });
 
   let admin1Found,
@@ -248,11 +248,11 @@ test("When asking for an admin, ensure only ordered admins in results", () => {
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Skimming through the following declarative test is a breeze
+### :clap: Ejemplo de cómo hacerlo correctamente: Ojear el siguiente test declarativo es muy sencillo
 
 ```javascript
 it("When asking for an admin, ensure only ordered admins in results", () => {
-  //assuming we've added here two admins
+  //presuponiendo que hayamos agregado aquí dos administradores
   const allAdmins = getUsers({ adminOnly: true });
 
   expect(allAdmins)
@@ -265,29 +265,28 @@ it("When asking for an admin, ensure only ordered admins in results", () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.4 Stick to black-box testing: Test only public methods
+## ⚪ ️ 1.4 Acercarse al testing caja-negra: Testea solo metodos publicos
 
-:white_check_mark: **Haz:** Testing the internals brings huge overhead for almost nothing. If your code/API delivers the right results, should you really invest your next 3 hours in testing HOW it worked internally and then maintain these fragile tests? Whenever a public behavior is checked, the private implementation is also implicitly tested and your tests will break only if there is a certain problem (e.g. wrong output). This approach is also referred to as `behavioral testing`. On the other side, should you test the internals (white box approach) — your focus shifts from planning the component outcome to nitty-gritty details and your test might break because of minor code refactors although the results are fine - this dramatically increases the maintenance burden
-<br/>
+:white_check_mark: **Haz:** Testear las partes internas suele traer un gasto extra enorme para muy poco beneficio. Si tu código/API comprueba todo los resultado correctamente, ¿deberias perder las proximas 3 horas en comprobar como esta funcionando internamente y despues mantener esos test tan fragiles? Cada vez que se comprueba un comportamiento publico, la implementacion privada es implicitamente testeada y tus test se romperan solo si hay un problema concreto (por ejemplo una salida incorrecta). Este enfoque tambien es conocido como `behavioral testing` (testing de comportamiento). Por otro lado, si se prueban las partes internas (caja blanca) tu enfoque cambia de planificar la salida del componente a detalles minusculos, y tus test pueden romperse debido a refactors de código menores sin que se rompan los test de salida, por lo que aumenta tremendamente el mantenimiento de los mismos.<br/>
 
-❌ **De lo contrario:** Your tests behave like the [boy who cried wolf](https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf): shouting false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday, a real bug gets ignored…
+❌ **De lo contrario:** Tus test se comportaran como la fabula [que viene el lobo](https://es.wikipedia.org/wiki/El_pastor_mentiroso): gritando falsos positivos (por ejemplo, un test dalla por que se cambio el nombre a una variable provada). Como es de esperar, la gente empezara a ingnorar estos test hasta que un día ignoren un test de verdad...
 
 <br/>
 <details><summary>✏ <b>Código de Ejemplo</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: A test case is testing the internals for no good reason
+### :thumbsdown: Ejemplo Anti Patrón: Un test esta testeando la parte interna sin ninguna razón aparente
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha & Chai")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha & Chai")
 
 ```javascript
 class ProductService {
-  //this method is only used internally
-  //Change this name will make the tests fail
+  //este metodo es usado solo internamente
+  //Cambiarle el nombre causara que el test falle
   calculateVATAdd(priceWithoutVAT) {
     return { finalPrice: priceWithoutVAT * 1.2 };
-    //Change the result format or key name above will make the tests fail
+    //Cambiar el formatos de salida o nombre de la clave a continuacion hara que el test falle
   }
   //public method
   getPrice(productId) {
@@ -298,7 +297,7 @@ class ProductService {
 }
 
 it("White-box test: When the internal methods get 0 vat, it return 0 response", async () => {
-  //There's no requirement to allow users to calculate the VAT, only show the final price. Nevertheless we falsely insist here to test the class internals
+  //No hay ningún requisito para permitir a los usuarios calcular el IVA, solo existe el de mostrar el precio final al usuario. Sin embargo, falsamente insistimos en testear las partes privadas de la clase.
   expect(new ProductService().calculateVATAdd(0).finalPrice).to.equal(0);
 });
 ```
@@ -307,16 +306,16 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 
 <br/><br/>
 
-## ⚪ ️ ️1.5 Choose the right test doubles: Avoid mocks in favor of stubs and spies
+## ⚪ ️ ️1.5 Eligiendo los dobles de los test correctamente: Evita mocks en favor de stubs y spies
 
-:white_check_mark: **Haz:** Test doubles are a necessary evil because they are coupled to the application internals, yet some provide immense value (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Read here a reminder about test doubles: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
+:white_check_mark: **Haz:** Los dobles de los test son un mal necesario por que estan acoplados a las tripas de la aplicacion, sin embargo, algunos proporcionan un valor inmenso (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Aquí tienes un recordatorio sobre los dobles de los test: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
 
-Before using test doubles, ask a very simple question: Do I use it to test functionality that appears, or could appear, in the requirements document? If no, it’s a white-box testing smell.
+Antes de usar un doble, hazte una simple pregunta: ¿Lo voy a usar para testear una funcionalidad que aparece, o puede aparecer, en el documento de requisitos? Si no, eso huele que estas testeando partes privadas.
 
-For example, if you want to test that your app behaves reasonably when the payment service is down, you might stub the payment service and trigger some ‘No Response’ return to ensure that the unit under test returns the right value. This checks our application behavior/response/outcome under certain scenarios. You might also use a spy to assert that an email was sent when that service is down — this is again a behavioral check which is likely to appear in a requirements doc (“Send an email if payment couldn’t be saved”). On the flip side, if you mock the Payment service and ensure that it was called with the right JavaScript types — then your test is focused on internal things that got nothing with the application functionality and are likely to change frequently
+Por ejemplo, si quieres testear que tu app se comporta razonablemente cuando el servicio de pagos está caido, deberias hacer un stub del servicio de pagos y devolver un 'Sin respuesta' para asegurar que la unidad que está siendo testeada devuelve el valor correcto. Esto verifica que el comportamiento/respuesta/resultado de nuesta app en ciertos escenarios. Tambien podrias usar un spy para asegurar que un email ha sifo enviado cuando este servicio está caidom — esto es nuevamente una verificacion de comportamiento que probablemente aparezca en el documento de requisitos ("Enviar un correo electrónico si no se pudo guardar el pago"). En el lado opuesto, si se mockea el servicio de pagos y se asegura que se haya llamado con el tipado correcto — entonces tu test esta comprobando cosas internas que tienen nada que ver con la funcionalidad de la app y es muy probable que cambien con frecuencia
 <br/>
 
-❌ **De lo contrario:** Any refactoring of code mandates searching for all the mocks in the code and updating accordingly. Tests become a burden rather than a helpful friend
+❌ **De lo contrario:** Cualquier refactor de codigo te exigirá buscar todos los mocks que tengas y tendras que actualizarlos en consecuencia. Las pruebas pasan de ser un amigo útil a una carga más
 
 <br/>
 
@@ -324,15 +323,15 @@ For example, if you want to test that your app behaves reasonably when the payme
 
 <br/>
 
-### :thumbsdown: Anti-pattern example: Mocks focus on the internals
+### :thumbsdown: Ejemplo Anti Patrón: Mocks centrados en la parte interna
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg "Examples with Sinon")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg "Ejemplos con Sinon")
 
 ```javascript
 it("When a valid product is about to be deleted, ensure data access DAL was called once, with the right product and right config", async () => {
-  //Assume we already added a product
+  //Asumimos que ya hemos añadido un producto
   const dataAccessMock = sinon.mock(DAL);
-  //hmmm BAD: testing the internals is actually our main goal here, not just a side-effect
+  //hmmm MAL: testear las partes internas es nuestro principal objetivo, en vez de ser un efecto secundario
   dataAccessMock
     .expects("deleteProduct")
     .once()
@@ -344,14 +343,14 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
 
 <br/>
 
-### :clap:Ejemplo de cómo hacerlo correctamente: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
+### :clap:Ejemplo de cómo hacerlo correctamente: los spies se centran en testear los requisitos pero como efecto secundario inevitable se estan testeando las partes internas
 
 ```javascript
 it("When a valid product is about to be deleted, ensure an email is sent", async () => {
-  //Assume we already added here a product
+  //Asumimos que ya hemos añadido un producto
   const spy = sinon.spy(Emailer.prototype, "sendEmail");
   new ProductService().deletePrice(theProductWeJustAdded);
-  //hmmm OK: we deal with internals? Yes, but as a side effect of testing the requirements (sending an email)
+  //hmmm OK: ¿Testeamos las partes internas? Si, pero como efecto secundario de hacer test de los requisitos (enviar un email)
   expect(spy.calledOnce).to.be.true;
 });
 ```
@@ -360,18 +359,18 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## 📗 Want to learn all these practices with live video?
+## 📗 ¿Quieres aprender todas esto con video en directo?
 
-### Visit my online course [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
+### Visita el curso online [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
 
 <br/><br/>
 
-## ⚪ ️1.6 Don’t “foo”, use realistic input data
+## ⚪ ️1.6 No uses “foo”, usa datos realistas
 
-:white_check_mark: **Haz:** Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not as a replacement) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? See the next bullet (property-based testing).
+:white_check_mark: **Haz:** A menudo, los errores de producción se revelan bajo una entrada muy específica y sorprendente: cuanto más realista sea la entrada de un test, mayores serán las posibilidades de detectar errores temprano. Utiliza bibliotecas dedicadas como [Faker] (https://www.npmjs.com/package/faker) para generar datos pseudo-reales que se asemejan en variedad y forma a los datos de prodcucción. Por ejemplo, dichas bibliotecas pueden generar números de teléfono realistas, nombres de usuario, tarjetas de crédito, nombres de empresas e incluso texto "lorem ipsum". También puedes crear algunos test (además de los test unitarios, no como un reemplazo) que aleatorizan los datos falsos para estirar la unidad que estamos testeando o incluso importar datos reales de su entorno de producción. ¿Quieres llevarlo al siguiente nivel? Vea la próxima sección (pruebas basadas en propiedades).
 <br/>
 
-❌ **De lo contrario:** All your development testing will falsely show green when you use synthetic inputs like “Foo”, but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
+❌ **De lo contrario:** Todo tus test de desarrollo estaran en falsos verdes cuando uses datos sinteticos como "Foo", pero luego en produccion pueden ponerse en rojo cuando un hacker use cadenas extrañas como “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
 
 <br/>
 
@@ -379,40 +378,40 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test suite that passes due to non-realistic data
+### :thumbsdown: Ejemplo Anti Patrón: Un conjunto de test que dan ok debido a datos no realistas
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
 ```javascript
 const addProduct = (name, price) => {
-  const productNameRegexNoSpace = /^\S*$/; //no white-space allowed
+  const productNameRegexNoSpace = /^\S*$/; //no se admiten espacios
 
-  if (!productNameRegexNoSpace.test(name)) return false; //this path never reached due to dull input
+  if (!productNameRegexNoSpace.test(name)) return false; //esta rama nunca se testeara debido a inputs sinteticos
 
-  //some logic here
+  //algo de logica aquí
   return true;
 };
 
 test("Wrong: When adding new product with valid properties, get successful confirmation", async () => {
-  //The string "Foo" which is used in all tests never triggers a false result
+  //La cadena "Foo" que es usada en todo los test, nunca provocara un resutado false
   const addProductResult = addProduct("Foo", 5);
   expect(addProductResult).toBe(true);
-  //Positive-false: the operation succeeded because we never tried with long
-  //product name including spaces
+  //Falso positivo: la operación tuvo éxito porque nunca lo intentamos con un 
+  //nombre de producto largo que incluya espacios
 });
 ```
 
 <br/>
 
-### :clap:Ejemplo de cómo hacerlo correctamente: Randomizing realistic input
+### :clap:Ejemplo de cómo hacerlo correctamente: Generando datos de entrada realistas
 
 ```javascript
 it("Better: When adding new valid product, get successful confirmation", async () => {
   const addProductResult = addProduct(faker.commerce.productName(), faker.random.number());
-  //Generated random input: {'Sleek Cotton Computer',  85481}
+  //Datos de entrada generados aleatoreamente: {'Sleek Cotton Computer',  85481}
   expect(addProductResult).to.be.true;
-  //Test failed, the random input triggered some path we never planned for.
-  //We discovered a bug early!
+  //El test falla, El valor de entrada random ha provocado que se vaya por un camino que nunca planeamos
+  //!Hemos descubierto un error muy pronto!
 });
 ```
 
@@ -435,7 +434,7 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: Testing many input permutations with “fast-check”
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
 ```javascript
 import fc from "fast-check";
@@ -474,9 +473,9 @@ It’s worth noting that there are few cases where long & external snapshots are
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Coupling our test to unseen 2000 lines of code
+### :thumbsdown: Ejemplo Anti Patrón: Coupling our test to unseen 2000 lines of code
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
 ```javascript
 it("TestJavaScript.com is renderd correctly", () => {
@@ -537,9 +536,9 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+### :thumbsdown: Ejemplo Anti Patrón: tests are not independent and rely on some global hook to feed global DB data
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha")
 
 ```javascript
 before(async () => {
@@ -596,9 +595,9 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 
 <br/>
 
-### :thumbsdown: Anti-pattern Example: A long test case that tries to assert the existence of error with try-catch
+### :thumbsdown: Ejemplo Anti Patrón: A long test case that tries to assert the existence of error with try-catch
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha")
 
 ```javascript
 it("When no product name, it throws error 400", async () => {
@@ -646,7 +645,7 @@ it("When no product name, it throws error 400", async () => {
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: Tagging tests as ‘#cold-test’ allows the test runner to execute only fast tests (Cold===quick tests that are doing no IO and can be executed frequently even as the developer is typing)
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
 ```javascript
 //this test is fast (no DB) and we're tagging it correspondigly
@@ -680,7 +679,7 @@ describe("Order service", function() {
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: Structuring suite with the name of unit under test and scenarios will lead to the convenient report that is shown below
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
 ```javascript
 // Unit under test
@@ -700,9 +699,9 @@ describe("Transfer service", () => {
 
 <br/>
 
-### :thumbsdown: Anti-pattern Example: A flat list of tests will make it harder for the reader to identify the user stories and correlate failing tests
+### :thumbsdown: Ejemplo Anti Patrón: A flat list of tests will make it harder for the reader to identify the user stories and correlate failing tests
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Mocha")
 
 ```javascript
 test("Then the response status should decline", () => {});
@@ -784,7 +783,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: Supertest allows approaching Express API in-process (fast and cover many layers)
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha")
 
 ![alt text](assets/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) allows approaching Express API in-process (fast and cover many layers)")
 
@@ -807,7 +806,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 ### :clap: Ejemplo de cómo hacerlo correctamente:
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Examples with PACT")
+![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Ejemplos con PACT")
 
 ![alt text](assets/bp-14-testing-best-practices-contract-flow.png)
 
@@ -830,7 +829,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 ### :clap:Ejemplo de cómo hacerlo correctamente: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
 ```javascript
 //the middleware we want to test
@@ -873,7 +872,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: CodeClimate, a commercial tool that can identify complex methods:
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Examples with CodeClimate")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Ejemplos con CodeClimate")
 
 ![alt text](assets/bp-16-yoni-goldberg-quality.png "CodeClimat, a commercial tool that can identify complex methods:")
 
@@ -915,9 +914,9 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+### :thumbsdown: Ejemplo Anti Patrón: tests are not independent and rely on some global hook to feed global DB data
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha")
 
 ```javascript
 before(async () => {
@@ -975,7 +974,7 @@ it("When updating site name, get successful confirmation", async () => {
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: Separating out the UI details
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
+![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Ejemplos con React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Ejemplos con react-testing-library")
 
 ```javascript
 test("When users-list is flagged to show only VIP, should display only VIP members", () => {
@@ -994,7 +993,7 @@ test("When users-list is flagged to show only VIP, should display only VIP membe
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: Assertion mix UI details and data
+### :thumbsdown: Ejemplo Anti Patrón: Assertion mix UI details and data
 
 ```javascript
 test("When flagging to show only VIP, should display only VIP members", () => {
@@ -1029,7 +1028,7 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: Querying an element using a dedicated attrbiute for testing
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React")
+![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Ejemplos con React")
 
 ```html
 // the markup code (part of React component)
@@ -1056,7 +1055,7 @@ test("Whenever no data is passed to metric, show 0 as default", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Relying on CSS attributes
+### :thumbsdown: Ejemplo Anti Patrón: Relying on CSS attributes
 
 ```html
 <!-- the markup code (part of React component) -->
@@ -1095,7 +1094,7 @@ With all that said, a word of caution is in order: this technique works for smal
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: Working realstically with a fully rendered component
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg "Examples with Enzyme")
+![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Ejemplos con React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg "Ejemplos con Enzyme")
 
 ```javascript
 class Calendar extends React.Component {
@@ -1125,7 +1124,7 @@ test("Realistic approach: When clicked to show filters, filters are displayed", 
 });
 ```
 
-### :thumbsdown: Anti-Pattern Example: Mocking the reality with shallow rendering
+### :thumbsdown: Ejemplo Anti Patrón: Mocking the reality with shallow rendering
 
 ```javascript
 test("Shallow/mocked approach: When clicked to show filters, filters are displayed", () => {
@@ -1165,7 +1164,7 @@ test("Shallow/mocked approach: When clicked to show filters, filters are display
 ### :clap: Ejemplo de cómo hacerlo correctamente: E2E API that resolves only when the async operations is done (Cypress)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
-![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
+![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Ejemplos con react-testing-library")
 
 ```javascript
 // using Cypress
@@ -1191,7 +1190,7 @@ test("movie title appears", async () => {
 });
 ```
 
-### :thumbsdown: Anti-Pattern Example: custom sleep code
+### :thumbsdown: Ejemplo Anti Patrón: custom sleep code
 
 ```javascript
 test("movie title appears", async () => {
@@ -1217,7 +1216,7 @@ test("movie title appears", async () => {
 
 ## ⚪ ️ 3.5 Watch how the content is served over the network
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Google%20LightHouse-blue.svg "Examples with Lighthouse")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Google%20LightHouse-blue.svg "Ejemplos con Lighthouse")
 
 ✅ **Haz:** Apply some active monitor that ensures the page load under real network is optimized - this includes any UX concern like slow page load or un-minified bundle. The inspection tools market is no short: basic tools like [pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) can be easily configured to watch whether the server is alive and response under a reasonable SLA. This only scratches the surface of what might get wrong, hence it's preferable to opt for tools that specialize in frontend (e.g. [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) and perform richer analysis. The focus should be on symptoms, metrics that directly affect the UX, like page load time, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [time until the page gets interactive (TTI)](https://calibreapp.com/blog/time-to-interactive/). On top of that, one may also watch for technical causes like ensuring the content is compressed, time to the first byte, optimize images, ensuring reasonable DOM size, SSL and many others. It's advisable to have these rich monitors both during development, as part of the CI and most important - 24x7 over the production's servers/CDN
 
@@ -1253,7 +1252,7 @@ test("movie title appears", async () => {
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: Stubbing or intercepting API calls
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
+![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Ejemplos con React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Ejemplos con react-testing-library")
 
 ```javascript
 // unit under test
@@ -1441,7 +1440,7 @@ Feature: Twitter new tweet
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: A typical visual regression - right content that is served badly
+### :thumbsdown: Ejemplo Anti Patrón: A typical visual regression - right content that is served badly
 
 ![alt text](assets/amazon-visual-regression.jpeg "Amazon page breaks")
 
@@ -1552,7 +1551,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: What’s wrong with this coverage report?
+### :thumbsdown: Ejemplo Anti Patrón: What’s wrong with this coverage report?
 
 Based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
 
@@ -1583,7 +1582,7 @@ Knowing that all or most of the mutations were killed gives much higher confiden
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: 100% coverage, 0% testing
+### :thumbsdown: Ejemplo Anti Patrón: 100% coverage, 0% testing
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg "Using Stryker")
 
@@ -1624,7 +1623,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: A test case full of errors, luckily all are caught by Linters
+### :thumbsdown: Ejemplo Anti Patrón: A test case full of errors, luckily all are caught by Linters
 
 ```javascript
 describe("Too short description", () => {
@@ -1661,7 +1660,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :thumbsdown: Anti Pattern Example: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
+### :thumbsdown: Ejemplo Anti Patrón: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
 
 ![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
 
