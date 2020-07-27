@@ -12,7 +12,7 @@ Esta es una guia completa para Javascript y Node de la A a la Z. Resumen y selec
 
 ## 🚢 Advanzado: Va 10.000 kilometros más allá de lo basico
 
-Súbete a un viaje que va más allá de lo básico, llegando a temas avanzados como pruebas en producción, mutation testing, property-based testing y muchas otras herramientas estratégicas y profesionales. Si lees esta guía completamente es probable que tus habilidades de testing este por encima de la media
+Súbete a un viaje que va más allá de lo básico, llegando a temas avanzados como testeando en producción, mutation testing, property-based testing y muchas otras herramientas estratégicas y profesionales. Si lees esta guía completamente es probable que tus habilidades de testing este por encima de la media
 
 ## 🌐 Full-stack: front, backend, CI, cualquier cosa
 
@@ -94,7 +94,7 @@ La mayoría de los siguientes consejos son derivados de este principio.
 
 ## ⚪ ️ 1.1 Incluye 3 partes en los nombres de tus test
 
-:white_check_mark: **Haz:** El reporte de un test debe indicar si la revisión de la aplicación actual cumple los requisitos para las personas que no están necesariamente familiarizadas con el código: el tester, el DevOps que está desplegangolo y el futuro tú de dentro de dos años. Esto se puede lograr si las pruebas hablan al nivel de los requisitos e incluyen 3 partes:
+:white_check_mark: **Haz:** El reporte de un test debe indicar si la revisión de la aplicación actual cumple los requisitos para las personas que no están necesariamente familiarizadas con el código: el tester, el DevOps que está desplegangolo y el futuro tú de dentro de dos años. Esto se puede lograr si los test hablan al nivel de los requisitos e incluyen 3 partes:
 
 (1) ¿Qué se está testeando? Por ejemplo, el método ProductsService.addNewProduct
 
@@ -150,7 +150,7 @@ describe('Products Service', function() {
 
 ## ⚪ ️ 1.2 Estructura tus test con el patron AAA
 
-:white_check_mark: **Haz:** Estructura tus test con 3 secciones bien separadas Arreglar u organizar, Actuar y Afirmar (AAA en inglés Arrange, Act & Assert). Seguir esta estructura garantiza que quien lea nuestro test  no gaste CPU-cerebro en comprender el plan de prueba:
+:white_check_mark: **Haz:** Estructura tus test con 3 secciones bien separadas Arreglar u organizar, Actuar y Afirmar (AAA en inglés Arrange, Act & Assert). Seguir esta estructura garantiza que quien lea nuestro test  no gaste CPU-cerebro en comprender los test:
 
 1st A - Arreglar: configura el código acercarte al escenario que el test pretende simular. Esto podría incluir crear instancias de la unidad bajo el constructor del test, agregar registros de base de datos, mocks y stubs de objetos y cualquier otro código necesario
 
@@ -267,7 +267,7 @@ it("When asking for an admin, ensure only ordered admins in results", () => {
 
 ## ⚪ ️ 1.4 Acercarse al testing caja-negra: Testea solo metodos publicos
 
-:white_check_mark: **Haz:** Testear las partes internas suele traer un gasto extra enorme para muy poco beneficio. Si tu código/API comprueba todo los resultado correctamente, ¿deberias perder las proximas 3 horas en comprobar como esta funcionando internamente y despues mantener esos test tan fragiles? Cada vez que se comprueba un comportamiento publico, la implementacion privada es implicitamente testeada y tus test se romperan solo si hay un problema concreto (por ejemplo una salida incorrecta). Este enfoque tambien es conocido como `behavioral testing` (testing de comportamiento). Por otro lado, si se prueban las partes internas (caja blanca) tu enfoque cambia de planificar la salida del componente a detalles minusculos, y tus test pueden romperse debido a refactors de código menores sin que se rompan los test de salida, por lo que aumenta tremendamente el mantenimiento de los mismos.<br/>
+:white_check_mark: **Haz:** Testear las partes internas suele traer un gasto extra enorme para muy poco beneficio. Si tu código/API comprueba todo los resultado correctamente, ¿deberias perder las proximas 3 horas en comprobar como esta funcionando internamente y despues mantener esos test tan fragiles? Cada vez que se comprueba un comportamiento publico, la implementacion privada es implicitamente testeada y tus test se romperan solo si hay un problema concreto (por ejemplo una salida incorrecta). Este enfoque tambien es conocido como `behavioral testing` (testing de comportamiento). Por otro lado, si se testean las partes internas (caja blanca) tu enfoque cambia de planificar la salida del componente a detalles minusculos, y tus test pueden romperse debido a refactors de código menores sin que se rompan los test de salida, por lo que aumenta tremendamente el mantenimiento de los mismos.<br/>
 
 ❌ **De lo contrario:** Tus test se comportaran como la fabula [que viene el lobo](https://es.wikipedia.org/wiki/El_pastor_mentiroso): gritando falsos positivos (por ejemplo, un test dalla por que se cambio el nombre a una variable provada). Como es de esperar, la gente empezara a ingnorar estos test hasta que un día ignoren un test de verdad...
 
@@ -315,7 +315,7 @@ Antes de usar un doble, hazte una simple pregunta: ¿Lo voy a usar para testear 
 Por ejemplo, si quieres testear que tu app se comporta razonablemente cuando el servicio de pagos está caido, deberias hacer un stub del servicio de pagos y devolver un 'Sin respuesta' para asegurar que la unidad que está siendo testeada devuelve el valor correcto. Esto verifica que el comportamiento/respuesta/resultado de nuesta app en ciertos escenarios. Tambien podrias usar un spy para asegurar que un email ha sifo enviado cuando este servicio está caidom — esto es nuevamente una verificacion de comportamiento que probablemente aparezca en el documento de requisitos ("Enviar un correo electrónico si no se pudo guardar el pago"). En el lado opuesto, si se mockea el servicio de pagos y se asegura que se haya llamado con el tipado correcto — entonces tu test esta comprobando cosas internas que tienen nada que ver con la funcionalidad de la app y es muy probable que cambien con frecuencia
 <br/>
 
-❌ **De lo contrario:** Cualquier refactor de codigo te exigirá buscar todos los mocks que tengas y tendras que actualizarlos en consecuencia. Las pruebas pasan de ser un amigo útil a una carga más
+❌ **De lo contrario:** Cualquier refactor de codigo te exigirá buscar todos los mocks que tengas y tendras que actualizarlos en consecuencia. Los test pasan de ser un amigo útil a una carga más
 
 <br/>
 
@@ -367,7 +367,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 ## ⚪ ️1.6 No uses “foo”, usa datos realistas
 
-:white_check_mark: **Haz:** A menudo, los errores de producción se revelan bajo una entrada muy específica y sorprendente: cuanto más realista sea la entrada de un test, mayores serán las posibilidades de detectar errores temprano. Utiliza bibliotecas dedicadas como [Faker] (https://www.npmjs.com/package/faker) para generar datos pseudo-reales que se asemejan en variedad y forma a los datos de prodcucción. Por ejemplo, dichas bibliotecas pueden generar números de teléfono realistas, nombres de usuario, tarjetas de crédito, nombres de empresas e incluso texto "lorem ipsum". También puedes crear algunos test (además de los test unitarios, no como un reemplazo) que aleatorizan los datos falsos para estirar la unidad que estamos testeando o incluso importar datos reales de su entorno de producción. ¿Quieres llevarlo al siguiente nivel? Vea la próxima sección (pruebas basadas en propiedades).
+:white_check_mark: **Haz:** A menudo, los errores de producción se revelan bajo una entrada muy específica y sorprendente: cuanto más realista sea la entrada de un test, mayores serán las posibilidades de detectar errores temprano. Utiliza bibliotecas dedicadas como [Faker] (https://www.npmjs.com/package/faker) para generar datos pseudo-reales que se asemejan en variedad y forma a los datos de prodcucción. Por ejemplo, dichas bibliotecas pueden generar números de teléfono realistas, nombres de usuario, tarjetas de crédito, nombres de empresas e incluso texto "lorem ipsum". También puedes crear algunos test (además de los test unitarios, no como un reemplazo) que aleatorizan los datos falsos para estirar la unidad que estamos testeando o incluso importar datos reales de su entorno de producción. ¿Quieres llevarlo al siguiente nivel? Vea la próxima sección (test basados en propiedades).
 <br/>
 
 ❌ **De lo contrario:** Todo tus test de desarrollo estaran en falsos verdes cuando uses datos sinteticos como "Foo", pero luego en produccion pueden ponerse en rojo cuando un hacker use cadenas extrañas como “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
@@ -419,12 +419,12 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/><br/>
 
-## ⚪ ️ 1.7 Test many input combinations using Property-based testing
+## ⚪ ️ 1.7 Testea muchas combinaciones de entrada utilizando test basados en propiedades
 
-:white_check_mark: **Haz:** Typically we choose a few input samples for each test. Even when the input format resembles real-world data (see bullet ‘Don’t foo’), we cover only a few input combinations (method(‘’, true, 1), method(“string” , false” , 0)), However, in production, an API that is called with 5 parameters can be invoked with thousands of different permutations, one of them might render our process down ([see Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)). What if you could write a single test that sends 1000 permutations of different inputs automatically and catches for which input our code fails to return the right response? Property-based testing is a technique that does exactly that: by sending all the possible input combinations to your unit under test it increases the serendipity of finding a bug. For example, given a method — addNewProduct(id, name, isDiscount) — the supporting libraries will call this method with many combinations of (number, string, boolean) like (1, “iPhone”, false), (2, “Galaxy”, true). You can run property-based testing using your favorite test runner (Mocha, Jest, etc) using libraries like [js-verify](https://github.com/jsverify/jsverify) or [testcheck](https://github.com/leebyron/testcheck-js) (much better documentation). Update: Nicolas Dubien suggests in the comments below to [checkout fast-check](https://github.com/dubzzz/fast-check#readme) which seems to offer some additional features and also to be actively maintained
+:white_check_mark: **Haz:** Por lo general elegimos pocos datos de entrada por cada test. Incluso cuando el formato de entrada se parece a datos reales (ver sección "no uses foo"), cubrimos solo unas pocas combinaciones de datos de entrada (method(‘’, true, 1), method(“string” , false” , 0)), Sin embargo, en producción, un API que es llamada con 5 parametros puede ser invocada por miles de permutaciones diferentes, una sola puede hacer que nuestro poceso falle ([ver Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)). ¿Qué tal si pudieras escribir un solo test que envíe 1000 permutaciones de diferentes entradas automáticamente y capture qué entrada hace que código no devuelva la respuesta correcta? Los test basados en propiedades son una técnica que hace exactamente eso: al enviar todas las combinaciones de entrada posibles a la unidad que está siendo testada, aumenta la probabilidad de encontrar un error. Por ejemplo, dado un metodo — addNewProduct(id, name, isDiscount) — las librerias compatibles llamaran a ese metodo con muchas combinaciones (numeros, textos y boleanos) como (1, “iPhone”, false), (2, “Galaxy”, true). Puedes ejecutar test basados en propiedades usando nuestra libreria de esta favorita (Mocha, Jest, etc) como [js-verify](https://github.com/jsverify/jsverify) o [testcheck](https://github.com/leebyron/testcheck-js) (mucho mejor documentada). Actualizado: Nicolas Dubien sugiere en los comentarios [checkout fast-check](https://github.com/dubzzz/fast-check#readme) que parece ofecer caracteristicas adicionales y es activamente mantenida.
 <br/>
 
-❌ **De lo contrario:** Unconsciously, you choose the test inputs that cover only code paths that work well. Unfortunately, this decreases the efficiency of testing as a vehicle to expose bugs
+❌ **De lo contrario:** Inconscientemente, eliges los datos de entradas para tus test que cubren solo las ramas de código que funcionan bien. Desafortunadamente, esto disminuye la eficiencia de los test como vehículo para detectar errores.
 
 <br/>
 
@@ -432,7 +432,7 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Testing many input permutations with “fast-check”
+### :clap: Ejemplo de cómo hacerlo correctamente: Testear muchos datos de entrada permutados con “fast-check”
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
@@ -441,7 +441,7 @@ import fc from "fast-check";
 
 describe("Product service", () => {
   describe("Adding new", () => {
-    //this will run 100 times with different random properties
+    //esto ejecutara 100 veces con diferentes prodiedades al azar
     it("Add new product with random yet valid properties, always successful", () =>
       fc.assert(
         fc.property(fc.integer(), fc.string(), (id, name) => {
@@ -456,16 +456,16 @@ describe("Product service", () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.8 If needed, use only short & inline snapshots
+## ⚪ ️ 1.8 Si lo necesitas, usa solo snapshots cortos y en el propio test
 
-:white_check_mark: **Haz:** When there is a need for [snapshot testing](https://jestjs.io/docs/en/snapshot-testing), use only short and focused snapshots (i.e. 3-7 lines) that are included as part of the test ([Inline Snapshot](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots)) and not within external files. Keeping this guideline will ensure your tests remain self-explanatory and less fragile.
+:white_check_mark: **Haz:** Cuando hay necesidad de usar [snapshot testing](https://jestjs.io/docs/es-ES/snapshot-testing), usa solo snapshots cortos y bien enfocados (por ejemplo 3-7 lineas) y que esten incluidos en el propio test ([Inline Snapshot](https://jestjs.io/docs/es-ES/snapshot-testing#inline-snapshots)) y no como ficheros externos. Mantener esta dirección te garantiza que tus test se explican por si mismos y a la vez que sean menos fragiles.
 
-On the other hand, ‘classic snapshots’ tutorials and tools encourage to store big files (e.g. component rendering markup, API JSON result) over some external medium and ensure each time when the test run to compare the received result with the saved version. This, for example, can implicitly couple our test to 1000 lines with 3000 data values that the test writer never read and reasoned about. Why is this wrong? By doing so, there are 1000 reasons for your test to fail - it’s enough for a single line to change for the snapshot to get invalid and this is likely to happen a lot. How frequently? for every space, comment or minor CSS/HTML change. Not only this, the test name wouldn’t give a clue about the failure as it just checks that 1000 lines didn’t change, also it encourages to the test writer to accept as the desired true a long document he couldn’t inspect and verify. All of these are symptoms of obscure and eager test that is not focused and aims to achieve too much
+Por otro lado, los tutoriales y herramientas basados en ‘classic snapshots’ tienden a guardar ficheros muy grandes en medios externos (por ejemplo component rendering markup, API JSON result) cada vez que se ejecutan los test para comparar los resultados recividos con la version guardada. Esto, por ejemplo, puede aosciar nuestro test a 1000 lineas con 3000 valores de datoa que quien este escribiendo test jamas leera ni razonará. ¿Por qué está mal esto? Al hacerlo, hay 1000 razones para que tu test falle - tan solo el cambio de una linea de código es suficiente para que el snapshoot se invalide y es muy probable que esto ocurra a menudo. ¿Como de frecuente? cada espacio, comentatio o pequeño cambio de css/html. Y no solo eso, el nombre del test no nos va a dar ni una sola pista de que está fallando, solo verifica que esas 1000 lineas han cambiado. Además obliga a quien escribe los test a asumir como correcto un fichero enorme que no ha podido inspeccionar y corroborar. Todo estos son sintomas de una prueba oscura que no está bien enfocada y trata de cubrir demasiadas cosas a la vez
 
-It’s worth noting that there are few cases where long & external snapshots are acceptable - when asserting on schema and not data (extracting out values and focusing on fields) or when the received document rarely changes
+Vale la pena señalar que hay algunos casos en los que los snapshoots grandes y externos son buenos - cuando comporbamos el esquema y no los datos (ignorando los valores y centrandonos en los campos) o en los casos en el que el documento no va a cambiar apenas en el tiempo.
 <br/>
 
-❌ **De lo contrario:** A UI test fails. The code seems right, the screen renders perfect pixels, what happened? your snapshot testing just found a difference from the origin document to current received one - a single space character was added to the markdown...
+❌ **De lo contrario:** Un test UI falla. El codigo parece correcto, la pantalla esta pintando todos los pixels correctamente, ¿que ha pasado? tu test de snapshoot ha encontrado una diferencia entre el origen y lo que ha recibido al ejecutarse: simplemente hay un espacio añadido en cualquier parte... 
 
 <br/>
 
@@ -473,40 +473,40 @@ It’s worth noting that there are few cases where long & external snapshots are
 
 <br/>
 
-### :thumbsdown: Ejemplo Anti Patrón: Coupling our test to unseen 2000 lines of code
+### :thumbsdown: Ejemplo Anti Patrón: Acoplando nuestro test a un fichero no revisado de 2000 lineas de código
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
 ```javascript
 it("TestJavaScript.com is renderd correctly", () => {
-  //Arrange
+  //Arreglar
 
-  //Act
+  //Actuar
   const receivedPage = renderer
     .create(<DisplayPage page="http://www.testjavascript.com"> Test JavaScript </DisplayPage>)
     .toJSON();
 
-  //Assert
+  //Afirmar
   expect(receivedPage).toMatchSnapshot();
-  //We now implicitly maintain a 2000 lines long document
-  //every additional line break or comment - will break this test
+  //Ahora nosotros implicitamente mantenemos un fichero de 2000 lineas
+  //cada salto de linea o comentario añadido van a romper nuestro test
 });
 ```
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Expectations are visible and focused
+### :clap: Ejemplo de cómo hacerlo correctamente: Lo experado es visible y esta enfocado
 
 ```javascript
 it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
-  //Arrange
+  //Arreglar
 
-  //Act
+  //Actuar
   const receivedPage = renderer
     .create(<DisplayPage page="http://www.testjavascript.com"> Test JavaScript </DisplayPage>)
     .toJSON();
 
-  //Assert
+  //Afirmar
 
   const menu = receivedPage.content.menu;
   expect(menu).toMatchInlineSnapshot(`
