@@ -523,12 +523,13 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/><br/>
 
-## ⚪ ️1.9 Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️1.9 Evitar fixtures globales y seeds, añade datos por cada test
 
-:white_check_mark: **Haz:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests ([also known as ‘test fixture’](https://en.wikipedia.org/wiki/Test_fixture)) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
+:white_check_mark: **Haz:** Siguiendo la regla de oro (sección 0), cada test debe añadir y actuar en su propio conjunto de filas DB para evitar el acoplamiento y poder razonar fácilmente sobre el flujo del test. En realidad esto es a menudo ignorado por los desarroladores de test que siembran la DB con datos antes de ejecutar las pruebas ([tambien conocido como ‘test fixture’](https://en.wikipedia.org/wiki/Test_fixture)) a favor de mejorar el rendimiento. Si bien el rendimiento es una preocupación válida — puede mitigarse de otras formas (consulte la sección "test de componentes"), sin embargo, la complegidad del test es más dolorosa que otras consideraciones la mayoria de las veces. De manera practica, haga que cada test añada explicitamente los registros que necesitas y actua sobre ellos. Si el rendimiento se convierte en algo critico — se puede llegar al compromiso de utilizar los mismos datos en un conjunto de test siempre que no se muten los datos (por ejemplo en queries).
+
 <br/>
 
-❌ **De lo contrario:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
+❌ **De lo contrario:** FMuchos test fallaran, un despliegue se aborta, nuestro equipo perdera mucho tiempo, ¿tenemos un bug? vamos a investigar, ah no — parece que dos test estan mutando el mismo dato
 
 <br/>
 
@@ -536,36 +537,36 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/>
 
-### :thumbsdown: Ejemplo Anti Patrón: tests are not independent and rely on some global hook to feed global DB data
+### :thumbsdown: Ejemplo Anti Patrón: tests no son independientes y dependenden de una inserción global de datos en la DB
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha")
 
 ```javascript
 before(async () => {
-  //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
+  //añadiendo datos de sites y admin a nuestra DB. ¿Donde estan los datos? fuera. En un json extermo o en un modelo da migración
   await DB.AddSeedDataFromJson('seed.json');
 });
 it("When updating site name, get successful confirmation", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+  //Se que el nombre de site "portal" existe, — lo he visto en seed.json
   const siteToUpdate = await SiteService.getSiteByName("Portal");
   const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
   expect(updateNameResult).to.be(true);
 });
 it("When querying by site name, get the right site", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+  //Se que el nombre de site "portal" existe, — lo he visto en seed.json
   const siteToCheck = await SiteService.getSiteByName("Portal");
-  expect(siteToCheck.name).to.be.equal("Portal"); //Failure! The previous test change the name :[
+  expect(siteToCheck.name).to.be.equal("Portal"); //Fallo! El test anterior ha cambiado el nombre :[
 });
 
 ```
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: We can stay within the test, each test acts on its own set of data
+### :clap: Ejemplo de cómo hacerlo correctamente: Podemos permanecer dentro de nuestro test, cada test actua sobre su propio conjunto de datos
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
-  //test is adding a fresh new records and acting on the records only
+  //el test esta añadiendo registors nuevos cada vez y actuando solo en esos registros
   const siteUnderTest = await SiteService.addSite({
     name: "siteForUpdateTest"
   });
