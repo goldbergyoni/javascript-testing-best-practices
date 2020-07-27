@@ -771,12 +771,15 @@ Una advertencia: el TDD en el mundo del software adopta una cara de falsa dicoto
 
 ## ⚪ ️2.2 Component testing might be your best affair
 
-:white_check_mark: **Haz:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung song of the testing world — they provide the best from both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
+:white_check_mark: **Haz:** 
 
-Component tests focus on the Microservice ‘unit’, they work against the API, don’t mock anything which belongs to the Microservice itself (e.g. real DB, or at least the in-memory version of that DB) but stub anything that is external like calls to other Microservices. By doing so, we test what we deploy, approach the app from outwards to inwards and gain great confidence in a reasonable amount of time.
+Cada test unitario cubre una pequeña parte de la aplicación y cubrirla totalmente cuesta muchisimo, mientras que los test end-to-end cubren facilmente mucho terreno, pero son costosas y más lentas, ¿por qué no aplicar un enfoque equilibrado y escribir test más grandes que test unitarios pero más pequeñas que las pruebas end-to-end? Los test de componente es la canción no cantada del mundo del testing — proporcionan lo mejor de ambos mundos: rendimiento razonable y la posibilidad de aplicar patrones TDD + cobertura realista.
+
+Los test de componente se centran en la 'unidad' de Microservicios, funcionan contra la API, no mockean nada que pertenezca al Microservico en sí (por ejemplo, DB real, o al menos la versión en memoria de esa DB) pero hace stub de cualquier cosa que sea externa como llamadas a otros microservicios. Al hacerlo, probamos lo que desplegamos, nos acercamos a la aplicación de fuera a dentro y obtenemos una gran confianza en un período de tiempo razonable.
+
 <br/>
 
-❌ **De lo contrario:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
+❌ **De lo contrario:** Puedes pasar muchos días escribiendo test unitarios para descubrir que solo tiene un 20% de cobertura del sistema
 
 <br/>
 
@@ -784,7 +787,8 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Supertest allows approaching Express API in-process (fast and cover many layers)
+### :clap: Ejemplo de cómo hacerlo correctamente: Supertest permite acercarse al API Express in-process (rápido y cubre muchas capas)
+
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha")
 
