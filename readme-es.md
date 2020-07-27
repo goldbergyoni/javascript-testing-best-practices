@@ -367,7 +367,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 ## ⚪ ️1.6 No uses “foo”, usa datos realistas
 
-:white_check_mark: **Haz:** A menudo, los errores de producción se revelan bajo una entrada muy específica y sorprendente: cuanto más realista sea la entrada de un test, mayores serán las posibilidades de detectar errores temprano. Utiliza bibliotecas dedicadas como [Faker] (https://www.npmjs.com/package/faker) para generar datos pseudo-reales que se asemejan en variedad y forma a los datos de prodcucción. Por ejemplo, dichas bibliotecas pueden generar números de teléfono realistas, nombres de usuario, tarjetas de crédito, nombres de empresas e incluso texto "lorem ipsum". También puedes crear algunos test (además de los test unitarios, no como un reemplazo) que aleatorizan los datos falsos para estirar la unidad que estamos testeando o incluso importar datos reales de su entorno de producción. ¿Quieres llevarlo al siguiente nivel? Vea la próxima sección (test basados en propiedades).
+:white_check_mark: **Haz:** A menudo, los errores de producción se revelan bajo una entrada muy específica y sorprendente: cuanto más realista sea la entrada de un test, mayores serán las posibilidades de detectar errores temprano. Utiliza librerias dedicadas como [Faker] (https://www.npmjs.com/package/faker) para generar datos pseudo-reales que se asemejan en variedad y forma a los datos de prodcucción. Por ejemplo, dichas librerias pueden generar números de teléfono realistas, nombres de usuario, tarjetas de crédito, nombres de empresas e incluso texto "lorem ipsum". También puedes crear algunos test (además de los test unitarios, no como un reemplazo) que aleatorizan los datos falsos para estirar la unidad que estamos testeando o incluso importar datos reales de su entorno de producción. ¿Quieres llevarlo al siguiente nivel? Vea la próxima sección (test basados en propiedades).
 <br/>
 
 ❌ **De lo contrario:** Todo tus test de desarrollo estaran en falsos verdes cuando uses datos sinteticos como "Foo", pero luego en produccion pueden ponerse en rojo cuando un hacker use cadenas extrañas como “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
@@ -800,7 +800,7 @@ Los test de componente se centran en la 'unidad' de Microservicios, funcionan co
 
 ## ⚪ ️2.3 Ensure new releases don’t break the API using
 
-:white_check_mark: **Haz:** Pongamos que tu Microservicio tiene multiples consumidores, y tenemos en ejecucion diferentes versiones del servicio por compatibilidad (para que todos estén contentos). Luego cambias un campo y "¡boom!", uno de los consumidores que necesita ese campo se cabrea. Este es el Catch-22 del mundo de la integración: es muy difícil para el lado del servidor considerar todas las expectativas de todos los consumidores. Por otro lado, los consumidores no pueden realizar ninguna prueba porque el servidor controla las fechas de release. [Contratos dirigidos por el consumidor y el framework PACT] (https://docs.pact.io/) nacieron para regularizar este proceso con un enfoque muy disruptivo: no es el servidor quien define los test de sí mismo, sino que son los consumidores quienes definen las pruebas de ¡el servidor! PACT puede registrar las expectativas del consumidor y dejarlas en una ubicación compartida, "broker", para que el servidor pueda cogerlas y cumplir con las expectativas y ejecutar cada compilación utilizando la biblioteca PACT para detectar contratos incumplidos — una expectativa de consumidor no cumplida. Al hacerlo, todos los desajustes de la API cliente-servidor se detectan muyt pronto durante la compilación / CI y pueden ahorrarte mucha frustración.
+:white_check_mark: **Haz:** Pongamos que tu Microservicio tiene multiples consumidores, y tenemos en ejecucion diferentes versiones del servicio por compatibilidad (para que todos estén contentos). Luego cambias un campo y "¡boom!", uno de los consumidores que necesita ese campo se cabrea. Este es el Catch-22 del mundo de la integración: es muy difícil para el lado del servidor considerar todas las expectativas de todos los consumidores. Por otro lado, los consumidores no pueden realizar ninguna prueba porque el servidor controla las fechas de release. [Contratos dirigidos por el consumidor y el framework PACT] (https://docs.pact.io/) nacieron para regularizar este proceso con un enfoque muy disruptivo: no es el servidor quien define los test de sí mismo, sino que son los consumidores quienes definen las pruebas de ¡el servidor! PACT puede registrar las expectativas del consumidor y dejarlas en una ubicación compartida, "broker", para que el servidor pueda cogerlas y cumplir con las expectativas y ejecutar cada compilación utilizando la libreria PACT para detectar contratos incumplidos — una expectativa de consumidor no cumplida. Al hacerlo, todos los desajustes de la API cliente-servidor se detectan muyt pronto durante la compilación / CI y pueden ahorrarte mucha frustración.
 
 <br/>
 
@@ -824,10 +824,11 @@ Los test de componente se centran en la 'unidad' de Microservicios, funcionan co
 
 ## ⚪ ️ 2.4 Test your middlewares in isolation
 
-:white_check_mark: **Haz:** Many avoid Middleware testing because they represent a small portion of the system and require a live Express server. Both reasons are wrong — Middlewares are small but affect all or most of the requests and can be tested easily as pure functions that get {req,res} JS objects. To test a middleware function one should just invoke it and spy ([using Sinon for example](https://www.npmjs.com/package/sinon)) on the interaction with the {req,res} objects to ensure the function performed the right action. The library [node-mock-http](https://www.npmjs.com/package/node-mocks-http) takes it even further and factors the {req,res} objects along with spying on their behavior. For example, it can assert whether the http status that was set on the res object matches the expectation (See example below)
+:white_check_mark: **Haz:** Muchos evitan los test de middleware porque representan una pequeña porción del sistema y requieren ejecutar un servidor Express. Ambas razones son incorrectas — los middlewares son pequeños pero afectan a todas o la mayoría de las solicitudes y pueden testearse fácilmente como funciones puras que obtienen {req, res} objetos JS. Para testear una función de middleware se debe invocar y usar spy ([usando Sinon, por ejemplo] (https://www.npmjs.com/package/sinon)) sobre la interacción con los objetos {req, res} para garantizar que nuestra función middleware realiz la acción correcta. La libreria [node-mock-http] (https://www.npmjs.com/package/node-mocks-http) lo lleva aún más lejos y factoriza los objetos {req, res} ademas de añadir el spy. Por ejemplo, puede afirmar si el estado http que se estableció en el objeto res coincide con el esperado (consulta el ejemplo a continuación)
+
 <br/>
 
-❌ **De lo contrario:** A bug in Express middleware === a bug in all or most requests
+❌ **De lo contrario:** Un bug en un middleware de Express === un bug todas o casi todas las peticiones
 
 <br/>
 
@@ -835,15 +836,15 @@ Los test de componente se centran en la 'unidad' de Microservicios, funcionan co
 
 <br/>
 
-### :clap:Ejemplo de cómo hacerlo correctamente: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
+### :clap:Ejemplo de cómo hacerlo correctamente: Probar un middleware de forma aislada sin emitir llamadas de red y evitar tener que levantar Express
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
 ```javascript
-//the middleware we want to test
+//ek middleware que queremos testear
 const unitUnderTest = require("./middleware");
 const httpMocks = require("node-mocks-http");
-//Jest syntax, equivelant to describe() & it() in Mocha
+//Sintaxis de Jest, equivalente a describe() e it() en Mocha
 test("A request without authentication header, should return http status 403", () => {
   const request = httpMocks.createRequest({
     method: "GET",
