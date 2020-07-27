@@ -666,13 +666,13 @@ describe("Order service", function() {
 
 <br/><br/>
 
-## ⚪ ️ 1.12 Categorize tests under at least 2 levels
+## ⚪ ️ 1.12 Categoriza los test en al menos 2 niveles
 
-:white_check_mark: **Haz:** Apply some structure to your test suite so an occasional visitor could easily understand the requirements (tests are the best documentation) and the various scenarios that are being tested. A common method for this is by placing at least 2 'describe' blocks above your tests: the 1st is for the name of the unit under test and the 2nd for additional level of categorization like the scenario or custom categories (see code examples and prtscn below). Doing so will also greatly improve the test reports: The reader will easily infer the tests categories, delve into the desired section and correlate failing tests. In addition, it will get much easier for a developer to navigate through the code of a suite with many tests. There are multiple alternative structures for test suite that you may consider like [given-when-then](https://github.com/searls/jasmine-given) and [RITE](https://github.com/ericelliott/riteway)
+:white_check_mark: **Haz:** Aplique cierta estructura a su conjunto de test para que un visitante ocasional pueda comprender facilmente los requisitos (los test siempre son la mejor documentación) y los diversos escenarios que estamos testeando. Una practica comun para esto es crear al menos 2 bloques 'describe' antes de tus test: el primero es para el nombre de la unidad que está siendo testeada y el segundo es para un nivel adicional de categorización como el escenario o las categorias personalizadas (ver ejemplos de código y pantallazos más abajo). Hacerlo también mejorará los reportes de los test: quien los lea deducirá facilmente las categorias de los test, profundizará en aquellas que lo desee y podrá relacionar mejor los test fallidos. Además, será mucho más fácil para un desarollador navegar a traves del codigo de un cojunto de test amplio. Existen múltiples formas de estructurar tus test que deben ser consideradas, como [given-when-then](https://github.com/searls/jasmine-given) y [RITE](https://github.com/ericelliott/riteway)
 
 <br/>
 
-❌ **De lo contrario:** When looking at a report with flat and long list of tests, the reader have to skim-read through long texts to conclude the major scenarios and correlate the commonality of failing tests. Consider the following case: When 7/100 tests fail, looking at a flat list will demand reading the failing tests text to see how they relate to each other. However, in an hierarchical report all of them could be under the same flow or category and the reader will quickly infer what or at least where is the root failure cause
+❌ **De lo contrario:** Cuando nos enfrentamos a un reporte con una lista plana de test, tendremos que leer rápidamente textos largos para determinar los escenarios principales y relacionar los test fallidos. Considera el siguiente caso: Cuando 7/100 test fallan, revisar una lista plana te exige leer el tesxto de las pruebas que fallan para ver como se relacionan entre ellas y que tienen en común. Sin embargo, en un informe jerarquizado, si los 7 estan bajo un mismo flujo o categoria, puedes saber rápidamente cual o donde puede estar la causa raiz del fallo
 
 <br/>
 
@@ -680,19 +680,19 @@ describe("Order service", function() {
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Structuring suite with the name of unit under test and scenarios will lead to the convenient report that is shown below
+### :clap: Ejemplo de cómo hacerlo correctamente: Estructurando un conjunto de test con el nombre de la unidad testada y los escenarios nos conducirá al reporte que se muestra a continuación
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Jest")
 
 ```javascript
-// Unit under test
+// Unida que se está testeando
 describe("Transfer service", () => {
-  //Scenario
+  //Escenario
   describe("When no credit", () => {
-    //Expectation
+    //Esperado
     test("Then the response status should decline", () => {});
 
-    //Expectation
+    //Esperado
     test("Then it should send email to admin", () => {});
   });
 });
@@ -702,7 +702,7 @@ describe("Transfer service", () => {
 
 <br/>
 
-### :thumbsdown: Ejemplo Anti Patrón: A flat list of tests will make it harder for the reader to identify the user stories and correlate failing tests
+### :thumbsdown: Ejemplo Anti Patrón: Una lista plana de test hará mas dificil a quien lo lea el identificat las historias de usuario y detectar los test que estan fallando
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Ejemplos con Mocha")
 
