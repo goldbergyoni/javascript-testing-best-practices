@@ -581,14 +581,15 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/>
 
-## ⚪ ️ 1.10 Don’t catch errors, expect them
+## ⚪ ️ 1.10 No capures errores, esperalos
 
-:white_check_mark: **Haz:** When trying to assert that some input triggers an error, it might look right to use try-catch-finally and asserts that the catch clause was entered. The result is an awkward and verbose test case (example below) that hides the simple test intent and the result expectations
+:white_check_mark: **Haz:** Cuando queremos comprobar que una entrada lanza un error, nos puede parecer correcto usar try-catch-finally y afirmar que se entra por el catch. El resultado es un test incomodo y verboso (ejemplo a continuación) que nos oculta la intencion de un test muy simple y las expectativas del resultado
 
-A more elegant alternative is the using the one-line dedicated Chai assertion: expect(method).to.throw (or in Jest: expect(method).toThrow()). It’s absolutely mandatory to also ensure the exception contains a property that tells the error type, otherwise given just a generic error the application won’t be able to do much rather than show a disappointing message to the user
+Una alternativa más elegante seria usar solo la aserción de una sola linea que tiene Chai: expect(method).to.throw (o en Jest: expect(method).toThrow()). Es totalmente obligatorio también asegurarse de que la excepción contenga una propiedad que indique el tipo de error, de lo contratio, lanzando solo un error generico, la app no podra hacer mucho mas que mostrarle un error decepcionante para el usuario
+
 <br/>
 
-❌ **De lo contrario:** It will be challenging to infer from the test reports (e.g. CI reports) what went wrong
+❌ **De lo contrario:** Sería muy dificil deducir a partir de los informes de test (por ejemplo, informe de CI) que es lo que ha salido mal
 
 <br/>
 
@@ -596,7 +597,7 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 
 <br/>
 
-### :thumbsdown: Ejemplo Anti Patrón: A long test case that tries to assert the existence of error with try-catch
+### :thumbsdown: Ejemplo Anti Patrón: Un test largo que trata de afirmar la existencia de un error con try-catch
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha")
 
@@ -610,14 +611,14 @@ it("When no product name, it throws error 400", async () => {
     errorWeExceptFor = error;
   }
   expect(errorWeExceptFor).not.to.be.null;
-  //if this assertion fails, the tests results/reports will only show
-  //that some value is null, there won't be a word about a missing Exception
+  //si esta afirmación falla, el resultado/reporte del testsolo mostrará
+  //que algunos valores es null, no se monstrara que falta una excepción
 });
 ```
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: A human-readable expectation that could be understood easily, maybe even by QA or technical PM
+### :clap: Ejemplo de cómo hacerlo correctamente: Una afirmacion legible para una persona puede ser comprendida facilmente, tanto por el QA como por el PM
 
 ```javascript
 it("When no product name, it throws error 400", async () => {
