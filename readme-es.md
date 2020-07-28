@@ -972,11 +972,11 @@ it("When updating site name, get successful confirmation", async () => {
 
 ## ⚪ ️ 3.1 Separate UI from functionality
 
-:white_check_mark: **Haz:** When focusing on testing component logic, UI details become a noise that should be extracted, so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only the back part of the UI (e.g. services, actions, store) but this will result in fictional tests that don't resemble the reality and won't reveal cases where the right data doesn't even arrive in the UI
+:white_check_mark: **Haz:** Al centrarnos en testear la lógica del component, los detalles de la interfaz de usuario solo pueden entorpecernos, por lo qu debes abstraerte de ellos y que los test se centren en datos puros. En la practica, extrae los datos que necesites de una manera abstracta sin que este acoplada a la interfaz grafica, haz aserciones de los datos puros (vs detalles visuales en HTML/CSS) y desactiva las animaciones que pueden hacer lenta la interfaz. En este punto podrias pensar en desactivar la interfaz y solo hacer test de la parte back del UI (por ejemplo servicios, acciones, store) pero esto solo dará como resultado test ficticios, diferentes a la realidad y no desvelaran casos en los que los datos correctos no llegan a la interfaz de usuario.
 
 <br/>
 
-❌ **De lo contrario:** The pure calculated data of your test might be ready in 10ms, but then the whole test will last 500ms (100 tests = 1 min) due to some fancy and irrelevant animation
+❌ **De lo contrario:** Los datos calculados puros de tu test pueden estar listos en 10ms, pero luego todo el test tarda 500ms (100 tests = 1 min) debido a alguna animación irrelevante
 
 <br/>
 
@@ -984,38 +984,38 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Separating out the UI details
+### :clap: Ejemplo de cómo hacerlo correctamente: Separar los detalles de UI
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Ejemplos con React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Ejemplos con react-testing-library")
 
 ```javascript
 test("When users-list is flagged to show only VIP, should display only VIP members", () => {
-  // Arrange
+  // Arreglar
   const allUsers = [{ id: 1, name: "Yoni Goldberg", vip: false }, { id: 2, name: "John Doe", vip: true }];
 
-  // Act
+  // Actuar
   const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true} />);
 
-  // Assert - Extract the data from the UI first
+  // Afirmar - Extrae los datos de la UI primero
   const allRenderedUsers = getAllByTestId("user").map(uiElement => uiElement.textContent);
   const allRealVIPUsers = allUsers.filter(user => user.vip).map(user => user.name);
-  expect(allRenderedUsers).toEqual(allRealVIPUsers); //compare data with data, no UI here
+  expect(allRenderedUsers).toEqual(allRealVIPUsers); //compara datos con datos, aqui no hay UI
 });
 ```
 
 <br/>
 
-### :thumbsdown: Ejemplo Anti Patrón: Assertion mix UI details and data
+### :thumbsdown: Ejemplo Anti Patrón: Mezcla de datos y detalles de la UI en las aserciones
 
 ```javascript
 test("When flagging to show only VIP, should display only VIP members", () => {
-  // Arrange
+  // Arreglar
   const allUsers = [{ id: 1, name: "Yoni Goldberg", vip: false }, { id: 2, name: "John Doe", vip: true }];
 
-  // Act
+  // Actuar
   const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true} />);
 
-  // Assert - Mix UI & data in assertion
+  // Afirmar - Mezcla de UI y datos en las aserciones
   expect(getAllByTestId("user")).toEqual('[<li data-testid="user">John Doe</li>]');
 });
 ```
