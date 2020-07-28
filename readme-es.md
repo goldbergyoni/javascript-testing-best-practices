@@ -1024,13 +1024,13 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 <br/><br/>
 
-## ⚪ ️ 3.2 Query HTML elements based on attributes that are unlikely to change
+## ⚪ ️ 3.2 Consulta elementos HTML basandote en atributos que no deberian cambiar
 
-:white_check_mark: **Haz:** Query HTML elements based on attributes that are likely to survive graphic changes unlike CSS selectors and like form labels. If the designated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your functional/logic tests never break because of look & feel changes but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
+:white_check_mark: **Haz:** Consulta elementos HTML basandote en attributos que deberian permanecer intactos a cambios graficos al contrario que selectores CSS y etiquetas de los formularios. Si el elemento designado no tiene esos attributos, crea un atributo dedicado solamente a los test como 'test-id-submit-button'. Seguir este patron no solo asegura que tus test funcionales/logicos no se rompan nunca por cambios esteticos, sino que tambien queda claro a cualquier desarrollador que ese elemento y atributo estan ahi por y para los test y no deben eliminarse
 
 <br/>
 
-❌ **De lo contrario:** You want to test the login functionality that spans many components, logic and services, everything is set up perfectly - stubs, spies, Ajax calls are isolated. All seems perfect. Then the test fails because the designer changed the div CSS class from 'thick-border' to 'thin-border'
+❌ **De lo contrario:** Quieres testear el login de tu app que tiene muchos componentes, lógica, servicios, y todo esta bien configurado - stubs, spies, las llamadas Ajax estan aisladas. All seems perfect. Entonces el test falla porque el diseñador ha cambiado la clase de un div de 'thick-border' a 'thin-border'
 
 <br/>
 
@@ -1038,7 +1038,7 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Querying an element using a dedicated attrbiute for testing
+### :clap: Ejemplo de cómo hacerlo correctamente: Consultar un elemento utilizando un atributo solo para testing
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Ejemplos con React")
 
@@ -1053,12 +1053,12 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 ```
 
 ```javascript
-// this example is using react-testing-library
+// este ejemplo está usando react-testing-library
 test("Whenever no data is passed to metric, show 0 as default", () => {
-  // Arrange
+  // Arreglar
   const metricValue = undefined;
 
-  // Act
+  // Actuar
   const { getByTestId } = render(<dashboardMetric value={undefined} />);
 
   expect(getByTestId("errorsLabel").text()).toBe("0");
@@ -1067,7 +1067,7 @@ test("Whenever no data is passed to metric, show 0 as default", () => {
 
 <br/>
 
-### :thumbsdown: Ejemplo Anti Patrón: Relying on CSS attributes
+### :thumbsdown: Ejemplo Anti Patrón: Confiando en attributos CSS
 
 ```html
 <!-- the markup code (part of React component) -->
@@ -1076,7 +1076,7 @@ test("Whenever no data is passed to metric, show 0 as default", () => {
 ```
 
 ```javascript
-// this exammple is using enzyme
+// este ejemplo está usando enzyme
 test("Whenever no data is passed, error metric shows zero", () => {
   // ...
 
