@@ -267,7 +267,7 @@ it("When asking for an admin, ensure only ordered admins in results", () => {
 
 ## ⚪ ️ 1.4 Acercarse al testing caja-negra: Testea solo metodos publicos
 
-:white_check_mark: **Haz:** Testear las partes internas suele traer un gasto extra enorme para muy poco beneficio. Si tu código/API comprueba todo los resultado correctamente, ¿deberias perder las proximas 3 horas en comprobar como esta funcionando internamente y despues mantener esos test tan fragiles? Cada vez que se comprueba un comportamiento publico, la implementacion privada es implicitamente testeada y tus test se romperan solo si hay un problema concreto (por ejemplo una salida incorrecta). Este enfoque tambien es conocido como `behavioral testing` (testing de comportamiento). Por otro lado, si se testean las partes internas (caja blanca) tu enfoque cambia de planificar la salida del componente a detalles minusculos, y tus test pueden romperse debido a refactors de código menores sin que se rompan los test de salida, por lo que aumenta tremendamente el mantenimiento de los mismos.<br/>
+:white_check_mark: **Haz:** Testear las partes internas suele traer un gasto extra enorme para muy poco beneficio. Si tu código/API comprueba todo los resultado correctamente, ¿deberias perder las proximas 3 horas en comprobar como esta funcionando internamente y despues mantener esos test tan fragiles? Cada vez que se comprueba un comportamiento publico, la implementacion privada es implicitamente testeada y tus test se romperan solo si hay un problema concreto (por ejemplo una salida incorrecta). Este enfoque tambien es conocido como `behavioral testing` (testing de comportamiento). Por otro lado, si se testean las partes internas (caja-blanca) tu enfoque cambia de planificar la salida del componente a detalles minusculos, y tus test pueden romperse debido a refactors de código menores sin que se rompan los test de salida, por lo que aumenta tremendamente el mantenimiento de los mismos.<br/>
 
 ❌ **De lo contrario:** Tus test se comportaran como la fabula [que viene el lobo](https://es.wikipedia.org/wiki/El_pastor_mentiroso): gritando falsos positivos (por ejemplo, un test dalla por que se cambio el nombre a una variable provada). Como es de esperar, la gente empezara a ingnorar estos test hasta que un día ignoren un test de verdad...
 
@@ -1088,15 +1088,15 @@ test("Whenever no data is passed, error metric shows zero", () => {
 
 <br/>
 
-## ⚪ ️ 3.3 Whenever possible, test with a realistic and fully rendered component
+## ⚪ ️ 3.3 Siempre que sea posible, testea con un componente real y totalmente renderizado
 
-:white_check_mark: **Haz:** Whenever reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet 'Favour blackbox testing'). If one of the child components is significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
+:white_check_mark: **Haz:** Siempre que tenga un tamaño razonable, testea tu componente como lo hacen tus usuarios, renderiza completamente la interfaz de usuario, actúa sobre ella y comprueba que la interfaz se comporta como esperabas. Evita todo tipo de mocks, partials o shadow rendering - hacerlo puede provocar bugs no detectados debido a la falta de detalles y dificultará el mantenimiento a medida que los test interfieren con las partes internas (consulte la sección 'Acercarse al testing caja-negra'). Si uno de los componentes hijos ralentiza significativamente tu test (por ejemplo por una animación) o complica el setup, considera reemplazarlo explícitamente por un fake
 
-With all that said, a word of caution is in order: this technique works for small/medium components that pack a reasonable size of child components. Fully rendering a component with too many children will make it hard to reason about test failures (root cause analysis) and might get too slow. In such cases, write only a few tests against that fat parent component and more tests against its children
+Con todo esto tambien es necesario tener ciertas precauciones: esta técnica funciona para componentes pequeños / medianos que contienen un número razonable de componentes hijos. Renderizar completamente un componente con demasiados hijos hará que sea difícil analizar los fallos de los test (análisis de causa raíz) y puede ser demasiado lento. En estos casos, escribe los menos test que necesites contra ese componente principal y más test contra sus hijos
 
 <br/>
 
-❌ **De lo contrario:** When poking into a component's internal by invoking its private methods, and checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have a capacity for this level of maintenance?
+❌ **De lo contrario:** Al hurgar en las partes internas de un componente, invocando sus metodos privados y verificando el estado interno - tendras que refactorizar todos los test siempre que refactorices los componentes ¿Realmente quieres dedicar ese tiempo en hacer este mantenimiento?
 
 <br/>
 
@@ -1104,7 +1104,7 @@ With all that said, a word of caution is in order: this technique works for smal
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Working realstically with a fully rendered component
+### :clap: Ejemplo de cómo hacerlo correctamente: Trabajando con un componente totalmente renderizado
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Ejemplos con React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg "Ejemplos con Enzyme")
 
@@ -1124,35 +1124,36 @@ class Calendar extends React.Component {
 
 //Examples use React & Enzyme
 test("Realistic approach: When clicked to show filters, filters are displayed", () => {
-  // Arrange
+  // Arreglar
   const wrapper = mount(<Calendar showFilters={false} />);
 
-  // Act
+  // Actuar
   wrapper.find("button").simulate("click");
 
-  // Assert
+  // Afirmar
   expect(wrapper.text().includes("Choose Filter"));
-  // This is how the user will approach this element: by text
+  // Así es como el usuario abordará este elemento: por texto
 });
 ```
 
-### :thumbsdown: Ejemplo Anti Patrón: Mocking the reality with shallow rendering
+### :thumbsdown: Ejemplo Anti Patrón: Mockeando con renderizado superficial (shallow rendering)
 
 ```javascript
 test("Shallow/mocked approach: When clicked to show filters, filters are displayed", () => {
-  // Arrange
+  // Arreglar
   const wrapper = shallow(<Calendar showFilters={false} title="Choose Filter" />);
 
-  // Act
+  // Actuar
   wrapper
     .find("filtersPanel")
     .instance()
     .showFilters();
-  // Tap into the internals, bypass the UI and invoke a method. White-box approach
+  // Aprovecha las partes internas, saltandote la UI e invocando el metodo ditectamente. 
+  // Aproximación caja-blanca
 
-  // Assert
+  // Afirmar
   expect(wrapper.find("Filter").props()).toEqual({ title: "Choose Filter" });
-  // what if we change the prop name or don't pass anything relevant?
+  // ¿Qué pasa si cambiamos el nombre de la prop o si no pasamos nada relevante?
 });
 ```
 
