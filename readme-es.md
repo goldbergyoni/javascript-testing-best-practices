@@ -889,12 +889,12 @@ Crédito: <a href="https://github.com/TheHollidayInn" data-href="https://github.
 
 <br/><br/>
 
-## ⚪ ️ 2.6 Check your readiness for Node-related chaos
+## ⚪ ️ 2.6 Compueba tu predisposicion al caos relacionado con Node
 
-:white_check_mark: **Haz:** Weirdly, most software testings are about logic & data only, but some of the worst things that happen (and are really hard to mitigate) are infrastructural issues. For example, did you ever test what happens when your process memory is overloaded, or when the server/process dies, or does your monitoring system realizes when the API becomes 50% slower?. To test and mitigate these type of bad things — [Chaos engineering](https://principlesofchaos.org/) was born by Netflix. It aims to provide awareness, frameworks and tools for testing our app resiliency for chaotic issues. For example, one of its famous tools, [the chaos monkey](https://github.com/Netflix/chaosmonkey), randomly kills servers to ensure that our service can still serve users and not relying on a single server (there is also a Kubernetes version, [kube-monkey](https://github.com/asobti/kube-monkey), that kills pods). All these tools work on the hosting/platform level, but what if you wish to test and generate pure Node chaos like check how your Node process copes with uncaught errors, unhandled promise rejection, v8 memory overloaded with the max allowed of 1.7GB or whether your UX stays satisfactory when the event loop gets blocked often? to address this I’ve written, [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha) which provides all sort of Node-related chaotic acts
+:white_check_mark: **Haz:** Extrañamente, la matroia de los test de software son acerca de logica y datos, pero los errores más grabes (y que son muy dificiles de resolver) son problemas de infraestructura. Por ejemplo, ¿alguna vez has testeado que pasa cuando se sobrecarga la memoria? ¿o cuando el servidor/proceso muere? ¿o tu sitema de monitorización es capar de darse cuenta cuando la API es un 50% más lenta de lo normal? Para probar y evitar este tipo de problemas — [Chaos engineering](https://principlesofchaos.org/) fue creado por Netflix. Su objetivo es proporcionar conciencia, frameworks, y herramientas para testear la resiliencia de nuestras aplicaciones en problmeas caoticos. Por ejemplo, una de las herramientas mas conocidas [the chaos monkey](https://github.com/Netflix/chaosmonkey), mata servidores de forma aleatoria para comprobar si nuestro servicio aun puede dar servicio a los usuarios y asegurar que no depende de un solo servido (hay tambien una version de kubernetes, [kube-monkey](https://github.com/asobti/kube-monkey), que mata pods en vez de servidores. Todas estas herramientas funcionan a nivel de hosting/plataforma, pero ¿qué pasa si deseas probar y generar caos a nivel Node puramente como comprobar como tu proceso Node hace frente a errores no controlados, o a rejects de promesas no capturados, o sobrecarga de la memoeria de v8 por encima del máximo de 1.7GB o si la UX sigue siendo bueno si se satura el event loop? Para todo esto he escrito [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha) que proporciona todo tipo de formas de crear el caos en Node
 <br/>
 
-❌ **De lo contrario:** No escape here, Murphy’s law will hit your production without mercy
+❌ **De lo contrario:** No hay escapatoria, la ley de Murphy afectará a producción sin piedad
 
 <br/>
 
@@ -902,9 +902,9 @@ Crédito: <a href="https://github.com/TheHollidayInn" data-href="https://github.
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
+### :clap: Ejemplo de cómo hacerlo correctamente: : Node-chaos puede generar todo tipo de problemas en Node.js de tal manera que puedas probar la relsiliencia de tu app al caos
 
-![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
+![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos puede generar todo tipo de problemas en Node.js de tal manera que puedas probar la relsiliencia de tu app al caos")
 
 </details>
 
