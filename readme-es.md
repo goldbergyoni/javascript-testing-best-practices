@@ -1397,11 +1397,11 @@ it("When doing smoke testing over all page, should load them all successfully", 
 
 <br/>
 
-## ⚪ ️ 3.10 Expose the tests as a live collaborative document
+## ⚪ ️ 3.10 Exponer los tes como un documento colaborativo vivo
 
-:white_check_mark: **Haz:** Besides increasing app reliability, tests bring another attractive opportunity to the table - serve as live app documentation. Since tests inherently speak at a less-technical and product/UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers and their customers. For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as 'acceptance test' as it allows the customer to define his acceptance criteria in plain language. This is [BDD (behavior-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) at its purest form. One of the popular frameworks that enable this is [Cucumber which has a JavaScript flavor](https://github.com/cucumber/cucumber-js), see example below. Another similar yet different opportunity, [StoryBook](https://storybook.js.org/), allows exposing UI components as a graphic catalog where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc), see how it looks like, and how to trigger that state - this can appeal also to product folks but mostly serves as live doc for developers who consume those components.
+:white_check_mark: **Haz:** Además de aumentar la confiabilidad de la aplicación, los test te dan otra caracteristica muy atractiva - sirven de documentación viva. Dado que los test hablan en un leguaje menos tecnico y sobre el producto y UX, usar las herramientas correctas puede servir como un artefacto de comunicación que alina en gran medida a desarrolladores y su cliente. Por ejemplo, algunos frameworks permiten expresar el flujo y las expectativas (el test plan) utilizando un lenguaje legible para que cualquier stakeholder, incluyendo los product managers, pueden leer, aprobar y colaborar en los test convirtiendose en el documento de requerimentos vivo. Esta tecnica tambien se la conoce como 'test de aceptación', ya que permite al cliente definir sus criterios de aceptación en un leguaje sencillo. Esto es [BDD (behavior-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) en su forma más pura. Uno de los frameworks más populares para aesto es [Cucumber que tiene su sabor en JavaScript](https://github.com/cucumber/cucumber-js), ver el ejemplo más abajo. Otra forma similar pero diferente, [StoryBook](https://storybook.js.org/), permite exponer los componentes UI como un catalogo grafico, donde cualquiera puede recorrer los diferentes estados de cada componente (por ejemplo renderizar una cuadricula sin filtro, con multiples filas o con ninguna, etc), ver como queda y como se activa ese estado - esto también puede atraer a la gente de producto pero sobre todo siver como documentación viva para los desarrolladores que consumen esos componentes
 
-❌ **De lo contrario:** After investing top resources on testing, it's just a pity not to leverage this investment and win great value
+❌ **De lo contrario:** Despues de invertir los mejores recursos en los test, es una pena no aprovechar ese tiempo y ganar un gran valor como es la documentación
 
 <br/>
 
@@ -1409,12 +1409,12 @@ it("When doing smoke testing over all page, should load them all successfully", 
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Describing tests in human-language using cucumber-js
+### :clap: Ejemplo de cómo hacerlo correctamente: Describiendo test en un lenguaje para humanos usando cucumber-js
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cucumber-blue.svg "Examples using Cucumber")
 
 ```javascript
-// this is how one can describe tests using cucumber: plain language that allows anyone to understand and collaborate
+// así es como se pueden describir los test con cucumber: lenguaje sencillo que permite a cualquiera comprenderlos y colaborar
 
 Feature: Twitter new tweet
 
@@ -1430,9 +1430,9 @@ Feature: Twitter new tweet
 
 ```
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Visualizing our components, their various states and inputs using Storybook
+### :clap: Ejemplo de cómo hacerlo correctamente: Visualizando nuestros componentes, sus diversos estados y entradas usando Storybook
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
+![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Usando StoryBook")
 
 ![alt text](assets/story-book.jpg "Storybook")
 
