@@ -1314,13 +1314,13 @@ test("When no products exist, show the appropriate message", () => {
 
 <br/>
 
-## ⚪ ️ 3.8 Speed-up E2E tests by reusing login credentials
+## ⚪ ️ 3.8 Acelera los test E2E reutilizando las credenciales de login
 
-:white_check_mark: **Haz:** In E2E tests that involve a real backend and rely on a valid user token for API calls, it doesn't payoff to isolate the test to a level where a user is created and logged-in in every request. Instead, login only once before the tests execution start (i.e. before-all hook), save the token in some local storage and reuse it across requests. This seem to violate one of the core testing principle - keep the test autonomous without resources coupling. While this is a valid worry, in E2E tests performance is a key concern and creating 1-3 API requests before starting each individial tests might lead to horrible execution time. Reusing credentials doesn't mean the tests have to act on the same user records - if relying on user records (e.g. test user payments history) than make sure to generate those records as part of the test and avoid sharing their existence with other tests. Also remember that the backend can be faked - if your tests are focused on the frontend it might be better to isolate it and stub the backend API (see bullet 3.6).
+:white_check_mark: **Haz:** En los test E2E que involucren un backend real que usa un token para identicarse en las llamadas a API, no vale la pena aislat el test tanto como para que se cree un usuario y se haga login en cada test. En vez de esto, haz login una vez antes de ejecutar todos los test (en el before-all) guarda el token en de forma local y reutilizalo en cada petición. Esto parece violar unos de los principios básicos - manten los test autonomos sin acoplamiento de recursos. Lo que es cierto, pero en los test E2E el rendimiento es clave, y crear 1-3 peticiones a API antes de empezar cada test individual puede llevarnos a unos tiempos de ejecución horribles. Reutilizar las credenciales no significa que las pruebas tengan que actuar sobre los mismos registros de usuario - si se basan en ellos (por ejemplo, testeando el historial de pagos), asegurate de crear los registro como parte del test y evita compartirlos con otros test. Y siempre recuerda que el backend puede ser sustituido - si tus test estan focalizado en el frontend puede ser mejor aislarlos y descomnectar las API de backend (consulta el punto 3.6)
 
 <br/>
 
-❌ **De lo contrario:** Given 200 test cases and assuming login=100ms = 20 seconds only for logging-in again and again
+❌ **De lo contrario:** Dados 200 test y asumiendo que un login son 100ms = 20 segusdos solo para hacer el mismo login una y otra vez
 
 <br/>
 
@@ -1328,14 +1328,14 @@ test("When no products exist, show the appropriate message", () => {
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Logging-in before-all and not before-each
+### :clap: Ejemplo de cómo hacerlo correctamente: Logandose en before-all y no en before-each
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Usando Cypress para ilustrar la idea")
 
 ```javascript
 let authenticationToken;
 
-// happens before ALL tests run
+// ocurre antes de ejecutar TODOS los test
 before(() => {
   cy.request('POST', 'http://localhost:3000/login', {
     username: Cypress.env('username'),
@@ -1347,7 +1347,7 @@ before(() => {
   })
 })
 
-// happens before EACH test
+// ocurre antes de CADA test
 beforeEach(setUser => () {
   cy.visit('/home', {
     onBeforeLoad (win) {
