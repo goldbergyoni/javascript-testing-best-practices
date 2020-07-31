@@ -1250,13 +1250,13 @@ test("movie title appears", async () => {
 
 <br/>
 
-## ⚪ ️ 3.6 Stub flaky and slow resources like backend APIs
+## ⚪ ️ 3.6 Usa stubs para recursos lentos como el API de back-end
 
-:white_check_mark: **Haz:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practically, instead of real network calls to APIs, use some test double library (like [Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttles requests). Doing this will allow simulating various API behavior that should drive your component behavior as when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
+:white_check_mark: **Haz:** Cuando programas tus test principales (no los test E2E), evita interactuar con cualquier recurse que este fuera de tu responsabilidad y control, como las API de back-end y usar stubs en su lugar (es decir, un doble de test). De forma practica, en vez de hacer llamadas de red reales al API, utiliza alguna libreria (como [Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble), etc) para stubear las repuestas de API. El principal beneficio es evitar la inestabilidad - testeando o suplantando APIs, por definición, no son muy estables y de vez en cuando fallarán los test, aunque TU componente se comporte bien (en producción generalmente se aceleran las respuestas, pero no esta pensado para hacer test). Hacerlo te permitirá simular varios compartamientos de API que deberían definir el comportamiento de nuestro componente para caminos no felices, por ejemplo cuando no se encuentran datos o cuando API devuelve un error. Por último, pero no por ello menos importante, las peticiones de red hacen más lentos nuestros test
 
 <br/>
 
-❌ **De lo contrario:** The average test runs no longer than few ms, a typical API call last 100ms>, this makes each test ~20x slower
+❌ **De lo contrario:** La media de ejecución de los test no dura más de unos pocos ms, una llamada a API estandar dura 100ms>, lo que lo hace cada test ~20x más lento
 
 <br/>
 
@@ -1264,12 +1264,12 @@ test("movie title appears", async () => {
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Stubbing or intercepting API calls
+### :clap: Ejemplo de cómo hacerlo correctamente: Stubear or interceptar las llamadas a API
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Ejemplos con React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Ejemplos con react-testing-library")
 
 ```javascript
-// unit under test
+// unidad testeada
 export default function ProductsList() {
   const [products, setProducts] = useState(false);
 
@@ -1287,15 +1287,15 @@ export default function ProductsList() {
 
 // test
 test("When no products exist, show the appropriate message", () => {
-  // Arrange
+  // Arreglar
   nock("api")
     .get(`/products`)
     .reply(404);
 
-  // Act
+  // Actuar
   const { getByTestId } = render(<ProductsList />);
 
-  // Assert
+  // Afirmar
   expect(getByTestId("no-products-message")).toBeTruthy();
 });
 ```
