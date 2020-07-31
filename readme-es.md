@@ -1304,13 +1304,13 @@ test("When no products exist, show the appropriate message", () => {
 
 <br/>
 
-## ⚪ ️ 3.7 Have very few end-to-end tests that spans the whole system
+## ⚪ ️ 3.7 Haz muy pocos test end-to-end que abarquen todo el sistema
 
-:white_check_mark: **Haz:** Although E2E (end-to-end) usually means UI-only testing with a real browser (See bullet 3.6), for other they mean tests that stretch the entire system including the real backend. The latter type of tests is highly valuable as they cover integration bugs between frontend and backend that might happen due to a wrong understanding of the exchange schema. They are also an efficient method to discover backend-to-backend integration issues (e.g. Microservice A sends the wrong message to Microservice B) and even to detect deployment failures - there are no backend frameworks for E2E testing that are as friendly and mature as UI frameworks like [Cypress](https://www.cypress.io/) and [Pupeteer](https://github.com/GoogleChrome/puppeteer). The downside of such tests is the high cost of configuring an environment with so many components, and mostly their brittleness - given 50 microservices, even if one fails then the entire E2E just failed. For that reason, we should use this technique sparingly and probably have 1-10 of those and no more. That said, even a small number of E2E tests are likely to catch the type of issues they are targeted for - deployment & integration faults. It's advisable to run those over a production-like staging environment
+:white_check_mark: **Haz:** Aunque E2E (end-to-end) para algunos significa solo hacer test de UI en navegador de verdad (ver el punto 3.6), para otros significa que impliquen todo el sistema, incluido el backend real. Esto es muy valioso ya que te cubren errores de integracion entre el frontend y el backend que pueden ocurrir por diferencias de opinion en el esquema de datos. También son un método eficientes para sacar errores de integración entre backends (por ejemplo, microservicio A envia datos erroneso al microservicio B) e incluso para detectar fallos de despliegue - actualmente no hay herramientas para test E2E solo backend tan amigables y maduras como las de UI como [Cypress](https://www.cypress.io/) y [Pupeteer](https://github.com/GoogleChrome/puppeteer). La desventaja de estos test es su coste alto, tener un entorno configurado con todos los componentes, la fragilidad de los test - si tenemos 50 microservicios, solo con que falle uno, los test E2E fallan. Por estas razones tenmos que usar moderadamente esta tecnica y probablemente tener entre 1 y 10  test de este tipo. Dicho esto, incluso una cantidad pequeña de test E2E es probablemente que detecten el tipo de problemas a los que estan realmente dirigidos: despligue e integración. Es aconsejable que se ejecuten en un entorno lo mas parecido a produción
 
 <br/>
 
-❌ **De lo contrario:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very different than expected
+❌ **De lo contrario:** Pudes invertir mucho en testear la funcionalidad de la UI para darte cuenta demasiado tarde que el backend devuelve un contrato (el esquema de datos con el que la UI trabaja) muy diferente al esperado
 
 <br/>
 
