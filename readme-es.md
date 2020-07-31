@@ -1440,13 +1440,13 @@ Feature: Twitter new tweet
 
 <br/><br/>
 
-## ⚪ ️ 3.11 Detect visual issues with automated tools
+## ⚪ ️ 3.11 Detecta problemas visuales con herramientas automatizadas
 
-:white_check_mark: **Haz:** Setup automated tools to capture UI screenshots when changes are presented and detect visual issues like content overlapping or breaking. This ensures that not only the right data is prepared but also the user can conveniently see it. This technique is not widely adopted, our testing mindset leans toward functional tests but it's the visuals what the user experience and with so many device types it's very easy to overlook some nasty UI bug. Some free tools can provide the basics - generate and save screenshots for the inspection of human eyes. While this approach might be sufficient for small apps, it's flawed as any other manual testing that demands human labor anytime something changes. On the other hand, it's quite challenging to detect UI issues automatically due to the lack of clear definition - this is where the field of 'Visual Regression' chime in and solve this puzzle by comparing old UI with the latest changes and detect differences. Some OSS/free tools can provide some of this functionality (e.g. [wraith](https://github.com/BBC-News/wraith), [PhantomCSS](<[https://github.com/HuddleEng/PhantomCSS](https://github.com/HuddleEng/PhantomCSS)>) but might charge signficant setup time. The commercial line of tools (e.g. [Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) takes is a step further by smoothing the installation and packing advanced features like management UI, alerting, smart capturing by elemeinating 'visual noise' (e.g. ads, animations) and even root cause analysis of the DOM/css changes that led to the issue
+:white_check_mark: **Haz:** Configure herramientas automatizadas para capturar screenshoots de UI cuando se presenten cambios y detecte problemas visuales como contenido superpuesto o roto. Esto garantiza que no solo se muestren los datos correctos si no que el usuario los vea correctamente. Está tecnica no es ampliamente usada, nuestra mentalidad nos lleva a los test funcionales, pero es lo visual lo que el usuario experimenta y con la cantidad de dispositivos es relativamente facil pasar por alto algunos bugs en la UI. Algunas herramientas gratuítas pueden proporcionar lo básico - generar y guardar screenshots para la inspeccion manual por una persona. Mientras este enfoque podria ser suficiente para aplicaciones pequeñas, no es valido como cualquier otro test manual que exige trabajo de una persona cada vez que algo cambia. Por otro lado, es bastante dificil detectar problemas de UI automaticamente debido a que no está claramente deficini - aquí es donde interviene el campo de la 'Regresion Visual' a resolver este rompecabezas de comparar la UI antigua con los últimos cambios y detectar diferencias. Alguas erramientas OSS/gratuitas pueden proporcionar parte de esta funcionalidad (por ejemplo [wraith](https://github.com/BBC-News/wraith), [PhantomCSS](<[https://github.com/HuddleEng/PhantomCSS](https://github.com/HuddleEng/PhantomCSS)>) pero podrian conllevar un tiempo de configuración muy alto. Algunas herramientas comerciales (por ejemplo [Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) dan un paso más reducir la instalacion y contener funciones avanzadas como interfaces de administración, alertas, captura intelegiente que elimina el 'ruido visual' (por ejemplo, banners, animaciones) e incluso llegan a adelantar el analisis de la causa raiz de los cambios del DOM / css que han causado el problema.
 
 <br/>
 
-❌ **De lo contrario:** How good is a content page that display great content (100% tests passed), loads instantly but half of the content area is hidden?
+❌ **De lo contrario:** ¿Como de bien hecha una pagina que muestra buen contendo (100% test ok), carga de forma instantanea pero la mitad del area de contenido está oculto?
 
 <br/>
 
@@ -1454,23 +1454,23 @@ Feature: Twitter new tweet
 
 <br/>
 
-### :thumbsdown: Ejemplo Anti Patrón: A typical visual regression - right content that is served badly
+### :thumbsdown: Ejemplo Anti Patrón: Una regresion visual estandar - contenido correcto que se muestra mal
 
 ![alt text](assets/amazon-visual-regression.jpeg "Amazon page breaks")
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Configuring wraith to capture and compare UI snapshots
+### :clap: Ejemplo de cómo hacerlo correctamente: Configurando wraith para capturar y comparar snapshots de UI
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Wraith-blue.svg "Using Wraith")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Wraith-blue.svg "Usando Wraith")
 
 ```
-​# Add as many domains as necessary. Key will act as a label​
+​# Añade tantos dominios como sea necesario. La key actuará como etiqueta
 
 domains:
   english: "http://www.mysite.com"​
 
-​# Type screen widths below, here are a couple of examples​
+​# escribe los anchos de pantalla a continuación, por ejemplo
 
 screen_widths:
 
@@ -1479,7 +1479,7 @@ screen_widths:
   - 1024​
   - 1280​
 
-​# Type page URL paths below, here are a couple of examples​
+​# escribe las URL de la página a constinuación, por ejemplo
 paths:
   about:
     path: /about
@@ -1489,7 +1489,7 @@ paths:
     path: /subscribe
 ```
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Using Applitools to get snapshot comaprison and other advanced features
+### :clap: Ejemplo de cómo hacerlo correctamente: Usando Applitools para hacer comparación de snapshoots y otras funciones avanzadas
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg "Using AppliTools") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Usando Cypress para ilustrar la idea")
 
