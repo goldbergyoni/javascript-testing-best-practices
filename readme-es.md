@@ -1228,23 +1228,23 @@ test("movie title appears", async () => {
 
 <br/>
 
-## ⚪ ️ 3.5 Watch how the content is served over the network
+## ⚪ ️ 3.5 Observa como se sirve tu contenido a nivel de red
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Google%20LightHouse-blue.svg "Ejemplos con Lighthouse")
 
-✅ **Haz:** Apply some active monitor that ensures the page load under real network is optimized - this includes any UX concern like slow page load or un-minified bundle. The inspection tools market is no short: basic tools like [pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) can be easily configured to watch whether the server is alive and response under a reasonable SLA. This only scratches the surface of what might get wrong, hence it's preferable to opt for tools that specialize in frontend (e.g. [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) and perform richer analysis. The focus should be on symptoms, metrics that directly affect the UX, like page load time, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [time until the page gets interactive (TTI)](https://calibreapp.com/blog/time-to-interactive/). On top of that, one may also watch for technical causes like ensuring the content is compressed, time to the first byte, optimize images, ensuring reasonable DOM size, SSL and many others. It's advisable to have these rich monitors both during development, as part of the CI and most important - 24x7 over the production's servers/CDN
+✅ **Haz:** Usa un monitor que garantize que la carga de la página esté optimizada - esto incluye cualquier problema de UX como descarga lenta o un paquete no minimizado. El mercado de herramientas de este tipo no es pequeño: herramientas basicas como [pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) se puede configurar para ver si el servidor esta corriendo y respondiendo dentro de un SLA razonable. Esto solo rallar la superficie, podria haber muchimas cosas mal, portante es mejor optar por herramientas especializadas en frontend, (por ejemplo [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) y hagan un analis mucho más amplio. El foco debe ponerse en los sintomas y metricas que afecten directamente a UX, como el tiempo de carga, [render mínimo](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [tiempo hasta que la pagina es manejable (TTI)](https://calibreapp.com/blog/time-to-interactive/). Sobre todo esto, tambien debes estar atento a posibles causas tecnicas, como garantizar que el contenido sea comprimido, tiempo hasta el primer byte, optimizar imagenes, asegurar un tamaño del DOM razonable, SSL, y muchos más. Es aconsejable tener toda esta monitorización durante el desarrollo, como parte del CI y mucho más importante - 24x7 en los servidores de producción / CDN
 
 <br/>
 
-❌ **De lo contrario:** It must be disappointing to realize that after such great care for crafting a UI, 100% functional tests passing and sophisticated bundling - the UX is horrible and slow due to CDN misconfiguration
+❌ **De lo contrario:** Es muy decepcionante darse cuenta de que después de haber tenido mucho cuidado y trabajo en crear una interfaz, pasen el 100% de los test funcionales y un pipeline sofisticado - el UX es horrible y lento por culpa de un CDN mal configurado
 
 <br/>
 
 <details><summary>✏ <b>Código de Ejemplo</b></summary>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Lighthouse page load inspection report
+### :clap: Ejemplo de cómo hacerlo correctamente: reporte de carga de la pagina con Lighthouse
 
-![](/assets/lighthouse2.png "Lighthouse page load inspection report")
+![](/assets/lighthouse2.png "Reporte de carga de la pagina con Lighthouse")
 
 </details>
 
