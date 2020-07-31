@@ -1516,19 +1516,19 @@ describe("visual validation", () => {
 
 <br/><br/>
 
-# Section 4️⃣: Measuring Test Effectiveness
+# Section 4️⃣: Midiendo la efectividad de los Test
 
 <br/><br/>
 
-## ⚪ ️ 4.1 Get enough coverage for being confident, ~80% seems to be the lucky number
+## ⚪ ️ 4.1 Completa una cobertura suficiente que de confianza, ~80% parece el numero de la suerte
 
-:white_check_mark: **Haz:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380 than 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) that presumably should satisfy most of the applications.
+:white_check_mark: **Haz:** El proposito de los test es tener suficiente confianza para moverse rápido, obviamente cuando más código se pruebe, más confianza tendremos en el equipo. La cobertura nos mide cuantas lineas de código (y ramas, declaraciones, etc) se alcanzan mediante los test. Entonces, cuanta es suficiente? Obviamente 10-30% es demasiado bajo para tener alguna idea de que puedes tener que corregir, y por otro lado el 100% es muy caro y puede cambiar el foco de los caminos criticos a rincones apenas usados del código. La respuesta larga es que depende de muchos dactores como el tipo de aplicación - si estas construyendo la siguiente generación del Airbus A380 un 100% es obligatorio, pero para una web de dibujos animados, el 50% podria hasta ser demasiado. Aunque la mayoria de los entusiastas de los test dicen que el porcentaje de cobertura correcto es contextual, la mayoria de ellos comentan que el 80% como la regla correcta ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) que posiblemente debería satisfacer la mayotia de aplicaciones.
 
-Implementation tips: You may want to configure your continuous integration (CI) to have a coverage threshold ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) and stop a build that doesn’t stand to this standard (it’s also possible to configure threshold per component, see code example below). On top of this, consider detecting build coverage decrease (when a newly committed code has less coverage) — this will push developers raising or at least preserving the amount of tested code. All that said, coverage is only one measure, a quantitative based one, that is not enough to tell the robustness of your testing. And it can also be fooled as illustrated in the next bullets
+Consejos de implementación: es posible que quieras configurar la integracion continua (CI) para que tenga un umbral de cobertura ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) y que pare el pipeline cuando no cumpla el estandar (también es posible configurar el porcentaje por compoente, vease el ejemplo a continuación). Ademas de esto, deberias considerar detectar la bajada de cobertura (cuando un nuevo commit tiene menos cobertura que antes) - esto empujara a los desarrolladores a aumentar o al menos preservar la cantidad de código con test. Y también puede ser engañado como se puestra en los siguientes puntos.
 
 <br/>
 
-❌ **De lo contrario:** Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear and fear will slow you down
+❌ **De lo contrario:** La confianza y los números van de la mano, sin saber realmente que se ha testeado la mayor parte del sistema - habrá algo de miedo y el miedo te retrasará
 
 <br/>
 
@@ -1536,17 +1536,17 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
-### :clap: Example: A typical coverage report
+### :clap: Example: Un informe de cobertura típico
 
-![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "A typical coverage report")
+![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "Un informe de cobertura típico")
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Setting up coverage per component (using Jest)
+### :clap: Ejemplo de cómo hacerlo correctamente: Configurar cobertura por componente (usando Jest)
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg "Using Jest")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg "Usando Jest")
 
-![alt text](assets/bp-18-code-coverage2.jpeg "Setting up coverage per component (using Jest)")
+![alt text](assets/bp-18-code-coverage2.jpeg "Configurar cobertura por componente (usando Jest)")
 
 </details>
 
