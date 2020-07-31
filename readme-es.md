@@ -1177,7 +1177,7 @@ test("Shallow/mocked approach: When clicked to show filters, filters are display
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: API E2E que se resuelve solo cuando se realizan las operaciones asíncronas (Cypress)
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Usando Cypress para ilustrar la idea")
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Ejemplos con react-testing-library")
 
 ```javascript
@@ -1362,13 +1362,13 @@ beforeEach(setUser => () {
 
 <br/>
 
-## ⚪ ️ 3.9 Have one E2E smoke test that just travels across the site map
+## ⚪ ️ 3.9 Haz un test E2E que navegue toda la página (smoke test)
 
-:white_check_mark: **Haz:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
+:white_check_mark: **Haz:** Para el monitoreo de producción y verificar que nada se rompe en tiempo de desarrollo (sanity check), ejecuta un único test E2E que visite todas o la mayoría de las páginas y se asegure que ninguna se rompe. Este tipo de test proporciona un gran retorno de la inversión ya que es un bastante sencillo de crear y mantener y puede detecta cualquier tipo de fallo, incluido funcionales, red y despliegue. Otras formas de hacer smoke y sanity checks no son tan confiables y exhaustivas - algunso equipos de operaciones simplemente hacen ping a la página de inicio (en producción) o desarrolladores que tiene muchos test de integración que no levanta errores de construcción o de navegador. No hace falta decir que esta prueba no sustituye los test funcionales, solo siver como detector de humo rápido.
 
 <br/>
 
-❌ **De lo contrario:** Everything might seem perfect, all tests pass, production health-check is also positive but the Payment component had some packaging issue and only the /Payment route is not rendering
+❌ **De lo contrario:** Todo puede parecer estar bien, todos los test pasan, el health-check de produción está ok también, pero el componente de pago se construyó mal y simplemente la ruta /Payment no se renderiza
 
 <br/>
 
@@ -1376,14 +1376,14 @@ beforeEach(setUser => () {
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Smoke travelling across all pages
+### :clap: Ejemplo de cómo hacerlo correctamente: Navegando a todas las páginas
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Usando Cypress para ilustrar la idea")
 
 ```javascript
 it("When doing smoke testing over all page, should load them all successfully", () => {
-  // exemplified using Cypress but can be implemented easily
-  // using any E2E suite
+  // ejemplificado con Cypress pero puede implementarse
+  // facilmente usando cualquier herramienta E2E
   cy.visit("https://mysite.com/home");
   cy.contains("Home");
   cy.contains("https://mysite.com/Login");
@@ -1491,7 +1491,7 @@ paths:
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: Using Applitools to get snapshot comaprison and other advanced features
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg "Using AppliTools") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
+![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg "Using AppliTools") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Usando Cypress para ilustrar la idea")
 
 ```javascript
 import * as todoPage from "../page-objects/todo-page";
