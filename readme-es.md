@@ -1625,20 +1625,20 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/><br/>
 
-## ⚪ ️4.4 Preventing test code issues with Test linters
+## ⚪ ️4.4 Prevención de problemas de código de test con linters para test
 
-:white_check_mark: **Haz:** A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) will warn when a test is written at the global level (not a son of a describe() statement) or when tests are [skipped](https://mochajs.org/#inclusive-tests) which might lead to a false belief that all tests are passing. Similarly, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) can, for example, warn when a test has no assertions at all (not checking anything)
+:white_check_mark: **Haz:** ESLint tiene un conjunto de plugins específicos para inspeccionar patrones de código de test y descubrir problemas. Por ejemplo, [eslint-plugin-mocha] (https://www.npmjs.com/package/eslint-plugin-mocha) avisará cuando un test se escriba a nivel global (no es hijo de un describe () ) o cuando se omiten los test (https://mochajs.org/#inclusive-tests), lo que puede llevar a creer erroneamenre de que todas los test están ok. Del mismo modo, [eslint-plugin-jest] (https://github.com/jest-community/eslint-plugin-jest) puede, por ejemplo, advertir cuando una prueba no tiene aserciones (sin verificar nada)
 
 <br/>
 
-❌ **De lo contrario:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
+❌ **De lo contrario:** Ver un 90% de cobertura de código y 100% de pruebas verdes te provocara una sonrisa hasta que te das cuenta de que muchas pruebas no asercionan nada y muchas test simplemente se omitieron. Con suerte, no desplegó nada basado en esta falsa observación
 
 <br/>
 <details><summary>✏ <b>Código de Ejemplo</b></summary>
 
 <br/>
 
-### :thumbsdown: Ejemplo Anti Patrón: A test case full of errors, luckily all are caught by Linters
+### :thumbsdown: Ejemplo Anti Patrón: Un test lleno de errores, afortunadamente detectados por el linter
 
 ```javascript
 describe("Too short description", () => {
