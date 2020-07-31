@@ -1576,20 +1576,20 @@ Basado en un escenario real en el que rastreamos el uso de nuestra aplicación e
 
 <br/><br/>
 
-## ⚪ ️ 4.3 Measure logical coverage using mutation testing
+## ⚪ ️ 4.3 Mide la cobertura lógica usando mutation testing
 
-:white_check_mark: **Haz:** The Traditional Coverage metric often lies: It may show you 100% code coverage, but none of your functions, even not one, return the right response. How come? it simply measures over which lines of code the test visited, but it doesn’t check if the tests actually tested anything — asserted for the right response. Like someone who’s traveling for business and showing his passport stamps — this doesn’t prove any work done, only that he visited few airports and hotels.
+:white_check_mark: **Haz:** La métrica de cobertura tradicional a menudo miente: puede mostrarle una cobertura de código del 100%, pero ninguna de sus funciones, ni siquiera una, devuelve la respuesta correcta. ¿Cómo? simplemente mide sobre qué líneas de código se paso en los test, pero no verifica si laos test realmente han comprobado algo - asercionando la respuesta correcta. Como alguien que viaja por negocios y muestra su pasaporte, esto no prueba que haya realizado ningun trabajo, solo que ha visitado ciertos aeropuertos y hoteles.
 
-Mutation-based testing is here to help by measuring the amount of code that was actually TESTED not just VISITED. [Stryker](https://stryker-mutator.io/) is a JavaScript library for mutation testing and the implementation is really neat:
+Los test basados en mutaciones nos ayudan midiendo la cantidad de código que en realidad se TESTEÓ, no solo VISITADO. [Stryker] (https://stryker-mutator.io/) es una libreria JavaScript para test de mutación y la implementación es realmente clara:
 
-(1) it intentionally changes the code and “plants bugs”. For example the code newOrder.price===0 becomes newOrder.price!=0. This “bugs” are called mutations
+(1) cambia intencionalmente el código y "planta bugs". Por ejemplo, el código newOrder.price === 0 se convierte en newOrder.price! = 0. Estos "bugs" se llaman mutaciones.
 
-(2) it runs the tests, if all succeed then we have a problem — the tests didn’t serve their purpose of discovering bugs, the mutations are so-called survived. If the tests failed, then great, the mutations were killed.
+(2) ejecuta los test, si todo va bien, entonces tenemos un problema - los test no cumplen su propósito de descubrir bugs, las mutaciones se denominan supervivientes. Si los test fallaron, entonces genial, las mutaciones fueron asesinadas.
 
-Knowing that all or most of the mutations were killed gives much higher confidence than traditional coverage and the setup time is similar
+Saber que todas o la mayoría de las mutaciones fueron asesinadas da mucha más confianza que la cobertura tradicional y el tiempo de configuración es muy similar
 <br/>
 
-❌ **De lo contrario:** You’ll be fooled to believe that 85% coverage means your test will detect bugs in 85% of your code
+❌ **De lo contrario:** Te engañas si crees que una cobertura del 85% significa que tus test detectarán errores en el 85% de tu código
 
 <br/>
 
@@ -1597,9 +1597,9 @@ Knowing that all or most of the mutations were killed gives much higher confiden
 
 <br/>
 
-### :thumbsdown: Ejemplo Anti Patrón: 100% coverage, 0% testing
+### :thumbsdown: Ejemplo Anti Patrón: 100% de cobertura, 0% testeado
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg "Using Stryker")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg "Usando Stryker")
 
 ```javascript
 function addNewOrder(newOrder) {
@@ -1612,14 +1612,14 @@ function addNewOrder(newOrder) {
 
 it("Test addNewOrder, don't use such test names", () => {
   addNewOrder({ asignee: "John@mailer.com", price: 120 });
-}); //Triggers 100% code coverage, but it doesn't check anything
+}); //Genera un 100% cobertura de código, pero no comprueba nada
 ```
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
+### :clap: Ejemplo de cómo hacerlo correctamente: Los reportes de Stryker, una herramienta para test de mutación, detecta y cuenta la cantidad de código que no se testea (Mutaciones)
 
-![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
+![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Los reportes de Stryker, una herramienta para test de mutación, detecta y cuenta la cantidad de código que no se testea (Mutaciones)")
 
 </details>
 
