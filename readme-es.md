@@ -1800,11 +1800,11 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.6 Constantly inspect for vulnerable dependencies
+## ⚪ ️5.6 Verifica constantemente las dependencias vulnerables
 
-:white_check_mark: **Haz:** Even the most reputable dependencies such as Express have known vulnerabilities. This can get easily tamed using community tools such as [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), or commercial tools like [snyk](https://snyk.io/) (offer also a free community version). Both can be invoked from your CI on every build
+:white_check_mark: **Haz:** Incluso las dependencias más conocidas como express, tiene vulnerabilidades conocidas. Puedes dominarlas facilmente usando herramientas libres como [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), o commerciales como [snyk](https://snyk.io/) (que tiene una version community gratuita). Ambas pueden ser ejecutadas desde tu CI en cada construcción
 
-❌ **De lo contrario:** Keeping your code clean from vulnerabilities without dedicated tools will require to constantly follow online publications about new threats. Quite tedious
+❌ **De lo contrario:** Mantener tu código limpio de vulnerabilidades sin herramientas dedicadas requiere que estes revisando constantemente las nuevas versiones. Muy tedioso
 
 <br/>
 
@@ -1812,9 +1812,9 @@ license-checker --summary --failOn BSD
 
 <br/>
 
-### :clap: Example: NPM Audit result
+### :clap: Ejemplo: resultado de NPM Audit
 
-![alt text](assets/bp-26-npm-audit-snyk.png "NPM Audit result")
+![alt text](assets/bp-26-npm-audit-snyk.png "resultado de NPM Audit")
 
 </details>
 
