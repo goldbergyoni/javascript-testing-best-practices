@@ -1769,11 +1769,11 @@ El enorme ecosistema de Kubernetes aún no tiene una herramienta estandar para l
 
 <br/><br/>
 
-## ⚪ ️5.5 Stay away from legal issues using license and plagiarism check
+## ⚪ ️5.5 Mantente al margen de problemas legales usando la verificación de licencia y plagio
 
-:white_check_mark: **Haz:** Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like [license check](https://www.npmjs.com/package/license-checker) and [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stackoverflow and apparently violates some copyrights
+:white_check_mark: **Haz:** Los problemas de licencias y plagio seguramente no son tu prioridad ahora mismo, pero ¿por que no hacer check en esta tarea en solo 10 minutos? Existen muchos paquetes npm como [license check](https://www.npmjs.com/package/license-checker) y [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (commercial pero con plan gratuito) que puedes integrar facilmente en tu pipeline CI e inspeccionar en busca de problemas como dependencias con licencias restrictivas, o código que fue copiado y pegado de stackoverflow que aparentemente viola algunos copyrights
 
-❌ **De lo contrario:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
+❌ **De lo contrario:** Sin querer, los desarrolladores pueden usar paquete con licencias inapropiadas o copiar y pegar código comercial y encontrarse con problemas legales
 
 <br/>
 
@@ -1784,10 +1784,10 @@ El enorme ecosistema de Kubernetes aún no tiene una herramienta estandar para l
 ### :clap: Ejemplo de cómo hacerlo correctamente:
 
 ```javascript
-//install license-checker in your CI environment or also locally
+//instala license-checker en tu entorno de CI o localmente
 npm install -g license-checker
 
-//ask it to scan all licenses and fail with exit code other than 0 if it found unauthorized license. The CI system should catch this failure and stop the build
+//pidele que escanee todas las licencias y que termine con un codigo distindo de 0 si encuentra una licencia no autorizada. De esta forma el pipeline de CI puede detectarlo y detenerse
 license-checker --summary --failOn BSD
 
 ```
