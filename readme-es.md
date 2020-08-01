@@ -1879,7 +1879,7 @@ Una politica de actualizaciones eficiente puede permitir cierto 'periodo de conc
 
 <br/><br/>
 
-# Team
+# Equipo
 
 ## Yoni Goldberg
 
@@ -1887,15 +1887,15 @@ Una politica de actualizaciones eficiente puede permitir cierto 'periodo de conc
 <img width="480px" src="assets/yoni-goldberg.jpg"/>
 <br/>
 
-**Role:** Writer
+**Papel:** Escritor
 
-**About:** I'm an independent consultant who works with 500 fortune corporates and garage startups on polishing their JS & Node.js applications. More than any other topic I'm fascinated by and aims to master the art of testing. I'm also the author of [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
+**Acerda de:** Soy un consultor independiente que trabaja con empresas de  500 fortune y startups en garajes para pulir sus aplicaciones JS & Node.js. Más que ningún otro tema me fascina y tengo como objetivo dominar el arte del testing. También soy el autor de [Node.js Buenas Practicas](https://github.com/goldbergyoni/nodebestpractices)
 
-**📗 Online Course:** Liked this guide and wish to take your testing skills to the extreme? Consider visiting my comprehensive course [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
+**📗 Curso Online:** ¿Te gustó esta guía y deseas llevar tus habilidades de testing al máximo? Considera visitar mi curso completo [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
 
 <br/>
 
-**Follow:**
+**Sigeme:**
 
 - [🐦 Twitter](https://twitter.com/goldbergyoni/)
 - [📞 Contact](https://testjavascript.com/contact-2/)
@@ -1907,30 +1907,30 @@ Una politica de actualizaciones eficiente puede permitir cierto 'periodo de conc
 
 ## [Bruno Scheufler](https://github.com/BrunoScheufler)
 
-**Role:** Tech reviewer and advisor
+**Rol:** Revisor técnico y asesor
 
-Took care to revise, improve, lint and polish all the texts
+Se encargó de revisar, mejorar, lintear y pulir todos los textos
 
-**About:** full-stack web engineer, Node.js & GraphQL enthusiast
+**Acerda de:** Ingeniero full-stack web, entusiasta de Node.js y GraphQL
 
 <hr/>
 <br/>
 
 ## [Ido Richter](https://github.com/idori)
 
-**Role:** Concept, design and great advice
+**Rol:** Concepto, diseño y buenos consejos
 
-**About:** A savvy frontend developer, CSS expert and emojis freak
+**Acerda de:** Un desarrollador frontend inteligente, experto en CSS y friki de los emojis
 
 ## [Kyle Martin](https://github.com/js-kyle)
 
-**Role:** Helps keep this project running, and reviews security related practices
+**Rol:** Ayuda a mantener este proyecto en funcionamiento y revisa los test relacionadas con la seguridad
 
-**About:** Loves working on Node.js projects and web application security.
+**Acerda de:** Le encanta trabajar en proyectos Node.js y seguridad de aplicaciones web
 
-## Contributors ✨
+## Contribuyentes ✨
 
-Thanks goes to these wonderful people who have contributed to this repository!
+¡Gracias a estas personas maravillosas que han contribuido a este repositorio!
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
