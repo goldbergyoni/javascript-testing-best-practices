@@ -1658,16 +1658,17 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-# Section 5️⃣: CI and Other Quality Measures
+# Section 5️⃣: CI y otras medidas de calidad
 
 <br/><br/>
 
-## ⚪ ️ 5.1 Enrich your linters and abort builds that have linting issues
+## ⚪ ️ 5.1 Enriquece tus linters y cancela las construciones que tienen problemas de linter
 
-:white_check_mark: **Haz:** Linters are a free lunch, with 5 min setup you get for free an auto-pilot guarding your code and catching significant issue as you type. Gone are the days where linting was about cosmetics (no semi-colons!). Nowadays, Linters can catch severe issues like errors that are not thrown correctly and losing information. On top of your basic set of rules (like [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) or [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), consider including some specializing Linters like [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) that can discover tests without assertions, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) can discover promises with no resolve (your code will never continue), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) which can discover eager regex expressions that might get used for DOS attacks, and [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) is capable of alarming when the code uses utility library methods that are part of the V8 core methods like Lodash.\_map(…)
+:white_check_mark: **Haz:** Los linters son comida gratis, con una configuración de 5 minutos, obtienes gratis un piloto automático que vigila tu código y detecta problemas importantes mientras escribes. Atrás quedaron los días en los que el linter era solo maquillaje (¡no hay punto y coma!). Hoy en día, los linters pueden detectar problemas graves como errores que no se lanzan correctamente y perder información. Además de su conjunto básico de reglas (como [estándar ESLint] (https://www.npmjs.com/package/eslint-plugin-standard) o [estilo Airbnb] (https://www.npmjs.com/package / eslint-config-airbnb)), considera incluir algunos conjuntos de reglas especializadas como [eslint-plugin-chai-expect] (https://www.npmjs.com/package/eslint-plugin-chai-expect) que pueden descubrir tests sin aserciones, [eslint-plugin-promise] (https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) puede descubrir promesas sin resolución (su código nunca continuará), [eslint-plugin -security] (https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) que puede descubrir expresiones regulares que podrían usarse para ataques DOS, y [eslint-plugin-you-dont- need-lodash-underscore] (https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) es capaz de avisar cuando el código utiliza métodos de librerias de utilidades que forman parte de V8, métodos básicos como Lodash.\_map (...)
+
 <br/>
 
-❌ **De lo contrario:** Consider a rainy day where your production keeps crashing but the logs don’t display the error stack trace. What happened? Your code mistakenly threw a non-error object and the stack trace was lost, a good reason for banging your head against a brick wall. A 5min linter setup could detect this TYPO and save your day
+❌ **De lo contrario:** Considera un día lluvioso donde producción sigue fallando pero los registros no muestran el call stack de errores. ¿Que pasa? Tu código emite por error un objeto sin error y se perdió el trazado, una buena razón para golpearse la cabeza contra una pared de ladrillos. Una configuración de linter de 5 minutos podría detectar este GAZAPO y salvarte el día
 
 <br/>
 
@@ -1675,22 +1676,23 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :thumbsdown: Ejemplo Anti Patrón: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
+### :thumbsdown: Ejemplo Anti Patrón: El objeto de Error es emitido, no parece ninguna traza pora este error. Por suerte, ESLint detecta el siguiente error de producción
 
-![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
+![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "El objeto de Error es emitido, no parece ninguna traza pora este error. Por suerte, ESLint detecta el siguiente error de producción")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️ 5.2 Shorten the feedback loop with local developer-CI
+## ⚪ ️ 5.2 Acorta el tiempo de feedback con local developer-CI
 
-:white_check_mark: **Haz:** Using a CI with shiny quality inspections like testing, linting, vulnerabilities check, etc? Help developers run this pipeline also locally to solicit instant feedback and shorten the [feedback loop](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Why? an efficient testing process constitutes many and iterative loops: (1) try-outs -> (2) feedback -> (3) refactor. The faster the feedback is, the more improvement iterations a developer can perform per-module and perfect the results. On the flip, when the feedback is late to come fewer improvement iterations could be packed into a single day, the team might already move forward to another topic/task/module and might not be up for refining that module.
+:white_check_mark: **Haz:** Tienes un pipeline de CI con test, linter, verificación de vulnerabilidades, etc.? Ayuda a los desarrolladores a ejecutarlo también localmente para solicitar comentarios instantáneos y acortar el [ciclo de feedback] (https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2 -circuitos de retroalimentacion/). ¿Por qué? un proceso de prueba eficiente constituye muchos bucles iterativos: (1) tests -> (2) feedback -> (3) refactor. Cuanto más rápido sea el feedback, más iteraciones de mejora puede realizar un desarrollador por módulo y perfeccionar los resultados. Por otro lado, cuando el feedback tarda en llegar, se podrían realizar menos iteraciones de mejora en un solo día, el equipo podría estar ya haciendo otra cosa / tarea / módulo y podría no estar listo para refinar ese módulo. 
 
-Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) allow running the pipeline locally. Some commercial tools like [wallaby provide highly-valuable & testing insights](https://wallabyjs.com/) as a developer prototype (no affiliation). Alternatively, you may just add npm script to package.json that runs all the quality commands (e.g. test, lint, vulnerabilities) — use tools like [concurrently](https://www.npmjs.com/package/concurrently) for parallelization and non-zero exit code if one of the tools failed. Now the developer should just invoke one command — e.g. ‘npm run quality’ — to get instant feedback. Consider also aborting a commit if the quality check failed using a githook ([husky can help](https://github.com/typicode/husky))
+En la practica, algunos proveedores de CI (Ejemplo: [CircleCI CLI local] (https://circleci.com/docs/2.0/local-cli/)) permiten ejecutar el pipeline localmente. Algunas herramientas comerciales como [wallaby proporcionan información valiosa y de test] (https://wallabyjs.com/) para el desarrollador sin coste. Alternativamente, puedes agregar scripts npm en el package.json para ejecutar todos los comandos de calidad (por ejemplo, test, linter, vulnerabilidades) - usa herramientas como [concurrently] (https://www.npmjs.com/package/concurrently) para paralelizarlas y que código de salida sea distinto de cero si falla alguna de las herramientas. Ahora el desarrollador solo debe invocar un comando - por ejemplo "npm run quality": para obtener feedback en el acto. Considera también cancelar un commit si el control de calidad falla usando un githook ([husky puede ayudar] (https://github.com/typicode/husky))
+
 <br/>
 
-❌ **De lo contrario:** When the quality results arrive the day after the code, testing doesn’t become a fluent part of development rather an after the fact formal artifact
+❌ **De lo contrario:** Cuando los resultados de calidad llegan un día más tarde que el código, los test no se convierten en una parte fluida del desarrollo, sino en algo formal posterior al mismo
 
 <br/>
 
@@ -1698,7 +1700,7 @@ Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
+### :clap: Ejemplo de cómo hacerlo correctamente: Scripts npm que realizan una inspección de calidad del código, todos se ejecutan en paralelo a demanda o cuando un desarrollador está tratando de hacer commit/push de código nuevo
 
 ```javascript
 "scripts": {
