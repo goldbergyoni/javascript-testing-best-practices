@@ -1820,18 +1820,19 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.7 Automate dependency updates
+## ⚪ ️5.7 Automatiza la actualización de dependencias
 
-:white_check_mark: **Haz:** Yarn and npm latest introduction of package-lock.json introduced a serious challenge (the road to hell is paved with good intentions) — by default now, packages are no longer getting updates. Even a team running many fresh deployments with ‘npm install’ & ‘npm update’ won’t get any new updates. This leads to subpar dependent packages versions at best or to vulnerable code at worst. Teams now rely on developers goodwill and memory to manually update the package.json or use tools [like ncu](https://www.npmjs.com/package/npm-check-updates) manually. A more reliable way could be to automate the process of getting the most reliable dependency versions, though there are no silver bullet solutions yet there are two possible automation roads:
+:white_check_mark: **Haz:** La introducción en yarn and npm de package-lock.json introduce un desafio muy importante ( el camino al infierno esta lleno de buenas intenciones) — por defecto ahora, lo paquetes no se auto actualiza más. Incluso en un equipo que ejecute un 'npm install' limpio y 'npm update' no van a caer nuevas actualizaciones. Esto conduce a veriones de paquetes desactualizadas en el mejor de los casos, y en el peor, a codigo vulnerable. Los equipos pasan a depender de la buena voluntad y memoria de los desarrolladores para actualizar el package.json a mano o a utilizar herramientas como [ncu](https://www.npmjs.com/package/npm-check-updates) manualmente. Una formula mucho mejor seria automatizar el proceso de actualizar las versiones de las dependenecias en las que más confiamos, pero no hay una solucion perfecta, existen dos caminos para esta actualización:
 
-(1) CI can fail builds that have obsolete dependencies — using tools like [‘npm outdated’](https://docs.npmjs.com/cli/outdated) or ‘npm-check-updates (ncu)’ . Doing so will enforce developers to update dependencies.
+(1) Podemos hacer que el CI falle con dependencias obsoletas — usando herramientas como [‘npm outdated’](https://docs.npmjs.com/cli/outdated) o ‘npm-check-updates (ncu)’. Hacerlo obligará a los desarrolladores a actualizar las dependencias
 
-(2) Use commercial tools that scan the code and automatically send pull requests with updated dependencies. One interesting question remaining is what should be the dependency update policy — updating on every patch generates too many overhead, updating right when a major is released might point to an unstable version (many packages found vulnerable on the very first days after being released, [see the](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope incident).
+(2) Usar alguna de las herramientas comerciales que escanean nuestro codigo y envian automaticamente pull-request con actualización de dependencias. Una pregunta interesante que nos queda es cual va a ser la politica de estas actualizaciones: si actualizamos cada parche se genera mucha sobrecarga, y hacerlo cuando haya una version major nos lleva directos a usar verisones inestables o incompatibles (mucho paquetes muestran vulnerabilidades justo despues de salir una version nueva [lee sobre](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) el incidente de eslint-scope).
 
-An efficient update policy may allow some ‘vesting period’ — let the code lag behind the @latest for some time and versions before considering the local copy as obsolete (e.g. local version is 1.3.1 and repository version is 1.3.8)
+Una politica de actualizaciones eficiente puede permitir cierto 'periodo de concesion' - deja pasar versiones quedandote por detras de @latest un tiempo antes de considerar que tu versión en local está obsoleta (por ejemplo, la versión que tienes en local es 1.3.1 y la versión del repositorio del paquete es 1.3.8)
+
 <br/>
 
-❌ **De lo contrario:** Your production will run packages that have been explicitly tagged by their author as risky
+❌ **De lo contrario:** Producción estara ejecutando versiones de paquetes que han sido marcadas por los propios autores como version con riesgos
 
 <br/>
 
@@ -1839,9 +1840,9 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 <br/>
 
-### :clap: Example: [ncu](https://www.npmjs.com/package/npm-check-updates) can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions
+### :clap: Ejemplo: [ncu](https://www.npmjs.com/package/npm-check-updates) puede ser usado a mano o en un pipline de CI para detectar en que medida el lag de retraso contra la versión @latest
 
-![alt text](assets/bp-27-yoni-goldberg-npm.png "ncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
+![alt text](assets/bp-27-yoni-goldberg-npm.png "ncu puede ser usado a mano o en un pipline de CI para detectar en que medida el lag de retraso contra la versión @latest")
 
 </details>
 
@@ -1871,7 +1872,7 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 <br/>
 
-### :clap: Example: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
+### :clap: Ejemplo: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
 
 <pre name="f909" id="f909" class="graf graf--pre graf-after--p">language: node_js<br>node_js:<br>  - "7"<br>  - "6"<br>  - "5"<br>  - "4"<br>install:<br>  - npm install<br>script:<br>  - npm run test</pre>
 </details>
