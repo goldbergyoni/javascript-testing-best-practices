@@ -267,6 +267,16 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "lukasbischof",
+      "name": "Lukas Bischof",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8350985?v=4",
+      "profile": "https://luk4s.dev",
+      "contributions": [
+        "test",
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
