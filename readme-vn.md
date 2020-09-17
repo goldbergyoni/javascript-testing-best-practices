@@ -1,3 +1,4 @@
+<!-- 74/1960 -->
 <img src="/assets/jtbp-header-blue.png" width="1920px"/>
 
 <br/>
@@ -6,66 +7,67 @@
 
 <br/>
 
-## 📗 45+ best practices: Super-comprehensive and exhaustive
+## 📗 45+ bài thực hành: Siêu toàn diện và đầy đủ
 
-This is a guide for JavaScript & Node.js reliability from A-Z. It summarizes and curates for you dozens of the best blog posts, books and tools the market has to offer
+Đây là một tài liệu hướng dẫn về độ tin cậy từ A-Z dành cho JavaScript & Node.js. Nó tóm tắt và sắp xếp cho bạn hàng chục bài blog, sách và các công cụ tốt nhất mà thị trường cung cấp
 
-## 🚢 Advanced: Goes 10,000 miles beyond the basics
+## 🚢 Nâng cao: "Đi 10 nghỉn dặm", vượt xa cả những điều cơ bản nhất
 
-Hop into a journey that travels way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
+Tham gia vào một cuộc hành trình vượt xa những điều cơ bản nhất, tìm hiểu các chủ đề nâng cao như kiểm thử trong môi trường production (testing in production), kiểm thử hoán chuyển (mutation testing) , kiểm thử dựa trên tính chất (property-based testing) và nhiều công cụ mang tính chiến lược & chuyên nghiệp khác. Nếu bạn đọc từng từ trong hướng dẫn này, kỹ năng kiểm thử của bạn sẽ cải thiện cao hơn mức trung bình
 
-## 🌐 Full-stack: front, backend, CI, anything
+## 🌐 Full-stack: front, backend, CI, bất cứ thứ gì
 
-Start by understanding the ubiquitous testing practices that are the foundation for any application tier. Then, delve into your area of choice: frontend/UI, backend, CI or maybe all of them?
+Bắt đầu bằng cách hiểu rõ các phương pháp kiểm thử phổ biến là nền tảng cho bất kỳ mức ứng dụng nào. Sau đó, đi sâu vào từng lĩnh vực mà bạn lựa chọn: frontend/UI, backend, CI hoặc có thể là tất cả chúng?
 
 <br/>
 
-### Written By Yoni Goldberg
+### Được viết bởi Yoni Goldberg
 
-- A JavaScript & Node.js consultant
-- 📗 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com) - My comprehensive online course with more than [10 hours of video](https://www.testjavascript.com), 14 test types and more than 40 best practices
-- [Follow me on Twitter ](https://twitter.com/goldbergyoni/)
+- Chuyên gia tư vấn JavaScript & Node.js
+- 📗 [Kiểm thử Node.js & JavaScript từ A tới Z](https://www.testjavascript.com) - Khóa học toàn diện của tôi bao gồm hơn [10 giờ xem video](https://www.testjavascript.com), 14 loại kiểm thử và hơn 40 bài thực hành hay nhất
+- [Theo dõi tôi trên Twitter ](https://twitter.com/goldbergyoni/)
 
 <br/>
 
 ### Translations - read in your own language
 
-- 🇨🇳[Chinese](readme-zh-CN.md) - courtesy of [Yves yao](https://github.com/yvesyao)
-- 🇰🇷[Korean](readme.kr.md) - courtesy of [Rain Byun](https://github.com/ragubyun)
-- 🇵🇱[Polish](readme-pl.md) - courtesy of [Michal Biesiada](https://github.com/mbiesiad)
-- Want to translate to your own language? please open an issue 💜
+- 🇨🇳[Chinese](readme-zh-CN.md) - với sự giúp đỡ của [Yves yao](https://github.com/yvesyao)
+- 🇰🇷[Korean](readme.kr.md) - với sự giúp đỡ của [Rain Byun](https://github.com/ragubyun)
+- 🇵🇱[Polish](readme-pl.md) - với sự giúp đỡ của [Michal Biesiada](https://github.com/mbiesiad)
+- vn[Vietnamese](readme-vn.md) - với sự giúp đỡ của [Đoàn Ngọc Thưởng](https://github.com/ngthuongdoan)
+- Muốn dịch sang ngôn ngữ của bạn? Hãy mở một issue 💜
 
 <br/><br/>
 
-## `Table of Contents`
+## `Mục lục`
 
-#### [`Section 0: The Golden Rule`](#section-0️⃣-the-golden-rule)
+#### [`Chương 0: Quy tắc vàng`](#section-0️⃣-the-golden-rule)
 
-A single advice that inspires all the others (1 special bullet)
+Một lời khuyên duy nhất truyền cảm hứng cho tất cả những người khác (1 ý đặc biệt)
 
-#### [`Section 1: The Test Anatomy`](#section-1-the-test-anatomy-1)
+#### [`Chương 1: Cấu trúc kiểm thử`](#section-1-the-test-anatomy-1)
 
-The foundation - structuring clean tests (12 bullets)
+Nền tảng - cấu trúc bài kiểm thử "sạch" (12 ý)
 
-#### [`Section 2: Backend`](#section-2️⃣-backend-testing)
+#### [`Chương 2: Backend`](#section-2️⃣-backend-testing)
 
-Writing backend and Microservices tests efficiently (8 bullets)
+Viết backend và kiểm tra Microservices một cách hiệu quả (8 ý)
 
-#### [`Section 3: Frontend`](#section-3️⃣-frontend-testing)
+#### [`Chương 3: Frontend`](#section-3️⃣-frontend-testing)
 
-Writing tests for web UI including component and E2E tests (11 bullets)
+Viết kiểm tra cho web UI bao gồm kiểm thử thành phần và kiểm thử E2E (11 ý)
 
-#### [`Section 4: Measuring Tests Effectiveness`](#section-4️⃣-measuring-test-effectiveness)
+#### [`Chương 4: Đo lường hiệu quả của các kiểm thử`](#section-4️⃣-measuring-test-effectiveness)
 
-Watching the watchman - measuring test quality (4 bullets)
+Quan sát người canh gác - đo chất lượng kiểm thử (4 ý)
 
-#### [`Section 5: Continuous Integration`](#section-5️⃣-ci-and-other-quality-measures)
+#### [`Chương 5: Tích hợp liên tục (CI)`](#section-5️⃣-ci-and-other-quality-measures)
 
-Guidelines for CI in the JS world (9 bullets)
+Hướng dẫn CI trong thế giới JS (9 ý)
 
 <br/><br/>
 
-# Section 0️⃣: The Golden Rule
+# Chương 0️⃣: Quy tắc vàng
 
 <br/>
 
@@ -177,10 +179,14 @@ describe("Customer classifier", () => {
   test("When customer spent more than 500$, should be classified as premium", () => {
     //Arrange
     const customerToClassify = { spent: 505, joined: new Date(), id: 1 };
-    const DBStub = sinon.stub(dataAccess, "getCustomer").reply({ id: 1, classification: "regular" });
+    const DBStub = sinon
+      .stub(dataAccess, "getCustomer")
+      .reply({ id: 1, classification: "regular" });
 
     //Act
-    const receivedClassification = customerClassifier.classifyCustomer(customerToClassify);
+    const receivedClassification = customerClassifier.classifyCustomer(
+      customerToClassify
+    );
 
     //Assert
     expect(receivedClassification).toMatch("premium");
@@ -195,8 +201,12 @@ describe("Customer classifier", () => {
 ```javascript
 test("Should be classified as premium", () => {
   const customerToClassify = { spent: 505, joined: new Date(), id: 1 };
-  const DBStub = sinon.stub(dataAccess, "getCustomer").reply({ id: 1, classification: "regular" });
-  const receivedClassification = customerClassifier.classifyCustomer(customerToClassify);
+  const DBStub = sinon
+    .stub(dataAccess, "getCustomer")
+    .reply({ id: 1, classification: "regular" });
+  const receivedClassification = customerClassifier.classifyCustomer(
+    customerToClassify
+  );
   expect(receivedClassification).toMatch("premium");
 });
 ```
@@ -228,7 +238,7 @@ test("When asking for an admin, ensure only ordered admins in results", () => {
   let admin1Found,
     adming2Found = false;
 
-  allAdmins.forEach(aSingleUser => {
+  allAdmins.forEach((aSingleUser) => {
     if (aSingleUser === "user1") {
       assert.notEqual(aSingleUser, "user1", "A user was found and not admin");
     }
@@ -408,7 +418,10 @@ test("Wrong: When adding new product with valid properties, get successful confi
 
 ```javascript
 it("Better: When adding new valid product, get successful confirmation", async () => {
-  const addProductResult = addProduct(faker.commerce.productName(), faker.random.number());
+  const addProductResult = addProduct(
+    faker.commerce.productName(),
+    faker.random.number()
+  );
   //Generated random input: {'Sleek Cotton Computer',  85481}
   expect(addProductResult).to.be.true;
   //Test failed, the random input triggered some path we never planned for.
@@ -484,7 +497,12 @@ it("TestJavaScript.com is renderd correctly", () => {
 
   //Act
   const receivedPage = renderer
-    .create(<DisplayPage page="http://www.testjavascript.com"> Test JavaScript </DisplayPage>)
+    .create(
+      <DisplayPage page="http://www.testjavascript.com">
+        {" "}
+        Test JavaScript{" "}
+      </DisplayPage>
+    )
     .toJSON();
 
   //Assert
@@ -504,7 +522,12 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
   //Act
   const receivedPage = renderer
-    .create(<DisplayPage page="http://www.testjavascript.com"> Test JavaScript </DisplayPage>)
+    .create(
+      <DisplayPage page="http://www.testjavascript.com">
+        {" "}
+        Test JavaScript{" "}
+      </DisplayPage>
+    )
     .toJSON();
 
   //Assert
@@ -544,12 +567,15 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 ```javascript
 before(async () => {
   //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
-  await DB.AddSeedDataFromJson('seed.json');
+  await DB.AddSeedDataFromJson("seed.json");
 });
 it("When updating site name, get successful confirmation", async () => {
   //I know that site name "portal" exists - I saw it in the seed files
   const siteToUpdate = await SiteService.getSiteByName("Portal");
-  const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
+  const updateNameResult = await SiteService.changeName(
+    siteToUpdate,
+    "newName"
+  );
   expect(updateNameResult).to.be(true);
 });
 it("When querying by site name, get the right site", async () => {
@@ -557,7 +583,6 @@ it("When querying by site name, get the right site", async () => {
   const siteToCheck = await SiteService.getSiteByName("Portal");
   expect(siteToCheck.name).to.be.equal("Portal"); //Failure! The previous test change the name :[
 });
-
 ```
 
 <br/>
@@ -568,10 +593,13 @@ it("When querying by site name, get the right site", async () => {
 it("When updating site name, get successful confirmation", async () => {
   //test is adding a fresh new records and acting on the records only
   const siteUnderTest = await SiteService.addSite({
-    name: "siteForUpdateTest"
+    name: "siteForUpdateTest",
   });
 
-  const updateNameResult = await SiteService.changeName(siteUnderTest, "newName");
+  const updateNameResult = await SiteService.changeName(
+    siteUnderTest,
+    "newName"
+  );
 
   expect(updateNameResult).to.be(true);
 });
@@ -651,9 +679,9 @@ it("When no product name, it throws error 400", async () => {
 ```javascript
 //this test is fast (no DB) and we're tagging it correspondigly
 //now the user/CI can run it frequently
-describe("Order service", function() {
-  describe("Add new order #cold-test #sanity", function() {
-    test("Scenario - no currency was supplied. Expectation - Use the default currency #sanity", function() {
+describe("Order service", function () {
+  describe("Add new order #cold-test #sanity", function () {
+    test("Scenario - no currency was supplied. Expectation - Use the default currency #sanity", function () {
       //code logic here
     });
   });
@@ -735,7 +763,7 @@ Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-dr
 
 ## ⚪ ️2.1 Enrich your testing portfolio: Look beyond unit tests and the pyramid
 
-:white_check_mark: **Do:** The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit *all* types of applications? shouldn’t the testing world consider welcoming new testing techniques?
+:white*check_mark: **Do:** The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit \_all* types of applications? shouldn’t the testing world consider welcoming new testing techniques?
 
 Don’t get me wrong, in 2019 the testing pyramid, TDD and unit tests are still a powerful technique and are probably the best match for many applications. Only like any other model, despite its usefulness, [it must be wrong sometimes](https://en.wikipedia.org/wiki/All_models_are_wrong). For example, consider an IOT application that ingests many events into a message-bus like Kafka/RabbitMQ, which then flow into some data-warehouse and are eventually queried by some analytics UI. Should we really spend 50% of our testing budget on writing unit tests for an application that is integration-centric and has almost no logic? As the diversity of application types increase (bots, crypto, Alexa-skills) greater are the chances to find scenarios where the testing pyramid is not the best match.
 
@@ -842,8 +870,8 @@ test("A request without authentication header, should return http status 403", (
     method: "GET",
     url: "/user/42",
     headers: {
-      authentication: ""
-    }
+      authentication: "",
+    },
   });
   const response = httpMocks.createResponse();
   unitUnderTest(request, response);
@@ -922,12 +950,15 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 ```javascript
 before(async () => {
   //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
-  await DB.AddSeedDataFromJson('seed.json');
+  await DB.AddSeedDataFromJson("seed.json");
 });
 it("When updating site name, get successful confirmation", async () => {
   //I know that site name "portal" exists - I saw it in the seed files
   const siteToUpdate = await SiteService.getSiteByName("Portal");
-  const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
+  const updateNameResult = await SiteService.changeName(
+    siteToUpdate,
+    "newName"
+  );
   expect(updateNameResult).to.be(true);
 });
 it("When querying by site name, get the right site", async () => {
@@ -935,7 +966,6 @@ it("When querying by site name, get the right site", async () => {
   const siteToCheck = await SiteService.getSiteByName("Portal");
   expect(siteToCheck.name).to.be.equal("Portal"); //Failure! The previous test change the name :[
 });
-
 ```
 
 <br/>
@@ -946,9 +976,12 @@ it("When querying by site name, get the right site", async () => {
 it("When updating site name, get successful confirmation", async () => {
   //test is adding a fresh new records and acting on the records only
   const siteUnderTest = await SiteService.addSite({
-    name: "siteForUpdateTest"
+    name: "siteForUpdateTest",
   });
-  const updateNameResult = await SiteService.changeName(siteUnderTest, "newName");
+  const updateNameResult = await SiteService.changeName(
+    siteUnderTest,
+    "newName"
+  );
   expect(updateNameResult).to.be(true);
 });
 ```
@@ -980,14 +1013,23 @@ it("When updating site name, get successful confirmation", async () => {
 ```javascript
 test("When users-list is flagged to show only VIP, should display only VIP members", () => {
   // Arrange
-  const allUsers = [{ id: 1, name: "Yoni Goldberg", vip: false }, { id: 2, name: "John Doe", vip: true }];
+  const allUsers = [
+    { id: 1, name: "Yoni Goldberg", vip: false },
+    { id: 2, name: "John Doe", vip: true },
+  ];
 
   // Act
-  const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true} />);
+  const { getAllByTestId } = render(
+    <UsersList users={allUsers} showOnlyVIP={true} />
+  );
 
   // Assert - Extract the data from the UI first
-  const allRenderedUsers = getAllByTestId("user").map(uiElement => uiElement.textContent);
-  const allRealVIPUsers = allUsers.filter(user => user.vip).map(user => user.name);
+  const allRenderedUsers = getAllByTestId("user").map(
+    (uiElement) => uiElement.textContent
+  );
+  const allRealVIPUsers = allUsers
+    .filter((user) => user.vip)
+    .map((user) => user.name);
   expect(allRenderedUsers).toEqual(allRealVIPUsers); //compare data with data, no UI here
 });
 ```
@@ -999,13 +1041,20 @@ test("When users-list is flagged to show only VIP, should display only VIP membe
 ```javascript
 test("When flagging to show only VIP, should display only VIP members", () => {
   // Arrange
-  const allUsers = [{ id: 1, name: "Yoni Goldberg", vip: false }, { id: 2, name: "John Doe", vip: true }];
+  const allUsers = [
+    { id: 1, name: "Yoni Goldberg", vip: false },
+    { id: 2, name: "John Doe", vip: true },
+  ];
 
   // Act
-  const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true} />);
+  const { getAllByTestId } = render(
+    <UsersList users={allUsers} showOnlyVIP={true} />
+  );
 
   // Assert - Mix UI & data in assertion
-  expect(getAllByTestId("user")).toEqual('[<li data-testid="user">John Doe</li>]');
+  expect(getAllByTestId("user")).toEqual(
+    '[<li data-testid="user">John Doe</li>]'
+  );
 });
 ```
 
@@ -1130,13 +1179,12 @@ test("Realistic approach: When clicked to show filters, filters are displayed", 
 ```javascript
 test("Shallow/mocked approach: When clicked to show filters, filters are displayed", () => {
   // Arrange
-  const wrapper = shallow(<Calendar showFilters={false} title="Choose Filter" />);
+  const wrapper = shallow(
+    <Calendar showFilters={false} title="Choose Filter" />
+  );
 
   // Act
-  wrapper
-    .find("filtersPanel")
-    .instance()
-    .showFilters();
+  wrapper.find("filtersPanel").instance().showFilters();
   // Tap into the internals, bypass the UI and invoke a method. White-box approach
 
   // Assert
@@ -1269,15 +1317,17 @@ export default function ProductsList() {
     fetchProducts();
   }, []);
 
-  return products ? <div>{products}</div> : <div data-testid="no-products-message">No products</div>;
+  return products ? (
+    <div>{products}</div>
+  ) : (
+    <div data-testid="no-products-message">No products</div>
+  );
 }
 
 // test
 test("When no products exist, show the appropriate message", () => {
   // Arrange
-  nock("api")
-    .get(`/products`)
-    .reply(404);
+  nock("api").get(`/products`).reply(404);
 
   // Act
   const { getByTestId } = render(<ProductsList />);
@@ -1956,4 +2006,5 @@ Thanks goes to these wonderful people who have contributed to this repository!
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
