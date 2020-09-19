@@ -33,6 +33,7 @@ Empieza por comprender las tecnicas de testing ubicuas que son la base de cualqu
 - 🇨🇳[Chino](readme-zh-CN.md) - cortesia de [Yves yao](https://github.com/yvesyao)
 - 🇰🇷[Coreano](readme.kr.md) - cortesia de [Rain Byun](https://github.com/ragubyun)
 - 🇵🇱[Polaco](readme-pl.md) - cortesia de [Michal Biesiada](https://github.com/mbiesiad)
+- 🇪🇸[Castellano](readme-es.md) - cortesia de [Sanguino](https://github.com/sanguino)
 - Quieres traducir a tu propio lenguaje? porfavor abre una issue 💜
 
 <br/><br/>

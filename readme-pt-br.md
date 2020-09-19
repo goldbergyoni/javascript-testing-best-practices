@@ -31,6 +31,8 @@ Comece entendendo as práticas de teste onipresentes que são a base para qualqu
 ### Traduções - leia em seu próprio idioma
 * 🇨🇳[Chinese](readme-zh-CN.md) - cortesia de [Yves yao](https://github.com/yvesyao)
 * 🇰🇷[Korean](readme.kr.md) - cortesia de [Rain Byun](https://github.com/ragubyun)
+* 🇵🇱[Polish](readme-pl.md) - cortesia de [Michal Biesiada](https://github.com/mbiesiad)
+* 🇪🇸[Spanish](readme-es.md) - cortesia de [Sanguino](https://github.com/sanguino)
 * Deseja traduzir para o seu próprio idioma? abra uma issue 💜
 
 
