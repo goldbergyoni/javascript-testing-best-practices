@@ -71,10 +71,10 @@ Hướng dẫn CI trong thế giới JS (9 ý)
 
 <br/>
 
-## ⚪️ 0 The Golden Rule: Design for lean testing
+## ⚪️ 0 Nguyên tắc vàng: Thiết kế cho kiểm thử tinh gọn
 
 :white_check_mark: **Do:**
-Testing code is not like production-code - design it to be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should look at a test and get the intent instantly.
+Code trong môi trường kiểm thử không giống như code trong môi trường production - ta thiết kế nó trở nên đơn giản, ngắn gọn, không trừu tượng, flat, delightful to work with, lean. One should look at a test and get the intent instantly.
 
 Our minds are full with the main production code, we don't have 'headspace' for additional complexity. Should we try to squeeze yet another challenging code into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
 
