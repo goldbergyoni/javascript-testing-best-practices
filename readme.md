@@ -33,6 +33,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 - 🇨🇳[Chinese](readme-zh-CN.md) - courtesy of [Yves yao](https://github.com/yvesyao)
 - 🇰🇷[Korean](readme.kr.md) - courtesy of [Rain Byun](https://github.com/ragubyun)
 - 🇵🇱[Polish](readme-pl.md) - courtesy of [Michal Biesiada](https://github.com/mbiesiad)
+- 🇪🇸[Spanish](readme-es.md) - courtesy of [Miguel G. Sanguino](https://github.com/sanguino)
 - Want to translate to your own language? please open an issue 💜
 
 <br/><br/>
