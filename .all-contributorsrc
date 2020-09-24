@@ -277,6 +277,15 @@
         "test",
         "content"
       ]
+    },
+    {
+      "login": "JuanMaRuiz",
+      "name": "JuanMa Ruiz",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1837650?v=4",
+      "profile": "https://juanmaruiz.surge.sh",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
