@@ -40,27 +40,27 @@ Empieza por comprender las técnicas de testing ubicuas que son la base de cualq
 
 ## `Tabla de Contenidos`
 
-#### [`Sección 0: La Regla de Oro`](#section-0️⃣-the-golden-rule)
+#### [`Sección 0: La Regla de Oro`](#sección-0️⃣-la-regla-de-oro)
 
 Un solo consejo que inspira a todos los demás (1 apartado especial)
 
-#### [`Sección 1: La Anatomía de un Test`](#section-1-the-test-anatomy-1)
+#### [`Sección 1: La Anatomía de un Test`](#sección-1-la-anatomía-de-un-test-1)
 
 La base - estructurando test claros (12 apartados)
 
-#### [`Sección 2: Backend`](#section-2️⃣-backend-testing)
+#### [`Sección 2: Backend`](#sección-2️⃣-backend-testing)
 
 Escribiendo test de backend y microservicios eficientemente (8 apartados)
 
-#### [`Sección 3: Frontend`](#section-3️⃣-frontend-testing)
+#### [`Sección 3: Frontend`](#sección-3️⃣-frontend-testing)
 
 Escribiendo test para web UI incluyendo test de componente y E2E (11 apartados)
 
-#### [`Sección 4: Midiendo la Efectividad de los Test`](#section-4️⃣-measuring-test-effectiveness)
+#### [`Sección 4: Midiendo la Efectividad de los Test`](#sección-4️⃣-midiendo-la-efectividad-de-los-test)
 
 Vigilando al vigilante - midiendo la calidad de los test (4 apartados)
 
-#### [`Sección 5: Integración Continua`](#section-5️⃣-ci-and-other-quality-measures)
+#### [`Sección 5: Integración Continua`](#sección-5️⃣-ci-y-otras-medidas-de-calidad)
 
 Pautas para Integración Continua en el mundo de JS (9 apartados)
 
