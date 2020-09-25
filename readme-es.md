@@ -161,7 +161,7 @@ describe('Products Service', function() {
 
 <br/>
 
-❌ **De lo contrario:** No solo emplearas horas comprendiendo el código principal, si no que lo que debería haber sido la parate más simple del día (testing) te ha estrujado el cerebro
+❌ **De lo contrario:** No solo emplearas horas comprendiendo el código principal, si no que lo que debería haber sido la parte más simple del día (testing) te ha estrujado el cerebro
 
 <br/>
 
