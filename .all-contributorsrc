@@ -286,6 +286,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "luisangelorjr",
+      "name": "Luís Ângelo Rodrigues Jr.",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/22268900?v=4",
+      "profile": "https://luisangelorjr.com.br",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
