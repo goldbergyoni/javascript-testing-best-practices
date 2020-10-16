@@ -34,6 +34,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 - 🇰🇷[Korean](readme.kr.md) - courtesy of [Rain Byun](https://github.com/ragubyun)
 - 🇵🇱[Polish](readme-pl.md) - courtesy of [Michal Biesiada](https://github.com/mbiesiad)
 - 🇪🇸[Spanish](readme-es.md) - courtesy of [Miguel G. Sanguino](https://github.com/sanguino)
+- pt-BR[Portuguese-BR](readme-pt-br.md) - courtesy of [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante), [Douglas Mariano Valero] (https://github.com/DouglasMV) and [koooge](https://github.com/koooge)
 - Want to translate to your own language? please open an issue 💜
 
 <br/><br/>
