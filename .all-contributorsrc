@@ -304,6 +304,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "AlejandroGutierrezB",
+      "name": "Alejandro Gutierrez Barcenilla",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/56408597?v=4",
+      "profile": "http://www.linkedin.com/in/AlejandroGutierrezB",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
