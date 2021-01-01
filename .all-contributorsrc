@@ -313,6 +313,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "jasonandmonte",
+      "name": "Jason",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/30088000?v=4",
+      "profile": "https://github.com/jasonandmonte",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
