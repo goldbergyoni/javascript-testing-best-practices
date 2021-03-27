@@ -6,7 +6,7 @@
 
 <br/>
 
-## 📗 45+ najlepszych praktyk: super kompleksowe i wyczerpujące
+## 📗 46+ najlepszych praktyk: super kompleksowe i wyczerpujące
 
 Jest to przewodnik po niezawodności JavaScript i Node.js od A-Z. Podsumowuje i przygotowuje dla Ciebie dziesiątki najlepszych postów na blogu, książek i narzędzi dostępnych na rynku
 
