@@ -9,15 +9,15 @@
 
 ## 📗 45+ bài thực hành: Siêu toàn diện và đầy đủ
 
-Đây là một tài liệu hướng dẫn về độ tin cậy từ A-Z dành cho JavaScript & Node.js. Nó tóm tắt và sắp xếp cho bạn hàng chục bài blog, sách và các công cụ tốt nhất mà thị trường cung cấp
+Đây là một tài liệu hướng dẫn đáng tin cậy từ A-Z dành cho JavaScript & Node.js. Nó tóm tắt và sắp xếp cho bạn hàng chục bài blog, sách và các công cụ tốt nhất mà thị trường cung cấp
 
-## 🚢 Nâng cao: "Đi 10 nghỉn dặm", vượt xa cả những điều cơ bản nhất
+## 🚢 Phần Nâng cao: "Đi 10 nghỉn dặm", vượt xa cả những điều cơ bản nhất
 
-Tham gia vào một cuộc hành trình vượt xa những điều cơ bản nhất, tìm hiểu các chủ đề nâng cao như kiểm thử trong môi trường production (testing in production), kiểm thử hoán chuyển (mutation testing) , kiểm thử dựa trên tính chất (property-based testing) và nhiều công cụ mang tính chiến lược & chuyên nghiệp khác. Nếu bạn đọc từng từ trong hướng dẫn này, kỹ năng kiểm thử của bạn sẽ cải thiện cao hơn mức trung bình
+Tham gia vào một cuộc hành trình vượt xa những điều cơ bản nhất, tìm hiểu các chủ đề nâng cao như kiểm thử trong môi trường production (testing in production), kiểm thử hoán chuyển (mutation testing) , kiểm thử dựa trên tính chất (property-based testing) và nhiều công cụ mang tính chiến lược & chuyên nghiệp khác. Nếu bạn chiêm nghiệm hướng dẫn này, kỹ năng kiểm thử của bạn sẽ cải thiện cao hơn cả mức trung bình
 
 ## 🌐 Full-stack: front, backend, CI, bất cứ thứ gì
 
-Bắt đầu bằng cách hiểu rõ các phương pháp kiểm thử phổ biến là nền tảng cho bất kỳ mức ứng dụng nào. Sau đó, đi sâu vào từng lĩnh vực mà bạn lựa chọn: frontend/UI, backend, CI hoặc có thể là tất cả chúng?
+Việc bắt đầu bằng cách hiểu rõ các phương pháp kiểm thử phổ biến là nền tảng cho bất kỳ mức ứng dụng nào. Sau đó, đi sâu vào từng lĩnh vực mà bạn lựa chọn: frontend/UI, backend, CI hoặc có thể là tất cả?
 
 <br/>
 
