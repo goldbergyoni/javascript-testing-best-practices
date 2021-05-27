@@ -16,7 +16,7 @@ Embarque pour un voyage qui va bien au-delà des bases et aborde des sujets avan
 
 ## 🌐 Full-stack: front, backend, CI ...
 
-Commence par comprendre les pratiques de tests omniprésentes qui sont à la base de tout niveau d'application. Ensuite, plonge dans ton domaine de prédilection : frontend/UI, backend, CI ou peut-être tous cela ?
+Commence par comprendre les pratiques de tests omniprésentes qui sont à la base de tout niveau d'application. Ensuite, plonge dans ton domaine de prédilection : frontend/UI, backend, CI ou peut-être tous ça ?
 
 <br/>
 
@@ -39,31 +39,31 @@ Commence par comprendre les pratiques de tests omniprésentes qui sont à la bas
 
 <br/><br/>
 
-## `Table of Contents`
+## `Table des matières`
 
-#### [`Section 0: The Golden Rule`](#section-0️⃣-the-golden-rule)
+#### [`Section 0: La règle d'or`](#section-0️⃣-the-golden-rule)
 
-A single advice that inspires all the others (1 special bullet)
+Un seul conseil qui inspire tout les autres (1 point spécial)
 
-#### [`Section 1: The Test Anatomy`](#section-1-the-test-anatomy-1)
+#### [`Section 1: Anatomie d'un test`](#section-1-the-test-anatomy-1)
 
-The foundation - structuring clean tests (12 bullets)
+La base - structurer des tests propre (12 points)
 
 #### [`Section 2: Backend`](#section-2️⃣-backend-testing)
 
-Writing backend and Microservices tests efficiently (8 bullets)
+Écrire efficacement des tests backend et de microservices (8 points)
 
 #### [`Section 3: Frontend`](#section-3️⃣-frontend-testing)
 
-Writing tests for web UI including component and E2E tests (11 bullets)
+Écrire des tests pour l'interface utilisateur, y compris des tests de composants et des tests E2E (11 points)
 
-#### [`Section 4: Measuring Tests Effectiveness`](#section-4️⃣-measuring-test-effectiveness)
+#### [`Section 4: Mesurer l'efficacité des tests`](#section-4️⃣-measuring-test-effectiveness)
 
-Watching the watchman - measuring test quality (4 bullets)
+Surveiller le surveillant - mesurer la qualité des tests (4 points)
 
-#### [`Section 5: Continuous Integration`](#section-5️⃣-ci-and-other-quality-measures)
+#### [`Section 5: Intégration continue`](#section-5️⃣-ci-and-other-quality-measures)
 
-Guidelines for CI in the JS world (9 bullets)
+Lignes directrices pour l'intégration continue dans le monde du JS (9 points)
 
 <br/><br/>
 
