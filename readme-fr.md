@@ -67,26 +67,27 @@ Lignes directrices pour l'intégration continue dans le monde du JS (9 points)
 
 <br/><br/>
 
-# Section 0️⃣: The Golden Rule
+# Section 0️⃣: La règle d'or
 
 <br/>
 
-## ⚪️ 0 The Golden Rule: Design for lean testing
+## ⚪️ 0 La règle d'or: Concevoir des tests minimalistes
 
 :white_check_mark: **Do:**
-Testing code is not like production-code - design it to be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should look at a test and get the intent instantly.
+Le code des tests n'est pas comme le code de production - conçoit le pour être simple, court, sans abstraction, agréable à utiliser et minimaliste. En regardant le code d'un test, on doit pouvoir comprendre son but instantanément.
 
-Our minds are full with the main production code, we don't have 'headspace' for additional complexity. Should we try to squeeze yet another challenging code into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
+Nos esprits sont déjà occupés avec le code de production, on n'a pas "d'espace" pour de la complexité additionnelle. Si on essaye d'insérer un autre code compliqué dans nos pauvres cerveaux, l'équipe va être ralentie ce qui est en contradiction avec la raison pour laquelle on fait des tests. 
+En pratique, c'est là que de nombreuses équipes abandonnent tout simplement les tests.
 
-The tests are an opportunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a small investment. Science tells us that we have two brain systems: system 1 is used for effortless activities like driving a car on an empty road and system 2 which is meant for complex and conscious operations like solving a math equation. Design your test for system 1, when looking at test code it should _feel_ as easy as modifying an HTML document and not like solving 2X(17 × 24).
+Les tests sont une opportunité pour autre chose - un assistant amical et souriant, un avec qui il est agréable de travailler et qui nous apporte beaucoup pour peu d'investissement. La science nous dit que l'on a deux systèmes cérébraux : le premier est utilisé pour les activités qui ne demandent pas d'effort comme conduire une voiture sur une route vide ; le deuxième sert aux opérations complexe et conscientes comme résoudre une équation mathématique. Conçois tes tests pour le premier système, lire un test doit _sembler_ aussi simple que de modifier un fichier HTML, et pas comme résoudre 2X(17 x 24).
 
-This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+On peut y arriver en sélectionnant des techniques, des outils et des cibles de tests qui sont rentables et offrent un bon retour sur investissement. Test seulement ce qui doit être testé, essaye de conserver de la souplesse, et parfois, il vaut même mieux supprimer quelques tests et échanger la fiabilité contre de l'agilité et de la simplicité.
 
-![alt text](/assets/headspace.png "We have no head room for additional complexity")
+![alt text](/assets/headspace.png "On a pas de place disponible pour une complexité supplémentaire")
 
-Most of the advice below are derivatives of this principle.
+La plupart des conseils ci-dessous sont des dérivés de ce principe.
 
-### Ready to start?
+### Prêt à commencer ?
 
 <br/><br/>
 
