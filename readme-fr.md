@@ -28,14 +28,14 @@ Commence par comprendre les pratiques de tests omniprésentes qui sont à la bas
 
 <br/>
 
-### Translations - read in your own language
-
-- 🇨🇳[Chinese](readme-zh-CN.md) - Courtesy of [Yves yao](https://github.com/yvesyao)
-- 🇰🇷[Korean](readme.kr.md) - Courtesy of [Rain Byun](https://github.com/ragubyun)
-- 🇵🇱[Polish](readme-pl.md) - Courtesy of [Michal Biesiada](https://github.com/mbiesiad)
-- 🇪🇸[Spanish](readme-es.md) - Courtesy of [Miguel G. Sanguino](https://github.com/sanguino)
-- 🇧🇷[Portuguese-BR](readme-pt-br.md) - Courtesy of [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) and [koooge](https://github.com/koooge)
-- Want to translate to your own language? please open an issue 💜
+### Traductions - Lis dans la langue de ton choix
+- 🇬🇧[Anglais](readme.md)
+- 🇨🇳[Chinois](readme-zh-CN.md) - Traduit par [Yves yao](https://github.com/yvesyao)
+- 🇰🇷[Coréen](readme.kr.md) - Traduit par [Rain Byun](https://github.com/ragubyun)
+- 🇵🇱[Polonais](readme-pl.md) - Traduit par [Michal Biesiada](https://github.com/mbiesiad)
+- 🇪🇸[Espagnol](readme-es.md) - Traduit par [Miguel G. Sanguino](https://github.com/sanguino)
+- 🇧🇷[Portugais brésilien](readme-pt-br.md) - Traduit par [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) et [koooge](https://github.com/koooge)
+- Envie de traduire dans ta propre langue ? Ouvres une issue 💜
 
 <br/><br/>
 
