@@ -322,6 +322,16 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "otavionetoca",
+      "name": "Otavio Araujo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11263232?v=4",
+      "profile": "https://github.com/otavionetoca",
+      "contributions": [
+        "test",
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
