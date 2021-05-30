@@ -1026,7 +1026,7 @@ test('When flagging to show only VIP, should display only VIP members', () => {
   const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
 
   // Assert - Mix UI & data in assertion
-  expect(getAllByTestId('user')).toEqual('[<li data-testid="user">John Doe</li>]');
+  expect(getAllByTestId('user')).toEqual('[<li data-test-id="user">John Doe</li>]');
 });
 
 ```
@@ -1062,7 +1062,7 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 // the markup code (part of React component)
 <h3>
   <Badge pill className="fixed_badge" variant="dark">
-    <span data-testid="errorsLabel">{value}</span> <!-- note the attribute data-testid -->
+    <span data-test-id="errorsLabel">{value}</span> <!-- note the attribute data-test-id -->
   </Badge>
 </h3>
 ```
@@ -1315,7 +1315,7 @@ export default function ProductsList() {
       fetchProducts();
     }, []);
 
-  return products ? <div>{products}</div> : <div data-testid='no-products-message'>No products</div>
+  return products ? <div>{products}</div> : <div data-test-id='no-products-message'>No products</div>
 }
 
 // test
