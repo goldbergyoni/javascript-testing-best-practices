@@ -24,7 +24,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 - A JavaScript & Node.js consultant
 - 📗 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com) - My comprehensive online course with more than [10 hours of video](https://www.testjavascript.com), 14 test types and more than 40 best practices
-- [Follow me on Twitter ](https://twitter.com/goldbergyoni/)
+- [Follow me on Twitter](https://twitter.com/goldbergyoni/)
 
 <br/>
 
