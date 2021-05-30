@@ -6,7 +6,7 @@
 
 <br/>
 
-## 📗 45+ buenas practicas: Súper comprensiva y exhaustiva
+## 📗 46+ buenas practicas: Súper comprensiva y exhaustiva
 
 Esta es una guía completa para JavaScript y Node.js de la A a la Z. Resume y selecciona docenas de los mejores post de blogs, libros, y herramientas ofrecidas en el mercado
 
@@ -34,6 +34,7 @@ Empieza por comprender las técnicas de testing ubicuas que son la base de cualq
 - 🇰🇷[Coreano](readme.kr.md) - cortesía de [Rain Byun](https://github.com/ragubyun)
 - 🇵🇱[Polaco](readme-pl.md) - cortesía de [Michal Biesiada](https://github.com/mbiesiad)
 - 🇪🇸[Español](readme-es.md) - cortesía de [Miguel G. Sanguino](https://github.com/sanguino)
+- 🇧🇷[Portugués-BR](readme-pt-br.md) - cortesía de [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante), [Douglas Mariano Valero](https://github.com/DouglasMV) y [koooge](https://github.com/koooge)
 - ¿Quieres traducir a tu propio lenguaje? por favor abre una issue 💜
 
 <br/><br/>
@@ -799,7 +800,7 @@ Los test de componente se centran en la 'unidad' de microservicios, funcionan co
 
 <br/><br/>
 
-## ⚪ ️2.3 Asegúrate de que las nuevas versiones no rompan el API en uso
+## ⚪ ️2.3 Asegúrate de que las nuevas versiones no rompan el API usando tests de contrato
 
 :white_check_mark: **Haz:** Pongamos que tu microservicio tiene múltiples consumidores, y tenemos en ejecución diferentes versiones del servicio por compatibilidad (para que todos estén contentos). Luego cambias un campo y "¡boom!", uno de los consumidores que necesita ese campo se cabrea. Este es el Catch-22 del mundo de la integración: es muy difícil para el lado del servidor considerar todas las expectativas de todos los consumidores. Por otro lado, los consumidores no pueden realizar ningún test porque el servidor controla las fechas de release. [Los contratos dirigidos por el consumidor y el framework PACT] (https://docs.pact.io/) nacieron para regularizar este proceso con un enfoque muy disruptivo: no es el servidor quien define los test de sí mismo, sino que son los consumidores quienes definen los test de ¡el servidor! PACT puede registrar las expectativas del consumidor y dejarlas en una ubicación compartida, "broker", para que el servidor pueda cogerlas y cumplir con las expectativas y ejecutar cada construcción utilizando la librería PACT para detectar contratos incumplidos — una expectativa de consumidor no cumplida. Al hacerlo, todos los desajustes de la API cliente-servidor se detectan muy pronto durante la construcción / CI y pueden ahorrarte mucha frustración
 
@@ -1975,7 +1976,12 @@ Se encargó de revisar, mejorar, lintear y pulir todos los textos
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/MorganGeek"><img src="https://avatars0.githubusercontent.com/u/3721240?v=4" width="100px;" alt=""/><br /><sub><b>Morgan</b></sub></a><br /><a href="#content-MorganGeek" title="Content">🖋</a></td>
-    <td align="center"><a href="https://luk4s.dev"><img src="https://avatars0.githubusercontent.com/u/8350985?v=4" width="100px;" alt=""/><br /><sub><b>Lukas Bischof</b></sub></a><br /><a href="https://github.com/goldbergyoni/javascript-testing-best-practices/commits?author=lukasbischof" title="Tests">⚠️</a> <a href="#content-lukasbischof" title="Content">🖋</a></td>   
+    <td align="center"><a href="https://luk4s.dev"><img src="https://avatars0.githubusercontent.com/u/8350985?v=4" width="100px;" alt=""/><br /><sub><b>Lukas Bischof</b></sub></a><br /><a href="https://github.com/goldbergyoni/javascript-testing-best-practices/commits?author=lukasbischof" title="Tests">⚠️</a> <a href="#content-lukasbischof" title="Content">🖋</a></td>
+    <td align="center"><a href="https://juanmaruiz.surge.sh"><img src="https://avatars2.githubusercontent.com/u/1837650?v=4" width="100px;" alt=""/><br /><sub><b>JuanMa Ruiz</b></sub></a><br /><a href="#content-JuanMaRuiz" title="Content">🖋</a></td>
+    <td align="center"><a href="https://luisangelorjr.com.br"><img src="https://avatars3.githubusercontent.com/u/22268900?v=4" width="100px;" alt=""/><br /><sub><b>Luís Ângelo Rodrigues Jr.</b></sub></a><br /><a href="#content-luisangelorjr" title="Content">🖋</a></td>
+    <td align="center"><a href="https://jfernandezpe.wordpress.com/"><img src="https://avatars0.githubusercontent.com/u/12046620?v=4" width="100px;" alt=""/><br /><sub><b>José Fernández</b></sub></a><br /><a href="#content-jfernandezpe" title="Content">🖋</a></td>
+    <td align="center"><a href="http://www.linkedin.com/in/AlejandroGutierrezB"><img src="https://avatars3.githubusercontent.com/u/56408597?v=4" width="100px;" alt=""/><br /><sub><b>Alejandro Gutierrez Barcenilla</b></sub></a><br /><a href="#content-AlejandroGutierrezB" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/jasonandmonte"><img src="https://avatars1.githubusercontent.com/u/30088000?v=4" width="100px;" alt=""/><br /><sub><b>Jason</b></sub></a><br /><a href="#content-jasonandmonte" title="Content">🖋</a></td>
   </tr>
 </table>
 
