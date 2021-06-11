@@ -2,92 +2,92 @@
 
 <br/>
 
-# 👇 Why this guide can take your testing skills to the next level
+# 👇 Pourquoi ce guide peut faire passer vos compétences de test au niveau supérieur
 
 <br/>
 
-## 📗 46+ best practices: Super-comprehensive and exhaustive
+## 📗 46+ bonnes pratiques : complet et exhaustif
 
-This is a guide for JavaScript & Node.js reliability from A-Z. It summarizes and curates for you dozens of the best blog posts, books and tools the market has to offer
+Ceci est un guide complet pour Javascript & Node.js de A à Z. Il résume et organise pour vous les meilleurs articles de blogs, livres et outils du marché
 
-## 🚢 Advanced: Goes 10,000 miles beyond the basics
+## 🚢 Avancé : va bien au-delà des bases
 
-Hop into a journey that travels way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
+Embarque pour un voyage qui va bien au-delà des bases et aborde des sujets avancés tels que les tests en production, les tests de mutations, les tests basés sur les propriétés et de nombreux autres outils stratégiques et professionnels. Si vous lisez chaque mot de ce guide, vos compétences de tests seront probablement bien au-dessus la moyenne.
 
-## 🌐 Full-stack: front, backend, CI, anything
+## 🌐 Full-stack: front, backend, CI ...
 
-Start by understanding the ubiquitous testing practices that are the foundation for any application tier. Then, delve into your area of choice: frontend/UI, backend, CI or maybe all of them?
-
-<br/>
-
-### Written By Yoni Goldberg
-
-- A JavaScript & Node.js consultant
-- 📗 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com) - My comprehensive online course with more than [10 hours of video](https://www.testjavascript.com), 14 test types and more than 40 best practices
-- [Follow me on Twitter ](https://twitter.com/goldbergyoni/)
+Commence par comprendre les pratiques de tests omniprésentes qui sont à la base de tout niveau d'application. Ensuite, plonge dans ton domaine de prédilection : frontend/UI, backend, CI ou peut-être tous ça ?
 
 <br/>
 
-### Translations - read in your own language
+### Écrit par Yoni Goldberg
 
-- 🇨🇳[Chinese](readme-zh-CN.md) - Courtesy of [Yves yao](https://github.com/yvesyao)
-- 🇰🇷[Korean](readme.kr.md) - Courtesy of [Rain Byun](https://github.com/ragubyun)
-- 🇵🇱[Polish](readme-pl.md) - Courtesy of [Michal Biesiada](https://github.com/mbiesiad)
-- 🇪🇸[Spanish](readme-es.md) - Courtesy of [Miguel G. Sanguino](https://github.com/sanguino)
-- 🇧🇷[Portuguese-BR](readme-pt-br.md) - Courtesy of [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) and [koooge](https://github.com/koooge)
-- 🇫🇷[French](readme-fr.md) - Courtesy of [Mathilde El Mouktafi](https://github.com/mel-mouk)
-- Want to translate to your own language? please open an issue 💜
+- Un consultant JavaScript & Node.js
+- 📗 [Les tests Node.js & JavaScript de A à Z](https://www.testjavascript.com) - Mon cours en ligne complet avec plus de [10 heures de video](https://www.testjavascript.com), 14 types de tests et plus de 40 bonnes pratiques
+- [Suis-moi sur Twitter ](https://twitter.com/goldbergyoni/)
+
+<br/>
+
+### Traductions - Lis dans la langue de ton choix
+- 🇬🇧[Anglais](readme.md)
+- 🇨🇳[Chinois](readme-zh-CN.md) - Traduit par [Yves yao](https://github.com/yvesyao)
+- 🇰🇷[Coréen](readme.kr.md) - Traduit par [Rain Byun](https://github.com/ragubyun)
+- 🇵🇱[Polonais](readme-pl.md) - Traduit par [Michal Biesiada](https://github.com/mbiesiad)
+- 🇪🇸[Espagnol](readme-es.md) - Traduit par [Miguel G. Sanguino](https://github.com/sanguino)
+- 🇧🇷[Portugais brésilien](readme-pt-br.md) - Traduit par [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) et [koooge](https://github.com/koooge)
+- Envie de traduire dans ta propre langue ? Ouvres une issue 💜
 
 <br/><br/>
 
-## `Table of Contents`
+## `Table des matières`
 
-#### [`Section 0: The Golden Rule`](#section-0️⃣-the-golden-rule)
+#### [`Section 0: La règle d'or`](#section-0️⃣-the-golden-rule)
 
-A single advice that inspires all the others (1 special bullet)
+Un seul conseil qui inspire tout les autres (1 point spécial)
 
-#### [`Section 1: The Test Anatomy`](#section-1-the-test-anatomy-1)
+#### [`Section 1: Anatomie d'un test`](#section-1-the-test-anatomy-1)
 
-The foundation - structuring clean tests (12 bullets)
+La base - structurer des tests propre (12 points)
 
 #### [`Section 2: Backend`](#section-2️⃣-backend-testing)
 
-Writing backend and Microservices tests efficiently (8 bullets)
+Écrire efficacement des tests backend et de microservices (8 points)
 
 #### [`Section 3: Frontend`](#section-3️⃣-frontend-testing)
 
-Writing tests for web UI including component and E2E tests (11 bullets)
+Écrire des tests pour l'interface utilisateur, y compris des tests de composants et des tests E2E (11 points)
 
-#### [`Section 4: Measuring Tests Effectiveness`](#section-4️⃣-measuring-test-effectiveness)
+#### [`Section 4: Mesurer l'efficacité des tests`](#section-4️⃣-measuring-test-effectiveness)
 
-Watching the watchman - measuring test quality (4 bullets)
+Surveiller le surveillant - mesurer la qualité des tests (4 points)
 
-#### [`Section 5: Continuous Integration`](#section-5️⃣-ci-and-other-quality-measures)
+#### [`Section 5: Intégration continue`](#section-5️⃣-ci-and-other-quality-measures)
 
-Guidelines for CI in the JS world (9 bullets)
+Lignes directrices pour l'intégration continue dans le monde du JS (9 points)
 
 <br/><br/>
 
-# Section 0️⃣: The Golden Rule
+# Section 0️⃣: La règle d'or
 
 <br/>
 
-## ⚪️ 0 The Golden Rule: Design for lean testing
+## ⚪️ 0 La règle d'or: Concevoir des tests minimalistes
 
 :white_check_mark: **Do:**
-Testing code is not like production-code - design it to be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should look at a test and get the intent instantly.
+Le code des tests n'est pas comme le code de production - conçoit le pour être simple, court, sans abstraction, agréable à utiliser et minimaliste. En regardant le code d'un test, on doit pouvoir comprendre son but instantanément.
 
-Our minds are full with the main production code, we don't have 'headspace' for additional complexity. Should we try to squeeze yet another challenging code into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
+Nos esprits sont déjà occupés avec le code de production, on n'a pas "d'espace" pour de la complexité additionnelle. Si on essaye d'insérer un autre code compliqué dans nos pauvres cerveaux, l'équipe va être ralentie ce qui est en contradiction avec la raison pour laquelle on fait des tests. 
+En pratique, c'est là que de nombreuses équipes abandonnent tout simplement les tests.
 
-The tests are an opportunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a small investment. Science tells us that we have two brain systems: system 1 is used for effortless activities like driving a car on an empty road and system 2 which is meant for complex and conscious operations like solving a math equation. Design your test for system 1, when looking at test code it should _feel_ as easy as modifying an HTML document and not like solving 2X(17 × 24).
+Les tests sont une opportunité pour autre chose - un assistant amical et souriant, un avec qui il est agréable de travailler et qui nous apporte beaucoup pour peu d'investissement. La science nous dit que l'on a deux systèmes cérébraux : le premier est utilisé pour les activités qui ne demandent pas d'effort comme conduire une voiture sur une route vide ; le deuxième sert aux opérations complexe et conscientes comme résoudre une équation mathématique. Conçois tes tests pour le premier système, lire un test doit _sembler_ aussi simple que de modifier un fichier HTML, et pas comme résoudre 2X(17 x 24).
 
-This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+On peut y arriver en sélectionnant des techniques, des outils et des cibles de tests qui sont rentables et offrent un bon retour sur investissement. Test seulement ce qui doit être testé, essaye de conserver de la souplesse, et parfois, il vaut même mieux supprimer quelques tests et échanger la fiabilité contre de l'agilité et de la simplicité.
 
-![alt text](/assets/headspace.png "We have no head room for additional complexity")
+![alt text](/assets/headspace.png "On a pas de place disponible pour une complexité supplémentaire")
 
-Most of the advice below are derivatives of this principle.
+La plupart des conseils ci-dessous sont des dérivés de ce principe.
 
-### Ready to start?
+### Prêt à commencer ?
 
 <br/><br/>
 
