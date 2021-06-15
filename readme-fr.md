@@ -209,20 +209,21 @@ test("Should be classified as premium", () => {
 
 <br/><br/>
 
-## ⚪ ️1.3 Describe expectations in a product language: use BDD-style assertions
+## ⚪ ️1.3 Décrire les attentes dans un language produit: Utiliser des assertions de type BDD
 
-:white_check_mark: **Do:** Coding your tests in a declarative-style allows the reader to get the grab instantly without spending even a single brain-CPU cycle. When you write imperative code that is packed with conditional logic, the reader is forced to exert more brain-CPU cycles. In that case, code the expectation in a human-like language, declarative BDD style using `expect` or `should` and not using custom code. If Chai & Jest doesn't include the desired assertion and it’s highly repeatable, consider [extending Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) or writing a [custom Chai plugin](https://www.chaijs.com/guide/plugins/)
-<br/>
-
-❌ **Otherwise:** The team will write less tests and decorate the annoying ones with .skip()
+:white_check_mark: **À faire:** Coder tes tests dans un language déclaratif permet au lecteur de comprendre immédiatement sans effectuer un seul cycle de "CPU" de cerveau. Lorsque tu écris du code impératif remplit de logique conditionnelles, le lecteur est forcé d'utiliser plus de cycles de "CPU" de cerveau. Dans ce cas, codes les attentes dans un language similaire au language humain, dans un style déclaratif de type BDD avec `expect` ou `should` et sans utiliser de code custom. Si Chai et Jest n'incluent pas les assertions nécéssaires et qu'elles reviennent régulièrement, considère [d'étendre Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) ou d'écrire un [plugin Chai custom](https://www.chaijs.com/guide/plugins/)
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary><br/>
+❌ **Autrement:** L'équipe écrira moins de tests et décorera ceux qui sont ennuyeux avec .skip()
+
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary><br/>
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
-### :thumbsdown: Anti-Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
+### :thumbsdown: Exemple d'anti pattern: Le lecteur doit parcourir un long code impératif juste pour comprendre l'histoire du test
 
 ```javascript
 test("When asking for an admin, ensure only ordered admins in results", () => {
@@ -252,7 +253,7 @@ test("When asking for an admin, ensure only ordered admins in results", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Skimming through the following declarative test is a breeze
+### :clap: Bien faire les choses Exemple: Parcourir le test déclaratif suivant est un jeu d'enfant
 
 ```javascript
 it("When asking for an admin, ensure only ordered admins in results", () => {
