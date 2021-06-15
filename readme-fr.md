@@ -151,19 +151,20 @@ describe('Products Service', function() {
 
 <br/><br/>
 
-## ⚪ ️ 1.2 Structure tests by the AAA pattern
+## ⚪ ️ 1.2 Structurer les tests avec le pattern AAA
 
-:white_check_mark: **Do:** Structure your tests with 3 well-separated sections Arrange, Act & Assert (AAA). Following this structure guarantees that the reader spends no brain-CPU on understanding the test plan:
+:white_check_mark: **À faire:** Structures tes tests avec 3 sections séparés: Organiser, Agir & Vérifier (Arrange, Act & Assert: AAA). Suivre cette structure garantit que le lecteur n'utilise pas de "CPU" de cerveau pour comprendre le plan du test:
 
-1st A - Arrange: All the setup code to bring the system to the scenario the test aims to simulate. This might include instantiating the unit under test constructor, adding DB records, mocking/stubbing on objects and any other preparation code
+1er A - Organiser (Arrange): Tout le code permettant de configurer le système selon le scénario qui doit être simulé. Cela peut inclure d'instancier le constructeur de l'élément testé, ajouter des entrées en DB, mocking/stubbing des objets et autre codes de préparation
 
-2nd A - Act: Execute the unit under test. Usually 1 line of code
+2ème A - Agir (Act): Exécute l'élément testé. En général 1 seule ligne de code
 
-3rd A - Assert: Ensure that the received value satisfies the expectation. Usually 1 line of code
+3éme A - Vérifier (Assert): Vérifier que les valeurs reçues correspondent aux attentes. En général 1 seule ligne de code
 
 <br/>
 
-❌ **Otherwise:** Not only do you spend hours understanding the main code, but what should have been the simplest part of the day (testing) stretches your brain
+❌ **Autrement:** Non seulement vous avez passé des heures à comprendre le code principal, mais en plus ce qui devait être la partie la plus simple de la journée (tester) vous tord le cerveau.
+
 
 <br/>
 
@@ -171,7 +172,7 @@ describe('Products Service', function() {
 
 <br/>
 
-### :clap: Doing It Right Example: A test structured with the AAA pattern
+### :clap: Bien faire les choses Exemple: Un test structuré avec le pattern AAA
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -193,7 +194,7 @@ describe("Customer classifier", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: No separation, one bulk, harder to interpret
+### :thumbsdown: Exemple d'anti pattern: Pas de séparation, un bloc, plus dur à interpréter
 
 ```javascript
 test("Should be classified as premium", () => {
