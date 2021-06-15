@@ -91,34 +91,34 @@ La plupart des conseils ci-dessous sont des dérivés de ce principe.
 
 <br/><br/>
 
-# Section 1: The Test Anatomy
+# Section 1: Anatomie d'un test
 
 <br/>
 
-## ⚪ ️ 1.1 Include 3 parts in each test name
+## ⚪ ️ 1.1 Chaque nom devrait contenir 3 parties
 
-:white_check_mark: **Do:** A test report should tell whether the current application revision satisfies the requirements for the people who are not necessarily familiar with the code: the tester, the DevOps engineer who is deploying and the future you two years from now. This can be achieved best if the tests speak at the requirements level and include 3 parts:
+:white_check_mark: **À faire:** Un rapport de test devrait indiquer si la version actuelle de l'application correspond aux attentes pour des personnes qui ne sont pas forcément familier avec la base de code : le testeur, le dev ops qui deploie et toi dans 2 ans. Dans ce but, les noms des tests doivent expliciter les attentes et inclure 3 parties :
 
-(1) What is being tested? For example, the ProductsService.addNewProduct method
+(1) Qu'est-ce qui est testé ? Par exemple, la méthode ProductService.addNewProduct
 
-(2) Under what circumstances and scenario? For example, no price is passed to the method
+(2) Dans quel circonstance et scénario ? Par exemple, aucun prix n'est passé à la méthode
 
-(3) What is the expected result? For example, the new product is not approved
-
-<br/>
-
-❌ **Otherwise:** A deployment just failed, a test named “Add product” failed. Does this tell you what exactly is malfunctioning?
+(3) Quel est le résultat attendu ? Par exemple, le produit n'est pas approuvé
 
 <br/>
 
-**👇 Note:** Each bullet has code examples and sometime also an image illustration. Click to expand
+❌ **Autrement:** Un deploiement a échoué, un test appelé "Add product" à échoué. Est-ce que celà indique exactement ce qui ne fonctionne plus correctement ?
+
+<br/>
+
+**👇 Note:** Chaque point contient des exemples de codes et parfois une image d'illustration. Cliques pour agrandir.
 <br/>
 
 <details><summary>✏ <b>Code Examples</b></summary>
   
 <br/>
   
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: Bien faire les choses Exemple: Un nom de test constitué de 3 parties
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Mocha-blue.svg "Using Mocha to illustrate the idea")
 
@@ -138,7 +138,7 @@ describe('Products Service', function() {
 
 <br/>
 
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: Bien faire les choses Exemple: Un nom de test constitué de 3 parties
 
 ![alt text](/assets/bp-1-3-parts.jpeg "A test name that constitutes 3 parts")
 
