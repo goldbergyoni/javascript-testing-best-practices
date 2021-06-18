@@ -312,24 +312,24 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 
 <br/><br/>
 
-## ⚪ ️ ️1.5 Choose the right test doubles: Avoid mocks in favor of stubs and spies
+## ⚪ ️ ️1.5 Choisir les bons "test doubles": Éviter les mocks en faveur des stubs et spies
 
-:white_check_mark: **Do:** Test doubles are a necessary evil because they are coupled to the application internals, yet some provide immense value (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Read here a reminder about test doubles: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
+:white_check_mark: **À faire:** Les "test doubles" sont un mal nécéssaire parce qu'il sont couplé aux composants internes mais apportent néanmoins beaucoup de valeur (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Retrouve ici un rappel à propos des "test doubles": mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
 
-Before using test doubles, ask a very simple question: Do I use it to test functionality that appears, or could appear, in the requirements document? If no, it’s a white-box testing smell.
+Avant d'utiliser des "test doubles", pose toi une question trés simple: Est-ce que je l'utilise pour tester une fonctionnalité qui apparait, ou peut apparaitre, dans le document de spécification ? Si non, ça sent le test de boite blanche.
 
-For example, if you want to test that your app behaves reasonably when the payment service is down, you might stub the payment service and trigger some ‘No Response’ return to ensure that the unit under test returns the right value. This checks our application behavior/response/outcome under certain scenarios. You might also use a spy to assert that an email was sent when that service is down — this is again a behavioral check which is likely to appear in a requirements doc (“Send an email if payment couldn’t be saved”). On the flip side, if you mock the Payment service and ensure that it was called with the right JavaScript types — then your test is focused on internal things that have nothing to do with the application functionality and are likely to change frequently
+Par exemple, si tu veux tester que ton application se comporte correctement quand le service de paiement est coupé, tu peux faire un stub du service de paiement et déclencher une réponse de type 'No Response' pour vérifier que l'unité testée retourne la bonne valeur. Cela vérifie le comportement/réponse de notre application suivant un certain scénario. Tu peux aussi utiliser un spy pour vérifier qu'un email a bien été envoyé quand ce service était coupé - il s'agit encore une fois d'un test de comportement qui pourrait apparaitre dans les spécification ("Envoyer un email si le paiement n'as pas pu être enregistré"). 
+D'un autre coté, si tu mock le service de paiement pour vérifié qu'il a bien été appelé avec le bon type Javascript, alors ton test est orienté sur des comportements internes qui n'ont rien à voir avec les fonctionnalités de l'application et changeront probablement fréquemment.
 <br/>
 
-❌ **Otherwise:** Any refactoring of code mandates searching for all the mocks in the code and updating accordingly. Tests become a burden rather than a helpful friend
+❌ **Autrement:** Chaque refactoring du code implique de chercher l'ensemble des mock dans le code afin de les mettre à jour. Les tests deviennent une corvée plutôt qu'un ami aidant.
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :thumbsdown: Anti-pattern example: Mocks focus on the internals
+### :thumbsdown: Exemple d'anti pattern: Les mocks se concentrent sur des composants internes
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg "Examples with Sinon")
 
@@ -349,7 +349,7 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
 
 <br/>
 
-### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
+### :clap: Faire les choses bien, exemple : Les spies se concentrent sur les fonctionnalités requises mais touchent les composants internes par effet de bord
 
 ```javascript
 it("When a valid product is about to be deleted, ensure an email is sent", async () => {
@@ -365,9 +365,9 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## 📗 Want to learn all these practices with live video?
+## 📗 Envie d'apprendre ces bonnes pratiques en vidéo ?
 
-### Visit my online course [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
+### Va voir mon cours en ligne [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
 
 <br/><br/>
 
