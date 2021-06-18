@@ -371,21 +371,19 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## ⚪ ️1.6 Don’t “foo”, use realistic input data
+## ⚪ ️1.6 Utilise des données réaliste
 
-:white_check_mark: **Do:** Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not as a replacement) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? See the next bullet (property-based testing).
+:white_check_mark: **À faire:** Souvent les beugs de production sont révélés par des entrées tres spécifiques et surprenantes. Plus les entrées de tests seront réalistes, plus il y a de chance de détecter les beugs tôt. Utilise une librairie dédiée comme [Faker](https://www.npmjs.com/package/faker) pour générer des pseudo-vrais données qui resemble aux données de production. Par exemple, ce type de librairie peut générer de façon réaliste des numéros de téléphones, noms d'utilisateur, cartes de crédit, nom de société et même du 'Lorem ipsum'. Tu peux aussi créer des tests (en plus des tests unitaires, par à leur place) qui utilise des fausses données randomisées pour pousser test tests, ou même importer de vrais données depuis ton environnement de production. Envie de passer au niveau supérieur ? Regarde le prochain point (property-based testing).
 <br/>
 
-❌ **Otherwise:** All your development testing will falsely show green when you use synthetic inputs like “Foo”, but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
+❌ **Autrement:** Tout vos tests de développement vont montrer du vert à tord avec des entrées tels que "Foo", mais en production ils passeront au rouge lorsqu'un hacker passera une chaine de caractère tel que “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :thumbsdown: Anti-Pattern Example: A test suite that passes due to non-realistic data
-
+### :thumbsdown: Exemple d'anti pattern: Une suite de test qui passe à cause de données non réalistes
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
@@ -409,7 +407,7 @@ test("Wrong: When adding new product with valid properties, get successful confi
 
 <br/>
 
-### :clap:Doing It Right Example: Randomizing realistic input
+### :clap: Bien faire les choses, exemple : Données réalistes randomisés
 
 ```javascript
 it("Better: When adding new valid product, get successful confirmation", async () => {
