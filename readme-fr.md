@@ -168,7 +168,7 @@ describe('Products Service', function() {
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
@@ -270,19 +270,19 @@ it("When asking for an admin, ensure only ordered admins in results", () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.4 Stick to black-box testing: Test only public methods
+## ⚪ ️ 1.4 S'en tenir aux tests des boites noires: Ne teste que les méthodes publiques
 
-:white_check_mark: **Do:** Testing the internals brings huge overhead for almost nothing. If your code/API delivers the right results, should you really invest your next 3 hours in testing HOW it worked internally and then maintain these fragile tests? Whenever a public behavior is checked, the private implementation is also implicitly tested and your tests will break only if there is a certain problem (e.g. wrong output). This approach is also referred to as `behavioral testing`. On the other side, should you test the internals (white box approach) — your focus shifts from planning the component outcome to nitty-gritty details and your test might break because of minor code refactors although the results are fine - this dramatically increases the maintenance burden
+:white_check_mark: **À faire:** Tester les composants internes apporte beaucoup de complexité pour presque rien. Si ton code/API délivre les bon resultats, est-ce que tu dois vraiment passer les 3 prochaines heures à tester COMMENT il fonctionne et maintenir ces tests ? À chaque fois qu'un comportement publique est testé, l'implementation privée est aussi testé implicitement, et test tests n'échoueront que si il y a un certain problème (par exemple: mauvais retour). Cette approche est aussi appelé `behavioral testing` (test de comportement). De l'autre coté, si tu dois tester les éléments internes (approche de la boîte blanche) - l'objectif passe de planifier le résultat du composant à des détails de bases, et votre test peut échouer à cause de refactoring mineurs alors que le résultat est toujours bon - cela augmente la charge de maintenance.
 <br/>
 
-❌ **Otherwise:** Your tests behave like the [boy who cried wolf](https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf): shouting false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday, a real bug gets ignored…
+❌ **Autrement:** Tes tests se comportent comme [l'enfant qui criait au loup](https://fr.wikipedia.org/wiki/L%27Enfant_qui_criait_au_loup): crier des faux positifs (par exemple, un test échoue parce qu'un nom de variable privé à été changé). Sans surprise, les gens vont rapidement ignorer les notifications, jusqu'à ce qu'un jour, un vrai beug soit ignoré
 
 <br/>
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test case is testing the internals for no good reason
+### :thumbsdown: Exemple d'anti pattern: Un cas qui test une méthode interne sans raison valable
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha & Chai")
 
