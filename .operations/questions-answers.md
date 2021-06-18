@@ -2,7 +2,7 @@
 
 ## Q: How do I start a new translation?
 
-**Answer:** 
+**Answer:**
 
 Welcome aboard! Having a Brazilian Portuguese translation would be awesome 🔥🌈👌 . I'll be glad to collaborate with you on this and help wherever I can
 
