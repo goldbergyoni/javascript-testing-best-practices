@@ -371,7 +371,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## ⚪ ️1.6 Utilise des données réaliste
+## ⚪ ️1.6 Utilise des données réalistes
 
 :white_check_mark: **À faire:** Souvent les beugs de production sont révélés par des entrées tres spécifiques et surprenantes. Plus les entrées de tests seront réalistes, plus il y a de chance de détecter les beugs tôt. Utilise une librairie dédiée comme [Faker](https://www.npmjs.com/package/faker) pour générer des pseudo-vrais données qui resemble aux données de production. Par exemple, ce type de librairie peut générer de façon réaliste des numéros de téléphones, noms d'utilisateur, cartes de crédit, nom de société et même du 'Lorem ipsum'. Tu peux aussi créer des tests (en plus des tests unitaires, par à leur place) qui utilise des fausses données randomisées pour pousser test tests, ou même importer de vrais données depuis ton environnement de production. Envie de passer au niveau supérieur ? Regarde le prochain point (property-based testing).
 <br/>
@@ -423,20 +423,19 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/><br/>
 
-## ⚪ ️ 1.7 Test many input combinations using Property-based testing
+## ⚪ ️ 1.7 Teste plusieurs combinaisons d'input avec le Property-based testing
 
-:white_check_mark: **Do:** Typically we choose a few input samples for each test. Even when the input format resembles real-world data (see bullet ‘Don’t foo’), we cover only a few input combinations (method(‘’, true, 1), method(“string” , false” , 0)), However, in production, an API that is called with 5 parameters can be invoked with thousands of different permutations, one of them might render our process down ([see Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)). What if you could write a single test that sends 1000 permutations of different inputs automatically and catches for which input our code fails to return the right response? Property-based testing is a technique that does exactly that: by sending all the possible input combinations to your unit under test it increases the serendipity of finding a bug. For example, given a method — addNewProduct(id, name, isDiscount) — the supporting libraries will call this method with many combinations of (number, string, boolean) like (1, “iPhone”, false), (2, “Galaxy”, true). You can run property-based testing using your favorite test runner (Mocha, Jest, etc) using libraries like [js-verify](https://github.com/jsverify/jsverify) or [testcheck](https://github.com/leebyron/testcheck-js) (much better documentation). Update: Nicolas Dubien suggests in the comments below to [checkout fast-check](https://github.com/dubzzz/fast-check#readme) which seems to offer some additional features and also to be actively maintained
+:white_check_mark: **À faire:** En règle général, on choisit quelques valeurs d'entrées pour chaque test. Même lorsque le format des inputs est réaliste ( voir le point 'Utilise des données réalistes' ), on couvre seulement quelques combinaisons d'entrées. En revanche, en production, une API appelée avec 5 paramètres peut être invoquée avec des milliers de permutations différentes, l'une d'entre elle peut faire échouer notre processus ([voir le Fuzz testing](https://fr.wikipedia.org/wiki/Fuzzing)). Et si tu pouvais écrire un seul test qui envoie 1000 permutations d'entrées automatiquement et détecte pour lequel d'entre eux notre processus ne retourne pas la bonne valeur ? Le Property-based testing c'est une méthode qui fait exactement ça : En testant toute les combinaisons d'entrées possible on augmente les chance de détecter un beug. Par exemple, prenom une méthode : addNewProduct(id, name, isDiscount), la librairie appelera cette méthode avec plusieurs combinaisons de (number, string, boolean) tel que (1, “iPhone”, false), (2, “Galaxy”, true). Tu peux utiliser le property-based testing avec ta librairie de test préféré (Mocha, Jest ...etc) à l'aide de librairie tel que [js-verify](https://github.com/jsverify/jsverify) ou [testcheck](https://github.com/leebyron/testcheck-js) (meilleure documentation). MAJ: Nicolas Dubien à suggéré dans les commentaire de [regarder fast-check](https://github.com/dubzzz/fast-check#readme) qui semble offrir des fonctionnalitées supplémentaire et être activement maintenue.
 <br/>
 
-❌ **Otherwise:** Unconsciously, you choose the test inputs that cover only code paths that work well. Unfortunately, this decreases the efficiency of testing as a vehicle to expose bugs
+❌ **Autrement:** Inconsciemment, tu choisis des entrées de test qui ne couvrent que les cas qui fonctionnent correctement. Malheuresement, cela réduit l'efficacité tests et leur capacité a détecter des beugs.
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example: Testing many input permutations with “fast-check”
+### :clap: Bien faire les choses, exemple: Tester plusieurs permutations d'entrées avec "fast-check"
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
