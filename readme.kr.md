@@ -21,7 +21,7 @@ JavaScript 및 Node.js에 대한 A부터 Z까지의 믿음직한 가이드입니
 ### Yoni Goldberg 작성
 
 * JavaScript & Node.js 컨설턴트
-* 👨‍🏫 [나의 테스팅 워크샵](https://www.testjavascript.com) -  유럽과 미국에서의 [제 워크샵](https://www.testjavascript.com)에 대해서 알아보십시오.
+* 👨‍🏫 [나의 테스팅 워크샵](https://www.testjavascript.com) -  유럽과 미국에서의 [제 워크샵](https://www.testjavascript.com/)에 대해서 알아보십시오.
 * [트위터 팔로우 하기](https://twitter.com/goldbergyoni/)
 * [LA](https://js.la/), [베로나](https://2019.nodejsday.it/), [하르키우](https://kharkivjs.org/), [무료 웨비나](https://zoom.us/webinar/register/1015657064375/WN_Lzvnuv4oQJOYey2jXNqX6A)를 들으러 오십시오. 향후 이벤트는 곧 결정될 것입니다.
 * [저의 JavaScript 뉴스 레터](https://testjavascript.com/newsletter/) - 인사이트와 오직 전략적인 문제에 대한 내용
@@ -974,7 +974,7 @@ test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 
   const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true}/>);
 
   // Assert - 화면과 데이터를 섞어서 검증
-  expect(getAllByTestId('user')).toEqual('[<li data-testid="user">John Doe</li>]');
+  expect(getAllByTestId('user')).toEqual('[<li data-test-id="user">John Doe</li>]');
 });
 
 ```
@@ -1010,7 +1010,7 @@ test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 
 // the markup code (part of React component)
 <h3>
   <Badge pill className="fixed_badge" variant="dark">
-    <span data-testid="errorsLabel">{value}</span> <!-- note the attribute data-testid -->
+    <span data-test-id="errorsLabel">{value}</span> <!-- note the attribute data-test-id -->
   </Badge>
 </h3>
 ```
@@ -1262,7 +1262,7 @@ export default function ProductsList() {
       fetchProducts();
     }, []);
 
-  return products ? <div>{products}</div> : <div data-testid='no-products-message'>No products</div>
+  return products ? <div>{products}</div> : <div data-test-id='no-products-message'>No products</div>
 }
 
 // test
