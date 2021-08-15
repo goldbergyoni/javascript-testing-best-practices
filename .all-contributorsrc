@@ -341,6 +341,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "YeeJone",
+      "name": "Yiqiao Xu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20400822?v=4",
+      "profile": "https://github.com/YeeJone",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
