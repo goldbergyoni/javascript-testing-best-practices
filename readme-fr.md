@@ -91,34 +91,34 @@ La plupart des conseils ci-dessous sont des dérivés de ce principe.
 
 <br/><br/>
 
-# Section 1: The Test Anatomy
+# Section 1: Anatomie d'un test
 
 <br/>
 
-## ⚪ ️ 1.1 Include 3 parts in each test name
+## ⚪ ️ 1.1 Chaque nom devrait contenir 3 parties
 
-:white_check_mark: **Do:** A test report should tell whether the current application revision satisfies the requirements for the people who are not necessarily familiar with the code: the tester, the DevOps engineer who is deploying and the future you two years from now. This can be achieved best if the tests speak at the requirements level and include 3 parts:
+:white_check_mark: **À faire:** Un rapport de test devrait indiquer si la version actuelle de l'application correspond aux attentes pour des personnes qui ne sont pas forcément familier avec la base de code : le testeur, le dev ops qui deploie et toi dans 2 ans. Dans ce but, les noms des tests doivent expliciter les attentes et inclure 3 parties :
 
-(1) What is being tested? For example, the ProductsService.addNewProduct method
+(1) Qu'est-ce qui est testé ? Par exemple, la méthode ProductService.addNewProduct
 
-(2) Under what circumstances and scenario? For example, no price is passed to the method
+(2) Dans quel circonstance et scénario ? Par exemple, aucun prix n'est passé à la méthode
 
-(3) What is the expected result? For example, the new product is not approved
-
-<br/>
-
-❌ **Otherwise:** A deployment just failed, a test named “Add product” failed. Does this tell you what exactly is malfunctioning?
+(3) Quel est le résultat attendu ? Par exemple, le produit n'est pas approuvé
 
 <br/>
 
-**👇 Note:** Each bullet has code examples and sometime also an image illustration. Click to expand
+❌ **Autrement:** Un deploiement a échoué, un test appelé "Add product" à échoué. Est-ce que celà indique exactement ce qui ne fonctionne plus correctement ?
+
+<br/>
+
+**👇 Note:** Chaque point contient des exemples de codes et parfois une image d'illustration. Cliques pour agrandir.
 <br/>
 
 <details><summary>✏ <b>Code Examples</b></summary>
   
 <br/>
   
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: Bien faire les choses Exemple: Un nom de test constitué de 3 parties
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Mocha-blue.svg "Using Mocha to illustrate the idea")
 
@@ -138,7 +138,7 @@ describe('Products Service', function() {
 
 <br/>
 
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: Bien faire les choses Exemple: Un nom de test constitué de 3 parties
 
 ![alt text](/assets/bp-1-3-parts.jpeg "A test name that constitutes 3 parts")
 
@@ -151,27 +151,28 @@ describe('Products Service', function() {
 
 <br/><br/>
 
-## ⚪ ️ 1.2 Structure tests by the AAA pattern
+## ⚪ ️ 1.2 Structurer les tests avec le pattern AAA
 
-:white_check_mark: **Do:** Structure your tests with 3 well-separated sections Arrange, Act & Assert (AAA). Following this structure guarantees that the reader spends no brain-CPU on understanding the test plan:
+:white_check_mark: **À faire:** Structures tes tests avec 3 sections séparés: Organiser, Agir & Vérifier (Arrange, Act & Assert: AAA). Suivre cette structure garantit que le lecteur n'utilise pas de "CPU" de cerveau pour comprendre le plan du test:
 
-1st A - Arrange: All the setup code to bring the system to the scenario the test aims to simulate. This might include instantiating the unit under test constructor, adding DB records, mocking/stubbing on objects and any other preparation code
+1er A - Organiser (Arrange): Tout le code permettant de configurer le système selon le scénario qui doit être simulé. Cela peut inclure d'instancier le constructeur de l'élément testé, ajouter des entrées en DB, mocking/stubbing des objets et autre codes de préparation
 
-2nd A - Act: Execute the unit under test. Usually 1 line of code
+2ème A - Agir (Act): Exécute l'élément testé. En général 1 seule ligne de code
 
-3rd A - Assert: Ensure that the received value satisfies the expectation. Usually 1 line of code
-
-<br/>
-
-❌ **Otherwise:** Not only do you spend hours understanding the main code, but what should have been the simplest part of the day (testing) stretches your brain
+3éme A - Vérifier (Assert): Vérifier que les valeurs reçues correspondent aux attentes. En général 1 seule ligne de code
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Non seulement vous avez passé des heures à comprendre le code principal, mais en plus ce qui devait être la partie la plus simple de la journée (tester) vous tord le cerveau.
+
 
 <br/>
 
-### :clap: Doing It Right Example: A test structured with the AAA pattern
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :clap: Bien faire les choses Exemple: Un test structuré avec le pattern AAA
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -193,7 +194,7 @@ describe("Customer classifier", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: No separation, one bulk, harder to interpret
+### :thumbsdown: Exemple d'anti pattern: Pas de séparation, un bloc, plus dur à interpréter
 
 ```javascript
 test("Should be classified as premium", () => {
@@ -208,20 +209,21 @@ test("Should be classified as premium", () => {
 
 <br/><br/>
 
-## ⚪ ️1.3 Describe expectations in a product language: use BDD-style assertions
+## ⚪ ️1.3 Décrire les attentes dans un language produit: Utiliser des assertions de type BDD
 
-:white_check_mark: **Do:** Coding your tests in a declarative-style allows the reader to get the grab instantly without spending even a single brain-CPU cycle. When you write imperative code that is packed with conditional logic, the reader is forced to exert more brain-CPU cycles. In that case, code the expectation in a human-like language, declarative BDD style using `expect` or `should` and not using custom code. If Chai & Jest doesn't include the desired assertion and it’s highly repeatable, consider [extending Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) or writing a [custom Chai plugin](https://www.chaijs.com/guide/plugins/)
-<br/>
-
-❌ **Otherwise:** The team will write less tests and decorate the annoying ones with .skip()
+:white_check_mark: **À faire:** Coder tes tests dans un language déclaratif permet au lecteur de comprendre immédiatement sans effectuer un seul cycle de "CPU" de cerveau. Lorsque tu écris du code impératif remplit de logique conditionnelles, le lecteur est forcé d'utiliser plus de cycles de "CPU" de cerveau. Dans ce cas, codes les attentes dans un language similaire au language humain, dans un style déclaratif de type BDD avec `expect` ou `should` et sans utiliser de code custom. Si Chai et Jest n'incluent pas les assertions nécéssaires et qu'elles reviennent régulièrement, considère [d'étendre Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) ou d'écrire un [plugin Chai custom](https://www.chaijs.com/guide/plugins/)
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary><br/>
+❌ **Autrement:** L'équipe écrira moins de tests et décorera ceux qui sont ennuyeux avec .skip()
+
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary><br/>
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
-### :thumbsdown: Anti-Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
+### :thumbsdown: Exemple d'anti pattern: Le lecteur doit parcourir un long code impératif juste pour comprendre l'histoire du test
 
 ```javascript
 test("When asking for an admin, ensure only ordered admins in results", () => {
@@ -251,7 +253,7 @@ test("When asking for an admin, ensure only ordered admins in results", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Skimming through the following declarative test is a breeze
+### :clap: Bien faire les choses Exemple: Parcourir le test déclaratif suivant est un jeu d'enfant
 
 ```javascript
 it("When asking for an admin, ensure only ordered admins in results", () => {
@@ -268,19 +270,19 @@ it("When asking for an admin, ensure only ordered admins in results", () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.4 Stick to black-box testing: Test only public methods
+## ⚪ ️ 1.4 S'en tenir aux tests des boites noires: Ne teste que les méthodes publiques
 
-:white_check_mark: **Do:** Testing the internals brings huge overhead for almost nothing. If your code/API delivers the right results, should you really invest your next 3 hours in testing HOW it worked internally and then maintain these fragile tests? Whenever a public behavior is checked, the private implementation is also implicitly tested and your tests will break only if there is a certain problem (e.g. wrong output). This approach is also referred to as `behavioral testing`. On the other side, should you test the internals (white box approach) — your focus shifts from planning the component outcome to nitty-gritty details and your test might break because of minor code refactors although the results are fine - this dramatically increases the maintenance burden
+:white_check_mark: **À faire:** Tester les composants internes apporte beaucoup de complexité pour presque rien. Si ton code/API délivre les bon resultats, est-ce que tu dois vraiment passer les 3 prochaines heures à tester COMMENT il fonctionne et maintenir ces tests ? À chaque fois qu'un comportement publique est testé, l'implementation privée est aussi testé implicitement, et test tests n'échoueront que si il y a un certain problème (par exemple: mauvais retour). Cette approche est aussi appelé `behavioral testing` (test de comportement). De l'autre coté, si tu dois tester les éléments internes (approche de la boîte blanche) - l'objectif passe de planifier le résultat du composant à des détails de bases, et votre test peut échouer à cause de refactoring mineurs alors que le résultat est toujours bon - cela augmente la charge de maintenance.
 <br/>
 
-❌ **Otherwise:** Your tests behave like the [boy who cried wolf](https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf): shouting false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday, a real bug gets ignored…
+❌ **Autrement:** Tes tests se comportent comme [l'enfant qui criait au loup](https://fr.wikipedia.org/wiki/L%27Enfant_qui_criait_au_loup): crier des faux positifs (par exemple, un test échoue parce qu'un nom de variable privé à été changé). Sans surprise, les gens vont rapidement ignorer les notifications, jusqu'à ce qu'un jour, un vrai beug soit ignoré
 
 <br/>
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test case is testing the internals for no good reason
+### :thumbsdown: Exemple d'anti pattern: Un cas qui test une méthode interne sans raison valable
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha & Chai")
 
@@ -310,24 +312,24 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 
 <br/><br/>
 
-## ⚪ ️ ️1.5 Choose the right test doubles: Avoid mocks in favor of stubs and spies
+## ⚪ ️ ️1.5 Choisir les bons "test doubles": Éviter les mocks en faveur des stubs et spies
 
-:white_check_mark: **Do:** Test doubles are a necessary evil because they are coupled to the application internals, yet some provide immense value (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Read here a reminder about test doubles: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
+:white_check_mark: **À faire:** Les "test doubles" sont un mal nécéssaire parce qu'il sont couplé aux composants internes mais apportent néanmoins beaucoup de valeur (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Retrouve ici un rappel à propos des "test doubles": mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
 
-Before using test doubles, ask a very simple question: Do I use it to test functionality that appears, or could appear, in the requirements document? If no, it’s a white-box testing smell.
+Avant d'utiliser des "test doubles", pose toi une question trés simple: Est-ce que je l'utilise pour tester une fonctionnalité qui apparait, ou peut apparaitre, dans le document de spécification ? Si non, ça sent le test de boite blanche.
 
-For example, if you want to test that your app behaves reasonably when the payment service is down, you might stub the payment service and trigger some ‘No Response’ return to ensure that the unit under test returns the right value. This checks our application behavior/response/outcome under certain scenarios. You might also use a spy to assert that an email was sent when that service is down — this is again a behavioral check which is likely to appear in a requirements doc (“Send an email if payment couldn’t be saved”). On the flip side, if you mock the Payment service and ensure that it was called with the right JavaScript types — then your test is focused on internal things that have nothing to do with the application functionality and are likely to change frequently
+Par exemple, si tu veux tester que ton application se comporte correctement quand le service de paiement est coupé, tu peux faire un stub du service de paiement et déclencher une réponse de type 'No Response' pour vérifier que l'unité testée retourne la bonne valeur. Cela vérifie le comportement/réponse de notre application suivant un certain scénario. Tu peux aussi utiliser un spy pour vérifier qu'un email a bien été envoyé quand ce service était coupé - il s'agit encore une fois d'un test de comportement qui pourrait apparaitre dans les spécification ("Envoyer un email si le paiement n'as pas pu être enregistré"). 
+D'un autre coté, si tu mock le service de paiement pour vérifié qu'il a bien été appelé avec le bon type Javascript, alors ton test est orienté sur des comportements internes qui n'ont rien à voir avec les fonctionnalités de l'application et changeront probablement fréquemment.
 <br/>
 
-❌ **Otherwise:** Any refactoring of code mandates searching for all the mocks in the code and updating accordingly. Tests become a burden rather than a helpful friend
+❌ **Autrement:** Chaque refactoring du code implique de chercher l'ensemble des mock dans le code afin de les mettre à jour. Les tests deviennent une corvée plutôt qu'un ami aidant.
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :thumbsdown: Anti-pattern example: Mocks focus on the internals
+### :thumbsdown: Exemple d'anti pattern: Les mocks se concentrent sur des composants internes
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg "Examples with Sinon")
 
@@ -347,7 +349,7 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
 
 <br/>
 
-### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
+### :clap: Faire les choses bien, exemple : Les spies se concentrent sur les fonctionnalités requises mais touchent les composants internes par effet de bord
 
 ```javascript
 it("When a valid product is about to be deleted, ensure an email is sent", async () => {
@@ -363,27 +365,25 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## 📗 Want to learn all these practices with live video?
+## 📗 Envie d'apprendre ces bonnes pratiques en vidéo ?
 
-### Visit my online course [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
+### Va voir mon cours en ligne [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
 
 <br/><br/>
 
-## ⚪ ️1.6 Don’t “foo”, use realistic input data
+## ⚪ ️1.6 Utilise des données réalistes
 
-:white_check_mark: **Do:** Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not as a replacement) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? See the next bullet (property-based testing).
+:white_check_mark: **À faire:** Souvent les beugs de production sont révélés par des entrées tres spécifiques et surprenantes. Plus les entrées de tests seront réalistes, plus il y a de chance de détecter les beugs tôt. Utilise une librairie dédiée comme [Faker](https://www.npmjs.com/package/faker) pour générer des pseudo-vrais données qui resemble aux données de production. Par exemple, ce type de librairie peut générer de façon réaliste des numéros de téléphones, noms d'utilisateur, cartes de crédit, nom de société et même du 'Lorem ipsum'. Tu peux aussi créer des tests (en plus des tests unitaires, par à leur place) qui utilise des fausses données randomisées pour pousser test tests, ou même importer de vrais données depuis ton environnement de production. Envie de passer au niveau supérieur ? Regarde le prochain point (property-based testing).
 <br/>
 
-❌ **Otherwise:** All your development testing will falsely show green when you use synthetic inputs like “Foo”, but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
+❌ **Autrement:** Tout vos tests de développement vont montrer du vert à tord avec des entrées tels que "Foo", mais en production ils passeront au rouge lorsqu'un hacker passera une chaine de caractère tel que “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :thumbsdown: Anti-Pattern Example: A test suite that passes due to non-realistic data
-
+### :thumbsdown: Exemple d'anti pattern: Une suite de test qui passe à cause de données non réalistes
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
@@ -407,7 +407,7 @@ test("Wrong: When adding new product with valid properties, get successful confi
 
 <br/>
 
-### :clap:Doing It Right Example: Randomizing realistic input
+### :clap: Bien faire les choses, exemple : Données réalistes randomisés
 
 ```javascript
 it("Better: When adding new valid product, get successful confirmation", async () => {
@@ -423,20 +423,19 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/><br/>
 
-## ⚪ ️ 1.7 Test many input combinations using Property-based testing
+## ⚪ ️ 1.7 Teste plusieurs combinaisons d'input avec le Property-based testing
 
-:white_check_mark: **Do:** Typically we choose a few input samples for each test. Even when the input format resembles real-world data (see bullet ‘Don’t foo’), we cover only a few input combinations (method(‘’, true, 1), method(“string” , false” , 0)), However, in production, an API that is called with 5 parameters can be invoked with thousands of different permutations, one of them might render our process down ([see Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)). What if you could write a single test that sends 1000 permutations of different inputs automatically and catches for which input our code fails to return the right response? Property-based testing is a technique that does exactly that: by sending all the possible input combinations to your unit under test it increases the serendipity of finding a bug. For example, given a method — addNewProduct(id, name, isDiscount) — the supporting libraries will call this method with many combinations of (number, string, boolean) like (1, “iPhone”, false), (2, “Galaxy”, true). You can run property-based testing using your favorite test runner (Mocha, Jest, etc) using libraries like [js-verify](https://github.com/jsverify/jsverify) or [testcheck](https://github.com/leebyron/testcheck-js) (much better documentation). Update: Nicolas Dubien suggests in the comments below to [checkout fast-check](https://github.com/dubzzz/fast-check#readme) which seems to offer some additional features and also to be actively maintained
+:white_check_mark: **À faire:** En règle général, on choisit quelques valeurs d'entrées pour chaque test. Même lorsque le format des inputs est réaliste ( voir le point 'Utilise des données réalistes' ), on couvre seulement quelques combinaisons d'entrées. En revanche, en production, une API appelée avec 5 paramètres peut être invoquée avec des milliers de permutations différentes, l'une d'entre elle peut faire échouer notre processus ([voir le Fuzz testing](https://fr.wikipedia.org/wiki/Fuzzing)). Et si tu pouvais écrire un seul test qui envoie 1000 permutations d'entrées automatiquement et détecte pour lequel d'entre eux notre processus ne retourne pas la bonne valeur ? Le Property-based testing c'est une méthode qui fait exactement ça : En testant toute les combinaisons d'entrées possible on augmente les chance de détecter un beug. Par exemple, prenom une méthode : addNewProduct(id, name, isDiscount), la librairie appelera cette méthode avec plusieurs combinaisons de (number, string, boolean) tel que (1, “iPhone”, false), (2, “Galaxy”, true). Tu peux utiliser le property-based testing avec ta librairie de test préféré (Mocha, Jest ...etc) à l'aide de librairie tel que [js-verify](https://github.com/jsverify/jsverify) ou [testcheck](https://github.com/leebyron/testcheck-js) (meilleure documentation). MAJ: Nicolas Dubien à suggéré dans les commentaire de [regarder fast-check](https://github.com/dubzzz/fast-check#readme) qui semble offrir des fonctionnalitées supplémentaire et être activement maintenue.
 <br/>
 
-❌ **Otherwise:** Unconsciously, you choose the test inputs that cover only code paths that work well. Unfortunately, this decreases the efficiency of testing as a vehicle to expose bugs
+❌ **Autrement:** Inconsciemment, tu choisis des entrées de test qui ne couvrent que les cas qui fonctionnent correctement. Malheuresement, cela réduit l'efficacité tests et leur capacité a détecter des beugs.
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example: Testing many input permutations with “fast-check”
+### :clap: Bien faire les choses, exemple: Tester plusieurs permutations d'entrées avec "fast-check"
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
