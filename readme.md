@@ -1968,6 +1968,7 @@ Thanks goes to these wonderful people who have contributed to this repository!
   <tr>
     <td align="center"><a href="https://github.com/otavionetoca"><img src="https://avatars.githubusercontent.com/u/11263232?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Otavio Araujo</b></sub></a><br /><a href="https://github.com/goldbergyoni/javascript-testing-best-practices/commits?author=otavionetoca" title="Tests">⚠️</a> <a href="#content-otavionetoca" title="Content">🖋</a></td>
     <td align="center"><a href="https://contributor.pw"><img src="https://avatars.githubusercontent.com/u/5027939?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Ivanov</b></sub></a><br /><a href="#content-contributorpw" title="Content">🖋</a></td>
+    <td align="center"><a href="http://arnnis.now.sh"><img src="https://avatars.githubusercontent.com/u/61647712?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alireza Rezania</b></sub></a><br /><a href="#content-arnnis" title="Content">🖋</a></td>
   </tr>
 </table>
 
