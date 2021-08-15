@@ -341,6 +341,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "arnnis",
+      "name": "Alireza Rezania",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61647712?v=4",
+      "profile": "http://arnnis.now.sh",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
