@@ -668,22 +668,21 @@ describe("Order service", function() {
 
 <br/><br/>
 
-## ⚪ ️ 1.12 Categorize tests under at least 2 levels
+## ⚪ ️ 1.12 Catégorise tes tests sous au moins 2 niveaux
 
-:white_check_mark: **Do:** Apply some structure to your test suite so an occasional visitor could easily understand the requirements (tests are the best documentation) and the various scenarios that are being tested. A common method for this is by placing at least 2 'describe' blocks above your tests: the 1st is for the name of the unit under test and the 2nd for additional level of categorization like the scenario or custom categories (see code examples and print screen below). Doing so will also greatly improve the test reports: The reader will easily infer the tests categories, delve into the desired section and correlate failing tests. In addition, it will get much easier for a developer to navigate through the code of a suite with many tests. There are multiple alternative structures for test suite that you may consider like [given-when-then](https://github.com/searls/jasmine-given) and [RITE](https://github.com/ericelliott/riteway)
-
-<br/>
-
-❌ **Otherwise:** When looking at a report with flat and long list of tests, the reader have to skim-read through long texts to conclude the major scenarios and correlate the commonality of failing tests. Consider the following case: When 7/100 tests fail, looking at a flat list will demand reading the failing tests text to see how they relate to each other. However, in a hierarchical report all of them could be under the same flow or category and the reader will quickly infer what or at least where is the root failure cause
+:white_check_mark: **À faire:** Applique une structure à ta suite de test pour qu'un visiteur occasionnel puisse facilement comprendre les attentes (Les tests sont la meilleure documentation) et les différents scénarios testés. Une méthode fréquence pour ça est de placer au moins 2 blocs 'describe' au dessus de vos tests : Le premier est pour le nom de l'unité testé et le deuxieme pour un niveau supplémentaire de catégorisation comme le scénario ou une catégorie (voir l'exemple de code plus bas). Cette organisation améliorera grandement vos rapports de tests: Le lecteur comprendra simplement les catégories de tests, examinera la section voulu et verra les corrélations entre les tests qui échouent. De plus, ce sera bien plus simple pour un développeur de naviguer dans le code d'une suite avec de nombreux tests. Il y a plusieurs structures alternatives pour les suites de tests que tu peux envisager comme [given-when-then](https://github.com/searls/jasmine-given) et [RITE](https://github.com/ericelliott/riteway)
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** En regardant un rapport avec une longue liste de tests a plat, le lecteur devra lire un long texte pour comprendre les scénarios majeur et comprendre les liens entre les tests qui échouent. Imagine le cas suivant : Quand 7/100 tests échouent, regarder une liste à plat nécéssitera d'aller lire le contenu des tests qui échouent pour comprendre le lien entre eux. En revanche, dans un rapport hiérarchique ils pourrait tous etre au sein du même scénario ou d'une catégorie et le lecteur pourra rapidement déduire ce qui est, ou du moins où est, la cause de l'erreur.
 
 <br/>
 
-### :clap: Doing It Right Example: Structuring suite with the name of unit under test and scenarios will lead to the convenient report that is shown below
+<details><summary>✏ <b>Exemple de code</b></summary>
 
+<br/>
+
+### :clap: Bien faire les choses, exemple: Structurer une suite avec le nom de l'unité testé et les scénarios mènera au rapport pratique montré ci-dessous
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
@@ -704,7 +703,7 @@ describe("Transfer service", () => {
 
 <br/>
 
-### :thumbsdown: Anti-pattern Example: A flat list of tests will make it harder for the reader to identify the user stories and correlate failing tests
+### :thumbsdown: Exemple d'anti-pattern: Une liste de tests à plat qui rend l'identification du problème difficile pour le lecteur
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Mocha")
 
