@@ -723,14 +723,14 @@ test("Then there should not be a new transfer record", () => {});
 
 <br/><br/>
 
-## ⚪ ️1.13 Other generic good testing hygiene
+## ⚪ ️1.13 Autre bonnes pratiques génériques
 
-:white_check_mark: **Do:** This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
+:white_check_mark: **À faire:** Ce post se concentre sur des conseils de tests qui sont en rapport, ou au moins peuvent être présentés, avec Node JS. ce point, cependant, regroupe quelques conseils sans rapport avec Node qui sont bien connus.
 
-Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a [red-green-refactor style](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, start a module by writing a quick and simplistic code that satisfies the test - then refactor gradually and take it to a production grade level, avoid any dependency on the environment (paths, OS, etc)
+Apprend et pratique [les principes TDD](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) - ils ont beaucoup de valeurs pour la plupart mais ne soit pas intimidés s'ils ne correspondent pas à ton style, tu n'es pas le seul. Envisage d'écrire les tests avec le code dans un [red-green-refactor style](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), vérifie que chaque test vérifie exactement une chose, quand tu trouves un bug - avant de le fixer, écrit un test qui détectera le bug à l'avenir, laisse chaque test échouer au moins une fois avant de devenir vert, commence un module en écrivant du code simple et rapide qui valident le test - puis refactor graduellement et passe le code a un niveau de production, évite toute dépendance à l'environnement (paths, OS, etc)
 <br/>
 
-❌ **Otherwise:** You‘ll miss pearls of wisdom that were collected for decades
+❌ **Autrement:** Tu manqueras les perles de sagesses recueillies pendant des décennies.
 
 <br/><br/>
 
