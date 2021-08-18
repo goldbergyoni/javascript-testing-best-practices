@@ -635,20 +635,20 @@ it("When no product name, it throws error 400", async () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.11 Tag your tests
+## ⚪ ️ 1.11 Tag tes tests
 
-:white_check_mark: **Do:** Different tests must run on different scenarios: quick smoke, IO-less, tests should run when a developer saves or commits a file, full end-to-end tests usually run when a new pull request is submitted, etc. This can be achieved by tagging tests with keywords like #cold #api #sanity so you can grep with your testing harness and invoke the desired subset. For example, this is how you would invoke only the sanity test group with Mocha: mocha — grep ‘sanity’
+:white_check_mark: **À faire:** Des tests différents doivent être lancés dans différents scénarios. Les tests de fumée (quick smoke), IO-less, doivent tourner à chaque fois qu'un développeur sauvegarde ou commit un fichier, les tests complets end-to-end sont en général lancés quand une nouvelle pull-request est soumise, etc.
+On peux réaliser ça en taggant les tests avec des mots clefs comme #cold #api #sanity pour pouvoir utiliser grep et sélectionner les tests qui nous interesse. Par exemple, voila comment invoquer uniquement le groupe de test sanity avec Mocha : mocha - grep 'sanity'
 <br/>
 
-❌ **Otherwise:** Running all the tests, including tests that perform dozens of DB queries, any time a developer makes a small change can be extremely slow and keeps developers away from running tests
+❌ **Autrement:** Lancer tout les tests, y compris ceux qui éxecutent des dizaines de requetes DB, a chaque fois qu'un développeur fait un petit changement peut être extremement lent et pousser les développeurs a ne pas utiliser les tests.
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example: Tagging tests as ‘#cold-test’ allows the test runner to execute only fast tests (Cold===quick tests that are doing no IO and can be executed frequently even as the developer is typing)
+### :clap: Bien faire les choses, exemple: Tagger des tests avec '#cold-test' permet à celui qui les lance de n'executer que les tests rapide (cold = tests rapides qui ne font pas d'opérations IO et peuvent être executés souvent, meme pendant que le développeur code)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
