@@ -770,22 +770,23 @@ Un mot d'avertissement: l'argument du TDD dans le monde du développement à un 
 
 <br/><br/>
 
-## ⚪ ️2.2 Component testing might be your best affair
+## ⚪ ️2.2 Les tests de composant pourrait être ta meilleure aventure
 
-:white_check_mark: **Do:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung song of the testing world — they provide the best from both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
+:white_check_mark: **À faire:** Chaque test unitaire couvre une petite portion de l'application et il est couteux de couvrir l'ensemble, alors que les tests end-to-end couvrent facilement une grande partie mais sont lent, pourquoi ne pas appliquer une approche intermédiaire et écrire des tests qui sont plus gros que les tests unitaire mais plus petit que les tests end-to-end ? Les tests de composant (Component testing) sont méconnus du monde de test mais ils offrent le meilleur des deux mondes: des performances raisonnable et la possibilité d'appliquer le pattern TDD + une couverture correct et réaliste
 
-Component tests focus on the Microservice ‘unit’, they work against the API, don’t mock anything which belongs to the Microservice itself (e.g. real DB, or at least the in-memory version of that DB) but stub anything that is external like calls to other Microservices. By doing so, we test what we deploy, approach the app from outwards to inwards and gain great confidence in a reasonable amount of time.
-<br/>
-
-❌ **Otherwise:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
+Les tests de composant se concentre sur "l'unité" du microservice, ils fonctionnent sur l'API, ne mock rien qui appartient au microservice lui même (une vrai DB, ou au moins une version in-memory de cette DB) mais stub tout ce qui est externe, comme les appels à d'autres microservices. En fasant ça, on test ce que l'on déploie, on approche l'application de l'extérieur vers l'intérieur et on gagne en confiance dans un laps de temps raisonnable.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Tu risque de passer de longues journée à écrire des tests unitaire pour te rendre compte que tu n'as que 20% de couverture
 
 <br/>
 
-### :clap: Doing It Right Example: Supertest allows approaching Express API in-process (fast and cover many layers)
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :clap: Bien faire les choses, exemple: Supertest permet d'approcher l'API Express (rapide et couvre plusieurs niveaux)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
