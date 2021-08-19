@@ -734,29 +734,29 @@ Apprend et pratique [les principes TDD](https://www.sm-cloud.com/book-review-tes
 
 <br/><br/>
 
-# Section 2️⃣: Backend Testing
+# Section 2️⃣: Tests Backend
 
-## ⚪ ️2.1 Enrich your testing portfolio: Look beyond unit tests and the pyramid
+## ⚪ ️2.1 Enrichis ton portefeuille de test: Vois plus loin que les tests unitaire et la pyramide
 
-:white_check_mark: **Do:** The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit *all* types of applications? shouldn’t the testing world consider welcoming new testing techniques?
+:white_check_mark: **À faire:** La [pyramide de tests](https://martinfowler.com/bliki/TestPyramid.html), bien que vielle de plus de 10 ans, est un bon model qui suggère trois types de tests et influence la plupart des stratégies de tests des développeurs. Dans un même temps, une poignée de nouvelles techniques de tests brillantes ont émergés et sont dans l'ombre de la pyramide de tests. Étant donné l'étendu des changements que l'on a vu ces 10 dernières années (micro-services, cloud, serverless), est-il seulement possible qu'un vieux modèle soit adapté à *tout* les types d'applications ? Le monde du test ne devrait-il pas accueillir de nouvelles techniques ?
 
-Don’t get me wrong, in 2019 the testing pyramid, TDD and unit tests are still a powerful technique and are probably the best match for many applications. Only like any other model, despite its usefulness, [it must be wrong sometimes](https://en.wikipedia.org/wiki/All_models_are_wrong). For example, consider an IoT application that ingests many events into a message-bus like Kafka/RabbitMQ, which then flow into some data-warehouse and are eventually queried by some analytics UI. Should we really spend 50% of our testing budget on writing unit tests for an application that is integration-centric and has almost no logic? As the diversity of application types increase (bots, crypto, Alexa-skills) greater are the chances to find scenarios where the testing pyramid is not the best match.
+Ne vous méprenez pas, en 2019, la pyramide de tests, le TDD et les tests unitaires sont toujours une technique puissante et sont probablement le meilleur choix pour beaucoup d'applications. Seulement, comme les autres modèles, malgrés qu'il soit utile, [il doit être faux parfois](https://en.wikipedia.org/wiki/All_models_are_wrong). Par exemple, imagine une application IoT qui traite de nombreux évènement dans une queue (message-bus) comme Kafka/RabbitMQ, qui vont ensuite dans un entrepot de donnée puis sont lus par une UI d'analyse. Est-ce qu'on devrait vraiment dépenser 50% de notre budget de test pour écrire des tests unitaire sur une application qui est centrée sur l'intégration et n'as presque aucune logique ? Plus la diversité des applications augmente (bots, crypto, Alexa-skills) plus les chances sont grandes de trouver un scénario ou la pyramide de test n'est pas le meilleur choix.
 
-It’s time to enrich your testing portfolio and become familiar with more testing types (the next bullets suggest few ideas), mind models like the testing pyramid but also match testing types to real-world problems that you’re facing (‘Hey, our API is broken, let’s write consumer-driven contract testing!’), diversify your tests like an investor that build a portfolio based on risk analysis — assess where problems might arise and match some prevention measures to mitigate those potential risks
+Il est temps d'enrichir ton portefeuille de test et de devenir familier avec plus de types de tests (les prochains points suggèrent quelques idées), de modèles tels que celui de la pyramide de tests mais aussi d'associer les types de tests aux problèmes que tu rencontres dans le monde réel ('Hey, notre API est cassé, écrivons des consumer-driven contract testing!'), diversifie tes tests comme un investisseur qui construit sont portefeuille en se basant sur l'analyse des risques - estime où les problèmes risquent de se poser et applique des mesures de prévention pour réduire ces risques.
 
-A word of caution: the TDD argument in the software world takes a typical false-dichotomy face, some preach to use it everywhere, others think it’s the devil. Everyone who speaks in absolutes is wrong :]
-
-<br/>
-
-❌ **Otherwise:** You’re going to miss some tools with amazing ROI, some like Fuzz, lint, and mutation can provide value in 10 minutes
+Un mot d'avertissement: l'argument du TDD dans le monde du développement à un visage typique de fausse dichotomie, certains disent de l'utiliser de partout, d'autres pensent que c'est le diable. Tous ceux qui parlent en absolu ont tord :]
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Tu va rater des outils avec un retour sur investissement incroyable, certains comme Fuzz, lint, ou mutation peuvent apporter de la valeur en 10 minutes
 
 <br/>
 
-### :clap: Doing It Right Example: Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the same way’
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :clap: Bien faire les choses, exemple: Cindy Sridharan propose un portefeuille de tests riche dans ton excellent post 'Testing Microservices - the same way'
 
 ![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’")
 
