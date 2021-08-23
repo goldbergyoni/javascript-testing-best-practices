@@ -796,20 +796,19 @@ Les tests de composant se concentre sur "l'unité" du microservice, ils fonction
 
 <br/><br/>
 
-## ⚪ ️2.3 Ensure new releases don’t break the API using contract tests
+## ⚪ ️2.3 Vérifie que les nouvelles versions ne cassent pas l'API avec les tests de contrat
 
-:white_check_mark: **Do:** So your Microservice has multiple clients, and you run multiple versions of the service for compatibility reasons (keeping everyone happy). Then you change some field and ‘boom!’, some important client who relies on this field is angry. This is the Catch-22 of the integration world: It’s very challenging for the server side to consider all the multiple client expectations — On the other hand, the clients can’t perform any testing because the server controls the release dates. [Consumer-driven contracts and the framework PACT](https://docs.pact.io/) were born to formalize this process with a very disruptive approach — not the server defines the test plan of itself rather the client defines the tests of the… server! PACT can record the client expectation and put in a shared location, “broker”, so the server can pull the expectations and run on every build using PACT library to detect broken contracts — a client expectation that is not met. By doing so, all the server-client API mismatches are caught early during build/CI and might save you a great deal of frustration
+:white_check_mark: **À faire:** Ton microservice a plusieurs clients, et tu exécutes plusieurs versions du service pour des raisons de compatibilité (pour que tout le monde soit content). Puis tu changes un champs et 'boom!', un client important qui compte sur ce champs est en colère. C'est le Catch-22 du monde de l'intégration : Il est trés difficilé pour le coté serveur de considérer toute les attentes des clients. D'un autre coté, les clients ne peuvent pas réaliser de tests puisque le serveur controles les dates de sorties. [Les "consumer-driven contracts" et le framework PACT](https://docs.pact.io) sont nés pour formaliser ce processus avec une approche disruptive - ce n'est pas le serveur qui défini ses propres plan de test, mais le client qui défini les tests du ...serveur! PACT peut enregistrer les attentes du client et les placer dans un emplacement partagé, "broker", afin que le serveur puisse extraire les attentes et s'éxécuter sur chaque version en utilisant la librairie PACT pour détecter les contrats rompus - une attente du client qui n'est pas satisfaite. En faisant ça, toutes les incompatibilités d'API server-client sont repérés tôt pendant le build/CI et peuvent vous éviter beaucoup de frustration.
 <br/>
 
-❌ **Otherwise:** The alternatives are exhausting manual testing or deployment fear
+❌ **Autrement:** L'alternative sont les tests manuels épuisants ou la peur du déploiement
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example:
+### :clap: Bien faire les choses, exemple:
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Examples with PACT")
 
