@@ -818,20 +818,19 @@ Les tests de composant se concentre sur "l'unité" du microservice, ils fonction
 
 <br/><br/>
 
-## ⚪ ️ 2.4 Test your middlewares in isolation
+## ⚪ ️ 2.4 Test tes middlewares de manière isolée
 
-:white_check_mark: **Do:** Many avoid Middleware testing because they represent a small portion of the system and require a live Express server. Both reasons are wrong — Middlewares are small but affect all or most of the requests and can be tested easily as pure functions that get {req,res} JS objects. To test a middleware function one should just invoke it and spy ([using Sinon for example](https://www.npmjs.com/package/sinon)) on the interaction with the {req,res} objects to ensure the function performed the right action. The library [node-mock-http](https://www.npmjs.com/package/node-mocks-http) takes it even further and factors the {req,res} objects along with spying on their behavior. For example, it can assert whether the http status that was set on the res object matches the expectation (See example below)
+:white_check_mark: **À faire:** Beaucoup évitent les tests de Middleware parce qu'ils représentent une petite portion du systeme et requièrent un serveur express live. Ce sont deux mauvaises raisons - les Middlewares sont petit mais affectent toute ou la plupart des requetes et peuveunt être testés simplement en tant que fonction qui reçoit un objet JS {req,res}. Pour tester un middleware, il suffit de l'invoquer et d'espionner ([avec Sinon par exemple](https://www.npmjs.com/package/sinon) l'interaction avec l'object {req,res} pour s'assurer que la fonction a effectuée la bonne action. La librairie [node-mock-http](https://www.npmjs.com/package/node-mocks-http) va encore plus loin et prend en compte l'object {req,res} tout en surveillant son comportement. Par exemple, il peut vérifier que le status http qui à été défini sur l'objet res correspond aux attentes (voir l'exemple ci-dessous)
 <br/>
 
-❌ **Otherwise:** A bug in Express middleware === a bug in all or most requests
+❌ **Autrement:** Un bug dans un middleware Express === un bug dans toutes ou la plupart des requêtes
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap:Doing It Right Example: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
+### :clap: Bien faire les choses, exemple: Tester le middleware en isolation sans effectuer d'appel réseau et sans réveiller l'ensemble de la machine Express
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
