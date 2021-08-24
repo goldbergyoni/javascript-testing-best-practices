@@ -770,7 +770,7 @@ Un mot d'avertissement: l'argument du TDD dans le monde du développement à un 
 
 <br/><br/>
 
-## ⚪ ️2.2 Les tests de composant pourrait être ta meilleure aventure
+## ⚪ ️2.2 Les tests de composant pourrait être ta meilleure affaire
 
 :white_check_mark: **À faire:** Chaque test unitaire couvre une petite portion de l'application et il est couteux de couvrir l'ensemble, alors que les tests end-to-end couvrent facilement une grande partie mais sont lent, pourquoi ne pas appliquer une approche intermédiaire et écrire des tests qui sont plus gros que les tests unitaire mais plus petit que les tests end-to-end ? Les tests de composant (Component testing) sont méconnus du monde de test mais ils offrent le meilleur des deux mondes: des performances raisonnable et la possibilité d'appliquer le pattern TDD + une couverture correct et réaliste
 
@@ -857,23 +857,23 @@ test("A request without authentication header, should return http status 403", (
 
 <br/><br/>
 
-## ⚪ ️2.5 Measure and refactor using static analysis tools
+## ⚪ ️2.5 Mesure et refactorise en utilisant des outils d'analyse statique
 
-:white_check_mark: **Do:** Using static analysis tools helps by giving objective ways to improve code quality and keep your code maintainable. You can add static analysis tools to your CI build to abort when it finds code smells. Its main selling points over plain linting are the ability to inspect quality in the context of multiple files (e.g. detect duplications), perform advanced analysis (e.g. code complexity) and follow the history and progress of code issues. Two examples of tools you can use are [SonarQube](https://www.sonarqube.org/) (4,900+ [stars](https://github.com/SonarSource/sonarqube)) and [Code Climate](https://codeclimate.com/) (2,000+ [stars](https://github.com/codeclimate/codeclimate))
+:white_check_mark: **À faire:** Utiliser des outils d'analye statique donne des moyens objectif d'améliorer la qualité et de garder le code maintenable. Tu peux ajouter un outil d'analyse statique à ton build CI pour l'annuler si il détecte un "code smell". Ses arguments de vente par rapport au linting simple sont la capacité d'inspecter la qualité dans le contexte de plusieurs fichiers (e.g. détécter des duplication), effectuer des analyses avancer (e.g. complexité du code) et suivre l'histoire et le progrés d'un problème de code. Deux exemples d'outils que tu peux utiliser sont [SonarQube](https://www.sonarqube.org/) (4,900+ [stars](https://github.com/SonarSource/sonarqube)) et [Code Climate](https://codeclimate.com/) (2,000+ [stars](https://github.com/codeclimate/codeclimate))
 
 Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.com/TheHollidayInn" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Keith Holliday](https://github.com/TheHollidayInn)</a>
 
 <br/>
 
-❌ **Otherwise:** With poor code quality, bugs and performance will always be an issue that no shiny new library or state of the art features can fix
+❌ **Autrement:** Avec du code de mauvaise qualité, les beugs et la performance seront toujours un problème qu'aucune nouvelle librairie ou fonctionnalitée de pointe ne peux corriger
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: CodeClimate, a commercial tool that can identify complex methods:
+### :clap: Bien faire les choses, exemple: CodeClimate, un outil commercial qui peux identifier des méthodes complexes:
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Examples with CodeClimate")
 
