@@ -1076,23 +1076,24 @@ test("Whenever no data is passed, error metric shows zero", () => {
 
 <br/>
 
-## ⚪ ️ 3.3 Whenever possible, test with a realistic and fully rendered component
+## ⚪ ️ 3.3 Lorsque c'est possible, test avec un composant réaliste et totalement rendu
 
-:white_check_mark: **Do:** Whenever reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet 'Favour blackbox testing'). If one of the child components is significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
+:white_check_mark: **Do:** Lorsqu'ils sont de taille raisonnable, tests tes composants de l'exterieur comme le font tes utilisateurs, rend complètement l'UI, agit dessus, et vérifie que l'UI rendu se comporte comme on l'attend.
+Évite toute sorte de mocking, de rendu partiels ou superficiel - cette approche peut résulter en bugs non détéctés à cause du manque de détails et rendre plus difficile la maintenance des tests puisque les tests modifie les propiétés interne (voir le point 'Privilégier les tests blackbox'). Si l'un des composants enfants ralenti significativement (e.g animations) ou complique la configuration - considère de le remplacer explicitement avec un faux.
 
-With all that said, a word of caution is in order: this technique works for small/medium components that pack a reasonable size of child components. Fully rendering a component with too many children will make it hard to reason about test failures (root cause analysis) and might get too slow. In such cases, write only a few tests against that fat parent component and more tests against its children
-
-<br/>
-
-❌ **Otherwise:** When poking into a component's internal by invoking its private methods, and checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have a capacity for this level of maintenance?
+Maintenant que c'est dit, une mise en garde s'impose: cette technique fonctionne pour des petit/moyens composants qui ont un nombre raisonnable de composants enfants. Rendre complètement un composants avec trop d'enfant compliquera le raisonnement à propos des échecs de tests (analyse de la cause originelle) et peut être trop lent. Dans ces cas, écrit seulement quelques tests pour ce parent, et plus de tests pour ses enfants.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Lorsque tu fouilles dans les détails interne du composants en invoquant ses méthodes privée, et en vérifiant l'état interne - tu devra refactorer tout les tests lorsque tu refactorera l'implémentation du composants. Est-ce que tu as vraiment la capacité de tenir ce niveau de maintenance ?
 
 <br/>
 
-### :clap: Doing It Right Example: Working realistically with a fully rendered component
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :clap: Bien faire les choses, exemple: Travailler de façon réaliste sur un composant complètement rendu
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg "Examples with Enzyme")
 
@@ -1124,7 +1125,7 @@ test("Realistic approach: When clicked to show filters, filters are displayed", 
 });
 ```
 
-### :thumbsdown: Anti-Pattern Example: Mocking the reality with shallow rendering
+### :thumbsdown: Exemple d'anti pattern: Mocker la réalité avec un rendu superficiel
 
 ```javascript
 test("Shallow/mocked approach: When clicked to show filters, filters are displayed", () => {
