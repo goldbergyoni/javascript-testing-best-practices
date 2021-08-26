@@ -1013,21 +1013,20 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 <br/><br/>
 
-## ⚪ ️ 3.2 Query HTML elements based on attributes that are unlikely to change
+## ⚪ ️ 3.2 Query les éléments HTML en te basant sur des attributs qui ont peu de chance de changer
 
-:white_check_mark: **Do:** Query HTML elements based on attributes that are likely to survive graphic changes unlike CSS selectors and like form labels. If the designated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your functional/logic tests never break because of look & feel changes but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
+:white_check_mark: **À faire:** Query les éléments HTML en te basant sur des attributs qui ont de grande chances de survivre à un changement graphique, contrairement aux selecteurs CSS ou aux labels des forms. Si l'élément n'as pas d'attribut de ce type, creer un attribut dédié au test comme 'test-id-submit-sutton'. Utiliser cette méthode permet non seulement d'être sur que vos tests fonctionnels/logique ne cassent pas à cause d'un changement visuel mais il devient également plus clair pour toute votre équipe que cet élément et son attribut sont utilisés par les tests et ne devraient pas être supprimés.
+<br/>
+
+❌ **Autrement:** Tu veux tester la fonctionnalité de connexion qui couvre de nombreux composants, logiques et services, tout est configuré parfaitement - subs, spies, les appels Ajax sont isolés. Tout semble parfait. Puis le test échoue car le designer à changé la class CSS du div de 'thick-border' à 'thin-border'
 
 <br/>
 
-❌ **Otherwise:** You want to test the login functionality that spans many components, logic and services, everything is set up perfectly - stubs, spies, Ajax calls are isolated. All seems perfect. Then the test fails because the designer changed the div CSS class from 'thick-border' to 'thin-border'
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example: Querying an element using a dedicated attribute for testing
+### :clap: Bien faire les choses, exemple: Query un élément en utilisant un attribut dédié aux tests
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React")
 
@@ -1056,7 +1055,7 @@ test("Whenever no data is passed to metric, show 0 as default", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Relying on CSS attributes
+### :thumbsdown: Exemple d'anti pattern: Compter sur les attributs CSS
 
 ```html
 <!-- the markup code (part of React component) -->
