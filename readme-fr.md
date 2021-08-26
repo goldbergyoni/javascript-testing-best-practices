@@ -896,7 +896,7 @@ Il vise à fournir une sensibilisation, des frameworks et des outils pour tester
 
 <br/>
 
-### :clap: Bien faire les choses, exemple: Le chaos-Node peut générer toute sortes de farces Node.js afin que tu puisses tester la résilience de votre application au chaos
+### :clap: Bien faire les choses, exemple: Le chaos-Node peut générer toute sortes de farces Node.js afin que tu puisses tester la résilience de ton application au chaos
 
 ![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
 
@@ -904,20 +904,20 @@ Il vise à fournir une sensibilisation, des frameworks et des outils pour tester
 
 <br/>
 
-## ⚪ ️2.7 Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️2.7 Éviter les fixtures et seeds globals, ajouter les données par test
 
-:white_check_mark: **Do:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests (also known as ‘test fixture’) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
+:white_check_mark: **À faire:** En suivant la règle d'or (point 0), chaque test doit ajouter et agir sur son propre jeu d'entrée en base de donnée pour éviter d'être couplés et faciliter le raisonnement à propos de la logique du test. En réalité, cette règle est souvent violée par les testeurs qui remplissent la base de donnée avant de lancer les tests (aussi connu sous le nom ‘test fixture’) afin d'améliorer les performances. Même si la performance est effectivement une inquiétude valide, elle peut être atténuée (voir "Component testing"), en revanche, la compléxité des tests est un chagrin bien plus douloureux qui devrait régir les autres considérations la plupart du temps. En pratique, chaque cas testé doit explicitement ajouter les entrée en base de donnée dont il a besoin et n'agir que sur ces entrées. Si la performance devient une inquiétude critique - un compromis peut se trouver sous la forme de seeds pour les jeux de tests qui ne modifient pas les données (queries).
 <br/>
 
-❌ **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Certains tests échoue, le déploiement est annulé, l'équipe va dépenser un temps précieux maintenant, est-ce qu'on a un bug ? Investiguons, oh non - il semble que deux tests modifiaient les même données
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :thumbsdown: Exemple d'anti pattern: les tests ne sont pas indépendants et reposent sur un hook global pour des données globales en DB
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -942,7 +942,7 @@ it("When querying by site name, get the right site", async () => {
 
 <br/>
 
-### :clap: Doing It Right Example: We can stay within the test, each test acts on its own set of data
+### :clap: Bien faire les choses, exemple: On peut rester dans le test, chaque test agis sur ses propres données
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
