@@ -959,23 +959,21 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/><br/>
 
-# Section 3️⃣: Frontend Testing
+# Section 3️⃣: Tests Frontend
 
-## ⚪ ️ 3.1 Separate UI from functionality
+## ⚪ ️ 3.1 Separer l'UI des fonctionnalités
 
-:white_check_mark: **Do:** When focusing on testing component logic, UI details become a noise that should be extracted, so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only the back part of the UI (e.g. services, actions, store) but this will result in fictional tests that don't resemble the reality and won't reveal cases where the right data doesn't even arrive in the UI
+:white_check_mark: **À faire:** Lorsqu'on veux tester la logique d'un composant, les détail UI deviennent du bruit qui devrait être extrait, afin que les tests se concentrent purement sur les données. En pratique, extrait les donnée désirés du markup d'un facon abstrait qui n'est pas torop complée avec l'iplémentation graphique, assert seulement les donnée (vs des détails graphiques HTML/CSS) et désactive les animations qui ralentissent. Tu peux être tenté d'éviter le rendu et ne tester que les parties derrière l'UI (e.g. services, actions, store) mais ils s'agira de tests fictionnels qui ne ressemblent pas à la réalité et ne révèleront pas les cas ou la bonne donnée n'arrive pas à l'UI.
+<br/>
+
+❌ **Autrement:** Les donnée calculée de ton tests peuvent être prêtes en 10ms, mais l'ensemble du tests durera 500ms (100 tests = 1 min) à cause d'animation qui ne nous concerne pas dans le cadre du test.
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-❌ **Otherwise:** The pure calculated data of your test might be ready in 10ms, but then the whole test will last 500ms (100 tests = 1 min) due to some fancy and irrelevant animation
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example: Separating out the UI details
+### :clap: Bien faire les choses, exemple: Séparer les détails UI
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
@@ -996,7 +994,7 @@ test("When users-list is flagged to show only VIP, should display only VIP membe
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Assertion mix UI details and data
+### :thumbsdown: Exemple d'anti pattern: L'assertion mélange des détails UX et les données
 
 ```javascript
 test("When flagging to show only VIP, should display only VIP members", () => {
