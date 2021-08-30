@@ -1298,22 +1298,20 @@ test("When no products exist, show the appropriate message", () => {
 ❌ **Autrement:** L'UI peut investir beaucoup en testant ces fonctionnalités seulement pour réaliser que les donnée retournée par le backend sont différentes de ce qui était attendu
 <br/>
 
-## ⚪ ️ 3.8 Speed-up E2E tests by reusing login credentials
+## ⚪ ️ 3.8 Accélérer les tests E2E en réutilisants les informations d'authentification
 
-:white_check_mark: **Do:** In E2E tests that involve a real backend and rely on a valid user token for API calls, it doesn't payoff to isolate the test to a level where a user is created and logged-in in every request. Instead, login only once before the tests execution start (i.e. before-all hook), save the token in some local storage and reuse it across requests. This seem to violate one of the core testing principle - keep the test autonomous without resources coupling. While this is a valid worry, in E2E tests performance is a key concern and creating 1-3 API requests before starting each individual tests might lead to horrible execution time. Reusing credentials doesn't mean the tests have to act on the same user records - if relying on user records (e.g. test user payments history) than make sure to generate those records as part of the test and avoid sharing their existence with other tests. Also remember that the backend can be faked - if your tests are focused on the frontend it might be better to isolate it and stub the backend API (see bullet 3.6).
+:white_check_mark: **à faire:** Dans des tests E2E qui incluent un vrai backend et utilisent un token utilisteur valide pour les appels API, ce n'est pas rentable d'isoler les tests à un niveau ou l'utilisateur est créé et authentifié à chaque requete. A la place, authentifie l'utilisateur une seule fois avant que l'execution des tests commencent (i.e before-all hook), enregistre le token en local et réutilise le dans les requetes. Ça semble violer un des principes de test principal - garder les tests autonomes sans associers les ressources. Même si c'est une inquiétude valide, dans les tests E2E la performance est une inquiétude clé et créer 1-3 requête API avant chaque test peut mener a un temps d'execution horrible. Réutiliser les informations d'authentification ne veux pas dire que les tests doivent agir sur la même entrée utilisateur - si le test compte sur les entrée utilisateur (e.g. test l'historique de paiement d'un utilisateur) alors assure toi de générer ces entrées dans le test et évite de les partager avec d'autres tests. Rappelles-toi aussi que le backend peut être simulé - Si les tests se concentrent sur le frontend, il vaux mieux les isoler et simuler l'API backend (voir point 3.6). 
+<br/>
+
+❌ **Autrement:** Si on prend 200 cas de tests et qu'on estime l'authentification à 100ms = 20 secondes simplement pour s'authentifier encore et encore
 
 <br/>
 
-❌ **Otherwise:** Given 200 test cases and assuming login=100ms = 20 seconds only for logging-in again and again
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example: Logging-in before-all and not before-each
-
+### :clap: Bien faire les choses, exemple: Se connecter dans le before-all pas dans le before-each
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
 ```javascript
