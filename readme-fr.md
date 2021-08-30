@@ -1217,21 +1217,20 @@ test("movie title appears", async () => {
 
 <br/>
 
-## ⚪ ️ 3.5 Watch how the content is served over the network
+## ⚪ ️ 3.5 Regarde comment le contenu est servi sur le réseau
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Google%20LightHouse-blue.svg "Examples with Lighthouse")
 
-✅ **Do:** Apply some active monitor that ensures the page load under real network is optimized - this includes any UX concern like slow page load or un-minified bundle. The inspection tools market is no short: basic tools like [pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) can be easily configured to watch whether the server is alive and response under a reasonable SLA. This only scratches the surface of what might get wrong, hence it's preferable to opt for tools that specialize in frontend (e.g. [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) and perform richer analysis. The focus should be on symptoms, metrics that directly affect the UX, like page load time, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [time until the page gets interactive (TTI)](https://calibreapp.com/blog/time-to-interactive/). On top of that, one may also watch for technical causes like ensuring the content is compressed, time to the first byte, optimize images, ensuring reasonable DOM size, SSL and many others. It's advisable to have these rich monitors both during development, as part of the CI and most important - 24x7 over the production's servers/CDN
+✅ **À faire:** Applique un monitoring active qui s'assure que le chargement de la page sur un vrai réseau est optimisé - ça inclue les questions UX comme un chargement lent ou un bundle non minifié. Le marché des outils d'inspection n'est pas petit: des outils basique comme pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) peuvent être configuré rapidement pour vérifier sur le server est disponible et répond sous un délai raisonnable. Cela ne fait qu'effleurer la surface de ce qui pourrait aller mal, il est donc préférable de choisir des outils spécialisés pour le frontend (e.g [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) et d'effectuer une analyse plus complète. L'attention doit être portée sur les symptomes, les métriques qui affectent directement l'experience utilisateur, comme le temps de chargement d'une page, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [le temps jusqu'à ce que la page devienne intéractive (TTI)](https://calibreapp.com/blog/time-to-interactive/). En plus de ça, on peut également surveiller les cause techniques, comme s'assurer que le contenu est complet, le temps jusqu'au premier byte, l'optimisation des images, s'assurer d'une taille de DOM raisonnable, SSL et autres. Il est recommandable d'avoir ces monitoring complet à la fois pendant le développement, dans le processus CI et surtout - 24h/24 7j/7 sur les serveurs/CDN de production
+<br/>
+
+❌ **Autrement:** Il doit être décevant de se rendre compte qu'après tout le soin apporté à la création d'une interface utilisateur, des tests 100% fonctionnels réussis et des bundles sophistiqué - l'expérience utilisateur est horrible et lente à cause d'une mauvaise configuration du CDN.
 
 <br/>
 
-❌ **Otherwise:** It must be disappointing to realize that after such great care for crafting a UI, 100% functional tests passing and sophisticated bundling - the UX is horrible and slow due to CDN misconfiguration
+<details><summary>✏ <b>Exemple de code</b></summary>
 
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
-
-### :clap: Doing It Right Example: Lighthouse page load inspection report
+### :clap: Bien faire les choses, exemple: Rapport d'inspection du temps de chargement avec Lighthouse
 
 ![](/assets/lighthouse2.png "Lighthouse page load inspection report")
 
