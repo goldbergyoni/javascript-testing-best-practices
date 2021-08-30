@@ -1149,20 +1149,22 @@ test("Shallow/mocked approach: When clicked to show filters, filters are display
 
 <br/>
 
-## ⚪ ️ 3.4 Don't sleep, use frameworks built-in support for async events. Also try to speed things up
+## ⚪ ️ 3.4 N'attend pas, utilise la gestion des évènements asynchrone implémenté dans les frameworks. Essayes aussi d'accélérer les choses
 
-:white_check_mark: **Do:** In many cases, the unit under test completion time is just unknown (e.g. animation suspends element appearance) - in that case, avoid sleeping (e.g. setTimeOut) and prefer more deterministic methods that most platforms provide. Some libraries allows awaiting on operations (e.g. [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), other provide API for waiting like [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance). Sometimes a more elegant way is to stub the slow resource, like API for example, and then once the response moment becomes deterministic the component can be explicitly re-rendered. When depending upon some external component that sleeps, it might turn useful to [hurry-up the clock](https://jestjs.io/docs/en/timer-mocks). Sleeping is a pattern to avoid because it forces your test to be slow or risky (when waiting for a too short period). Whenever sleeping and polling is inevitable and there's no support from the testing framework, some npm libraries like [wait-for-expect](https://www.npmjs.com/package/wait-for-expect) can help with a semi-deterministic solution
+:white_check_mark: **À faire:** Souvent, le temps de complétion de l'unité qu'on test est inconnu (e.g animation qui suspendent l'apparition d'éléments) - Dans ce cas, évite d'attendre (e.g. setTimeOut ) et préfére des méthodes déterministe que la plupart des frameworks fournissent. Certaines librairies permettent d'attendre certaines opérations (e.g. [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), d'autres fournissent une API pour attendre comme [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance).
+Parfois il est plus élégant de stub la ressource lente, comme une API, une fois que le moment de réponse devient déterminé, le composant peut être re-rendu explicitement. Lorsque l'on dépend d'un composant externe qui attent, il peut être utile d'[accélérer l'horloge](https://jestjs.io/docs/en/timer-mocks).
+Attendre est un pattern à éviter puisqu'il force tes tests à être lent ou risqué ( s'ils n'attendent pas assez longtemps ). A chaque fois qu'attendre ou requêter sont inévitable et qu'il n'y a pas de support de la part du framework de test, des librairies comme [wait-for-expect](https://www.npmjs.com/package/wait-for-expect) peuvent aider avec une solution demi-déterministe.
 <br/>
 
-❌ **Otherwise:** When sleeping for a long time, tests will be an order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't respond in a timely fashion. So it boils down to a trade-off between flakiness and bad performance
+❌ **Autrement:** En attendant pour un long moment, les tests seront plus lent. En attendant trop peu, les tests échoueront si l'unité testé n'as pas répondu dans les temps. Cela se résume donc entre un compromis entre l'instabilité et les mauvaise performances.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: E2E API that resolves only when the async operations is done (Cypress)
+### :clap: Bien faire les choses, exemple: E2E API qui se résoud uniquement lorsque l'opération asynchrone est terminée (Cypress)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
@@ -1174,7 +1176,7 @@ cy.wait("@products"); // wait for route to appear
 // this line will get executed only when the route is ready
 ```
 
-### :clap: Doing It Right Example: Testing library that waits for DOM elements
+### :clap: Bien faire les choses, exemple: Librairie de tests qui attend les éléments du DOM
 
 ```javascript
 // @testing-library/dom
@@ -1191,7 +1193,7 @@ test("movie title appears", async () => {
 });
 ```
 
-### :thumbsdown: Anti-Pattern Example: custom sleep code
+### :thumbsdown: Exemple d'anti pattern: Code custom qui attend
 
 ```javascript
 test("movie title appears", async () => {
