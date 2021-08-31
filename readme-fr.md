@@ -1498,33 +1498,33 @@ describe("visual validation", () => {
 
 <br/><br/>
 
-# Section 4️⃣: Measuring Test Effectiveness
+# Section 4️⃣: Mesurer l'éfficacité des tests
 
 <br/><br/>
 
-## ⚪ ️ 4.1 Get enough coverage for being confident, ~80% seems to be the lucky number
+## ⚪ ️ 4.1 Avoir assez de couverture pour être confiant, ~80% semble être le nombre magique
 
-:white_check_mark: **Do:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380 than 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) that presumably should satisfy most of the applications.
+:white_check_mark: **À faire:** Le but des tests est d'être assez confiant pour avancer rapidement, évidemment, plus le code est testé plus l'équipe peut être confiante. La couverture (coverage) est une mesure du nombre de lignes de code (et branches, statements, etc) sont atteint par les tests. À partir de quand est-ce suffisant ? 10-30% est évidemment trop bas pour avoir le moindre idée de la validité du build, d'un autre coté 100% est vraiment couteux et peut dévier votre intêret des parties importantes pour des coints exotiques du code. La réponse longue est que ça dépend de plusieurs facteurs comme le type de l'application - si tu construis la prochaine génération d'Airbus A380 alors 100% est obligatoire, pour un site d'image de dessin animé 50% peut être déjà trop. Même si la plupart des amateurs de tests assurent que le bon seuil dépend du contexte, la plupart d'entre eux mentionnent également le nombre 80% est une bonne règle générale ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) qui devrait répondre au besoin de la plupart des applications.
 
-Implementation tips: You may want to configure your continuous integration (CI) to have a coverage threshold ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) and stop a build that doesn’t stand to this standard (it’s also possible to configure threshold per component, see code example below). On top of this, consider detecting build coverage decrease (when a newly committed code has less coverage) — this will push developers raising or at least preserving the amount of tested code. All that said, coverage is only one measure, a quantitative based one, that is not enough to tell the robustness of your testing. And it can also be fooled as illustrated in the next bullets
-
-<br/>
-
-❌ **Otherwise:** Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear and fear will slow you down
+Conseil d'implémentation: Tu peux vouloir configurer ton intégration continu pour qu'elle ai un seuil de couverture ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) et arrêter les builds qui ne répondent pas à ce standard (il est également possible de configurer un seuil par composant, voir l'exemple ci-dessous). En plus de ça, envisage de détecter les baisse de couverture (quand un nouveau commit à une couverture infèrieure) - cela poussera les développeurs à augmenter ou au moins à conserver la même quantité de code testé. Maintenant que c'est dit, la couverture n'est qu'une mesure, une quantitative, ce n'est pas assez pour dire si vos tests sont robustes. Et il peut aussi être biaisé comme on le verra dans le point suivant
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** La confiance et les nombres vont ensemble, sans vraiment savoir si tu testes la majorité du système, il y aura de la peur, et la peur va te ralentir
 
 <br/>
 
-### :clap: Example: A typical coverage report
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :clap: Example: Un rapport de couverture classique
 
 ![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "A typical coverage report")
 
 <br/>
 
-### :clap: Doing It Right Example: Setting up coverage per component (using Jest)
+### :clap: Bien faire les choses, exemple: Configurer la couverture par composant (avec Jest)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg "Using Jest")
 
