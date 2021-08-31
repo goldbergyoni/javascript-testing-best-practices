@@ -1422,27 +1422,27 @@ Feature: Twitter new tweet
 
 <br/><br/>
 
-## ⚪ ️ 3.11 Detect visual issues with automated tools
+## ⚪ ️ 3.11 Détecter les problèmes visuels avec des outils automatisés
 
-:white_check_mark: **Do:** Setup automated tools to capture UI screenshots when changes are presented and detect visual issues like content overlapping or breaking. This ensures that not only the right data is prepared but also the user can conveniently see it. This technique is not widely adopted, our testing mindset leans toward functional tests but it's the visuals what the user experience and with so many device types it's very easy to overlook some nasty UI bug. Some free tools can provide the basics - generate and save screenshots for the inspection of human eyes. While this approach might be sufficient for small apps, it's flawed as any other manual testing that demands human labor anytime something changes. On the other hand, it's quite challenging to detect UI issues automatically due to the lack of clear definition - this is where the field of 'Visual Regression' chime in and solve this puzzle by comparing old UI with the latest changes and detect differences. Some OSS/free tools can provide some of this functionality (e.g. [wraith](https://github.com/BBC-News/wraith), [PhantomCSS](<[https://github.com/HuddleEng/PhantomCSS](https://github.com/HuddleEng/PhantomCSS)>) but might charge significant setup time. The commercial line of tools (e.g. [Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) takes is a step further by smoothing the installation and packing advanced features like management UI, alerting, smart capturing by eliminating 'visual noise' (e.g. ads, animations) and even root cause analysis of the DOM/CSS changes that led to the issue
-
-<br/>
-
-❌ **Otherwise:** How good is a content page that display great content (100% tests passed), loads instantly but half of the content area is hidden?
+:white_check_mark: **À faire:** Configure des outils automatisés pour capturer des screenshots de l'UI quand des changements sont présentés et détecter les problèmes visuels comme du contenu qui se superpose ou qui est cassé. Cela permet de vérifier que non seulement les bonnes données sont présente mais également que l'utilisateur peut les voir correctement. Cette technique n'est pas trés courante, notre état d'esprit quand on pense aux tests est tourné sur les tests fonctionnels mais c'est le visuel que l'utilisateur expérimente et avec le nombre d'appareils différents disponible il est simple de rater un bug UI important. Certains outils gratuit procurent les bases - générer et enregistrer les screenshots pour qu'ils soient inspectés par un humain. Même si cette approche peut être suffisante pour de petites apps, son défaut comme tout test manuel est qu'il demande une intervention humaine à chaque fois que quelque chose change. D'un autre coté, il est assez difficile de détecter des problèmes UI automatiquement à cause du manque de définition claire - C'est ici que le domaine de 'Visual Regression' entre en jeu et résout ce problème en comparant d'ancienne UI avec les changements les plus récent pour détecter les différences. Certains outils gratuits peuvent fournir certaines de ces fonctionnalités (e.g [wraith](https://github.com/BBC-News/wraith), [PhantomCSS](<[https://github.com/HuddleEng/PhantomCSS](https://github.com/HuddleEng/PhantomCSS)>)) mais peuvent demander un temps de configuration considérable. Les outils commerciaux (e.g. [Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) vont un peu plus loin en simplifiant l'installation et en apportant des fonctionnalités avancés comme la gestion de l'UI, des alertes, de la capture automatique en éliminant le "bruit visuel" (e.g. pubs, animations) et même l'analyse du changement DOM/CSS qui a provoqué ce problème.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Quelle est la qualité d'une page qui affiche un bon contenu (100% des tests passent), charge instantanément mais dont la moitié du contenu est caché ?
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A typical visual regression - right content that is served badly
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :thumbsdown: Exemple d'anti pattern: Une régression visuelle typique - le bon contenu qui est mal servi
 
 ![alt text](assets/amazon-visual-regression.jpeg "Amazon page breaks")
 
 <br/>
 
-### :clap: Doing It Right Example: Configuring wraith to capture and compare UI snapshots
+### :clap: Bien faire les choses, exemple: Configurer wraith pour capturer et comparer les snapshots de l'UI
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Wraith-blue.svg "Using Wraith")
 
@@ -1471,7 +1471,7 @@ paths:
     path: /subscribe
 ```
 
-### :clap: Doing It Right Example: Using Applitools to get snapshot comparison and other advanced features
+### :clap: Bien faire les choses, exemple: Utiliser Applitools pour obtenir des comparaisons de snapshots et d'autres fonctionnalités avancées
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg "Using Applitools") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
