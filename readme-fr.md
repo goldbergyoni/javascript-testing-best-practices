@@ -1344,21 +1344,21 @@ beforeEach(setUser => () {
 
 <br/>
 
-## ⚪ ️ 3.9 Have one E2E smoke test that just travels across the site map
+## ⚪ ️ 3.9 Avoir un test E2E qui parcours juste les pages du site
 
-:white_check_mark: **Do:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
-
-<br/>
-
-❌ **Otherwise:** Everything might seem perfect, all tests pass, production health-check is also positive but the Payment component had some packaging issue and only the /Payment route is not rendering
+:white_check_mark: **À faire:** Pour le suivi de production et la vérification pendant le développement, lance un seul test E2E qui visite toute ou la plupart des pages du site et vérifie qu'aucune n'échoue. Ce type de test apporte un bon retour sur investissement puisqu'il est trés simple à écrire et maintenir, mais peut détecter tout type d'erreur en incluant les problèmes fonctionnels, de réseau ou de déploiement. Les autres types de smoke test et sanity check ne sont pas aussi fiable et exhaustifs - certaines équipes opérationnelles ne font que ping la page d'accueil (production) ou les développeurs qui lancent plusieurs tests d'intégrations qui ne révèlent pas les problèmes de packaging ou liés au navigateur. Il est évident que ce smoke test ne remplace pas les test fonctionnels, mais il sert à détecter rapidement les problèmes.
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Tout peu sembler parfait, tout les tests passent, le health-check de production est également positif mais le composant de paiement a eu des erreurs de packaging et suel la route /payment ne s'affiche pas
 
 <br/>
 
-### :clap: Doing It Right Example: Smoke travelling across all pages
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :clap: Bien faire les choses, exemple: Smoke test qui parcours toute les pages
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
