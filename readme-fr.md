@@ -1518,7 +1518,7 @@ Conseil d'implémentation: Tu peux vouloir configurer ton intégration continu p
 
 <br/>
 
-### :clap: Example: Un rapport de couverture classique
+### :clap: Exemple: Un rapport de couverture classique
 
 ![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "A typical coverage report")
 
@@ -1534,22 +1534,22 @@ Conseil d'implémentation: Tu peux vouloir configurer ton intégration continu p
 
 <br/><br/>
 
-## ⚪ ️ 4.2 Inspect coverage reports to detect untested areas and other oddities
+## ⚪ ️ 4.2 Inspecter les rapports de couverture pour détecter les sections qui ne sont pas testées et autres bizarreries
 
-:white_check_mark: **Do:** Some issues sneak just under the radar and are really hard to find using traditional tools. These are not really bugs but more of surprising application behavior that might have a severe impact. For example, often some code areas are never or rarely being invoked — you thought that the ‘PricingCalculator’ class is always setting the product price but it turns out it is actually never invoked although we have 10000 products in DB and many sales… Code coverage reports help you realize whether the application behaves the way you believe it does. Other than that, it can also highlight which types of code is not tested — being informed that 80% of the code is tested doesn’t tell whether the critical parts are covered. Generating reports is easy — just run your app in production or during testing with coverage tracking and then see colorful reports that highlight how frequent each code area is invoked. If you take your time to glimpse into this data — you might find some gotchas
+:white_check_mark: **À faire:** Certains problèmes passent juste sous le radar et sont difficile à détecter en utilisants des outils traditionnels. Ce ne sont pas vraiment des beugs mais plutot des comportement surprenants de l'application qui peuvent avoir un impact important. Par exemple, souvent certaines parties du code sont rarement voir jamais invoquées - tu penses que la classe 'PricingCalculator' s'occupe toujours de déterminer le prix du produit mais il se trouve qu'elle n'est jamais invoquée alors qu'on a plus de 10000 produits en base de donnée et de nombreuses ventes ... Les rapports de couvertures t'aide à déterminer si l'application se comporte comme tu penses qu'elle le fait. En plus de ça, ils peuvent aussi montrer le type de code qui n'est pas testé - Être informé que 80% du code est testé n'indique pas si les parties critiques sont couvertes. Générer des rapports est simple - lance juste ton application en production ou pendant les tests avec le tracking de couverture activé et récupère des rapports qui montrent à quel fréquence chaque partie du code est invoquée. Si tu prend ton temps pour regarder ces donnée, tu pourras trouver des pièges
 <br/>
 
-❌ **Otherwise:** If you don’t know which parts of your code are left un-tested, you don’t know where the issues might come from
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Si tu ne sais pas quelles parties du code ne sont pas couvertes par les tests, tu ne sais pas d'ou peuvent venir les problèmes
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: What’s wrong with this coverage report?
+<details><summary>✏ <b>Exemple de code</b></summary>
 
-Based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
+<br/>
+
+### :thumbsdown: Exemple d'anti pattern: Qu'est-ce qui ne va pas dans ce rapport de couverture ?
+
+Basé sur un scénario réel, où nous avont tracké l'usage de notre application en QA et detecté un pattern intéressant sur l'authentification (indice: la quantité d'erreur de connexion n'est pas proportionnelle, quelque chose ne va pas. Finalement il s'est avéré qu'un bug front-end n'arrétait pas d'appeler l'API d'authentification)
 
 ![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report?")
 
