@@ -1606,20 +1606,19 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/><br/>
 
-## ⚪ ️4.4 Preventing test code issues with Test linters
+## ⚪ ️4.4 Éviter les problèmes dans le code de test avec les Test linters
 
-:white_check_mark: **Do:** A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) will warn when a test is written at the global level (not a son of a describe() statement) or when tests are [skipped](https://mochajs.org/#inclusive-tests) which might lead to a false belief that all tests are passing. Similarly, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) can, for example, warn when a test has no assertions at all (not checking anything)
+:white_check_mark: **À faire:** Un groupe de plugins ESLint ont été développés spécifiquement pour inspecter le code de test et détecter les problèmes. Par exemple, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) t'avertira lorsqu'un test est écrit à un niveau global (pas un enfant d'une déclaration describe()) ou lorsque les tests sont [sautés](https://mochajs.org/#inclusive-tests), ce qui peut conduire à une fausse croyance que les tests passent. De façon similaire, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) peut avertir lorsqu'un test n'as pas d'assertion (ne vérifie rien)
+<br/>
+
+❌ **Autrement:** Voir 90% de couverture de code et 100% de tests verts fera apparaitre un grand sourire sur ton visage, jusqu'à ce que tu réalises que de nombreux tests ne vérifient rien et que plusieurs suites de tests ont été sautées. Avec un peu de chance, tu n'as rien déployé basé sur de fausses observations
+
+<br/>
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-❌ **Otherwise:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
-
-<br/>
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :thumbsdown: Anti-Pattern Example: A test case full of errors, luckily all are caught by Linters
+### :thumbsdown: Exemple d'anti pattern: Un cas de test plein d'erreur, heuresement toutes détectés par les Linters
 
 ```javascript
 describe("Too short description", () => {
