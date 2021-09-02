@@ -1557,28 +1557,28 @@ Basé sur un scénario réel, où nous avont tracké l'usage de notre applicatio
 
 <br/><br/>
 
-## ⚪ ️ 4.3 Measure logical coverage using mutation testing
+## ⚪ ️ 4.3 Mesurer la couverture logique en utilisant les tests de mutations
 
-:white_check_mark: **Do:** The Traditional Coverage metric often lies: It may show you 100% code coverage, but none of your functions, even not one, return the right response. How come? it simply measures over which lines of code the test visited, but it doesn’t check if the tests actually tested anything — asserted for the right response. Like someone who’s traveling for business and showing his passport stamps — this doesn’t prove any work done, only that he visited few airports and hotels.
+:white_check_mark: **À faire:** Les données de couverture traditionnelles mentent souvent: elles peuvent montrer 100% de couverture, mais aucune de tes fonctions, pas même une seule, ne retourne la bonne réponse. Pourquoi ? Il mesure simplement le nombre de ligne de code que les tests ont visités, mais il ne vérifie pas si les tests ont effectivement testé quelque chose et vérifié la réponse. Comme quelqu'un qui effectuerai un voyage d'affaire et qui montre les tampons sur son passeport - Cela ne prouve pas qu'il a travaillé, seulement qu'il a visité quelques aéroports et hotels.
 
-Mutation-based testing is here to help by measuring the amount of code that was actually TESTED not just VISITED. [Stryker](https://stryker-mutator.io/) is a JavaScript library for mutation testing and the implementation is really neat:
+Les tests de mutations sont la pour aider à mesurer la quantité de code qui a effectivement été TESTÉ et pas juste VISITé. [Stryker](https://stryker-mutator.io/) est une librairie Javascript pour les teests de mutation et son implémentation est très soignée :
 
-(1) it intentionally changes the code and “plants bugs”. For example the code newOrder.price===0 becomes newOrder.price!=0. This “bugs” are called mutations
+(1) Il change volontairement le code et "implante des beugs". Par exemple, le code newOrder.price === 0 devient newOrder.price != 0. Ces "beugs" sont appelés des mutations
 
-(2) it runs the tests, if all succeed then we have a problem — the tests didn’t serve their purpose of discovering bugs, the mutations are so-called survived. If the tests failed, then great, the mutations were killed.
+(2) Il lance les tests, si tous réussissent, alors on a un problème - Les tests n'ont pas remplis leur rôle en découvrant les beugs, les mutations sont dites survivantes. Si les tests échouent, c'est bon, les mutations ont été tués.
 
-Knowing that all or most of the mutations were killed gives much higher confidence than traditional coverage and the setup time is similar
+Savoir que toute ou la plupart des mutations ont été tués donne une meilleure confiance qu'un rapport de couverture traditionnel et le temps de configuration est similaire.
 <br/>
 
-❌ **Otherwise:** You’ll be fooled to believe that 85% coverage means your test will detect bugs in 85% of your code
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Tu seras dupé en croyant que 85% de couverture de code signifie que tes tests détecteront les beugs dans 85% du code
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: 100% coverage, 0% testing
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :thumbsdown: Exemple d'anti pattern: 100% de couverture, 0% testé
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg "Using Stryker")
 
@@ -1598,7 +1598,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
+### :clap: Bien faire les choses, exemple: Un rapport Stryker, un outil pour les tests de mutations, qui détecte et compte la quantité de code qui n'est pas testé (Mutations)
 
 ![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
 
