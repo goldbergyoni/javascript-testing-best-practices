@@ -1638,24 +1638,25 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-# Section 5️⃣: CI and Other Quality Measures
+# Section 5️⃣: CI et autres mesures de qualité
 
 <br/><br/>
 
-## ⚪ ️ 5.1 Enrich your linters and abort builds that have linting issues
+## ⚪ ️ 5.1 Enrichir ses linter et annuler les builds qui ont des problèmes de lint
 
-:white_check_mark: **Do:** Linters are a free lunch, with 5 min setup you get for free an auto-pilot guarding your code and catching significant issue as you type. Gone are the days where linting was about cosmetics (no semi-colons!). Nowadays, Linters can catch severe issues like errors that are not thrown correctly and losing information. On top of your basic set of rules (like [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) or [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), consider including some specializing Linters like [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) that can discover tests without assertions, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) can discover promises with no resolve (your code will never continue), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) which can discover eager regex expressions that might get used for DOS attacks, and [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) is capable of alarming when the code uses utility library methods that are part of the V8 core methods like Lodash.\_map(…)
-<br/>
-
-❌ **Otherwise:** Consider a rainy day where your production keeps crashing but the logs don’t display the error stack trace. What happened? Your code mistakenly threw a non-error object and the stack trace was lost, a good reason for banging your head against a brick wall. A 5 min linter setup could detect this TYPO and save your day
+:white_check_mark: **À faire:** Les linters sont un repas gratuit, avec 5 minutes de configurations, tu as gratuitement un auto-pilote qui surveille ton code et repère les problèmes pendant que tu tapes. Les jours ou les linters était reservés a l'esthetique sont terminés (pas de point-virgules!). De nos jours, les linters peuvent détecté des problèmes serieux comme des erreurs qui ne sont pas thrown correctement et les pertes d'informations. En plus de ta liste de règles basiques (like [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) or [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), considère d'ajouter des linters spécialisés comme [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) qui peux détecter les tests sans assertions, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) qui détecte les promesses qui ne se resolvent pas (le code ne va jamais continuer), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) qui peut découvrir les regex qui peuvent être utilisé pour des attaques DOS, et [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) qui est capable de t'indiquer lorsque le code utilise une méthode de librairie qui fait partie des méthodes du coeur V8 comme Lodash.\_map(...)
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Imagine un jour de pluie ou ta production n'arrête pas de crasher mais les logs ne montrent aucune stack trace d'erreur. Qu'est-ce qu'il s'est passé ? Ton code a malencontreusement émit un objet qui n'était pas une erreur et la stack trace a été perdu, une bonne raison de se taper la tête contre les murs. 5 minutes de configurations d'un linter pourrait permettre de détecter cette erreur et sauver la journée
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :thumbsdown: Exemple d'anti pattern: Le mauvais objet d'erreur est émit par erreur, aucune stack-trace ne va apparaitre pour cette erreur. Heuresement, ESLint catch le prochain beug de production
 
 ![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
 
