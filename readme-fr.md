@@ -1794,26 +1794,26 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.7 Automate dependency updates
+## ⚪ ️5.7 Automatiser les mises-à-jour de dépendences
 
-:white_check_mark: **Do:** Yarn and npm latest introduction of package-lock.json introduced a serious challenge (the road to hell is paved with good intentions) — by default now, packages are no longer getting updates. Even a team running many fresh deployments with ‘npm install’ & ‘npm update’ won’t get any new updates. This leads to subpar dependent packages versions at best or to vulnerable code at worst. Teams now rely on developers goodwill and memory to manually update the package.json or use tools [like ncu](https://www.npmjs.com/package/npm-check-updates) manually. A more reliable way could be to automate the process of getting the most reliable dependency versions, though there are no silver bullet solutions yet there are two possible automation roads:
+:white_check_mark: **À faire:** L'introduction récente du package-lock.json par Yarn et npm à introduit un vrai défi (la route vers l'enfer est pavée de bonne intentions) - par défault maintenant, les packages ne sont pas mis à jour. Même une équipe qui lance plusieurs nouveaux déploiement avec 'npm install' & 'npm update' n'aura pas de nouvelles mise à jour. Cela conduit au mieux, à des dépendances à des packages de qualité infèrieur, au pire à du code vulnérable. Les équipes dépendent maintenant de la bonne volonté et de la mémoire des développeur pour mettre à jour manuellement le package.json ou utiliser des outils [comme ncu](https://www.npmjs.com/package/npm-check-updates). Une méthode plus fiable pourrait être d'automatiser le processus de récupération des versions de dépendances les plus fiables, bien qu'il n'y ai pas de solutions miracle, il y a deux possibilités d'automatisation:
 
-(1) CI can fail builds that have obsolete dependencies — using tools like [‘npm outdated’](https://docs.npmjs.com/cli/outdated) or ‘npm-check-updates (ncu)’ . Doing so will enforce developers to update dependencies.
+(1) Le CI peut faire échouer les buils qui ont des dépendances obsolètes - en utilisants des outils comme [‘npm outdated’](https://docs.npmjs.com/cli/outdated) ou 'npm-check-updates (ncu)'. Faire ça forcera les développeurs à mettre à jour les dépendances.
 
-(2) Use commercial tools that scan the code and automatically send pull requests with updated dependencies. One interesting question remaining is what should be the dependency update policy — updating on every patch generates too many overhead, updating right when a major is released might point to an unstable version (many packages found vulnerable on the very first days after being released, [see the](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope incident).
+(2) Utiliser un outil commercial qui peut scanner le code et envoyer automatiquement une pull-request avec les dépendances mises à jour. La question intéressante restante est, quel devrait être la politique de mises à jour - Mettre à jour chaque patch génère trop de surcharge, mettre à jour juste aprés une release majeure peut introduire une version instable (de nombreuses vulnérabilités sont découverte dans les premiers jours aprés la release, [voir l'incident](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope).
 
-An efficient update policy may allow some ‘vesting period’ — let the code lag behind the @latest for some time and versions before considering the local copy as obsolete (e.g. local version is 1.3.1 and repository version is 1.3.8)
+Une politique de mise à jour efficace peut autoriser une 'pèriode d'acquisition' - laisser le code en retard par rapport à @latest pour quelques temps et versions avant de considérer la copie locale comme obsolète (e.g la version locale est 1.3.1 et la version du repo est 1.3.8)
 <br/>
 
-❌ **Otherwise:** Your production will run packages that have been explicitly tagged by their author as risky
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Ta production utilisera des packages qui ont été taggé explicitement par leur auteurs comme risquées
 
 <br/>
 
-### :clap: Example: [ncu](https://www.npmjs.com/package/npm-check-updates) can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :clap: Exemple: [ncu](https://www.npmjs.com/package/npm-check-updates) peut être utilisé manuellement ou dans une pipeline CI pour détecter à quel point le code est en retard vis a vis des dernières versions
 
 ![alt text](assets/bp-27-yoni-goldberg-npm.png "ncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
 
@@ -1821,7 +1821,7 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 <br/><br/>
 
-## ⚪ ️ 5.8 Other, non-Node related, CI tips
+## ⚪ ️ 5.8 Autre conseils CI, sans rapports avec Node
 
 :white_check_mark: **Do:** This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
 
