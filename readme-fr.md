@@ -1744,19 +1744,18 @@ Le large écosystème de Kubernetes doit encore formaliser un outils standard po
 
 <br/><br/>
 
-## ⚪ ️5.5 Stay away from legal issues using license and plagiarism check
+## ⚪ ️5.5 Reste loin des problèmes légaux en utilisants des vérification de license et de plagiat
 
-:white_check_mark: **Do:** Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like [license check](https://www.npmjs.com/package/license-checker) and [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stack Overflow and apparently violates some copyrights
+:white_check_mark: **À faire:** Les problèmes de licences et de plagiat ne sont probablement pas au centre de votre attention pour l'instant, mais pourquoi ne pas cocher également cette case en 10 minutes ? Plusieurs packages npm comme [license check](https://www.npmjs.com/package/license-checker) et [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (commerciaux avec un essai gratuit) peuvent être facilement intégré dans ta pipeline CI et inspecter les problèmes tels que les dépendances avec des licences restrictives ou du code qui a été copié-collé à partir de Stack Overflow et qui violerai certains droits d'auteur
 
-❌ **Otherwise:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
+❌ **Autrement:** Involontairement, les développeurs peuvent utiliser un packages avec une license inaproprié, ou copier/coller du code commercial et tomber sur des problèmes légaux
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example:
+### :clap: Bien faire les choses, exemple:
 
 ```javascript
 //install license-checker in your CI environment or also locally
