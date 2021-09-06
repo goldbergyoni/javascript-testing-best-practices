@@ -1832,20 +1832,20 @@ Une politique de mise à jour efficace peut autoriser une 'pèriode d'acquisitio
 
 <br/><br/>
 
-## ⚪ ️ 5.9 Build matrix: Run the same CI steps using multiple Node versions
+## ⚪ ️ 5.9 Structure de build: Lance les mêmes étapes CI sur plusieurs versions de Node
 
-:white_check_mark: **Do:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use MySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of MySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
+:white_check_mark: **À faire:** Le controle de qualité est un jeu de hasard, plus tu couvres de terrain, plus tu as de chance de détecter les problèmes rapidement. Quand tu développes des packages réutilisable ou que tu lance une production avec plusieurs clients qui ont différentes configurations et versions de Node, le CI doit lancer la pipeline de trests sur toutes les configurations possible. Par exemple, imaginons qu'on utilise MySQL pour certains clients et Postgres pour d'autres - Certains fournisseurs CI supportent une fonctionnalitée appelée 'Matrix' qui permet de lancer les tests contre toute les permutations de MySQL, Postgres et plusieurs versions de Node comme 8, 9 et 10. Cela peut se faire en utilisant seulement des configurations sans efforts supplémentaire (en considérant que tu as des tests ou d'autres controles de qualités). D'autres CIs qui ne supportent pas Matrix peuvent avoir des extensions qui permettent ça
 <br/>
 
-❌ **Otherwise:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **Autrement:** Aprés avoir fait tout le travail d'écrire des tests, vas-t-on laisser passer des bugs seulement à cause de problèmes de configurations ?
 
 <br/>
 
-### :clap: Example: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
+<details><summary>✏ <b>Exemple de code</b></summary>
+
+<br/>
+
+### :clap: Exemple: Utiliser les définition de build de Travis (fournisseur CI) pour lancer le même test sur plusieurs versions de Node
 
 <pre name="f909" id="f909" class="graf graf--pre graf-after--p">language: node_js<br>node_js:<br>  - "7"<br>  - "6"<br>  - "5"<br>  - "4"<br>install:<br>  - npm install<br>script:<br>  - npm run test</pre>
 </details>
