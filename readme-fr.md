@@ -1852,7 +1852,7 @@ Une politique de mise à jour efficace peut autoriser une 'pèriode d'acquisitio
 
 <br/><br/>
 
-# Team
+# L'équipe
 
 ## Yoni Goldberg
 
@@ -1860,15 +1860,15 @@ Une politique de mise à jour efficace peut autoriser une 'pèriode d'acquisitio
 <img width="480px" src="assets/yoni-goldberg.jpg"/>
 <br/>
 
-**Role:** Writer
+**Rôle:** Auteur
 
-**About:** I'm an independent consultant who works with Fortune 500 companies and garage startups on polishing their JS & Node.js applications. More than any other topic I'm fascinated by and aims to master the art of testing. I'm also the author of [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
+**À propos:** Je suis un consultatn indépendant qui travaille avec des entreprises Fortune 500 et des startup pour peaufiner leurs applications JS et Node.JS. Plus qu'aucun autre sujet, je suis fasciné par et vise à maitriser l'art du test. Je suis aussi l'auteur de [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
 
-**📗 Online Course:** Liked this guide and wish to take your testing skills to the extreme? Consider visiting my comprehensive course [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
+**📗 Cours en ligne:** Tu aimes ce guide et tu veux pousser tes compétences de test à l'extreme ? Pense à regarder mon cours complet [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
 
 <br/>
 
-**Follow:**
+**Me suivre:**
 
 - [🐦 Twitter](https://twitter.com/goldbergyoni/)
 - [📞 Contact](https://testjavascript.com/contact-2/)
@@ -1880,30 +1880,30 @@ Une politique de mise à jour efficace peut autoriser une 'pèriode d'acquisitio
 
 ## [Bruno Scheufler](https://github.com/BrunoScheufler)
 
-**Role:** Tech reviewer and advisor
+**Rôle:** Réviseur et conseiller technique
 
-Took care to revise, improve, lint and polish all the texts
+À pris soin de revoir, améliorer, linter et peaufiner tout les textes
 
-**About:** full-stack web engineer, Node.js & GraphQL enthusiast
+**À propos:** Ingénieur web full-stack, passioné par Node.js et GraphQL
 
 <hr/>
 <br/>
 
 ## [Ido Richter](https://github.com/idori)
 
-**Role:** Concept, design and great advice
+**Rôle:** Concept, design et bons conseils
 
-**About:** A savvy frontend developer, CSS expert and emojis freak
+**À propos:** Un développeur front-end averti, expert CSS et maniaque des émojis
 
 ## [Kyle Martin](https://github.com/js-kyle)
 
-**Role:** Helps keep this project running, and reviews security related practices
+**Rôle:** Aide à faire tourner ce projet, et revois les pratiques liés à la sécurité
 
-**About:** Loves working on Node.js projects and web application security.
+**À propos:** Aime travailler sur des projets Node.JS et la sécurité des applications web.
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people who have contributed to this repository!
+Merci à ces merveilleuses personnes qui ont contribué à ce repo!
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
