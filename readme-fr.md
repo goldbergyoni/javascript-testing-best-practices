@@ -1664,22 +1664,21 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-## ⚪ ️ 5.2 Shorten the feedback loop with local developer-CI
+## ⚪ ️ 5.2 Raccourcir la boucle de retours avec du CI local pour les développeurs
 
-:white_check_mark: **Do:** Using a CI with shiny quality inspections like testing, linting, vulnerabilities check, etc? Help developers run this pipeline also locally to solicit instant feedback and shorten the [feedback loop](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Why? an efficient testing process constitutes many and iterative loops: (1) try-outs -> (2) feedback -> (3) refactor. The faster the feedback is, the more improvement iterations a developer can perform per-module and perfect the results. On the flip, when the feedback is late to come fewer improvement iterations could be packed into a single day, the team might already move forward to another topic/task/module and might not be up for refining that module.
+:white_check_mark: **À faire:** Tu utilises un outil de CI avec une bonne inspection de qualité comme des tests, du linting, des checks de vulnérabilités, etc ? Aide les développeurs à lancer également cette pipeline en local pour solliciter un retour instantané et raccourcir la [boucle de feedback](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Pourquoi ? Un processus de tests efficace constitue de nombreuses boucles itératives: (1) essai -> (2) retours -> (3) refactor. Plus le retour est rapide, plus le développeur peut effectuer d'itérations d'améliorations par modules et perfonctionner le résultat. D'un autre coté, lorsque les retours sont lent à arriver, moins d'améliorations peuvent être effectuée au sein d'une journée, l'équipe peut être déjà passé à un autre sujet/tache/module et peut ne pas être prête a affiner ce module.
 
-Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) allow running the pipeline locally. Some commercial tools like [wallaby provide highly-valuable & testing insights](https://wallabyjs.com/) as a developer prototype (no affiliation). Alternatively, you may just add npm script to package.json that runs all the quality commands (e.g. test, lint, vulnerabilities) — use tools like [concurrently](https://www.npmjs.com/package/concurrently) for parallelization and non-zero exit code if one of the tools failed. Now the developer should just invoke one command — e.g. ‘npm run quality’ — to get instant feedback. Consider also aborting a commit if the quality check failed using a githook ([husky can help](https://github.com/typicode/husky))
+En pratique, certains fournisseurs de CI (Exemple: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) autorisent le lancement de la pipeline en local. Certains outils commerciaux comme [wallaby fournissent des informations de valeur et des tests](https://wallabyjs.com/) pendant que le développeur prototype (pas d'affiliation). Alternativement, tu peux simplement ajouter un script npm au package.json qui lance toute les commandes de qualités (e.g. tests, lint, vulnérabilités) - utilise des outils comme [concurrently](https://www.npmjs.com/package/concurrently) pour la parallélisation et des code de retour différents de 0 si l'un des outils échoue. Maintenant le développeur peut juste lancer une commande - e.g. 'npm run quality' - pour recevoir un retour instantané. Envisage également d'annuler un commit si le controle de qualité ne passe pas en utilisant githook ([husky can help](https://github.com/typicode/husky))
 <br/>
 
-❌ **Otherwise:** When the quality results arrive the day after the code, testing doesn’t become a fluent part of development rather an after the fact formal artifact
+❌ **Autrement:** Quand les résultats de qualité arrivent le jour suivant le développement, les tests ne sont pas une partie fluide du développement mais plutot une étape formelle aprés coup
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
+### :clap: Bien faire les choses, exemple: Script npm qui effectue une inspection de la qualité du code, tout est lancé en parallèle sur demande ou lorsque le développeur essaye de push du code
 
 ```javascript
 "scripts": {
