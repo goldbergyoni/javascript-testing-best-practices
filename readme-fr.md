@@ -1725,19 +1725,18 @@ Le large écosystème de Kubernetes doit encore formaliser un outils standard po
 
 <br/><br/>
 
-## ⚪ ️5.4 Parallelize test execution
+## ⚪ ️5.4 Paralléliser l'exécution des tests
 
-:white_check_mark: **Do:** When done right, testing is your 24/7 friend providing almost instant feedback. In practice, executing 500 CPU-bounded unit test on a single thread can take too long. Luckily, modern test runners and CI platforms (like [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) and [Mocha extensions](https://github.com/yandex/mocha-parallel-tests)) can parallelize the test into multiple processes and achieve significant improvement in feedback time. Some CI vendors do also parallelize tests across containers (!) which shortens the feedback loop even further. Whether locally over multiple processes, or over some cloud CLI using multiple machines — parallelizing demand keeping the tests autonomous as each might run on different processes
+:white_check_mark: **À faire:** Lorsque c'est fait correctement, les tests sont ton ami 24/7 en fournissant un retour quasi instantanné. En pratique, éxécuter 500 tests unitaire liés au processeur sur un seul thread peut prendre trop longtemps. Heuresement, les outils de tests et les plateformes CI moderne (comme [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) et [Mocha extensions](https://github.com/yandex/mocha-parallel-tests)) peuvent paralléliser les tests sur plusieurs processus et améliorer significativement le temps de retour. Certains fournisseurs CI font également de la parallélisation de tests à travers des containers (!) ce qui raccourcis encore plus la boucle de retour. Que ce soit locallement sur plusieurs processus, ou sur un serveur Cloud avec plusieurs machines - paralléliser demande de garder les tests autonomes puisqu'ils peuvent tourner sur différents processus.
 
-❌ **Otherwise:** Getting test results 1 hour long after pushing new code, as you already code the next features, is a great recipe for making testing less relevant
+❌ **Autrement:** Obtenir les résultats de tests 1h aprés avoir publié du nouveau code, pendant que tu es déjà en train de coder la fonctionnalité suivante, est une bonne recette pour rendre les tests moins pertinents
+<br/>
+
+<details><summary>✏ <b>Exemple de code</b></summary>
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
-
-<br/>
-
-### :clap: Doing It Right Example: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+### :clap: Bien faire les choses, exemple: Mocha parallel & Jest distancent facilement le Mocha traditionnel grace à la parallélisation ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
 
 ![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
 
