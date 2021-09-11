@@ -71,26 +71,28 @@ JSの世界におけるCIのガイドライン (9発の弾丸)
 
 <br/><br/>
 
-# Section 0️⃣: The Golden Rule
+# Section 0️⃣: 黄金律
 
 <br/>
 
-## ⚪️ 0 The Golden Rule: Design for lean testing
+## ⚪️ 0 黄金律: リーンなテストのためのデザイン
 
 :white_check_mark: **Do:**
-Testing code is not like production-code - design it to be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should look at a test and get the intent instantly.
+テストコードは本番コードとは違います - 非常にシンプルで、短く、抽象さを排除し、フラットで、リーンで、書きたくなるようなものにしましょう。誰でも一目見て意図がすぐに伝わるようなテストを心がけましょう。  
 
-Our minds are full with the main production code, we don't have 'headspace' for additional complexity. Should we try to squeeze yet another challenging code into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
+私たちの頭はいつもメインの本番コードのことでいっぱいなので、余計にややこしいものを追加するような「脳内のスペース」なんてありません。もしも追加で難しいコードを我々のちっぽけな脳に押し込もうなんてしようものなら、チームを遅滞させますし、それはそもそもテストを書きたかった理由と逆行していて本末転倒です。実際のところ、これが多くのチームがテストを諦めてしまう理由です。
 
-The tests are an opportunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a small investment. Science tells us that we have two brain systems: system 1 is used for effortless activities like driving a car on an empty road and system 2 which is meant for complex and conscious operations like solving a math equation. Design your test for system 1, when looking at test code it should _feel_ as easy as modifying an HTML document and not like solving 2X(17 × 24).
+テストとは、ある別のことのための機会だと捉えましょう。それは、一緒に協業して楽しいような、友好的で笑顔に満ち溢れたアシスタントであり、小さな投資で大きなリターンをもたらすものなのです。  
+科学的に人間には2つの脳のシステムがあります: システム1は、たとえばガラガラの道路を車を運転するような努力のいらない活動のために使われ、システム2は、たとえば数式を解くような複雑で意識的な操作のために使われます。  
+システム1で処理できるようなテストをデザインしましょう。テストコードと向き合う時には、まるでHTML文書を編集するかのような気楽さを感じられるべきであって、2X(17 × 24)という数式を解く時のようであってはいけません。
 
-This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+その達成のためには、テクニック、ツール、費用対効果が高いテスト対象を選択的に取捨選択するとよいでしょう。必要なものだけをテストし、敏捷性を保つことを心がけましょう。時には、信頼性を敏捷性と簡潔さと天秤にかけ、いくつかのテストを捨てることも有効です。
 
 ![alt text](/assets/headspace.png "We have no head room for additional complexity")
 
-Most of the advice below are derivatives of this principle.
+ここから先のアドバイスのほとんどは、この原則から派生したものです。
 
-### Ready to start?
+### 準備はいいですか?
 
 <br/><br/>
 
