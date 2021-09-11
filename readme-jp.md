@@ -2,40 +2,44 @@
 
 <br/>
 
-# 👇 Why this guide can take your testing skills to the next level
+# 👇 このガイドを読むとテストスキルが向上する理由
 
 <br/>
 
-## 📗 46+ best practices: Super-comprehensive and exhaustive
+## 📗 非常にわかりやすく、網羅的な46以上のベストプラクティス
 
-This is a guide for JavaScript & Node.js reliability from A-Z. It summarizes and curates for you dozens of the best blog posts, books and tools the market has to offer
+これは JavaScript & Node.js の信頼性のためのA-Zなガイドです。  
+本ガイドは、沢山の素晴らしいブログ記事、書籍などの世にある様々なツールから内容をキュレーションし、要約して作られています。
 
-## 🚢 Advanced: Goes 10,000 miles beyond the basics
+## 🚢 基礎なんて10000マイル以上置いてきぼりにするアドバンスドな内容
 
-Hop into a journey that travels way beyond the basics into advanced topics like testing in production, mutation testing, property-based testing and many other strategic & professional tools. Should you read every word in this guide your testing skills are likely to go way above the average
+基礎はもちろんのこと、多くのアドバンスドなトピック（本番環境でのテスト・ミューテーションテスト・property-basedテスト・戦略的でプロフェッショナルなツールについてなど）まで学べる旅に出ましょう！
+このガイドを隅々まで読みこめば、あなたのテストスキルは並のレベルを大きく凌駕することでしょう。
 
-## 🌐 Full-stack: front, backend, CI, anything
+## 🌐 フロントエンド、バックエンド、CI、その他なんでもフルスタックに
 
-Start by understanding the ubiquitous testing practices that are the foundation for any application tier. Then, delve into your area of choice: frontend/UI, backend, CI or maybe all of them?
-
-<br/>
-
-### Written By Yoni Goldberg
-
-- A JavaScript & Node.js consultant
-- 📗 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com) - My comprehensive online course with more than [10 hours of video](https://www.testjavascript.com), 14 test types and more than 40 best practices
-- [Follow me on Twitter](https://twitter.com/goldbergyoni/)
+まずは、どんなアプリケーションにとっても根幹となる普遍的なテストの習慣を理解するところから始めましょう。  
+そして、フロントエンド/UI、バックエンド、CI、あるいはなんならその全てでも、自分の興味のある分野を探求していきましょう。
 
 <br/>
 
-### Translations - read in your own language
+### 著者: Yoni Goldberg について
 
-- 🇨🇳[Chinese](readme-zh-CN.md) - Courtesy of [Yves yao](https://github.com/yvesyao)
-- 🇰🇷[Korean](readme.kr.md) - Courtesy of [Rain Byun](https://github.com/ragubyun)
-- 🇵🇱[Polish](readme-pl.md) - Courtesy of [Michal Biesiada](https://github.com/mbiesiad)
-- 🇪🇸[Spanish](readme-es.md) - Courtesy of [Miguel G. Sanguino](https://github.com/sanguino)
-- 🇧🇷[Portuguese-BR](readme-pt-br.md) - Courtesy of [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) and [koooge](https://github.com/koooge)
-- Want to translate to your own language? please open an issue 💜
+- JavaScript & Node.js のコンサルタントです
+- 📗 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com) - [10時間以上の動画](https://www.testjavascript.com)、14種類のテスト、40以上のベストプラクティスを取り扱った、分かりやすいオンラインコースです
+- [Twitterはこちら](https://twitter.com/goldbergyoni/)
+
+<br/>
+
+### 翻訳 - 自分の言語で読んでください
+
+- 🇨🇳[中国語](readme-zh-CN.md) - [Yves yao](https://github.com/yvesyao)さんの貢献
+- 🇰🇷[韓国語](readme.kr.md) - [Rain Byun](https://github.com/ragubyun)さんの貢献
+- 🇵🇱[ポーランド語](readme-pl.md) - [Michal Biesiada](https://github.com/mbiesiad)さんの貢献
+- 🇪🇸[スペイン語](readme-es.md) - [Miguel G. Sanguino](https://github.com/sanguino)さんの貢献
+- 🇧🇷[ポルトガル語](readme-pt-br.md) - [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante)さん、[Douglas Mariano Valero](https://github.com/DouglasMV)さん、[koooge](https://github.com/koooge)さんの貢献
+
+- 自分の言語に翻訳したいですか? issueをぜひ立ててください 💜
 
 <br/><br/>
 
