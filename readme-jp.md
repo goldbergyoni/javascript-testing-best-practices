@@ -157,41 +157,41 @@ describe('Products Service', function() {
 
 <br/><br/>
 
-## ⚪ ️ 1.2 Structure tests by the AAA pattern
+## ⚪ ️ 1.2 AAAパターンでテストを構成する
 
-:white_check_mark: **Do:** Structure your tests with 3 well-separated sections Arrange, Act & Assert (AAA). Following this structure guarantees that the reader spends no brain-CPU on understanding the test plan:
+:white_check_mark: **こうしてください:** Arrange(準備する), Act(動かす), Assert(確認する)という3つの工程でテストを構成しましょう。こうすることで、コードを読む人がテストの方針を理解するために脳内CPUを費やさずに済みます。
 
-1st A - Arrange: All the setup code to bring the system to the scenario the test aims to simulate. This might include instantiating the unit under test constructor, adding DB records, mocking/stubbing on objects and any other preparation code
+1つ目のA - Arrange(準備する): テストがシミュレートしたい状況をセットアップするためのコードです。これには、テストしたい対象をインスタンス化する、DBレコードを追加する、特定のオブジェクトをモック/スタブすることなどが含まれます。  
 
-2nd A - Act: Execute the unit under test. Usually 1 line of code
+2つ目のA - Act(動かす): テスト対象を動かします。 大抵は1行で済みます。  
 
-3rd A - Assert: Ensure that the received value satisfies the expectation. Usually 1 line of code
-
-<br/>
-
-❌ **Otherwise:** Not only do you spend hours understanding the main code, but what should have been the simplest part of the day (testing) stretches your brain
+3つ目のA - Assert(確認する): 返り値が期待している結果となっているかどうかを確認します。大抵は1行で済みます。  
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **さもなくば:** メインのコードを理解するのに何時間もかかってしまうばかりか、1日のタスクの中で本来は最も簡単であるはずのテストを書くという行為で脳がくたくたになってしまいます。
 
 <br/>
 
-### :clap: Doing It Right Example: A test structured with the AAA pattern
+<details><summary>✏ <b>コード例</b></summary>
+
+<br/>
+
+### :clap: 正しい例: AAAパターンで構成されたテスト
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
 ```javascript
 describe("Customer classifier", () => {
-  test("When customer spent more than 500$, should be classified as premium", () => {
-    //Arrange
+  test("カスタマーが500$費やした時, プレミアムとして識別されること", () => {
+    //Arrange(準備する)
     const customerToClassify = { spent: 505, joined: new Date(), id: 1 };
     const DBStub = sinon.stub(dataAccess, "getCustomer").reply({ id: 1, classification: "regular" });
 
-    //Act
+    //Act(動かす)
     const receivedClassification = customerClassifier.classifyCustomer(customerToClassify);
 
-    //Assert
+    //Assert(確認する)
     expect(receivedClassification).toMatch("premium");
   });
 });
@@ -199,10 +199,10 @@ describe("Customer classifier", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: No separation, one bulk, harder to interpret
+### :thumbsdown: アンチパターン例: 区切りがなく、ひとかたまりで、分かりにくい
 
 ```javascript
-test("Should be classified as premium", () => {
+test("プレミアムとして識別されること", () => {
   const customerToClassify = { spent: 505, joined: new Date(), id: 1 };
   const DBStub = sinon.stub(dataAccess, "getCustomer").reply({ id: 1, classification: "regular" });
   const receivedClassification = customerClassifier.classifyCustomer(customerToClassify);
