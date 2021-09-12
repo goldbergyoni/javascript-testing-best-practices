@@ -214,24 +214,26 @@ test("プレミアムとして識別されること", () => {
 
 <br/><br/>
 
-## ⚪ ️1.3 Describe expectations in a product language: use BDD-style assertions
+## ⚪ ️1.3 プロダクト由来の言葉で期待する振る舞いを記述する: BDDスタイルのアサーションを使う
 
-:white_check_mark: **Do:** Coding your tests in a declarative-style allows the reader to get the grab instantly without spending even a single brain-CPU cycle. When you write imperative code that is packed with conditional logic, the reader is forced to exert more brain-CPU cycles. In that case, code the expectation in a human-like language, declarative BDD style using `expect` or `should` and not using custom code. If Chai & Jest doesn't include the desired assertion and it’s highly repeatable, consider [extending Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) or writing a [custom Chai plugin](https://www.chaijs.com/guide/plugins/)
+:white_check_mark: **こうしてください:** 宣言的なスタイルでテストを書くことは、読者に少しも脳内CPUを使わせずに概観を掴ませる助けとなります。沢山の条件ロジックを含むような命令的なコードを書くと、読者は脳内CPUを沢山使うことを強制されてしまいます。  
+なので、宣言的なBDDスタイルで、 `expect` や `should` などを用い、お手製を避けつつ、人間的な言葉で期待する結果を書きましょう。  
+もしも、ChaiやJestが欲しいアサーションメソッドをもっておらず、そしてその欲しいアサーションメソッドが何度も使いうるものであれば、[Jestのマッチャーを拡張すること](https://jestjs.io/docs/en/expect#expectextendmatchers)や[カスタムChaiプラグイン](https://www.chaijs.com/guide/plugins/)を書くことを検討してみてください。
 <br/>
 
-❌ **Otherwise:** The team will write less tests and decorate the annoying ones with .skip()
+❌ **さもなくば:** チームがテストを書かなくなり、面倒なテストを.skip()で飛ばすようになります。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary><br/>
+<details><summary>✏ <b>コード例</b></summary><br/>
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
-### :thumbsdown: Anti-Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
+### :thumbsdown: アンチパターン例: 読者がテストの方針を知るために、命令的なコードをそれなりの量確認しなければならない
 
 ```javascript
-test("When asking for an admin, ensure only ordered admins in results", () => {
-  //assuming we've added here two admins "admin1", "admin2" and "user1"
+test("アドミンを取得する時、 アドミンのみが取得結果に含まれること", () => {
+  //"admin1"、 "admin2" というアドミンと、"user1"というユーザーを追加してあると仮定する
   const allAdmins = getUsers({ adminOnly: true });
 
   let admin1Found,
@@ -257,11 +259,11 @@ test("When asking for an admin, ensure only ordered admins in results", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Skimming through the following declarative test is a breeze
+### :clap: 正しい例: 宣言的なテストを俯瞰するのは容易いことです
 
 ```javascript
-it("When asking for an admin, ensure only ordered admins in results", () => {
-  //assuming we've added here two admins
+it("アドミンを取得する時、 アドミンのみが取得結果に含まれること", () => { 
+  // 2人アドミンを追加してあると仮定する
   const allAdmins = getUsers({ adminOnly: true });
 
   expect(allAdmins)
