@@ -276,29 +276,33 @@ it("アドミンを取得する時、 アドミンのみが取得結果に含ま
 
 <br/><br/>
 
-## ⚪ ️ 1.4 Stick to black-box testing: Test only public methods
+## ⚪ ️ 1.4 ブラックボックステストを守る: パブリックメソッドのみをテストする
 
-:white_check_mark: **Do:** Testing the internals brings huge overhead for almost nothing. If your code/API delivers the right results, should you really invest your next 3 hours in testing HOW it worked internally and then maintain these fragile tests? Whenever a public behavior is checked, the private implementation is also implicitly tested and your tests will break only if there is a certain problem (e.g. wrong output). This approach is also referred to as `behavioral testing`. On the other side, should you test the internals (white box approach) — your focus shifts from planning the component outcome to nitty-gritty details and your test might break because of minor code refactors although the results are fine - this dramatically increases the maintenance burden
-<br/>
-
-❌ **Otherwise:** Your tests behave like the [boy who cried wolf](https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf): shouting false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday, a real bug gets ignored…
-
-<br/>
-<details><summary>✏ <b>Code Examples</b></summary>
+:white_check_mark: **こうしてください:** 内部実装をテストしても大きなオーバーヘッドの割に、何も得られません。もしコードやAPIが正しい結果を返しているのなら、3時間もかけて"どのように"それが達成されたかをテストし、更にそのような壊れやすいテストをメンテしていく必要がありますか？   
+公開されている振る舞いがテストされている時は、常に内部実装も暗黙的にテストされていて、そのテストが壊れる時というのは何か特定の問題があった時だけです（たとえば、出力が間違っているなど）。
+このようなアプローチは`behavioral testing`と呼ばれます。
+逆に、内部実装をテストする場合（ホワイトボックス的アプローチ) - フォーカスがコンポーネントの出力から核心的な詳細に移ります。小さなリファクタリングによって、たとえ出力結果が問題なかったとしても、テストが壊れるかもしれません。- これはメンテナンスコストを著しく向上させてしまいます。
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test case is testing the internals for no good reason
+❌ **さもなくば:** テストが[オオカミ少年](https://ja.wikipedia.org/wiki/%E5%98%98%E3%82%92%E3%81%A4%E3%81%8F%E5%AD%90%E4%BE%9B)になります: （例えば、プライベート変数の名前が変わったことでテストが壊れたなどの理由で）嘘の叫びをあげます。開発者たちがCIの通知を無視し続けてある日本当のバグが無視されてしまうようになるのも、全く驚くことではありません。
+
+<br/>
+<details><summary>✏ <b>コード例</b></summary>
+
+<br/>
+
+### :thumbsdown: アンチパターン例: 特に理由もなく内部実装をテストしている
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha & Chai")
 
 ```javascript
 class ProductService {
-  //this method is only used internally
-  //Change this name will make the tests fail
+  // このメソッドは内部でしか使われていない
+  // このメソッド名を変更するとテストが壊れる
   calculateVATAdd(priceWithoutVAT) {
     return { finalPrice: priceWithoutVAT * 1.2 };
-    //Change the result format or key name above will make the tests fail
+    // 上記の返り値の形やキー名を変えるとテストが壊れる
   }
   //public method
   getPrice(productId) {
@@ -308,8 +312,8 @@ class ProductService {
   }
 }
 
-it("White-box test: When the internal methods get 0 vat, it return 0 response", async () => {
-  //There's no requirement to allow users to calculate the VAT, only show the final price. Nevertheless we falsely insist here to test the class internals
+it("ホワイトボックステスト: 内部メソッドが0 vatを受け取る時, 0を返す", async () => {
+  // ユーザーがVATを計算できるようにしなければいけない要件はなく、最終金額が示せれば良い。それにも関わらず、クラス内部をテストすることに固執してしまっている。
   expect(new ProductService().calculateVATAdd(0).finalPrice).to.equal(0);
 });
 ```
