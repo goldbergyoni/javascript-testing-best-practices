@@ -1665,10 +1665,10 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 ## ⚪ ️ 5.1 リンターを充実させ、リントに問題がある時はビルドを止める
 
-:white_check_mark: **こうしましょう:** リンターはフリーランチです。5分のセットアップで、コードを守る自動操縦装置を無料で手に入れることができ、重要な問題をキャッチすることができます。 リンティングが装飾のためのものだった時代はもう終わりました。現在ではリンターは、正しくスローされないエラーや情報の損失などの深刻な問題をキャッチすることができます。 [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) や [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb) のような基本的なルールセットに加え、[eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) はアサーションのないテストを、[eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) は resolve しない promise を、[eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) は DOS 攻撃に使われる可能性のある正規表現を、[eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) は Lodash の`_.map(…)`ような V8 コアメソッドの一部であるユーティリティーライブラリメソッドをコードが使用している場合に警告することができます。
+:white_check_mark: **こうしましょう:** リンターはフリーランチです。5分のセットアップで、コードを守る自動操縦装置を無料で手に入れることができ、重要な問題をキャッチすることができます。 リンティングが装飾のためのものだった時代はもう終わりました。現在ではリンターは、正しくスローされないことによって情報が失われてしまうエラーのような深刻な問題を検知することができます。 [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) や [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb) のような基本的なルールセットに加え、[eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) はアサーションのないテストを、[eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) は resolve しない promise を、[eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) は DOS 攻撃に使われる可能性のある正規表現を、[eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) は Lodash の`_.map(…)`ような V8 コアメソッドの一部であるユーティリティーライブラリメソッドをコードが使用している場合に警告することができます。
 <br/>
 
-❌ **さもなくば:** 雨の日に、本番環境がクラッシュし続けているのに、ログにはエラーのスタックトレースが表示されていない場合を考えてみましょう。何が起こったのでしょうか？あなたのコードが誤ってエラーではないオブジェクトを投げてしまい、スタックトレースが失われたのです。5分間のリンターのセットアップでこのタイポを検出し、あなたの一日を救うことができます。
+❌ **さもなくば:** 雨の日に、本番環境がクラッシュし続けているのに、ログにはエラーのスタックトレースが表示されていない場合を考えてみましょう。何が起こったのでしょうか？あなたのコードが誤ってエラーではないオブジェクトを投げてしまい、スタックトレースが失われたのです。そんなことが起こった日には、壁に頭を打ち付けたくなりますよね。5分間のリンターのセットアップでこのタイポを検出し、あなたの一日を救うことができます。
 
 <br/>
 
