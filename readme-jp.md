@@ -1684,22 +1684,22 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-## ⚪ ️ 5.2 Shorten the feedback loop with local developer-CI
+## ⚪ ️ 5.2 ローカルでの開発者とCIのフィードバックループを短くする
 
-:white_check_mark: **Do:** Using a CI with shiny quality inspections like testing, linting, vulnerabilities check, etc? Help developers run this pipeline also locally to solicit instant feedback and shorten the [feedback loop](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Why? an efficient testing process constitutes many and iterative loops: (1) try-outs -> (2) feedback -> (3) refactor. The faster the feedback is, the more improvement iterations a developer can perform per-module and perfect the results. On the flip, when the feedback is late to come fewer improvement iterations could be packed into a single day, the team might already move forward to another topic/task/module and might not be up for refining that module.
+:white_check_mark: **こうしましょう:** テスト、リンティング、脆弱性チェックなどの品質検査がピカイチのCIを使っていますか？ 開発者がパイプラインをローカルで実行し即座にフィードバックを得られるようにして、[フィードバックループ](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/) を短くしましょう。なぜか？ 効率的なテストプロセスは、多くの反復的なループを構成しているからです。(1)トライアウト -> (2)フィードバック -> (3)リファクタリング。フィードバックが早ければ早いほど、開発者はモジュールごとに改善の反復回数が増え、結果を完璧にすることができます。逆に、フィードバックが遅くなると、1日にできる改善の反復回数が少なくなり、チームはすでに別のトピック/タスク/モジュールに進んでしまい、そのモジュールを改善する気にならないかもしれません。
 
-Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) allow running the pipeline locally. Some commercial tools like [wallaby provide highly-valuable & testing insights](https://wallabyjs.com/) as a developer prototype (no affiliation). Alternatively, you may just add npm script to package.json that runs all the quality commands (e.g. test, lint, vulnerabilities) — use tools like [concurrently](https://www.npmjs.com/package/concurrently) for parallelization and non-zero exit code if one of the tools failed. Now the developer should just invoke one command — e.g. ‘npm run quality’ — to get instant feedback. Consider also aborting a commit if the quality check failed using a githook ([husky can help](https://github.com/typicode/husky))
+実際に、いくつかのCIベンダー（例：[CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) は、パイプラインをローカルで実行することができます。[wallaby](https://wallabyjs.com/) のようないくつかの商用ツールは、開発者のプロトタイプとして非常に価値のあるテスト用のインサイトを提供しています。または、すべての品質チェックのコマンド（例：テスト、リント、脆弱性チェック）を実行するnpmスクリプトをpackage.jsonに追加するだけでも構いません。並列化のために [concurrently](https://www.npmjs.com/package/concurrently) のようなツールを使用し、ツールの1つが失敗した場合でも0以外の終了コードを返すようにしましょう。開発者は「npm run quality」などのコマンドを実行するだけで、即座にフィードバックを得ることができます。githookを使って品質チェックに失敗したときにコミットを中止することも検討してみましょう([husky](https://github.com/typicode/husky) が使えます）。
 <br/>
 
-❌ **Otherwise:** When the quality results arrive the day after the code, testing doesn’t become a fluent part of development rather an after the fact formal artifact
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **さもなくば:** 品質チェックの結果がコードの翌日に出るようでは、テストは開発の一部ではなく、後付の形式的な成果物になってしまいます。
 
 <br/>
 
-### :clap: Doing It Right Example: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
+<details><summary>✏ <b>コード例</b></summary>
+
+<br/>
+
+### :clap: 正しい例: コード品質のチェックを行うnpmスクリプトは、手動または開発者が新しいコードをプッシュしようとしているときに自動ですべて並行して実行されます。
 
 ```javascript
 "scripts": {
