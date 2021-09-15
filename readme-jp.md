@@ -322,32 +322,34 @@ it("ホワイトボックステスト: 内部メソッドが0 vatを受け取る
 
 <br/><br/>
 
-## ⚪ ️ ️1.5 Choose the right test doubles: Avoid mocks in favor of stubs and spies
+## ⚪ ️ ️1.5 正しいテストダブルを選択する: スタブやスパイの代わりにモックを使わない
 
-:white_check_mark: **Do:** Test doubles are a necessary evil because they are coupled to the application internals, yet some provide immense value (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Read here a reminder about test doubles: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
+:white_check_mark: **こうしましょう:** テストダブルはアプリケーションの内部に結合しているため必要悪ですが、時には大きな価値をもたらします。 (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[テストダブルって何のことか忘れてしまった人はこちらを読みましょう: モック vs スタブ vs スパイ](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
 
-Before using test doubles, ask a very simple question: Do I use it to test functionality that appears, or could appear, in the requirements document? If no, it’s a white-box testing smell.
+テストダブルを使う前に簡単な自問をしましょう： 私がテストしようとしている機能は仕様書に書いてある、あるいは今後書かれうることか？もし違うなら、それはホワイトボックステストになってしまっている可能性があります。
 
-For example, if you want to test that your app behaves reasonably when the payment service is down, you might stub the payment service and trigger some ‘No Response’ return to ensure that the unit under test returns the right value. This checks our application behavior/response/outcome under certain scenarios. You might also use a spy to assert that an email was sent when that service is down — this is again a behavioral check which is likely to appear in a requirements doc (“Send an email if payment couldn’t be saved”). On the flip side, if you mock the Payment service and ensure that it was called with the right JavaScript types — then your test is focused on internal things that have nothing to do with the application functionality and are likely to change frequently
-<br/>
+たとえば、もし決済サービスが落ちた時にどんな風にアプリケーションが振る舞うのかテストしたい時、決済サービスをスタブして'No Response'を返却させることでテスト対象が正しい値を返しているか確認することでしょう。これは特定のシナリオ下におけるアプリケーションの振る舞い、応答、結果をチェックします。あるいは、決済サービスが落ちている時にメールが送信されることをスパイを使って確認することでしょう。 - これも仕様書におそらく書かれていることの振る舞い確認です。（"決済に失敗したらメールを送信する"）  
+一方で、決済サービスをモックしてそれが正しいJavaScriptの型で呼び出されていることを確認する場合 - アプリケーションの機能とは関係のない内部のことにテストがフォーカスしてしまい、頻繁に更新しなければならないでしょう。
 
-❌ **Otherwise:** Any refactoring of code mandates searching for all the mocks in the code and updating accordingly. Tests become a burden rather than a helpful friend
+<br/>  
 
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **さもなくば:** どんなリファクタリングをするにも、コード上で使われている全てのモックを探して更新することが必要になってしまいます。すると、テストは頼りがいのある親友ではなく、重荷になってしまいます。
 
 <br/>
 
-### :thumbsdown: Anti-pattern example: Mocks focus on the internals
+<details><summary>✏ <b>コード例</b></summary>
+
+<br/>
+
+### :thumbsdown: アンチパターン例: モックの関心が内部実装にある
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg "Examples with Sinon")
 
 ```javascript
-it("When a valid product is about to be deleted, ensure data access DAL was called once, with the right product and right config", async () => {
-  //Assume we already added a product
-  const dataAccessMock = sinon.mock(DAL);
-  //hmmm BAD: testing the internals is actually our main goal here, not just a side-effect
+it("有効なプロダクトが削除される時, データアクセス用のDALが正しいプロダクトが正しいコンフィグで1度だけ呼ばれること", async () => {
+  //既にプロダクトを追加してあるとする
+  const dataAccessMock = sinon.mock(DAL); 
+  //う〜ん、よくないですね: 内部実装をテストすることがゴールになってしまっていて、ただの副作用ではなくなってしまっています。
   dataAccessMock
     .expects("deleteProduct")
     .once()
@@ -359,14 +361,14 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
 
 <br/>
 
-### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
+### :clap:正しいコード例: スパイの関心が要件をテストすることにあり、副作用は結果として内部実装に触れている
 
 ```javascript
-it("When a valid product is about to be deleted, ensure an email is sent", async () => {
-  //Assume we already added here a product
+it("有効なプロダクトが削除される時, メールが送信されること", async () => {
+  //既にプロダクトを追加してあるとする
   const spy = sinon.spy(Emailer.prototype, "sendEmail");
   new ProductService().deletePrice(theProductWeJustAdded);
-  //hmmm OK: we deal with internals? Yes, but as a side effect of testing the requirements (sending an email)
+  //う〜ん、OK: これも内部実装じゃないのかって? そうですね、でもメールを送信するという要件をテストする上での副作用としてです
   expect(spy.calledOnce).to.be.true;
 });
 ```
@@ -375,9 +377,9 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## 📗 Want to learn all these practices with live video?
+## 📗 これらのプラクティスを動画で学びたいですか?
 
-### Visit my online course [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
+### 私のオンラインコースをチェックしてみてください [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
 
 <br/><br/>
 
