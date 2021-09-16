@@ -1724,22 +1724,22 @@ Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com
 
 <br/><br/>
 
-## ⚪ ️5.3 Perform e2e testing over a true production-mirror
+## ⚪ ️5.3 本番環境のミラーでのe2eテストの実施
 
-:white_check_mark: **Do:** End to end (e2e) testing are the main challenge of every CI pipeline — creating an identical ephemeral production mirror on the fly with all the related cloud services can be tedious and expensive. Finding the best compromise is your game: [Docker-compose](https://serverless.com/) allows crafting isolated dockerized environment with identical containers using a single plain text file but the backing technology (e.g. networking, deployment model) is different from real-world productions. You may combine it with [‘AWS Local’](https://github.com/localstack/localstack) to work with a stub of the real AWS services. If you went [serverless](https://serverless.com/) multiple frameworks like serverless and [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) allows the local invocation of FaaS code.
+:white_check_mark: **こうしましょう:** エンドツーエンド (e2e) テスティングは、すべてのCIパイプラインの主な課題です - 本番環境と同一の一時的な環境を、関連するすべてのクラウド・サービスと一緒にその場で作成するのは面倒でコストがかかります。最適な妥協案を見つけるのがあなたの仕事です: [Docker-compose](https://serverless.com/) は、1つのプレーンなテキストファイルを使用して、同一のコンテナで隔離されたdocker環境を作ることができますが、裏側の技術（例: ネットワークやデプロイメントモデル）は、実際の本番環境とは異なります。[`AWS Local`](https://github.com/localstack/localstack) と組み合わせることで、実際のAWSサービスのスタブを利用することができます。サーバーレスにした場合は、[serverless](https://serverless.com/) や [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) などの複数のフレームワークにより、FaaSコードのローカル起動が可能になります。
 
-The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for local and CI-mirroring though many new tools are launched frequently. One approach is running a ‘minimized-Kubernetes’ using tools like [Minikube](https://kubernetes.io/docs/setup/minikube/) and [MicroK8s](https://microk8s.io/) which resemble the real thing only come with less overhead. Another approach is testing over a remote ‘real-Kubernetes’, some CI providers (e.g. [Codefresh](https://codefresh.io/)) has native integration with Kubernetes environment and make it easy to run the CI pipeline over the real thing, others allow custom scripting against a remote Kubernetes.
+巨大なKubernetesのエコシステムでは、多くの新しいツールが頻繁に発表されていますが、ローカルおよびCI-ミラーリングのための標準的で便利なツールはまだ公式化されていません。1つのアプローチとして [Minikube](https://kubernetes.io/docs/setup/minikube/) や [MicroK8s](https://microk8s.io/) などのツールを使って`最小化されたKubernetes`を実行する方法があります。これらのツールは本物に似ていますが、オーバーヘッドが少ないのが特徴です。 他のアプローチとしては、リモートの`実際のKubernetes`上でテストする方法があります。いくつかのCIプロバイダー(例：[Codefresh](https://codefresh.io/)) はKubernetes環境とネイティブに統合されており、実際のKubernetes上でCIパイプラインを簡単に実行できます。他のプロバイダーはリモートのKubernetesに対してカスタムスクリプトを実行できます。
 <br/>
 
-❌ **Otherwise:** Using different technologies for production and testing demands maintaining two deployment models and keeps the developers and the ops team separated
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **さもなくば:** 本番環境とテスト環境で異なるテクノロジーを使用すると、2つのデプロイメントモデルを維持する必要があり、開発者と運用チームが分離されてしまいます。
 
 <br/>
 
-### :clap: Example: a CI pipeline that generates Kubernetes cluster on the fly <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([Credit: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
+<details><summary>✏ <b>コード例</b></summary>
+
+<br/>
+
+### :clap: 例: オンザフライでKubernetesクラスタを生成するCIパイプライン <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([出典: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
 
 <pre name="38d9" id="38d9" class="graf graf--pre graf-after--p">deploy:<br>stage: deploy<br>image: registry.gitlab.com/gitlab-examples/kubernetes-deploy<br>script:<br>- ./configureCluster.sh $KUBE_CA_PEM_FILE $KUBE_URL $KUBE_TOKEN<br>- kubectl create ns $NAMESPACE<br>- kubectl create secret -n $NAMESPACE docker-registry gitlab-registry --docker-server="$CI_REGISTRY" --docker-username="$CI_REGISTRY_USER" --docker-password="$CI_REGISTRY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL"<br>- mkdir .generated<br>- echo "$CI_BUILD_REF_NAME-$CI_BUILD_REF"<br>- sed -e "s/TAG/$CI_BUILD_REF_NAME-$CI_BUILD_REF/g" templates/deals.yaml | tee ".generated/deals.yaml"<br>- kubectl apply --namespace $NAMESPACE -f .generated/deals.yaml<br>- kubectl apply --namespace $NAMESPACE -f templates/my-sock-shop.yaml<br>environment:<br>name: test-for-ci</pre>
 
