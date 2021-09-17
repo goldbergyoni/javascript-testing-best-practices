@@ -383,53 +383,54 @@ it("有効なプロダクトが削除される時, メールが送信される�
 
 <br/><br/>
 
-## ⚪ ️1.6 Don’t “foo”, use realistic input data
+## ⚪ ️1.6 "foo"ではなく、リアルな入力データを使う
 
-:white_check_mark: **Do:** Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not as a replacement) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? See the next bullet (property-based testing).
-<br/>
-
-❌ **Otherwise:** All your development testing will falsely show green when you use synthetic inputs like “Foo”, but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
+:white_check_mark: **こうしましょう:** 時にプロダクションのバグは予期せぬ非常に限定的な入力値によってもたらされます - テストの入力値がリアルであるほど、バグを早期に発見できる可能性が高まります。[Faker](https://www.npmjs.com/package/faker)のような専用のライブラリを使うことで、擬似的にリアルで、プロダクションの様々な状態に似せたデータを生成しましょう。たとえば、そういうライブラリを使うとリアルっぽい電話番号、ユーザー名、クレジットカード情報、会社名、あるいは'lorem ipsum'テキストまで生成できます。fakerのデータをランダムにしてテスト対象ユニットを拡張するようなテストを作ることもできますし（通常のテストに加えてです、代わりにではなく）、あるいは実際のプロダクション環境からデータをインポートすることもできます。もっと高いレベルをみたいですか？次の弾丸をみてください（property-basedテスト）
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **さもなくば:** 
+"Foo"のような人工的な入力値を使っていると、開発時のテストでは誤ってグリーンになってしまうかもしれませんが、本番環境でハッカーが“@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”のような薄汚い文字列を渡してきたら、レッドになってしまうかもしれません。
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test suite that passes due to non-realistic data
+<details><summary>✏ <b>コード例</b></summary>
+
+<br/>
+
+### :thumbsdown: アンチパターン例: 人工的なデータのせいでテストスイートが通ってしまう
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
 const addProduct = (name, price) => {
-  const productNameRegexNoSpace = /^\S*$/; //no white-space allowed
+  const productNameRegexNoSpace = /^\S*$/; //空白文字列を許容しない
 
-  if (!productNameRegexNoSpace.test(name)) return false; //this path never reached due to dull input
+  if (!productNameRegexNoSpace.test(name)) return false; //入力値が簡易的なせいで、このパスには到達しない
 
-  //some logic here
+  //なにかここにロジックがあるとする
   return true;
 };
 
-test("Wrong: When adding new product with valid properties, get successful confirmation", async () => {
-  //The string "Foo" which is used in all tests never triggers a false result
+test("ダメな例: 有効なプロパティでproductを追加する時、確認に成功する", async () => {
+  //"Foo"という文字列が全てのテストで使われ、永遠にfalseな結果を引き起こさない
   const addProductResult = addProduct("Foo", 5);
   expect(addProductResult).toBe(true);
-  //Positive-false: the operation succeeded because we never tried with long
-  //product name including spaces
+  //誤った成功: 空白の入った長い文字列で試さなかったので成功してしまった
 });
 ```
 
 <br/>
 
-### :clap:Doing It Right Example: Randomizing realistic input
+### :clap: 正しい例: ランダムにリアルな入力値を使う
 
 ```javascript
-it("Better: When adding new valid product, get successful confirmation", async () => {
+it("良い例: 有効なproductを追加する時、確認に成功する", async () => {
   const addProductResult = addProduct(faker.commerce.productName(), faker.random.number());
-  //Generated random input: {'Sleek Cotton Computer',  85481}
+  //生成されたランダムな入力値: {'Sleek Cotton Computer',  85481}
   expect(addProductResult).to.be.true;
-  //Test failed, the random input triggered some path we never planned for.
-  //We discovered a bug early!
+  //ランダムな入力値のおかげで、予期していなかったコードパスに到達してテストが失敗した。
+  //バグを早期発見できた！
 });
 ```
 
