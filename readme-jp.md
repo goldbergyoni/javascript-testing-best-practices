@@ -346,7 +346,7 @@ it("ホワイトボックステスト: 内部メソッドが0 vatを受け取る
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg "Examples with Sinon")
 
 ```javascript
-it("有効なプロダクトが削除される時, データアクセス用のDALが正しいプロダクトが正しいコンフィグで1度だけ呼ばれること", async () => {
+it("有効なプロダクトが削除される時, データアクセス用のDALが正しいプロダクトと正しいコンフィグで1度だけ呼ばれること", async () => {
   //既にプロダクトを追加してあるとする
   const dataAccessMock = sinon.mock(DAL); 
   //う〜ん、よくないですね: 内部実装をテストすることがゴールになってしまっていて、ただの副作用ではなくなってしまっています。
