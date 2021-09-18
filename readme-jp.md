@@ -1757,21 +1757,21 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-## ⚪ ️5.4 Parallelize test execution
+## ⚪ ️5.4 テスト実行を並列化する
 
-:white_check_mark: **Do:** When done right, testing is your 24/7 friend providing almost instant feedback. In practice, executing 500 CPU-bounded unit test on a single thread can take too long. Luckily, modern test runners and CI platforms (like [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) and [Mocha extensions](https://github.com/yandex/mocha-parallel-tests)) can parallelize the test into multiple processes and achieve significant improvement in feedback time. Some CI vendors do also parallelize tests across containers (!) which shortens the feedback loop even further. Whether locally over multiple processes, or over some cloud CLI using multiple machines — parallelizing demand keeping the tests autonomous as each might run on different processes
+:white_check_mark: **こうしましょう:** 正しい方法で行えば、テストは24時間365日ほぼ即座にフィードバックを提供してくれる友人です。 実践的には、1つのスレッドで500のCPUバウンドのユニットテストを実行するには時間がかかりすぎます。 幸いなことに、最新のテストランナーやCIプラットフォーム（[Jest](https://github.com/facebook/jest) や [AVA](https://github.com/avajs/ava) 、[Mocha extensions](https://github.com/yandex/mocha-parallel-tests) のような）では、テストを複数のプロセスに並列化し、フィードバックまでの時間を大幅に改善することができます。CIベンダーの中には、テストをコンテナ間（！）で並列化するものもあり、これによりフィードバックループがさらに短縮されます。ローカルで複数のプロセスを使用しても、クラウドのCLIで複数のマシンを使用しても、それぞれが異なるプロセスで実行される可能性があるため、並列化によってテストを自律的に維持する必要があります。
 
-❌ **Otherwise:** Getting test results 1 hour long after pushing new code, as you already code the next features, is a great recipe for making testing less relevant
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **さもなくば:** 新しいコードをプッシュしてから1時間後にテストの結果が出るのでは、既に次の機能のコーディングをしているでしょう。これはテストの意味を失わせる素晴らしいレシピです。
 
 <br/>
 
-### :clap: Doing It Right Example: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+<details><summary>✏ <b>コード例</b></summary>
 
-![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
+<br/>
+
+### :clap: 正しい例: テストの並列化により、Mocha parallelとJestは従来のMochaを簡単に凌駕しました ([出典: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+
+![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "テストの並列化により、Mocha parallelとJestは従来のMochaを簡単に凌駕しました (出典: JavaScript Test-Runners Benchmark)")
 
 </details>
 
