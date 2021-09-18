@@ -438,20 +438,27 @@ it("良い例: 有効なproductを追加する時、確認に成功する", asyn
 
 <br/><br/>
 
-## ⚪ ️ 1.7 Test many input combinations using Property-based testing
+## ⚪ ️ 1.7 Property-basedテストで多様な入力値の組み合わせをテストする
 
-:white_check_mark: **Do:** Typically we choose a few input samples for each test. Even when the input format resembles real-world data (see bullet [‘Don’t foo’](https://github.com/goldbergyoni/javascript-testing-best-practices#-%EF%B8%8F16-dont-foo-use-realistic-input-data)), we cover only a few input combinations (method(‘’, true, 1), method(“string” , false , 0)), However, in production, an API that is called with 5 parameters can be invoked with thousands of different permutations, one of them might render our process down ([see Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)). What if you could write a single test that sends 1000 permutations of different inputs automatically and catches for which input our code fails to return the right response? Property-based testing is a technique that does exactly that: by sending all the possible input combinations to your unit under test it increases the serendipity of finding a bug. For example, given a method — addNewProduct(id, name, isDiscount) — the supporting libraries will call this method with many combinations of (number, string, boolean) like (1, “iPhone”, false), (2, “Galaxy”, true). You can run property-based testing using your favorite test runner (Mocha, Jest, etc) using libraries like [js-verify](https://github.com/jsverify/jsverify) or [testcheck](https://github.com/leebyron/testcheck-js) (much better documentation). Update: Nicolas Dubien suggests in the comments below to [checkout fast-check](https://github.com/dubzzz/fast-check#readme) which seems to offer some additional features and also to be actively maintained
+:white_check_mark: **こうしましょう:** 開発者は往々にしてわずかな入力値のパターンでテストをしてしまいがちです。入力値のフォーマットが現実のデータに近い時ですら（[’fooを使うな’](https://github.com/goldbergyoni/javascript-testing-best-practices#-%EF%B8%8F16-dont-foo-use-realistic-input-data)の項を読んでください）、開発者は method(‘’, true, 1), method(“string” , false , 0) のような限られた入力値の組合せしかカバーしません。 
+ 
+ しかし本番環境では、5個のパラメーターを持つAPIは何千もの組合せで呼び出されますし、その中の1つがプロセスを落としてしまうかもしれません。（[Fuzz Testingを読んでください](https://en.wikipedia.org/wiki/Fuzzing)）。
+ もし、1個のテストで1000種もの入力値を自動で試し、どの入力値が正しいレスポンスを返せなかったかを把握できる、と言ったらどうですか？  
+ Property-basedテストという技術はまさにそれをやってくれます: ありえる全ての入力値のパターンをテスト対象に流し込むことで、バグを発見する機運を高めてくれるのです。
+たとえば、addNewProduct(id, name, isDiscount) というメソッドがあるとしましょう。このメソッドを使うライブラリは、(1, “iPhone”, false), (2, “Galaxy”, true) のような、(number, string, boolean)のあらゆる組合せで呼び出します。
+[js-verify](https://github.com/jsverify/jsverify) や [testcheck](https://github.com/leebyron/testcheck-js) (こちらの方がドキュメントが断然良いです)のようなライブラリを使うと、MochaやJestなどお好みのテストランナーライブラリでproperty-basedテストを実行することができます。
+Update: Nicolas Dubienさんが下記のコメントで[fast-checkを見てみてください](https://github.com/dubzzz/fast-check#readme)と提案してくれましたが、こちらのライブラリはさらにフィーチャーを提供していて、アクティブにメンテナンスされているようです。
 <br/>
 
-❌ **Otherwise:** Unconsciously, you choose the test inputs that cover only code paths that work well. Unfortunately, this decreases the efficiency of testing as a vehicle to expose bugs
+❌ **さもなくば:** ちゃんと動くコードパスしか網羅しないテスト入力値を無意識で選択してしまいます。残念ながらこれでは、バグを表出させるための相棒であるテストの効率を下げてしまいます。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>コード例</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: Testing many input permutations with “fast-check”
+### :clap: 正しい例: "fast-check"を使って多様な入力値の組み合わせをテスト
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
@@ -460,8 +467,8 @@ import fc from "fast-check";
 
 describe("Product service", () => {
   describe("Adding new", () => {
-    //this will run 100 times with different random properties
-    it("Add new product with random yet valid properties, always successful", () =>
+    //これはランダムなプロパティで100回走る
+    it("有効な範囲内でランダムなプロパティでproductを追加する時、常に成功すること", () =>
       fc.assert(
         fc.property(fc.integer(), fc.string(), (id, name) => {
           expect(addNewProduct(id, name).status).toEqual("approved");
