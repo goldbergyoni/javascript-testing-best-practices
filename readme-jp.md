@@ -1777,25 +1777,25 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-## ⚪ ️5.5 Stay away from legal issues using license and plagiarism check
+## ⚪ ️5.5 ライセンスチェックと盗用チェックで法的問題を回避しよう
 
-:white_check_mark: **Do:** Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like [license check](https://www.npmjs.com/package/license-checker) and [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stack Overflow and apparently violates some copyrights
+:white_check_mark: **こうしましょう:** ライセンスや盗用の問題は、おそらく今は主な関心事ではないでしょうが、10分でこの項目を満たせるとしたらどうでしょう？ [license check](https://www.npmjs.com/package/license-checker) や [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) （無料プランのコマーシャル）などのnpmパッケージは、CIパイプラインに簡単に組み込むことができ、制限付きライセンスの依存関係や、Stack Overflowからコピーペーストされたコードなど、明らかに著作権に違反しているコードを検査することができます。
 
-❌ **Otherwise:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **さもなくば:** 意図せずに不適切なライセンスのパッケージを使用したり、商用コードをコピーペーストしたりして、法的な問題が発生する可能性があります。
 
 <br/>
 
-### :clap: Doing It Right Example:
+<details><summary>✏ <b>コード例</b></summary>
+
+<br/>
+
+### :clap: 正しい例:
 
 ```javascript
-//install license-checker in your CI environment or also locally
+// license-checker をローカル又はCI環境にインストールしてください
 npm install -g license-checker
 
-//ask it to scan all licenses and fail with exit code other than 0 if it found unauthorized license. The CI system should catch this failure and stop the build
+// すべてのライセンスをスキャンし、未承認のライセンスを見つけた場合は0以外の終了コードで失敗するようにします。CI環境では、この失敗をキャッチして、ビルドを停止する必要があります。
 license-checker --summary --failOn BSD
 
 ```
