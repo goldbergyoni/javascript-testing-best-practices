@@ -1808,19 +1808,19 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.6 Constantly inspect for vulnerable dependencies
+## ⚪ ️5.6 脆弱性のある依存関係を常に検査する
 
-:white_check_mark: **Do:** Even the most reputable dependencies such as Express have known vulnerabilities. This can get easily tamed using community tools such as [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), or commercial tools like [snyk](https://snyk.io/) (offer also a free community version). Both can be invoked from your CI on every build
+:white_check_mark: **こうしましょう:** Expressなどの最も信頼できる依存関係であっても、既知の脆弱性があります。これは、[npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit) のようなコミュニティツールや、[snyk](https://snyk.io/) （無料のコミュニティバージョンもあります）のような商用ツールを使えば、簡単に解決できます。これらのツールは、ビルドのたびにCIから起動することができます。
 
-❌ **Otherwise:** Keeping your code clean from vulnerabilities without dedicated tools will require to constantly follow online publications about new threats. Quite tedious
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **さもなくば:** 専用のツールを使わずにコードを脆弱性から守るには、新たな脅威に関するオンラインの情報を常にチェックする必要があります。非常に面倒です。
 
 <br/>
 
-### :clap: Example: NPM Audit result
+<details><summary>✏ <b>コード例</b></summary>
+
+<br/>
+
+### :clap: 例: NPM Audit の結果
 
 ![alt text](assets/bp-26-npm-audit-snyk.png "NPM Audit result")
 
