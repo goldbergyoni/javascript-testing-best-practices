@@ -1779,7 +1779,7 @@ The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for
 
 ## ⚪ ️5.5 ライセンスチェックと盗用チェックで法的問題を回避しよう
 
-:white_check_mark: **こうしましょう:** ライセンスや盗用の問題は、おそらく今は主な関心事ではないでしょうが、10分でこの項目を満たせるとしたらどうでしょう？ [license check](https://www.npmjs.com/package/license-checker) や [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) （無料プランのコマーシャル）などのnpmパッケージは、CIパイプラインに簡単に組み込むことができ、制限付きライセンスの依存関係や、Stack Overflowからコピーペーストされたコードなど、明らかに著作権に違反しているコードを検査することができます。
+:white_check_mark: **こうしましょう:** ライセンスや盗用の問題は、おそらく今は主な関心事ではないでしょうが、10分でこの項目を満たせるとしたらどうでしょう？ [license check](https://www.npmjs.com/package/license-checker) や [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) （商用利用可能な無料プラン）などのnpmパッケージは、CIパイプラインに簡単に組み込むことができ、制限付きライセンスの依存関係や、Stack Overflowからコピーペーストされたコードなど、明らかに著作権に違反しているコードを検査することができます。
 
 ❌ **さもなくば:** 意図せずに不適切なライセンスのパッケージを使用したり、商用コードをコピーペーストしたりして、法的な問題が発生する可能性があります。
 
