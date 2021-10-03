@@ -1866,20 +1866,20 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️ 5.9 Build matrix: Run the same CI steps using multiple Node versions
+## ⚪ ️ 5.9 ビルドマトリックス: 複数のNodeバージョンで同じCIステップを実行する
 
-:white_check_mark: **Do:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use MySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of MySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
+:white_check_mark: **こうしましょう:** 品質チェックは偶然の発見であり、カバーする範囲が広ければ広いほど、問題を早期に発見することができます。再利用可能なパッケージを開発したり、様々な構成やNodeのバージョンを持つ複数の顧客の製品を開発する場合、CIはすべての構成の組み合わせに対してテストのパイプラインを実行する必要があります。 例えば、ある顧客にはMySQLを使用し、他の顧客にはPostgresを使用する場合、いくつかのCIベンダーは「マトリックス」と呼ばれる機能をサポートしており、MySQL、Postgres、そしてNodeバージョン8、9、10のような複数のすべての組み合わせに対してテストスイートを実行することができます。これは設定のみで行われ、追加の手間はかかりません（テストまたはその他の品質チェックが既にあることを前提としています）。マトリックスをサポートしていない他のCIでは、拡張機能や調整機能で対応しているかもしれません。
 <br/>
 
-❌ **Otherwise:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **さもなくば:** テストを書くという大変な作業をすべて終えた後に、設定の問題だけでバグが紛れ込むのを許すのでしょうか？
 
 <br/>
 
-### :clap: Example: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
+<details><summary>✏ <b>コード例</b></summary>
+
+<br/>
+
+### :clap: 例: Travis（CIベンダー）のビルド定義を使って、同じテストを複数のNodeバージョンで実行する
 
 <pre name="f909" id="f909" class="graf graf--pre graf-after--p">language: node_js<br>node_js:<br>  - "7"<br>  - "6"<br>  - "5"<br>  - "4"<br>install:<br>  - npm install<br>script:<br>  - npm run test</pre>
 </details>
