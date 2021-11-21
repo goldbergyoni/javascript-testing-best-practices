@@ -26,9 +26,6 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 - 📗 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com) - My comprehensive online course with more than [10 hours of video](https://www.testjavascript.com), 14 test types and more than 40 best practices
 - [Follow me on Twitter](https://twitter.com/goldbergyoni/)
 
-
-👨‍🏫 [Nodeconf 2021](https://www.nodeconfremote.com/#workshops) is just around the corner, and will **host a 5 hours testing workshop with Yoni Goldberg**. [Register here](https://www.nodeconfremote.com/#workshops)
-
 <br/>
 
 ### Translations - read in your own language
