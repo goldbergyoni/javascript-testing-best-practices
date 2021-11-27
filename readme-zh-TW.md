@@ -74,22 +74,22 @@ JavaScript 世界的 CI 指南 (9項)
 
 <br/>
 
-## ⚪️ 0 The Golden Rule: Design for lean testing
+## ⚪️ 0 黃金原則：Design for lean testing
 
-:white_check_mark: **Do:**
-Testing code is not like production-code - design it to be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should look at a test and get the intent instantly.
+:white_check_mark: **建議：**
+測試程式與生產環境的程式不同，要把他設計的極其簡單、簡短、具體、扁平、使人愉悅的去使用及學習。一段測試程式應該要可以讓人一眼就看懂其目的。
 
-Our minds are full with the main production code, we don't have 'headspace' for additional complexity. Should we try to squeeze yet another challenging code into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
+我們的思考空間被主要的程式邏輯所占滿，並沒有額外的腦容量去處理複雜的東西。如果把其他複雜的程式塞進我們可憐的大腦，將會使得整個團隊的運作變慢，而這個部分正是用來解決我們需要測試的問題。這也是大部分團隊放棄測試的原因。
 
-The tests are an opportunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a small investment. Science tells us that we have two brain systems: system 1 is used for effortless activities like driving a car on an empty road and system 2 which is meant for complex and conscious operations like solving a math equation. Design your test for system 1, when looking at test code it should _feel_ as easy as modifying an HTML document and not like solving 2X(17 × 24).
+另一方面，測試是一個友好的助手，一個讓你樂意與他合作、投資小但回報大的助手。科學證明我們有兩套大腦系統：系統 1 用於無須努力的活動，如在空曠的路上開車；系統 2 用於複雜和繁瑣的工作，如計算一道數學式。把你的測試程式設計成如系統 1 一般，當你看著你的測試，要像修改 HTML 文件一樣的簡單，而不是像計算 2 x (17 x 24)。
 
-This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
+為了達到這個目標，我們可以選擇具有成本效益和高投資報酬率的的技術、工具和測試目標。只測試需要的內容，努力保持他的靈活性，某些時候甚至得捨棄一些測試來換取靈活性和簡潔性。
 
 ![alt text](/assets/headspace.png "We have no head room for additional complexity")
 
-Most of the advice below are derivatives of this principle.
+以下大部分的建議衍生自這一原則。
 
-### Ready to start?
+### 準備好了嗎？
 
 <br/><br/>
 
