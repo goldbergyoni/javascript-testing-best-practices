@@ -97,50 +97,49 @@ JavaScript 世界的 CI 指南 (9項)
 
 <br/>
 
-## ⚪ ️ 1.1 Include 3 parts in each test name
+## ⚪ ️ 1.1 每個測試的名稱要包含的三個部分
 
-:white_check_mark: **Do:** A test report should tell whether the current application revision satisfies the requirements for the people who are not necessarily familiar with the code: the tester, the DevOps engineer who is deploying and the future you two years from now. This can be achieved best if the tests speak at the requirements level and include 3 parts:
+:white_check_mark: **建議：** 一份測試報告應該告訴那些不一定熟悉程式的人，目前應用程式的修訂版本是否符合他們的要求，包括：測試人員、DevOps 工程師和兩年後的你。如果測試能包含這三個需求面的描述，就能很好的實現這一點：
 
-(1) What is being tested? For example, the ProductsService.addNewProduct method
+(1) 測試的對象是什麼？ 例如，ProductsService.addNewProduct 這個方法。
 
-(2) Under what circumstances and scenario? For example, no price is passed to the method
+(2) 在什麼情況或場景下？ 例如，價格沒有傳給該方法。
 
-(3) What is the expected result? For example, the new product is not approved
-
-<br/>
-
-❌ **Otherwise:** A deployment just failed, a test named “Add product” failed. Does this tell you what exactly is malfunctioning?
+(3) 預期的結果是什麼？ 例如，新的產品沒有被批准。
 
 <br/>
 
-**👇 Note:** Each bullet has code examples and sometime also an image illustration. Click to expand
+❌ **否則：** 一個名叫"新增產品"的測試失敗了。這有確切地告訴你到底是什麼地方出問題嗎？
+
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+**👇 Note:** 每個項目都會有一個程式範例，有時候還會搭配圖片。
+<br/>
+
+<details><summary>✏ <b>程式範例</b></summary>
   
 <br/>
   
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: 正例：一個包含這三部分的測試名稱
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Mocha-blue.svg "Using Mocha to illustrate the idea")
 
 ```javascript
-//1. unit under test
+// 1. unit under test
 describe('Products Service', function() {
   describe('Add new product', function() {
-    //2. scenario and 3. expectation
+    // 2. scenario and 3. expectation
     it('When no price is specified, then the product status is pending approval', ()=> {
       const newProduct = new ProductService().add(...);
       expect(newProduct.status).to.equal('pendingApproval');
     });
   });
 });
-
 ```
 
 <br/>
 
-### :clap: Doing It Right Example: A test name that constitutes 3 parts
+### :clap: 正例：一個包含這三部分的測試名稱
 
 ![alt text](/assets/bp-1-3-parts.jpeg "A test name that constitutes 3 parts")
 
@@ -153,41 +152,41 @@ describe('Products Service', function() {
 
 <br/><br/>
 
-## ⚪ ️ 1.2 Structure tests by the AAA pattern
+## ⚪ ️ 1.2 以 AAA 模式來建構測試
 
-:white_check_mark: **Do:** Structure your tests with 3 well-separated sections Arrange, Act & Assert (AAA). Following this structure guarantees that the reader spends no brain-CPU on understanding the test plan:
+:white_check_mark: **建議：** 用三個部分來組織你的測試：Arrange 安排、Act 執行、Assert 斷言 (AAA)。依照這個結構，可以確保讀者不用花費腦力去理解你的測試。
 
-1st A - Arrange: All the setup code to bring the system to the scenario the test aims to simulate. This might include instantiating the unit under test constructor, adding DB records, mocking/stubbing on objects and any other preparation code
+第一個 A - Arrange 安排：所有使系統達到測試所要模擬的情境的程式。這可能包含實體化某個待測單元的建構子、新增 DB 的資料、mocking/stubbing 物件和其他準備程式。
 
-2nd A - Act: Execute the unit under test. Usually 1 line of code
+第二個 A - Act 執行：執行測試單元。通常為一行程式。
 
-3rd A - Assert: Ensure that the received value satisfies the expectation. Usually 1 line of code
-
-<br/>
-
-❌ **Otherwise:** Not only do you spend hours understanding the main code, but what should have been the simplest part of the day (testing) stretches your brain
+第三個 A - Assert 斷言：確保得到的值符合期待。通常為一行程式。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則:** 你不僅需要花很多時間去理解主要程式，而且本應是最簡單的部分 - 測試，也會讓你腦力耗盡。
 
 <br/>
 
-### :clap: Doing It Right Example: A test structured with the AAA pattern
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：以 AAA 模式來建構測試
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
 ```javascript
 describe("Customer classifier", () => {
   test("When customer spent more than 500$, should be classified as premium", () => {
-    //Arrange
+    // Arrange
     const customerToClassify = { spent: 505, joined: new Date(), id: 1 };
     const DBStub = sinon.stub(dataAccess, "getCustomer").reply({ id: 1, classification: "regular" });
 
-    //Act
+    // Act
     const receivedClassification = customerClassifier.classifyCustomer(customerToClassify);
 
-    //Assert
+    // Assert
     expect(receivedClassification).toMatch("premium");
   });
 });
@@ -195,7 +194,7 @@ describe("Customer classifier", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: No separation, one bulk, harder to interpret
+### :thumbsdown: 反例：沒有分隔、一大坨、難以理解
 
 ```javascript
 test("Should be classified as premium", () => {
@@ -210,24 +209,25 @@ test("Should be classified as premium", () => {
 
 <br/><br/>
 
-## ⚪ ️1.3 Describe expectations in a product language: use BDD-style assertions
+## ⚪ ️1.3 用產品語言來描述預期：使用 BDD 風格的斷言
 
-:white_check_mark: **Do:** Coding your tests in a declarative-style allows the reader to get the grab instantly without spending even a single brain-CPU cycle. When you write imperative code that is packed with conditional logic, the reader is forced to exert more brain-CPU cycles. In that case, code the expectation in a human-like language, declarative BDD style using `expect` or `should` and not using custom code. If Chai & Jest doesn't include the desired assertion and it’s highly repeatable, consider [extending Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) or writing a [custom Chai plugin](https://www.chaijs.com/guide/plugins/)
-<br/>
-
-❌ **Otherwise:** The team will write less tests and decorate the annoying ones with .skip()
+:white_check_mark: **建議：** 使用聲明的方式撰寫測試，可以使讀者無腦的 get 到重點。如果你的程式使用各種條件邏輯包起來，會增加讀者的理解難度。因此，我們應該盡量使用類似人類語言的描述與言如 ```expect``` 或 ```should``` 而不是自己寫程式。如果 Chai 或 Jest 沒有你想要用的斷言，且這個斷言可以被頻繁的重複利用的話，可以考慮  [擴充 Jest 的匹配器 (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) 或是寫一個 [客製化的 Chai 插件](https://www.chaijs.com/guide/plugins/)。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary><br/>
+❌ **否則：** 團隊的測試會越寫越少，且會用 .skip() 把討厭的測試略過。
+
+<br/>
+
+<details><summary>✏ <b>程式範例</b></summary><br/>
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
-### :thumbsdown: Anti-Pattern Example: The reader must skim through not so short, and imperative code just to get the test story
+### :thumbsdown: 反例：讀者必須快速的看完冗長且複雜的程式碼，才能理解該測試的目的
 
 ```javascript
 test("When asking for an admin, ensure only ordered admins in results", () => {
-  //assuming we've added here two admins "admin1", "admin2" and "user1"
+  // assuming we've added here two admins "admin1", "admin2" and "user1"
   const allAdmins = getUsers({ adminOnly: true });
 
   let admin1Found,
@@ -253,11 +253,11 @@ test("When asking for an admin, ensure only ordered admins in results", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Skimming through the following declarative test is a breeze
+### :clap: 正例：快速瀏覽以下的聲明式測試非常輕鬆
 
 ```javascript
 it("When asking for an admin, ensure only ordered admins in results", () => {
-  //assuming we've added here two admins
+  // assuming we've added here two admins
   const allAdmins = getUsers({ adminOnly: true });
 
   expect(allAdmins)
