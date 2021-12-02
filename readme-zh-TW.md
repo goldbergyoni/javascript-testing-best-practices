@@ -270,31 +270,31 @@ it("When asking for an admin, ensure only ordered admins in results", () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.4 Stick to black-box testing: Test only public methods
+## ⚪ ️ 1.4 堅持黑箱測試：只測試公開方法
 
-:white_check_mark: **Do:** Testing the internals brings huge overhead for almost nothing. If your code/API delivers the right results, should you really invest your next 3 hours in testing HOW it worked internally and then maintain these fragile tests? Whenever a public behavior is checked, the private implementation is also implicitly tested and your tests will break only if there is a certain problem (e.g. wrong output). This approach is also referred to as `behavioral testing`. On the other side, should you test the internals (white box approach) — your focus shifts from planning the component outcome to nitty-gritty details and your test might break because of minor code refactors although the results are fine - this dramatically increases the maintenance burden
+:white_check_mark: **建議：** 測試內部邏輯是無意義且浪費時間的。如果你的程式/API 回傳了正確的結果，你真的需要花三個小時的時間去測試它內部究竟如何實現的，並且在之後維護這一堆脆弱的測試嗎？每當測試一個公開方法時，其私有方法的實作也會被隱性地測試，只有當存在某個問題(例如錯誤的輸出)時測試才會中斷。這種方法也稱為 ```行為測試```。另一方面，如果你測試內部方法 (白箱方法) — 你的關注點將從組件的輸出結果轉移到具體的實作細節上，如果某天內部邏輯改變了，即使結果依然正確，你也要花精力去維護之前的測試邏輯，這無形中增加了維護成本。
 <br/>
 
-❌ **Otherwise:** Your tests behave like the [boy who cried wolf](https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf): shouting false-positive cries (e.g., A test fails because a private variable name was changed). Unsurprisingly, people will soon start to ignore the CI notifications until someday, a real bug gets ignored…
+❌ **否則：** 你的測試會像[狼來了](https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf)一樣，總是叫喚著出問題了 (例如一個因為內部變數名稱改變而導致的測試失敗)。不出所料，人們很快就會開始忽視 CI 的通知，直到某天，一個真正的 bug 被忽視...
 
 <br/>
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>程式範例</b></summary>
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test case is testing the internals for no good reason
+### :thumbsdown: 反例：一個無腦測試內部方法的測試
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha & Chai")
 
 ```javascript
 class ProductService {
-  //this method is only used internally
-  //Change this name will make the tests fail
+  // this method is only used internally
+  // Change this name will make the tests fail
   calculateVATAdd(priceWithoutVAT) {
     return { finalPrice: priceWithoutVAT * 1.2 };
-    //Change the result format or key name above will make the tests fail
+    // Change the result format or key name above will make the tests fail
   }
-  //public method
+  // public method
   getPrice(productId) {
     const desiredProduct = DB.getProduct(productId);
     finalPrice = this.calculateVATAdd(desiredProduct.price).finalPrice;
@@ -303,7 +303,7 @@ class ProductService {
 }
 
 it("White-box test: When the internal methods get 0 vat, it return 0 response", async () => {
-  //There's no requirement to allow users to calculate the VAT, only show the final price. Nevertheless we falsely insist here to test the class internals
+  // There's no requirement to allow users to calculate the VAT, only show the final price. Nevertheless we falsely insist here to test the class internals
   expect(new ProductService().calculateVATAdd(0).finalPrice).to.equal(0);
 });
 ```
@@ -312,32 +312,31 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 
 <br/><br/>
 
-## ⚪ ️ ️1.5 Choose the right test doubles: Avoid mocks in favor of stubs and spies
+## ⚪ ️ ️1.5 使用正確的測試替身 (Test Double)：避免總是使用 stub 和 spy
 
-:white_check_mark: **Do:** Test doubles are a necessary evil because they are coupled to the application internals, yet some provide immense value (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Read here a reminder about test doubles: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
+:white_check_mark: **建議：** 測試替身是把雙刃劍，他們在提供巨大價值的同時，耦合了應用的內部邏輯 ([一篇關於測試替身的文章: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)) 在使用測試替身前，問自己一個很簡單的問題：我是用它來測試需求文件中定義的可見的功能或者可能可見的功能嗎？如果不是，那就可能是白盒測試了。
 
-Before using test doubles, ask a very simple question: Do I use it to test functionality that appears, or could appear, in the requirements document? If no, it’s a white-box testing smell.
-
-For example, if you want to test that your app behaves reasonably when the payment service is down, you might stub the payment service and trigger some ‘No Response’ return to ensure that the unit under test returns the right value. This checks our application behavior/response/outcome under certain scenarios. You might also use a spy to assert that an email was sent when that service is down — this is again a behavioral check which is likely to appear in a requirements doc (“Send an email if payment couldn’t be saved”). On the flip side, if you mock the Payment service and ensure that it was called with the right JavaScript types — then your test is focused on internal things that have nothing to do with the application functionality and are likely to change frequently
-<br/>
-
-❌ **Otherwise:** Any refactoring of code mandates searching for all the mocks in the code and updating accordingly. Tests become a burden rather than a helpful friend
+舉例來說，如果你想測試你的應用程式在支付服務當機時的預期行為，你可以 stub 支付服務並觸發一些"沒有回應"的回傳行為，以確保被測試的單元回傳正確的值。這可以測試特定場景下應用程式的行為、回應及輸出結果。你也可以使用一個 spy 來斷言當服務當機時是否有發送電子郵件 - 這又是一個針對可能出現在需求文件中行為的檢查 ("如果無法儲存付款資訊，發送電子郵件")。反過來說，如果你 mock 的支付服務，能確保它被正確呼叫並傳入正確的 JavaScript 型別，那麼你的測試重點是內部的邏輯，它與應用程式的功能關係不大，而且可能會經常變化。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 任何程式的重構都會需要程式中所有的 mock 進行相對應的更新。測試變成了一種負擔，而不是一個助力。
 
 <br/>
 
-### :thumbsdown: Anti-pattern example: Mocks focus on the internals
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :thumbsdown: 反例：關注內部實作的 mock
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg "Examples with Sinon")
 
 ```javascript
 it("When a valid product is about to be deleted, ensure data access DAL was called once, with the right product and right config", async () => {
-  //Assume we already added a product
+  // Assume we already added a product
   const dataAccessMock = sinon.mock(DAL);
-  //hmmm BAD: testing the internals is actually our main goal here, not just a side-effect
+  // hmmm BAD: testing the internals is actually our main goal here, not just a side-effect
   dataAccessMock
     .expects("deleteProduct")
     .once()
@@ -349,14 +348,14 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
 
 <br/>
 
-### :clap:Doing It Right Example: spies are focused on testing the requirements but as a side-effect are unavoidably touching to the internals
+### :clap: 正例：Spy 專注於測試需求，但身為一個 side effect，無可避免地會接觸到內部程式結構
 
 ```javascript
 it("When a valid product is about to be deleted, ensure an email is sent", async () => {
-  //Assume we already added here a product
+  // Assume we already added here a product
   const spy = sinon.spy(Emailer.prototype, "sendEmail");
   new ProductService().deletePrice(theProductWeJustAdded);
-  //hmmm OK: we deal with internals? Yes, but as a side effect of testing the requirements (sending an email)
+  // hmmm OK: we deal with internals? Yes, but as a side effect of testing the requirements (sending an email)
   expect(spy.calledOnce).to.be.true;
 });
 ```
@@ -365,59 +364,59 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## 📗 Want to learn all these practices with live video?
+## 📗 想要透過影片來學習這些做法嗎？
 
-### Visit my online course [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
+### 歡迎來我的線上課程網站 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
 
 <br/><br/>
 
-## ⚪ ️1.6 Don’t “foo”, use realistic input data
+## ⚪ ️1.6 不要 "foo", 使用真實的資料
 
-:white_check_mark: **Do:** Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not as a replacement) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? See the next bullet (property-based testing).
+:white_check_mark: **建議：** 生產環境中的 bug 通常是在一些特殊或者意外的輸入下出現的 — 所以測試的輸入資料越真實，越容易在早期抓住問題。使用現有的一些函式庫（比如 [Faker](https://www.npmjs.com/package/faker)）去造"假"真實數據來模擬生產環境數據的多樣性和形式。比如，這些函示庫可以產生真實的電話號碼、用戶名稱、信用卡、公司名稱等等。你還可以創建一些測試(在單元測試之上，而不是替代)生產隨機 fakers 數據來擴充你的測試單元，甚至從生產環境中導入真實的資料。如果想要更進階的話，請看下一個項目：基於屬性的測試 (property-based testing)。
 <br/>
 
-❌ **Otherwise:** All your development testing will falsely show green when you use synthetic inputs like “Foo”, but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 你要部屬的程式都在 "foo" 之類的輸入值中正確的通過測試，結果上線之後收到像是 ```@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA``` 之類的輸入值後掛掉了。 
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test suite that passes due to non-realistic data
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :thumbsdown: 反例: 一個測試案例使用非真實資料去通過測試
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
 const addProduct = (name, price) => {
-  const productNameRegexNoSpace = /^\S*$/; //no white-space allowed
+  const productNameRegexNoSpace = /^\S*$/; // no white-space allowed
 
-  if (!productNameRegexNoSpace.test(name)) return false; //this path never reached due to dull input
+  if (!productNameRegexNoSpace.test(name)) return false; // this path never reached due to dull input
 
-  //some logic here
+  // some logic here
   return true;
 };
 
 test("Wrong: When adding new product with valid properties, get successful confirmation", async () => {
-  //The string "Foo" which is used in all tests never triggers a false result
+  // The string "Foo" which is used in all tests never triggers a false result
   const addProductResult = addProduct("Foo", 5);
   expect(addProductResult).toBe(true);
-  //Positive-false: the operation succeeded because we never tried with long
-  //product name including spaces
+  // Positive-false: the operation succeeded because we never tried with long
+  // product name including spaces
 });
 ```
 
 <br/>
 
-### :clap:Doing It Right Example: Randomizing realistic input
+### :clap:正例：使用隨機產生的真實資料來輸入
 
 ```javascript
 it("Better: When adding new valid product, get successful confirmation", async () => {
   const addProductResult = addProduct(faker.commerce.productName(), faker.random.number());
-  //Generated random input: {'Sleek Cotton Computer',  85481}
+  // Generated random input: {'Sleek Cotton Computer',  85481}
   expect(addProductResult).to.be.true;
-  //Test failed, the random input triggered some path we never planned for.
-  //We discovered a bug early!
+  // Test failed, the random input triggered some path we never planned for.
+  // We discovered a bug early!
 });
 ```
 
