@@ -424,20 +424,27 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/><br/>
 
-## ⚪ ️ 1.7 Test many input combinations using Property-based testing
+## ⚪ ️ 1.7 Property-based testing 基於屬性的測試：測試輸入的多種組合
 
-:white_check_mark: **Do:** Typically we choose a few input samples for each test. Even when the input format resembles real-world data (see bullet [‘Don’t foo’](https://github.com/goldbergyoni/javascript-testing-best-practices#-%EF%B8%8F16-dont-foo-use-realistic-input-data)), we cover only a few input combinations (method(‘’, true, 1), method(“string” , false , 0)), However, in production, an API that is called with 5 parameters can be invoked with thousands of different permutations, one of them might render our process down ([see Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)). What if you could write a single test that sends 1000 permutations of different inputs automatically and catches for which input our code fails to return the right response? Property-based testing is a technique that does exactly that: by sending all the possible input combinations to your unit under test it increases the serendipity of finding a bug. For example, given a method — addNewProduct(id, name, isDiscount) — the supporting libraries will call this method with many combinations of (number, string, boolean) like (1, “iPhone”, false), (2, “Galaxy”, true). You can run property-based testing using your favorite test runner (Mocha, Jest, etc) using libraries like [js-verify](https://github.com/jsverify/jsverify) or [testcheck](https://github.com/leebyron/testcheck-js) (much better documentation). Update: Nicolas Dubien suggests in the comments below to [checkout fast-check](https://github.com/dubzzz/fast-check#readme) which seems to offer some additional features and also to be actively maintained
+:white_check_mark: **建議：** 通常我們只會選擇少部分的輸入樣本去做測試。 即使是使用了上一項提到的工具去模擬真實數據，我們也只覆蓋到了一部分輸入的組合 (```method('', true, 1)```, ```method('string', false , 0)```)。然而在生產環境中，一個擁有 5 個參數的 API，可能會遇到上千種排列組合的輸入，而其中的某一種可能會把你的程式搞掛（可參考 [Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)）。
+
+如何撰寫一個測試，可以自動發送 1000 種不同輸入的排列組合，並捕捉到使我們的程式不能正確回傳的輸入？基於屬性的測試 (Property-based testing) 就是這樣一種技術：透過發送所有可能的輸入組合到你的測試單元中，它增加了發現 bug 的可能性。
+
+例如，給定一個方法 — ```addNewProduct(id, name, isDiscount)``` — 函示庫將使用許多 ```(number, string, boolean)``` 的組合來呼叫這個方法，比如 ```(1, 'iPhone', false)```，```(2, 'Galaxy', true)```。您可以使用您喜歡的測試運行器(Mocha、Jest等)，使用 [js-verify](https://github.com/jsverify/jsverify) 或者 [testcheck](https://github.com/leebyron/testcheck-js) (文件寫得比較好) 來執行基於屬性的測試。
+
+更新：Nicolas Dubien 在下面的回復中建議使用 [fast-check](https://github.com/dubzzz/fast-check#readme)，它似乎提供了更多的功能，且有被積極維護。
+
 <br/>
 
-❌ **Otherwise:** Unconsciously, you choose the test inputs that cover only code paths that work well. Unfortunately, this decreases the efficiency of testing as a vehicle to expose bugs
+❌ **否則：** 你無意中選擇的測試輸入只涵蓋到運作正常的程式片段。不幸的是，他沒有發現真正的錯誤，這也降低了把測試當作發現錯誤的工具的成效。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>程式範例</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: Testing many input permutations with “fast-check”
+### :clap: 正例： 使用 fast-check 來測試許多的輸入組合
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
@@ -446,7 +453,7 @@ import fc from "fast-check";
 
 describe("Product service", () => {
   describe("Adding new", () => {
-    //this will run 100 times with different random properties
+    // this will run 100 times with different random properties
     it("Add new product with random yet valid properties, always successful", () =>
       fc.assert(
         fc.property(fc.integer(), fc.string(), (id, name) => {
