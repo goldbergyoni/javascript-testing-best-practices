@@ -536,49 +536,50 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/><br/>
 
-## ⚪ ️1.9 Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️1.9 避免使用全域的 test fixtures 或 seeds，而是放進每個測試中
 
-:white_check_mark: **Do:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests ([also known as ‘test fixture’](https://en.wikipedia.org/wiki/Test_fixture)) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
-<br/>
-
-❌ **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
+:white_check_mark: **建議：** 參照黃金原則，每個測試需要在它自己的 DB 中進行操作避免互相污染。但現實中，這條規則經常被打破：為了性能的提升而在執行測試前初始化全域資料庫 (也被稱為"[test fixture](https://en.wikipedia.org/wiki/Test_fixture)")。儘管性能很重要，但是它可以通過後面講的「組件測試」來做取捨。為了減輕複雜度，我們可以在每個測試中只初始化自己需要的數據。除非性能問題真的非常嚴重，那還是可以做一定程度的妥協 - 僅在全域放不會改變的數據 (比如 query)。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 有一些測試 fail 了，團隊花了許多時間後發現，只是因為兩個測試同時改變了同一個 seed。
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :thumbsdown: 反例：測試案例之間不是獨立的。而是相依於全域的 DB 資料
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
 ```javascript
 before(async () => {
-  //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
+  // adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
   await DB.AddSeedDataFromJson('seed.json');
 });
 it("When updating site name, get successful confirmation", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+  // I know that site name "portal" exists - I saw it in the seed files
   const siteToUpdate = await SiteService.getSiteByName("Portal");
   const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
   expect(updateNameResult).to.be(true);
 });
 it("When querying by site name, get the right site", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+  // I know that site name "portal" exists - I saw it in the seed files
   const siteToCheck = await SiteService.getSiteByName("Portal");
-  expect(siteToCheck.name).to.be.equal("Portal"); //Failure! The previous test change the name :[
+  expect(siteToCheck.name).to.be.equal("Portal"); // Failure! The previous test change the name :[
 });
 
 ```
 
 <br/>
 
-### :clap: Doing It Right Example: We can stay within the test, each test acts on its own set of data
+### :clap: 正例：每個測試案例只操作他自己的資料
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
-  //test is adding a fresh new records and acting on the records only
+  // test is adding a fresh new records and acting on the records only
   const siteUnderTest = await SiteService.addSite({
     name: "siteForUpdateTest"
   });
