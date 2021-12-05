@@ -468,57 +468,58 @@ describe("Product service", () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.8 If needed, use only short & inline snapshots
+## ⚪ ️ 1.8 如果需要，只使用簡短的行內快照 (inline snapshots)
 
-:white_check_mark: **Do:** When there is a need for [snapshot testing](https://jestjs.io/docs/en/snapshot-testing), use only short and focused snapshots (i.e. 3-7 lines) that are included as part of the test ([Inline Snapshot](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots)) and not within external files. Keeping this guideline will ensure your tests remain self-explanatory and less fragile.
+:white_check_mark: **建議：** 如果你需要進行 快照測試 ([snapshot testing](https://jestjs.io/docs/en/snapshot-testing))，只使用短而集中的快照 (如3~7行)，該快照是測試程式的一部份，而不是在外部文件中。保持好這一原則，將會確保你的測試的自我解釋性且不會那麼脆弱。
 
-On the other hand, ‘classic snapshots’ tutorials and tools encourage to store big files (e.g. component rendering markup, API JSON result) over some external medium and ensure each time when the test run to compare the received result with the saved version. This, for example, can implicitly couple our test to 1000 lines with 3000 data values that the test writer never read and reasoned about. Why is this wrong? By doing so, there are 1000 reasons for your test to fail - it’s enough for a single line to change for the snapshot to get invalid and this is likely to happen a lot. How frequently? for every space, comment or minor CSS/HTML change. Not only this, the test name wouldn’t give a clue about the failure as it just checks that 1000 lines didn’t change, also it encourages to the test writer to accept as the desired true a long document he couldn’t inspect and verify. All of these are symptoms of obscure and eager test that is not focused and aims to achieve too much
+另一方面，"classic snapshots"的教學和工具鼓勵將大文件 (如組件的渲染結果、API 的 JSON 結果) 存儲在一些外部媒介上，並確保每次測試運行時，將收到的結果與保存的版本進行比較。舉個例子，這將會隱性地將我們的測試與包含3000個數值的1000行內容耦合在一起，而測試者從未閱讀和推理過這些數據。為什麼這樣是不對的？ 這樣做，將會有1000個原因讓你的測試失敗 - 只要有一行改變，快照比對就會 fail，而這可能會經常發生。多頻繁？當有每一個空格、註解或一點 CSS/HTML 的變化。不僅如此，測試名稱也不會提供關於失敗的線索，因為它只是檢查這1000行是否有變化，而且它還鼓勵測試者去接受一個他無法檢查和驗證的大文件作為期望的結果。所有這些都是測試目標不明確、測試目標過多的症狀。
 
-It’s worth noting that there are few cases where long & external snapshots are acceptable - when asserting on schema and not data (extracting out values and focusing on fields) or when the received document rarely changes
-<br/>
-
-❌ **Otherwise:** A UI test fails. The code seems right, the screen renders perfect pixels, what happened? your snapshot testing just found a difference from the origin document to current received one - a single space character was added to the markdown...
+值得注意的是，在少數情況下，大型的外部快照是可以接受的 - 當斷言的對象是 schema 而不是所有內容時 (提取出要的值並專注在某個欄位上)，或者當收到的文件內容幾乎不會改變時。 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 一個 UI 的測試失敗了。程式看起來是對的，畫面上也完美渲染了每個像素，但怎麼了？ 你的測試程式發現收到的內容與期望的不同，或許只是多了一個空格...
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Coupling our test to unseen 2000 lines of code
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :thumbsdown: 反例： 將看不到的 2000 行程式耦合進我們的測試案例中
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
 it("TestJavaScript.com is renderd correctly", () => {
-  //Arrange
+  // Arrange
 
-  //Act
+  // Act
   const receivedPage = renderer
     .create(<DisplayPage page="http://www.testjavascript.com"> Test JavaScript </DisplayPage>)
     .toJSON();
 
-  //Assert
+  // Assert
   expect(receivedPage).toMatchSnapshot();
-  //We now implicitly maintain a 2000 lines long document
-  //every additional line break or comment - will break this test
+  // We now implicitly maintain a 2000 lines long document
+  // every additional line break or comment - will break this test
 });
 ```
 
 <br/>
 
-### :clap: Doing It Right Example: Expectations are visible and focused
+### :clap: 正例：期望是可見且集中的
 
 ```javascript
 it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
-  //Arrange
+  // Arrange
 
-  //Act
+  // Act
   const receivedPage = renderer
     .create(<DisplayPage page="http://www.testjavascript.com"> Test JavaScript </DisplayPage>)
     .toJSON();
 
-  //Assert
+  // Assert
 
   const menu = receivedPage.content.menu;
   expect(menu).toMatchInlineSnapshot(`
