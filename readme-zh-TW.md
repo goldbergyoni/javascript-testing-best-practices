@@ -594,22 +594,23 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/>
 
-## ⚪ ️ 1.10 Don’t catch errors, expect them
+## ⚪ ️ 1.10 不要 catch 錯誤，expect 他們
 
-:white_check_mark: **Do:** When trying to assert that some input triggers an error, it might look right to use try-catch-finally and asserts that the catch clause was entered. The result is an awkward and verbose test case (example below) that hides the simple test intent and the result expectations
+:white_check_mark: **建議：** 當你要測試一些輸入是否有觸發錯誤時，使用 ```try-catch-finally``` 來檢查他是否會進入到 catch 區塊，看起來沒什麼問題。但會變成一個笨拙且冗長的測試案例 (如下面程式範例)，他會隱藏簡單的測試意圖和預期的結果。
 
-A more elegant alternative is the using the one-line dedicated Chai assertion: expect(method).to.throw (or in Jest: expect(method).toThrow()). It’s absolutely mandatory to also ensure the exception contains a property that tells the error type, otherwise given just a generic error the application won’t be able to do much rather than show a disappointing message to the user
-<br/>
-
-❌ **Otherwise:** It will be challenging to infer from the test reports (e.g. CI reports) what went wrong
+一個更為優雅的作法是使用專用的單行斷言：如 Chai 中的 ```expect(method).to.throw``` 或是 Jest 中的 ```expect(method).toThrow()```。必須要確保這個 expection 包含某個預期的 error type，如果只得到一個通用的錯誤型態，那應用程式將無法表明更多訊息給使用者。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 從測試報告 (如 CI 報告) 中要看出哪裡有錯會非常困難。
 
 <br/>
 
-### :thumbsdown: Anti-pattern Example: A long test case that tries to assert the existence of error with try-catch
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :thumbsdown: 反例：一個很長的測試案例，嘗試使用 ```try-catch``` 來斷言錯誤
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -623,14 +624,14 @@ it("When no product name, it throws error 400", async () => {
     errorWeExceptFor = error;
   }
   expect(errorWeExceptFor).not.to.be.null;
-  //if this assertion fails, the tests results/reports will only show
-  //that some value is null, there won't be a word about a missing Exception
+  // if this assertion fails, the tests results/reports will only show
+  // that some value is null, there won't be a word about a missing Exception
 });
 ```
 
 <br/>
 
-### :clap: Doing It Right Example: A human-readable expectation that could be understood easily, maybe even by QA or technical PM
+### :clap: 正例：一個容易閱讀及被了解的 expection，甚至能被 QA 或 PM 理解
 
 ```javascript
 it("When no product name, it throws error 400", async () => {
