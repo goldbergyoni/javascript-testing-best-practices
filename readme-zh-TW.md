@@ -645,30 +645,30 @@ it("When no product name, it throws error 400", async () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.11 Tag your tests
+## ⚪ ️ 1.11 為測試案例打上標籤
 
-:white_check_mark: **Do:** Different tests must run on different scenarios: quick smoke, IO-less, tests should run when a developer saves or commits a file, full end-to-end tests usually run when a new pull request is submitted, etc. This can be achieved by tagging tests with keywords like #cold #api #sanity so you can grep with your testing harness and invoke the desired subset. For example, this is how you would invoke only the sanity test group with Mocha: mocha — grep ‘sanity’
+:white_check_mark: **建議：** 不同的測試需要在不同的情境下執行：快速冒煙測試、無 IO 的測試、開發者儲存或提交檔案的測試、送出一個 PR 後的 end-to-end 測試等等。 可以用一些 ```#cold``` ```#api``` ```#sanity``` 之類的標籤來標註這些測試，這樣就可以在測試時只執行特定的子集合。例如在 Mocha 中可以這樣來執行：```mocha -- grep 'sanity'```。
 <br/>
 
-❌ **Otherwise:** Running all the tests, including tests that perform dozens of DB queries, any time a developer makes a small change can be extremely slow and keeps developers away from running tests
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 執行所有測試案例，包括執行大量查詢 DB 的測試，開發者做的任何微小的變更都需要花很長的時間去跑完所有的測試，將會導致開發者不想再執行測試。
 
 <br/>
 
-### :clap: Doing It Right Example: Tagging tests as ‘#cold-test’ allows the test runner to execute only fast tests (Cold===quick tests that are doing no IO and can be executed frequently even as the developer is typing)
+<details><summary>✏ <b>程式範例：</b></summary>
+
+<br/>
+
+### :clap: 正例：將測試案例標記為 '#cold-test' 讓執行測試的人可以只執行速度快的測試案例 (cold 指的是沒有 IO 的快速測試，甚至可以在開發人員打字時頻繁地執行)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
-//this test is fast (no DB) and we're tagging it correspondigly
-//now the user/CI can run it frequently
+// this test is fast (no DB) and we're tagging it correspondigly
+// now the user/CI can run it frequently
 describe("Order service", function() {
   describe("Add new order #cold-test #sanity", function() {
     test("Scenario - no currency was supplied. Expectation - Use the default currency #sanity", function() {
-      //code logic here
+      // code logic here
     });
   });
 });
