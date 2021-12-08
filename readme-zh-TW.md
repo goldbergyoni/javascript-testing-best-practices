@@ -678,33 +678,33 @@ describe("Order service", function() {
 
 <br/><br/>
 
-## ⚪ ️ 1.12 Categorize tests under at least 2 levels
+## ⚪ ️ 1.12 把測試案例進行至少兩個層次的分類
 
-:white_check_mark: **Do:** Apply some structure to your test suite so an occasional visitor could easily understand the requirements (tests are the best documentation) and the various scenarios that are being tested. A common method for this is by placing at least 2 'describe' blocks above your tests: the 1st is for the name of the unit under test and the 2nd for additional level of categorization like the scenario or custom categories (see code examples and print screen below). Doing so will also greatly improve the test reports: The reader will easily infer the tests categories, delve into the desired section and correlate failing tests. In addition, it will get much easier for a developer to navigate through the code of a suite with many tests. There are multiple alternative structures for test suite that you may consider like [given-when-then](https://github.com/searls/jasmine-given) and [RITE](https://github.com/ericelliott/riteway)
-
-<br/>
-
-❌ **Otherwise:** When looking at a report with flat and long list of tests, the reader have to skim-read through long texts to conclude the major scenarios and correlate the commonality of failing tests. Consider the following case: When 7/100 tests fail, looking at a flat list will demand reading the failing tests text to see how they relate to each other. However, in a hierarchical report all of them could be under the same flow or category and the reader will quickly infer what or at least where is the root failure cause
+:white_check_mark: **建議：** 對測試案例套用一些結構，讓每個看到這個測試案例的人都可以很容易得理解需求 (測試是最好的文件) 和正在測試的各種情境。一個常見的方法是在測試上方寫至少兩個用來"描述"的區塊：第一個是測試單元的名稱，第二個是額外的分類名稱，如情境或自定義的類別 (參考下面的程式範例和畫面輸出)。這樣的做法也會大幅的改善測試報告的呈現。讀者將會很容易的推斷出測試的類別，讀懂該測試的內容並與失敗的測試關聯起來。此外，對開發者來說，瀏覽這一連串的測試也變得更加容易。有許多額外的結構也是可以考慮使用的，像是 [given-when-then](https://github.com/searls/jasmine-given) 或 [RITE](https://github.com/ericelliott/riteway)。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則** 當看到一份毫無結構且數量眾多的測試報告時，讀者只能透過粗略地閱讀整份報告來總結，並將失敗的錯誤案例關聯起來。思考一個情況，當100個測試案例中有7個失敗時，看一個分層結構良好的測試報告與看一個扁平的測試結果清單相比，那些錯誤的測試案例很有可能都在同一個流程或分類底下，讀者將可以很快的推斷出錯誤的地方或看出哪部分是他們失敗的原因。
 
 <br/>
 
-### :clap: Doing It Right Example: Structuring suite with the name of unit under test and scenarios will lead to the convenient report that is shown below
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：利用測試案例的名稱和情境來組織，可以產生良好的測試報告，如下所示
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
 // Unit under test
 describe("Transfer service", () => {
-  //Scenario
+  // Scenario
   describe("When no credit", () => {
-    //Expectation
+    // Expectation
     test("Then the response status should decline", () => {});
 
-    //Expectation
+    // Expectation
     test("Then it should send email to admin", () => {});
   });
 });
@@ -714,7 +714,7 @@ describe("Transfer service", () => {
 
 <br/>
 
-### :thumbsdown: Anti-pattern Example: A flat list of tests will make it harder for the reader to identify the user stories and correlate failing tests
+### :thumbsdown: 反例：扁平的測試列表會使讀者很難去看懂 user story 和失敗的測試之間的關係
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Mocha")
 
