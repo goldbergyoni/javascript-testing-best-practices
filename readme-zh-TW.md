@@ -734,14 +734,15 @@ test("Then there should not be a new transfer record", () => {});
 
 <br/><br/>
 
-## ⚪ ️1.13 Other generic good testing hygiene
+## ⚪ ️1.13 其他通用且良好的測試習慣
 
-:white_check_mark: **Do:** This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
+:white_check_mark: **建議：** 本篇文章的重點是與 NodeJS 相關的測試建議或至少可以用 NodeJS 來舉例說明的內容。然而，這裡有幾個與 NodeJS 無關的建議，且是眾所皆知的。
 
-Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a [red-green-refactor style](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, start a module by writing a quick and simplistic code that satisfies the test - then refactor gradually and take it to a production grade level, avoid any dependency on the environment (paths, OS, etc)
+學習並實現 [TDD原則](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) - 他對許多人來說非常有價值，但如果他不適合你的風格，不要被嚇到，不是只有你這樣。試著在寫程式之前使用 [red-green-refactor](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html) 的風格來撰寫測試，並確保每個測試案例只檢查一個測試目標。當你發現一個 bug 時，在修復它之前先新增一個可以檢測到它的測試案例，讓每個測試案例在變綠之前至少失敗一次，接著快速撰寫簡單的程式讓這個測試通過 - 然後逐步重構這些程式到可以上 production 的水準，避免對環境 (如路徑或作業系統等) 有任何相依性。
+
 <br/>
 
-❌ **Otherwise:** You‘ll miss pearls of wisdom that were collected for decades
+❌ **否則：** 你會錯過這數十年來的智慧結晶
 
 <br/><br/>
 
