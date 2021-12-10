@@ -10,7 +10,7 @@
 
 這是從 A 到 Z 的 JavaScript 及 Node.js 可靠的指南。它為你總結及規劃了市場上大量的部落格文章、書籍及工具。
 
-## 🚢 進階：從基礎向前邁進 10,000 英里 Advanced: Goes 10,000 miles beyond the basics
+## 🚢 進階：從基礎向前邁進 10,000 英里
 
 從基礎往前邁進的旅程，包括：在生產(production)環境中測試、變異測試(mutation testing)、以屬性為基礎(property-based)的測試以及許多策略和專業工具。如果你認真閱讀本指南書，你的測試技能可能會高於平均水準。
 
@@ -93,7 +93,7 @@ JavaScript 世界的 CI 指南 (9項)
 
 <br/><br/>
 
-# Section 1: The Test Anatomy
+# 第 1 章：測試剖析
 
 <br/>
 
@@ -746,29 +746,29 @@ test("Then there should not be a new transfer record", () => {});
 
 <br/><br/>
 
-# Section 2️⃣: Backend Testing
+# 第 2 章：後端測試
 
-## ⚪ ️2.1 Enrich your testing portfolio: Look beyond unit tests and the pyramid
+## ⚪ ️2.1  豐富您的測試組合：不局限於單元測試和測試金字塔
 
-:white_check_mark: **Do:** The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit *all* types of applications? shouldn’t the testing world consider welcoming new testing techniques?
+:white_check_mark: **建議：** 雖然 [測試金字塔](https://martinfowler.com/bliki/TestPyramid.html) 已經有超過十年的歷史了，但他仍然是個很好的模型，他提出了三種測試類型，並影響了大多數開發者的測試策略。與此同時，大量閃亮的新測試技術出現了，並隱藏在測試金字塔的陰影下。考慮到近十年來我們所看到的所有巨變 (Microservices, cloud, serverless)，這個非常老的模型是否仍能適用於所有類型的應用？測試界不應該考慮新的測試技術嗎？ 
 
-Don’t get me wrong, in 2019 the testing pyramid, TDD and unit tests are still a powerful technique and are probably the best match for many applications. Only like any other model, despite its usefulness, [it must be wrong sometimes](https://en.wikipedia.org/wiki/All_models_are_wrong). For example, consider an IoT application that ingests many events into a message-bus like Kafka/RabbitMQ, which then flow into some data-warehouse and are eventually queried by some analytics UI. Should we really spend 50% of our testing budget on writing unit tests for an application that is integration-centric and has almost no logic? As the diversity of application types increase (bots, crypto, Alexa-skills) greater are the chances to find scenarios where the testing pyramid is not the best match.
+不要誤會，在 2019 年，測試金字塔、TDD、單元測試仍然是強大的技術，且對於大多數應用仍是最佳選擇。但是像其他模型一樣，儘管它有用，但是一定[會在某些時候出問題](https://en.wikipedia.org/wiki/All_models_are_wrong)。例如，我們有一個 IoT 的應用程式，將許多事件傳入一個 Kafka/RabbitMQ 這樣的 message-bus 中，然後這些事件流入資料庫並被經由 UI 來做查詢。我們真的需要花費 50% 的測試預算去為這個幾乎沒有邏輯的中心化的整合應用程式寫單元測試嗎？隨著應用類型 (bots, crypto, Alexa-skills) 的多樣增長，測試金字塔可能將不再是某些場景的最佳選擇了。
 
-It’s time to enrich your testing portfolio and become familiar with more testing types (the next bullets suggest few ideas), mind models like the testing pyramid but also match testing types to real-world problems that you’re facing (‘Hey, our API is broken, let’s write consumer-driven contract testing!’), diversify your tests like an investor that build a portfolio based on risk analysis — assess where problems might arise and match some prevention measures to mitigate those potential risks
+是時候豐富你的測試組合並了解更多的測試類型了（下一節會給你一些小建議），這些類似於測試金字塔的思維模型與你所面臨的現實問題會更加匹配（"嘿，我們的 API 掛了，我們來寫 consumer-driven contract testing 吧！"）。讓您的測試多樣化，比如建立基於風險分析的檢查模型 — 評估可能出現問題的地方，並提供一些預防措施以減輕這些潛在風險。
 
-A word of caution: the TDD argument in the software world takes a typical false-dichotomy face, some preach to use it everywhere, others think it’s the devil. Everyone who speaks in absolutes is wrong :]
-
-<br/>
-
-❌ **Otherwise:** You’re going to miss some tools with amazing ROI, some like Fuzz, lint, and mutation can provide value in 10 minutes
+需要注意的是：軟體世界中的 TDD 模型面臨兩個極端的態度，一些人鼓吹到處使用它，另一些人則認為它是魔鬼。每個說絕對的人都是錯的 :] 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 你將錯過一些超高 CP 值的工具，比如 Fuzz、lint、mutation，這些工具只需 10 分鐘設定就能為你提供許多好處。
 
 <br/>
 
-### :clap: Doing It Right Example: Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the same way’
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：Cindy Sridharan 在她的文章 "Testing Microservices — the sane way" 中提出了一個豐富的測試組合
 
 ![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’")
 
