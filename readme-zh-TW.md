@@ -782,22 +782,23 @@ test("Then there should not be a new transfer record", () => {});
 
 <br/><br/>
 
-## ⚪ ️2.2 Component testing might be your best affair
+## ⚪ ️2.2 組件化測試可能是最有效的利器
 
-:white_check_mark: **Do:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung song of the testing world — they provide the best from both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
+:white_check_mark: **建議：** 應用程式中的每個單元測試僅能覆蓋整個程式的一小部分，要覆蓋全部會非常麻煩，而端到端測試可以很輕鬆地覆蓋大量區域，但是比較脆弱而且很慢。何不找一個平衡點：寫一些比單元測試大，但是比端到端測試小的測試。組件測試是測試世界的一顆遺珠 — 它找到了兩個模式的最佳平衡點：不錯的性能和使用 TDD 模式的可能性與真實且強大的覆蓋率。
 
-Component tests focus on the Microservice ‘unit’, they work against the API, don’t mock anything which belongs to the Microservice itself (e.g. real DB, or at least the in-memory version of that DB) but stub anything that is external like calls to other Microservices. By doing so, we test what we deploy, approach the app from outwards to inwards and gain great confidence in a reasonable amount of time.
-<br/>
-
-❌ **Otherwise:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
+組件測試關注於微服務"單元"，他們針對 API 來做事，不 mock 任何屬於微服務本身的東西（像是真實的 DB，甚至是該 DB 的 in-memory 版本）但是 stub 所有外部的東西，像是呼叫其他的微服務。藉由這種方式，我們可以測試我們部署的部分，由外而內地覆蓋應用程式，可以節省大量時間並獲得信心。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 你可能花了好幾天來寫單元測試，卻發現只得到了 20% 的覆蓋率。
 
 <br/>
 
-### :clap: Doing It Right Example: Supertest allows approaching Express API in-process (fast and cover many layers)
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：使用 Supertest 來測試 Express API (快速且覆蓋多個層次)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
@@ -807,20 +808,22 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/><br/>
 
-## ⚪ ️2.3 Ensure new releases don’t break the API using contract tests
+## ⚪ ️2.3 利用 contract tests 來確保新的 release 不會破壞 API 的使用
 
-:white_check_mark: **Do:** So your Microservice has multiple clients, and you run multiple versions of the service for compatibility reasons (keeping everyone happy). Then you change some field and ‘boom!’, some important client who relies on this field is angry. This is the Catch-22 of the integration world: It’s very challenging for the server side to consider all the multiple client expectations — On the other hand, the clients can’t perform any testing because the server controls the release dates. [Consumer-driven contracts and the framework PACT](https://docs.pact.io/) were born to formalize this process with a very disruptive approach — not the server defines the test plan of itself rather the client defines the tests of the… server! PACT can record the client expectation and put in a shared location, “broker”, so the server can pull the expectations and run on every build using PACT library to detect broken contracts — a client expectation that is not met. By doing so, all the server-client API mismatches are caught early during build/CI and might save you a great deal of frustration
+:white_check_mark: **建議：** 你的微服務有許多客戶，而你為了兼容性而運行著很多種版本 (keeping everyone happy)。當你改了某些程式後 "砰！"，某些使用該服務的重要客戶生氣了。伺服端要滿足所有客戶的期望是非常困難的 - 另一方面，客戶端無法執行任何測試，因為 release 的日期是伺服端決定的。
+
+[Consumer-driven contracts and the framework PACT](https://docs.pact.io/) 誕生了，它以一種破壞性的方式規範了這一流程 — 不再由伺服端定義測試計劃，而是客戶端決定伺服端的測試！ PACT 可以記錄客戶端的期望並存放在一個共享的位置 — 中間人（Broker），伺服端可以 pull 下這些期望並利用 PACT 的函示庫在所有版本中檢測是否有被破壞的契約，也就是客戶端的期望沒有被滿足。通過這種方式，所有 伺服端-用戶端 沒對好的 API 將會在 build/CI 階段被發現，從而減少你的煩惱。
 <br/>
 
-❌ **Otherwise:** The alternatives are exhausting manual testing or deployment fear
+❌ **否則：** 所有的變更都將會造成繁瑣的人工測試，導致開發者害怕部屬
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>程式範例</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example:
+### :clap: 正例：
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Examples with PACT")
 
@@ -830,28 +833,28 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/><br/>
 
-## ⚪ ️ 2.4 Test your middlewares in isolation
+## ⚪ ️2.4 單獨測試你的 middlewares
 
-:white_check_mark: **Do:** Many avoid Middleware testing because they represent a small portion of the system and require a live Express server. Both reasons are wrong — Middlewares are small but affect all or most of the requests and can be tested easily as pure functions that get {req,res} JS objects. To test a middleware function one should just invoke it and spy ([using Sinon for example](https://www.npmjs.com/package/sinon)) on the interaction with the {req,res} objects to ensure the function performed the right action. The library [node-mock-http](https://www.npmjs.com/package/node-mocks-http) takes it even further and factors the {req,res} objects along with spying on their behavior. For example, it can assert whether the http status that was set on the res object matches the expectation (See example below)
+:white_check_mark: **建議：** 許多人拒絕測試 middleware，因為它們只佔系統的一小部分而且相依於真實的 Express server。這兩個原因都不正確 — middleware 雖然小，但是影響著所有或至少大部分請求，而且可以被簡單地作為純函數測試 (參數為 ```{req,res}``` 的 JavaScript 物件)。要測試 middleware 函數，只需要呼叫它，並且監看 ([如使用 Sinon](https://www.npmjs.com/package/sinon)) 與 ```{req,res}``` 的互動來確保函數有執行正確的行為。 [node-mock-http](https://www.npmjs.com/package/node-mocks-http) 函示庫則更進一步：它還監聽了 ```{req,res}``` 物件的行為。例如，它可以斷言 res 物件上的 http 狀態是否符合預期。(看下面的程式範例)
 <br/>
 
-❌ **Otherwise:** A bug in Express middleware === a bug in all or most requests
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** Express middlewares 的 bug === 所有或大部分 request 的 bug
 
 <br/>
 
-### :clap:Doing It Right Example: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：單獨測試 middleware，不發出網路請求或啟動整個 Express 伺服器
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
-//the middleware we want to test
+// the middleware we want to test
 const unitUnderTest = require("./middleware");
 const httpMocks = require("node-mocks-http");
-//Jest syntax, equivelant to describe() & it() in Mocha
+// Jest syntax, equivelant to describe() & it() in Mocha
 test("A request without authentication header, should return http status 403", () => {
   const request = httpMocks.createRequest({
     method: "GET",
