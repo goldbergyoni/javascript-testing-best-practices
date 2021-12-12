@@ -873,23 +873,23 @@ test("A request without authentication header, should return http status 403", (
 
 <br/><br/>
 
-## ⚪ ️2.5 Measure and refactor using static analysis tools
+## ⚪ ️2.5 使用靜態分析工具來測量與重構
 
-:white_check_mark: **Do:** Using static analysis tools helps by giving objective ways to improve code quality and keep your code maintainable. You can add static analysis tools to your CI build to abort when it finds code smells. Its main selling points over plain linting are the ability to inspect quality in the context of multiple files (e.g. detect duplications), perform advanced analysis (e.g. code complexity) and follow the history and progress of code issues. Two examples of tools you can use are [SonarQube](https://www.sonarqube.org/) (4,900+ [stars](https://github.com/SonarSource/sonarqube)) and [Code Climate](https://codeclimate.com/) (2,000+ [stars](https://github.com/codeclimate/codeclimate))
+:white_check_mark: **建議：** 使用靜態分析工具可以幫助你客觀地提升程式品質並保持可維護性。你可以將靜態分析工具放在你的 CI 中。除了普通的 linting 外，它的主要賣點是查看多個檔案的上下文來檢查程式碼品質 (例如：發現程式有沒有重複定義的地方)、執行進階的分析 (例如：程式複雜度) 以及追蹤 code issue 的歷史和進度。有兩個工具供你使用：[SonarQube](https://www.sonarqube.org/) (6,300+ [stars](https://github.com/SonarSource/sonarqube)) 和 [Code Climate](https://codeclimate.com/) (2,300+ [stars](https://github.com/codeclimate/codeclimate))。
 
 Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.com/TheHollidayInn" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Keith Holliday](https://github.com/TheHollidayInn)</a>
 
 <br/>
 
-❌ **Otherwise:** With poor code quality, bugs and performance will always be an issue that no shiny new library or state of the art features can fix
+❌ **否則；** 程式碼的品質過差，再新的函式庫或功能都無法拯救你的 bug 和性能
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>程式範例</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: CodeClimate, a commercial tool that can identify complex methods:
+### :clap: 正例：CodeClimate，一個可以發現複雜方法的商業工具
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Examples with CodeClimate")
 
