@@ -899,20 +899,21 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/><br/>
 
-## ⚪ ️ 2.6 Check your readiness for Node-related chaos
+## ⚪ ️ 2.6 檢查你對 Node 相關渾沌的準備工作
 
-:white_check_mark: **Do:** Weirdly, most software testings are about logic & data only, but some of the worst things that happen (and are really hard to mitigate) are infrastructural issues. For example, did you ever test what happens when your process memory is overloaded, or when the server/process dies, or does your monitoring system realizes when the API becomes 50% slower?. To test and mitigate these type of bad things — [Chaos engineering](https://principlesofchaos.org/) was born by Netflix. It aims to provide awareness, frameworks and tools for testing our app resiliency for chaotic issues. For example, one of its famous tools, [the chaos monkey](https://github.com/Netflix/chaosmonkey), randomly kills servers to ensure that our service can still serve users and not relying on a single server (there is also a Kubernetes version, [kube-monkey](https://github.com/asobti/kube-monkey), that kills pods). All these tools work on the hosting/platform level, but what if you wish to test and generate pure Node chaos like check how your Node process copes with uncaught errors, unhandled promise rejection, v8 memory overloaded with the max allowed of 1.7GB or whether your UX remains satisfactory when the event loop gets blocked often? to address this I’ve written, [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha) which provides all sort of Node-related chaotic acts
-<br/>
-
-❌ **Otherwise:** No escape here, Murphy’s law will hit your production without mercy
+:white_check_mark: **建議：** 奇怪的是，大部分的軟體測試都只專注在邏輯和資料層面，但最重要且很難被緩解的，是那些基礎設施的問題。例如，你有測試過當你的程序記憶體過載、伺服器或程序死掉時的表現嗎？或者你的監控系統可以檢測到 API 的回應時間慢了 50% 嗎？為了測試與減輕類似的問題，Netflix 設立了混沌工程 [Chaos engineering](https://principlesofchaos.org/)。它的目的是提供意識、框架及工具來測試我們的應用程式對於混沌問題的彈性。比如，最著名的工具之一，渾沌猴子 [the chaos monkey](https://github.com/Netflix/chaosmonkey)，他會隨機地殺掉服務以確保我們的服務仍然可以提供服務給客戶，而不是僅依賴一個單獨的伺服器 (Kubernetes 也有一個 [kube-monkey](https://github.com/asobti/kube-monkey) 用來殺掉 pods)。這些工具都是作用在伺服器/平台面，但如果你想測試及產生單純的 Node 渾沌，比如檢查你的 Node 程序如何處理未知錯誤、未知的 promise rejection、v8 使用的記憶體超過 1.7GB 的限制以及當 event loop 卡住後你的 UX 是否仍然可以正常運行？為了解決上面提到的問題， [node-chaos](https://github.com/i0natan/node-chaos-monkey) 提供了各種 Node 相關的渾沌。 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 莫非定律一定會擊中你的產品，無可避免的
 
 <br/>
 
-### :clap: Doing It Right Example: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：Node-chaos 可以產生所有類型的 Node.js 問題，因此您可以測試您的應用程序對於渾沌的適應能力
 
 ![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
 
