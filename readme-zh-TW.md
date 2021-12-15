@@ -164,7 +164,7 @@ describe('Products Service', function() {
 
 <br/>
 
-❌ **否則:** 你不僅需要花很多時間去理解主要程式，而且本應是最簡單的部分 - 測試，也會讓你腦力耗盡。
+❌ **否則：** 你不僅需要花很多時間去理解主要程式，而且本應是最簡單的部分 - 測試，也會讓你腦力耗盡。
 
 <br/>
 
@@ -684,7 +684,7 @@ describe("Order service", function() {
 
 <br/>
 
-❌ **否則** 當看到一份毫無結構且數量眾多的測試報告時，讀者只能透過粗略地閱讀整份報告來總結，並將失敗的錯誤案例關聯起來。思考一個情況，當100個測試案例中有7個失敗時，看一個分層結構良好的測試報告與看一個扁平的測試結果清單相比，那些錯誤的測試案例很有可能都在同一個流程或分類底下，讀者將可以很快的推斷出錯誤的地方或看出哪部分是他們失敗的原因。
+❌ **否則：** 當看到一份毫無結構且數量眾多的測試報告時，讀者只能透過粗略地閱讀整份報告來總結，並將失敗的錯誤案例關聯起來。思考一個情況，當100個測試案例中有7個失敗時，看一個分層結構良好的測試報告與看一個扁平的測試結果清單相比，那些錯誤的測試案例很有可能都在同一個流程或分類底下，讀者將可以很快的推斷出錯誤的地方或看出哪部分是他們失敗的原因。
 
 <br/>
 
@@ -921,23 +921,23 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/><br/>
 
-# Section 3️⃣: Frontend Testing
+# 第 3 章：前端測試
 
-## ⚪ ️ 3.1 Separate UI from functionality
+## ⚪ ️ 3.1 將 UI 與功能分離
 
-:white_check_mark: **Do:** When focusing on testing component logic, UI details become a noise that should be extracted, so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only the back part of the UI (e.g. services, actions, store) but this will result in fictional tests that don't resemble the reality and won't reveal cases where the right data doesn't even arrive in the UI
-
-<br/>
-
-❌ **Otherwise:** The pure calculated data of your test might be ready in 10ms, but then the whole test will last 500ms (100 tests = 1 min) due to some fancy and irrelevant animation
+:white_check_mark: **建議：** 當專注於測試組件邏輯時，UI 的細節就變成了應該被剔除的雜音，這樣您的測試目標就可以集中在資料面上。實際上，提取出程式中所需的資料，將降低與畫面的耦合，僅對單純的資料 (與 HTML/CSS 等圖形細節相比) 進行斷言，並停用會拖慢速度的動畫。您應該要試著避免畫面的渲染，僅測試 UI 後面的部分 (例如，服務、動作、存儲)，但這將導致測試與實際情況不相符，「正確的資料根本無法呈現在 UI 上」這種問題就無法發現。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 你的測試可能花了 10ms 就準備好資料，但因為一些無關緊要的花俏動畫，讓整個測試案例持續了 500ms。(100個測試 = 1分鐘)
 
 <br/>
 
-### :clap: Doing It Right Example: Separating out the UI details
+<details><summary>✏ <b>程式範例：</b></summary>
+
+<br/>
+
+### :clap: 正例；分離 UI 的細節
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
@@ -952,13 +952,13 @@ test("When users-list is flagged to show only VIP, should display only VIP membe
   // Assert - Extract the data from the UI first
   const allRenderedUsers = getAllByTestId("user").map(uiElement => uiElement.textContent);
   const allRealVIPUsers = allUsers.filter(user => user.vip).map(user => user.name);
-  expect(allRenderedUsers).toEqual(allRealVIPUsers); //compare data with data, no UI here
+  expect(allRenderedUsers).toEqual(allRealVIPUsers); // compare data with data, no UI here
 });
 ```
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Assertion mix UI details and data
+### :thumbsdown: 反例：混雜了 UI 與資料的斷言
 
 ```javascript
 test("When flagging to show only VIP, should display only VIP members", () => {
