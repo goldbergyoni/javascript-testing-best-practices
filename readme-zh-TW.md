@@ -977,21 +977,21 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 <br/><br/>
 
-## ⚪ ️ 3.2 Query HTML elements based on attributes that are unlikely to change
+## ⚪ ️ 3.2 使用不易改變的屬性來查询 HTML 元素
 
-:white_check_mark: **Do:** Query HTML elements based on attributes that are likely to survive graphic changes unlike CSS selectors and like form labels. If the designated element doesn't have such attributes, create a dedicated test attribute like 'test-id-submit-button'. Going this route not only ensures that your functional/logic tests never break because of look & feel changes but also it becomes clear to the entire team that this element and attribute are utilized by tests and shouldn't get removed
-
-<br/>
-
-❌ **Otherwise:** You want to test the login functionality that spans many components, logic and services, everything is set up perfectly - stubs, spies, Ajax calls are isolated. All seems perfect. Then the test fails because the designer changed the div CSS class from 'thick-border' to 'thin-border'
+:white_check_mark: **建議：** 使用不太容易受畫面變更而影響的屬性來查詢 HTML 元素 (例如 form label，而不是 CSS selector)。如果指定的元素沒有這樣的屬性，則創建一個專用的測試屬性，如 `test-id-submit-button`。這樣做不僅可以確保您的功能/邏輯測試不會因為外觀變化而中斷，而且整個團隊可以清楚地看到，測試案例使用了這個元素和屬性，不應該刪除它。 
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 假設你想要測試一個跨越許多組件、邏輯和服務的登入功能，一切都設置得很完美 - stub、spy、Ajax 的呼叫都是隔離的。看似一切都很完美，但卻發現測試失敗了，因為開發者將 div 的 class 從 `thick-border` 改為 `thin-border`。
 
 <br/>
 
-### :clap: Doing It Right Example: Querying an element using a dedicated attribute for testing
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例： 使用專用的 attribute 來查詢元素來進行測試
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React")
 
@@ -1020,7 +1020,7 @@ test("Whenever no data is passed to metric, show 0 as default", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Relying on CSS attributes
+### :thumbsdown: 反例： 依靠於 CSS attributes
 
 ```html
 <!-- the markup code (part of React component) -->
