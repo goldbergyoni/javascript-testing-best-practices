@@ -1041,23 +1041,23 @@ test("Whenever no data is passed, error metric shows zero", () => {
 
 <br/>
 
-## ⚪ ️ 3.3 Whenever possible, test with a realistic and fully rendered component
+## ⚪ ️ 3.3 如果可以，使用真實且完全渲染的組件來進行測試
 
-:white_check_mark: **Do:** Whenever reasonably sized, test your component from outside like your users do, fully render the UI, act on it and assert that the rendered UI behaves as expected. Avoid all sort of mocking, partial and shallow rendering - this approach might result in untrapped bugs due to lack of details and harden the maintenance as the tests mess with the internals (see bullet ['Favour blackbox testing'](https://github.com/goldbergyoni/javascript-testing-best-practices#-%EF%B8%8F-14-stick-to-black-box-testing-test-only-public-methods)). If one of the child components is significantly slowing down (e.g. animation) or complicating the setup - consider explicitly replacing it with a fake
+:white_check_mark: **建議：** 只要尺寸合適，像使用者那樣從外部測試你的組件，完全渲染 UI，對其進行操作，並斷言對那些 UI 的行為是否符合預期。避免各種 mock、partial 和 shallow rendering - 這樣做可能會因為缺乏細節而導致有未捕捉到的 bug，而且由於測試會擾亂內部的結構而使得維護變得更加困難 (參考 堅持黑箱測試)。如果其中一個子組件明顯拖慢速度 (如 動畫) 或很難去設定，可以考慮使用假的組件去替換它。
 
-With all that said, a word of caution is in order: this technique works for small/medium components that pack a reasonable size of child components. Fully rendering a component with too many children will make it hard to reason about test failures (root cause analysis) and might get too slow. In such cases, write only a few tests against that fat parent component and more tests against its children
-
-<br/>
-
-❌ **Otherwise:** When poking into a component's internal by invoking its private methods, and checking the inner state - you would have to refactor all tests when refactoring the components implementation. Do you really have a capacity for this level of maintenance?
+綜上所說，需要注意的是：這種技術適用於包含合理大小子組件的中小型組件。完全渲染一個有太多子組件的組件會讓他很難被看出失敗的原因 (root cause analysis)，而且可能會非常慢。在這種情況下，可以對那些很肥的父組件撰寫少量的測試，並對其子組件多寫幾個測試。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 呼叫組件的私有方法來測試組件的內部狀態。後續重構組件時你必須重構所有測試。你真的有能力進行這種程度的維護嗎？
 
 <br/>
 
-### :clap: Doing It Right Example: Working realistically with a fully rendered component
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例： 操作一個充分渲染的真實組件
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg "Examples with Enzyme")
 
@@ -1075,7 +1075,7 @@ class Calendar extends React.Component {
   }
 }
 
-//Examples use React & Enzyme
+// Examples use React & Enzyme
 test("Realistic approach: When clicked to show filters, filters are displayed", () => {
   // Arrange
   const wrapper = mount(<Calendar showFilters={false} />);
@@ -1089,7 +1089,7 @@ test("Realistic approach: When clicked to show filters, filters are displayed", 
 });
 ```
 
-### :thumbsdown: Anti-Pattern Example: Mocking the reality with shallow rendering
+### :thumbsdown: 反例： 使用 shallow rendering 來測試
 
 ```javascript
 test("Shallow/mocked approach: When clicked to show filters, filters are displayed", () => {
