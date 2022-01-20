@@ -1113,20 +1113,21 @@ test("Shallow/mocked approach: When clicked to show filters, filters are display
 
 <br/>
 
-## ⚪ ️ 3.4 Don't sleep, use frameworks built-in support for async events. Also try to speed things up
+## ⚪ ️ 3.4 不要 sleep，善用框架內建對非同步事件的支援，並試著加速他
 
-:white_check_mark: **Do:** In many cases, the unit under test completion time is just unknown (e.g. animation suspends element appearance) - in that case, avoid sleeping (e.g. setTimeOut) and prefer more deterministic methods that most platforms provide. Some libraries allows awaiting on operations (e.g. [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), other provide API for waiting like [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance). Sometimes a more elegant way is to stub the slow resource, like API for example, and then once the response moment becomes deterministic the component can be explicitly re-rendered. When depending upon some external component that sleeps, it might turn useful to [hurry-up the clock](https://jestjs.io/docs/en/timer-mocks). Sleeping is a pattern to avoid because it forces your test to be slow or risky (when waiting for a too short period). Whenever sleeping and polling is inevitable and there's no support from the testing framework, some npm libraries like [wait-for-expect](https://www.npmjs.com/package/wait-for-expect) can help with a semi-deterministic solution
-<br/>
-
-❌ **Otherwise:** When sleeping for a long time, tests will be an order of magnitude slower. When trying to sleep for small numbers, test will fail when the unit under test didn't respond in a timely fashion. So it boils down to a trade-off between flakiness and bad performance
+:white_check_mark: **建議：** 在許多情況下，被測試單元的完成時間是未知的 (例如，因為動畫而延遲了元件的出現) — 在這種情況下，不要 sleep (例如使用 setTimeout)，而是使用大多數框架提供的更靠譜的方法。一些函示庫允許等待操作 (例如 [Cypress .request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting))，另一些函示庫提供用於等待的 API，如 [@testing-library/dom 的方法 wait(expect(element))](https://testing-library.com/docs/guide-disappearance)。有時後，更優雅的方法是 stub 那些比較慢的資源，像是 API，然後一旦響應時間變得確定，組件就可以顯式地重新渲染。當依賴一些 sleep 的外部組件時，[加快時鐘的速度](https://jestjs.io/docs/en/timer-mocks)或許能提供幫助。 sleep 是一種需要避免的模式，因為它會導致你的測試變得緩慢或有風險(如果等待的時間太短)。當 sleep 和輪詢不可避免且測試框架原生不支持時，一些 npm 的函示庫 (如 [wait-for-expect](https://www.npmjs.com/package/wait-for-expect)) 可以幫助解決半確定性問題。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 當 sleep 的時間太長時，測試速度會慢上一個數量級。當嘗試縮短 sleep 時間時，如果被測試的單元沒有及時響應，測試將會失敗。這時你不得不在脆弱的測試和糟糕的性能之間進行權衡。
 
 <br/>
 
-### :clap: Doing It Right Example: E2E API that resolves only when the async operations is done (Cypress)
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例： E2E API 在非同步的處理完後 resolves (Cypress)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
@@ -1138,7 +1139,7 @@ cy.wait("@products"); // wait for route to appear
 // this line will get executed only when the route is ready
 ```
 
-### :clap: Doing It Right Example: Testing library that waits for DOM elements
+### :clap: 正例：測試的函示庫等待 DOM 元素
 
 ```javascript
 // @testing-library/dom
@@ -1155,7 +1156,7 @@ test("movie title appears", async () => {
 });
 ```
 
-### :thumbsdown: Anti-Pattern Example: custom sleep code
+### :thumbsdown: 反例： 自製的 sleep 程式
 
 ```javascript
 test("movie title appears", async () => {
