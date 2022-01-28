@@ -1180,21 +1180,21 @@ test("movie title appears", async () => {
 
 <br/>
 
-## ⚪ ️ 3.5 Watch how the content is served over the network
+## ⚪ ️ 3.5 觀察資源經由網路被提供的情況
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Google%20LightHouse-blue.svg "Examples with Lighthouse")
 
-✅ **Do:** Apply some active monitor that ensures the page load under real network is optimized - this includes any UX concern like slow page load or un-minified bundle. The inspection tools market is no short: basic tools like [pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) can be easily configured to watch whether the server is alive and response under a reasonable SLA. This only scratches the surface of what might get wrong, hence it's preferable to opt for tools that specialize in frontend (e.g. [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) and perform richer analysis. The focus should be on symptoms, metrics that directly affect the UX, like page load time, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [time until the page gets interactive (TTI)](https://calibreapp.com/blog/time-to-interactive/). On top of that, one may also watch for technical causes like ensuring the content is compressed, time to the first byte, optimize images, ensuring reasonable DOM size, SSL and many others. It's advisable to have these rich monitors both during development, as part of the CI and most important - 24x7 over the production's servers/CDN
+✅ **建議：** 使用一些活動監視器，以確保在真實網路下的頁面載入情況是最佳的 — 這包含一些使用者體驗的問題：像是緩慢的頁面載入時間或未經壓縮的資源。市面上有很豐富的檢查工具：像 [pingdom](https://www.pingdom.com/)、AWS CloudWatch、[GCP StackDriver](https://cloud.google.com/monitoring/uptime-checks/) 這些工具可以很容易地監視伺服器是否正常運作著，是否有在合理的 SLA 下回應。不過這只解決了表面上的問題，最好選擇前端專用的工具 (如 [lighthouse](https://developers.google.com/web/tools/lighthouse/)、[pagespeed](https://developers.google.com/speed/pagespeed/insights/)) 來進行更全面的分析。並聚焦在那些直接影響使用者體驗的指標上，像是頁面載入時間、[有意義的繪製](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint)、[頁面可互動時間(TTI)](https://calibreapp.com/blog/time-to-interactive/)。更重要的是，還可以關注其他原因，像是確保內容有被壓縮、[第一個 byte 的時間](https://developer.mozilla.org/en-US/docs/Glossary/time_to_first_byte)、圖片的最佳化、並確保合理的 DOM 尺寸、SSL 或其他。建議在開發期間將這些監視器納入 CI 的一部分，以及更重要的，在 24x7 的 production 伺服器/ CDN 上使用它們。
 
 <br/>
 
-❌ **Otherwise:** It must be disappointing to realize that after such great care for crafting a UI, 100% functional tests passing and sophisticated bundling - the UX is horrible and slow due to CDN misconfiguration
+❌ **否則：** 設計了一個精美的 UI、且通過了 100% 的功能測試與精心的包裝，使用者體驗卻因為 CDN 的錯誤設定而變得糟糕及緩慢。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>程式範例</b></summary>
 
-### :clap: Doing It Right Example: Lighthouse page load inspection report
+### :clap: 正例：Lighthouse 的頁面載入檢測報告
 
 ![](/assets/lighthouse2.png "Lighthouse page load inspection report")
 
