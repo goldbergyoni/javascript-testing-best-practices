@@ -1204,19 +1204,19 @@ test("movie title appears", async () => {
 
 ## ⚪ ️ 3.6 Stub flaky and slow resources like backend APIs
 
-:white_check_mark: **Do:** When coding your mainstream tests (not E2E tests), avoid involving any resource that is beyond your responsibility and control like backend API and use stubs instead (i.e. test double). Practically, instead of real network calls to APIs, use some test double library (like [Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble), etc) for stubbing the API response. The main benefit is preventing flakiness - testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine (production env was not meant for testing and it usually throttles requests). Doing this will allow simulating various API behavior that should drive your component behavior as when no data was found or the case when API throws an error. Last but not least, network calls will greatly slow down the tests
+:white_check_mark: **建議：** 當撰寫你主要的測試 (不是 E2E 測試) 時，避免接觸任何超出你職責和控制範圍的資源，如後端 API，而是使用 stub (測試替身)。使用一些測試替身的函式庫 (如 [Sinon](https://sinonjs.org/)、[Test doubles](https://www.npmjs.com/package/testdouble) 等) 來 stub API 的回應，而不是真正的對 API 進行呼叫。最大的好處是防止出現故障 — 測試或 API 的定義常常在變動的時候，儘管組件的表現正確 (生產環境不適合進行測試，它通常對 API 的呼叫進行限制)，但有時會呼叫失敗。通過 stub 來模擬各種 API 行為，比如當沒有找到資料或 API 拋出錯誤時測試組件行為。最後但並非最不重要的原因是，經過網絡的呼叫將會大大降低執行測試的速度。
 
 <br/>
 
-❌ **Otherwise:** The average test runs no longer than few ms, a typical API call last 100ms>, this makes each test ~20x slower
+❌ **否則：** 平均執行測試的時間不再只是幾毫秒而已，一個普通的 API 呼叫至少需要 100 毫秒，這會讓你的測試慢 20 倍以上。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>✏ <b>程式範例</b></summary>
 
 <br/>
 
-### :clap: Doing It Right Example: Stubbing or intercepting API calls
+### :clap: 正例： Stub 或攔截 API 的呼叫
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
