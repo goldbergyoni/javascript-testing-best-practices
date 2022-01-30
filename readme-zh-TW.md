@@ -1256,13 +1256,13 @@ test("When no products exist, show the appropriate message", () => {
 
 <br/>
 
-## ⚪ ️ 3.7 Have very few end-to-end tests that spans the whole system
+## ⚪ ️ 3.7 寫幾個跨越整個系統的 E2E 測試
 
-:white_check_mark: **Do:** Although E2E (end-to-end) usually means UI-only testing with a real browser (See [bullet 3.6](https://github.com/goldbergyoni/javascript-testing-best-practices#-%EF%B8%8F-36-stub-flaky-and-slow-resources-like-backend-apis)), for other they mean tests that stretch the entire system including the real backend. The latter type of tests is highly valuable as they cover integration bugs between frontend and backend that might happen due to a wrong understanding of the exchange schema. They are also an efficient method to discover backend-to-backend integration issues (e.g. Microservice A sends the wrong message to Microservice B) and even to detect deployment failures - there are no backend frameworks for E2E testing that are as friendly and mature as UI frameworks like [Cypress](https://www.cypress.io/) and [Puppeteer](https://github.com/GoogleChrome/puppeteer). The downside of such tests is the high cost of configuring an environment with so many components, and mostly their brittleness - given 50 microservices, even if one fails then the entire E2E just failed. For that reason, we should use this technique sparingly and probably have 1-10 of those and no more. That said, even a small number of E2E tests are likely to catch the type of issues they are targeted for - deployment & integration faults. It's advisable to run those over a production-like staging environment
+:white_check_mark: **建議：** 雖然 E2E (end to end，端到端) 通常代表在真實瀏覽器中進行 UI 測試 (參考 3.6 項)，某些情況下，它們表示覆蓋整個系統的測試，包括連接真正的後端。後者的測試非常有價值，因為它們涵蓋那些前端和後端之間整合的問題，這些問題可能是由於溝通上，schema 產生誤會所導致。它們也是一種有效的方法來發現 backend-to-backend 的整合問題 (例如微服務 A 將錯誤的訊息發送給微服務 B) 甚至可以檢測出部署上的錯誤，目前後端沒有像前端 UI 測試工具如 [Cypress](https://www.cypress.io/) 或 [Puppeteer](https://github.com/GoogleChrome/puppeteer) 一樣友善且成熟的 E2E 框架。這種測試的缺點是，設定涵蓋這麼多組件的環境的成本很高，而且大多數組件都很脆弱 — 假設有 50 個微服務，只要其中一個死掉，整個 E2E 就會失敗。基於這個原因，我們應該少用這種技術，大概 1-10 個就夠了。也就是說，即使是少量的 E2E 測試也有機會捕獲它們 — 部署或整合的問題。建議在與生產環境相似的 stage 運行它們。
 
 <br/>
 
-❌ **Otherwise:** UI might invest much in testing its functionality only to realizes very late that the backend returned payload (the data schema the UI has to work with) is very different than expected
+❌ **否則：** UI 可能在功能測試上花費了大量的精力，但最後才發現後端回傳的內容 (UI 要使用的資料格式) 與預期中的不一樣。 
 
 <br/>
 
