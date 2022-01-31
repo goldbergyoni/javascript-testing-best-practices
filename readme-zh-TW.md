@@ -1258,7 +1258,7 @@ test("When no products exist, show the appropriate message", () => {
 
 ## ⚪ ️ 3.7 寫幾個跨越整個系統的 E2E 測試
 
-:white_check_mark: **建議：** 雖然 E2E (end to end，端到端) 通常代表在真實瀏覽器中進行 UI 測試 (參考 3.6 項)，某些情況下，它們表示覆蓋整個系統的測試，包括連接真正的後端。後者的測試非常有價值，因為它們涵蓋那些前端和後端之間整合的問題，這些問題可能是由於溝通上，schema 產生誤會所導致。它們也是一種有效的方法來發現 backend-to-backend 的整合問題 (例如微服務 A 將錯誤的訊息發送給微服務 B) 甚至可以檢測出部署上的錯誤，目前後端沒有像前端 UI 測試工具如 [Cypress](https://www.cypress.io/) 或 [Puppeteer](https://github.com/GoogleChrome/puppeteer) 一樣友善且成熟的 E2E 框架。這種測試的缺點是，設定涵蓋這麼多組件的環境的成本很高，而且大多數組件都很脆弱 — 假設有 50 個微服務，只要其中一個死掉，整個 E2E 就會失敗。基於這個原因，我們應該少用這種技術，大概 1-10 個就夠了。也就是說，即使是少量的 E2E 測試也有機會捕獲它們 — 部署或整合的問題。建議在與生產環境相似的 stage 運行它們。
+:white_check_mark: **建議：** 雖然 E2E (end to end，端到端) 通常代表在真實瀏覽器中進行 UI 測試 (參考 3.6 節)，某些情況下，它們表示覆蓋整個系統的測試，包括連接真正的後端。後者的測試非常有價值，因為它們涵蓋那些前端和後端之間整合的問題，這些問題可能是由於溝通上，schema 產生誤會所導致。它們也是一種有效的方法來發現 backend-to-backend 的整合問題 (例如微服務 A 將錯誤的訊息發送給微服務 B) 甚至可以檢測出部署上的錯誤，目前後端沒有像前端 UI 測試工具如 [Cypress](https://www.cypress.io/) 或 [Puppeteer](https://github.com/GoogleChrome/puppeteer) 一樣友善且成熟的 E2E 框架。這種測試的缺點是，設定涵蓋這麼多組件的環境的成本很高，而且大多數組件都很脆弱 — 假設有 50 個微服務，只要其中一個死掉，整個 E2E 就會失敗。基於這個原因，我們應該少用這種技術，大概 1-10 個就夠了。也就是說，即使是少量的 E2E 測試也有機會捕獲它們 — 部署或整合的問題。建議在與生產環境相似的 stage 運行它們。
 
 <br/>
 
@@ -1266,21 +1266,21 @@ test("When no products exist, show the appropriate message", () => {
 
 <br/>
 
-## ⚪ ️ 3.8 Speed-up E2E tests by reusing login credentials
+## ⚪ ️ 3.8 藉由重複使用登入憑證來加速 E2E 測試
 
-:white_check_mark: **Do:** In E2E tests that involve a real backend and rely on a valid user token for API calls, it doesn't payoff to isolate the test to a level where a user is created and logged-in in every request. Instead, login only once before the tests execution start (i.e. before-all hook), save the token in some local storage and reuse it across requests. This seem to violate one of the core testing principle - keep the test autonomous without resources coupling. While this is a valid worry, in E2E tests performance is a key concern and creating 1-3 API requests before starting each individual tests might lead to horrible execution time. Reusing credentials doesn't mean the tests have to act on the same user records - if relying on user records (e.g. test user payments history) than make sure to generate those records as part of the test and avoid sharing their existence with other tests. Also remember that the backend can be faked - if your tests are focused on the frontend it might be better to isolate it and stub the backend API (see [bullet 3.6](https://github.com/goldbergyoni/javascript-testing-best-practices#-%EF%B8%8F-36-stub-flaky-and-slow-resources-like-backend-apis)).
-
-<br/>
-
-❌ **Otherwise:** Given 200 test cases and assuming login=100ms = 20 seconds only for logging-in again and again
+white_check_mark: **建議：** 在涉及真實的後端並必須使用有效的使用者 token 進行 API 呼叫的 E2E 測試中，我們沒有必要將每個測試都從「新增使用者並登錄」開始。相反的，在測試執行開始之前只登錄一次 (使用 before-all hook)，將 token 儲存在本地端中，並在每個 request 之間重複使用它。雖然這似乎違反了測試的核心原則之一 — 保持測試的獨立性，不要耦合資源。這是一個合理的擔憂，但在 E2E 測試中，執行測試的性能是一個關鍵問題，在執行每個測試案例之前呼叫 1-3 個 API 可能會大大增加執行時間。重複使用憑證並不意味著測試必須基於相同的使用者資料 — 如果相依於使用者資料 (例如測試使用者付款的歷史記錄)，那麼要確保產生這些資料來作為測試的一部分，並避免與其他測試共享它們。還要記住，後端是可以 fake 的 — 如果你的重點是測試前端，那麼最好隔離它，然後 stub 後端 API (參考 3.6 節)。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 給定 200 個測試案例，假設登錄需要花費的時間為 100ms，則至少需要花費 20s，在這一遍遍的登錄上。 
 
 <br/>
 
-### :clap: Doing It Right Example: Logging-in before-all and not before-each
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例： 在 before-all 中登錄，而不是 before-each
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
