@@ -1376,9 +1376,9 @@ it("When doing smoke testing over all page, should load them all successfully", 
   // using any E2E suite
   cy.visit("https://mysite.com/home");
   cy.contains("Home");
-  cy.contains("https://mysite.com/Login");
+  cy.visit("https://mysite.com/Login");
   cy.contains("Login");
-  cy.contains("https://mysite.com/About");
+  cy.visit("https://mysite.com/About");
   cy.contains("About");
 });
 ```
