@@ -1314,21 +1314,21 @@ beforeEach(setUser => () {
 
 <br/>
 
-## ⚪ ️ 3.9 Have one E2E smoke test that just travels across the site map
+## ⚪ ️ 3.9 寫一個走過整個網站的 E2E 冒煙測試
 
-:white_check_mark: **Do:** For production monitoring and development-time sanity check, run a single E2E test that visits all/most of the site pages and ensures no one breaks. This type of test brings a great return on investment as it's very easy to write and maintain, but it can detect any kind of failure including functional, network and deployment issues. Other styles of smoke and sanity checking are not as reliable and exhaustive - some ops teams just ping the home page (production) or developers who run many integration tests which don't discover packaging and browser issues. Goes without saying that the smoke test doesn't replace functional tests rather just aim to serve as a quick smoke detector
-
-<br/>
-
-❌ **Otherwise:** Everything might seem perfect, all tests pass, production health-check is also positive but the Payment component had some packaging issue and only the /Payment route is not rendering
+:white_check_mark: **建議：** 為了 production 環境的監控及開發時期的完整性檢查，執行一個 E2E 測試，讓這個測試走訪過所有或大多數的網站頁面，並確保那些頁面沒有損毀。這類型的測試投資報酬率很高，因為他很容易去撰寫及維護，卻可以檢測出各種類型的故障，包括功能性、網路或佈屬的問題。其他類型的冒煙測試或完整性檢查並沒有那麼可靠及詳盡 - 有些 ops 團隊只是 ping 網站首頁 (在production環境)，或開發人員執行了一些整合測試，卻沒發現到打包或瀏覽器的問題。毫無疑問的，冒煙測試並不會取代功能測試，而只是作為一個快速的煙霧偵測器。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 一切看似很完美，所有的測試都通過了，在 production 環境的健康狀態檢查也是 ok 的，但 Payment 這個組件有一些打包的問題，導致 /Paymout 這個路徑沒有被渲染。
 
 <br/>
 
-### :clap: Doing It Right Example: Smoke travelling across all pages
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：一個跑過所有頁面的冒煙測試
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
@@ -1338,9 +1338,9 @@ it("When doing smoke testing over all page, should load them all successfully", 
   // using any E2E suite
   cy.visit("https://mysite.com/home");
   cy.contains("Home");
-  cy.contains("https://mysite.com/Login");
+  cy.visit("https://mysite.com/Login");
   cy.contains("Login");
-  cy.contains("https://mysite.com/About");
+  cy.visit("https://mysite.com/About");
   cy.contains("About");
 });
 ```
