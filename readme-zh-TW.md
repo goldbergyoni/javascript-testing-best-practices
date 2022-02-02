@@ -1349,19 +1349,19 @@ it("When doing smoke testing over all page, should load them all successfully", 
 
 <br/>
 
-## ⚪ ️ 3.10 Expose the tests as a live collaborative document
+## ⚪ ️ 3.10 將測試作為一個活的協作文件來看待
 
-:white_check_mark: **Do:** Besides increasing app reliability, tests bring another attractive opportunity to the table - serve as live app documentation. Since tests inherently speak at a less-technical and product/UX language, using the right tools they can serve as a communication artifact that greatly aligns all the peers - developers and their customers. For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as 'acceptance test' as it allows the customer to define his acceptance criteria in plain language. This is [BDD (behavior-driven testing)](https://en.wikipedia.org/wiki/Behavior-driven_development) at its purest form. One of the popular frameworks that enable this is [Cucumber which has a JavaScript flavor](https://github.com/cucumber/cucumber-js), see example below. Another similar yet different opportunity, [StoryBook](https://storybook.js.org/), allows exposing UI components as a graphic catalog where one can walk through the various states of each component (e.g. render a grid w/o filters, render that grid with multiple rows or with none, etc), see how it looks like, and how to trigger that state - this can appeal also to product folks but mostly serves as live doc for developers who consume those components.
+:white_check_mark: **建議：** 除了提升應用程式的可靠性，測試還有一個非常誘人的應用 - 作為活的程式文件。由於測試程式本質上使用的是一種技術含量較低的產品/ UX 語言，因此使用正確的工具可以將他們轉換成一種易於溝通的媒介，方便開發人員與他們的使用者進行協調。舉例來說，有一些框架可以使用人類可閱讀的語言來表達流程與期望 (如，測試計畫)，這樣一來，所有相關人員包括產品經理，都可以對測試進行閱讀、批准以及協作，如此一來．這個測試就成了活的需求文件。這樣的技術也被稱作 "驗收測試"，因為它可以讓使用者用簡單的語言定義驗收標準。這是最純粹的 [BDD (行為驅動測試)](https://en.wikipedia.org/wiki/Behavior-driven_development)，其中一個支援這個功能的框架是 [Cucumber](https://github.com/cucumber/cucumber-js)，可以參考下面的程式範例。另一個相似但不同應用情境的是 [StoryBook](https://storybook.js.org/)，它可以把 UI 的組件弄成圖形化的目錄，讓使用者可以瀏覽每個組件的各種狀態 (例如一個 grid w/o filter，讓他畫出多個 row 或沒有 row 等。)，看他長得怎樣以及如何去觸發他的不同狀態 - 這也可以提供給產品相關人員，但主要是作為活的文件給使用這些組建的開發者們。
 
-❌ **Otherwise:** After investing top resources on testing, it's just a pity not to leverage this investment and win great value
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 在測試上已經耗費了大量的資源，如果不好好利用這項投資來獲取更大的價值，非常可惜。
 
 <br/>
 
-### :clap: Doing It Right Example: Describing tests in human-language using cucumber-js
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：利用 cucumber-js 以人類可閱讀的語言來描述測試
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cucumber-blue.svg "Examples using Cucumber")
 
@@ -1382,7 +1382,7 @@ Feature: Twitter new tweet
 
 ```
 
-### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using Storybook
+### :clap: 正例：利用 Storybook 來展示組件的的不同狀態及輸入
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
