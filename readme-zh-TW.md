@@ -1392,27 +1392,27 @@ Feature: Twitter new tweet
 
 <br/><br/>
 
-## ⚪ ️ 3.11 Detect visual issues with automated tools
+## ⚪ ️ 3.11 使用自動化工作來偵測視覺問題
 
-:white_check_mark: **Do:** Setup automated tools to capture UI screenshots when changes are presented and detect visual issues like content overlapping or breaking. This ensures that not only the right data is prepared but also the user can conveniently see it. This technique is not widely adopted, our testing mindset leans toward functional tests but it's the visuals what the user experience and with so many device types it's very easy to overlook some nasty UI bug. Some free tools can provide the basics - generate and save screenshots for the inspection of human eyes. While this approach might be sufficient for small apps, it's flawed as any other manual testing that demands human labor anytime something changes. On the other hand, it's quite challenging to detect UI issues automatically due to the lack of clear definition - this is where the field of 'Visual Regression' chime in and solve this puzzle by comparing old UI with the latest changes and detect differences. Some OSS/free tools can provide some of this functionality (e.g. [wraith](https://github.com/BBC-News/wraith), [PhantomCSS](<[https://github.com/HuddleEng/PhantomCSS](https://github.com/HuddleEng/PhantomCSS)>) but might charge significant setup time. The commercial line of tools (e.g. [Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) takes is a step further by smoothing the installation and packing advanced features like management UI, alerting, smart capturing by eliminating 'visual noise' (e.g. ads, animations) and even root cause analysis of the DOM/CSS changes that led to the issue
-
-<br/>
-
-❌ **Otherwise:** How good is a content page that display great content (100% tests passed), loads instantly but half of the content area is hidden?
+:white_check_mark: **建議：** 設定自動化工具，在出現變化的時候擷取 UI 畫面，並檢測是否有內容重疊或破圖等問題。這樣做不僅可以確保資料的正確性，使用者也可以很方便的看到他們。這樣的技術沒有被廣泛的使用，我們的測試思維比較傾向於功能測試，但這代表了真實的使用者體驗，而且可以輕易地發現像是會在多個設備上展示的 UI 問題。有些免費的工具可以提供一些基本的功能 - 產生或儲存螢幕截圖，讓肉眼可以檢查。雖然這種方法對於規模較小的應用程式已經足夠，但他的缺點就跟任何手動測試一樣 - 在任何變更後都需要人力來處理。另一方面，由於缺乏清楚的定義，自動檢測 UI 問題非常有挑戰性，視覺回歸 (Visual Regression) 解決這難題的方法是，比較舊的 UI 與最新版的的差異，並顯示檢測結果。一些開源/免費的工具可以提供這樣的能力 (例如，[wraith](https://github.com/BBC-News/wraith), [PhantomCSS](https://github.com/HuddleEng/PhantomCSS))，但他們的安裝比較耗時。一些商業工具 (例如，[Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) 則更進一步，他們簡化了安裝流程，並封裝了許多進階的功能，像是管理 UI、警告、藉由過濾 "視覺噪音"(如，廣告、動畫)來進行智慧抓取，甚至可以分析出造成 DOM/CSS 發生問題的根本原因。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 一個顯示內容且通過100%的功能測試的頁面，載入速度非常快，但有一半的內容都被隱藏了，這樣的頁面是好的嗎？
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A typical visual regression - right content that is served badly
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :thumbsdown: 反例：一個典型的 visual regression，右側內容顯示異常
 
 ![alt text](assets/amazon-visual-regression.jpeg "Amazon page breaks")
 
 <br/>
 
-### :clap: Doing It Right Example: Configuring wraith to capture and compare UI snapshots
+### :clap: 正例：設定 wraith 來抓取並比對 UI 截圖
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Wraith-blue.svg "Using Wraith")
 
@@ -1441,7 +1441,7 @@ paths:
     path: /subscribe
 ```
 
-### :clap: Doing It Right Example: Using Applitools to get snapshot comparison and other advanced features
+### :clap: 正例：使用 Applitools 來獲得截圖的比對結果以及其他進階功能
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg "Using Applitools") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
