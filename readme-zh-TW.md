@@ -1468,33 +1468,33 @@ describe("visual validation", () => {
 
 <br/><br/>
 
-# Section 4️⃣: Measuring Test Effectiveness
+# 第 4 章：測量測試效果
 
 <br/><br/>
 
-## ⚪ ️ 4.1 Get enough coverage for being confident, ~80% seems to be the lucky number
+## ⚪ ️ 4.1 藉由足夠的覆蓋率來獲得信心，~80% 看起來是個幸運數
 
-:white_check_mark: **Do:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380 than 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) that presumably should satisfy most of the applications.
+:white_check_mark: **建議：** 測試的目的是為了得到足夠的信心去進行更快速的迭代，很顯然地，越多的程式被測試到，團隊會更為自信。測試覆蓋率是用來測量測試程式走過多少行 (或 branch, statement, ...)。那要多少才夠？10% ~ 30% 明顯無法證明專案的正確性，但 100% 則可能會過於浪費時間，而且可能會迫使你關注太多枝微末節的程式。答案是，需要參考很多因素並取決於應用程式的類型，如果你正在建立次世代的空中巴士 A380，那 100% 的覆蓋率是必須的；然而對於一個卡通圖片的網站來說，50% 的覆蓋率可能太高。雖然大部分的測試愛好者都說覆蓋率的最低門檻要依客觀因素來決定，但他們都提到，根據經驗 80% 是個不錯的數字。([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html))，足夠滿足大多數的應用程式。
 
-Implementation tips: You may want to configure your continuous integration (CI) to have a coverage threshold ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) and stop a build that doesn’t stand to this standard (it’s also possible to configure threshold per component, see code example below). On top of this, consider detecting build coverage decrease (when a newly committed code has less coverage) — this will push developers raising or at least preserving the amount of tested code. All that said, coverage is only one measure, a quantitative based one, that is not enough to tell the robustness of your testing. And it can also be fooled as illustrated in the next bullets
-
-<br/>
-
-❌ **Otherwise:** Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear and fear will slow you down
+實作建議：你可能會想在 CI 工具中設定測試覆蓋率的門檻 ([Jest link](https://jestjs.io/docs/configuration#collectcoverage-boolean))，並中斷那些未達覆蓋率門檻的建置 (也可以為每個組件設定覆蓋率門檻，參考下面的程式範例)。另外，也可以監測建置的覆蓋率是否下降 (當有一個新的且覆蓋率較低的程式被 commit) — 這將促使開發者去提升或至少維持一定的測試數量。說了很多，但測試覆蓋率只是一個量化出來的數值，它並不能證明你的測試是強壯的。或許你也會被他騙到 (參考下一小節的內容)。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 自信與數字是相輔相成的，如果無法確保測試已經覆蓋了大部分的系統，你將感到害怕，且恐懼會使你變慢。
 
 <br/>
 
-### :clap: Example: A typical coverage report
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：一個典型的覆蓋率報告
 
 ![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "A typical coverage report")
 
 <br/>
 
-### :clap: Doing It Right Example: Setting up coverage per component (using Jest)
+### :clap: 正例：為每個組件設定覆蓋率 (使用 Jest)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg "Using Jest")
 
