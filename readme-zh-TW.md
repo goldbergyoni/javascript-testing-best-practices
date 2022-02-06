@@ -1504,22 +1504,23 @@ describe("visual validation", () => {
 
 <br/><br/>
 
-## ⚪ ️ 4.2 Inspect coverage reports to detect untested areas and other oddities
+## ⚪ ️ 4.2 檢查測試覆蓋率的報告來發現沒有被測試的區域或奇怪的地方
 
-:white_check_mark: **Do:** Some issues sneak just under the radar and are really hard to find using traditional tools. These are not really bugs but more of surprising application behavior that might have a severe impact. For example, often some code areas are never or rarely being invoked — you thought that the ‘PricingCalculator’ class is always setting the product price but it turns out it is actually never invoked although we have 10000 products in DB and many sales… Code coverage reports help you realize whether the application behaves the way you believe it does. Other than that, it can also highlight which types of code is not tested — being informed that 80% of the code is tested doesn’t tell whether the critical parts are covered. Generating reports is easy — just run your app in production or during testing with coverage tracking and then see colorful reports that highlight how frequent each code area is invoked. If you take your time to glimpse into this data — you might find some gotchas
-<br/>
-
-❌ **Otherwise:** If you don’t know which parts of your code are left un-tested, you don’t know where the issues might come from
+:white_check_mark: **建議：** 有些問題隱藏在雷達之下，使用傳統的工具很難發現到它們。它們通常不是真正的 bug，大多數情況下是應用程式的奇怪行為，而這些行為可能會造成嚴重影響。例如，一些程式區域幾乎不會或很少被呼叫 — 你以為 "PricingCalculator" 這個 class 只會設定產品價格，結果他幾乎不會被呼叫，即使我們的資料庫中有 10000 件商品以及很多筆交易…… 測試覆蓋率報告可以幫助你發現應用程式是否按照你的期望在執行。除此之外，它會 highlight 出哪些類型的程式沒有被測試到，80% 的程式被測試並不能代表程式中關鍵的部分有被覆蓋到。產生報告很簡單，只需要在執行測試的時候開啟覆蓋率追蹤的功能，然後讓那些花花綠綠的報告來告訴你每個程式區塊被呼叫的頻率。如果你花時間去看這些數據，你可能會發現一些問題。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 如果你不知道你的程式裡面有哪些地方沒有被測試到，你將無法知道問題的來源。
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: What’s wrong with this coverage report?
+<details><summary>✏ <b>程式範例</b></summary>
 
-Based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
+<br/>
+
+### :thumbsdown: 反例：這個測試覆蓋率的報告出了什麼問題？
+
+基於一個真實世界的情境，我們在 QA 中追蹤了我們應用程式的使用情況，並發現了這個有趣的登錄模式 (提示：登入失敗的數量不成正比的，顯然是有問題的。最後發現，有一些前端的 bug 一直在打後端的登入 API) 
 
 ![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report?")
 
