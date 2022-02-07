@@ -1528,28 +1528,29 @@ describe("visual validation", () => {
 
 <br/><br/>
 
-## ⚪ ️ 4.3 Measure logical coverage using mutation testing
+## ⚪ ️ 4.3 使用「變異測試」測量邏輯覆蓋率
 
-:white_check_mark: **Do:** The Traditional Coverage metric often lies: It may show you 100% code coverage, but none of your functions, even not one, return the right response. How come? it simply measures over which lines of code the test visited, but it doesn’t check if the tests actually tested anything — asserted for the right response. Like someone who’s traveling for business and showing his passport stamps — this doesn’t prove any work done, only that he visited few airports and hotels.
+:white_check_mark: **建議：** 傳統的測試覆蓋率通常是騙人的，他可能會告訴你有 100% 的測試覆蓋率，但可能你的 function 都沒有回傳正確的值。為什麼會這樣？因為他只是很單純的測量你的測試程式走過哪幾行，而不會檢查測試案例到底測試了什麼，他到底有沒有確實去斷言正確的回應。就像有個人因公出差，他出示了他的護照，他無法證明他做了什麼工作，只能證明有去過哪幾個機場。
 
-Mutation-based testing is here to help by measuring the amount of code that was actually TESTED not just VISITED. [Stryker](https://stryker-mutator.io/) is a JavaScript library for mutation testing and the implementation is really neat:
+基於變異的測試，是透過測量"實際測試"的程式數量而不僅僅是"訪問"過的數量來提供協助。[Stryker](https://stryker-mutator.io/) 是一個用於進行變異測試的 JavaScript 函示庫，他的實作非常巧妙：
 
-(1) it intentionally changes the code and “plants bugs”. For example the code newOrder.price===0 becomes newOrder.price!=0. This “bugs” are called mutations
+(1) 他會刻意在你的程式中「植入 bug」。例如程式 `newOrder.price === 0` 會被改成 `newOrder.price != 0`，這個 "bug" 就稱為變異。
 
-(2) it runs the tests, if all succeed then we have a problem — the tests didn’t serve their purpose of discovering bugs, the mutations are so-called survived. If the tests failed, then great, the mutations were killed.
+(2) 他會跑過一次測試，如果測試通過了代表有些問題，這些測試案例沒有達到發現 bug 的目的，導致這些變異活了下來。如果測試失敗了，非常好，那些變異就會被殺掉。
 
-Knowing that all or most of the mutations were killed gives much higher confidence than traditional coverage and the setup time is similar
-<br/>
-
-❌ **Otherwise:** You’ll be fooled to believe that 85% coverage means your test will detect bugs in 85% of your code
+相較於傳統的測試覆蓋率，如果知道所有的變異都被殺死，會讓你更有自信，而且這兩者花費的時間差不多。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 你可能會誤以為 85% 的測試覆蓋率能發現程式中 85% 的 bug。
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: 100% coverage, 0% testing
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :thumbsdown: 反例： 100% coverage, 0% testing
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg "Using Stryker")
 
@@ -1564,12 +1565,12 @@ function addNewOrder(newOrder) {
 
 it("Test addNewOrder, don't use such test names", () => {
   addNewOrder({ assignee: "John@mailer.com", price: 120 });
-}); //Triggers 100% code coverage, but it doesn't check anything
+}); // Triggers 100% code coverage, but it doesn't check anything
 ```
 
 <br/>
 
-### :clap: Doing It Right Example: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
+### :clap: 正例：Stryker 的報告，一個變異測試的工具，偵測並統計沒有被測試到的程式 (變異)
 
 ![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
 
