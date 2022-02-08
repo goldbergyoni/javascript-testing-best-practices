@@ -1578,32 +1578,32 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/><br/>
 
-## ⚪ ️4.4 Preventing test code issues with Test linters
+## ⚪ ️4.4 使用 Test linter 來避免測試程式的問題
 
-:white_check_mark: **Do:** A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) will warn when a test is written at the global level (not a son of a describe() statement) or when tests are [skipped](https://mochajs.org/#inclusive-tests) which might lead to a false belief that all tests are passing. Similarly, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) can, for example, warn when a test has no assertions at all (not checking anything)
-
-<br/>
-
-❌ **Otherwise:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
-
-<br/>
-<details><summary>✏ <b>Code Examples</b></summary>
+:white_check_mark: **建議：** 有一系列的 ESLint 外掛可以檢查測試程式的風格並發現問題。比如 [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) 會警告一個寫在 global 層的測試案例 (不是寫在 describe() 底下)，或者當測試案例被 [skip](https://mochajs.org/#inclusive-tests) 時會發出警告，因為這可能會導致你誤會所有測試都通過了。類似的像，[eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) 可以在一個測試案例沒有任何斷言 (沒有檢查任何內容) 時給出警告。
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test case full of errors, luckily all are caught by Linters
+❌ **否則：**  當你滿足於 90% 的測試覆蓋率或 100% 的綠色報告時，卻發現很多測試都沒什麼斷言，或是很多測試直接被 skip 掉了。但願你沒有把這份程式佈署出去。
+
+<br/>
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :thumbsdown: 反例：一個充滿錯誤的測試案例，還好都被 Linter 抓到了
 
 ```javascript
 describe("Too short description", () => {
   const userToken = userService.getDefaultToken() // *error:no-setup-in-describe, use hooks (sparingly) instead
-  it("Some description", () => {});//* error: valid-test-description. Must include the word "Should" + at least 5 words
+  it("Some description", () => {}); // *error: valid-test-description. Must include the word "Should" + at least 5 words
 });
 
-it.skip("Test name", () => {// *error:no-skipped-tests, error:error:no-global-tests. Put tests only under describe or suite
-  expect("somevalue"); // error:no-assert
+it.skip("Test name", () => { // *error:no-skipped-tests, error:error:no-global-tests. Put tests only under describe or suite
+  expect("somevalue"); // *error:no-assert
 });
 
-it("Test name", () => {*//error:no-identical-title. Assign unique titles to tests
+it("Test name", () => { // *error:no-identical-title. Assign unique titles to tests
 });
 ```
 
