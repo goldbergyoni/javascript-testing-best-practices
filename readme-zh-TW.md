@@ -1611,24 +1611,24 @@ it("Test name", () => { // *error:no-identical-title. Assign unique titles to te
 
 <br/><br/>
 
-# Section 5️⃣: CI and Other Quality Measures
+# 第 5 章：持續整合 (CI) 或其他提高品質的手段
 
 <br/><br/>
 
-## ⚪ ️ 5.1 Enrich your linters and abort builds that have linting issues
+## ⚪ ️ 5.1 豐富你的 linter 並捨棄有 linting 問題的建置
 
-:white_check_mark: **Do:** Linters are a free lunch, with 5 min setup you get for free an auto-pilot guarding your code and catching significant issue as you type. Gone are the days where linting was about cosmetics (no semi-colons!). Nowadays, Linters can catch severe issues like errors that are not thrown correctly and losing information. On top of your basic set of rules (like [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) or [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), consider including some specializing Linters like [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) that can discover tests without assertions, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) can discover promises with no resolve (your code will never continue), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) which can discover eager regex expressions that might get used for DOS attacks, and [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) is capable of alarming when the code uses utility library methods that are part of the V8 core methods like Lodash.\_map(…)
+:white_check_mark: **建議：** 只需要 5 分鐘的設定，就可以免費得到自動保護程式碼的工具來偵測出程式中的問題。Linter 不再只是樣式工具，現在的 linter 可以抓到許多嚴重的問題，像是 error 沒有被正確的拋出或訊息的遺失。在基本的規則 (如 [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) 或 [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)) 之上，可以考慮加上一些特殊的 linter，像是 [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) 可以用來偵測測試案例有沒有寫斷言，[eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) 可以發現 Promise 有沒有 resolve (否則會導致你的程式不能繼續)，[eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) 可以發現可能會導致 DOS 攻擊的正規表示式，還有 [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) 會在程式碼使用到 V8 的核心方法的時候給予警告，例如 Lodash.\_map(…)。
 <br/>
 
-❌ **Otherwise:** Consider a rainy day where your production keeps crashing but the logs don’t display the error stack trace. What happened? Your code mistakenly threw a non-error object and the stack trace was lost, a good reason for banging your head against a brick wall. A 5 min linter setup could detect this TYPO and save your day
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 想像在某個雨天中，你的程式一直 crash，而且 log 沒有顯示 stack trace 的訊息。到底發生什麼事了？你的程式錯誤地拋出了一個非 error 的物件，而且 stack trace 都不見了，這會讓你想去撞牆。只要用 5 分鐘來設定 linter 就可以幫你偵測出這種 typo 錯誤，並拯救你一整天。
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :thumbsdown: 反例：Error 物件被拋出，這樣的錯誤不會出現 stack trace。幸運的是，ESLint 抓到了這個 bug。
 
 ![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
 
