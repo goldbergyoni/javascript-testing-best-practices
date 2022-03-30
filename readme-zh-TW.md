@@ -1202,7 +1202,7 @@ test("movie title appears", async () => {
 
 <br/>
 
-## ⚪ ️ 3.6 Stub flaky and slow resources like backend APIs
+## ⚪ ️ 3.6 stub 那些不穩定或緩慢的資源如後端 API
 
 :white_check_mark: **建議：** 當撰寫你主要的測試 (不是 E2E 測試) 時，避免接觸任何超出你職責和控制範圍的資源，如後端 API，而是使用 stub (測試替身)。使用一些測試替身的函式庫 (如 [Sinon](https://sinonjs.org/)、[Test doubles](https://www.npmjs.com/package/testdouble) 等) 來 stub API 的回應，而不是真正的對 API 進行呼叫。最大的好處是防止出現故障 — 測試或 API 的定義常常在變動的時候，儘管組件的表現正確 (生產環境不適合進行測試，它通常對 API 的呼叫進行限制)，但有時會呼叫失敗。通過 stub 來模擬各種 API 行為，比如當沒有找到資料或 API 拋出錯誤時測試組件行為。最後但並非最不重要的原因是，經過網絡的呼叫將會大大降低執行測試的速度。
 
@@ -1636,22 +1636,22 @@ it("Test name", () => { // *error:no-identical-title. Assign unique titles to te
 
 <br/><br/>
 
-## ⚪ ️ 5.2 Shorten the feedback loop with local developer-CI
+## ⚪ ️ 5.2 透過本地端的 CI 來縮短回饋循環
 
-:white_check_mark: **Do:** Using a CI with shiny quality inspections like testing, linting, vulnerabilities check, etc? Help developers run this pipeline also locally to solicit instant feedback and shorten the [feedback loop](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Why? an efficient testing process constitutes many and iterative loops: (1) try-outs -> (2) feedback -> (3) refactor. The faster the feedback is, the more improvement iterations a developer can perform per-module and perfect the results. On the flip, when the feedback is late to come fewer improvement iterations could be packed into a single day, the team might already move forward to another topic/task/module and might not be up for refining that module.
+:white_check_mark: **建議：** 在本地端使用一個包含測試、Lint、穩定性檢查等功能的 CI，可以幫助開發者快速得到回饋並縮短 [回饋循環](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/)。因為一個有效的測試流程包含很多迭代循環 (1) 嘗試 -> (2) 回饋 -> (3) 重構。所以回饋越快，開發者可以在每個流程中可以執行的迭代就越多，且可以得到更好的結果。反過來，如果回饋來得很慢，一天只能執行很少個迭代，那團隊可能會因為急需執行下一個主題/任務/循環，而不再優化當前的循環。
 
-Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) allow running the pipeline locally. Some commercial tools like [wallaby provide highly-valuable & testing insights](https://wallabyjs.com/) as a developer prototype (no affiliation). Alternatively, you may just add npm script to package.json that runs all the quality commands (e.g. test, lint, vulnerabilities) — use tools like [concurrently](https://www.npmjs.com/package/concurrently) for parallelization and non-zero exit code if one of the tools failed. Now the developer should just invoke one command — e.g. ‘npm run quality’ — to get instant feedback. Consider also aborting a commit if the quality check failed using a githook ([husky can help](https://github.com/typicode/husky))
+目前有些 CI 的服務供應商 (如：[CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) 允許在本地端執行 CI pipeline。有些商業工具像是 [wallaby](https://wallabyjs.com/) 為開發提供了非常有用的測試功能。或者你可以在 package.json 中增加 npm script 來跑一些提升程式品質的指令 — 使用工具如 [concurrently](https://www.npmjs.com/package/concurrently) 來並行執行，並在任何工具執行失敗後拋出非 0 的結束碼。開發者只需執行一個指令（如 `npm run quality` ）來快速獲取回饋。也可以用 githook 來取消沒有通過程式品質檢查的提交( [husky](https://github.com/typicode/husky) 可以幫助你)。
 <br/>
 
-❌ **Otherwise:** When the quality results arrive the day after the code, testing doesn’t become a fluent part of development rather an after the fact formal artifact
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則** 如果品質檢查的結果在程式提交後第二天才收到，那測試就不算開發的一部分了。
 
 <br/>
 
-### :clap: Doing It Right Example: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：用來執行程式品質檢查的 npm script，在開發者主動觸發或嘗試提交新程式時執行。
 
 ```javascript
 "scripts": {
