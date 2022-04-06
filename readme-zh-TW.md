@@ -1813,14 +1813,23 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️ 5.8 Other, non-Node related, CI tips
+## ⚪ ️ 5.8 其他，與 node 無關的 CI 建議
 
-:white_check_mark: **Do:** This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
+:white_check_mark: **建議：** 本文的重點是與 Node 有點關係的測試建議。但本節整理了一些眾所周知的與 Node 無關的技巧：
 
- <ol class="postList"><li name="e3e4" id="e3e4" class="graf graf--li graf-after--p">Use a declarative syntax. This is the only option for most vendors but older versions of Jenkins allows using code or UI</li><li name="1fdc" id="1fdc" class="graf graf--li graf-after--li">Opt for a vendor that has native Docker support</li><li name="edcd" id="edcd" class="graf graf--li graf-after--li">Fail early, run your fastest tests first. Create a ‘Smoke testing’ step/milestone that groups multiple fast inspections (e.g. linting, unit tests) and provide snappy feedback to the code committer</li><li name="0375" id="0375" class="graf graf--li graf-after--li">Make it easy to skim-through all build artifacts including test reports, coverage reports, mutation reports, logs, etc</li><li name="df82" id="df82" class="graf graf--li graf-after--li">Create multiple pipelines/jobs for each event, reuse steps between them. For example, configure a job for feature branch commits and a different one for master PR. Let each reuse logic using shared steps (most vendors provide some mechanism for code reuse)</li><li name="19b0" id="19b0" class="graf graf--li graf-after--li">Never embed secrets in a job declaration, grab them from a secret store or from the job’s configuration</li><li name="b70d" id="b70d" class="graf graf--li graf-after--li">Explicitly bump version in a release build or at least ensure the developer did so</li><li name="957c" id="957c" class="graf graf--li graf-after--li">Build only once and perform all the inspections over the single build artifact (e.g. Docker image)</li><li name="339b" id="339b" class="graf graf--li graf-after--li">Test in an ephemeral environment that doesn’t drift state between builds. Caching node_modules might be the only exception</li></ol>
+1. 使用聲明式語法。這是大多數工具的唯一選擇，雖然舊版本的 Jenkins 允許使用程式或 UI。
+1. 選擇具有本地端 Docker 支援的工具。
+1. 盡快失敗，先執行最快的測試。設立一個"冒煙測試"的 step/milestone，對多個快速檢查工具（如 linting，單元測試）進行分組，為程式提交者提供快速回饋。
+1. 設法方便地瀏覽建置的所有產出，包括測試報告，覆蓋率報告，變異報告，log 等。
+1. 為每個事件創建多個 pipelines/jobs。例如，為 feature branch 的提交設定一個 job，為 master PR 設定另一個。 （大多數工具提供了一些程式重用的機制）
+1. 永遠不要在 job 定義中加入機密信息，從 secret store 或 job 的設定中獲取。
+1. 在 release 中明確定義版本號。
+1. 僅建置一次，並對整個 build artifact（例如 Docker image）執行所有的檢查。
+1. 在一個臨時的環境中執行測試，在不同建置之間不會改變狀態。快取 node_modules 可能是唯一的例外。
+
 <br/>
 
-❌ **Otherwise:** You‘ll miss years of wisdom
+❌ **否則：** 你會錯過多年的智慧結晶
 
 <br/><br/>
 
