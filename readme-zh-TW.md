@@ -1714,19 +1714,19 @@ name: test-for-ci
 
 <br/><br/>
 
-## ⚪ ️5.4 Parallelize test execution
+## ⚪ ️5.4 並行測試工作
 
-:white_check_mark: **Do:** When done right, testing is your 24/7 friend providing almost instant feedback. In practice, executing 500 CPU-bounded unit test on a single thread can take too long. Luckily, modern test runners and CI platforms (like [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) and [Mocha extensions](https://github.com/yandex/mocha-parallel-tests)) can parallelize the test into multiple processes and achieve significant improvement in feedback time. Some CI vendors do also parallelize tests across containers (!) which shortens the feedback loop even further. Whether locally over multiple processes, or over some cloud CLI using multiple machines — parallelizing demand keeping the tests autonomous as each might run on different processes
+:white_check_mark: **建議：** 在合理的情況下，測試是你 24/7 的好朋友，他為你帶來即時的回饋。實際上，在單線程的 CPU 上執行 500 個單元測試可能會非常耗時。幸運的是，近代的測試執行器或 CI 平台 (如 [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) 或 [Mocha extensions](https://github.com/yandex/mocha-parallel-tests)) 可以將測試並行為多個程序來執行，藉此來大幅縮短回饋的時間。一些 CI 的廠商也支援跨容器並行測試，更進一步地縮短回饋的時間。無論是在本地端使用多個程序，或是在一些 cloud CLI 上使用多台機器來執行測試，並行化的重點是要保持測試的自主性，因為每個測試都可能在不同的程序上做執行。
 
-❌ **Otherwise:** Getting test results 1 hour long after pushing new code, as you already code the next features, is a great recipe for making testing less relevant
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 如果送出程式碼一個小時後才收到測試結果，但你已經在開發下一個功能了，這會導致測試對你來說變的不是那麼重要。
 
 <br/>
 
-### :clap: Doing It Right Example: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：藉由測試並行化，Mocha parallel 與 Jest 可以輕易的超越傳統 Mocha ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
 
 ![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
 
