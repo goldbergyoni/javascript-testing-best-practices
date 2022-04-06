@@ -1785,26 +1785,27 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.7 Automate dependency updates
+## ⚪ ️5.7 自動升級相依套件
 
-:white_check_mark: **Do:** Yarn and npm latest introduction of package-lock.json introduced a serious challenge (the road to hell is paved with good intentions) — by default now, packages are no longer getting updates. Even a team running many fresh deployments with ‘npm install’ & ‘npm update’ won’t get any new updates. This leads to subpar dependent packages versions at best or to vulnerable code at worst. Teams now rely on developers goodwill and memory to manually update the package.json or use tools [like ncu](https://www.npmjs.com/package/npm-check-updates) manually. A more reliable way could be to automate the process of getting the most reliable dependency versions, though there are no silver bullet solutions yet there are two possible automation roads:
+:white_check_mark: **建議：** Yarn 和 npm 的 package-lock.json 間接導入了一個嚴重的問題（本意是好的，但卻通往地獄）- 預設情況下，套件將不再得到更新。即使團隊使用 `npm install` 和 `npm update` 也不會獲得任何更新。會導致專案相依於不好的套件版本，或者最壞的情況是使用到容易被攻擊的程式。現在，團隊依靠開發人員的善意和記憶來手動更新 package.json 或手動使用像 [ncu]((https://www.npmjs.com/package/npm-check-updates)) 這樣的工具。然而更靠譜的方式是自動獲取可靠的相依套件版本，雖然沒有最佳的解決方案，但目前有兩種可能的自動化方式：
 
-(1) CI can fail builds that have obsolete dependencies — using tools like [‘npm outdated’](https://docs.npmjs.com/cli/outdated) or ‘npm-check-updates (ncu)’ . Doing so will enforce developers to update dependencies.
+(1) 使用 [npm outdated](https://docs.npmjs.com/cli/outdated) 或 npm-check-updates (ncu)，當有過時的相依套件時，讓 CI 的建置失敗。這樣可以強制開發人員來更新相依套件。
 
-(2) Use commercial tools that scan the code and automatically send pull requests with updated dependencies. One interesting question remaining is what should be the dependency update policy — updating on every patch generates too many overhead, updating right when a major is released might point to an unstable version (many packages found vulnerable on the very first days after being released, [see the](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope incident).
+(2) 使用商業工具，他們可以掃描程式並自動發送更新相依套件的 PR。剩下的有趣問題是相依套件的更新策略 — 若每個補丁都更新會產生太多的開銷，而大版本發佈時更新可能會指向一個不穩定的版本（許多套件在發佈後的幾天內被爆出漏洞，請參閱 [eslint-scope]((https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/)) 事件）。
 
-An efficient update policy may allow some ‘vesting period’ — let the code lag behind the @latest for some time and versions before considering the local copy as obsolete (e.g. local version is 1.3.1 and repository version is 1.3.8)
-<br/>
-
-❌ **Otherwise:** Your production will run packages that have been explicitly tagged by their author as risky
+有效的更新策略可能是允許一些 "容忍期" — 讓程式可以延後 @latest 一段時間和版本，再將本地端的副本視為過時（例如本地版本為 1.3.1 ，存儲庫版本為1.3.8）。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 你在 production 環境所使用的相依套件，可能已經被該作者標示為是有風險的。
 
 <br/>
 
-### :clap: Example: [ncu](https://www.npmjs.com/package/npm-check-updates) can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：[ncu](https://www.npmjs.com/package/npm-check-updates) 可以手動或在 CI pipeline 中使用，以檢測程式落後最新版本多少。
 
 ![alt text](assets/bp-27-yoni-goldberg-npm.png "ncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
 
