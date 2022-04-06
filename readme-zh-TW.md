@@ -1734,19 +1734,19 @@ name: test-for-ci
 
 <br/><br/>
 
-## ⚪ ️5.5 Stay away from legal issues using license and plagiarism check
+## ⚪ ️5.5 使用 License 和抄襲檢查來避免法務上的問題
 
-:white_check_mark: **Do:** Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like [license check](https://www.npmjs.com/package/license-checker) and [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stack Overflow and apparently violates some copyrights
+:white_check_mark: **建議：** License 和抄襲的問題或許不是你現在關注的點，但為什麼不在 10 分鐘內把這件工作設定好呢？許多 npm 的套件，像是 [license check](https://www.npmjs.com/package/license-checker) 和 [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (商業軟體，但有免費使用版本) 可以很容易的整合進你的 CI pipeline 中，並檢查那些像是使用限制性 license 或從 Stack Overflow 複製貼上明顯侵犯版權的程式。
 
-❌ **Otherwise:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 在不經意的情況下，開發人員可能會使用具有不適當 License 的套件，或將商業程式複製貼上，從而遇到法律上的問題。
 
 <br/>
 
-### :clap: Doing It Right Example:
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：
 
 ```javascript
 //install license-checker in your CI environment or also locally
