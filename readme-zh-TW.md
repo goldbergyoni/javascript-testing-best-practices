@@ -1676,24 +1676,39 @@ it("Test name", () => { // *error:no-identical-title. Assign unique titles to te
 
 <br/><br/>
 
-## ⚪ ️5.3 Perform e2e testing over a true production-mirror
+## ⚪ ️5.3 在真正 production 的鏡像環境中執行 e2e 測試
 
-:white_check_mark: **Do:** End to end (e2e) testing are the main challenge of every CI pipeline — creating an identical ephemeral production mirror on the fly with all the related cloud services can be tedious and expensive. Finding the best compromise is your game: [Docker-compose](https://serverless.com/) allows crafting isolated dockerized environment with identical containers using a single plain text file but the backing technology (e.g. networking, deployment model) is different from real-world productions. You may combine it with [‘AWS Local’](https://github.com/localstack/localstack) to work with a stub of the real AWS services. If you went [serverless](https://serverless.com/) multiple frameworks like serverless and [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) allows the local invocation of FaaS code.
+:white_check_mark: **建議：** End to end (e2e) 測試是每個 CI pipeline 會面臨的大挑戰 - 即時創建一個與真正 production 環境相同的鏡像環境並擁有所有相關的服務，是很費時費力的。你需要找到適合的折衷點：[Docker-compose](https://serverless.com/) 藉由一個純文字檔將 docker 化的環境放在獨立的 container 中，但他背後使用的技術 (例如網路與佈署模型) 仍然與真實世界有所差異。可以將其與 [AWS Local](https://github.com/localstack/localstack) 整合，在真正的 AWS服務中做使用。如果你使用 [serverless](https://serverless.com/) 框架，[AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) 可以讓你在本地端調用 FaaS 程式碼。
 
-The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for local and CI-mirroring though many new tools are launched frequently. One approach is running a ‘minimized-Kubernetes’ using tools like [Minikube](https://kubernetes.io/docs/setup/minikube/) and [MicroK8s](https://microk8s.io/) which resemble the real thing only come with less overhead. Another approach is testing over a remote ‘real-Kubernetes’, some CI providers (e.g. [Codefresh](https://codefresh.io/)) has native integration with Kubernetes environment and make it easy to run the CI pipeline over the real thing, others allow custom scripting against a remote Kubernetes.
+龐大的 Kubernetes 生態系還沒有一個標準、方便的本地端、CI鏡像的工具，儘管現在已有許多工具的出現。有一種方法是使用像是 [Minikube](https://kubernetes.io/docs/setup/minikube/) 和 [MicroK8s](https://microk8s.io/) 這樣的工具來運行一個 "最小化的 Kubernetes"，這些工具更貼近現實，且成本花費很小。另一種方法是在遠端的 "真實 Kubernetes" 環境上運行測試，一些 CI 的服務供應商 (如 [Codefresh](https://codefresh.io/)) 與 Kubernetes 環境擁有原生的整合，讓在 CI pipeline 上執行真實的環境變得更為容易。有的供應商則可以讓你針對遠端的 Kubernetes 自訂腳本。
 <br/>
 
-❌ **Otherwise:** Using different technologies for production and testing demands maintaining two deployment models and keeps the developers and the ops team separated
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 在生產環境和測試環境中使用不同的技術，就會需要維護兩種佈署模型，會使開發人員與維運人員分開。
 
 <br/>
 
-### :clap: Example: a CI pipeline that generates Kubernetes cluster on the fly <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([Credit: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
+<details><summary>✏ <b>程式範例</b></summary>
 
-<pre name="38d9" id="38d9" class="graf graf--pre graf-after--p">deploy:<br>stage: deploy<br>image: registry.gitlab.com/gitlab-examples/kubernetes-deploy<br>script:<br>- ./configureCluster.sh $KUBE_CA_PEM_FILE $KUBE_URL $KUBE_TOKEN<br>- kubectl create ns $NAMESPACE<br>- kubectl create secret -n $NAMESPACE docker-registry gitlab-registry --docker-server="$CI_REGISTRY" --docker-username="$CI_REGISTRY_USER" --docker-password="$CI_REGISTRY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL"<br>- mkdir .generated<br>- echo "$CI_BUILD_REF_NAME-$CI_BUILD_REF"<br>- sed -e "s/TAG/$CI_BUILD_REF_NAME-$CI_BUILD_REF/g" templates/deals.yaml | tee ".generated/deals.yaml"<br>- kubectl apply --namespace $NAMESPACE -f .generated/deals.yaml<br>- kubectl apply --namespace $NAMESPACE -f templates/my-sock-shop.yaml<br>environment:<br>name: test-for-ci</pre>
+<br/>
+
+### :clap: 正例：動態產生 Kubernetes cluster 的 CI pipeline <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([Credit: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
+
+```yaml
+deploy:
+stage: deploy
+image: registry.gitlab.com/gitlab-examples/kubernetes-deploy
+script:
+- ./configureCluster.sh $KUBE_CA_PEM_FILE $KUBE_URL $KUBE_TOKEN
+- kubectl create ns $NAMESPACE
+- kubectl create secret -n $NAMESPACE docker-registry gitlab-registry --docker-server="$CI_REGISTRY" --docker-username="$CI_REGISTRY_USER" --docker-password="$CI_REGISTRY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL"
+- mkdir .generated
+- echo "$CI_BUILD_REF_NAME-$CI_BUILD_REF"
+- sed -e "s/TAG/$CI_BUILD_REF_NAME-$CI_BUILD_REF/g" templates/deals.yaml | tee ".generated/deals.yaml"
+- kubectl apply --namespace $NAMESPACE -f .generated/deals.yaml
+- kubectl apply --namespace $NAMESPACE -f templates/my-sock-shop.yaml
+environment:
+name: test-for-ci
+```
 
 </details>
 
