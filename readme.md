@@ -964,7 +964,7 @@ it("When updating site name, get successful confirmation", async () => {
 
 :white_check_mark: **Do:** The timing when the tests clean the database determines the way the tests are being written. The two most viable options are cleaning after all the tests vs cleaning after every single test. Choosing the latter option, cleaning after every single test guarantees clean tables and builds convenient testing perks for the developer. No other records exist when the test starts, one can have certainty which data is being queried and even might be tempted to count rows during assertions. This comes with severe downsides: When running in a multi-process mode, tests are likely to interfere with each other. While process-1 purges tables, at the very moment process-2 queries for data and fail (because the DB was suddenly deleted by process-1). On top of this, It's harder to troubleshoot failing tests - Visiting the DB will show no records.
 
-The second option is to clean up after all the test files have finished (or even daily!). This approach means that the same DB with existing records serves all the tests and processes. To avoid stepping on each other's toes, the tests must add and act on specific records that they have added. Need to check that some record was added? Assume that there are other thousands of records and query for records that were added explicitly. Need to check that a record was deleted? Can't assume an empty table, check that this specific record is not there. This technique brings few powerful gains: It works natively in multi-process mode, when a developer wishes to understand what happened - the data is there and not deleted. It also increases the chance of finding bugs because the DB is full of records and not artificially empty.
+The second option is to clean up after all the test files have finished (or even daily!). This approach means that the same DB with existing records serves all the tests and processes. To avoid stepping on each other's toes, the tests must add and act on specific records that they have added. Need to check that some record was added? Assume that there are other thousands of records and query for records that were added explicitly. Need to check that a record was deleted? Can't assume an empty table, check that this specific record is not there. This technique brings few powerful gains: It works natively in multi-process mode, when a developer wishes to understand what happened - the data is there and not deleted. It also increases the chance of finding bugs because the DB is full of records and not artificially empty. [See the full comparison table here](https://github.com/testjavascript/nodejs-integration-tests-best-practices/blob/master/graphics/db-clean-options.png).
 <br/>
 
 ❌ **Otherwise:** Without a strategy to separate records or clean - Tests will step on each other toes; Using transactions will work only for relational DB and likely to get complicated once there are inner transactions
@@ -987,6 +987,85 @@ module.exports = async () => {
   }
 };
 ```
+
+</details>
+
+<br/>
+
+## ⚪ ️2.9 Isolate the component from the world using HTTP interceptor
+
+:white_check_mark: **Do:** Isolate the component under test by intercepting any outgoing HTTP request and providing the desired response so the collaborator HTTP API won't get hit. Nock is a great tool for this mission as it provides a convenient syntax for defining external services behavior. Isolation is a must to prevent noise and slow performance but mostly to simulate various scenarios and responses - A good flight simulator is not about painting clear blue sky rather bringing safe storms and chaos. This is reinforced in a Microservice architecture where the focus should always be on a single component without involving the rest of the world. Though it's possible to simulate external service behavior using test doubles (mocking), it's preferable not to touch the deployed code and act on the network level to keep the tests pure black-box. The downside of isolation is not detecting when the collaborator component changes and not realizing misunderstandings between the two services - Make sure to compensate for this using a few contract or E2E tests
+<br/>
+
+❌ **Otherwise:** Some services provide a fake version that can be deployed by the caller locally, usually using Docker - This will ease the setup and boost the performance but won't help with simulating various responses; Some services provide 'sandbox' environment, so the real service is hit but no costs or side effects are triggered - This will cut down the noise of setting up the 3rd party service but also won't allow simulating scenarios
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
+
+### :clap: Preventing network calls to externous components allows simulating scnearios and minimizing the noise
+
+```javascript
+// Intercept requests for 3rd party APIs and return a predefined response 
+beforeEach(() => {
+  nock('http://localhost/user/').get(`/1`).reply(200, {
+    id: 1,
+    name: 'John',
+  });
+});```
+
+</details>
+
+## ⚪ ️2.10 Test the response schema, mostly when there are auto-generated fields
+
+:white_check_mark: **Do:** When it is impossible to assert for specific data, check for mandatory field existence and types. Sometimes, the response contains important fields with dynamic data that can't be predicted when writing the test, like dates and incrementing numbers. If the API contract promises that these fields won't be null and hold the right types, it's imperative to test it. Most assertion libraries support checking types. If the response is small, check the return data and type together within the same assertion (see code example). One more option is to verify the entire response against an OpenAPI doc (Swagger). Most test runners have community extensions that validate API responses against their documentation.
+
+
+<br/>
+
+❌ **Otherwise:** Although the code/API caller relies on some field with dynamic data (e.g., ID, date), it will not come in return and break the contract
+
+<br/>
+
+<details><summary>✏ <b>Code Examples</b></summary>
+
+<br/>
+
+### :clap: Asserting that fields with dynamic value exist and have the right type
+
+```javascript
+  test('When adding a new valid order, Then should get back approval with 200 response', async () => {
+  // ...
+  //Assert
+  expect(receivedAPIResponse).toMatchObject({
+    status: 200,
+    data: {
+      id: expect.any(Number), // Any number satisfies this test
+      mode: 'approved',
+    },
+  });
+});
+```
+
+</details>
+
+<br/>
+
+## ⚪ ️2.11 Test the five potential outcomes
+
+:white_check_mark: **Do:** When planning your tests, consider covering the five typical flow's outputs. When your test is triggering some action (e.g., API call), a reaction is happening, something meaningful occurs and calls for testing. Note that we don't care about how things work. Our focus is on outcomes, things that are noticeable from the outside and might affect the user. These outcomes/reactions can be put in 5 categories:
+
+• Response - The test invokes an action (e.g., via API) and gets a response. It's now concerned with checking the response data correctness, schema, and HTTP status
+
+• A new state - After invoking an action, some **publicly accessible** data is probably modified
+
+• External calls - After invoking an action, the app might call an external component via HTTP or any other transport. For example, a call to send SMS, email or charge a credit card
+
+• Message queues - The outcome of a flow might be a message in a queue
+
+• Observability - Some things must be monitored, like errors or remarkable business events. When a transaction fails, not only we expect the right response but also correct error handling and proper logging/metrics. This information goes directly to a very important user - The ops user (i.e., production SRE/admin)
 
 </details>
 
