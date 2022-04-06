@@ -1,6 +1,10 @@
 <img src="/assets/jtbp-header-blue.png" width="1920px"/>
 
+## 🎊 April 2022 Announcement: A new edition was just released with 5 new best practices, many more code examples and 4 new language translations
+
 <br/>
+
+
 
 # 👇 Why this guide can take your testing skills to the next level
 
