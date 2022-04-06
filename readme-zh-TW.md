@@ -1833,20 +1833,21 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️ 5.9 Build matrix: Run the same CI steps using multiple Node versions
+## ⚪ ️ 5.9 建置模型（Matrix）：使用多個 Node 版本執行同一個 CI 流程
 
-:white_check_mark: **Do:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use MySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of MySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
-<br/>
-
-❌ **Otherwise:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
+:white_check_mark: **建議：** 品質的檢查是用於發現意外，測試覆蓋的部分越多，你就越可能儘早地發現問題。在開發會重複使用的套件或執行具有各種設定和 Node 版本的多用戶生產環境時，CI pipeline 必須在所有設定的組合上執行測試。例如，假設我們的某些客戶使用 MySQL，另一批客戶使用 Postgres。一些 CI 工具支持一種稱為"Matrix"的功能，該功能可以針對 MySQL、Postgres 或多個 Node 版本（如8、9、10）的所有組合執行測試。只要設定即可完成而無需任何額外工作。其他不支援 Matrix 的 CI 可能可以通過安裝外掛或一定程度的調整來實現這個功能。
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 在做了那麼多辛苦的測試工作之後，怎麼能讓錯誤僅僅因為設定的問題而出現。
 
 <br/>
 
-### :clap: Example: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：使用 Travis (CI 供應商) 的建置定義，在多個 Node 版本上執行相同的測試
 
 <pre name="f909" id="f909" class="graf graf--pre graf-after--p">language: node_js<br>node_js:<br>  - "7"<br>  - "6"<br>  - "5"<br>  - "4"<br>install:<br>  - npm install<br>script:<br>  - npm run test</pre>
 </details>
