@@ -16,4 +16,4 @@ Before you start with this, I've prepared some basic workflow guidelines:
 
 **Will I get credit for the translation work?** - Obviously! Your name will appear nearby the language flag in the main readme.md, added to the repo team, appear boldly at the top of the translation page - 'Translated, adapted and reviewed by {Your name}'. We will also publish a medium article with the translation with your name at the top
 
-Looking forward and excited to work on this!
+Looking forward and excited to work on this!💚
