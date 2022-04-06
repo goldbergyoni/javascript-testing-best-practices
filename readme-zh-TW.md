@@ -1765,19 +1765,19 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.6 Constantly inspect for vulnerable dependencies
+## ⚪ ️5.6 持續檢查有漏洞的相依套件
 
-:white_check_mark: **Do:** Even the most reputable dependencies such as Express have known vulnerabilities. This can get easily tamed using community tools such as [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), or commercial tools like [snyk](https://snyk.io/) (offer also a free community version). Both can be invoked from your CI on every build
+:white_check_mark: **建議：** 即使是最有信譽的相依套件，如 Express，也有已知的漏洞。可以藉由使用社群工具 (如 [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit)) 或商業工具 (如 [snyk](https://snyk.io/) (也有免費版本)) 來輕鬆解決問題。可以在每次的建置中，透過 CI pipeline 調用他們。
 
-❌ **Otherwise:** Keeping your code clean from vulnerabilities without dedicated tools will require to constantly follow online publications about new threats. Quite tedious
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **否則：** 在沒有專用工具的情況下，要保持你的程式沒有漏洞，就需要不斷追蹤網路上新發佈的漏洞威脅資訊，這會相當令人乏味。
 
 <br/>
 
-### :clap: Example: NPM Audit result
+<details><summary>✏ <b>程式範例</b></summary>
+
+<br/>
+
+### :clap: 正例：NPM Audit 的結果
 
 ![alt text](assets/bp-26-npm-audit-snyk.png "NPM Audit result")
 
