@@ -1,6 +1,6 @@
 {
   "name": "javascript-testing-best-practices",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "📗🌐 🚢 Comprehensive and exhaustive JavaScript & Node.js testing best practices (April 2020) https://testjavascript.com/",
   "main": "index.js",
   "scripts": {
