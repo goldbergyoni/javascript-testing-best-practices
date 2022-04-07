@@ -84,11 +84,11 @@ Guidelines for CI in the JS world (9 bullets)
 ## ⚪️ 0 The Golden Rule: Design for lean testing
 
 :white_check_mark: **Do:**
-Testing code is not like production-code - design it to be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should look at a test and get the intent instantly.
+Testing code is not production-code - Design it to be short, dead-simple, flat, and delightful to work with. One should look at a test and get the intent instantly.
 
-Our minds are full with the main production code, we don't have 'headspace' for additional complexity. Should we try to squeeze yet another challenging code into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
+See, our minds are already occupied with our main job - the production code. There is no 'headspace' for additional complexity. Should we try to squeeze yet another sus-system into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
 
-The tests are an opportunity for something else - a friendly and smiley assistant, one that it's delightful to work with and delivers great value for such a small investment. Science tells us that we have two brain systems: system 1 is used for effortless activities like driving a car on an empty road and system 2 which is meant for complex and conscious operations like solving a math equation. Design your test for system 1, when looking at test code it should _feel_ as easy as modifying an HTML document and not like solving 2X(17 × 24).
+The tests are an opportunity for something else - a friendly assistant, co-pilot, that delivers great value for a small investment. Science tells us that we have two brain systems: system 1 is used for effortless activities like driving a car on an empty road and system 2 which is meant for complex and conscious operations like solving a math equation. Design your test for system 1, when looking at test code it should _feel_ as easy as modifying an HTML document and not like solving 2X(17 × 24).
 
 This can be achieved by selectively cherry-picking techniques, tools and test targets that are cost-effective and provide great ROI. Test only as much as needed, strive to keep it nimble, sometimes it's even worth dropping some tests and trade reliability for agility and simplicity.
 
@@ -380,7 +380,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 ## ⚪ ️1.6 Don’t “foo”, use realistic input data
 
-:white_check_mark: **Do:** Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not as a replacement) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? See the next bullet (property-based testing).
+:white_check_mark: **Do:** Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Chance](https://github.com/chancejs/chancejs) or [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not as a replacement) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? See the next bullet (property-based testing).
 <br/>
 
 ❌ **Otherwise:** All your development testing will falsely show green when you use synthetic inputs like “Foo”, but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
@@ -536,12 +536,12 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/><br/>
 
-## ⚪ ️1.9 Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️Copy code, but only that's neccessary
 
-:white_check_mark: **Do:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests ([also known as ‘test fixture’](https://en.wikipedia.org/wiki/Test_fixture)) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
+:white_check_mark: **Do:** Include all the necessary details that affect the test result, but nothing more. As an example, consider a test that should factor 100 lines of input JSON - Pasting this in every test is tedious. Extracting it outside to transferFactory.getJSON() will leave the test vague - Without data, it's hard to correlate the test result with the cause ("why is it supposed to return 400 status?"). The classic book x-unit patterns named this pattern 'the mystery guest' - Something unseen affected our test results, we don't know what exactly. We can do better by extracting repeatable long parts outside AND mention explictly which specific details matter to the test. Going with the example above, the test can pass parameters that highlight what is important: transferFactory.getJSON({sender: undefined}). In this example, the reader should immediately infer that the empty sender field is the reason why the test should expect a validation error or any other similar adequate outcome.
 <br/>
 
-❌ **Otherwise:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
+❌ **Otherwise:** Copying 500 JSON lines in will leave your tests unmaintainable and unreadable. Moving everything outside will end with vague tests that are hard to understand
 
 <br/>
 
@@ -549,45 +549,41 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+### :thumbsdown: Anti-Pattern Example: The test failure is unclear because all the cause is external and hides within huge JSON
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
 ```javascript
-before(async () => {
-  //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
-  await DB.AddSeedDataFromJson('seed.json');
-});
-it("When updating site name, get successful confirmation", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
-  const siteToUpdate = await SiteService.getSiteByName("Portal");
-  const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
-  expect(updateNameResult).to.be(true);
-});
-it("When querying by site name, get the right site", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
-  const siteToCheck = await SiteService.getSiteByName("Portal");
-  expect(siteToCheck.name).to.be.equal("Portal"); //Failure! The previous test change the name :[
-});
+test("When no credit, the declined transfer does not appear in sender history", async() => {
+      // Arrange
+      const transferRequest = testHelpers.factorMoneyTransfer() //get back 200 lines of JSON;
+      const transferServiceUnderTest = new TransferService();
 
+      // Act
+      const transferResponse = await transferServiceUnderTest.transfer(transferRequest);
+
+      // Assert
+      expect(transferResponse.status).toBe(409);// But why do we expect failure: All seems perfectly valid in the test 🤔
+    });
 ```
 
 <br/>
 
-### :clap: Doing It Right Example: We can stay within the test, each test acts on its own set of data
+### :clap: Doing It Right Example: The test highlights what is the cause of the test result
 
 ```javascript
-it("When updating site name, get successful confirmation", async () => {
-  //test is adding a fresh new records and acting on the records only
-  const siteUnderTest = await SiteService.addSite({
-    name: "siteForUpdateTest"
-  });
 
-  const updateNameResult = await SiteService.changeName(siteUnderTest, "newName");
+test("When no credit, the declined transfer does not appear in sender history", async() => {
+      // Arrange
+      const transferRequest = testHelpers.factorMoneyTransfer({userCredit:100, transferAmount:200}) //obviously there is lack of credit
+      const transferServiceUnderTest = new TransferService({disallowOvercharge:true});
 
-  expect(updateNameResult).to.be(true);
-});
-```
+      // Act
+      const transferResponse = await transferServiceUnderTest.transfer(transferRequest);
+
+      // Assert
+      expect(transferResponse.status).toBe(409); // Obviously if the user has no credit it should fail
+    });```
 
 </details>
 
@@ -784,6 +780,9 @@ A word of caution: the TDD argument in the software world takes a typical false-
 :white_check_mark: **Do:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung song of the testing world — they provide the best from both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
 
 Component tests focus on the Microservice ‘unit’, they work against the API, don’t mock anything which belongs to the Microservice itself (e.g. real DB, or at least the in-memory version of that DB) but stub anything that is external like calls to other Microservices. By doing so, we test what we deploy, approach the app from outwards to inwards and gain great confidence in a reasonable amount of time.
+
+[We have a full guide that is solely dedicated to writing component tests in the right way](https://github.com/testjavascript/nodejs-integration-tests-best-practices)
+
 <br/>
 
 ❌ **Otherwise:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
