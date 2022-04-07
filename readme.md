@@ -554,7 +554,7 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
 
 ```javascript
-test("When no credit, the declined transfer does not appear in sender history", async() => {
+test("When no credit, then the transfer is declined", async() => {
       // Arrange
       const transferRequest = testHelpers.factorMoneyTransfer() //get back 200 lines of JSON;
       const transferServiceUnderTest = new TransferService();
@@ -573,7 +573,7 @@ test("When no credit, the declined transfer does not appear in sender history", 
 
 ```javascript
 
-test("When no credit, the declined transfer does not appear in sender history", async() => {
+test("When no credit, then the transfer is declined ", async() => {
       // Arrange
       const transferRequest = testHelpers.factorMoneyTransfer({userCredit:100, transferAmount:200}) //obviously there is lack of credit
       const transferServiceUnderTest = new TransferService({disallowOvercharge:true});
@@ -583,11 +583,12 @@ test("When no credit, the declined transfer does not appear in sender history", 
 
       // Assert
       expect(transferResponse.status).toBe(409); // Obviously if the user has no credit it should fail
-    });```
+    });
+  ```
 
 </details>
 
-<br/>
+<br/><br/>
 
 ## ⚪ ️ 1.10 Don’t catch errors, expect them
 
