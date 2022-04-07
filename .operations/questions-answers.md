@@ -4,7 +4,7 @@
 
 **Answer:**
 
-Welcome aboard! Having a Brazilian Portuguese translation would be awesome 🔥🌈👌 . I'll be glad to collaborate with you on this and help wherever I can
+Welcome aboard! Having a Brazilian Portuguese translation would be awesome 🔥🌈👌💚 . I'll be glad to collaborate with you on this and help wherever I can
 
 Before you start with this, I've prepared some basic workflow guidelines:
 
