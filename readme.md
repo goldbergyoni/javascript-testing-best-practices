@@ -2,6 +2,8 @@
 
 ## 🎊 April 2022 Announcement: A new edition was just released with 5 new best practices, many more code examples and 4 new language translations
 
+## 👨‍🏫 Next workshop: Verona, Italy 🇮🇹, April 20th. [Tickets and more info here](https://2022.jsday.it/workshop/nodejs_testing.html)
+
 <br/>
 
 
@@ -27,8 +29,9 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 ### Written By Yoni Goldberg
 
 - A JavaScript & Node.js consultant
-- 📗 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com) - My comprehensive online course with more than [10 hours of video](https://www.testjavascript.com), 14 test types and more than 40 best practices
+- 📗 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com) - My comprehensive online course with more than [7 hours of video](https://www.testjavascript.com), 14 test types and more than 40 best practices
 - [Follow me on Twitter](https://twitter.com/goldbergyoni/)
+- [Next workshop: Verona, Italy 🇮🇹, April 20th])(https://2022.jsday.it/workshop/nodejs_testing.html)
 
 <br/>
 
