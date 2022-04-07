@@ -44,6 +44,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 - 🇧🇷[Portuguese-BR](readme-pt-br.md) - Courtesy of [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) and [koooge](https://github.com/koooge)
 - 🇫🇷[French](readme-fr.md) - Courtesy of [Mathilde El Mouktafi](https://github.com/mel-mouk)
 - 🇯🇵[Japanese (draft)](https://github.com/yuichkun/javascript-testing-best-practices/blob/master/readme-jp.md) - Courtesy of [Yuichi Yogo](https://github.com/yuichkun) and [ryo](https://github.com/kawamataryo)
+- 🇹🇼[Traditional Chinese](readme-zh-TW.md) - Courtesy of [Yubin Hsu](https://github.com/yubinTW)
 - Want to translate to your own language? please open an issue 💜
 
 <br/><br/>
