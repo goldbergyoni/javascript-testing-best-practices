@@ -1063,7 +1063,7 @@ beforeEach(() => {
 
 <br/>
 
-## ⚪ ️2.12 Check integrations corner cases and chaos
+## ⚪ ️2.11 Check integrations corner cases and chaos
 
 :white_check_mark: **Do:** When checking integrations, go beyond the happy and sad paths. Check not only errored responses (e.g., HTTP 500 error) but also network-level anomalies like slow and timed-out responses. This will prove that the code is resilient and can handle various network scenarios like taking the right path after a timeout, has no fragile race conditions, and contains a circuit breaker for retries. Reputable interceptor tools can easily simulate various network behaviors like hectic service that occasionally fail. It can even realize when the default HTTP client timeout value is longer than the simulated response time and throw a timeout exception right away without waiting
 
@@ -1109,7 +1109,7 @@ beforeEach(() => {
 <br/>
 
 
-## ⚪ ️2.13 Test the five potential outcomes
+## ⚪ ️2.12 Test the five potential outcomes
 
 :white_check_mark: **Do:** When planning your tests, consider covering the five typical flow's outputs. When your test is triggering some action (e.g., API call), a reaction is happening, something meaningful occurs and calls for testing. Note that we don't care about how things work. Our focus is on outcomes, things that are noticeable from the outside and might affect the user. These outcomes/reactions can be put in 5 categories:
 
