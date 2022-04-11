@@ -1201,7 +1201,7 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React")
 
-```html
+```jsx
 // the markup code (part of React component)
 <h3>
   <Badge pill className="fixed_badge" variant="dark">
@@ -1228,7 +1228,7 @@ test("Whenever no data is passed to metric, show 0 as default", () => {
 
 ### :thumbsdown: Anti-Pattern Example: Relying on CSS attributes
 
-```html
+```jsx
 <!-- the markup code (part of React component) -->
 <span id="metric" className="d-flex-column">{value}</span>
 <!-- what if the designer changes the classs? -->
