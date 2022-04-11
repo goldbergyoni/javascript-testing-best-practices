@@ -1070,7 +1070,7 @@ beforeEach(() => {
 
 <br/>
 
-❌ **Otherwise:** All your tests pass, it's only the production who will crash or won't report errors correctly when 3rd parties send excpetional responses
+❌ **Otherwise:** All your tests pass, it's only the production who will crash or won't report errors correctly when 3rd parties send exceptional responses
 
 <br/>
 
