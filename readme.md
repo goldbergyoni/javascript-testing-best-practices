@@ -304,7 +304,7 @@ class ProductService {
   //public method
   getPrice(productId) {
     const desiredProduct = DB.getProduct(productId);
-    finalPrice = this.calculateVATAdd(desiredProduct.price).finalPrice;
+    const finalPrice = this.calculateVATAdd(desiredProduct.price).finalPrice;
     return finalPrice;
   }
 }
