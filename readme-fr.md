@@ -14,7 +14,7 @@ Ceci est un guide complet pour Javascript & Node.js de A à Z. Il résume et org
 
 Embarque pour un voyage qui va bien au-delà des bases et aborde des sujets avancés tels que les tests en production, les tests de mutations, les tests basés sur les propriétés et de nombreux autres outils stratégiques et professionnels. Si vous lisez chaque mot de ce guide, vos compétences de tests seront probablement bien au-dessus la moyenne.
 
-## 🌐 Full-stack: front, backend, CI ...
+## 🌐 Full-stack: front, backend, CI
 
 Commence par comprendre les pratiques de tests omniprésentes qui sont à la base de tout niveau d'application. Ensuite, plonge dans ton domaine de prédilection : frontend/UI, backend, CI ou peut-être tous ça à la fois ?
 
@@ -24,11 +24,12 @@ Commence par comprendre les pratiques de tests omniprésentes qui sont à la bas
 
 - Un consultant JavaScript & Node.js
 - 📗 [Les tests Node.js & JavaScript de A à Z](https://www.testjavascript.com) - Mon cours en ligne complet avec plus de [10 heures de video](https://www.testjavascript.com), 14 types de tests et plus de 40 bonnes pratiques
-- [Suis-moi sur Twitter ](https://twitter.com/goldbergyoni/)
+- [Suis-moi sur Twitter](https://twitter.com/goldbergyoni/)
 
 <br/>
 
 ### Traductions - Lis dans la langue de ton choix
+
 - 🇬🇧[Anglais](readme.md)
 - 🇨🇳[Chinois](readme-zh-CN.md) - Traduit par [Yves yao](https://github.com/yvesyao)
 - 🇰🇷[Coréen](readme.kr.md) - Traduit par [Rain Byun](https://github.com/ragubyun)
@@ -76,7 +77,7 @@ Lignes directrices pour l'intégration continue dans le monde du JS (9 points)
 :white_check_mark: **À faire:**
 Le code des tests n'est pas comme le code de production - conçoit le pour être simple, court, sans abstraction, agréable à utiliser et minimaliste. En regardant le code d'un test, on doit pouvoir comprendre son but instantanément.
 
-Nos esprits sont déjà occupés avec le code de production, on n'a pas "d'espace" pour de la complexité additionnelle. Si on essaye d'insérer un autre code compliqué dans nos pauvres cerveaux, l'équipe va être ralentie ce qui est en contradiction avec la raison pour laquelle on fait des tests. 
+Nos esprits sont déjà occupés avec le code de production, on n'a pas "d'espace" pour de la complexité additionnelle. Si on essaye d'insérer un autre code compliqué dans nos pauvres cerveaux, l'équipe va être ralentie ce qui est en contradiction avec la raison pour laquelle on fait des tests.
 En pratique, c'est là que de nombreuses équipes abandonnent tout simplement les tests.
 
 Les tests sont une opportunité pour autre chose - un assistant amical et souriant, un avec qui il est agréable de travailler et qui nous apporte beaucoup pour peu d'investissement. La science nous dit que l'on a deux systèmes cérébraux : le premier est utilisé pour les activités qui ne demandent pas d'effort comme conduire une voiture sur une route vide ; le deuxième sert aux opérations complexes et conscientes comme résoudre une équation mathématique. Conçois tes tests pour le premier système, lire un test doit _sembler_ aussi simple que de modifier un fichier HTML, et pas comme résoudre 2X(17 x 24).
@@ -164,7 +165,6 @@ describe('Products Service', function() {
 <br/>
 
 ❌ **Autrement:** Non seulement, vous avez passé des heures à comprendre le code principal, mais en plus ce qui devait être la partie la plus simple de la journée (tester) vous tord le cerveau.
-
 
 <br/>
 
@@ -318,7 +318,7 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 
 Avant d'utiliser des "test doubles", pose toi une question très simple: Est-ce que je l'utilise pour tester une fonctionnalité qui apparaît, ou peut apparaître, dans le document de spécification ? Si non, ça sent le test de boite blanche.
 
-Par exemple, si tu veux tester que ton application se comporte correctement quand le service de paiement est coupé, tu peux faire un stub du service de paiement et déclencher une réponse de type 'No Response' pour vérifier que l'unité testée retourne la bonne valeur. Cela vérifie le comportement/réponse de notre application suivant un certain scénario. Tu peux aussi utiliser un spy pour vérifier qu'un email a bien été envoyé quand ce service était coupé - il s'agit encore une fois d'un test de comportement qui pourrait apparaître dans les spécifications ("Envoyer un email si le paiement n'as pas pu être enregistré"). 
+Par exemple, si tu veux tester que ton application se comporte correctement quand le service de paiement est coupé, tu peux faire un stub du service de paiement et déclencher une réponse de type 'No Response' pour vérifier que l'unité testée retourne la bonne valeur. Cela vérifie le comportement/réponse de notre application suivant un certain scénario. Tu peux aussi utiliser un spy pour vérifier qu'un email a bien été envoyé quand ce service était coupé - il s'agit encore une fois d'un test de comportement qui pourrait apparaître dans les spécifications ("Envoyer un email si le paiement n'as pas pu être enregistré").
 D'un autre côté, si tu mock le service de paiement pour vérifier qu'il a bien été appelé avec le bon type Javascript, alors ton test est orienté sur des comportements internes qui n'ont rien à voir avec les fonctionnalités de l'application et changeront probablement fréquemment.
 <br/>
 
@@ -384,6 +384,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 <br/>
 
 ### :thumbsdown: Exemple d'anti pattern: Une suite de test qui passe à cause de données non réalistes
+
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
@@ -683,6 +684,7 @@ describe("Order service", function() {
 <br/>
 
 ### :clap: Bien faire les choses, exemple: Structurer une suite avec le nom de l'unité testé et les scénarios mènera au rapport pratique montré ci-dessous
+
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
@@ -738,7 +740,7 @@ Apprends et pratique [les principes TDD](https://www.sm-cloud.com/book-review-te
 
 ## ⚪ ️2.1 Enrichis ton portefeuille de test: Vois plus loin que les tests unitaire et la pyramide
 
-:white_check_mark: **À faire:** La [pyramide de tests](https://martinfowler.com/bliki/TestPyramid.html), bien que vielle de plus de 10 ans, est un bon modèle qui suggère trois types de tests et influence la plupart des stratégies de tests des développeurs. Dans un même temps, une poignée de nouvelles techniques de tests brillantes ont émergé et sont dans l'ombre de la pyramide de tests. Étant donné l'étendu des changements que l'on a vu ces 10 dernières années (micro-services, cloud, serverless), est-il seulement possible qu'un vieux modèle soit adapté à *tout* les types d'applications ? Le monde du test ne devrait-il pas accueillir de nouvelles techniques ?
+:white_check_mark: **À faire:** La [pyramide de tests](https://martinfowler.com/bliki/TestPyramid.html), bien que vielle de plus de 10 ans, est un bon modèle qui suggère trois types de tests et influence la plupart des stratégies de tests des développeurs. Dans un même temps, une poignée de nouvelles techniques de tests brillantes ont émergé et sont dans l'ombre de la pyramide de tests. Étant donné l'étendu des changements que l'on a vu ces 10 dernières années (micro-services, cloud, serverless), est-il seulement possible qu'un vieux modèle soit adapté à _tout_ les types d'applications ? Le monde du test ne devrait-il pas accueillir de nouvelles techniques ?
 
 Ne vous méprenez pas, en 2019, la pyramide de tests, le TDD et les tests unitaires sont toujours une technique puissante et sont probablement le meilleur choix pour beaucoup d'applications. Seulement, comme les autres modèles, malgré qu'il soit utile, [il doit être faux parfois](https://en.wikipedia.org/wiki/All_models_are_wrong). Par exemple, imagine une application IoT qui traite de nombreux événements dans une queue (message-bus) comme Kafka/RabbitMQ, qui vont ensuite dans un entrepot de donnée puis sont lus par une UI d'analyse. Est-ce qu'on devrait vraiment dépenser 50% de notre budget de test pour écrire des tests unitaires sur une application qui est centrée sur l'intégration et n'a presque aucune logique ? Plus la diversité des applications augmente (bots, crypto, Alexa-skills) plus les chances sont grandes de trouver un scénario ou la pyramide de test n'est pas le meilleur choix.
 
@@ -808,7 +810,7 @@ Les tests de composant se concentrent sur "l'unité" du microservice, ils foncti
 
 <br/>
 
-### :clap: Bien faire les choses, exemple:
+### :clap: Bien faire les choses, exemple
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Examples with PACT")
 
@@ -873,7 +875,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :clap: Bien faire les choses, exemple: CodeClimate, un outil commercial qui peux identifier des méthodes complexes:
+### :clap: Bien faire les choses, exemple: CodeClimate, un outil commercial qui peux identifier des méthodes complexes
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Examples with CodeClimate")
 
@@ -1221,7 +1223,7 @@ test("movie title appears", async () => {
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Google%20LightHouse-blue.svg "Examples with Lighthouse")
 
-✅ **À faire:** Applique un monitoring active qui s'assure que le chargement de la page sur un vrai réseau est optimisé - ça inclue les questions UX comme un chargement lent ou un bundle non minifié. Le marché des outils d'inspection n'est pas petit: des outils basiques comme pingdom](https://www.pingdom.com/), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) peuvent être configuré rapidement pour vérifier sur le server est disponible et répond sous un délai raisonnable. Cela ne fait qu'effleurer la surface de ce qui pourrait aller mal, il est donc préférable de choisir des outils spécialisés pour le frontend (e.g [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) et d'effectuer une analyse plus complète. L'attention doit être portée sur les symptômes, les métriques qui affectent directement l'expérience utilisateur, comme le temps de chargement d'une page, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [le temps jusqu'à ce que la page devienne intéractive (TTI)](https://calibreapp.com/blog/time-to-interactive/). En plus de ça, on peut également surveiller les causes techniques, comme s'assurer que le contenu est complet, le temps jusqu'au premier byte, l'optimisation des images, s'assurer d'une taille de DOM raisonnable, SSL et autres. Il est recommandable d'avoir ces monitorings complets à la fois pendant le développement, dans le processus CI et surtout - 24h/24 7j/7 sur les serveurs/CDN de production
+✅ **À faire:** Applique un monitoring active qui s'assure que le chargement de la page sur un vrai réseau est optimisé - ça inclue les questions UX comme un chargement lent ou un bundle non minifié. Le marché des outils d'inspection n'est pas petit: des outils basiques comme pingdom](<https://www.pingdom.com/>), AWS CloudWatch, [gcp StackDriver](https://cloud.google.com/monitoring/uptime-checks/) peuvent être configuré rapidement pour vérifier sur le server est disponible et répond sous un délai raisonnable. Cela ne fait qu'effleurer la surface de ce qui pourrait aller mal, il est donc préférable de choisir des outils spécialisés pour le frontend (e.g [lighthouse](https://developers.google.com/web/tools/lighthouse/), [pagespeed](https://developers.google.com/speed/pagespeed/insights/)) et d'effectuer une analyse plus complète. L'attention doit être portée sur les symptômes, les métriques qui affectent directement l'expérience utilisateur, comme le temps de chargement d'une page, [meaningful paint](https://scotch.io/courses/10-web-performance-audit-tips-for-your-next-billion-users-in-2018/fmp-first-meaningful-paint), [le temps jusqu'à ce que la page devienne intéractive (TTI)](https://calibreapp.com/blog/time-to-interactive/). En plus de ça, on peut également surveiller les causes techniques, comme s'assurer que le contenu est complet, le temps jusqu'au premier byte, l'optimisation des images, s'assurer d'une taille de DOM raisonnable, SSL et autres. Il est recommandable d'avoir ces monitorings complets à la fois pendant le développement, dans le processus CI et surtout - 24h/24 7j/7 sur les serveurs/CDN de production
 <br/>
 
 ❌ **Autrement:** Il doit être décevant de se rendre compte qu'après tout le soin apporté à la création d'une interface utilisateur, des tests 100% fonctionnels réussis et des bundles sophistiqué - l'expérience utilisateur est horrible et lente à cause d'une mauvaise configuration du CDN.
@@ -1251,6 +1253,7 @@ test("movie title appears", async () => {
 <br/>
 
 ### :clap: Bien faire les choses, exemple: Stub ou intercepter les appels API
+
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
 ```javascript
@@ -1300,7 +1303,7 @@ test("When no products exist, show the appropriate message", () => {
 
 ## ⚪ ️ 3.8 Accélérer les tests E2E en réutilisant les informations d'authentification
 
-:white_check_mark: **à faire:** Dans des tests E2E qui incluent un vrai backend et utilisent un token utilisateur valide pour les appels API, ce n'est pas rentable d'isoler les tests à un niveau ou l'utilisateur est créé et authentifié à chaque requete. À la place, authentifie l'utilisateur une seule fois avant que l'exécution des tests commence (i.e before-all hook), enregistre le token en local et réutilise le dans les requetes. Ça semble violer un des principes de test principal - garder les tests autonomes sans associer les ressources. Même si c'est une inquiétude valide, dans les tests E2E la performance est une inquiétude clé et créer 1-3 requêtes API avant chaque test peut mener a un temps d'execution horrible. Réutiliser les informations d'authentification ne veut pas dire que les tests doivent agir sur la même entrée utilisateur - si le test compte sur les entrées utilisateur (e.g. test l'historique de paiement d'un utilisateur) alors assure toi de générer ces entrées dans le test et évite de les partager avec d'autres tests. Rappelle-toi aussi que le backend peut être simulé - Si les tests se concentrent sur le frontend, il vaut mieux les isoler et simuler l'API backend (voir point 3.6). 
+:white_check_mark: **à faire:** Dans des tests E2E qui incluent un vrai backend et utilisent un token utilisateur valide pour les appels API, ce n'est pas rentable d'isoler les tests à un niveau ou l'utilisateur est créé et authentifié à chaque requete. À la place, authentifie l'utilisateur une seule fois avant que l'exécution des tests commence (i.e before-all hook), enregistre le token en local et réutilise le dans les requetes. Ça semble violer un des principes de test principal - garder les tests autonomes sans associer les ressources. Même si c'est une inquiétude valide, dans les tests E2E la performance est une inquiétude clé et créer 1-3 requêtes API avant chaque test peut mener a un temps d'execution horrible. Réutiliser les informations d'authentification ne veut pas dire que les tests doivent agir sur la même entrée utilisateur - si le test compte sur les entrées utilisateur (e.g. test l'historique de paiement d'un utilisateur) alors assure toi de générer ces entrées dans le test et évite de les partager avec d'autres tests. Rappelle-toi aussi que le backend peut être simulé - Si les tests se concentrent sur le frontend, il vaut mieux les isoler et simuler l'API backend (voir point 3.6).
 <br/>
 
 ❌ **Autrement:** Si on prend 200 cas de tests et qu'on estime l'authentification à 100ms = 20 secondes simplement pour s'authentifier encore et encore
@@ -1312,6 +1315,7 @@ test("When no products exist, show the appropriate message", () => {
 <br/>
 
 ### :clap: Bien faire les choses, exemple: Se connecter dans le before-all pas dans le before-each
+
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
 ```javascript
@@ -1394,6 +1398,7 @@ Par exemple, certains frameworks permettent d'exprimer les parcours et les atten
 <br/>
 
 ### :clap: Bien faire les choses, exemple: Décrire les tests dans un language humain avec cucumber-js
+
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cucumber-blue.svg "Examples using Cucumber")
 
 ```javascript
@@ -1414,6 +1419,7 @@ Feature: Twitter new tweet
 ```
 
 ### :clap: Bien faire les choses, exemple: Visualiser nos composants, leurs états et entrées en utilisant Storybook
+
 ![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
 ![alt text](assets/story-book.jpg "Storybook")
@@ -1755,7 +1761,7 @@ Le large écosystème de Kubernetes doit encore formaliser un outil standard pou
 
 <br/>
 
-### :clap: Bien faire les choses, exemple:
+### :clap: Bien faire les choses, exemple
 
 ```javascript
 //install license-checker in your CI environment or also locally

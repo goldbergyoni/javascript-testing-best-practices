@@ -24,7 +24,7 @@ Empieza por comprender las técnicas de testing ubicuas que son la base de cualq
 
 - Consultor JavaScript & Node.js
 - 📗 [Testing Node.js & JavaScript de la A a la Z](https://www.testjavascript.com) - Mi curso completamente online con más de [10 horas de video](https://www.testjavascript.com), 14 tipos de test y más de 40 buenas practicas
-- [Sígueme en Twitter ](https://twitter.com/goldbergyoni/)
+- [Sígueme en Twitter](https://twitter.com/goldbergyoni/)
 
 <br/>
 
@@ -369,7 +369,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 ## ⚪ ️1.6 No uses “foo”, usa datos realistas
 
-:white_check_mark: **Haz:** A menudo, los bugs de producción se revelan bajo una entrada muy específica y sorprendente: cuanto más realista sea la entrada de un test, mayores serán las posibilidades de detectar bugs temprano. Utiliza librerías dedicadas como [Faker] (https://www.npmjs.com/package/faker) para generar datos pseudo-reales que se asemejan en variedad y forma a los datos de producción. Por ejemplo, dichas librerías pueden generar números de teléfono realistas, nombres de usuario, tarjetas de crédito, nombres de empresas e incluso texto "lorem ipsum". También puedes crear algunos test (además de los test unitarios, no como un reemplazo) que aleatorizan los datos falsos para forzar la unidad que estamos testeando o incluso importar datos reales de su entorno de producción. ¿Quieres llevarlo al siguiente nivel? Ve la próxima sección (test basados en propiedades)
+:white_check_mark: **Haz:** A menudo, los bugs de producción se revelan bajo una entrada muy específica y sorprendente: cuanto más realista sea la entrada de un test, mayores serán las posibilidades de detectar bugs temprano. Utiliza librerías dedicadas como [Faker] (<https://www.npmjs.com/package/faker>) para generar datos pseudo-reales que se asemejan en variedad y forma a los datos de producción. Por ejemplo, dichas librerías pueden generar números de teléfono realistas, nombres de usuario, tarjetas de crédito, nombres de empresas e incluso texto "lorem ipsum". También puedes crear algunos test (además de los test unitarios, no como un reemplazo) que aleatorizan los datos falsos para forzar la unidad que estamos testeando o incluso importar datos reales de su entorno de producción. ¿Quieres llevarlo al siguiente nivel? Ve la próxima sección (test basados en propiedades)
 <br/>
 
 ❌ **De lo contrario:** Todo tus test de desarrollo estarán en verde falsamente cuando uses datos sintéticos como "Foo", pero luego en producción pueden ponerse en rojo cuando un hacker use cadenas extrañas como “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
@@ -467,7 +467,7 @@ Por otro lado, los tutoriales y herramientas basados en ‘classic snapshots’ 
 Vale la pena señalar que hay algunos casos en los que los snapshoots grandes y externos son buenos - cuando comprobamos el esquema y no los datos (ignorando los valores y centrándonos en los campos) o en los casos en el que el documento no va a cambiar apenas en el tiempo
 <br/>
 
-❌ **De lo contrario:** Un test UI falla. El código parece correcto, la pantalla esta pintando todos los pixels correctamente, ¿que ha pasado? tu test de snapshoot ha encontrado una diferencia entre el origen y lo que ha recibido al ejecutarse: simplemente hay un espacio añadido en cualquier parte... 
+❌ **De lo contrario:** Un test UI falla. El código parece correcto, la pantalla esta pintando todos los pixels correctamente, ¿que ha pasado? tu test de snapshoot ha encontrado una diferencia entre el origen y lo que ha recibido al ejecutarse: simplemente hay un espacio añadido en cualquier parte...
 
 <br/>
 
@@ -741,7 +741,7 @@ Aprenda y practique [principios TDD](https://www.sm-cloud.com/book-review-test-d
 
 :white_check_mark: **Haz:** La [pirámide de test](https://martinfowler.com/bliki/TestPyramid.html), con 10> años de antigüedad, es un modelo excelente y relevante que sugiere tres tipos de test e influye en la estrategia de testeo de la mayoría de los desarrolladores. Al mismo tiempo, surgieron un puñado de nuevas y brillantes técnicas de testeo que se esconden en las sombras de la pirámide de test. Dados todos los cambios que hemos visto en los últimos 10 años (microservicios, cloud, serverless), ¿es posible que un modelo algo antiguo se adapte a *todos* los tipos de aplicaciones? ¿No debería el mundo del testing considerar aceptar nuevas técnicas?
 
-No me malinterpretes, en 2019 la pirámide de test, el TDD y los test unitarios siguen siendo una técnica buena y probablemente sean la mejor combinación para muchas aplicaciones. Sólo como cualquier otro modelo, a pesar de su utilidad, [a veces debe estar equivocado] (https://en.wikipedia.org/wiki/All_models_are_wrong). Por ejemplo, considera una aplicación IOT que ingiere muchos eventos en un bus de mensajes como Kafka / RabbitMQ, que luego fluyen a algún data-warehouse y finalmente son consultados por alguna UI de análisis. ¿Realmente deberíamos gastar el 50% de nuestro presupuesto para test en escribir test unitarios para una aplicación que esté centrada en la integración y apenas tenga lógica? A medida que aumenta la diversidad de tipos de aplicaciones (bots, criptografía, Alexa-skills), aumentan las posibilidades de encontrar escenarios en los que la pirámide de test no sea la mejor opción
+No me malinterpretes, en 2019 la pirámide de test, el TDD y los test unitarios siguen siendo una técnica buena y probablemente sean la mejor combinación para muchas aplicaciones. Sólo como cualquier otro modelo, a pesar de su utilidad, [a veces debe estar equivocado] (<https://en.wikipedia.org/wiki/All_models_are_wrong>). Por ejemplo, considera una aplicación IOT que ingiere muchos eventos en un bus de mensajes como Kafka / RabbitMQ, que luego fluyen a algún data-warehouse y finalmente son consultados por alguna UI de análisis. ¿Realmente deberíamos gastar el 50% de nuestro presupuesto para test en escribir test unitarios para una aplicación que esté centrada en la integración y apenas tenga lógica? A medida que aumenta la diversidad de tipos de aplicaciones (bots, criptografía, Alexa-skills), aumentan las posibilidades de encontrar escenarios en los que la pirámide de test no sea la mejor opción
 
 Es hora de enriquecer el abanico de test y familiarizarse con más tipos de test (las siguientes secciones sugieren algunas ideas), modelos como la pirámide de test, pero también hacer coincidir los tipos de test con los problemas del mundo real al que te enfrentas ('Hola, nuestra API está rota, ¡escribamos contract testing dirigidos al consumidor!'), diversifica tus test como un inversor que construye una cartera de inversión basada en el análisis de riesgos — evalúa dónde pueden surgir problemas y combina algunas medidas de prevención para mitigar esos riesgos potenciales
 
@@ -773,7 +773,7 @@ Una advertencia: el TDD en el mundo del software adopta una cara de falsa dicoto
 
 ## ⚪ ️2.2 Los test de Componentes pueden ser tu mejor amigo
 
-:white_check_mark: **Haz:** 
+:white_check_mark: **Haz:**
 
 Cada test unitario cubre una pequeña parte de la aplicación y cubrirla totalmente cuesta muchísimo, mientras que los test end-to-end cubren fácilmente mucho terreno, pero son costosos y más lentos, ¿por qué no aplicar un enfoque equilibrado y escribir test más grandes que test unitarios pero más pequeños que los test end-to-end? Los test de componente es la canción no cantada del mundo del testing — proporcionan lo mejor de ambos mundos: rendimiento razonable y la posibilidad de aplicar patrones TDD + cobertura realista
 
@@ -791,7 +791,6 @@ Los test de componente se centran en la 'unidad' de microservicios, funcionan co
 
 ### :clap: Ejemplo de cómo hacerlo correctamente: Supertest permite acercarse al API Express (rápido y cubre muchas capas)
 
-
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Ejemplos con Mocha")
 
 ![alt text](assets/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) permite acercarse al API Express (rápido y cubre muchas capas)")
@@ -802,7 +801,7 @@ Los test de componente se centran en la 'unidad' de microservicios, funcionan co
 
 ## ⚪ ️2.3 Asegúrate de que las nuevas versiones no rompan el API usando tests de contrato
 
-:white_check_mark: **Haz:** Pongamos que tu microservicio tiene múltiples consumidores, y tenemos en ejecución diferentes versiones del servicio por compatibilidad (para que todos estén contentos). Luego cambias un campo y "¡boom!", uno de los consumidores que necesita ese campo se cabrea. Este es el Catch-22 del mundo de la integración: es muy difícil para el lado del servidor considerar todas las expectativas de todos los consumidores. Por otro lado, los consumidores no pueden realizar ningún test porque el servidor controla las fechas de release. [Los contratos dirigidos por el consumidor y el framework PACT] (https://docs.pact.io/) nacieron para regularizar este proceso con un enfoque muy disruptivo: no es el servidor quien define los test de sí mismo, sino que son los consumidores quienes definen los test de ¡el servidor! PACT puede registrar las expectativas del consumidor y dejarlas en una ubicación compartida, "broker", para que el servidor pueda cogerlas y cumplir con las expectativas y ejecutar cada construcción utilizando la librería PACT para detectar contratos incumplidos — una expectativa de consumidor no cumplida. Al hacerlo, todos los desajustes de la API cliente-servidor se detectan muy pronto durante la construcción / CI y pueden ahorrarte mucha frustración
+:white_check_mark: **Haz:** Pongamos que tu microservicio tiene múltiples consumidores, y tenemos en ejecución diferentes versiones del servicio por compatibilidad (para que todos estén contentos). Luego cambias un campo y "¡boom!", uno de los consumidores que necesita ese campo se cabrea. Este es el Catch-22 del mundo de la integración: es muy difícil para el lado del servidor considerar todas las expectativas de todos los consumidores. Por otro lado, los consumidores no pueden realizar ningún test porque el servidor controla las fechas de release. [Los contratos dirigidos por el consumidor y el framework PACT] (<https://docs.pact.io/>) nacieron para regularizar este proceso con un enfoque muy disruptivo: no es el servidor quien define los test de sí mismo, sino que son los consumidores quienes definen los test de ¡el servidor! PACT puede registrar las expectativas del consumidor y dejarlas en una ubicación compartida, "broker", para que el servidor pueda cogerlas y cumplir con las expectativas y ejecutar cada construcción utilizando la librería PACT para detectar contratos incumplidos — una expectativa de consumidor no cumplida. Al hacerlo, todos los desajustes de la API cliente-servidor se detectan muy pronto durante la construcción / CI y pueden ahorrarte mucha frustración
 
 <br/>
 
@@ -814,7 +813,7 @@ Los test de componente se centran en la 'unidad' de microservicios, funcionan co
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente:
+### :clap: Ejemplo de cómo hacerlo correctamente
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Ejemplos con PACT")
 
@@ -826,7 +825,7 @@ Los test de componente se centran en la 'unidad' de microservicios, funcionan co
 
 ## ⚪ ️ 2.4 Testea tus middlewares aisladamente
 
-:white_check_mark: **Haz:** Muchos evitan los test de middleware porque representan una pequeña porción del sistema y requieren ejecutar un servidor Express. Ambas razones son incorrectas — los middlewares son pequeños pero afectan a todas o la mayoría de las solicitudes y pueden testearse fácilmente como funciones puras que obtienen {req, res} objetos JS. Para testear una función de middleware se debe invocar y usar spy ([usando Sinon, por ejemplo] (https://www.npmjs.com/package/sinon)) sobre la interacción con los objetos {req, res} para garantizar que nuestra función middleware realiza la acción correcta. La librería [node-mock-http] (https://www.npmjs.com/package/node-mocks-http) lo lleva aún más lejos y factoriza los objetos {req, res} ademas de añadir el spy. Por ejemplo, puede asertar si el estado http que se estableció en el objeto res coincide con el esperado (consulta el ejemplo a continuación)
+:white_check_mark: **Haz:** Muchos evitan los test de middleware porque representan una pequeña porción del sistema y requieren ejecutar un servidor Express. Ambas razones son incorrectas — los middlewares son pequeños pero afectan a todas o la mayoría de las solicitudes y pueden testearse fácilmente como funciones puras que obtienen {req, res} objetos JS. Para testear una función de middleware se debe invocar y usar spy ([usando Sinon, por ejemplo] (<https://www.npmjs.com/package/sinon>)) sobre la interacción con los objetos {req, res} para garantizar que nuestra función middleware realiza la acción correcta. La librería [node-mock-http] (<https://www.npmjs.com/package/node-mocks-http>) lo lleva aún más lejos y factoriza los objetos {req, res} ademas de añadir el spy. Por ejemplo, puede asertar si el estado http que se estableció en el objeto res coincide con el esperado (consulta el ejemplo a continuación)
 
 <br/>
 
@@ -881,7 +880,7 @@ Crédito: <a href="https://github.com/TheHollidayInn" data-href="https://github.
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente: CodeClimate, una herramienta comercial que puede identificar métodos complejos:
+### :clap: Ejemplo de cómo hacerlo correctamente: CodeClimate, una herramienta comercial que puede identificar métodos complejos
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Ejemplos con CodeClimate")
 
@@ -1582,7 +1581,7 @@ Basado en un escenario real en el que rastreamos el uso de nuestra aplicación e
 
 :white_check_mark: **Haz:** La métrica de cobertura tradicional a menudo miente: puede mostrarle una cobertura de código del 100%, pero ninguna de sus funciones, ni siquiera una, devuelve la respuesta correcta. ¿Cómo? simplemente mide sobre qué líneas de código se paso en los test, pero no verifica si los test realmente han comprobado algo - asercionando la respuesta correcta. Como alguien que viaja por negocios y muestra su pasaporte, esto no te asegura que haya realizado ningún trabajo, solo que ha visitado ciertos aeropuertos y hoteles
 
-Los test basados en mutaciones nos ayudan midiendo la cantidad de código que en realidad se TESTEÓ, no solo VISITADO. [Stryker] (https://stryker-mutator.io/) es una librería JavaScript para mutation testing y la implementación es realmente clara:
+Los test basados en mutaciones nos ayudan midiendo la cantidad de código que en realidad se TESTEÓ, no solo VISITADO. [Stryker] (<https://stryker-mutator.io/>) es una librería JavaScript para mutation testing y la implementación es realmente clara:
 
 (1) cambia intencionalmente el código y "planta bugs". Por ejemplo, el código newOrder.price === 0 se convierte en newOrder.price! = 0. Estos "bugs" se llaman mutaciones
 
@@ -1629,7 +1628,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 ## ⚪ ️4.4 Prevención de problemas de código de test con linters para test
 
-:white_check_mark: **Haz:** ESLint tiene un conjunto de plugins específicos para inspeccionar patrones de código de test y descubrir problemas. Por ejemplo, [eslint-plugin-mocha] (https://www.npmjs.com/package/eslint-plugin-mocha) avisará cuando un test se escriba a nivel global (no es hijo de un describe () ) o cuando se omiten los test (https://mochajs.org/#inclusive-tests), lo que puede llevar a creer erróneamente de que todos los test están ok. Del mismo modo, [eslint-plugin-jest] (https://github.com/jest-community/eslint-plugin-jest) puede, por ejemplo, advertir cuando un test no tiene aserciones (sin verificar nada)
+:white_check_mark: **Haz:** ESLint tiene un conjunto de plugins específicos para inspeccionar patrones de código de test y descubrir problemas. Por ejemplo, [eslint-plugin-mocha] (<https://www.npmjs.com/package/eslint-plugin-mocha>) avisará cuando un test se escriba a nivel global (no es hijo de un describe () ) o cuando se omiten los test (<https://mochajs.org/#inclusive-tests>), lo que puede llevar a creer erróneamente de que todos los test están ok. Del mismo modo, [eslint-plugin-jest] (<https://github.com/jest-community/eslint-plugin-jest>) puede, por ejemplo, advertir cuando un test no tiene aserciones (sin verificar nada)
 
 <br/>
 
@@ -1688,9 +1687,9 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 ## ⚪ ️ 5.2 Acorta el tiempo de feedback con local developer-CI
 
-:white_check_mark: **Haz:** ¿Tienes un pipeline de CI con test, linter, verificación de vulnerabilidades, etc? Ayuda a los desarrolladores a ejecutarlo también localmente para solicitar comentarios instantáneos y acortar el [ciclo de feedback] (https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2 -circuitos de retroalimentacion/). ¿Por qué? un proceso de testing eficiente constituye muchos bucles iterativos: (1) test -> (2) feedback -> (3) refactor. Cuanto más rápido sea el feedback, más iteraciones de mejora puede realizar un desarrollador por módulo y perfeccionar los resultados. Por otro lado, cuando el feedback tarda en llegar, se podrían realizar menos iteraciones de mejora en un solo día, el equipo podría estar ya haciendo otra cosa / tarea / módulo y podría no estar listo para refinar ese módulo
+:white_check_mark: **Haz:** ¿Tienes un pipeline de CI con test, linter, verificación de vulnerabilidades, etc? Ayuda a los desarrolladores a ejecutarlo también localmente para solicitar comentarios instantáneos y acortar el [ciclo de feedback] (<https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2> -circuitos de retroalimentacion/). ¿Por qué? un proceso de testing eficiente constituye muchos bucles iterativos: (1) test -> (2) feedback -> (3) refactor. Cuanto más rápido sea el feedback, más iteraciones de mejora puede realizar un desarrollador por módulo y perfeccionar los resultados. Por otro lado, cuando el feedback tarda en llegar, se podrían realizar menos iteraciones de mejora en un solo día, el equipo podría estar ya haciendo otra cosa / tarea / módulo y podría no estar listo para refinar ese módulo
 
-En la practica, algunos proveedores de CI (Ejemplo: [CircleCI CLI local] (https://circleci.com/docs/2.0/local-cli/)) permiten ejecutar el pipeline localmente. Algunas herramientas comerciales como [wallaby proporcionan información valiosa y de test] (https://wallabyjs.com/) para el desarrollador sin coste. Alternativamente, puedes agregar scripts npm en el package.json para ejecutar todos los comandos de calidad (por ejemplo, test, linter, vulnerabilidades) - usa herramientas como [concurrently] (https://www.npmjs.com/package/concurrently) para paralelizarlas y que el código de salida sea distinto de cero si falla alguna de las herramientas. Ahora el desarrollador solo debe invocar un comando - por ejemplo "npm run quality": para obtener feedback en el acto. Considera también cancelar un commit si el control de calidad falla usando un githook ([husky puede ayudar] (https://github.com/typicode/husky))
+En la practica, algunos proveedores de CI (Ejemplo: [CircleCI CLI local] (<https://circleci.com/docs/2.0/local-cli/>)) permiten ejecutar el pipeline localmente. Algunas herramientas comerciales como [wallaby proporcionan información valiosa y de test] (<https://wallabyjs.com/>) para el desarrollador sin coste. Alternativamente, puedes agregar scripts npm en el package.json para ejecutar todos los comandos de calidad (por ejemplo, test, linter, vulnerabilidades) - usa herramientas como [concurrently] (<https://www.npmjs.com/package/concurrently>) para paralelizarlas y que el código de salida sea distinto de cero si falla alguna de las herramientas. Ahora el desarrollador solo debe invocar un comando - por ejemplo "npm run quality": para obtener feedback en el acto. Considera también cancelar un commit si el control de calidad falla usando un githook ([husky puede ayudar] (<https://github.com/typicode/husky>))
 
 <br/>
 
@@ -1783,7 +1782,7 @@ El enorme ecosistema de Kubernetes aún no tiene una herramienta estándar para 
 
 <br/>
 
-### :clap: Ejemplo de cómo hacerlo correctamente:
+### :clap: Ejemplo de cómo hacerlo correctamente
 
 ```javascript
 //instala license-checker en tu entorno de CI o localmente

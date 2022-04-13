@@ -7,25 +7,26 @@
 <br/>
 
 ## 📗 45+ 最佳实践：非常全面彻底
+
 这篇文章从 A 到 Z 给出了 JavaScript & Node.js 的稳定性指南。它为你整理总结了市面上大量的最佳博客文章、书籍以及工具。
 
-
 ## 🚢 进阶：在基础上前进 10000 公里
+
 从基础领域跨上前往进阶话题的旅程，包括：在生产环境测试、编译测试、基于属性的测试以及很多策略 & 专业工具。如果你仔细阅读了本指南中的每个字，则你的测试能力将有可能大大超过平均水平。
 
-
 ## 🌐 全栈：前端、后端、CI、任何岗位
+
 先了解通用的测试实践为其他应用层的打下基础。然后，在你自己的领域深入探索：前端/UI、后端、CI 甚至是他们所有的层面。
 
 <br/>
 
 ### 作者 Yoni Goldberg
+
 - 一位 JavaScript & Node.js 顾问
 - 👨‍🏫 [我的测试网站](https://www.testjavascript.com/) - 在欧洲 & 美国了解 [我的测试网站](https://www.testjavascript.com/)
 - [在 Twitter 关注我](https://twitter.com/goldbergyoni/)
 - 来 [LA](https://js.la/), [Verona](https://2019.nodejsday.it/), [Kharkiv](https://kharkivjs.org/), [free webinar](https://zoom.us/webinar/register/1015657064375/WN_Lzvnuv4oQJOYey2jXNqX6A)听我的演讲。后续工作待定。
 - [我的 JavaScript 质量新闻](https://testjavascript.com/newsletter/) - 战略层面的视野和信息
-
 
 <br/><br/>
 
@@ -57,7 +58,6 @@ JS 领域的 CI 指南（9 条）
 
 <br/><br/>
 
-
 # 第 0 章：黄金法则
 
 <br/>
@@ -78,7 +78,6 @@ JS 领域的 CI 指南（9 条）
 
 ### 准备好开始了吗？
 
-
 <br/><br/>
 
 # 第一章: 测试剖析
@@ -96,7 +95,6 @@ JS 领域的 CI 指南（9 条）
 (3) 期望的结果是什么？（比如不允许添加该产品）
 
 <br/>
-
 
 ❌ **否则:** 当一个名为“新增产品”的测试用例挂掉之后，你如何准确找到是哪里出问题了？
 
@@ -126,9 +124,11 @@ describe('Products Service', function() {
 });
 
 ```
+
 <br/>
 
 ### :clap: 正例: 一个包含三部分的用例名
+
 ![alt text](/assets/bp-1-3-parts.jpeg "A test name that constitutes 3 parts")
 
 </details>
@@ -145,9 +145,7 @@ describe('Products Service', function() {
 
 3rd A - 断言（Assert）：保证得到的值符合预期。通常一行代码。
 
-
 <br/>
-
 
 ❌ **否则:** 你不仅要花大量时间理解这段代码，而且本该是最简单的部分却耗费了你的大量脑细胞。
 
@@ -194,21 +192,14 @@ test('Should be classified as premium', () => {
     });
 ```
 
-
 </details>
 
-
-
 <br/><br/>
-
-
-
 
 ## ⚪ ️1.3 用产品语言描述期望：使用 BDD 形式的断言
 
 :white_check_mark: **建议:** 使用声明的方式写代码，可以使读者无脑 get 到重点。而如果你的代码使用各种条件逻辑包裹起来，则会增加读者的理解难度。因此，我们应尽量使用类似人类语言的形式描述如 `expect` 或 `should` 而不是自己写代码。如果 Chai 和 Jest 不包含你想要的断言，而且这种断言可被高度复用时，你可以考虑 [扩展 Jest 匹配器 (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) 或者写一个 [自定义 Chai 插件](https://www.chaijs.com/guide/plugins/)
 <br/>
-
 
 ❌ **否则:** 团队的测试代码会越写越少，而且会用 .skip() 把一些讨厌的测试用例注释掉。
 
@@ -220,7 +211,7 @@ test('Should be classified as premium', () => {
  "Examples with Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
 
-  ### :thumbsdown: 反例: 为了了解该用例的目的，读者必须快速浏览冗长复杂的代码
+### :thumbsdown: 反例: 为了了解该用例的目的，读者必须快速浏览冗长复杂的代码
 
 ```javascript
 test("When asking for an admin, ensure only ordered admins in results" , () => {
@@ -247,10 +238,10 @@ test("When asking for an admin, ensure only ordered admins in results" , () => {
 });
 
 ```
+
 <br/>
 
 ### :clap: 正例: 快速浏览下面的声明式用例很轻松
-
 
 ```javascript
 it("When asking for an admin, ensure only ordered admins in results" , () => {
@@ -265,15 +256,12 @@ it("When asking for an admin, ensure only ordered admins in results" , () => {
 
 </details>
 
-
 <br/><br/>
-
 
 ## ⚪ ️  1.4 坚持黑盒测试：只测 public 方法
 
 :white_check_mark: **建议:** 测试内部逻辑是无意义且浪费时间的。如果你的 代码/API 返回了正确的结果，你真的需要花三个小时时间去测试它内部究竟如何实现的，并且在之后维护这一堆脆弱的测试吗？每当测试一个公共方法时，其私有实现也会被隐式地测试，只有当存在某个问题(例如错误的输出)时测试才会中断。这种方法也称为`行为测试`。另一方面，如果你测试内部方法(白盒方法)—你的关注点将从组件的输出结果转移到具体的细节上，如果某天内部逻辑改变了，即使结果依然正确，你也要花精力去维护之前的测试逻辑，这无形中增加了维护成本。
 <br/>
-
 
 ❌ **否则:** 你的代码将会像[狼来了](https://en.wikipedia.org/wiki/The_Boy_Who_Cried_Wolf)一样：总是叫唤着“出问题啦”（比如一个因私有变量名改变导致的用例失败）。则人们必然会开始忽略 CI 的通知，直到某天真正的 bug 被忽略……
 
@@ -312,9 +300,6 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 
 </details>
 
-
-
-
 <br/><br/>
 
 ## ⚪ ️ ️1.5 使用正确的测试替身（Test Double）：避免总用 stub 和 spy
@@ -322,7 +307,6 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 :white_check_mark: **建议:**  测试替身是把双刃剑，他们在提供巨大价值的同时，耦合了应用的内部逻辑 (<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[这里有一篇关于测试替身的文章: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).<br />在使用测试替身前，问自己一个很简单的问题：我是用它来测试需求文档中定义的可见的功能或者可能可见的功能吗？如果不是，那就可能是白盒测试了。<br />举例来说，如果你想测试你的应用程序在支付服务宕机时的合理表现，你可以 stub 支付服务并触发一些“无响应”返回，以确保被测试的单元返回正确的值。这可以测试特定场景下的应用程序的行为、响应、输出结果。你也可以使用一个 spy 来断言当服务宕机时发送了一封电子邮件——这又是一个针对可能出现在需求文档中的行为的检查(“如果无法保存付款，请发送电子邮件”)。反过来，如果你 mock 的支付服务，并确保它被正确调用并传入正确的 JavaScript 类型，那么你的测试重点是内部的逻辑，它与应用的功能关系不大，而且可能会经常变化。
 
 <br/>
-
 
 ❌ **否则:** 任何代码重构都要求搜索代码中的所有 mock 并相应地进行更新。测试变成了一种负担，而不是一个帮手。
 
@@ -333,8 +317,10 @@ it("White-box test: When the internal methods get 0 vat, it return 0 response", 
 <br/>
 
 ### :thumbsdown: 反例: 关注内部实现的 mock
+
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg
  "Examples with Mocha & Chai")
+
 ```javascript
 it("When a valid product is about to be deleted, ensure data access DAL was called once, with the right product and right config", async () => {
     //Assume we already added a product
@@ -345,6 +331,7 @@ it("When a valid product is about to be deleted, ensure data access DAL was call
     dataAccessMock.verify();
 });
 ```
+
 <br/>
 
 ### :clap:正例: 使用 spy 关注于测试需求本身，而作为副作用不得不接触内部
@@ -360,8 +347,6 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 </details>
 
-
-
 <br/><br/>
 
 ## ⚪ ️1.6 不要“foo”，使用真实数据
@@ -369,9 +354,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 :white_check_mark: **建议:**  生产环境中的 bug 通常是在一些特殊或者意外的输入下出现的——所以测试的输入数据越真实，越容易在早期抓住问题。使用现有的一些库（比如 [Faker](https://www.npmjs.com/package/faker)）去造“假”真数据来模拟生产环境数据的多样性和形式。比如，这些库可以生成真实的电话号码、用户名、信用卡、公司名等等。你还可以创建一些测试(在单元测试之上，而不是替代)生产随机 fakers 数据来扩展你的测试单元，甚至从生产环境中导入真实的数据。想要进阶的话，请看下一条：基于属性的测试。
 <br/>
 
-
-❌ **否则:** 你所有的用例都在 “foo” 之类的输入值下表现正确，结果上线后收到诸如  “[@3e2ddsf ]() . ##’ 1 fdsfds . fds432 AAAA” 之类的输入后挂掉了。
-
+❌ **否则:** 你所有的用例都在 “foo” 之类的输入值下表现正确，结果上线后收到诸如  “[@3e2ddsf]() . ##’ 1 fdsfds . fds432 AAAA” 之类的输入后挂掉了。
 
 <br/>
 
@@ -383,7 +366,6 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
-
 
 ```javascript
 const addProduct = (name, price) =>{
@@ -405,6 +387,7 @@ test("Wrong: When adding new product with valid properties, get successful confi
 });
 
 ```
+
 <br/>
 
 ### :clap:正例: 随机生成真实的输入数据
@@ -421,9 +404,6 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 </details>
 
-
-
-
 <br/><br/>
 
 ## ⚪ ️ 1.7 基于属性的测试：测试输入的多种组合
@@ -431,9 +411,7 @@ it("Better: When adding new valid product, get successful confirmation", async (
 :white_check_mark: **建议:** 通常我们只会选择部分的数据样例去测试，即使是使用了上一节讲到的工具去模拟真实数据，我们也只覆盖到了一部分输入的组合(`method(‘’, true, 1), method(“string” , false” , 0)`)。然而在生产环境中，一个拥有 5 个参数的 API，可能会遇到上千种排列组合，而其中的某一种可能会把你的进程搞挂（[见 Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)）。如何自动生成这上千种组合并在它们出问题后 catch 到？基于属性的测试适用于这种需求：向你的测试单元传入所有可能的输入组合，以增加发现 bug 的可能。例如，给定一个方法 —— `addNewProduct(id, name, isDiscount)`，支持属性测试的库将使用一批`(number, string, boolean)`组合调用此方法，比如`(1，“iPhone”，false)`，`(2，“Galaxy”，true)`。您可以使用您最喜欢的测试运行器(Mocha、Jest等)，<br />通常，我们为每个测试选择一些输入样本。即使输入格式类似于现实世界的数据(见子弹“别foo”),我们只涉及几个输入组合(方法(“,真的,1),方法(“字符串”,假”,0)),然而,在生产中,一个API调用与成千上万的5个参数可以调用不同的排列,其中一个可能使我们的流程(见模糊测试)。如果您可以编写一个测试，自动发送1000个不同输入的排列组合，并捕获我们的代码未能返回正确响应的输入，那该怎么办?基于属性的测试就是这样一种技术:通过发送所有可能的输入组合到你的测试单元中，它增加了发现bug的偶然性。例如，给定一个方法—addNewProduct(id, name, isDiscount)—支持库将使用许多(number, string, boolean)组合调用此方法，比如(1，“iPhone”，false)，(2，“Galaxy”，true)。您可以使用您最喜欢的测试运行器(Mocha、Jest等)：比如 [js-verify](https://github.com/jsverify/jsverify) 或者 [testcheck](https://github.com/leebyron/testcheck-js) (文档比较好)。 更新: Nicolas Dubien 在下面的回复中建议 [了解下 fast-check](https://github.com/dubzzz/fast-check#readme) 它提供了更多的能力，似乎更易维护。
 <br/>
 
-
 ❌ **否则:** 你无意中选择的输入数据只覆盖了没问题的代码路径。不幸的是，它没有真正发现了 bug。
-
 
 <br/>
 
@@ -463,9 +441,6 @@ describe("Product service", () => {
 ```
 
 </details>
-
-
-
 
 <br/><br/>
 
@@ -511,9 +486,11 @@ expect(receivedPage).toMatchSnapshot();
 
 });
 ```
+
 <br/>
 
 ### :clap: 正例: 期望是可见且集中的
+
 ```javascript
 it('When visiting TestJavaScript.com home page, a menu is displayed', () => {
 //Arrange
@@ -538,7 +515,6 @@ expect(menu).toMatchInlineSnapshot(`
 
 </details>
 
-
 <br/><br/>
 
 ## ⚪ ️1.9 不要写全局的 fixtures 和 seeds，而是放在每个测试中
@@ -546,9 +522,7 @@ expect(menu).toMatchInlineSnapshot(`
 :white_check_mark: **建议:** 参照黄金法则，每条测试需要在它自己的 DB 行中运行避免互相污染。现实中，这条规则经常被打破：为了性能提升而在执行测试前全局初始化数据库([也被称为‘test fixture’](https://en.wikipedia.org/wiki/Test_fixture))。尽管性能很重要，但是它可以通过后面讲的「分组件测试」缓和。为了减轻复杂度，我们可以在每个测试中只初始化自己需要的数据。除非性能问题真的非常显著，那么可以做一定的妥协——仅在全局放不会改变的数据（比如 query）。
 <br/>
 
-
 ❌ **否则:** 一部分测试挂了，我们的团队花费大量宝贵时间后发现，是由于两个测试同时改变了同一个 seed 数据导致的。
-
 
 <br/>
 
@@ -579,6 +553,7 @@ it("When querying by site name, get the right site", async () => {
 });
 
 ```
+
 <br/>
 
 ### :clap: 正例: 每个用例操作它自己的数据集
@@ -599,18 +574,16 @@ it("When updating site name, get successful confirmation", async () => {
 
 </details>
 
-
 <br/>
 
 ## ⚪ ️ 1.10 不要 catch 错误，expect 它们
+
 :white_check_mark: **建议:** 当你测试一些输入是否会触发错误时，使用 try-catch-finally 测试看起来似乎没问题。但结果会比较奇葩（会隐藏测试的意图和期望结果），并且把 tc 复杂化（比如下面的例子）。
 
 一个更优雅的替代方法是使用 Chai断言 `expect(method).to.throw` (或者 Jest 的: `expect(method).toThrow()`)。必须保证异常包含一个表示错误类型的属性，否则如果只给出一个通用错误，应用程序没法展示足够的信息。
 <br/>
 
-
 ❌ **否则:** 从测试报告（如 CI 报告）中查找出错的位置将会很痛苦。
-
 
 <br/>
 
@@ -638,6 +611,7 @@ expect(errorWeExceptFor).not.to.be.null;
 });
 
 ```
+
 <br/>
 
 ### :clap: 正例: 一个人类可读的期望，它很容易被理解，甚至可被 QA 或技术 PM 理解
@@ -651,9 +625,6 @@ it.only("When no product name, it throws error 400", async() => {
 
 </details>
 
-
-
-
 <br/><br/>
 
 ## ⚪ ️ 1.11 为你的测试用例打标签
@@ -661,9 +632,7 @@ it.only("When no product name, it throws error 400", async() => {
 :white_check_mark: **建议:**  不同的测试需要在不同的场景中执行：快速冒烟、IO 测试、开发者保存或者提交文件后的测试、当一个新的 PR 提交后需要全量执行的端到端测试 等等。你可以用一些 #cold #api #sanity 之类的标签标注测试来达到这个目的，这样你就可以在测试时仅测试想要的子集。如在 mocha 中可以这样唤起用例组 `mocha — grep ‘sanity’` 。
 <br/>
 
-
 ❌ **否则:** 执行所有的用例，包括执行大量 DB 查询的用例，开发者做的任何小改动都需要等待很长的时间，将会导致开发者不再想运行测试。
-
 
 <br/>
 
@@ -675,6 +644,7 @@ it.only("When no product name, it throws error 400", async() => {
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
+
 ```javascript
 //this test is fast (no DB) and we're tagging it correspondigly
 //now the user/CI can run it frequently
@@ -691,9 +661,6 @@ describe('Order service', function() {
 
 </details>
 
-
-
-
 <br/><br/>
 
 ## ⚪ ️1.12 其他常见的优秀测试习惯
@@ -705,7 +672,6 @@ describe('Order service', function() {
 ❌ **否则:** 你会错过数十年来智慧的结晶。
 
 <br/><br/>
-
 
 # 第二章: 后端测试
 
@@ -721,9 +687,7 @@ describe('Order service', function() {
 
 <br/>
 
-
 ❌ **否则:** 你将错过一些超高投入产出比的工具，比如 Fuzz、lint、mutation 这些工具只需 10 分钟配置就能贡献价值。
-
 
 <br/>
 
@@ -732,6 +696,7 @@ describe('Order service', function() {
 <br/>
 
 ### :clap: 正例: Cindy Sridharan  在她的文章“测试微服务——理智的方式”中提出了一个丰富的测试组合
+
 ![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’")
 
 <strong class="markup--strong markup--p-strong">☺️Example: </strong><a href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtube" data-href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtu.be" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">[YouTube: “Beyond Unit Tests: 5 Shiny Node.JS Test Types (2018)” (Yoni Goldberg)](https://www.youtube.com/watch?v=-2zP494wdUY&feature=youtu.be)</a>
@@ -740,11 +705,7 @@ describe('Order service', function() {
 
 ![alt text](assets/bp-12-Yoni-Goldberg-Testing.jpeg "A test name that constitutes 3 parts")
 
-
 </details>
-
-
-
 
 <br/><br/>
 
@@ -756,9 +717,7 @@ describe('Order service', function() {
 
 <br/>
 
-
 ❌ **否则:** 你可能花了好几天写单测，却发现仅得到了 20% 的系统覆盖率。
-
 
 <br/>
 
@@ -767,6 +726,7 @@ describe('Order service', function() {
 <br/>
 
 ### :clap: 正例: 使用 Supertest 测试 Express API (快速、覆盖很多层)
+
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Jest")
 
@@ -782,9 +742,7 @@ describe('Order service', function() {
 
 <br/>
 
-
 ❌ **否则:** 所有的变更将带来繁琐的手动测试，导致开发者惧怕发布。
-
 
 <br/>
 
@@ -792,29 +750,23 @@ describe('Order service', function() {
 
 <br/>
 
-### :clap: 正例:
+### :clap: 正例
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg
  "Examples with PACT")
 
 ![alt text](assets/bp-14-testing-best-practices-contract-flow.png )
 
-
 </details>
 
-
-
 <br/><br/>
-
 
 ## ⚪ ️ 2.4 单独测试你的中间件
 
 :white_check_mark: **建议:** 许多人拒绝测试中间件，是因为它们仅占据系统的一小部分而且依赖真实的 Express server。这两个原因都不正确——中间件虽然小，但是影响全部或者大部分请求，而且可以被简单地作为纯函数测试（参数为 {req,res} JS 对象）。测试中间件函数，你仅需调用它，并且 spy ([比如使用 Sinon](https://www.npmjs.com/package/sinon)) {req,res} 的交互以保证函数执行了正确的行为。[node-mock-http](https://www.npmjs.com/package/node-mocks-http) 库更进一步：它还监听了 {req,res} 对象的行为。例如，它可以断言 res 对象上的 http 状态是否符合预期。（看下面的例子）
 <br/>
 
-
 ❌ **否则:** Express 中间件上的一个 bug === 所有或者大部分请求的 bug
-
 
 <br/>
 
@@ -849,9 +801,6 @@ test('A request without authentication header, should return http status 403', (
 
 </details>
 
-
-
-
 <br/><br/>
 
 ## ⚪ ️2.5 使用静态分析工具度量并指导重构
@@ -862,9 +811,7 @@ test('A request without authentication header, should return http status 403', (
 
 <br/>
 
-
 ❌ **否则:** 由于代码质量差，再新的库和 feature 也无法拯救你的 bug 和性能。
-
 
 <br/>
 
@@ -881,9 +828,6 @@ test('A request without authentication header, should return http status 403', (
 
 </details>
 
-
-
-
 <br/><br/>
 
 ## ⚪ ️ 2.6 你是否准备好迎接 Node 相关的噪声
@@ -891,9 +835,7 @@ test('A request without authentication header, should return http status 403', (
 :white_check_mark: **建议:** 怪异的是，大部分软件测试仅关注逻辑和数据，但是最糟糕（而且很难减轻）的往往是基础设施问题。例如，你测试过当你的进程存储过载、服务器/进程挂掉时的表现吗？或者你的监控系统会检测到 API 减慢 50% 了吗？为了测试及减轻类似问题，Netflix 设立了 [噪声工程](https://principlesofchaos.org/)。它的目的是为我们的系统在故障问题下的健壮性提供意识、框架及工具。比如，著名的工具之一 [噪声猴子](https://github.com/Netflix/chaosmonkey)，随机地杀掉服务以保证我们的服务仍服务于用户，而不是仅依赖一个单独的服务器（Kubernetes 也有一个版本 [kube-monkey](https://github.com/asobti/kube-monkey) 用于杀掉 pods）。这些工具都是作用于服务器/平台层面，但如果你想测试及生产纯粹的 Node 噪声比如检查你的 Node 进程如何处理未知错误、未知的 promise rejection、v8 内存超过 1.7GB 的限制以及当事件循环经常卡住后你的 UX 是否仍正常运行？为了解决上面提到的这些问题， [node-chaos](https://github.com/i0natan/node-chaos-monkey)(alpha)提供了各种 Node 相关的噪声。
 <br/>
 
-
 ❌ **否则:**  墨菲定律一定会无情地砸中你的产品，跑不掉的。
-
 
 <br/>
 
@@ -902,6 +844,7 @@ test('A request without authentication header, should return http status 403', (
 <br/>
 
 ### :clap: 正例: Node-chaos 可以生成所有类型的 Node.js 问题，因此您可以测试您的应用程序对混乱的适应能力
+
 ![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
 
 </details>
@@ -913,9 +856,7 @@ test('A request without authentication header, should return http status 403', (
 :white_check_mark: **建议:** 参照黄金法则，每条测试需要在它自己的 DB 行中运行避免互相污染。现实中，这条规则经常被打破：为了性能提升而在执行测试前全局初始化数据库([也被称为‘test fixture’](https://en.wikipedia.org/wiki/Test_fixture))。尽管性能很重要，但是它可以通过后面讲的「分组件测试」缓和。为了减轻复杂度，我们可以在每个测试中只初始化自己需要的数据。除非性能问题真的非常显著，那么可以做一定的妥协——仅在全局放不会改变的数据（比如 query）。
 <br/>
 
-
 ❌ **否则:** 一部分测试挂了，我们的团队花费大量宝贵时间后发现，是由于两个测试同时改变了同一个 seed 数据导致的。
-
 
 <br/>
 
@@ -946,6 +887,7 @@ it("When querying by site name, get the right site", async () => {
 });
 
 ```
+
 <br/>
 
 ### :clap: 正例: 每个用例操作它自己的数据集
@@ -974,11 +916,9 @@ it("When updating site name, get successful confirmation", async () => {
 
 :white_check_mark: **建议:** 当专注于测试组件逻辑时，UI 细节就变成了应该剔除的噪音，这样您的测试就可以集中在纯数据上。实际上，通过抽象从代码中提取所需的数据将降低与图形实现的耦合，仅对纯数据 (vs HTML/CSS 图形细节) 断言，并禁用会拖慢速度的动画。您可能会试图避免渲染，仅测试 UI 后面的部分(例如，服务、操作、存储)，但这将导致测试与实际情况不太相符，「正确的数据根本无法到达 UI」这种问题就无法发现。
 
-
 <br/>
 
 ❌ **否则:** 您的测试的纯计算数据可能在 10ms 内就准备好了，但是由于一些花哨和无关的动画，整个测试将持续500ms (100个测试 = 1分钟)
-
 
 <br/>
 
@@ -1014,6 +954,7 @@ test('When users-list is flagged to show only VIP, should display only VIP membe
 <br/>
 
 ### :thumbsdown: 反例: 混杂了 UI 细节和数据的断言
+
 ```javascript
 test('When flagging to show only VIP, should display only VIP members', () => {
   // Arrange
@@ -1033,11 +974,7 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 
 </details>
 
-
-
-
 <br/><br/>
-
 
 ## ⚪ ️ 3.2 使用不太容易改变的属性去查询 HTML 元素
 
@@ -1084,6 +1021,7 @@ test('When flagging to show only VIP, should display only VIP members', () => {
 <br/>
 
 ### :thumbsdown: 反例: 依赖 css attribute
+
 ```html
 <!-- the markup code (part of React component) -->
 <span id="metric" className="d-flex-column">{value}</span> <!-- what if the designer changes the classs? -->
@@ -1098,11 +1036,7 @@ test('Whenever no data is passed, error metric shows zero', () => {
   });
 ```
 
-
 </details>
-
-
-
 
 <br/>
 
@@ -1115,7 +1049,6 @@ test('Whenever no data is passed, error metric shows zero', () => {
 <br/>
 
 ❌ **否则:** 之前通过调用组件的私有方法来测试组件的内部状态。后续重构组件时你必须重构所有测试。你真的有能力进行这种程度的维护吗?
-
 
 <br/>
 
@@ -1160,6 +1093,7 @@ test('Realistic approach: When clicked to show filters, filters are displayed', 
 ```
 
 ### :thumbsdown: 反例: 通过 shallow render 测试伪组件
+
 ```javascript
 
 test('Shallow/mocked approach: When clicked to show filters, filters are displayed', () => {
@@ -1181,14 +1115,12 @@ test('Shallow/mocked approach: When clicked to show filters, filters are display
 
 <br/>
 
-
-## ⚪ ️ 3.4 不要 sleep，使用框架内置的对 async 事件的支持。并且尝试提效。
+## ⚪ ️ 3.4 不要 sleep，使用框架内置的对 async 事件的支持。并且尝试提效
 
 :white_check_mark: **建议:** 在许多情况下，被测试单元的完成时间是未知的 (例如，animation 挂起了元素表现 )——在这种情况下，不要 sleep (例如setTimeout)，并是使用大多数框架提供的更靠谱的方法。一些库允许等待操作 (例如 [Cypress .request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting))，另一些库提供用于等待的 API，如 [@testing-library/dom 方法 wait(expect(element))](https://testing-library.com/docs/guide-disappearance)。有时一种更优雅的方法是 stub 慢的资源，比如API，然后一旦响应时间变得确定，组件就可以显式地重新渲染。当依赖一些 sleep 的外部组件时，[加快时钟](https://jestjs.io/docs/en/timer-mocks)可能会提供帮助。sleep 是一种需要避免的模式，因为它会迫使您的测试变得缓慢或有风险(当等待的时间太短时)。当 sleep 和轮询不可避免且测试框架原生不支持时，一些npm库 (如 [wait-for-expect](https://www.npmjs.com/package/wait-for-expect)) 可以帮助解决半确定性问题。
 <br/>
 
 ❌ **否则:** 当 sleep 时间长时，测试速度会慢一个数量级。当尝试缩短 sleep 时间时，如果被测试的单元没有及时响应，则测试将失败。这时你不得不在脆弱的测试和糟糕的性能之间进行权衡。
-
 
 <br/>
 
@@ -1229,6 +1161,7 @@ test('movie title appears', async () => {
 ```
 
 ### :thumbsdown: 反例: 自己写 sleep 代码
+
 ```javascript
 
 test('movie title appears', async () => {
@@ -1252,7 +1185,6 @@ test('movie title appears', async () => {
 
 </details>
 
-
 <br/>
 
 ## ⚪ ️ 3.5 观察内容是如何通过网络提供的
@@ -1274,9 +1206,7 @@ test('movie title appears', async () => {
 
 ![](/assets/lighthouse2.png "Lighthouse page load inspection report")
 
-
 </details>
-
 
 <br/>
 
@@ -1288,7 +1218,6 @@ test('movie title appears', async () => {
 
 ❌ **否则:** 测试的平均时长不在是几毫秒，一个经典的 API 调用花费 100ms+，这使得每个用例变慢 ~20x。
 
-
 <br/>
 
 <details><summary>✏ <b>代码示例</b></summary>
@@ -1296,6 +1225,7 @@ test('movie title appears', async () => {
 <br/>
 
 ### :clap: 正例: stub 或拦截 API 调用
+
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with react-testing-library")
@@ -1395,9 +1325,6 @@ beforeEach(setUser => () {
 
 </details>
 
-
-
-
 <br/>
 
 ## ⚪ ️ 3.9 创建一个 E2E 冒烟测试，仅仅走一遍网站地图
@@ -1408,7 +1335,6 @@ beforeEach(setUser => () {
 
 ❌ **否则:** 一切似乎都很完美，所有的测试都通过了，生产环境健康检查也是 OK 的，但是支付组件有一些打包问题，只有 `/Payment` 路径没有渲染。
 
-
 <br/>
 
 <details><summary>✏ <b>代码示例</b></summary>
@@ -1416,8 +1342,10 @@ beforeEach(setUser => () {
 <br/>
 
 ### :clap: 正例: 一个跑一遍所有页面的冒烟测试
+
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
  "Using Cypress to illustrate the idea")
+
 ```javascript
 it('When doing smoke testing over all page, should load them all successfully', () => {
     // exemplified using Cypress but can be implemented easily
@@ -1433,7 +1361,6 @@ it('When doing smoke testing over all page, should load them all successfully', 
 
 </details>
 
-
 <br/>
 
 ## ⚪ ️ 3.10 将测试以实时协作文档的形式公开
@@ -1441,7 +1368,6 @@ it('When doing smoke testing over all page, should load them all successfully', 
 :white_check_mark: **建议:** 除了提高应用程序的可靠性，测试还带来了另一个极具吸引力的场景——作为实时应用文档。由于测试本质上使用的是一种技术含量较低的产品 / UX 语言，因此使用正确的工具可以将他们作为一个沟通媒介，便捷地协调了所有的同事——开发人员和他们的客户。例如，一些框架允许使用人类可读的语言来表达流程和期望 (即测试计划)，这样任何相关人员，包括产品经理，都可以阅读、批准和协作测试，这时测试就成为了实时的需求文档。这种技术也被称为“验收测试”，因为它允许客户用简单的语言定义他的验收标准。这是最纯粹的 [BDD (行为驱动测试)](https://en.wikipedia.org/wiki/Behavior-driven_development)。支持此功能的流行框架之一是 [Cucumber](https://github.com/cucumber/cucumber-js)，它具有 JavaScript 风格，参见下面的示例。另一个相似但不同的场景是 [StoryBook](https://storybook.js.org/)，它可以将 UI 组件公开为一个图形化的目录，用户可以浏览每个组件的各种状态(如一个栅格组件的 w/o filter，使其渲染多行或者 0 行，等等)，查看它的展示形式，以及如何触发状态——这也可以提供给产品人原，但主要是作为实时文档提供给消费这些组件的开发人员。
 
 ❌ **否则:** 你在测试上耗费了大量的资源，如果不利用这项投资来获取更大的价值，是很可惜的。
-
 
 <br/>
 
@@ -1452,6 +1378,7 @@ it('When doing smoke testing over all page, should load them all successfully', 
 ### :clap: 正例: 使用 cucumber-js 以人类语言描述测试
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cocumber-blue.svg  "Examples using Cucumber")
+
 ```javascript
 // this is how one can describe tests using cucumber: plain language that allows anyone to understand and collaborate
 
@@ -1470,23 +1397,18 @@ Feature: Twitter new tweet
 ```
 
 ### :clap: 正例: 使用 Storybook 展示我们的组件及其各种状态和输入
-![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
+![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
 </details>
 
-
-
-
 ## ⚪ ️ 3.11 使用自动化工具检测可视化问题
-
 
 :white_check_mark: **建议:** 设置自动化工具来抓取 UI 截屏，并在变更后检测内容重叠或中断等可视化问题。这样不仅可以确保数据的正确性，而且用户可以方便地看到它。这种技术没有被广泛采用，我们的测试思维更倾向于功能测试，但它代表了真实的用户体验，而且可以轻易地发现跨多设备类型的 UI bug。目前部分免费工具可以提供一些基础功能——生成和保存屏幕截图以供肉眼检查。虽然这种方法对于小应用来说可能已经足够了，但是它的缺陷与任何其他手动测试一样<br />：任何变更后都需要耗费人力来处理。另一方面，由于缺乏清晰的定义，自动检测 UI 问题非常具有挑战性——这就是“视觉回归”领域解决这个难题的切入点：对比旧 UI 与最新的更改并检测差异。一些开源/免费的工具可以提供这个能力 (例如: [wraith](https://github.com/BBC-News/wraith)、PhantomCSS) 但可能安装耗时比较久。一些商业工具 (如  [Applitools](https://applitools.com/)、[Percy.io](https://percy.io/)) 则更进一步，它们简化了安装过程，并封装了高级特性，如管理 UI、告警、通过去除“视觉噪音”(如广告、动画) 进行智能捕获，甚至可以分析引发问题的 DOM/css 变化的根本原因。
 
 <br/>
 
 ❌ **否则:** 如何评判这样的页面好不好：内容显示正确 (100%测试通过)、加载迅速但有一半内容区域隐藏?
-
 
 <br/>
 
@@ -1499,7 +1421,6 @@ Feature: Twitter new tweet
 ![alt text](assets/amazon-visual-regression.jpeg "Amazon page breaks")
 
 <br/>
-
 
 ### :clap: 正例: 配置 wraith 来捕获并比对 UI 快照
 
@@ -1557,15 +1478,9 @@ describe('visual validation', () => {
 });
 ```
 
-
-
-
 </details>
 
-
-
 <br/><br/>
-
 
 # 第四章: 度量测试效果
 
@@ -1579,9 +1494,7 @@ describe('visual validation', () => {
 
 <br/>
 
-
 ❌ **否则:**  信心和数字是相辅相成的，如果无法确保你的测试已经覆盖了了大部分的系统，那你将会害怕，害怕会让你慢下来。
-
 
 <br/>
 
@@ -1590,6 +1503,7 @@ describe('visual validation', () => {
 <br/>
 
 ### :clap: 正例: 一个经典的覆盖率报告
+
 ![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "A typical coverage report")
 
 <br/>
@@ -1603,8 +1517,6 @@ describe('visual validation', () => {
 
 </details>
 
-
-
 <br/><br/>
 
 ## ⚪ ️ 4.2 检查覆盖率报告，以发现未覆盖的区域和其他奇怪的地方
@@ -1613,9 +1525,7 @@ describe('visual validation', () => {
 
 <br/>
 
-
 ❌ **否则:** 如果你不知道你的代码中有哪些部分没有被测试到，则你没法准确定位问题的来源。
-
 
 <br/>
 
@@ -1628,7 +1538,6 @@ describe('visual validation', () => {
 ![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
 
 </details>
-
 
 <br/><br/>
 
@@ -1643,7 +1552,6 @@ describe('visual validation', () => {
 相对于传统覆盖率，得知所有或者大部分变异被杀掉会给予你更高的信心，而两者花费的时间差不多。
 <br/>
 
-
 ❌ **否则:** 你会误以为 85% 的覆盖率代表你的测试会发现你代码中的 85% 的 bug.
 
 <br/>
@@ -1656,6 +1564,7 @@ describe('visual validation', () => {
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg
  "Using Cypress to illustrate the idea")
+
 ```javascript
 function addNewOrder(newOrder) {
     logger.log(`Adding new order ${newOrder}`);
@@ -1670,6 +1579,7 @@ it("Test addNewOrder, don't use such test names", () => {
 });//Triggers 100% code coverage, but it doesn't check anything
 
 ```
+
 <br/>
 
 ### :clap: 正例: Stryker 报告，一个编译测试工具，发现并统计没有被测试到的代码（变异）
@@ -1677,8 +1587,6 @@ it("Test addNewOrder, don't use such test names", () => {
 ![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
 
 </details>
-
-
 
 <br/><br/>
 
@@ -1688,9 +1596,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/>
 
-
 ❌ **否则:** 当你满足于 90% 的代码覆盖率和 100% 的绿色用例时，发现很多测试啥都没断言，很多测试直接被 skip 掉了。但愿你没有基于这个错误认知做过额外的构建。
-
 
 <br/>
 <details><summary>✏ <b>代码示例</b></summary>
@@ -1717,7 +1623,6 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-
 # 第五章：持续集成（CI）以及其他质量度量手段
 
 <br/><br/>
@@ -1737,12 +1642,10 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 <br/>
 
 ### :thumbsdown: 反例: 出错的对象被错误地抛出，没有显示这个错误的堆栈信息。好在 ESLint 捕获到了后面的生产错误
+
 ![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
 
 </details>
-
-
-
 
 <br/><br/>
 
@@ -1753,9 +1656,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 目前已有一些 CI 供应商 (如: [CircleCI load CLI](https://circleci.com/docs/2.0/local-cli/)) 支持在本地执行 CI。一些商业工具如 [wallaby](https://wallabyjs.com/) 为开发原型提供了非常有用的测试能力。或者你可以仅仅在 package.json 中添加 npm 脚本来跑一些质量命令——使用工具如 [concurrently](https://www.npmjs.com/package/concurrently) 来并行执行，并在任何工具失败后抛出非 0 exit code。则开发者只需执行一个命令（如 `npm run quality` ）来快速获取反馈。可以用 githook 来取消没有通过质量检查的提交（[husky](https://github.com/typicode/husky) 可以帮到你）。
 <br/>
 
-
 ❌ **否则:** 当质量检查结果在提交后第二天才收到反馈，则测试不再是开发的一部分了。
-
 
 <br/>
 
@@ -1763,7 +1664,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :clap:  正例: 用于执行代码质量检查的 npm 脚本，在主动触发或用户尝试提交新代码时并行执行。
+### :clap:  正例: 用于执行代码质量检查的 npm 脚本，在主动触发或用户尝试提交新代码时并行执行
 
 ```javascript
 "scripts": {
@@ -1786,9 +1687,6 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 </details>
 
-
-
-
 <br/><br/>
 
 # ⚪ ️5.3 在真实的生产环境镜像中执行端到端测试
@@ -1799,9 +1697,7 @@ Kubernetes 强大的生态系统还没有形成一个易用的标准工具用于
 
 <br/>
 
-
 ❌ **否则:** 生产和测试环境使用不同的技术，需要维护两个部署模型，并将开发人员和 ops 团队分隔开来。
-
 
 <br/>
 
@@ -1809,7 +1705,7 @@ Kubernetes 强大的生态系统还没有形成一个易用的标准工具用于
 
 <br/>
 
-### :clap:  正例: 动态生成 Kubernetes 集群的 CI 管道 <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">(贡献: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
+### :clap:  正例: 动态生成 Kubernetes 集群的 CI 管道 <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">(贡献: Dynamic-environments Kubernetes](<https://container-solutions.com/dynamic-environments-kubernetes/>))</a>
 
 ```yaml
 deploy:
@@ -1830,18 +1726,13 @@ name: test-for-ci
 
 </details>
 
-
-
-
-
 <br/><br/>
 
 ## ⚪ ️5.4 并行测试工作
+
 :white_check_mark: **建议:**  只要操作合理，测试是你 7x24 小时的朋友，为你提供非常及时的反馈。实际上，在单个线程上执行 500 个单元测试可能需要很长时间。幸运的是，现代测试运行器和 CI 平台（如 [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) 和 [Mocha extensions](https://github.com/yandex/mocha-parallel-tests)）可以将测试并行化为多个进程，以显著缩短反馈时间。 一些CI供应商也支持跨容器并行化测试，这进一步缩短了反馈循环。 无论是在本地多个进程，还是在使用多台机器的某些云 CLI 上 - 并行化需要保证测试用例的独立性，因为每个用例可能在不同的进程上运行。
 
-
 ❌ **否则:** 在推送新代码 1 小时后获得测试结果，而你已经在写下一个 feature 了。
-
 
 <br/>
 
@@ -1850,20 +1741,18 @@ name: test-for-ci
 <br/>
 
 ### :clap: 正例: Mocha parallel & Jest 轻松地加速了传统的 Mocha，感谢并行测试([贡献:JavaScript测试运行基准](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+
 ![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
 
 </details>
 
-
-
-
 <br/><br/>
 
 ## ⚪ ️5.5 使用许可证和抄袭检查避免法务问题
+
 :white_check_mark: **建议:** 许可和抄袭问题可能不是您现在主要关注的问题，但为什么不在10分钟内加上这个能力呢？ 许多 npm 包，如 [license check](https://www.npmjs.com/package/license-checker) 和 [plagiarism check](https://www.npmjs.com/package/plagiarism-checker)（商业的，但是有免费选项）可以很容易地加入您的 CI 管道，并检查一些坑：依赖限制性许可证或从Stackoverflow复制粘贴的代码，或者很明显地侵犯了某些版权。
 
 ❌ **否则:** 无意中，开发人员可能会使用包含不适当许可证的软件包或复制粘贴商业代码并遇到法务问题。
-
 
 <br/>
 
@@ -1871,7 +1760,8 @@ name: test-for-ci
 
 <br/>
 
-### :clap: 正例:
+### :clap: 正例
+
 ```javascript
 //install license-checker in your CI environment or also locally
 npm install -g license-checker
@@ -1885,18 +1775,15 @@ license-checker --summary --failOn BSD
 
 ![alt text](assets/bp-25-nodejs-licsense.png)
 
-
 </details>
-
-
 
 <br/><br/>
 
 ## ⚪ ️5.6 持续检查有漏洞的依赖
+
 :white_check_mark: **建议:**  即使是最知名的依赖（如 Express）也存在已知的漏洞。 这可以通过使用社区工具（如 [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit)）或商业工具（如 [snyk](https://snyk.io/)）（也提供免费的社区版本）轻松解决。 可以在每次构建时都可以从 CI 调用他俩。
 
 ❌ **否则:** 在没有专用工具的帮助下保持代码远离漏洞，将需要不断关注有关新威胁的发布信息。 这相当乏味。
-
 
 <br/>
 
@@ -1905,12 +1792,10 @@ license-checker --summary --failOn BSD
 <br/>
 
 ### :clap: 正例: NPM Audit 结果
+
 ![alt text](assets/bp-26-npm-audit-snyk.png "NPM Audit result")
 
 </details>
-
-
-
 
 <br/><br/>
 
@@ -1926,9 +1811,7 @@ license-checker --summary --failOn BSD
 
 <br/>
 
-
 ❌ **否则:** 您的生产环境运行的包已被其作者明确标记为有风险。
-
 
 <br/>
 
@@ -1940,9 +1823,7 @@ license-checker --summary --failOn BSD
 
 ![alt text](assets/bp-27-yoni-goldberg-npm.png "Nncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
 
-
 </details>
-
 
 <br/><br/>
 
@@ -1962,7 +1843,6 @@ license-checker --summary --failOn BSD
 
 <br/>
 
-
 ❌ **否则:** 你会错过多年来智慧的结晶
 
 <br/><br/>
@@ -1972,9 +1852,7 @@ license-checker --summary --failOn BSD
 :white_check_mark: **建议:** 质量检查是用于发现意外，你覆盖的部分越多，你就越可能尽早地发现问题。 在开发包或运行具有各种配置和 Node 版本的多客户生产环境时，CI 必须在所有配置的组合上运行测试管道。 例如，假设我们的某些客户使用 MySQL，另一批客户使用 Postgres。一些 CI 工具支持一种称为“Matrix”的功能，该功能可以针对 MySQL、Postgres 和多个 Node 版本（如8、9、10）的所有组合执行测试。 只要配置即可完成而无需任何额外工作。 其他不支持 Matrix 的 CI 可能可以通过扩展或一定调整来实现这个功能。
 <br/>
 
-
 ❌ **否则:** 在辛辛苦苦写完所有用例编写之后，怎么可以因为配置问题而让漏洞溜进来？
-
 
 <br/>
 
@@ -2003,8 +1881,6 @@ script:
 
 # Team
 
-
-
 ## Yoni Goldberg
 
 <br/>
@@ -2017,21 +1893,20 @@ script:
 
 <br/>
 
-**Workshop:** 👨‍🏫 是否想在您自己的办公室中（欧洲和美国）学习所有这些实践和技术？ [在此处注册我的测试工作室]（https://testjavascript.com/）
+**Workshop:** 👨‍🏫 是否想在您自己的办公室中（欧洲和美国）学习所有这些实践和技术？ [在此处注册我的测试工作室]（<https://testjavascript.com/>）
 <br/>
 
 **关注:**
 
-* [🐦 Twitter](https://twitter.com/goldbergyoni/)
-* [📞 Contact](https://testjavascript.com/contact-2/)
-* [✉️ Newsletter](https://testjavascript.com/newsletter//)
+- [🐦 Twitter](https://twitter.com/goldbergyoni/)
+- [📞 Contact](https://testjavascript.com/contact-2/)
+- [✉️ Newsletter](https://testjavascript.com/newsletter//)
 
 <br/>
 <hr/>
 <br/>
 
-
-##  [Bruno Scheufler](https://github.com/BrunoScheufler)
+## [Bruno Scheufler](https://github.com/BrunoScheufler)
 
 **角色:** 技术评审人和顾问
 

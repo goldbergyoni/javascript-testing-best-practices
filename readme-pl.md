@@ -718,7 +718,6 @@ test("Then there should not be a new transfer record", () => {});
 
 :white_check_mark: **Opis:** Ten post skupia się na poradach dotyczących testowania, które są związane lub przynajmniej mogą być zilustrowane przykładem Node JS. Ten punkt zawiera jednak kilka dobrze znanych wskazówek niezwiązanych z Node
 
-
 Uczyć się i ćwiczyć [zasady TDD](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) — dla wielu są niezwykle cenne, ale nie przestrasz się, jeśli nie pasują do Twojego stylu, nie tylko tobie. Rozważ napisanie testów przed kodem w [style red-green-refactor](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), upewnij się, że każdy test sprawdza dokładnie jedną rzecz, gdy znajdziesz błąd - przed naprawą napisz test, który wykryje ten błąd w przyszłości, pozwól każdemu testowi zawieść co najmniej raz, zanim zmieni kolor na zielony, uruchom moduł, pisząc szybki i uproszczony kod, który satysfakcjonuje test - następnie stopniowo refaktoryzuj i przenieś go do poziomu klasy produkcyjnej, unikaj jakiejkolwiek zależności od środowiska (ścieżki, systemu operacyjnego itp.)
 <br/>
 
@@ -800,7 +799,7 @@ Testy komponentów koncentrują się na mikroserwisowej ‘jednostce’, działa
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze:
+### :clap: Przykład robienia tego dobrze
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Examples with PACT")
 
@@ -867,7 +866,7 @@ test("A request without authentication header, should return http status 403", (
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: CodeClimate, komercyjne narzędzie, które potrafi zidentyfikować złożone metody:
+### :clap: Przykład robienia tego dobrze: CodeClimate, komercyjne narzędzie, które potrafi zidentyfikować złożone metody
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Examples with CodeClimate")
 
@@ -1172,7 +1171,6 @@ cy.wait("@products"); // wait for route to appear
 
 ### :clap: Przykład robienia tego dobrze: Biblioteka testująca, która czeka na elementy DOM
 
-
 ```javascript
 // @testing-library/dom
 test("movie title appears", async () => {
@@ -1241,7 +1239,6 @@ test("movie title appears", async () => {
 <br/>
 
 ❌ **W przeciwnym razie:** Średni test trwa nie dłużej niż kilka ms, typowe wywołanie API trwa 100 ms>, co powoduje, że każdy test ~20x wolniej
-
 
 <br/>
 
@@ -1348,7 +1345,6 @@ beforeEach(setUser => () {
 <br/>
 
 ## ⚪ ️ 3.9 Zrób jeden smoke test E2E, który podróżuje po mapie witryny
-
 
 :white_check_mark: **Opis:** W celu monitorowania produkcji i kontroli poprawności w czasie programowania uruchom pojedynczy test E2E, który odwiedzi wszystkie / większość stron witryny i zapewni, że nic się nie zepsuje. Ten rodzaj testu zapewnia duży zwrot z inwestycji, ponieważ jest bardzo łatwy do napisania i utrzymania, ale może wykryć wszelkiego rodzaju awarie, w tym problemy z funkcjonowaniem, siecią i wdrażaniem. Inne style sprawdzania smoke i sanity nie są tak niezawodne i wyczerpujące - niektóre zespoły ops po prostu pingują stronę główną (produkcję) lub programistów, którzy przeprowadzają wiele testów integracyjnych, które nie wykrywają problemów z pakowaniem i przeglądarką. Oczywiste jest, że smoke test nie zastępuje testów funkcjonalnych, a jedynie służy jako quick smoke detector
 
@@ -1763,7 +1759,7 @@ Ogromny ekosystem Kubernetes ma jeszcze sformalizować standardowe wygodne narz�
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze:
+### :clap: Przykład robienia tego dobrze
 
 ```javascript
 //install license-checker in your CI environment or also locally

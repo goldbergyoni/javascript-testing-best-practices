@@ -7,13 +7,16 @@
 <br/>
 
 ## 📗 철저하고 매우 포괄적인 45가지 이상의 모범 사례
+
 JavaScript 및 Node.js에 대한 A부터 Z까지의 믿음직한 가이드입니다. 수십 가지 최고의 블로그 게시물, 서적 및 도구를 요약하고 정리합니다.
 
 ## 🚢 기초를 뛰어넘어 고급으로
+
 운영중인 제품의 테스트, 돌연변이 테스트, 속성 기반 테스트 및 기타 여러 전략적 & 전문 도구와 같은 고급 주제로 넘어가는 여정을 경험하십시오.
 이 가이드의 모든 단어를 읽으면 당신의 테스트 기술이 평균보다 높아질 수 있습니다.
 
 ## 🌐 Full-stack: 프론트, 백엔드, CI, 무엇이든
+
 모든 응용프로그램 계층의 기초가 되는 유비쿼터스 테스트 방법을 이해하는 것으로부터 시작하십시오. 그런 다음 프론트엔드/UI, 백엔드, CI 혹은 이 모든것을 공부하세요.
 
 <br/>
@@ -50,7 +53,6 @@ JavaScript 및 Node.js에 대한 A부터 Z까지의 믿음직한 가이드입니
 
 감시자를 감시하기 - 테스트 품질 측정(4개)
 
-
 #### [`섹션 5: 지속적인 통합`](#섹션-5️⃣-지속적인-통합)
 
 자바스크립트 세계에서 CI에 대한 지침(9개)
@@ -72,7 +74,7 @@ JavaScript 및 Node.js에 대한 A부터 Z까지의 믿음직한 가이드입니
 선택적인 체리픽 기술, 툴 그리고 비용-효율적이고 뛰어난 ROI를 제공하는 테스트 대상 선정으로 이러한 목적을 달성할 수 있습니다. 필요한 만큼의 테스트, 융통성 있게 유지하려는 노력, 때로는 애자일함과 단순성을 위해 일부 테스트와 신뢰성을 포기하는 것도 가치가 있습니다.
 
 ![alt text](/assets/headspace.png "우리 머리속은 부가적인 복잡한 것들을 생각할 여유가 없습니다.")
- 
+
 아래 대부분의 조언은 이 원칙의 파생입니다.
 
 ### 시작할 준비 되셨나요?
@@ -83,7 +85,7 @@ JavaScript 및 Node.js에 대한 A부터 Z까지의 믿음직한 가이드입니
 
 <br/>
 
-## ⚪ ️ 1.1 각 테스트 이름은 세 부분으로 구성된다.
+## ⚪ ️ 1.1 각 테스트 이름은 세 부분으로 구성된다
 
 :white_check_mark: **이렇게 해라:** 테스트는 현재 애플리케이션의 개정판이 요구 사항을 충족하는지 여부를 다음과 같은 사람들에게 알려야합니다: 배포를 할 테스터, DevOps 엔지니어, 2년 후의 미래에 코드가 익숙하지 않은 사람. 테스트가 요구 사항 수준에서 작성되어 있고 세 부분으로 구성되어 있다면, 목적을 이룰 수 있습니다:
 
@@ -178,7 +180,7 @@ describe('고객 분류기', () => {
 
 <br/>
 
-### :thumbsdown: 올바르지 않은 예: 분리 되어있지 않고 한 벌로 작성되어 있어 해석하기 어렵다.
+### :thumbsdown: 올바르지 않은 예: 분리 되어있지 않고 한 벌로 작성되어 있어 해석하기 어렵다
 
 ```javascript
 test('프리미엄으로 분류해야 합니다.', () => {
@@ -195,6 +197,7 @@ test('프리미엄으로 분류해야 합니다.', () => {
 <br/><br/>
 
 ## ⚪ ️ 1.3 제품의 언어로 예상값을 설명: BDD 스타일의 Assertion을 사용
+
 :white_check_mark: **이렇게 해라:** 테스트를 선언적 스타일로 작성하면 읽는 사람이 즉시 파악할 수 있습니다. 조건부 논리로 채워진 명령형 코드로 작성하면 테스트를 읽기가 쉽지 않습니다. 그런 의미에서 임의의 사용자 정의 코드를 사용하지 말고, 선언적 BDD 스타일의 expect 또는 should를 사용하여 인간과 같은 언어로 테스트를 작성하십시오. Chai & Jest에 원하는 Assertion이 포함되어 있지 않고 반복성이 높은 경우 [extending Jest matcher (Jest)](https://jestjs.io/docs/en/expect#expectextendmatchers) 혹은 [custom Chai plugin](https://www.chaijs.com/guide/plugins/) 작성을 고려하십시오.
 
 <br/>
@@ -209,7 +212,7 @@ test('프리미엄으로 분류해야 합니다.', () => {
  "Examples with Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
   
-### :thumbsdown: 올바르지 않은 예: 읽는 사람은 테스트 스토리를 이해하기 위해 짧지않은 명령형 코드를 훑어봐야 합니다.
+### :thumbsdown: 올바르지 않은 예: 읽는 사람은 테스트 스토리를 이해하기 위해 짧지않은 명령형 코드를 훑어봐야 합니다
 
 ```javascript
 test("관리자 요청이 들어오면 정렬된 관리자 목록만 결과에 포함된다." , () => {
@@ -235,7 +238,7 @@ test("관리자 요청이 들어오면 정렬된 관리자 목록만 결과에 �
 
 <br/>
 
-### :clap: 올바른 예: 다음과 같은 선언적 테스트는 이해하기 쉽습니다.
+### :clap: 올바른 예: 다음과 같은 선언적 테스트는 이해하기 쉽습니다
 
 ```javascript
 it("관리자 요청이 들어오면 정렬된 관리자 목록만 결과에 포함된다." , () => {
@@ -264,7 +267,7 @@ it("관리자 요청이 들어오면 정렬된 관리자 목록만 결과에 포
 
 <br/>
 
-### :thumbsdown: 올바르지 않은 예: 테스트 케이스는 이유없이 내부를 테스트합니다.
+### :thumbsdown: 올바르지 않은 예: 테스트 케이스는 이유없이 내부를 테스트합니다
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Mocha & Chai")
@@ -295,7 +298,7 @@ it("화이트박스 테스트: 내부 method가 VAT 0을 받으면 0을 반환�
 
 <br/><br/>
 
-## ⚪ ️ 1.5 올바른 테스트 더블 선택: Stub과 Spy를 위한 Mock을 피하십시오.
+## ⚪ ️ 1.5 올바른 테스트 더블 선택: Stub과 Spy를 위한 Mock을 피하십시오
 
 :white_check_mark: **이렇게 해라:**  테스트 더블은 어플리케이션 내부에 연결되어 있기때문에 필요악이지만 일부는 엄청난 가치를 제공합니다(<a href="https://martinfowler.com/articles/mocksArentStubs.html" data-href="https://martinfowler.com/articles/mocksArentStubs.html" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[테스트 더블에 대한 알림: mocks vs stubs vs spies](https://martinfowler.com/articles/mocksArentStubs.html)</a>).
 
@@ -317,7 +320,7 @@ it("화이트박스 테스트: 내부 method가 VAT 0을 받으면 0을 반환�
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Sinon-blue.svg
  "Examples with Mocha & Chai")
- 
+
 ```javascript
 it("유효한 제품을 삭제하려고 할 때, 올바른 제품과 올바른 구성 정보로 데이터 액세스 DAL을 한 번 호출했는지 확인한다", async () => {
     // 이미 제품을 추가했다고 가정
@@ -331,7 +334,7 @@ it("유효한 제품을 삭제하려고 할 때, 올바른 제품과 올바른 �
 
 <br/>
 
-### :clap:올바른 예: spy는 요구사항을 테스트하는데 초점을 두고있지만, 내부를 건드리는 side-effect를 피할 순 없습니다.
+### :clap:올바른 예: spy는 요구사항을 테스트하는데 초점을 두고있지만, 내부를 건드리는 side-effect를 피할 순 없습니다
 
 ```javascript
 it("유효한 제품을 삭제하려고 할 때, 메일을 보낸다", async () => {
@@ -364,8 +367,7 @@ it("유효한 제품을 삭제하려고 할 때, 메일을 보낸다", async () 
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
- 
- 
+
 ```javascript
 const addProduct = (name, price) =>{
   const productNameRegexNoSpace = /^\S*$/;// 공백은 허용되지 않음
@@ -403,11 +405,11 @@ it("더 나은 것: 유효한 제품이 추가된다면, 성공을 얻는다.", 
 
 <br/><br/>
 
-## ⚪ ️ 1.7  프로퍼티 기반(Property-based) 테스트를 통해 다양한 인풋 값 조합으로 테스트를 하십시오.
+## ⚪ ️ 1.7  프로퍼티 기반(Property-based) 테스트를 통해 다양한 인풋 값 조합으로 테스트를 하십시오
 
 :white_check_mark: **이렇게 해라:** 우리는 일반적으로 적은 수의 인풋 샘플 데이터를 가지고 테스트를 합니다. 심지어 인풋 데이터 형식이 실제 데이터와 비슷할 때에도 다음과 같이 제한된 인풋 조합으로만 테스트를 커버합니다.(method(‘’, true, 1), method(“string” , false” , 0)) 하지만, 운영시에는 5개의 파라미터를 가지는 API는 수 천 개의 다른 조합의 파라미터로 호출 될 수 있고, 이 중 하나가 우리의 시스템을 다운시킬 수도 있습니다. 그렇다면 만약 1000 가지 조합의 인풋값을 자동으로 생성하고 올바른 응답을 반환하지 못하는 인풋값을 찾아내는 단위 테스트를 작성할 수 있다면 어떨까요?
-프로퍼티 기반 테스트는 단위 테스트에 모든 가능한 인풋 조합을 사용하여 생각하지 못 한 버그를 찾을 확률을 높여줍니다. 예를들어, 다음의 메소드가 주어졌을 때 — addNewProduct(id, name, isDiscount) — 프로퍼티 기반 테스트 라이브러리들은  다양한 파라미터 (number, string, boolean) 조합으로  - (1, “iPhone”, false), (2, “Galaxy”, true) - 이 메소드를 호출합니다. [js-verify](https://github.com/jsverify/jsverify) 나 [testcheck](https://github.com/leebyron/testcheck-js) (much better documentation) 같은 라이브러리를 지원하는 테스트 러너들 (Mocha, Jest, etc) 중 당신이 가장 선호하는 방법을 통해 프로퍼티 기반 테스트를 할 수 있습니다. 
-업데이트 : Nicolas Dubien가 코멘트를 통해 더 많은 부가적인 기능들을 제공하고 활발하게 유지보수되고 있는 라이브러리 [fast-check](https://github.com/dubzzz/fast-check#readme)를 추천해 주었습니다. 
+프로퍼티 기반 테스트는 단위 테스트에 모든 가능한 인풋 조합을 사용하여 생각하지 못 한 버그를 찾을 확률을 높여줍니다. 예를들어, 다음의 메소드가 주어졌을 때 — addNewProduct(id, name, isDiscount) — 프로퍼티 기반 테스트 라이브러리들은  다양한 파라미터 (number, string, boolean) 조합으로  - (1, “iPhone”, false), (2, “Galaxy”, true) - 이 메소드를 호출합니다. [js-verify](https://github.com/jsverify/jsverify) 나 [testcheck](https://github.com/leebyron/testcheck-js) (much better documentation) 같은 라이브러리를 지원하는 테스트 러너들 (Mocha, Jest, etc) 중 당신이 가장 선호하는 방법을 통해 프로퍼티 기반 테스트를 할 수 있습니다.
+업데이트 : Nicolas Dubien가 코멘트를 통해 더 많은 부가적인 기능들을 제공하고 활발하게 유지보수되고 있는 라이브러리 [fast-check](https://github.com/dubzzz/fast-check#readme)를 추천해 주었습니다.
 
 <br/>
 
@@ -419,7 +421,7 @@ it("더 나은 것: 유효한 제품이 추가된다면, 성공을 얻는다.", 
 
 <br/>
 
-### :clap:  올바른 예: “fast-check”를 사용하여 다양한 인풋 조합으로 테스트 하십시오.
+### :clap:  올바른 예: “fast-check”를 사용하여 다양한 인풋 조합으로 테스트 하십시오
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
@@ -444,7 +446,7 @@ describe("Product service", () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.8 필요한 경우 짧거나 인라인 스냅샷만 사용하십시오.
+## ⚪ ️ 1.8 필요한 경우 짧거나 인라인 스냅샷만 사용하십시오
 
 :white_check_mark: **이렇게 해라:** [스냅샷 테스트](https://jestjs.io/docs/en/snapshot-testing)가 필요한 경우 외부 파일이 아닌 테스트의 일부 ([인라인 스냅샷](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots))에 포함 된 짧고 집중된 스냅샷(3~7 라인)만 사용하십시오. 이 지침을 따르면 따로 설명이 필요없고 잘 깨지지 않는 테스트가 됩니다.
 
@@ -466,7 +468,7 @@ describe("Product service", () => {
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
- 
+
 ```javascript
 it('TestJavaScript.com 이 올바르게 랜더링 된다.', ()  => {
 
@@ -487,7 +489,7 @@ expect(receivedPage).toMatchSnapshot();
 
 <br/>
 
-### :clap: 올바른 예: expectation이 잘 보이고 집중된다.
+### :clap: 올바른 예: expectation이 잘 보이고 집중된다
 
 ```javascript
 it('TestJavaScript.com 홈페이지를 방문하면 메뉴가 보인다.', () => {
@@ -515,7 +517,7 @@ expect(menu).toMatchInlineSnapshot(`
 
 <br/><br/>
 
-## ⚪ ️ 1.9 테스트 데이터를 글로벌로 하지말고 테스트별로 따로 추가하라.
+## ⚪ ️ 1.9 테스트 데이터를 글로벌로 하지말고 테스트별로 따로 추가하라
 
 :white_check_mark: **이렇게 해라:** 황금률에 따르면(섹션 0), 각 테스트는 커플링을 방지하고 테스트 흐름을 쉽게 추론하기 위해 자체 DB 데이터를 추가하고 실행해야 합니다. 실제로 성능 향상(테스트를 실행하기 전에 DB 데이터를 준비(['테스트 픽스쳐'라고도 합니다](https://en.wikipedia.org/wiki/Test_fixture)))을 위해 이를 위반하는 테스터들이 많습니다. 성능은 실제로 유효한 문제이지만 완화될 수 있습니다(2.2 컴포넌트 테스트 참고). 그러나 테스트 복잡성은 대부분의 다른 고려사항들을 통제해야 하는 고통을 수반합니다. 각 테스트에 필요한 DB 레코드를 명시적으로 추가하고, 해당 데이터에 대해서만 테스트를 수행하십시오. 성능이 중요한 문제가 되는 경우 - 데이터를 변경하지 않는 테스트 모음(예: 쿼리)에 대해서 데이터를 준비하는 형태로 타협할 수 있습니다.
 
@@ -533,7 +535,7 @@ expect(menu).toMatchInlineSnapshot(`
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Jest")
- 
+
 ```javascript
 before(() => {
   // 사이트 및 관리자 데이터를 DB에 추가. 데이터는 어디에 있습니까? 외부에. 외부 JSON 또는 마이그레이션 프레임워크에
@@ -554,7 +556,7 @@ it("사이트 이름을 쿼리할 때, 올바른 사이트 이름을 얻는다."
 
 <br/>
 
-### :clap: 올바른 예: 우리는 테스트 내부에만 머물 수 있으며, 각 테스트는 자체 데이터 세트에서 동작합니다.
+### :clap: 올바른 예: 우리는 테스트 내부에만 머물 수 있으며, 각 테스트는 자체 데이터 세트에서 동작합니다
 
 ```javascript
 it("사이트 이름을 업데이트 할 때, 성공을 확인한다.", async () => {
@@ -573,7 +575,7 @@ it("사이트 이름을 업데이트 할 때, 성공을 확인한다.", async ()
 
 <br/><br/>
 
-## ⚪ ️ 1.10 오류를 catch 하지말고 expect 하십시오.
+## ⚪ ️ 1.10 오류를 catch 하지말고 expect 하십시오
 
 :white_check_mark: **이렇게 해라:** 오류를 발생시키는 입력값을 assert 할 때, try-catch-finally를 사용하고 catch 블럭에서 assert 하는게 맞아 보일수도 있습니다. 아래 예는 테스트 의도와 결과 expectation을 숨기는 어색하고 장황한 테스트 사례입니다.
 
@@ -593,7 +595,7 @@ it("사이트 이름을 업데이트 할 때, 성공을 확인한다.", async ()
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Jest")
- 
+
 ```javascript
 it("제품명이 없으면 400 오류를 던진다.", async() => {
   let errorWeExceptFor = null;
@@ -623,7 +625,7 @@ it.only("제품명이 없으면 400 오류를 던진다.", async() => {
 
 <br/><br/>
 
-## ⚪ ️ 1.11 테스트에 태깅하십시오.
+## ⚪ ️ 1.11 테스트에 태깅하십시오
 
 :white_check_mark: **이렇게 해라:** 다른 테스트는 꼭 다른 시나리오에서 실행해야 합니다: 개발자가 파일을 저장하거나 커밋을 할 때 빠르고, IO가 많이 없는 테스트를 실행해야 합니다. 전체 end-to-end 테스트는 일반적으로 새로운 Pull Request가 제출되었을 때 실행됩니다. 등.. 이러한 경우에 #cold #api #sanity와 같은 키워드로 테스트에 태깅하면 테스트를 효율적으로 grep 할 수 있고, 원하는 하위세트를 호출할 수 있습니다. 예) Mocha를 이용해서 sanity 테스트 그룹만 실행하는 방법입니다: mocha - grep 'sanity'
 
@@ -637,7 +639,7 @@ it.only("제품명이 없으면 400 오류를 던진다.", async() => {
 
 <br/>
 
-### :clap: 올바른 예: 테스트를 '#cold-test'로 태깅하면 테스트를 수행하는 사람이 빠른 테스트만 실행할 수 있습니다(IO를 수행하지 않고 개발자가 코딩하는 중에도 자주 실행할 수 있는 테스트 cold === quick).
+### :clap: 올바른 예: 테스트를 '#cold-test'로 태깅하면 테스트를 수행하는 사람이 빠른 테스트만 실행할 수 있습니다(IO를 수행하지 않고 개발자가 코딩하는 중에도 자주 실행할 수 있는 테스트 cold === quick)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with Jest")
@@ -658,6 +660,7 @@ describe('주문 서비스', function() {
 <br/><br/>
 
 ## ⚪ ️ 1.12 일반적인 좋은 테스트 기법들
+
 
 :white_check_mark: **이렇게 해라:** 이 글은 Node.js와 관련이 있거나 최소한 Node.js로 예를 들 수 있는 테스트 조언에 중점을두고 있습니다. 그러나 이번에는 Node.js가 아니지만 잘 알려진 팁들을 포함하고 있습니다.
 
@@ -671,19 +674,19 @@ describe('주문 서비스', function() {
 
 # 섹션 2️⃣: 백엔드 테스트
 
-## ⚪ ️ 2.1 당신의 테스트 포트폴리오를 풍부하게 하십시오: 단위 테스트와 피라미드를 넘어서세요.
+## ⚪ ️ 2.1 당신의 테스트 포트폴리오를 풍부하게 하십시오: 단위 테스트와 피라미드를 넘어서세요
 
 :white_check_mark: **이렇게 해라:** 10년이 넘은 모델인 [테스트 피라미드](https://martinfowler.com/bliki/TestPyramid.html)는 세 가지 테스트 유형을 제시하고 대다수 개발자의 테스트 전략에 영향을 주는 훌륭한 모델입니다. 동시에, 몇 가지 반짝이는 새로운 테스트 기술들이 등장하였지만 모두 테스트 피라미드의 그림자 뒤로 사라졌습니다. 우리가 최근 10년간 보아 온 극적인 기술의 변화들(Microservices, cloud, serverless)을 고려할 때, 아주 오래된 모델 하나가 *모든* 어플리케이션 유형에 적합하다는 것이 가능한가요? 테스트 세계는 새로운 기술을 받아들이는 것을 고려하지 않나요?
 
 오해는 하지 마세요. 2019 테스트 피라미드에서 TDD와 단위 테스트는 여전히 강력한 기술이고 아마도 많은 어플리케이션에 가장 어울리는 기술입니다. 다른 모델과 마찬가지로, 테스트 미라미드는 유용하지만 [그것이 항상 맞는 것은 아닙니다](https://en.wikipedia.org/wiki/All_models_are_wrong). 예를 들어, 어떤 IOT 어플리케이션을 생각해 봅시다. 이 어플리케이션은 다수의 이벤트를 Kafka/RabbitMQ 같은 메세지 버스로 보내고 다시 데이터 웨어하우스로 흘려보냅니다. 그리고 이 데이터들은 어떤 분석 UI에서 조회됩니다. 우리는 정말 우리의 테스트 예산의 50%를 통합 중심적(intergration-centric)이고 로직이 거의 없는 어플리케이션의 단위 테스트를 작성하는데 할애해야 할까요? 어플리케이션 유형들이 다양해질 수록(bots, crypto, Alexa-skills) 테스트 피라미드가 적합하지 않은 시나리오들을 발견할 가능성이 커집니다.  
 
-지금이 당신의 테스트 포트폴리오를 넓히고 더 많은 테스트 유형들에 익숙해질 시간입니다. (다음 항목에서 몇 가지 아이디어들을 제안합니다.) 테스트 피라미드 같은 모델들도 염두에 둘 뿐만 아니라 당신이 직면하고 있는 현실 세계의 문제들에 적합한 테스트 유형들을 찾으세요. ("우리 API 깨졌어. Consumer-driven contract 테스트 작성하자!" 처럼요.) 위험성 분석을 기반으로 포르폴리오를 구축하는 투자자처럼 당신의 테스트를 다양화하세요 - 문제가 발생할 수 있는 부분을 가늠하고 잠재적 위험성을 줄일 수 있는 예방 방법을 찾으세요. 
+지금이 당신의 테스트 포트폴리오를 넓히고 더 많은 테스트 유형들에 익숙해질 시간입니다. (다음 항목에서 몇 가지 아이디어들을 제안합니다.) 테스트 피라미드 같은 모델들도 염두에 둘 뿐만 아니라 당신이 직면하고 있는 현실 세계의 문제들에 적합한 테스트 유형들을 찾으세요. ("우리 API 깨졌어. Consumer-driven contract 테스트 작성하자!" 처럼요.) 위험성 분석을 기반으로 포르폴리오를 구축하는 투자자처럼 당신의 테스트를 다양화하세요 - 문제가 발생할 수 있는 부분을 가늠하고 잠재적 위험성을 줄일 수 있는 예방 방법을 찾으세요.
 
 주의 사항 : 소프트웨어 세계에서의 TDD 논쟁은 전형적인 잘못된 이분법입니다. 어떤 사람들은 TDD를 모든 곳에 적용하라고 주장하지만, 다른 일부는 TDD를 악마라고 생각합니다. 절대적으로 한쪽만 주장하는 사람들은 모두 틀렸습니다 :]
 
 <br/>
 
-❌ **그렇지 않으면:** 당신은 굉장한 ROI를 주는 몇 가지 툴들을 놓칠 것입니다. Fuzz, lint, mutation 테스트들은 단 10분만에 당신에게 가치를 제공할 수 있습니다. 
+❌ **그렇지 않으면:** 당신은 굉장한 ROI를 주는 몇 가지 툴들을 놓칠 것입니다. Fuzz, lint, mutation 테스트들은 단 10분만에 당신에게 가치를 제공할 수 있습니다.
 
 <br/>
 
@@ -703,15 +706,14 @@ describe('주문 서비스', function() {
 
 <br/><br/>
 
-## ⚪ ️2.2 컴포넌트 테스트가 최선의 방법일 수 있다.
+## ⚪ ️2.2 컴포넌트 테스트가 최선의 방법일 수 있다
 
 :white_check_mark: **이렇게 해라:** 각각의 단위 테스트는 어플리케이션의 매우 작은 부분만을 커버하고 전체를 모두 커버하기에는 비용이 많이 듭니다. 반면에, end-to-end 테스트는 간단하게 많은 부분을 커버할 수 있지만 깊이가 얕고 더 느립니다. 그렇다면 균형 잡힌 접근법을 적용하여 단위 테스트보다는 크지만 end-to-end 테스트보다는 작은 테스트를 작성하는 것은 어떨까요? 컴포넌트 테스트는 테스트 세계에서 잘 알려지지 않은 방법입니다. - 컴포넌트 테스트는 다음의 두 가지 이점을 모두 제공합니다: 합리적인 성능과 TDD 패턴을 적용할 수 있는 가능성 + 현실적이면서 훌륭한 커버리지
 
-컴포넌트 테스트는 마이크로 서비스 '단위'에 중점을 두고 API에 대하여 동작합니다. 마이크로서비스 그 자체에 속한 것들 (예를들면, 실제 DB 또는 해당 DB의 인-메모리 버전)은 모킹(Mock)하지 않고, 다른 마이크로서비스 호출과 같은 외부적인 것은 스텁(Stub)합니다. 그렇게 함으로써 우리는 우리가 배포하는 것을 테스트하고 어플리케이션의 바깥쪽에서 안쪽으로 접근하며, 적당한 시간 안에서 큰 자신감을 얻을 수 있습니다. 
+컴포넌트 테스트는 마이크로 서비스 '단위'에 중점을 두고 API에 대하여 동작합니다. 마이크로서비스 그 자체에 속한 것들 (예를들면, 실제 DB 또는 해당 DB의 인-메모리 버전)은 모킹(Mock)하지 않고, 다른 마이크로서비스 호출과 같은 외부적인 것은 스텁(Stub)합니다. 그렇게 함으로써 우리는 우리가 배포하는 것을 테스트하고 어플리케이션의 바깥쪽에서 안쪽으로 접근하며, 적당한 시간 안에서 큰 자신감을 얻을 수 있습니다.
 <br/>
 
-
-❌ **그렇지 않으면:** 시스템 커버리지가 20%에 불과하다는 것을 깨닫기까지 단위 테스트를 작성하는 데 오랜 시간이 걸릴 수 있습니다. 
+❌ **그렇지 않으면:** 시스템 커버리지가 20%에 불과하다는 것을 깨닫기까지 단위 테스트를 작성하는 데 오랜 시간이 걸릴 수 있습니다.
 
 <br/>
 
@@ -730,15 +732,14 @@ describe('주문 서비스', function() {
 
 <br/><br/>
 
-## ⚪ ️2.3 신규 릴리즈가 API 사용을 깨지게 하지 마십시오.
+## ⚪ ️2.3 신규 릴리즈가 API 사용을 깨지게 하지 마십시오
 
-:white_check_mark: **이렇게 해라:** 당신의 마이크로서비스는 다수의 클라이언트를 가지고 있고 호환성의 이유로 여러 버전의 서비스를 운영합니다 (모든 사람을 만족시키기 위해서). 그런 상황에서 당신이 일부 필드를 변경하면 이 필드를 믿고 사용하던 일부 중요한 클라이언트는 화가 날 것입니다. 이것은 통합(integration) 세계에서 해결하기 어려운 진퇴양난에 놓인 문제입니다: 서버 사이드가 여러 클라이언트들의 모든 기댓값을 고려하는 것은 매우 어려운 일입니다. - 반면에, 서버가 릴리즈 날짜를 결정하기 때문에 클라이언트는 어떠한 테스트도 수행할 수 없습니다. 
-[소비자 주도 계약 테스트(Consumer-driven contracts)와 PACT 프레임워크](https://docs.pact.io/)는 매우 파괴적인 방법으로 이러한 프로세스를 표준화하기 위해 나타났습니다. - 서버가 서버의 테스트 계획을 결정하지 않고, 클라이언트가 서버의 테스트를 결정합니다! PACT는 클라이언트의 기댓값을 기록하여 "브로커"라는 공유된 위치에 올려둘 수 있습니다. 그러면 서버는 그 기댓값을 당겨 받을 수 있고 빌드할 때마다 PACT 라이브러리를 사용하여 깨진 계약(contract - 충족되지 않은 클라이언트의 기댓값)을 감지할 수 있습니다. 이렇게 함으로써, 모든 서버-클라이언트 API 간 일치하지 않은 것들을 빌드/CI 환경에서 조기에 잡을 수 있고 당신의 큰 절망감을 줄여줄 수 있을 것입니다. 
+:white_check_mark: **이렇게 해라:** 당신의 마이크로서비스는 다수의 클라이언트를 가지고 있고 호환성의 이유로 여러 버전의 서비스를 운영합니다 (모든 사람을 만족시키기 위해서). 그런 상황에서 당신이 일부 필드를 변경하면 이 필드를 믿고 사용하던 일부 중요한 클라이언트는 화가 날 것입니다. 이것은 통합(integration) 세계에서 해결하기 어려운 진퇴양난에 놓인 문제입니다: 서버 사이드가 여러 클라이언트들의 모든 기댓값을 고려하는 것은 매우 어려운 일입니다. - 반면에, 서버가 릴리즈 날짜를 결정하기 때문에 클라이언트는 어떠한 테스트도 수행할 수 없습니다.
+[소비자 주도 계약 테스트(Consumer-driven contracts)와 PACT 프레임워크](https://docs.pact.io/)는 매우 파괴적인 방법으로 이러한 프로세스를 표준화하기 위해 나타났습니다. - 서버가 서버의 테스트 계획을 결정하지 않고, 클라이언트가 서버의 테스트를 결정합니다! PACT는 클라이언트의 기댓값을 기록하여 "브로커"라는 공유된 위치에 올려둘 수 있습니다. 그러면 서버는 그 기댓값을 당겨 받을 수 있고 빌드할 때마다 PACT 라이브러리를 사용하여 깨진 계약(contract - 충족되지 않은 클라이언트의 기댓값)을 감지할 수 있습니다. 이렇게 함으로써, 모든 서버-클라이언트 API 간 일치하지 않은 것들을 빌드/CI 환경에서 조기에 잡을 수 있고 당신의 큰 절망감을 줄여줄 수 있을 것입니다.
 
 <br/>
 
-
-❌ **그렇지 않으면:** 대안은 수동 배포나 배포에 대한 두려움을 안고 가는 것 뿐입니다. 
+❌ **그렇지 않으면:** 대안은 수동 배포나 배포에 대한 두려움을 안고 가는 것 뿐입니다.
 
 <br/>
 
@@ -746,29 +747,23 @@ describe('주문 서비스', function() {
 
 <br/>
 
-### :clap: 올바른 예:
+### :clap: 올바른 예
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg
  "Examples with PACT")
- 
-![alt text](assets/bp-14-testing-best-practices-contract-flow.png )
 
+![alt text](assets/bp-14-testing-best-practices-contract-flow.png )
 
 </details>
 
-
-
 <br/><br/>
 
-
-## ⚪ ️ 2.4 당신의 미들웨어를 독립적으로 테스트 하십시오.
+## ⚪ ️ 2.4 당신의 미들웨어를 독립적으로 테스트 하십시오
 
 :white_check_mark: **Do:** 많은 사람들은 미들웨어(Middleware) 테스트를 피합니다. 왜냐하면 미들웨어 테스트는 시스템의 작은 부분일 뿐이고 라이브 Express 서버가 필요하기 때문입니다. 하지만 두 가지 이유 모두 틀렸습니다. - 미들웨어는 작지만 모든 요청 또는 대부분의 요청에 영향을 미치고, {req,res} JS 객체를 가지는 순수한 함수로 쉽게 테스트할 수 있기 때문입니다. 미들웨어 함수를 테스트하기 위해서는 단지 함수를 불러오고 함수가 올바르게 동작하는 것을 확인하기 위해 {req, res} 객체에 대한 인터렉션을 스파이(spy)([예를들어 Sinon을 사용](https://www.npmjs.com/package/sinon))하면 됩니다. 라이브러리 [node-mock-http](https://www.npmjs.com/package/node-mocks-http)는 더 나아가서 행위에 대한 스파이와 함께 {req, res} 객체도 테스트할 수 있습니다. 예를 들어, response 객체의 http 상태가 기대했던 값과 일치하는지 여부를 확인(assert)할 수 있습니다. (아래 예제를 보세요)
 <br/>
 
-
 ❌ **Otherwise:** Express 미들웨어에서의 버그 === 모든 요청 또는 대부분의 요청에서의 버그
-
 
 <br/>
 
@@ -803,21 +798,17 @@ test('헤더에 인증정보가 없는 요청은, http status 403을 리턴해�
 
 </details>
 
-
-
-
 <br/><br/>
 
-## ⚪ ️2.5 정적 분석 도구를 사용하여 측정하고 리팩토링 하십시오.
-:white_check_mark: **이렇게 해라:** 정적 분석 도구를 사용하면 코드 품질을 개선하고 코드를 유지 관리할 수 있는 객관적인 방법을 제공할 수 있습니다. 정적 분석 도구를 당신의 CI 빌드에 추가하여 코드 냄새(code smell)가 발견되면 중단되도록 할 수 있습니다. 정적 분석 도구가 일반적인 린트(lint) 도구보다 더 좋은 점은 여러 파일들의 컨텍스트 안에서 품질을 검사하고(예: 중복 탐지), 고급 분석(예: 코드 복잡성)을 할 수 있으며 코드 이슈에 대한 히스토리와 프로세스를 추적할 수 있다는 것입니다. 사용할 수 있는 정적 분석 도구 두 가지는 [Sonarqube](https://www.sonarqube.org/) (2,600+ [stars](https://github.com/SonarSource/sonarqube))와 [Code Climate](https://codeclimate.com/) (1,500+ [stars](https://github.com/codeclimate/codeclimate))입니다. 
+## ⚪ ️2.5 정적 분석 도구를 사용하여 측정하고 리팩토링 하십시오
+
+:white_check_mark: **이렇게 해라:** 정적 분석 도구를 사용하면 코드 품질을 개선하고 코드를 유지 관리할 수 있는 객관적인 방법을 제공할 수 있습니다. 정적 분석 도구를 당신의 CI 빌드에 추가하여 코드 냄새(code smell)가 발견되면 중단되도록 할 수 있습니다. 정적 분석 도구가 일반적인 린트(lint) 도구보다 더 좋은 점은 여러 파일들의 컨텍스트 안에서 품질을 검사하고(예: 중복 탐지), 고급 분석(예: 코드 복잡성)을 할 수 있으며 코드 이슈에 대한 히스토리와 프로세스를 추적할 수 있다는 것입니다. 사용할 수 있는 정적 분석 도구 두 가지는 [Sonarqube](https://www.sonarqube.org/) (2,600+ [stars](https://github.com/SonarSource/sonarqube))와 [Code Climate](https://codeclimate.com/) (1,500+ [stars](https://github.com/codeclimate/codeclimate))입니다.
 
 Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.com/TheHollidayInn" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Keith Holliday](https://github.com/TheHollidayInn)</a>
 
 <br/>
 
-
 ❌ **그렇지 않으면:** 코드 품질이 좋지 않으면 버그와 성능은 빛나는 새 라이브러리나 최신 기능으로 해결할 수 없는 문제가 될 것입니다.
-
 
 <br/>
 
@@ -825,27 +816,24 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 <br/>
 
-### :clap: 올바른 예:  복잡도가 높은 함수를 찾아내는 상용 도구인 CodeClimate:
+### :clap: 올바른 예:  복잡도가 높은 함수를 찾아내는 상용 도구인 CodeClimate
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg
  "Examples with CodeClimate")
- 
+
 ![alt text](assets/bp-16-yoni-goldberg-quality.png " CodeClimat, a commercial tool that can identify complex methods:")
 
 </details>
 
-
-
-
 <br/><br/>
 
-## ⚪ ️ 2.6 노드 혼돈(chaos)대한 준비상태를 확인하십시오.
+## ⚪ ️ 2.6 노드 혼돈(chaos)대한 준비상태를 확인하십시오
+
 :white_check_mark: **이렇게 해라:** 이상하게도 대부분의 소프트웨어 테스트는 오직 로직과 데이터를 대상으로 합니다. 하지만 최악의 상황(정말 해결하기 어렵기도 한 상황) 중 일부는 인프라 이슈입니다. 예를 들어, 프로세스 메모리가 과부하 되거나 서버/프로세스가 죽는 상황, 또는 API 속도가 50% 아래로 떨어질 때 모니터링 시스템이 인식하는 상황에 대해서 테스트한 적이 있나요? 이러한 문제 상황들을 테스트하고 줄이기 위해서 - [카오스 엔지니어링(Chaos engineering)](https://principlesofchaos.org/)이 넷플릭스에 의해 탄생했습니다. 카오스 엔지니어링은 혼돈(chaos) 상황에 대한 어플리케이션의 복원력을 테스트하기 위해서 상황에 대한 인식, 프레임워크, 툴들을 제공하는 것을 목표로 합니다. 예를 들어, 유명한 툴 중에 하나인 [카오스 몽키(chaos monkey)](https://github.com/Netflix/chaosmonkey)는 서버를 무작위로 종료시키고 이러한 상황에도 사용자는 서비스를 계속 사용할 수 있어 시스템이 단일 서버에 의존하지 않고 있다는 것을 테스트합니다. (쿠버네티스 버전인 [kube-monkey](https://github.com/asobti/kube-monkey)는 팟(Pod)을 종료시킴) 이러한 툴들은 모두 호스팅/플랫폼 레벨에서 동작합니다. 하지만 당신이 순수 노드 혼돈을 테스트하고 발생시키고 싶으면 어떻게 해야 할까요? 예를 들면, 노드 프로세스가 어떻게 잡히지 않은 오류, 처리되지 않은 프로미스 거부(promise rejection), 최대로 허용된 1.7GB에 대한 v8 메모리 과부하를 처리하는지. 혹은 이벤트 루프가 자주 차단될 때 UX가 만족스럽게 유지되는지 여부 같은 것들이요. 이 문제를 해결하기 위해 제가 모든 종류의 노드 관련된 카오스 행위를 제공하는 [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha)를 만들었습니다.
 
 <br/>
 
-
-❌ **그렇지 않으면:** 탈출구는 없습니다. 머피의 법칙은 자비없이 당신의 시스템에 타격을 줄 것입니다. 
+❌ **그렇지 않으면:** 탈출구는 없습니다. 머피의 법칙은 자비없이 당신의 시스템에 타격을 줄 것입니다.
 
 <br/>
 
@@ -853,19 +841,20 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 <br/>
 
-### :clap: 올바른 예: Node-chaos는 모든 종류의 Node.js 행위들을 발생시켜서 당신의 어플리케이션이 얼마나 혼돈 상태에 대한 복원력이 있는지 테스트 할 수 있습니다.
+### :clap: 올바른 예: Node-chaos는 모든 종류의 Node.js 행위들을 발생시켜서 당신의 어플리케이션이 얼마나 혼돈 상태에 대한 복원력이 있는지 테스트 할 수 있습니다
+
 ![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
 
 </details>
 
 <br/>
 
-## ⚪ ️2.7 글로벌한 초기 테스트 데이터 집합을 만들지 말고 각 테스트 마다 데이터를 추가하십시오. 
+## ⚪ ️2.7 글로벌한 초기 테스트 데이터 집합을 만들지 말고 각 테스트 마다 데이터를 추가하십시오
+
 :white_check_mark: **이렇게 해라:** 황금률(섹션 0)에 따르면 각 테스트는 커플링을 방지하고 테스트 흐름에 대해서 쉽게 추론하기 위해 자신의 DB 데이터들을 추가하고 해당 데이터로 테스트되어야 합니다. 하지만 현실 세계에선 성능 향상을 위해 테스트를 실행하기 전에 초기 데이터를 DB에 추가하는(‘test fixture’라고 알려져 있음) 테스터들에 의해서 이 규칙은 종종 깨지곤 합니다. 성능은 실제로 중요한 문제입니다. - 이 문제는 완화될 수 있습니다 ('컴포넌트 테스트' 섹션을 보세요). 하지만 테스트 복잡성은 대부분의 다른 고려사항들을 지배해 버리는 더욱 고통스런 문제입니다. 실질적으로 각 테스트 케이스에 필요한 DB 레코드만 명시적으로 추가하고 해당 레코드를 가지고만 테스트하세요. 만약 성능이 중요한 문제라면 - 데이터를 변경하지 않는 테스트들에 대해서만 초기 데이터를 채우는 형태로 타협할 수 있습니다. (예: 쿼리)
 <br/>
 
-
-❌ **그렇지 않으면:** 테스트가 실패하고 배포는 중단되어 팀원들은 지금 소중한 시간을 할애해야 합니다. 버그가 있습니까? 찾아봅시다, 오 이런 - 두 개의 테스트가 동일한 테스트 데이터(seed data)를 변경한 것으로 보입니다. 
+❌ **그렇지 않으면:** 테스트가 실패하고 배포는 중단되어 팀원들은 지금 소중한 시간을 할애해야 합니다. 버그가 있습니까? 찾아봅시다, 오 이런 - 두 개의 테스트가 동일한 테스트 데이터(seed data)를 변경한 것으로 보입니다.
 
 <br/>
 
@@ -873,11 +862,11 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
 
 <br/>
 
-### :thumbsdown: 올바르지 않은 예: 테스트는 독립적이지 않고 테스트마다 글로벌 DB 데이터를 사용하도록 훅이 걸려있습니다. 
+### :thumbsdown: 올바르지 않은 예: 테스트는 독립적이지 않고 테스트마다 글로벌 DB 데이터를 사용하도록 훅이 걸려있습니다
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Mocha")
- 
+
 ```javascript
 before(() => {
   // DB에 사이트와 어드민 데이터를 추가합니다. 데이터는 어디에 있나요? 외부에 있습니다. 외부 json 파일이나 마이그레이션 프레임워크에 있습니다. 
@@ -896,9 +885,10 @@ it("사이트 이름으로 조회했을때, 해당 사이트를 가져온다", a
 });
 
 ```
+
 <br/>
 
-### :clap: 올바른 예: 테스트 안에서만 머물며 각 테스트는 자신의 데이터 세트 안에서만 동작합니다. 
+### :clap: 올바른 예: 테스트 안에서만 머물며 각 테스트는 자신의 데이터 세트 안에서만 동작합니다
 
 ```javascript
 it("사이트 이름을 변경하면, 성공 결과값을 받아온다", async () => {
@@ -922,11 +912,9 @@ it("사이트 이름을 변경하면, 성공 결과값을 받아온다", async (
 
 :white_check_mark: **이렇게 해라:** 컴포넌트 로직을 테스트할때, 화면의 세부사항들은 제외되어야할 노이즈가 됩니다. 그것을 제외함으로써 당신의 테스트들은 순수한 데이터에 집중할 수 있습니다. 실제로, 그래픽 구현에 너무 결합되지 않는 추상적인 방법을 통해 요구되어지는 데이터를 마크업으로부터 추출하십시오. 그리고 느리게 만드는 애니메이션들을 제외한 오직 순수한 데이터를 검증하십시오(vs HTML/CSS 화면 세부사항). 당신은 렌더링하는 것을 피하고 오직 화면의 뒷부분(서비스, 액션, 스토어등과 같은)만을 테스트 하려고 할 수도 있습니다. 하지만, 이것은 실제와 같지도 않으며 심지어 화면에 올바른 데이터가 도달하지 않은 경우를 나타내지도 않는 가짜 테스트에서의 결과가 될 것 입니다.
 
-
 <br/>
 
 ❌ **그렇지 않으면:** 당신의 테스트의 순수하게 계산된 데이터는 10ms 내에 준비될수도 있지만, 전체 테스트는 화려하고 불필요한 애니메이션 때문에 500ms(100 테스트 = 1분) 동안 지속될 것 입니다.
-
 
 <br/>
 
@@ -962,6 +950,7 @@ test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 
 <br/>
 
 ### :thumbsdown: 잘못된 예: 화면 세부사항들과 데이터를 섞어서 검증
+
 ```javascript
 test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 멤버들만 보여져야 한다', () => {
   // Arrange
@@ -981,11 +970,7 @@ test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 
 
 </details>
 
-
-
-
 <br/><br/>
-
 
 ## ⚪ ️ 3.2 변하지 않은 요소들에 기반해서 HTML 엘리먼트들을 찾으십시오
 
@@ -1005,7 +990,7 @@ test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React")
- 
+
 ```html
 // the markup code (part of React component)
 <h3>
@@ -1032,6 +1017,7 @@ test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 
 <br/>
 
 ### :thumbsdown: 잘못된 예: CSS 요소들에 의존
+
 ```html
 <!-- the markup code (part of React component) -->
 <span id="metric" className="d-flex-column">{value}</span> <!-- 만약 디자이너가 클래스를 변경한다면? -->
@@ -1046,11 +1032,7 @@ test('데이터가 전달되지 않으면, 0을 보여준다', () => {
   });
 ```
 
-
 </details>
-
-
-
 
 <br/>
 
@@ -1075,7 +1057,7 @@ test('데이터가 전달되지 않으면, 0을 보여준다', () => {
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg
  "Examples with Enzyme")
- 
+
 ```javascript
 class Calendar extends React.Component {
   static defaultProps = {showFilters: false}
@@ -1107,6 +1089,7 @@ test('실제적인 접근: 필터들을 클릭하면, 필터들이 화면에 표
 ```
 
 ### :thumbsdown: 잘못된 예: 얕은 렌더링과 함께 실제를 목킹
+
 ```javascript
 
 test('얕은/목킹 접근: 필터들을 클릭하면, 필터들이 화면에 표시된다', () => {
@@ -1128,14 +1111,12 @@ test('얕은/목킹 접근: 필터들을 클릭하면, 필터들이 화면에 �
 
 <br/>
 
-
 ## ⚪ ️ 3.4 슬립을 사용하지 마십시오. 프레임워크에서 비동기 이벤트들을 위해 지원하는 내장 기능을 사용하십시오. 그리고 속도를 높이려 노력하십시오
 
-:white_check_mark: **이렇게 해라:** 대부분의 경우에 테스트 완료시간은 알 수 없습니다. (예: 애니메이션은 요소의 출현을 지연시킴) - 이런 경우에는 슬립(예: setTimeout)을 피하고, 대부분의 플랫폼들이 제공하는 더 결정적인 메소드들을 사용하십시오. 몇몇 라이브러리들은 awaiting 기능을 허용합니다. (예: [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), 대기를 위한 다른 API [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance). 때때로, 더 우아한 방법은 API같이 느린 자원을 스텁하는 것입니다. 그런 후 응답순간이 결정적이 되면, 컴포넌트를 명시적으로 다시 렌더링 할 수 있습니다. 외부 컴포넌트가 슬립상태일때는, [hurry-up the clock](https://jestjs.io/docs/en/timer-mocks)가 유용할 수 있습니다. 슬립은 당신의 테스트를 느리고 위험하게 만들기 때문에 피해야할 패턴입니다(너무 짧은 시간 기다려야할 경우). 만약 슬립과 폴링이 필연적이고 테스트 프레임워크의 지원이 없다면, [wait-for-expect](https://www.npmjs.com/package/wait-for-expect)와 같은 라이브러리들이 준결정 솔루션으로서 도움을 줄 수도 있습니다. 
+:white_check_mark: **이렇게 해라:** 대부분의 경우에 테스트 완료시간은 알 수 없습니다. (예: 애니메이션은 요소의 출현을 지연시킴) - 이런 경우에는 슬립(예: setTimeout)을 피하고, 대부분의 플랫폼들이 제공하는 더 결정적인 메소드들을 사용하십시오. 몇몇 라이브러리들은 awaiting 기능을 허용합니다. (예: [Cypress cy.request('url')](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)), 대기를 위한 다른 API [@testing-library/dom method wait(expect(element))](https://testing-library.com/docs/guide-disappearance). 때때로, 더 우아한 방법은 API같이 느린 자원을 스텁하는 것입니다. 그런 후 응답순간이 결정적이 되면, 컴포넌트를 명시적으로 다시 렌더링 할 수 있습니다. 외부 컴포넌트가 슬립상태일때는, [hurry-up the clock](https://jestjs.io/docs/en/timer-mocks)가 유용할 수 있습니다. 슬립은 당신의 테스트를 느리고 위험하게 만들기 때문에 피해야할 패턴입니다(너무 짧은 시간 기다려야할 경우). 만약 슬립과 폴링이 필연적이고 테스트 프레임워크의 지원이 없다면, [wait-for-expect](https://www.npmjs.com/package/wait-for-expect)와 같은 라이브러리들이 준결정 솔루션으로서 도움을 줄 수도 있습니다.
 <br/>
 
 ❌ **그렇지 않으면:** 오랜 시간동안 슬립하는 경우, 테스트는 더 느려질 것 입니다. 슬립할때, 테스트중인 유닛이 제 시간에 반응하지 않으면 테스트는 실패할 것 입니다. 그래서 그것은 테스트가 실패하는 약점과 나쁜 성능간의 트레이드 오프를 가지게 됩니다.
-
 
 <br/>
 
@@ -1176,6 +1157,7 @@ test('movie title appears', async () => {
 ```
 
 ### :thumbsdown: 잘못된 예: 사용자 정의 슬립 코드
+
 ```javascript
 
 test('movie title appears', async () => {
@@ -1199,7 +1181,6 @@ test('movie title appears', async () => {
 
 </details>
 
-
 <br/>
 
 ## ⚪ ️ 3.5 화면의 내용이 네트워크를 통해 어떻게 제공될지 확인하십시오
@@ -1221,20 +1202,17 @@ test('movie title appears', async () => {
 
 ![](/assets/lighthouse2.png "Lighthouse page load inspection report")
 
-
 </details>
-
 
 <br/>
 
-## ⚪ ️ 3.6 백엔드 API와 같이 자주 멈출 수 있거나 느린 리소스는 stub 하십시오.
+## ⚪ ️ 3.6 백엔드 API와 같이 자주 멈출 수 있거나 느린 리소스는 stub 하십시오
 
 :white_check_mark: **이렇게 해라:** 주요 기능에 대한 테스트 코드(E2E테스트 아님) 작성 시, backend API 처럼 그 기능의 주 역할에서 벗어나는 항목은 제외할 수 있도록 stub(예: test double) 하십시오. 실제 네트워크를 호출하지 말고, test double 라이브러리([Sinon](https://sinonjs.org/), [Test doubles](https://www.npmjs.com/package/testdouble))를 사용하십시오. 이 경우 가장 큰 장점은 예상치 못한 테스트 실패를 예방 할 수 있습니다. 코드단에서 API 정의에 따라 test를 적용하는 작업은 안정적이지 않고 당신의 component는 문제가 없지만 수시로 test가 실패 할 수 있습니다.(운영 상태의 env 설정은 testing에서는 사용하지 마세요. API 요청에 병목이 발생 할 수 있습니다.) 이런식으로 해서 API 응답 데이터가 없는 경우, 에러가 응답되는 경우 등의 다양한 API 상태에 따른 테스트를 진행 할 수 있습니다. 다시한번 강조하지만 실제 네트워크 호출은 test를 매우 느리게 만들것입니다.
 
 <br/>
 
 ❌ **그렇지 않으면:** 평균 테스트 실행 시간이 몇 ms 인 경우, API 호출로 개당 최소 100ms 시간이 걸리게 되고 테스트는 약 20배 느려지게 됩니다.
-
 
 <br/>
 
@@ -1243,10 +1221,11 @@ test('movie title appears', async () => {
 <br/>
 
 ### :clap: 올바른 예: Stubbing 하거나 API 응답값 변조
+
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with react-testing-library")
- 
+
 ```javascript
 
 // unit under test
@@ -1285,7 +1264,7 @@ test('products가 없는 경우, 적절한 메시지 표시하기', () => {
 
 <br/>
 
-## ⚪ ️ 3.7 전체 시스템에 걸친 엔드-투-엔드 테스트가 거의 없습니다.
+## ⚪ ️ 3.7 전체 시스템에 걸친 엔드-투-엔드 테스트가 거의 없습니다
 
 :white_check_mark: **이렇게 해라:** E2E(end-to-end)는 일반적으로 실제 브라우저를 사용한 UI를 위한 테스트를 의미하지만(3.6 참고), 다른 의미로 실제 백엔드를 포함하여 전체 시스템을 확장하는 테스트를 의미합니다. 후자의 테스트 유형은 교환 스키마에 대한 잘못된 이해로 인해 발생할 수 있는 프론트엔드와 백엔드간의 통합 버그를 커버하기 때문에 상당히 유용합니다. 또한 백엔드간 통합 문제(예 : 마이크로서비스 A가 마이크로서비스 B에 잘못된 메시지를 보낸다)를 발견하고 배포 실패를 감지하는 효과적인 방법입니다. [Cypress](https://www.cypress.io)와 [Pupeteer](https://github.com/GoogleChrome/puppeteer)같은 UI 프레임워크만큼 친숙하고 성숙한 E2E 테스트 백엔드 프레임워크는 없습니다. 이러한 테스트의 단점은 구성 요소가 많은 환경을 구성하는 데 드는 높은 비용과 주로 불안정성 입니다 - 50개의 마이크로서비스가 제공되는데, 하나가 실패하더라도 전체 E2E가 실패. 따라서 이 기법을 적절히 사용해야 하며, 그 중 1~10개 정도만 사용해야 합니다. 즉, 소수의 E2E 테스트 일지라도 배포 및 통합 오류와 같은 유형의 문제를 잡을 수 있습니다. 프로덕션과 같은 스테이징 환경에서 실행하는 것이 좋습니다.
 
@@ -1357,8 +1336,10 @@ beforeEach(setUser => () {
 <br/>
 
 ### :clap: 올바른 예: 모든 페이지의 smoke 탐색하기
+
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
  "Using Cypress to illustrate the idea")
+
 ```javascript
 it('모든 페이지를 smoke 테스트 할때, 페이지들이 정상적으로 로드 되어야 한다', () => {
     // Cypress를 이용한 예제 입니다
@@ -1373,7 +1354,6 @@ it('모든 페이지를 smoke 테스트 할때, 페이지들이 정상적으로 
 ```
 
 </details>
-
 
 <br/>
 
@@ -1392,6 +1372,7 @@ it('모든 페이지를 smoke 테스트 할때, 페이지들이 정상적으로 
 ### :clap: 올바른 예: cucumber-js 의 humnan 언어를 사용한 테스트 코드
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cocumber-blue.svg  "Examples using Cucumber")
+
 ```javascript
 // Cucumber 를 사용하여 테스트를 설명: 평문을 사용하여 누구든 이해하고 협업 할 수 있다
 
@@ -1413,21 +1394,15 @@ Feature: Twitter new tweet
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
-
 </details>
 
-
-
-
-## ⚪ ️ 3.11 자동화된 툴을 사용하여 시각적 문제(Visual Issues)를 감지해라.
-
+## ⚪ ️ 3.11 자동화된 툴을 사용하여 시각적 문제(Visual Issues)를 감지해라
 
 :white_check_mark: **이렇게 해라:** 컨테츠가 겹치거나 깨지는 등의 시각적 문제들이 감지될 때, UI 스크린 샷을 캡처하기 위해 자동화 도구를 셋업하세요. 이를 통해, 올바른 데이터가 준비 될 뿐만 아니라 사용자가 편리하게 변경을 확인할 수 있습니다. 이러한 기술은 현재 널리 채택되지는 않았습니다. 우리의 테스트 사고 방식은 여전히 기능 테스트에 의존하지만 사용자가 실제로 경험하는 것은 시각적 요소이며 다양한 디바이스 유형때문에 일부 UI 버그들은 간과되기 쉽습니다. 일부 무료 툴들은 육안 검사를 위한 스크린 샷을 생성하거나 저장하는 기능과 같은 기본적인 기능들을 제공합니다. 이 방법은 작은 크기의 App에는 충분하지만, 변경이 발생할 때마다 사람의 손길이 필요한 다른 수동 테스트를 수행하기에는 제약이 있습니다. 반면에, 명확한 정의가 없기 때문에 UI 문제를 자동으로 감지하는 것은 상당히 어려운 일입니다. - 이 부분이 Visual Regression 테스트 영역입니다. 이전 버전의 UI를 최근 변경과 비교하여 차이점을 감지하여 문제를 해결합니다. 일부 오픈소스/무료 툴들은 이 기능들의 일부를 제공해 주지만(예. [wraith](https://github.com/BBC-News/wraith), [PhantomCSS](https://github.com/HuddleEng/PhantomCSS)) 상당한 셋업 시간이 필요합니다. 상용 툴들은(예. [Applitools](https://applitools.com/), [Percy.io](https://percy.io/)) 설치가 간편하고 관리 UI, 알람, ‘시각적 노이즈(예. 광고, 애니메이션)’를 제거하는 스마트 캡쳐와 문제를 일으키는 DOM/css의 근본 원인을 분석하는 고급 기능들을 제공합니다.
 
 <br/>
 
 ❌ **Otherwise:** How good is a content page that display great content (100% tests passed), loads instantly but half of the content area is hidden?
-
 
 <br/>
 
@@ -1440,7 +1415,6 @@ Feature: Twitter new tweet
 ![alt text](assets/amazon-visual-regression.jpeg "Amazon page breaks")
 
 <br/>
-
 
 ### :clap: Doing It Right Example: Configuring wraith to capture and compare UI snapshots
 
@@ -1521,27 +1495,20 @@ cy.eyesCheckWindow('mark as completed');
 });
 ```
 
-
-
-
 </details>
-
-
 
 <br/><br/>
 
-  
 # 섹션 4️⃣: 테스트 효과 측정
 
 <br/><br/>
 
-## ⚪ ️ 4.1 자신감을 갖기에 충분한 커버리지를 확보하십시오. ~80%가 이상적인 것 같습니다.
+## ⚪ ️ 4.1 자신감을 갖기에 충분한 커버리지를 확보하십시오. ~80%가 이상적인 것 같습니다
 
 :white_check_mark: **이렇게 해라:** 테스트의 목적은 빠른 변경에 대한 충분한 자신감을 갖기 위한 것입니다. 분명히 더 많은 코드가 테스트 될수록 팀은 더 자신감을 가질 수 있습니다. 커버리지는 얼마나 많은 라인(브랜치, 구문(statements) 등)이 테스트에 의해 커버되었는지에 대한 지표입니다. 그렇다면 어느 정도가 충분할까요? 10–30%는 빌드 정확성에 대해 판단하기에는 분명히 너무 낮습니다. 반면에 100%는 비용이 많이 들고 정작 당신의 관심을 중요한 부분이 아닌 테스트 코드로 옮겨버릴지도 모릅니다. 이것에 대한 답은 수치는 어플리케이션 유형과 같은 다양한 요소들에 따라 달라진다는 것입니다. - 만약 당신이 Airbus A380의 차세대 버전을 만들면 100%로 맞춰야 하지만 웹툰 사이트라면 50%면 충분합니다. 비록 테스트에 열성인 대부분의 사람들은 적절한 커버리지 임계값이 상황에 따라 달라져야 한다고 하지만, 그들 중 대부분은 대다수의 어플리케이션을 만족하기 위해서 경험상으로 80%([마틴 파울러: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html))가 적절하다고 얘기합니다.
 
 구현 팁: 당신의 CI 환경에서 커버리지 임계치를 설정하여 그 기준에 미치지 못하면 빌드를 멈추도록 하고 싶을 것입니다. (컴포넌트 당 임계치를 설정하는 것도 가능합니다. 아래 예제 코드를 보세요). 이 위에, 빌드 커버리지 감소에 대한 감지도 고려해 보세요. (새로 커밋 된 코드가 커버리지에 못 미칠 때) - 이렇게 함으로써 개발자들이 커버리지를 올리거나 적어도 유지하도록 압박할 수 있습니다. 말한대로 커버리지는 오직 하나의 양적 지표일 뿐 테스트의 견고성을 나타내기에는 충분하지 않습니다. 그리고 다음 항목에 나와있는 것처럼 당신을 속일 수 있습니다.
 <br/>
-
 
 ❌ **그렇지 않으면:**  Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear. and fear will slow you down
 
@@ -1568,9 +1535,9 @@ cy.eyesCheckWindow('mark as completed');
 
 <br/><br/>
 
-## ⚪ ️ 4.2 커버리지 리포트를 확인하여 테스트 되지 않은 부분과 기타 이상한 점들을 감지하십시오.
+## ⚪ ️ 4.2 커버리지 리포트를 확인하여 테스트 되지 않은 부분과 기타 이상한 점들을 감지하십시오
 
-:white_check_mark: **이렇게 해라:** 일부 문제들은 레이더망 아래로 숨어버려 기존의 툴들을 사용하여 찾기 매우 어렵습니다. 이것들은 실제로 버그는 아니지만 심각한 영향을 줄 수 있는 생각지 못 한 어플리케이션 동작들입니다. 예를 들어, 일부 코드 영역은 절대 또는 거의 호출되지 않습니다. - ‘PricingCalculator’라는 상품 가격을 설정하는 클래스가 있다고 생각해 보세요. DB에 100000개의 상품이 있고 판매도 많지만 이 클래스는 실제로 절대 호출되지 않는 것으로 밝혀졌습니다... 코드 커버리지 리포트를 통해 어플리케이션이 당신이 원하는 대로 동작하는지 확인할 수 있습니다. 그 외에도 리포트는 어떤 코드들이 테스트되지 않았는지를 강조해서 보여줄 수도 있습니다. - 코드의 80%가 테스트 되었다는 알림이 중요한 부분이 커버되었는지에 대한 여부를 나타내진 않습니다. 리포트를 만드는 것은 쉽습니다. - 운영 또는 테스트를 할 때 커버리지 트래킹을 하면서 어플리케이션을 실행하세요. 그러고 나서 각 코드 영역이 얼마나 자주 호출됐는지를 나타내는 형형색색의 리포트를 보세요. 잠깐 시간을 내서 이 데이터들을 보면 몇 가지 문제점들을 발견하게 될 수도 있습니다. 
+:white_check_mark: **이렇게 해라:** 일부 문제들은 레이더망 아래로 숨어버려 기존의 툴들을 사용하여 찾기 매우 어렵습니다. 이것들은 실제로 버그는 아니지만 심각한 영향을 줄 수 있는 생각지 못 한 어플리케이션 동작들입니다. 예를 들어, 일부 코드 영역은 절대 또는 거의 호출되지 않습니다. - ‘PricingCalculator’라는 상품 가격을 설정하는 클래스가 있다고 생각해 보세요. DB에 100000개의 상품이 있고 판매도 많지만 이 클래스는 실제로 절대 호출되지 않는 것으로 밝혀졌습니다... 코드 커버리지 리포트를 통해 어플리케이션이 당신이 원하는 대로 동작하는지 확인할 수 있습니다. 그 외에도 리포트는 어떤 코드들이 테스트되지 않았는지를 강조해서 보여줄 수도 있습니다. - 코드의 80%가 테스트 되었다는 알림이 중요한 부분이 커버되었는지에 대한 여부를 나타내진 않습니다. 리포트를 만드는 것은 쉽습니다. - 운영 또는 테스트를 할 때 커버리지 트래킹을 하면서 어플리케이션을 실행하세요. 그러고 나서 각 코드 영역이 얼마나 자주 호출됐는지를 나타내는 형형색색의 리포트를 보세요. 잠깐 시간을 내서 이 데이터들을 보면 몇 가지 문제점들을 발견하게 될 수도 있습니다.
 <br/>
 
 ❌ **그렇지 않으면:** 어떤 코드가 테스트되지 않았는지 알 수 없으면 문제의 원인도 알 수 없습니다.  
@@ -1581,7 +1548,7 @@ cy.eyesCheckWindow('mark as completed');
 
 <br/>
 
-### :thumbsdown: 올바르지 않은 예: 이 커버리지 리포트에는 어떤 문제가 있나요? 현실 세계 시나리오로 QA에서 어플리케이션 사용을 추적했고 흥미로운 로그인 패턴을 찾았습니다. (힌트: 로그인 실패 횟수가 비례하지 않습니다. 분명히 무언가 잘못되었습니다.) 마침내 일부 프론트엔드 버그가 백엔드 로그인 API를 계속 호출하고 있다는 것이 밝혀졌습니다. 
+### :thumbsdown: 올바르지 않은 예: 이 커버리지 리포트에는 어떤 문제가 있나요? 현실 세계 시나리오로 QA에서 어플리케이션 사용을 추적했고 흥미로운 로그인 패턴을 찾았습니다. (힌트: 로그인 실패 횟수가 비례하지 않습니다. 분명히 무언가 잘못되었습니다.) 마침내 일부 프론트엔드 버그가 백엔드 로그인 API를 계속 호출하고 있다는 것이 밝혀졌습니다
 
 ![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
 
@@ -1632,7 +1599,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/>
 
-### :clap: 올바른 예: mutation 테스트 도구인 Stryker 보고서는 테스트 되지 않은 코드의 양을 감지하고 계산합니다.
+### :clap: 올바른 예: mutation 테스트 도구인 Stryker 보고서는 테스트 되지 않은 코드의 양을 감지하고 계산합니다
 
 ![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "mutation 테스트 도구인 Stryker 보고서는 테스트 되지 않은 코드의 양을 감지하고 계산합니다.")
 
@@ -1654,7 +1621,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/>
 
-### :thumbsdown: 올바르지 않은 예: 오류로 가득 찬 테스트 케이스, 운 좋게도 린터가 잡았습니다.
+### :thumbsdown: 올바르지 않은 예: 오류로 가득 찬 테스트 케이스, 운 좋게도 린터가 잡았습니다
 
 ```javascript
 describe("Too short description", () => {
@@ -1692,7 +1659,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :thumbsdown: 올바르지 않은 예: 잘못된 Error 객체가 실수로 throw되어 이 오류에 대한 stack trace가 나타나지 않습니다. 운 좋게도 ESLint는 다음과 같은 프로덕션 버그를 잡아냅니다.
+### :thumbsdown: 올바르지 않은 예: 잘못된 Error 객체가 실수로 throw되어 이 오류에 대한 stack trace가 나타나지 않습니다. 운 좋게도 ESLint는 다음과 같은 프로덕션 버그를 잡아냅니다
 
 ![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "잘못된 Error 객체가 실수로 throw되어 이 오류에 대한 stack trace가 나타나지 않습니다. 운 좋게도 ESLint는 다음과 같은 프로덕션 버그를 잡아냅니다.")
 
@@ -1716,7 +1683,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :clap: 올바른 예: 코드 품질 검사를 수행하는 npm 스크립트는 요청 시 또는 개발자가 새 코드를 푸시하려고 할 때 모두 병렬로 실행됩니다.
+### :clap: 올바른 예: 코드 품질 검사를 수행하는 npm 스크립트는 요청 시 또는 개발자가 새 코드를 푸시하려고 할 때 모두 병렬로 실행됩니다
 
 ```javascript
 "scripts": {
@@ -1785,7 +1752,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-## ⚪ ️ 5.5 라이센스 및 표절을 검사하여 법적 문제를 피하십시오.
+## ⚪ ️ 5.5 라이센스 및 표절을 검사하여 법적 문제를 피하십시오
 
 :white_check_mark: **이렇게 해라:** 라이센싱과 표절 문제는 당장 당신의 주요 관심사가 아닐 수 있지만, 10분 안에 이 내용을 확인하지 않으시겠습니까? 많은 npm 패키지의 [라이센스 체크](https://www.npmjs.com/package/license-checker) 및 [표절 확인](https://www.npmjs.com/package/plagiarism-checker)(상용 도구의 무료 플랜)을 CI 파이프라인에 쉽게 포함시킬 수 있습니다. 그리고 제한적인 라이센스의 종속성이나 Stack Overflow에서 복사하여 붙여넣은 일부 저작권을 위반한 것으로 보이는 코드를 점검하십시오.
 
@@ -1797,7 +1764,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :clap: 올바른 예:
+### :clap: 올바른 예
 
 ```javascript
 //install license-checker in your CI environment or also locally
@@ -1857,7 +1824,7 @@ license-checker --summary --failOn BSD
 
 <br/>
 
-### :clap: 올바른 예: 코드가 최신 버전보다 어느정도 뒤쳐지는지 감지하기 위하여 [ncu](https://www.npmjs.com/package/npm-check-updates)를 수동으로 또는 CI 파이프라인 내에서 사용할 수 있습니다.
+### :clap: 올바른 예: 코드가 최신 버전보다 어느정도 뒤쳐지는지 감지하기 위하여 [ncu](https://www.npmjs.com/package/npm-check-updates)를 수동으로 또는 CI 파이프라인 내에서 사용할 수 있습니다
 
 ![alt text](assets/bp-27-yoni-goldberg-npm.png "코드가 최신 버전보다 어느정도 뒤쳐지는지 감지하기 위하여 ncu를 수동으로 또는 CI 파이프라인 내에서 사용할 수 있습니다.")
 
@@ -1885,7 +1852,7 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️ 5.9 빌드 매트릭스: 여러 노드 버전을 사용해서 동일한 CI 단계를 실행 하십시오.
+## ⚪ ️ 5.9 빌드 매트릭스: 여러 노드 버전을 사용해서 동일한 CI 단계를 실행 하십시오
 
 :white_check_mark: **이렇게 해라:** 품질 검사는 [세런디피티](https://ko.wikipedia.org/wiki/%EC%84%B8%EB%9F%B0%EB%94%94%ED%94%BC%ED%8B%B0)에 관한 것으로, 문제를 조기에 발견하는데 도움이 되는 더 많은 기회를 제공합니다. 재사용 가능한 패키지를 개발하거나 다양한 구성 및 노드 버전으로 여러 고객의 제품을 실행하는 경우, CI는 모든 구성의 순열에 대해 테스트 파이프 라인을 실행해야합니다. 예를 들어, 일부 고객은 MySQL을 사용하고 다른 고객은 PostgreSQL을 사용한다고 가정합시다. 일부 CI 벤더는 '매트릭스'라는 기능을 제공하여 MySQL, PostgreSQL 및 8, 9, 10과 같은 여러 노드 버전의 모든 순열에 대해 테스트를 실행할 수 있습니다. 이 경우에는 어떠한 추가 노력없이 구성(설정)만을 사용하여 가능합니다(테스트 또는 기타 품질 검사가 있다고 가정). 매트릭스를 지원하지 않는 다른 CI는 확장이나 조정이 필요할 수 있습니다.
 
@@ -1893,14 +1860,13 @@ license-checker --summary --failOn BSD
 
 ❌ **그렇지 않으면:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
 
-
 <br/>
 
 <details><summary>✏ <b>예제 코드</b></summary>
 
 <br/>
 
-### :clap: 올바른 예: Travis(CI 벤더) 빌드 정의를 사용하여 여러 노드 버전에 대한 동일한 테스트를 실행하십시오.
+### :clap: 올바른 예: Travis(CI 벤더) 빌드 정의를 사용하여 여러 노드 버전에 대한 동일한 테스트를 실행하십시오
 
 <pre name="f909" id="f909" class="graf graf--pre graf-after--p">language: node_js<br>node_js:<br>  - "7"<br>  - "6"<br>  - "5"<br>  - "4"<br>install:<br>  - npm install<br>script:<br>  - npm run test</pre>
 </details>
@@ -1939,7 +1905,7 @@ license-checker --summary --failOn BSD
 
 <br/>
 
-##  [Bruno Scheufler](https://github.com/BrunoScheufler)
+## [Bruno Scheufler](https://github.com/BrunoScheufler)
 
 **Role:** 기술 검토 및 고문
 

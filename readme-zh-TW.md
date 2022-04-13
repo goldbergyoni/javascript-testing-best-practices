@@ -18,7 +18,6 @@
 
 首先了解任何應用程式都通用的測試實踐。然後再深入研究你選擇的領域：前端/UI、後端、CI 或者全部。
 
-
 <br/>
 
 ### 作者 Yoni Goldberg
@@ -375,7 +374,7 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 :white_check_mark: **建議：** 生產環境中的 bug 通常是在一些特殊或者意外的輸入下出現的 — 所以測試的輸入資料越真實，越容易在早期抓住問題。使用現有的一些函式庫（比如 [Faker](https://www.npmjs.com/package/faker)）去造"假"真實數據來模擬生產環境數據的多樣性和形式。比如，這些函示庫可以產生真實的電話號碼、用戶名稱、信用卡、公司名稱等等。你還可以創建一些測試(在單元測試之上，而不是替代)生產隨機 fakers 數據來擴充你的測試單元，甚至從生產環境中導入真實的資料。如果想要更進階的話，請看下一個項目：基於屬性的測試 (property-based testing)。
 <br/>
 
-❌ **否則：** 你要部屬的程式都在 "foo" 之類的輸入值中正確的通過測試，結果上線之後收到像是 ```@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA``` 之類的輸入值後掛掉了。 
+❌ **否則：** 你要部屬的程式都在 "foo" 之類的輸入值中正確的通過測試，結果上線之後收到像是 ```@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA``` 之類的輸入值後掛掉了。
 
 <br/>
 
@@ -474,7 +473,7 @@ describe("Product service", () => {
 
 另一方面，"classic snapshots"的教學和工具鼓勵將大文件 (如組件的渲染結果、API 的 JSON 結果) 存儲在一些外部媒介上，並確保每次測試運行時，將收到的結果與保存的版本進行比較。舉個例子，這將會隱性地將我們的測試與包含3000個數值的1000行內容耦合在一起，而測試者從未閱讀和推理過這些數據。為什麼這樣是不對的？ 這樣做，將會有1000個原因讓你的測試失敗 - 只要有一行改變，快照比對就會 fail，而這可能會經常發生。多頻繁？當有每一個空格、註解或一點 CSS/HTML 的變化。不僅如此，測試名稱也不會提供關於失敗的線索，因為它只是檢查這1000行是否有變化，而且它還鼓勵測試者去接受一個他無法檢查和驗證的大文件作為期望的結果。所有這些都是測試目標不明確、測試目標過多的症狀。
 
-值得注意的是，在少數情況下，大型的外部快照是可以接受的 - 當斷言的對象是 schema 而不是所有內容時 (提取出要的值並專注在某個欄位上)，或者當收到的文件內容幾乎不會改變時。 
+值得注意的是，在少數情況下，大型的外部快照是可以接受的 - 當斷言的對象是 schema 而不是所有內容時 (提取出要的值並專注在某個欄位上)，或者當收到的文件內容幾乎不會改變時。
 
 <br/>
 
@@ -750,13 +749,13 @@ test("Then there should not be a new transfer record", () => {});
 
 ## ⚪ ️2.1  豐富您的測試組合：不局限於單元測試和測試金字塔
 
-:white_check_mark: **建議：** 雖然 [測試金字塔](https://martinfowler.com/bliki/TestPyramid.html) 已經有超過十年的歷史了，但他仍然是個很好的模型，他提出了三種測試類型，並影響了大多數開發者的測試策略。與此同時，大量閃亮的新測試技術出現了，並隱藏在測試金字塔的陰影下。考慮到近十年來我們所看到的所有巨變 (Microservices, cloud, serverless)，這個非常老的模型是否仍能適用於所有類型的應用？測試界不應該考慮新的測試技術嗎？ 
+:white_check_mark: **建議：** 雖然 [測試金字塔](https://martinfowler.com/bliki/TestPyramid.html) 已經有超過十年的歷史了，但他仍然是個很好的模型，他提出了三種測試類型，並影響了大多數開發者的測試策略。與此同時，大量閃亮的新測試技術出現了，並隱藏在測試金字塔的陰影下。考慮到近十年來我們所看到的所有巨變 (Microservices, cloud, serverless)，這個非常老的模型是否仍能適用於所有類型的應用？測試界不應該考慮新的測試技術嗎？
 
 不要誤會，在 2019 年，測試金字塔、TDD、單元測試仍然是強大的技術，且對於大多數應用仍是最佳選擇。但是像其他模型一樣，儘管它有用，但是一定[會在某些時候出問題](https://en.wikipedia.org/wiki/All_models_are_wrong)。例如，我們有一個 IoT 的應用程式，將許多事件傳入一個 Kafka/RabbitMQ 這樣的 message-bus 中，然後這些事件流入資料庫並被經由 UI 來做查詢。我們真的需要花費 50% 的測試預算去為這個幾乎沒有邏輯的中心化的整合應用程式寫單元測試嗎？隨著應用類型 (bots, crypto, Alexa-skills) 的多樣增長，測試金字塔可能將不再是某些場景的最佳選擇了。
 
 是時候豐富你的測試組合並了解更多的測試類型了（下一節會給你一些小建議），這些類似於測試金字塔的思維模型與你所面臨的現實問題會更加匹配（"嘿，我們的 API 掛了，我們來寫 consumer-driven contract testing 吧！"）。讓您的測試多樣化，比如建立基於風險分析的檢查模型 — 評估可能出現問題的地方，並提供一些預防措施以減輕這些潛在風險。
 
-需要注意的是：軟體世界中的 TDD 模型面臨兩個極端的態度，一些人鼓吹到處使用它，另一些人則認為它是魔鬼。每個說絕對的人都是錯的 :] 
+需要注意的是：軟體世界中的 TDD 模型面臨兩個極端的態度，一些人鼓吹到處使用它，另一些人則認為它是魔鬼。每個說絕對的人都是錯的 :]
 
 <br/>
 
@@ -823,7 +822,7 @@ test("Then there should not be a new transfer record", () => {});
 
 <br/>
 
-### :clap: 正例：
+### :clap: 正例
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Examples with PACT")
 
@@ -901,7 +900,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 ## ⚪ ️ 2.6 檢查你對 Node 相關渾沌的準備工作
 
-:white_check_mark: **建議：** 奇怪的是，大部分的軟體測試都只專注在邏輯和資料層面，但最重要且很難被緩解的，是那些基礎設施的問題。例如，你有測試過當你的程序記憶體過載、伺服器或程序死掉時的表現嗎？或者你的監控系統可以檢測到 API 的回應時間慢了 50% 嗎？為了測試與減輕類似的問題，Netflix 設立了混沌工程 [Chaos engineering](https://principlesofchaos.org/)。它的目的是提供意識、框架及工具來測試我們的應用程式對於混沌問題的彈性。比如，最著名的工具之一，渾沌猴子 [the chaos monkey](https://github.com/Netflix/chaosmonkey)，他會隨機地殺掉服務以確保我們的服務仍然可以提供服務給客戶，而不是僅依賴一個單獨的伺服器 (Kubernetes 也有一個 [kube-monkey](https://github.com/asobti/kube-monkey) 用來殺掉 pods)。這些工具都是作用在伺服器/平台面，但如果你想測試及產生單純的 Node 渾沌，比如檢查你的 Node 程序如何處理未知錯誤、未知的 promise rejection、v8 使用的記憶體超過 1.7GB 的限制以及當 event loop 卡住後你的 UX 是否仍然可以正常運行？為了解決上面提到的問題， [node-chaos](https://github.com/i0natan/node-chaos-monkey) 提供了各種 Node 相關的渾沌。 
+:white_check_mark: **建議：** 奇怪的是，大部分的軟體測試都只專注在邏輯和資料層面，但最重要且很難被緩解的，是那些基礎設施的問題。例如，你有測試過當你的程序記憶體過載、伺服器或程序死掉時的表現嗎？或者你的監控系統可以檢測到 API 的回應時間慢了 50% 嗎？為了測試與減輕類似的問題，Netflix 設立了混沌工程 [Chaos engineering](https://principlesofchaos.org/)。它的目的是提供意識、框架及工具來測試我們的應用程式對於混沌問題的彈性。比如，最著名的工具之一，渾沌猴子 [the chaos monkey](https://github.com/Netflix/chaosmonkey)，他會隨機地殺掉服務以確保我們的服務仍然可以提供服務給客戶，而不是僅依賴一個單獨的伺服器 (Kubernetes 也有一個 [kube-monkey](https://github.com/asobti/kube-monkey) 用來殺掉 pods)。這些工具都是作用在伺服器/平台面，但如果你想測試及產生單純的 Node 渾沌，比如檢查你的 Node 程序如何處理未知錯誤、未知的 promise rejection、v8 使用的記憶體超過 1.7GB 的限制以及當 event loop 卡住後你的 UX 是否仍然可以正常運行？為了解決上面提到的問題， [node-chaos](https://github.com/i0natan/node-chaos-monkey) 提供了各種 Node 相關的渾沌。
 
 <br/>
 
@@ -979,7 +978,7 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 ## ⚪ ️ 3.2 使用不易改變的屬性來查询 HTML 元素
 
-:white_check_mark: **建議：** 使用不太容易受畫面變更而影響的屬性來查詢 HTML 元素 (例如 form label，而不是 CSS selector)。如果指定的元素沒有這樣的屬性，則創建一個專用的測試屬性，如 `test-id-submit-button`。這樣做不僅可以確保您的功能/邏輯測試不會因為外觀變化而中斷，而且整個團隊可以清楚地看到，測試案例使用了這個元素和屬性，不應該刪除它。 
+:white_check_mark: **建議：** 使用不太容易受畫面變更而影響的屬性來查詢 HTML 元素 (例如 form label，而不是 CSS selector)。如果指定的元素沒有這樣的屬性，則創建一個專用的測試屬性，如 `test-id-submit-button`。這樣做不僅可以確保您的功能/邏輯測試不會因為外觀變化而中斷，而且整個團隊可以清楚地看到，測試案例使用了這個元素和屬性，不應該刪除它。
 
 <br/>
 
@@ -1262,7 +1261,7 @@ test("When no products exist, show the appropriate message", () => {
 
 <br/>
 
-❌ **否則：** UI 可能在功能測試上花費了大量的精力，但最後才發現後端回傳的內容 (UI 要使用的資料格式) 與預期中的不一樣。 
+❌ **否則：** UI 可能在功能測試上花費了大量的精力，但最後才發現後端回傳的內容 (UI 要使用的資料格式) 與預期中的不一樣。
 
 <br/>
 
@@ -1272,7 +1271,7 @@ white_check_mark: **建議：** 在涉及真實的後端並必須使用有效的
 
 <br/>
 
-❌ **否則：** 給定 200 個測試案例，假設登錄需要花費的時間為 100ms，則至少需要花費 20s，在這一遍遍的登錄上。 
+❌ **否則：** 給定 200 個測試案例，假設登錄需要花費的時間為 100ms，則至少需要花費 20s，在這一遍遍的登錄上。
 
 <br/>
 
@@ -1520,7 +1519,7 @@ describe("visual validation", () => {
 
 ### :thumbsdown: 反例：這個測試覆蓋率的報告出了什麼問題？
 
-基於一個真實世界的情境，我們在 QA 中追蹤了我們應用程式的使用情況，並發現了這個有趣的登錄模式 (提示：登入失敗的數量不成正比的，顯然是有問題的。最後發現，有一些前端的 bug 一直在打後端的登入 API) 
+基於一個真實世界的情境，我們在 QA 中追蹤了我們應用程式的使用情況，並發現了這個有趣的登錄模式 (提示：登入失敗的數量不成正比的，顯然是有問題的。最後發現，有一些前端的 bug 一直在打後端的登入 API)
 
 ![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report?")
 
@@ -1628,7 +1627,7 @@ it("Test name", () => { // *error:no-identical-title. Assign unique titles to te
 
 <br/>
 
-### :thumbsdown: 反例：Error 物件被拋出，這樣的錯誤不會出現 stack trace。幸運的是，ESLint 抓到了這個 bug。
+### :thumbsdown: 反例：Error 物件被拋出，這樣的錯誤不會出現 stack trace。幸運的是，ESLint 抓到了這個 bug
 
 ![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
 
@@ -1651,7 +1650,7 @@ it("Test name", () => { // *error:no-identical-title. Assign unique titles to te
 
 <br/>
 
-### :clap: 正例：用來執行程式品質檢查的 npm script，在開發者主動觸發或嘗試提交新程式時執行。
+### :clap: 正例：用來執行程式品質檢查的 npm script，在開發者主動觸發或嘗試提交新程式時執行
 
 ```javascript
 "scripts": {
@@ -1746,7 +1745,7 @@ name: test-for-ci
 
 <br/>
 
-### :clap: 正例：
+### :clap: 正例
 
 ```javascript
 //install license-checker in your CI environment or also locally
@@ -1805,7 +1804,7 @@ license-checker --summary --failOn BSD
 
 <br/>
 
-### :clap: 正例：[ncu](https://www.npmjs.com/package/npm-check-updates) 可以手動或在 CI pipeline 中使用，以檢測程式落後最新版本多少。
+### :clap: 正例：[ncu](https://www.npmjs.com/package/npm-check-updates) 可以手動或在 CI pipeline 中使用，以檢測程式落後最新版本多少
 
 ![alt text](assets/bp-27-yoni-goldberg-npm.png "ncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
 

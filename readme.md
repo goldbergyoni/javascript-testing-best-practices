@@ -6,8 +6,6 @@
 
 <br/>
 
-
-
 # 👇 Why this guide can take your testing skills to the next level
 
 <br/>
@@ -744,7 +742,7 @@ Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-dr
 
 ## ⚪ ️2.1 Enrich your testing portfolio: Look beyond unit tests and the pyramid
 
-:white_check_mark: **Do:** The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit *all* types of applications? shouldn’t the testing world consider welcoming new testing techniques?
+:white_check_mark: **Do:** The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit _all_ types of applications? shouldn’t the testing world consider welcoming new testing techniques?
 
 Don’t get me wrong, in 2019 the testing pyramid, TDD and unit tests are still a powerful technique and are probably the best match for many applications. Only like any other model, despite its usefulness, [it must be wrong sometimes](https://en.wikipedia.org/wiki/All_models_are_wrong). For example, consider an IoT application that ingests many events into a message-bus like Kafka/RabbitMQ, which then flow into some data-warehouse and are eventually queried by some analytics UI. Should we really spend 50% of our testing budget on writing unit tests for an application that is integration-centric and has almost no logic? As the diversity of application types increase (bots, crypto, Alexa-skills) greater are the chances to find scenarios where the testing pyramid is not the best match.
 
@@ -817,7 +815,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap: Doing It Right Example:
+### :clap: Doing It Right Example
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Examples with PACT")
 
@@ -883,7 +881,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :clap: Doing It Right Example: CodeClimate, a commercial tool that can identify complex methods:
+### :clap: Doing It Right Example: CodeClimate, a commercial tool that can identify complex methods
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Examples with CodeClimate")
 
@@ -1066,7 +1064,6 @@ beforeEach(() => {
 
 :white_check_mark: **Do:** When checking integrations, go beyond the happy and sad paths. Check not only errored responses (e.g., HTTP 500 error) but also network-level anomalies like slow and timed-out responses. This will prove that the code is resilient and can handle various network scenarios like taking the right path after a timeout, has no fragile race conditions, and contains a circuit breaker for retries. Reputable interceptor tools can easily simulate various network behaviors like hectic service that occasionally fail. It can even realize when the default HTTP client timeout value is longer than the simulated response time and throw a timeout exception right away without waiting
 
-
 <br/>
 
 ❌ **Otherwise:** All your tests pass, it's only the production who will crash or won't report errors correctly when 3rd parties send excpetional responses
@@ -1106,7 +1103,6 @@ beforeEach(() => {
 </details>
 
 <br/>
-
 
 ## ⚪ ️2.13 Test the five potential outcomes
 
@@ -1933,7 +1929,7 @@ The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for
 
 <br/>
 
-### :clap: Doing It Right Example:
+### :clap: Doing It Right Example
 
 ```javascript
 //install license-checker in your CI environment or also locally
