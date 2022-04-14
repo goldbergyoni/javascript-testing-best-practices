@@ -46,27 +46,27 @@ Mulailah dengan memahami praktik pengujian di mana-mana yang merupakan dasar unt
 
 ## `Daftar Isi`
 
-#### [`Bagian 0: Aturan Emas`](#section-0️⃣-aturan-emas)
+#### [`Bagian 0: Aturan Emas`](#bagian-0️⃣-aturan-emas)
 
 Satu saran yang menginspirasi semua yang lain (1 butir khusus)
 
-#### [`Bagian 1: Tes Anatomi`](#section-1-the-test-anatomy-1)
+#### [`Bagian 1: Tes Anatomi`](#bagian-1-tes-anatomi-1)
 
 Pondasi - menyusun tes bersih (12 butir)
 
-#### [`Bagian 2: Backend`](#section-2️⃣-backend-testing)
+#### [`Bagian 2: Backend`](#bagian-2️⃣-pengujian-backend)
 
 Menulis pengujian backend dan Microservices secara efisien (13 butir)
 
-#### [`Bagian 3: Frontend`](#section-3️⃣-frontend-testing)
+#### [`Bagian 3: Frontend`](#bagian-3️⃣-pengujian-frontend)
 
 Tes penulisan untuk UI web termasuk pengujian komponen dan E2E (11 butir)
 
-#### [`Bagian 4: Measuring Tests Effectiveness`](#section-4️⃣-measuring-test-effectiveness)
+#### [`Bagian 4: Mengukur Efektivitas Tes`](#bagian-4️⃣-mengukur-efektivitas-tes)
 
 Menonton penjaga - mengukur kualitas tes (4 butir)
 
-#### [`Bagian 5: Continuous Integration`](#section-5️⃣-ci-and-other-quality-measures)
+#### [`Bagian 5: Continuous Integration`](#bagian-5️⃣-ci-dan-ukuran-kualitas-lainnya)
 
 Pedoman untuk CI di dunia JS (9 butir)
 
@@ -160,7 +160,7 @@ describe('Products Service', function() {
 
 :white_check_mark: **Lakukan:** Susun pengujian Anda dengan 3 bagian yang terpisah dengan baik Atur (Arrange), Bertindak (Act) & Tegaskan(Assert) (AAA). Mengikuti struktur ini menjamin bahwa pembaca tidak menghabiskan CPU-otak untuk memahami rencana pengujian:
 
-1 A - Arrange: Semua kode pengaturan untuk membawa sistem ke skenario yang ingin disimulasikan oleh pengujian. Ini mungkin termasuk membuat instance unit yang sedang diuji konstruktor, menambahkan catatan DB, mengejek/mematikan objek dan kode persiapan lainnya
+1 A - Arrange: Semua kode pengaturan untuk membawa sistem ke skenario yang ingin disimulasikan oleh pengujian. Ini mungkin termasuk membuat instance unit yang sedang diuji konstruktor, menambahkan catatan DB, mocking/stubbing objek dan kode persiapan lainnya
 
 2 A - Act: Jalankan unit yang sedang diuji. Biasanya 1 baris kode
 
@@ -331,7 +331,7 @@ Sebelum menggunakan uji ganda, ajukan pertanyaan yang sangat sederhana: Apakah s
 Misalnya, jika Anda ingin menguji apakah aplikasi Anda berperilaku wajar saat layanan pembayaran tidak aktif, Anda mungkin mematikan layanan pembayaran dan memicu beberapa pengembalian 'Tidak Ada Respons' untuk memastikan bahwa unit yang sedang diuji mengembalikan nilai yang benar. Ini memeriksa perilaku/respons/hasil aplikasi kami di bawah skenario tertentu. Anda mungkin juga menggunakan mata-mata untuk menegaskan bahwa email telah dikirim saat layanan itu tidak aktif — ini lagi-lagi merupakan pemeriksaan perilaku yang kemungkinan akan muncul di dokumen persyaratan (“Kirim email jika pembayaran tidak dapat disimpan”). Di sisi lain, jika Anda mock layanan Pembayaran dan memastikan bahwa itu dipanggil dengan jenis JavaScript yang tepat — maka pengujian Anda difokuskan pada hal-hal internal yang tidak ada hubungannya dengan fungsionalitas aplikasi dan cenderung sering berubah
 <br/>
 
-❌ **Jika tidak:** Setiap refactoring kode mengamanatkan untuk mencari semua tiruan dalam kode dan memperbarui yang sesuai. Ujian menjadi beban bukan teman yang membantu
+❌ **Jika tidak:** Setiap refactoring kode mengamanatkan untuk mencari semua tiruan dalam kode dan memperbarui yang sesuai. Testing menjadi beban bukan teman yang membantu
 
 <br/>
 
