@@ -1625,7 +1625,7 @@ describe('visual validation', () => {
 
 ### :thumbsdown: 反例: 这份覆盖率报告有什么问题？基于一个真实的场景，我们跟踪了 QA 中的应用程序使用情况，并发现了一些有趣的登录模式(提示:登录失败的数量是不成比例的，有些地方显然有问题。最终表现为一些前端的 bug 不断触发后端登录API)
 
-![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
+![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report? based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API")
 
 </details>
 
