@@ -72,7 +72,7 @@ JS 领域的 CI 指南（9 条）
 
 为了达到这个目的，我们可以通过选择性价比高、投入产出比（ROI）高的技术、工具以及测试对象。仅测试需要的内容，努力保持其灵活性，某些时候甚至值得去舍弃一些测试来换取灵活性和简洁性。
 
-![alt text](/assets/headspace.png "We have no head room for additional complexity")
+![alt text](/assets/zh-CN/headspace.png "We have no head room for additional complexity")
 
 下面的大部分建议衍生自这一原则。
 
@@ -129,7 +129,7 @@ describe('Products Service', function() {
 <br/>
 
 ### :clap: 正例: 一个包含三部分的用例名
-![alt text](/assets/bp-1-3-parts.jpeg "A test name that constitutes 3 parts")
+![alt text](/assets/zh-CN/bp-1-3-parts.jpg "A test name that constitutes 3 parts")
 
 </details>
 
@@ -732,7 +732,7 @@ describe('Order service', function() {
 <br/>
 
 ### :clap: 正例: Cindy Sridharan  在她的文章“测试微服务——理智的方式”中提出了一个丰富的测试组合
-![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’")
+![alt text](assets/zh-CN/bp-12-rich-testing.jpg "Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’")
 
 <strong class="markup--strong markup--p-strong">☺️Example: </strong><a href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtube" data-href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtu.be" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">[YouTube: “Beyond Unit Tests: 5 Shiny Node.JS Test Types (2018)” (Yoni Goldberg)](https://www.youtube.com/watch?v=-2zP494wdUY&feature=youtu.be)</a>
 
@@ -770,7 +770,7 @@ describe('Order service', function() {
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg
  "Examples with Jest")
 
-![alt text](assets/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) allows approaching Express API in-process (fast and cover many layers)")
+![alt text](assets/zh-CN/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) allows approaching Express API in-process (fast and cover many layers)")
 
 </details>
 
@@ -797,7 +797,7 @@ describe('Order service', function() {
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg
  "Examples with PACT")
 
-![alt text](assets/bp-14-testing-best-practices-contract-flow.png )
+![alt text](assets/zh-CN/bp-14-testing-best-practices-contract-flow.png )
 
 
 </details>
@@ -1674,7 +1674,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 ### :clap: 正例: Stryker 报告，一个编译测试工具，发现并统计没有被测试到的代码（变异）
 
-![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
+![alt text](assets/zh-CN/bp-20-yoni-goldberg-mutation-testing.jpg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
 
 </details>
 
