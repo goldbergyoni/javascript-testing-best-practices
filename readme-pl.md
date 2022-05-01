@@ -35,7 +35,7 @@ Zacznij od zrozumienia wszechobecnych praktyk testowania, które są podstawą k
 - 🇨🇳[Chinese](readme-zh-CN.md) - dzięki uprzejmości [Yves yao](https://github.com/yvesyao)
 - 🇰🇷[Korean](readme.kr.md) - dzięki uprzejmości [Rain Byun](https://github.com/ragubyun)
 - 🇵🇱[Polish](readme.pl.md) - dzięki uprzejmości [Michal Biesiada](https://github.com/mbiesiad)
-- - 🇪🇸[Spanish](readme-es.md) - dzięki uprzejmości [Miguel G. Sanguino](https://github.com/sanguino)
+- 🇪🇸[Spanish](readme-es.md) - dzięki uprzejmości [Miguel G. Sanguino](https://github.com/sanguino)
 - 🇧🇷[Portuguese-BR](readme-pt-br.md) - dzięki uprzejmości [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) oraz [koooge](https://github.com/koooge)
 - 🇫🇷[French](readme-fr.md) - dzięki uprzejmości [Mathilde El Mouktafi](https://github.com/mel-mouk)
 - 🇯🇵[Japanese (draft)](https://github.com/yuichkun/javascript-testing-best-practices/blob/master/readme-jp.md) - dzięki uprzejmości [Yuichi Yogo](https://github.com/yuichkun) oraz [ryo](https://github.com/kawamataryo)
