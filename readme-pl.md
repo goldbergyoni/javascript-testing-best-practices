@@ -147,6 +147,11 @@ describe('Products Service', function() {
 
 </details>
 
+<br/>
+<details><summary>© <b>Credits & read-more</b></summary>
+  1. <a href='https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html'>Roy Osherove - Naming standards for unit tests</a>
+</details>
+
 <br/><br/>
 
 ## ⚪ ️ 1.2 Struktura testów według wzorca AAA
@@ -558,7 +563,7 @@ test("When no credit, then the transfer is declined", async() => {
 
 <br/>
 
-### :clap: Przykład poprawny: Test wskazuje, co jest przyczyną wyniku testu
+### :clap: Przykład robienia tego prawidłowo: Test wskazuje, co jest przyczyną wyniku testu
 
 ```javascript
 
@@ -771,6 +776,9 @@ Słowo ostrzeżenia: argument TDD w świecie oprogramowania ma typową fałszyw�
 :white_check_mark: **Opis:** Każdy test jednostkowy obejmuje niewielką część aplikacji i jest to kosztowne, aby pokryć całość, podczas gdy kompleksowe testy z łatwością obejmują dużo gruntu, ale są niestabilne i wolniejsze, dlaczego nie zastosować zrównoważonego podejścia i napisać testy, które są większe niż testy jednostkowe, ale mniejsze niż testy kompleksowe? Testowanie komponentów to nieoceniona piosenka świata testowego - zapewniają to, co najlepsze z obu światów: rozsądną wydajność i możliwość zastosowania wzorców TDD + realistyczne i doskonałe pokrycie.
 
 Testy komponentów koncentrują się na mikroserwisowej ‘jednostce’, działają przeciwko interfejsowi API, nie mockują niczego, co należy do samego mikroserwisu (np. prawdziwa baza danych lub przynajmniej wersja tej bazy danych w pamięci), ale usuwają wszystko, co jest zewnętrzne, jak wywołania innych mikrousług. W ten sposób testujemy to, co wdrażamy, podchodzimy do aplikacji od zewnątrz do wewnątrz i zyskujemy dużą pewność w rozsądnym czasie.
+
+[Mamy pełny przewodnik, który jest poświęcony wyłącznie pisaniu testów komponentów we właściwy sposób](https://github.com/testjavascript/nodejs-integration-tests-best-practices)
+
 <br/>
 
 ❌ **W przeciwnym razie:** Możesz spędzać długie dni na pisaniu testów jednostkowych, aby dowiedzieć się, że masz tylko 20% zasięgu systemu
