@@ -957,22 +957,22 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/>
 
-## ⚪ ️2.8 Choose a clear data clean-up strategy: After-all (recommended) or after-each
+## ⚪ ️2.8 Wybierz przejrzystą strategię czyszczenia danych: po wszystkim (zalecane) lub po każdym
 
-:white_check_mark: **Do:** The timing when the tests clean the database determines the way the tests are being written. The two most viable options are cleaning after all the tests vs cleaning after every single test. Choosing the latter option, cleaning after every single test guarantees clean tables and builds convenient testing perks for the developer. No other records exist when the test starts, one can have certainty which data is being queried and even might be tempted to count rows during assertions. This comes with severe downsides: When running in a multi-process mode, tests are likely to interfere with each other. While process-1 purges tables, at the very moment process-2 queries for data and fail (because the DB was suddenly deleted by process-1). On top of this, It's harder to troubleshoot failing tests - Visiting the DB will show no records.
+:white_check_mark: **Opis:** Moment, w którym testy czyszczą bazę danych, określa sposób pisania testów. Dwie najbardziej opłacalne opcje to czyszczenie po wszystkich testach i czyszczenie po każdym teście. Wybierając tę drugą opcję, czyszczenie po każdym teście gwarantuje czyste tabele i buduje wygodne korzyści testowe dla programisty. Na początku testu nie istnieją żadne inne rekordy, można mieć pewność, które dane są odpytywane, a nawet można pokusić się o zliczenie wierszy podczas asercji. Ma to poważne wady: podczas uruchamiania w trybie wieloprocesowym testy prawdopodobnie będą ze sobą kolidować. Podczas gdy proces-1 czyści tabele, w tej chwili proces-2 wysyła zapytania o dane i kończy się niepowodzeniem (ponieważ baza danych została nagle usunięta przez proces-1). Ponadto trudniej jest rozwiązywać problemy z testami zakończonymi niepowodzeniem — odwiedzenie bazy danych nie spowoduje wyświetlenia żadnych rekordów.
 
-The second option is to clean up after all the test files have finished (or even daily!). This approach means that the same DB with existing records serves all the tests and processes. To avoid stepping on each other's toes, the tests must add and act on specific records that they have added. Need to check that some record was added? Assume that there are other thousands of records and query for records that were added explicitly. Need to check that a record was deleted? Can't assume an empty table, check that this specific record is not there. This technique brings few powerful gains: It works natively in multi-process mode, when a developer wishes to understand what happened - the data is there and not deleted. It also increases the chance of finding bugs because the DB is full of records and not artificially empty. [See the full comparison table here](https://github.com/testjavascript/nodejs-integration-tests-best-practices/blob/master/graphics/db-clean-options.png).
+Drugą opcją jest czyszczenie po zakończeniu wszystkich plików testowych (lub nawet codziennie!). Takie podejście oznacza, że ta sama baza danych z istniejącymi rekordami obsługuje wszystkie testy i procesy. Aby uniknąć nadepnięcia sobie nawzajem na palce, testy muszą dodawać i działać na określonych rekordach, które dodały. Chcesz sprawdzić, czy dodano jakiś rekord? Załóżmy, że istnieją inne tysiące rekordów i zapytaj o rekordy, które zostały dodane jawnie. Chcesz sprawdzić, czy rekord został usunięty? Nie można założyć, że tabela jest pusta, sprawdź, czy nie ma tam tego konkretnego rekordu. Ta technika przynosi kilka potężnych korzyści: działa natywnie w trybie wieloprocesowym, gdy programista chce zrozumieć, co się stało — dane są tam i nie są usuwane. Zwiększa również szansę na znalezienie błędów, ponieważ baza danych jest pełna rekordów i nie jest sztucznie opróżniona. [Zobacz pełną tabelę porównawczą tutaj](https://github.com/testjavascript/nodejs-integration-tests-best-practices/blob/master/graphics/db-clean-options.png).
 <br/>
 
-❌ **Otherwise:** Without a strategy to separate records or clean - Tests will step on each other toes; Using transactions will work only for relational DB and likely to get complicated once there are inner transactions
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **W przeciwnym razie:** Bez strategii oddzielania rekordów lub czyszczenia — testy będą stąpać po sobie nawzajem; Korzystanie z transakcji będzie działać tylko w przypadku relacyjnych baz danych i może się skomplikować, gdy pojawią się transakcje wewnętrzne
 
 <br/>
 
-### :clap: Cleaning after ALL the tests. Not neccesserily after every run. The more data we have while the tests are running - The more it resembles the production perks
+<details><summary>✏ <b>Przykłady kodu</b></summary>
+
+<br/>
+
+### :clap: Czyszczenie po WSZYSTKICH testach. Niekoniecznie po każdym uruchomieniu. Im więcej danych mamy w trakcie testów - tym bardziej przypomina to profity produkcyjne
 
 ```javascript
   // After-all clean up (recommended)
@@ -989,20 +989,20 @@ module.exports = async () => {
 
 <br/>
 
-## ⚪ ️2.9 Isolate the component from the world using HTTP interceptor
+## ⚪ ️2.9 Odizoluj komponent od świata za pomocą interceptora HTTP
 
-:white_check_mark: **Do:** Isolate the component under test by intercepting any outgoing HTTP request and providing the desired response so the collaborator HTTP API won't get hit. Nock is a great tool for this mission as it provides a convenient syntax for defining external services behavior. Isolation is a must to prevent noise and slow performance but mostly to simulate various scenarios and responses - A good flight simulator is not about painting clear blue sky rather bringing safe storms and chaos. This is reinforced in a Microservice architecture where the focus should always be on a single component without involving the rest of the world. Though it's possible to simulate external service behavior using test doubles (mocking), it's preferable not to touch the deployed code and act on the network level to keep the tests pure black-box. The downside of isolation is not detecting when the collaborator component changes and not realizing misunderstandings between the two services - Make sure to compensate for this using a few contract or E2E tests
+:white_check_mark: **Opis:** Odizoluj testowany składnik, przechwytując wszystkie wychodzące żądania HTTP i dostarczając żądaną odpowiedź, aby interfejs HTTP API współpracownika nie został trafiony. Nock jest doskonałym narzędziem do tej misji, ponieważ zapewnia wygodną składnię do definiowania zachowania usług zewnętrznych. Izolacja jest koniecznością, aby zapobiec szumowi i spowolnieniu działania, ale przede wszystkim aby symulować różne scenariusze i reakcje. Dobry symulator lotu nie polega na malowaniu czystego błękitnego nieba, ale na sprowadzaniu bezpieczeństwa podczas burz i chaosu. Jest to wzmocnione w architekturze mikrousług, w której należy zawsze koncentrować się na jednym komponencie bez angażowania reszty świata. Chociaż możliwe jest symulowanie zachowania usługi zewnętrznej za pomocą dublowania testowego (mockowanie), lepiej nie dotykać wdrożonego kodu i działać na poziomie sieci, aby testy były czysto typu black-box. Wadą izolacji jest nie wykrywanie zmian w komponencie współpracownika i brak zrozumienia nieporozumień między dwiema usługami — pamiętaj, aby zrekompensować to za pomocą kilku testów kontraktowych lub E2E
 <br/>
 
-❌ **Otherwise:** Some services provide a fake version that can be deployed by the caller locally, usually using Docker - This will ease the setup and boost the performance but won't help with simulating various responses; Some services provide 'sandbox' environment, so the real service is hit but no costs or side effects are triggered - This will cut down the noise of setting up the 3rd party service but also won't allow simulating scenarios
-
-<br/>
-
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **W przeciwnym razie:** Niektóre usługi udostępniają wersję fake, która może zostać wdrożona lokalnie przez rozmówcę, zwykle za pomocą Dockera — ułatwi to konfigurację i zwiększy wydajność, ale nie pomoże w symulowaniu różnych odpowiedzi; Niektóre usługi zapewniają środowisko „piaskownicy”, więc prawdziwa usługa zostaje trafiona, ale nie są wyzwalane żadne koszty ani skutki uboczne — zmniejszy to szum związany z konfiguracją usługi innej firmy, ale nie pozwoli również na symulację scenariuszy
 
 <br/>
 
-### :clap: Preventing network calls to externous components allows simulating scnearios and minimizing the noise
+<details><summary>✏ <b>Przykłady kodu</b></summary>
+
+<br/>
+
+### :clap: Zapobieganie połączeniom sieciowym z komponentami zewnętrznymi umożliwia tworzenie scenariuszy symulacji i minimalizowanie szumu
 
 ```javascript
 // Intercept requests for 3rd party APIs and return a predefined response 
@@ -1016,22 +1016,22 @@ beforeEach(() => {
 </details>
 <br/>
 
-## ⚪ ️2.10 Test the response schema, mostly when there are auto-generated fields
+## ⚪ ️2.10 Przetestuj schemat odpowiedzi, głównie w przypadku pól generowanych automatycznie
 
-:white_check_mark: **Do:** When it is impossible to assert for specific data, check for mandatory field existence and types. Sometimes, the response contains important fields with dynamic data that can't be predicted when writing the test, like dates and incrementing numbers. If the API contract promises that these fields won't be null and hold the right types, it's imperative to test it. Most assertion libraries support checking types. If the response is small, check the return data and type together within the same assertion (see code example). One more option is to verify the entire response against an OpenAPI doc (Swagger). Most test runners have community extensions that validate API responses against their documentation.
+:white_check_mark: **Opis:** Gdy nie można potwierdzić konkretnych danych, sprawdź istnienie i typy pól obowiązkowych. Czasami odpowiedź zawiera ważne pola z danymi dynamicznymi, których nie można przewidzieć podczas pisania testu, takie jak daty i rosnące liczby. Jeśli kontrakt API obiecuje, że te pola nie będą miały wartości null i będą zawierać odpowiednie typy, konieczne jest przetestowanie tego. Większość bibliotek asercji obsługuje typy sprawdzania. Jeśli odpowiedź jest mała, sprawdź dane zwrotne i wpisz razem w ramach tego samego potwierdzenia (patrz przykład kodu). Jeszcze jedną opcją jest zweryfikowanie całej odpowiedzi z dokumentem OpenAPI (Swagger). Większość programów uruchamiających testy ma rozszerzenia społeczności, które weryfikują odpowiedzi API w oparciu o ich dokumentację.
 
-
-<br/>
-
-❌ **Otherwise:** Although the code/API caller relies on some field with dynamic data (e.g., ID, date), it will not come in return and break the contract
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **W przeciwnym razie:** Chociaż wywołujący kod/API opiera się na jakimś polu z danymi dynamicznymi (np. ID, data), nie wróci i nie zerwie umowy
 
 <br/>
 
-### :clap: Asserting that fields with dynamic value exist and have the right type
+<details><summary>✏ <b>Przykłady kodu</b></summary>
+
+<br/>
+
+### :clap: Zapewnienie, że pola z wartością dynamiczną istnieją i mają właściwy typ
 
 ```javascript
   test('When adding a new valid order, Then should get back approval with 200 response', async () => {
@@ -1051,22 +1051,22 @@ beforeEach(() => {
 
 <br/>
 
-## ⚪ ️2.11 Check integrations corner cases and chaos
+## ⚪ ️2.11 Sprawdź corner cases integracji i chaos
 
-:white_check_mark: **Do:** When checking integrations, go beyond the happy and sad paths. Check not only errored responses (e.g., HTTP 500 error) but also network-level anomalies like slow and timed-out responses. This will prove that the code is resilient and can handle various network scenarios like taking the right path after a timeout, has no fragile race conditions, and contains a circuit breaker for retries. Reputable interceptor tools can easily simulate various network behaviors like hectic service that occasionally fail. It can even realize when the default HTTP client timeout value is longer than the simulated response time and throw a timeout exception right away without waiting
+:white_check_mark: **Opis:** Sprawdzając integracje wyjdź poza happy i sad paths. Sprawdź nie tylko błędne odpowiedzi (np. błąd HTTP 500), ale także anomalie na poziomie sieci, takie jak powolne i przekroczone limity czasu odpowiedzi. Udowodni to, że kod jest odporny i może obsługiwać różne scenariusze sieciowe, takie jak obieranie właściwej ścieżki po przekroczeniu limitu czasu, brak problemów z prądem i czy zawiera wyłącznik umożliwiający ponowną próbę. Renomowane narzędzia przechwytujące mogą z łatwością symulować różne zachowania sieciowe, takie jak gorączkowa usługa, która czasami kończy się niepowodzeniem. Może nawet zdać sobie sprawę, kiedy domyślna wartość limitu czasu klienta HTTP jest dłuższa niż symulowany czas odpowiedzi i natychmiast zgłosić wyjątek limitu czasu, bez czekania
 
-
-<br/>
-
-❌ **Otherwise:** All your tests pass, it's only the production who will crash or won't report errors correctly when 3rd parties send excpetional responses
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **W przeciwnym razie:** Wszystkie twoje testy przechodzą pomyślnie, tylko produkcja ulegnie awarii lub nie będzie poprawnie zgłaszać błędów, gdy strony trzecie wyślą wyjątkowe odpowiedzi
 
 <br/>
 
-### :clap: Ensuring that on network failures, the circuit breaker can save the day
+<details><summary>✏ <b>Przykłady kodu</b></summary>
+
+<br/>
+
+### :clap: Zapewnienie, że w przypadku awarii sieci wyłącznik może uratować sytuację
 
 ```javascript
   test('When users service replies with 503 once and retry mechanism is applied, then an order is added successfully', async () => {
@@ -1097,19 +1097,19 @@ beforeEach(() => {
 <br/>
 
 
-## ⚪ ️2.12 Test the five potential outcomes
+## ⚪ ️2.12 Przetestuj pięć potencjalnych wyników
 
-:white_check_mark: **Do:** When planning your tests, consider covering the five typical flow's outputs. When your test is triggering some action (e.g., API call), a reaction is happening, something meaningful occurs and calls for testing. Note that we don't care about how things work. Our focus is on outcomes, things that are noticeable from the outside and might affect the user. These outcomes/reactions can be put in 5 categories:
+:white_check_mark: **Opis:** Planując testy, rozważ uwzględnienie pięciu typowych wyników przepływu. Kiedy twój test uruchamia jakąś akcję (np. wywołanie API), dzieje się reakcja, dzieje się coś znaczącego i wzywa do testowania. Pamiętaj, że nie dbamy o to, jak wszystko działa. Skupiamy się na wynikach, rzeczach, które są zauważalne z zewnątrz i mogą mieć wpływ na użytkownika. Te wyniki/reakcje można podzielić na 5 kategorii:
 
-• Response - The test invokes an action (e.g., via API) and gets a response. It's now concerned with checking the response data correctness, schema, and HTTP status
+• Odpowiedź — test wywołuje akcję (np. przez API) i otrzymuje odpowiedź. Teraz zajmuje się sprawdzaniem poprawności danych odpowiedzi, schematu i statusu HTTP
 
-• A new state - After invoking an action, some **publicly accessible** data is probably modified
+• Nowy stan — po wywołaniu akcji niektóre **publicznie dostępne** dane są prawdopodobnie modyfikowane
 
-• External calls - After invoking an action, the app might call an external component via HTTP or any other transport. For example, a call to send SMS, email or charge a credit card
+• Wywołania zewnętrzne — po wywołaniu akcji aplikacja może wywołać składnik zewnętrzny za pośrednictwem protokołu HTTP lub dowolnego innego transportu. Na przykład połączenie w celu wysłania SMS-a, e-maila lub obciążenia karty kredytowej
 
-• Message queues - The outcome of a flow might be a message in a queue
+• Kolejki wiadomości — wynikiem przepływu może być wiadomość w kolejce
 
-• Observability - Some things must be monitored, like errors or remarkable business events. When a transaction fails, not only we expect the right response but also correct error handling and proper logging/metrics. This information goes directly to a very important user - The ops user (i.e., production SRE/admin)
+• Obserwowalność — Niektóre rzeczy muszą być monitorowane, na przykład błędy lub niezwykłe wydarzenia biznesowe. Gdy transakcja się nie powiedzie, oczekujemy nie tylko właściwej reakcji, ale także poprawnej obsługi błędów i prawidłowego logowania/metryk. Informacje te trafiają bezpośrednio do bardzo ważnego użytkownika — użytkownika Ops (tj. produkcyjnego SRE/administratora)
 
 </details>
 
