@@ -21,8 +21,8 @@
 ### Написав Yoni Goldberg
 
 - JavaScript & Node.js консультант
-- 📗 [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com) - Мій комплексний онлайн-курс із більш ніж [7 годинами відео](https://www.testjavascript.com), 14 типів тестів і більше 40 кращих практик
-- [Follow me on Twitter](https://twitter.com/goldbergyoni/)
+- 📗 [Тестування Node.js і JavaScript від А до Я](https://www.testjavascript.com) - Мій комплексний онлайн-курс із більш ніж [7 годинами відео](https://www.testjavascript.com), 14 типів тестів і більше 40 кращих практик
+- [Слідкуйте за мною в Twitter](https://twitter.com/goldbergyoni/)
 
 <br/>
 
@@ -174,7 +174,7 @@ describe('Products Service', function() {
 
 ### :clap: Роби це правильно. Приклад: тест, структурований за шаблоном AAA
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Приклади з Jest") ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Приклади з Mocha")
 
 ```javascript
 describe("Customer classifier", () => {
@@ -220,7 +220,7 @@ test("Should be classified as premium", () => {
 
 <details><summary>✏ <b>Приклади коду</b></summary><br/>
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Приклади з Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Приклади з Mocha & Chai") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Приклади з Jest")
 
 ### :thumbsdown: Приклад антишаблону: читач повинен проглянути довгий код і імперативний код, щоб зрозуміти суть
 
@@ -370,12 +370,12 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/><br/>
 
-## ⚪ ️1.6 Don’t “foo”, use realistic input data
+## ⚪ ️1.6 Використовуйте реалістичні вхідні дані
 
-:white_check_mark: **Роби:** Often production bugs are revealed under some very specific and surprising input — the more realistic the test input is, the greater the chances are to catch bugs early. Use dedicated libraries like [Chance](https://github.com/chancejs/chancejs) or [Faker](https://www.npmjs.com/package/faker) to generate pseudo-real data that resembles the variety and form of production data. For example, such libraries can generate realistic phone numbers, usernames, credit card, company names, and even ‘lorem ipsum’ text. You may also create some tests (on top of unit tests, not as a replacement) that randomize fakers data to stretch your unit under test or even import real data from your production environment. Want to take it to the next level? See the next bullet (property-based testing).
+:white_check_mark: **Роби:** Часто production помилки виявляються під час дуже специфічних і несподіваних вхідних даних — ««чим реалістичнішими є тестові вхідні дані, тим більші шанси виявити помилки на ранній стадії. Використовуйте спеціальні бібліотеки, як-от [Chance](https://github.com/chancejs/chancejs) або [Faker](https://www.npmjs.com/package/faker), щоб генерувати псевдореальні дані. Наприклад, такі бібліотеки можуть створювати реалістичні номери телефонів, імена користувачів, кредитні картки, назви компаній і навіть текст «lorem ipsum». Ви також можете створити деякі тести (на додаток до модульних тестів, а не як заміну), які рандомізують дані фальсифікаторів, щоб розширити тестований блок або навіть імпортувати реальні дані з вашого робочого середовища. Хочете перейти на новий рівень? Дивіться наступний пункт (тестування на основі властивостей).
 <br/>
 
-❌ **Інакше:** All your development testing will falsely show green when you use synthetic inputs like “Foo”, but then production might turn red when a hacker passes-in a nasty string like “@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA”
+❌ **Інакше:** Усе ваше тестування розробки хибно показуватиме зелений колір, якщо ви використовуєте синтетичні вхідні дані, як-от «Foo», але тоді production може стати червоним, коли хакер передасть неприємний рядок, як-от «@3e2ddsf». ##’ 1 fdsfds . fds432 AAAA”
 
 <br/>
 
@@ -383,40 +383,40 @@ it("When a valid product is about to be deleted, ensure an email is sent", async
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test suite that passes due to non-realistic data
+### :thumbsdown: Приклад антишаблону: набір тестів, який проходить через нереалістичні дані
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Приклади з Jest")
 
 ```javascript
 const addProduct = (name, price) => {
-  const productNameRegexNoSpace = /^\S*$/; //no white-space allowed
+  const productNameRegexNoSpace = /^\S*$/; // white-space не допускаються
 
-  if (!productNameRegexNoSpace.test(name)) return false; //this path never reached due to dull input
+  if (!productNameRegexNoSpace.test(name)) return false; // цей шлях не досягнуто через рінній вихід
 
-  //some logic here
+  // Логіка тут
   return true;
 };
 
 test("Wrong: When adding new product with valid properties, get successful confirmation", async () => {
-  //The string "Foo" which is used in all tests never triggers a false result
+  // Рядок "Foo", який використовується в усіх тестах, ніколи не викликає хибний результат
   const addProductResult = addProduct("Foo", 5);
   expect(addProductResult).toBe(true);
-  //Positive-false: the operation succeeded because we never tried with long
-  //product name including spaces
+  // Позитивний-хибний: операція вдалася, тому що ми ніколи не намагалися використати
+  // назву продукту з пробілами
 });
 ```
 
 <br/>
 
-### :clap:Doing It Right Example: Randomizing realistic input
+### :clap:Роби це правильно. Приклад: рандомізація реалістичного введення
 
 ```javascript
 it("Better: When adding new valid product, get successful confirmation", async () => {
   const addProductResult = addProduct(faker.commerce.productName(), faker.random.number());
-  //Generated random input: {'Sleek Cotton Computer',  85481}
+  // Згенеровані випадкові данні: {'Sleek Cotton Computer', 85481}
   expect(addProductResult).to.be.true;
-  //Test failed, the random input triggered some path we never planned for.
-  //We discovered a bug early!
+  // Тест провалився, випадковий вхід ініціював певний шлях, який ми не планували.
+  // Ми рано виявили помилку!
 });
 ```
 
@@ -424,12 +424,12 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/><br/>
 
-## ⚪ ️ 1.7 Test many input combinations using Property-based testing
+## ⚪ ️ 1.7 Перевірте багато вхідних комбінацій за допомогою тестування на основі властивостей
 
-:white_check_mark: **Роби:** Typically we choose a few input samples for each test. Even when the input format resembles real-world data (see bullet [‘Don’t foo’](https://github.com/goldbergyoni/javascript-testing-best-practices#-%EF%B8%8F16-dont-foo-use-realistic-input-data)), we cover only a few input combinations (method(‘’, true, 1), method(“string” , false , 0)), However, in production, an API that is called with 5 parameters can be invoked with thousands of different permutations, one of them might render our process down ([see Fuzz Testing](https://en.wikipedia.org/wiki/Fuzzing)). What if you could write a single test that sends 1000 permutations of different inputs automatically and catches for which input our code fails to return the right response? Property-based testing is a technique that does exactly that: by sending all the possible input combinations to your unit under test it increases the serendipity of finding a bug. For example, given a method — addNewProduct(id, name, isDiscount) — the supporting libraries will call this method with many combinations of (number, string, boolean) like (1, “iPhone”, false), (2, “Galaxy”, true). You can run property-based testing using your favorite test runner (Mocha, Jest, etc) using libraries like [js-verify](https://github.com/jsverify/jsverify) or [testcheck](https://github.com/leebyron/testcheck-js) (much better documentation). Update: Nicolas Dubien suggests in the comments below to [checkout fast-check](https://github.com/dubzzz/fast-check#readme) which seems to offer some additional features and also to be actively maintained
+:white_check_mark: **Роби:** Зазвичай ми обираємо кілька вхідних зразків для кожного тесту. Навіть якщо формат введення нагадує реальні дані (дивись [‘Don’t foo’](https://github.com/goldbergyoni/javascript-testing-best-practices#-%EF%B8%8F16-dont-foo-use-realistic-input-data)), ми розглядаємо лише кілька комбінацій вводу (method(‘’, true, 1), method(“string” , false , 0)), Однак production API, який викликається з 5 параметрами, може бути викликаний із тисячами різних перестановок, одна з яких може призвести до зупинки нашого процесу ([дивись Fuzz тестування](https://en.wikipedia.org/wiki/Fuzzing)). Що, якби ви могли написати один тест, який автоматично надсилає 1000 перестановок різних вхідних даних і виявляє, для якого вхідного сигналу наш код не повертає правильну відповідь? Тестування на основі властивостей — це техніка, яка робить саме це: надсилаючи всі можливі комбінації вхідних даних до вашого тестованого пристрою, це збільшує ймовірність виявлення помилки. Наприклад, задано метод — addNewProduct(id, name, isDiscount) — бібліотеки, що підтримують, викличуть цей метод із багатьма комбінаціями (число, рядок, логічний вираз), наприклад (1, «iPhone», false), (2, «Galaxy» », правда). Ви можете запустити тестування на основі властивостей за допомогою улюбленого засобу виконання тестів (Mocha, Jest тощо), використовуючи такі бібліотеки, як [js-verify](https://github.com/jsverify/jsverify) чи [testcheck](https://github.com/leebyron/testcheck-js) (значно краща документація). Оновлення: Nicolas Dubien пропонує в коментарях нижче [checkout fast-check](https://github.com/dubzzz/fast-check#readme) який, здається, пропонує деякі додаткові функції та також активно підтримується
 <br/>
 
-❌ **Інакше:** Unconsciously, you choose the test inputs that cover only code paths that work well. Unfortunately, this decreases the efficiency of testing as a vehicle to expose bugs
+❌ **Інакше:** Несвідомо ви обираєте тестові вхідні дані, які охоплюють лише шляхи коду, які добре працюють. На жаль, це знижує ефективність тестування як засобу виявлення помилок
 
 <br/>
 
@@ -437,16 +437,16 @@ it("Better: When adding new valid product, get successful confirmation", async (
 
 <br/>
 
-### :clap: Doing It Right Example: Testing many input permutations with “fast-check”
+### :clap: Приклад правильного виконання: Тестування багатьох вхідних перестановок за допомогою “fast-check”
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Приклади з Jest")
 
 ```javascript
 import fc from "fast-check";
 
 describe("Product service", () => {
   describe("Adding new", () => {
-    //this will run 100 times with different random properties
+    // буде виконано 100 разів з різними випадковими властивостями
     it("Add new product with random yet valid properties, always successful", () =>
       fc.assert(
         fc.property(fc.integer(), fc.string(), (id, name) => {
@@ -461,16 +461,15 @@ describe("Product service", () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.8 If needed, use only short & inline snapshots
+## ⚪ ️ 1.8 За потреби використовуйте лише короткі та вбудовані знімки
 
-:white_check_mark: **Роби:** When there is a need for [snapshot testing](https://jestjs.io/docs/en/snapshot-testing), use only short and focused snapshots (i.e. 3-7 lines) that are included as part of the test ([Inline Snapshot](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots)) and not within external files. Keeping this guideline will ensure your tests remain self-explanatory and less fragile.
+:white_check_mark: **Роби:** Коли є потреба в [снепшот тестуванні](https://jestjs.io/docs/en/snapshot-testing), використовуйте лише короткі та цілеспрямовані снепшоти (3-7 рядків) які входять до складу тесту ([Inline Snapshot](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots)) а не в зовнішніх файлах. Дотримуючись цієї вказівки, ваші тести залишатимуться зрозумілими та менш крихкими.
 
-On the other hand, ‘classic snapshots’ tutorials and tools encourage to store big files (e.g. component rendering markup, API JSON result) over some external medium and ensure each time when the test run to compare the received result with the saved version. This, for example, can implicitly couple our test to 1000 lines with 3000 data values that the test writer never read and reasoned about. Why is this wrong? By doing so, there are 1000 reasons for your test to fail - it’s enough for a single line to change for the snapshot to get invalid and this is likely to happen a lot. How frequently? for every space, comment or minor CSS/HTML change. Not only this, the test name wouldn’t give a clue about the failure as it just checks that 1000 lines didn’t change, also it encourages to the test writer to accept as the desired true a long document he couldn’t inspect and verify. All of these are symptoms of obscure and eager test that is not focused and aims to achieve too much
+З іншого боку, навчальні посібники та інструменти «класичних знімків» заохочують зберігати великі файли (наприклад, розмітку візуалізації компонентів, результат JSON API) на зовнішньому носії та забезпечувати порівняння отриманого результату зі збереженою версією під час кожного тестового запуску. Це, наприклад, може неявно поєднати наш тест із 1000 рядками з 3000 значеннями даних, які автор тесту ніколи не читав і не міркував. Чому це неправильно? Таким чином, є 1000 причин невдачі вашого тесту - достатньо змінити один рядок, щоб знімок став недійсним, і це, ймовірно, станеться часто. Як часто? для кожного пробілу, коментаря або незначної зміни CSS/HTML. Крім того, назва тесту не дасть підказки про помилку, оскільки вона лише перевіряє, чи не змінилися 1000 рядків, а також заохочує автора тесту прийняти за бажаний істинний довгий документ, який він не міг перевірити та перевірити. Усе це симптоми незрозумілого та жадібного випробування, яке не є зосередженим і спрямоване на досягнення занадто багато
 
-It’s worth noting that there are few cases where long & external snapshots are acceptable - when asserting on schema and not data (extracting out values and focusing on fields) or when the received document rarely changes
-<br/>
+Варто зазначити, що є кілька випадків, коли довгі та зовнішні снепшоти є прийнятними - коли стверджується на схемі, а не на даних (вилучення значень і фокусування на полях) або коли отриманий документ рідко змінюється<br/>
 
-❌ **Інакше:** A UI test fails. The code seems right, the screen renders perfect pixels, what happened? your snapshot testing just found a difference from the origin document to current received one - a single space character was added to the markdown...
+❌ **Інакше:** UI тести впали. Код виглядає правильним, екран відображає ідеально все, що сталося? Ваше тестування снепшотів щойно виявило різницю між вихідним документом і поточним отриманим документом – до розмітки додано один пробіл...
 
 <br/>
 
@@ -478,9 +477,9 @@ It’s worth noting that there are few cases where long & external snapshots are
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Coupling our test to unseen 2000 lines of code
+### :thumbsdown: Приклад антишаблону: Поєднання нашого тесту з невидимими 2000 рядками коду
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Приклади з Jest")
 
 ```javascript
 it("TestJavaScript.com is renderd correctly", () => {
@@ -493,14 +492,14 @@ it("TestJavaScript.com is renderd correctly", () => {
 
   //Assert
   expect(receivedPage).toMatchSnapshot();
-  //We now implicitly maintain a 2000 lines long document
-  //every additional line break or comment - will break this test
+  //Тепер ми неявно підтримуємо документ довжиною 2000 рядків
+  //кожен додатковий розрив рядка або коментар - порушить цей тест
 });
 ```
 
 <br/>
 
-### :clap: Doing It Right Example: Expectations are visible and focused
+### :clap: Приклад правильного виконання: Очікування помітні та цілеспрямовані
 
 ```javascript
 it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
@@ -528,12 +527,12 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/><br/>
 
-## ⚪ ️Copy code, but only what's neccessary
+## ⚪ ️Скопіюйте код, але тільки необхідний
 
-:white_check_mark: **Роби:** Include all the necessary details that affect the test result, but nothing more. As an example, consider a test that should factor 100 lines of input JSON - Pasting this in every test is tedious. Extracting it outside to transferFactory.getJSON() will leave the test vague - Without data, it's hard to correlate the test result with the cause ("why is it supposed to return 400 status?"). The classic book x-unit patterns named this pattern 'the mystery guest' - Something unseen affected our test results, we don't know what exactly. We can do better by extracting repeatable long parts outside AND mention explictly which specific details matter to the test. Going with the example above, the test can pass parameters that highlight what is important: transferFactory.getJSON({sender: undefined}). In this example, the reader should immediately infer that the empty sender field is the reason why the test should expect a validation error or any other similar adequate outcome.
+:white_check_mark: **Роби:** Включіть усі необхідні деталі, які впливають на результат тесту, але не більше того. Як приклад, розглянемо тест, який має розраховувати 100 рядків вхідного JSON - Вставляти це в кожен тест утомливо. Якщо витягти його за межі transferFactory.getJSON(), тест залишиться невизначеним - Без даних важко співвіднести результат тесту з причиною («чому він має повертати статус 400?»). Класичні книжкові шаблони x-unit назвали цей шаблон «таємничим гостем» - Щось невидиме вплинуло на наші результати тестування, ми не знаємо, що саме. Ми можемо досягти кращих результатів, витягнувши повторювані довгі частини назовні І чітко зазначивши, які конкретні деталі мають значення для тесту. Переходячи до наведеного вище прикладу, тест може передавати параметри, які підкреслюють важливість: transferFactory.getJSON({sender: undefined}). У цьому прикладі читач повинен негайно зробити висновок, що порожнє поле відправника є причиною, чому тест повинен очікувати помилку перевірки або будь-який інший подібний адекватний результат.
 <br/>
 
-❌ **Інакше:** Copying 500 JSON lines in will leave your tests unmaintainable and unreadable. Moving everything outside will end with vague tests that are hard to understand
+❌ **Інакше:** Копіювання 500 рядків JSON зробить ваші тести непридатними для обслуговування та читання. Перенесення всього назовні закінчиться нечіткими тестами, які важко зрозуміти
 
 <br/>
 
@@ -541,40 +540,40 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: The test failure is unclear because all the cause is external and hides within huge JSON
+### :thumbsdown: Приклад антишаблону: Помилка тесту незрозуміла, оскільки вся причина зовнішня і ховається у величезному JSON
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Приклади з Mocha")
 
 ```javascript
 test("When no credit, then the transfer is declined", async() => {
       // Arrange
-      const transferRequest = testHelpers.factorMoneyTransfer() //get back 200 lines of JSON;
+      const transferRequest = testHelpers.factorMoneyTransfer() // повертає 200 рядків JSON;
       const transferServiceUnderTest = new TransferService();
 
       // Act
       const transferResponse = await transferServiceUnderTest.transfer(transferRequest);
 
       // Assert
-      expect(transferResponse.status).toBe(409);// But why do we expect failure: All seems perfectly valid in the test 🤔
+      expect(transferResponse.status).toBe(409);// Але чому ми очікуємо невдачі: у тесті все здається абсолютно дійсним 🤔
     });
 ```
 
 <br/>
 
-### :clap: Doing It Right Example: The test highlights what is the cause of the test result
+### :clap: Приклад правильного виконання: Тест підкреслює, що є причиною результату тесту
 
 ```javascript
 
 test("When no credit, then the transfer is declined ", async() => {
       // Arrange
-      const transferRequest = testHelpers.factorMoneyTransfer({userCredit:100, transferAmount:200}) //obviously there is lack of credit
+      const transferRequest = testHelpers.factorMoneyTransfer({userCredit:100, transferAmount:200}) // очевидно, брак кредитів
       const transferServiceUnderTest = new TransferService({disallowOvercharge:true});
 
       // Act
       const transferResponse = await transferServiceUnderTest.transfer(transferRequest);
 
       // Assert
-      expect(transferResponse.status).toBe(409); // Obviously if the user has no credit it should fail
+      expect(transferResponse.status).toBe(409); // Очевидно, що якщо у користувача немає кредиту, тест впаде
     });
   ```
 
@@ -582,14 +581,14 @@ test("When no credit, then the transfer is declined ", async() => {
 
 <br/><br/>
 
-## ⚪ ️ 1.10 Don’t catch errors, expect them
+## ⚪ ️ 1.10 Не ловіть помилки, очікуйте їх
 
-:white_check_mark: **Роби:** When trying to assert that some input triggers an error, it might look right to use try-catch-finally and asserts that the catch clause was entered. The result is an awkward and verbose test case (example below) that hides the simple test intent and the result expectations
+:white_check_mark: **Роби:** Під час спроби стверджувати, що якийсь вхід викликає помилку, може виглядати правильним використання try-catch-finally і підтверджує, що було введено пропозицію catch. Результатом є незручний і багатослівний тестовий приклад (приклад нижче), який приховує простий намір тесту та очікування результату
 
-A more elegant alternative is the using the one-line dedicated Chai assertion: expect(method).to.throw (or in Jest: expect(method).toThrow()). It’s absolutely mandatory to also ensure the exception contains a property that tells the error type, otherwise given just a generic error the application won’t be able to do much rather than show a disappointing message to the user
+Більш елегантною альтернативою є використання однорядкового виділеного твердження Chai: expect(method).to.throw (або Jest: expect(method).toThrow()). Абсолютно обовʼязково також переконатися, що виняток містить властивість, яка повідомляє тип помилки, інакше, враховуючи лише загальну помилку і покаже користувачеві невтішне повідомлення
 <br/>
 
-❌ **Інакше:** It will be challenging to infer from the test reports (e.g. CI reports) what went wrong
+❌ **Інакше:** Буде складно зробити висновок зі звітів про випробування (наприклад, звітів CI), що пішло не так
 
 <br/>
 
@@ -597,9 +596,9 @@ A more elegant alternative is the using the one-line dedicated Chai assertion: e
 
 <br/>
 
-### :thumbsdown: Anti-pattern Example: A long test case that tries to assert the existence of error with try-catch
+### :thumbsdown: Приклад антишаблону: Довгий тестовий приклад, який намагається підтвердити існування помилки за допомогою try-catch
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Приклади з Mocha")
 
 ```javascript
 it("When no product name, it throws error 400", async () => {
@@ -611,14 +610,14 @@ it("When no product name, it throws error 400", async () => {
     errorWeExceptFor = error;
   }
   expect(errorWeExceptFor).not.to.be.null;
-  //if this assertion fails, the tests results/reports will only show
-  //that some value is null, there won't be a word about a missing Exception
+  // якщо це твердження не виконується, відображатимуться лише результати тестів/звіти
+  // якщо якесь значення дорівнює нулю, не буде жодного слова про відсутній виняток
 });
 ```
 
 <br/>
 
-### :clap: Doing It Right Example: A human-readable expectation that could be understood easily, maybe even by QA or technical PM
+### :clap: Приклад правильного виконання: Очікування, зрозумілі людині, які можуть бути легко зрозумілі, можливо, навіть спеціалістам QA або PM
 
 ```javascript
 it("When no product name, it throws error 400", async () => {
@@ -632,12 +631,12 @@ it("When no product name, it throws error 400", async () => {
 
 <br/><br/>
 
-## ⚪ ️ 1.11 Tag your tests
+## ⚪ ️ 1.11 Позначте свої тести
 
-:white_check_mark: **Роби:** Different tests must run on different scenarios: quick smoke, IO-less, tests should run when a developer saves or commits a file, full end-to-end tests usually run when a new pull request is submitted, etc. This can be achieved by tagging tests with keywords like #cold #api #sanity so you can grep with your testing harness and invoke the desired subset. For example, this is how you would invoke only the sanity test group with Mocha: mocha — grep ‘sanity’
+:white_check_mark: **Роби:** Різні тести повинні виконуватися за різними сценаріями: quick smoke, без IO, тести мають запускатися, коли розробник зберігає або фіксує файл, повні наскрізні тести (e2e) зазвичай запускаються, коли надсилається новий запит на отримання тощо. Цього можна досягти позначаючи тести ключовими словами, як-от #cold #api #sanity, щоб ви могли працювати зі своїм пакетом тестування та викликати потрібну підмножину. Наприклад, ось як ви можете викликати лише групу перевірки розумності за допомогою Mocha: mocha — grep ‘sanity’
 <br/>
 
-❌ **Інакше:** Running all the tests, including tests that perform dozens of DB queries, any time a developer makes a small change can be extremely slow and keeps developers away from running tests
+❌ **Інакше:** Виконання всіх тестів, у тому числі тестів, які виконують десятки запитів до БД, щоразу, коли розробник вносить невеликі зміни, може бути надзвичайно повільним і утримувати розробників від виконання тестівВиконання всіх тестів, у тому числі тестів, які виконують десятки запитів до БД, щоразу, коли розробник вносить невеликі зміни, може бути надзвичайно повільним і утримувати розробників від виконання тестів
 
 <br/>
 
@@ -645,17 +644,17 @@ it("When no product name, it throws error 400", async () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Tagging tests as ‘#cold-test’ allows the test runner to execute only fast tests (Cold===quick tests that are doing no IO and can be executed frequently even as the developer is typing)
+### :clap: Приклад правильного виконання: Позначення тестів як «#cold-test» дозволяє тестувальнику виконувати лише швидкі тести (Cold===швидкі тести, які не виконують введення-виведення (IO) та можуть виконуватися часто, навіть коли розробник вводить текст)
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Приклади з Jest")
 
 ```javascript
-//this test is fast (no DB) and we're tagging it correspondigly
-//now the user/CI can run it frequently
+// цей тест швидкий (без БД), і ми позначаємо його відповідним чином
+// тепер користувач/CI може запускати його часто
 describe("Order service", function() {
   describe("Add new order #cold-test #sanity", function() {
     test("Scenario - no currency was supplied. Expectation - Use the default currency #sanity", function() {
-      //code logic here
+      // Логіка тут
     });
   });
 });
@@ -665,13 +664,13 @@ describe("Order service", function() {
 
 <br/><br/>
 
-## ⚪ ️ 1.12 Categorize tests under at least 2 levels
+## ⚪ ️ 1.12 Класифікуйте тести принаймні за 2 рівнями
 
-:white_check_mark: **Роби:** Apply some structure to your test suite so an occasional visitor could easily understand the requirements (tests are the best documentation) and the various scenarios that are being tested. A common method for this is by placing at least 2 'describe' blocks above your tests: the 1st is for the name of the unit under test and the 2nd for additional level of categorization like the scenario or custom categories (see Приклади коду and print screen below). Doing so will also greatly improve the test reports: The reader will easily infer the tests categories, delve into the desired section and correlate failing tests. In addition, it will get much easier for a developer to navigate through the code of a suite with many tests. There are multiple alternative structures for test suite that you may consider like [given-when-then](https://github.com/searls/jasmine-given) and [RITE](https://github.com/ericelliott/riteway)
+:white_check_mark: **Роби:** Застосуйте певну структуру до свого набору тестів, щоб випадковий відвідувач міг легко зрозуміти вимоги (тести — найкраща документація) і різні сценарії, які тестуються. Звичайним методом для цього є розміщення принаймні 2 блоків «describe» над вашими тестами: 1-й призначений для назви тестованого блоку, а 2-й для додаткового рівня категоризації, як-от сценарій або спеціальні категорії (дивись Приклади коду). Це також значно покращить звіти про тести: читач легко визначить категорії тестів, заглибиться в потрібний розділ і порівнює невдалі тести. Крім того, розробнику стане набагато легше орієнтуватися в коді набору з багатьма тестами. Існує кілька альтернативних структур для набору тестів, які ви можете розглянути, наприклад [given-when-then](https://github.com/searls/jasmine-given) і [RITE](https://github.com/ericelliott/riteway)
 
 <br/>
 
-❌ **Інакше:** When looking at a report with flat and long list of tests, the reader have to skim-read through long texts to conclude the major scenarios and correlate the commonality of failing tests. Consider the following case: When 7/100 tests fail, looking at a flat list will demand reading the failing tests text to see how they relate to each other. However, in a hierarchical report all of them could be under the same flow or category and the reader will quickly infer what or at least where is the root failure cause
+❌ **Інакше:** Дивлячись на звіт із плоским і довгим списком тестів, читач повинен побіжно прочитати довгі тексти, щоб зробити висновок про основні сценарії та співвіднести загальність невдалих тестів. Розглянемо наступний випадок: коли 7/100 тестів не вдаються, перегляд плоского списку потребує прочитання тексту невдалих тестів, щоб побачити, як вони пов’язані один з одним. Однак в ієрархічному звіті всі вони можуть входити до одного потоку або категорії, і читач швидко зрозуміє, що або принаймні де є основна причина збою
 
 <br/>
 
@@ -679,19 +678,19 @@ describe("Order service", function() {
 
 <br/>
 
-### :clap: Doing It Right Example: Structuring suite with the name of unit under test and scenarios will lead to the convenient report that is shown below
+### :clap: Приклад правильного виконання: Структурування набору з назвою блоку, що тестується, і сценаріями призведе до зручного звіту, який показано нижче
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Приклади з Jest")
 
 ```javascript
-// Unit under test
+// Тестуєма одиниця
 describe("Transfer service", () => {
-  //Scenario
+  // Сценарій
   describe("When no credit", () => {
-    //Expectation
+    // Очікування 
     test("Then the response status should decline", () => {});
 
-    //Expectation
+    // Очікування 
     test("Then it should send email to admin", () => {});
   });
 });
@@ -701,9 +700,9 @@ describe("Transfer service", () => {
 
 <br/>
 
-### :thumbsdown: Anti-pattern Example: A flat list of tests will make it harder for the reader to identify the user stories and correlate failing tests
+### :thumbsdown: Приклад антишаблону: Плоский список тестів ускладнить читачеві ідентифікацію історій користувачів і співвіднесення невдалих тестів
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Приклади з Mocha")
 
 ```javascript
 test("Then the response status should decline", () => {});
@@ -721,14 +720,14 @@ test("Then there should not be a new transfer record", () => {});
 
 <br/><br/>
 
-## ⚪ ️1.13 Other generic good testing hygiene
+## ⚪ ️1.13 Інша загальна хороша гігієна тестування
 
-:white_check_mark: **Роби:** This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
+:white_check_mark: **Роби:** Ця публікація зосереджена на порадах щодо тестування, які пов’язані з Node JS або, принаймні, можуть бути представлені на прикладі Node JS. Однак у цьому розділі згруповано кілька добре відомих порад, не повʼязаних з Node
 
-Learn and practice [TDD principles](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) — they are extremely valuable for many but don’t get intimidated if they don’t fit your style, you’re not the only one. Consider writing the tests before the code in a [red-green-refactor style](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), ensure each test checks exactly one thing, when you find a bug — before fixing write a test that will detect this bug in the future, let each test fail at least once before turning green, start a module by writing a quick and simplistic code that satisfies the test - then refactor gradually and take it to a production grade level, avoid any dependency on the environment (paths, OS, etc)
+Навчайтеся і практикуйтеся [TDD принципи](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/) — вони надзвичайно цінні для багатьох, але не лякайтеся, якщо вони не відповідають вашому стилю, ви не єдині. Розгляньте можливість написання тестів перед кодом у [red-green-refactor style](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html), переконайтеся, що кожен тест перевіряє саме одну річ, якщо ви знайдете помилку — перед виправленням напишіть тест, який виявить цю помилку в майбутньому, дайте кожному тесту принаймні один раз помилитися, перш ніж стати зеленим, запустіть модуль, написавши швидкий і спрощений код, який задовольняє тест - потім поступово рефакторинг і переведіть його до рівня виробництва, уникайте будь-якої залежності від середовища (шляхи, ОС тощо)
 <br/>
 
-❌ **Інакше:** You‘ll miss pearls of wisdom that were collected for decades
+❌ **Інакше:** Ви пропустите перлини мудрості, які збиралися десятиліттями
 
 <br/><br/>
 
@@ -754,7 +753,7 @@ A word of caution: the TDD argument in the software world takes a typical false-
 
 <br/>
 
-### :clap: Doing It Right Example: Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the same way’
+### :clap: Приклад правильного виконання: Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the same way’
 
 ![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’")
 
@@ -786,9 +785,9 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap: Doing It Right Example: Supertest allows approaching Express API in-process (fast and cover many layers)
+### :clap: Приклад правильного виконання: Supertest allows approaching Express API in-process (fast and cover many layers)
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Приклади з Mocha")
 
 ![alt text](assets/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) allows approaching Express API in-process (fast and cover many layers)")
 
@@ -809,7 +808,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap: Doing It Right Example:
+### :clap: Приклад правильного виконання:
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Examples with PACT")
 
@@ -832,9 +831,9 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap:Doing It Right Example: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
+### :clap:Приклад правильного виконання: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Приклади з Jest")
 
 ```javascript
 //the middleware we want to test
@@ -875,7 +874,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :clap: Doing It Right Example: CodeClimate, a commercial tool that can identify complex methods:
+### :clap: Приклад правильного виконання: CodeClimate, a commercial tool that can identify complex methods:
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Examples with CodeClimate")
 
@@ -898,7 +897,7 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :clap: Doing It Right Example: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
+### :clap: Приклад правильного виконання: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
 
 ![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
 
@@ -919,9 +918,9 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: tests are not independent and rely on some global hook to feed global DB data
+### :thumbsdown: Приклад антишаблону: tests are not independent and rely on some global hook to feed global DB data
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Приклади з Mocha")
 
 ```javascript
 before(async () => {
@@ -944,7 +943,7 @@ it("When querying by site name, get the right site", async () => {
 
 <br/>
 
-### :clap: Doing It Right Example: We can stay within the test, each test acts on its own set of data
+### :clap: Приклад правильного виконання: We can stay within the test, each test acts on its own set of data
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
@@ -1134,7 +1133,7 @@ beforeEach(() => {
 
 <br/>
 
-### :clap: Doing It Right Example: Separating out the UI details
+### :clap: Приклад правильного виконання: Separating out the UI details
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
@@ -1155,7 +1154,7 @@ test("When users-list is flagged to show only VIP, should display only VIP membe
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Assertion mix UI details and data
+### :thumbsdown: Приклад антишаблону: Assertion mix UI details and data
 
 ```javascript
 test("When flagging to show only VIP, should display only VIP members", () => {
@@ -1188,7 +1187,7 @@ test("When flagging to show only VIP, should display only VIP members", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Querying an element using a dedicated attribute for testing
+### :clap: Приклад правильного виконання: Querying an element using a dedicated attribute for testing
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React")
 
@@ -1217,7 +1216,7 @@ test("Whenever no data is passed to metric, show 0 as default", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Relying on CSS attributes
+### :thumbsdown: Приклад антишаблону: Relying on CSS attributes
 
 ```html
 <!-- the markup code (part of React component) -->
@@ -1254,7 +1253,7 @@ With all that said, a word of caution is in order: this technique works for smal
 
 <br/>
 
-### :clap: Doing It Right Example: Working realistically with a fully rendered component
+### :clap: Приклад правильного виконання: Working realistically with a fully rendered component
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Enzyme-blue.svg "Examples with Enzyme")
 
@@ -1286,7 +1285,7 @@ test("Realistic approach: When clicked to show filters, filters are displayed", 
 });
 ```
 
-### :thumbsdown: Anti-Pattern Example: Mocking the reality with shallow rendering
+### :thumbsdown: Приклад антишаблону: Mocking the reality with shallow rendering
 
 ```javascript
 test("Shallow/mocked approach: When clicked to show filters, filters are displayed", () => {
@@ -1323,7 +1322,7 @@ test("Shallow/mocked approach: When clicked to show filters, filters are display
 
 <br/>
 
-### :clap: Doing It Right Example: E2E API that resolves only when the async operations is done (Cypress)
+### :clap: Приклад правильного виконання: E2E API that resolves only when the async operations is done (Cypress)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
@@ -1335,7 +1334,7 @@ cy.wait("@products"); // wait for route to appear
 // this line will get executed only when the route is ready
 ```
 
-### :clap: Doing It Right Example: Testing library that waits for DOM elements
+### :clap: Приклад правильного виконання: Testing library that waits for DOM elements
 
 ```javascript
 // @testing-library/dom
@@ -1352,7 +1351,7 @@ test("movie title appears", async () => {
 });
 ```
 
-### :thumbsdown: Anti-Pattern Example: custom sleep code
+### :thumbsdown: Приклад антишаблону: custom sleep code
 
 ```javascript
 test("movie title appears", async () => {
@@ -1390,7 +1389,7 @@ test("movie title appears", async () => {
 
 <details><summary>✏ <b>Приклади коду</b></summary>
 
-### :clap: Doing It Right Example: Lighthouse page load inspection report
+### :clap: Приклад правильного виконання: Lighthouse page load inspection report
 
 ![](/assets/lighthouse2.png "Lighthouse page load inspection report")
 
@@ -1412,7 +1411,7 @@ test("movie title appears", async () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Stubbing or intercepting API calls
+### :clap: Приклад правильного виконання: Stubbing or intercepting API calls
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
@@ -1476,7 +1475,7 @@ test("When no products exist, show the appropriate message", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Logging-in before-all and not before-each
+### :clap: Приклад правильного виконання: Logging-in before-all and not before-each
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
@@ -1524,7 +1523,7 @@ beforeEach(setUser => () {
 
 <br/>
 
-### :clap: Doing It Right Example: Smoke travelling across all pages
+### :clap: Приклад правильного виконання: Smoke travelling across all pages
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
@@ -1557,7 +1556,7 @@ it("When doing smoke testing over all page, should load them all successfully", 
 
 <br/>
 
-### :clap: Doing It Right Example: Describing tests in human-language using cucumber-js
+### :clap: Приклад правильного виконання: Describing tests in human-language using cucumber-js
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cucumber-blue.svg "Examples using Cucumber")
 
@@ -1578,7 +1577,7 @@ Feature: Twitter new tweet
 
 ```
 
-### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using Storybook
+### :clap: Приклад правильного виконання: Visualizing our components, their various states and inputs using Storybook
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20StoryBook-blue.svg "Using StoryBook")
 
@@ -1602,13 +1601,13 @@ Feature: Twitter new tweet
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A typical visual regression - right content that is served badly
+### :thumbsdown: Приклад антишаблону: A typical visual regression - right content that is served badly
 
 ![alt text](assets/amazon-visual-regression.jpeg "Amazon page breaks")
 
 <br/>
 
-### :clap: Doing It Right Example: Configuring wraith to capture and compare UI snapshots
+### :clap: Приклад правильного виконання: Configuring wraith to capture and compare UI snapshots
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Wraith-blue.svg "Using Wraith")
 
@@ -1637,7 +1636,7 @@ paths:
     path: /subscribe
 ```
 
-### :clap: Doing It Right Example: Using Applitools to get snapshot comparison and other advanced features
+### :clap: Приклад правильного виконання: Using Applitools to get snapshot comparison and other advanced features
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20AppliTools-blue.svg "Using Applitools") ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg "Using Cypress to illustrate the idea")
 
@@ -1690,7 +1689,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
-### :clap: Doing It Right Example: Setting up coverage per component (using Jest)
+### :clap: Приклад правильного виконання: Setting up coverage per component (using Jest)
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg "Using Jest")
 
@@ -1713,7 +1712,7 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: What’s wrong with this coverage report?
+### :thumbsdown: Приклад антишаблону: What’s wrong with this coverage report?
 
 Based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
 
@@ -1744,7 +1743,7 @@ Knowing that all or most of the mutations were killed gives much higher confiden
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: 100% coverage, 0% testing
+### :thumbsdown: Приклад антишаблону: 100% coverage, 0% testing
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg "Using Stryker")
 
@@ -1764,7 +1763,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/>
 
-### :clap: Doing It Right Example: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
+### :clap: Приклад правильного виконання: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
 
 ![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
 
@@ -1785,7 +1784,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: A test case full of errors, luckily all are caught by Linters
+### :thumbsdown: Приклад антишаблону: A test case full of errors, luckily all are caught by Linters
 
 ```javascript
 describe("Too short description", () => {
@@ -1822,7 +1821,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
+### :thumbsdown: Приклад антишаблону: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
 
 ![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
 
@@ -1845,7 +1844,7 @@ Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com
 
 <br/>
 
-### :clap: Doing It Right Example: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
+### :clap: Приклад правильного виконання: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
 
 ```javascript
 "scripts": {
@@ -1905,7 +1904,7 @@ The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for
 
 <br/>
 
-### :clap: Doing It Right Example: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+### :clap: Приклад правильного виконання: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
 
 ![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
 
@@ -1925,7 +1924,7 @@ The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for
 
 <br/>
 
-### :clap: Doing It Right Example:
+### :clap: Приклад правильного виконання:
 
 ```javascript
 //install license-checker in your CI environment or also locally
