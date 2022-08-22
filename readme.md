@@ -1,12 +1,7 @@
 <img src="/assets/jtbp-header-blue.png" width="1920px"/>
 
-## 🎊 April 2022 Announcement: A new edition was just released with 5 new best practices, many more code examples and 4 new language translations
-
-## 👨‍🏫 Next workshop: Verona, Italy 🇮🇹, April 20th. [Tickets and more info here](https://2022.jsday.it/workshop/nodejs_testing.html)
 
 <br/>
-
-
 
 # 👇 Why this guide can take your testing skills to the next level
 
@@ -25,6 +20,8 @@ Hop into a journey that travels way beyond the basics into advanced topics like 
 Start by understanding the ubiquitous testing practices that are the foundation for any application tier. Then, delve into your area of choice: frontend/UI, backend, CI or maybe all of them?
 
 <br/>
+
+## 🚀 We have an [official Node.js starter - Practica.js](https://github.com/practicajs/practica). Use it to generate a new solution skeleton with testing baked in, Or just it to learn by testing code examples
 
 ### Written By Yoni Goldberg
 
