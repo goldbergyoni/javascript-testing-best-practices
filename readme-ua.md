@@ -720,7 +720,7 @@ test("Then there should not be a new transfer record", () => {});
 
 <br/><br/>
 
-## ⚪ ️1.13 Інша загальна хороша гігієна тестування
+## ⚪ ️1.13 Інша загальна гігієна тестування
 
 :white_check_mark: **Роби:** Ця публікація зосереджена на порадах щодо тестування, які пов’язані з Node JS або, принаймні, можуть бути представлені на прикладі Node JS. Однак у цьому розділі згруповано кілька добре відомих порад, не повʼязаних з Node
 
@@ -731,21 +731,20 @@ test("Then there should not be a new transfer record", () => {});
 
 <br/><br/>
 
-# Section 2️⃣: Backend Testing
+# Section 2️⃣: Backend тестування
 
-## ⚪ ️2.1 Enrich your testing portfolio: Look beyond unit tests and the pyramid
+## ⚪ ️2.1 Збагачуйте своє портфоліо тестування: подивіться за межі модульних тестів і піраміди
 
-:white_check_mark: **Роби:** The [testing pyramid](https://martinfowler.com/bliki/TestPyramid.html), though 10> years old, is a great and relevant model that suggests three testing types and influences most developers’ testing strategy. At the same time, more than a handful of shiny new testing techniques emerged and are hiding in the shadows of the testing pyramid. Given all the dramatic changes that we’ve seen in the recent 10 years (Microservices, cloud, serverless), is it even possible that one quite-old model will suit *all* types of applications? shouldn’t the testing world consider welcoming new testing techniques?
+:white_check_mark: **Роби:** [Піраміда тестування](https://martinfowler.com/bliki/TestPyramid.html), Хоча їй понад 10 років, це чудова та релевантна модель, яка пропонує три типи тестування та впливає на стратегію тестування більшості розробників. Водночас з’явилося більше кількох блискучих нових методів тестування, які ховаються в тіні піраміди тестування. Враховуючи всі драматичні зміни, які ми спостерігаємо за останні 10 років (мікросервіси, хмарні сервіси, безсерверний доступ), чи можливо, що одна досить стара модель підійде для *всіх* типів програм? Чи не варто світу тестування розглянути можливість вітати нові методи тестування?
 
-Don’t get me wrong, in 2019 the testing pyramid, TDD and unit tests are still a powerful technique and are probably the best match for many applications. Only like any other model, despite its usefulness, [it must be wrong sometimes](https://en.wikipedia.org/wiki/All_models_are_wrong). For example, consider an IoT application that ingests many events into a message-bus like Kafka/RabbitMQ, which then flow into some data-warehouse and are eventually queried by some analytics UI. Should we really spend 50% of our testing budget on writing unit tests for an application that is integration-centric and has almost no logic? As the diversity of application types increase (bots, crypto, Alexa-skills) greater are the chances to find scenarios where the testing pyramid is not the best match.
+Не зрозумійте мене неправильно, у 2019 році піраміда тестування, TDD і модульні тести все ще залишаються потужною технікою та, мабуть, найкраще підходять для багатьох програм. Тільки, як і будь-яка інша модель, попри її корисність, [інколи вона може помилятися](https://en.wikipedia.org/wiki/All_models_are_wrong). Наприклад, розглянемо IoT-додаток, який приймає багато подій у шину повідомлень, як-от Kafka/RabbitMQ, які потім надходять у якесь сховище даних і в кінцевому підсумку запитуються деяким інтерфейсом користувача аналітики. Чи справді ми повинні витрачати 50% нашого бюджету на тестування на написання модульних тестів для програми, яка орієнтована на інтеграцію та майже не містить логіки? Зі збільшенням різноманітності типів додатків (ботів, крипто, навичок Alexa) зростає ймовірність знайти сценарії, де піраміда тестування не найкраще підходить.
 
-It’s time to enrich your testing portfolio and become familiar with more testing types (the next bullets suggest few ideas), mind models like the testing pyramid but also match testing types to real-world problems that you’re facing (‘Hey, our API is broken, let’s write consumer-driven contract testing!’), diversify your tests like an investor that build a portfolio based on risk analysis — assess where problems might arise and match some prevention measures to mitigate those potential risks
+Настав час збагатити ваше портфоліо тестування та ознайомитися з більшою кількістю типів тестування (наступні пункти пропонують кілька ідей), моделями розуму, як-от піраміда тестування, а також зіставити типи тестування з реальними проблемами, з якими ви стикаєтесь («Гей, наш API зламано, напишімо тестування контрактів, орієнтоване на споживача!'), диверсифікуйте свої тести, як інвестор, який створює портфель на основі аналізу ризиків — оцініть, де можуть виникнути проблеми, і підберіть деякі запобіжні заходи для помʼякшення цих потенційних ризиків
 
-A word of caution: the TDD argument in the software world takes a typical false-dichotomy face, some preach to use it everywhere, others think it’s the devil. Everyone who speaks in absolutes is wrong :]
-
+Застереження: аргумент TDD у світі програмного забезпечення приймає типове обличчя хибної дихотомії, деякі проповідують використовувати його всюди, інші вважають, що це диявол. Кожен, хто говорить в абсолюті, помиляється :]
 <br/>
 
-❌ **Інакше:** You’re going to miss some tools with amazing ROI, some like Fuzz, lint, and mutation can provide value in 10 minutes
+❌ **Інакше:** Ви пропустите деякі інструменти з неймовірною рентабельністю інвестицій, деякі, як-от Fuzz, lint і mutation, можуть надати цінність за 10 хвилин
 
 <br/>
 
@@ -753,31 +752,31 @@ A word of caution: the TDD argument in the software world takes a typical false-
 
 <br/>
 
-### :clap: Приклад правильного виконання: Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the same way’
+### :clap: Приклад правильного виконання: Cindy Sridharan пропонує багате портфоліо тестування у своїй дивовижній публікації «Тестування мікросервісів — таким же чином»
 
-![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan suggests a rich testing portfolio in her amazing post ‘Testing Microservices — the sane way’")
+![alt text](assets/bp-12-rich-testing.jpeg "Cindy Sridharan пропонує багате портфоліо тестування у своїй дивовижній публікації «Тестування мікросервісів — таким же чином»")
 
-<strong class="markup--strong markup--p-strong">☺️Example: </strong><a href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtube" data-href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtu.be" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">[YouTube: “Beyond Unit Tests: 5 Shiny Node.JS Test Types (2018)” (Yoni Goldberg)](https://www.youtube.com/watch?v=-2zP494wdUY&feature=youtu.be)</a>
+<strong class="markup--strong markup--p-strong">☺️Приклад: </strong><a href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtube" data-href="https://www.youtube.com/watch?v=-2zP494wdUY&amp;feature=youtu.be" class="markup--anchor markup--p-anchor" rel="nofollow noopener" target="_blank">[YouTube: “За межами модульних тестів: 5 блискучих типів тестів Node.JS (2018)” (Yoni Goldberg)](https://www.youtube.com/watch?v=-2zP494wdUY&feature=youtu.be)</a>
 
 <br/>
 
-![alt text](assets/bp-12-Yoni-Goldberg-Testing.jpeg "A test name that constitutes 3 parts")
+![alt text](assets/bp-12-Yoni-Goldberg-Testing.jpeg "Назва тесту, яка складається з 3 частин")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️2.2 Component testing might be your best affair
+## ⚪ ️2.2 Тестування компонентів може бути вашим найкращим заходом
 
-:white_check_mark: **Роби:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung song of the testing world — they provide the best from both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
+:white_check_mark: **Роби:** Кожен модульний тест охоплює невелику частину програми, і це дорого, щоб охопити цілу, тоді як наскрізне(end-to-end) тестування легко охоплює велику частину, але є нестабільним і повільним, чому б не застосувати збалансований підхід і написати тести, більші за модульні тести, але менші, ніж наскрізне тестування? Тестування компонентів – це неоспівана пісня світу тестування — вони забезпечують найкраще з обох світів: прийнятну продуктивність і можливість застосовувати шаблони TDD + реалістичне та велике покриття.
 
-Component tests focus on the Microservice ‘unit’, they work against the API, don’t mock anything which belongs to the Microservice itself (e.g. real DB, or at least the in-memory version of that DB) but stub anything that is external like calls to other Microservices. By doing so, we test what we deploy, approach the app from outwards to inwards and gain great confidence in a reasonable amount of time.
+Тести компонентів зосереджуються на «блоку» мікросервісу, вони працюють проти API, не мокають(mock) нічого, що належить самому мікросервісу (наприклад, справжню БД або принаймні версію цієї БД у пам’яті), але заглушують усе, що є зовнішнім як виклики до інших мікросервісів. Роблячи це, ми перевіряємо те, що розгортаємо, підходимо до програми ззовні всередину та отримуємо велику впевненість за прийнятний проміжок часу.
 
-[We have a full guide that is solely dedicated to writing component tests in the right way](https://github.com/testjavascript/nodejs-integration-tests-best-practices)
+[У нас є повний посібник, присвячений виключно правильному написанню компонентних тестів](https://github.com/testjavascript/nodejs-integration-tests-best-practices)
 
 <br/>
 
-❌ **Інакше:** You may spend long days on writing unit tests to find out that you got only 20% system coverage
+❌ **Інакше:** Ви можете витратити довгі дні на написання модульних тестів, щоб дізнатися, що ви отримали лише 20% покриття системи
 
 <br/>
 
@@ -785,22 +784,22 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap: Приклад правильного виконання: Supertest allows approaching Express API in-process (fast and cover many layers)
+### :clap: Приклад правильного виконання: Supertest дозволяє підходити до Express API в процесі (швидко та охоплює багато рівнів)
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Приклади з Mocha")
 
-![alt text](assets/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) allows approaching Express API in-process (fast and cover many layers)")
+![alt text](assets/bp-13-component-test-yoni-goldberg.png " [Supertest](https://www.npmjs.com/package/supertest) дозволяє підходити до Express API в процесі (швидко та охоплює багато рівнів)")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️2.3 Ensure new releases don’t break the API using contract tests
+## ⚪ ️2.3 Переконайтеся, що нові релізи не порушують API, використовуючи тести контракту
 
-:white_check_mark: **Роби:** So your Microservice has multiple clients, and you run multiple versions of the service for compatibility reasons (keeping everyone happy). Then you change some field and ‘boom!’, some important client who relies on this field is angry. This is the Catch-22 of the integration world: It’s very challenging for the server side to consider all the multiple client expectations — On the other hand, the clients can’t perform any testing because the server controls the release dates. There are a spectrum of techniques that can mitigate the contract problem, some are simple, other are more feature-rich and demand a steeper learning curve. In a simple and recommended approach, the API provider publishes npm package with the API typing (e.g. JSDoc, TypeScript). Then the consumers can fetch this library and benefit from codign time intellisense and validation. A fancier approach it to use [PACT](https://docs.pact.io/) which were born to formalize this process with a very disruptive approach — not the server defines the test plan of itself rather the client defines the tests of the… server! PACT can record the client expectation and put in a shared location, “broker”, so the server can pull the expectations and run on every build using PACT library to detect broken contracts — a client expectation that is not met. By doing so, all the server-client API mismatches are caught early during build/CI and might save you a great deal of frustration
+:white_check_mark: **Роби:** Отже, ваш мікросервіс має кілька клієнтів, і ви запускаєте кілька версій сервісу з міркувань сумісності (щоб усі були задоволені). Потім ви змінюєте якесь поле і «бум!», якийсь важливий клієнт, який покладається на це поле, сердиться. Це 22-й підступ світу інтеграції: серверній стороні дуже складно врахувати всі численні очікування клієнтів — З іншого боку, клієнти не можуть проводити жодного тестування, оскільки сервер контролює дати випуску. Існує цілий спектр методів, які можуть помʼякшити проблему контракту, деякі з них прості, інші є багатшими на функції та вимагають крутішої кривої навчання. У простому та рекомендованому підході постачальник API публікує пакет npm із типом API (наприклад, JSDoc, TypeScript). Тоді споживачі зможуть отримати цю бібліотеку та отримати вигоду від аналізу часу кодування та перевірки. Вигадливіший підхід — використання [PACT](https://docs.pact.io/), створеного для формалізації цього процесу за допомогою дуже руйнівного підходу —«не сервер сам визначає план тестування, а клієнт визначає тести. PACT може записувати очікування клієнта та розміщувати в спільному місці, «посереднику», щоб сервер міг отримати очікування та запускати кожну збірку за допомогою бібліотеки PACT для виявлення порушених контрактів — очікування клієнта, яке не відповідають. Завдяки цьому всі невідповідності API сервера та клієнта виявляються на ранній стадії збирання/CI, що може позбавити вас від розчарування
 <br/>
 
-❌ **Інакше:** The alternatives are exhausting manual testing or deployment fear
+❌ **Інакше:** Альтернативами є виснажливе ручне тестування або страх розгортання
 
 <br/>
 
@@ -810,7 +809,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 ### :clap: Приклад правильного виконання:
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Examples with PACT")
+![](https://img.shields.io/badge/🔧%20Example%20using%20PACT-blue.svg "Приклад з PACT")
 
 ![alt text](assets/bp-14-testing-best-practices-contract-flow.png)
 
@@ -818,12 +817,12 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/><br/>
 
-## ⚪ ️ 2.4 Test your middlewares in isolation
+## ⚪ ️ 2.4 Тестуйте мідлвари(middlewares) окремо
 
-:white_check_mark: **Роби:** Many avoid Middleware testing because they represent a small portion of the system and require a live Express server. Both reasons are wrong — Middlewares are small but affect all or most of the requests and can be tested easily as pure functions that get {req,res} JS objects. To test a middleware function one should just invoke it and spy ([using Sinon for example](https://www.npmjs.com/package/sinon)) on the interaction with the {req,res} objects to ensure the function performed the right action. The library [node-mock-http](https://www.npmjs.com/package/node-mocks-http) takes it even further and factors the {req,res} objects along with spying on their behavior. For example, it can assert whether the http status that was set on the res object matches the expectation (See example below)
+:white_check_mark: **Роби:** Багато хто уникає мідлвари, оскільки воно представляє невелику частину системи та потребує активного сервера Express. Обидві причини неправильні — Проміжні програми невеликі, але впливають на всі або більшість запитів і можуть бути легко перевірені як чисті функції, які отримують {req,res} обʼєкти JS. Щоб перевірити функцію мідлвари, потрібно просто викликати її та перевірити ([використовуючи, наприклад, Sinon](https://www.npmjs.com/package/sinon)) взаємодію з об’єктами {req,res}, щоб переконатися, що функція виконала правильну дію. Бібліотека [node-mock-http](https://www.npmjs.com/package/node-mocks-http) йде ще далі й враховує об’єкти {req,res} разом зі спостереженням за їхньою поведінкою. Наприклад, він може стверджувати, чи статус http, встановлений для об’єкта res, відповідає очікуванням (див. приклад нижче)
 <br/>
 
-❌ **Інакше:** A bug in Express middleware === a bug in all or most requests
+❌ **Інакше:** Помилка в мідлварі Express === помилка в усіх або більшості запитів
 
 <br/>
 
@@ -831,7 +830,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 
 <br/>
 
-### :clap:Приклад правильного виконання: Testing middleware in isolation without issuing network calls and waking-up the entire Express machine
+### :clap:Приклад правильного виконання: Тестування мідлвари в ізоляції без здійснення мережевих викликів і пробудження всієї машини Express
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Приклади з Jest")
 
@@ -839,7 +838,7 @@ Component tests focus on the Microservice ‘unit’, they work against the API,
 //the middleware we want to test
 const unitUnderTest = require("./middleware");
 const httpMocks = require("node-mocks-http");
-//Jest syntax, equivelant to describe() & it() in Mocha
+// Синтаксис Jest, еквівалентний describe() і it() у Mocha
 test("A request without authentication header, should return http status 403", () => {
   const request = httpMocks.createRequest({
     method: "GET",
@@ -858,15 +857,15 @@ test("A request without authentication header, should return http status 403", (
 
 <br/><br/>
 
-## ⚪ ️2.5 Measure and refactor using static analysis tools
+## ⚪ ️2.5 Вимірювання та ре факторинг за допомогою інструментів статичного аналізу
 
-:white_check_mark: **Роби:** Using static analysis tools helps by giving objective ways to improve code quality and keep your code maintainable. You can add static analysis tools to your CI build to abort when it finds code smells. Its main selling points over plain linting are the ability to inspect quality in the context of multiple files (e.g. detect duplications), perform advanced analysis (e.g. code complexity) and follow the history and progress of code issues. Two examples of tools you can use are [SonarQube](https://www.sonarqube.org/) (4,900+ [stars](https://github.com/SonarSource/sonarqube)) and [Code Climate](https://codeclimate.com/) (2,000+ [stars](https://github.com/codeclimate/codeclimate))
+:white_check_mark: **Роби:** Використання інструментів статичного аналізу допомагає, надаючи об’єктивні способи покращити якість коду та зберегти ваш код придатним для обслуговування. Ви можете додати інструменти статичного аналізу до збірки CI, щоб перервати її, коли вона виявить запах коду. Його головні переваги над звичайним лінтуванням — це можливість перевіряти якість у контексті кількох файлів (наприклад, виявляти дублікати), виконувати розширений аналіз (наприклад, складності коду) і стежити за історією та прогресом проблем із кодом. Два приклади інструментів, які ви можете використовувати, це [SonarQube](https://www.sonarqube.org/) (4900+ [зірочок](https://github.com/SonarSource/sonarqube)) і [Code Climate](https ://codeclimate.com/) (2000+ [зірочок](https://github.com/codeclimate/codeclimate))
 
 Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.com/TheHollidayInn" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">[Keith Holliday](https://github.com/TheHollidayInn)</a>
 
 <br/>
 
-❌ **Інакше:** With poor code quality, bugs and performance will always be an issue that no shiny new library or state of the art features can fix
+❌ **Інакше:** З низькою якістю коду помилки та продуктивність завжди будуть проблемою, яку не зможе вирішити жодна блискуча нова бібліотека чи сучасні функції
 
 <br/>
 
@@ -874,22 +873,22 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :clap: Приклад правильного виконання: CodeClimate, a commercial tool that can identify complex methods:
+### :clap: Приклад правильного виконання: CodeClimate, комерційний інструмент, який може ідентифікувати складні методи:
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Examples with CodeClimate")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Code%20Climate-blue.svg "Приклад з CodeClimate")
 
-![alt text](assets/bp-16-yoni-goldberg-quality.png "CodeClimate, a commercial tool that can identify complex methods:")
+![alt text](assets/bp-16-yoni-goldberg-quality.png "CodeClimate, комерційний інструмент, який може ідентифікувати складні методи:")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️ 2.6 Check your readiness for Node-related chaos
+## ⚪ ️ 2.6 Перевірте свою готовність до хаосу, пов’язаного з Node
 
-:white_check_mark: **Роби:** Weirdly, most software testings are about logic & data only, but some of the worst things that happen (and are really hard to mitigate) are infrastructural issues. For example, did you ever test what happens when your process memory is overloaded, or when the server/process dies, or does your monitoring system realizes when the API becomes 50% slower?. To test and mitigate these type of bad things — [Chaos engineering](https://principlesofchaos.org/) was born by Netflix. It aims to provide awareness, frameworks and tools for testing our app resiliency for chaotic issues. For example, one of its famous tools, [the chaos monkey](https://github.com/Netflix/chaosmonkey), randomly kills servers to ensure that our service can still serve users and not relying on a single server (there is also a Kubernetes version, [kube-monkey](https://github.com/asobti/kube-monkey), that kills pods). All these tools work on the hosting/platform level, but what if you wish to test and generate pure Node chaos like check how your Node process copes with uncaught errors, unhandled promise rejection, v8 memory overloaded with the max allowed of 1.7GB or whether your UX remains satisfactory when the event loop gets blocked often? to address this I’ve written, [node-chaos](https://github.com/i0natan/node-chaos-monkey) (alpha) which provides all sort of Node-related chaotic acts
+:white_check_mark: **Роби:** Дивно, але більшість тестувань програмного забезпечення стосуються лише логіки та даних, але деякі з найгірших речей, які трапляються (і їх справді важко мігрувати), — це проблеми з інфраструктурою. Наприклад, ви коли-небудь перевіряли, що відбувається, коли пам’ять вашого процесу перевантажується, або коли сервер/процес вмирає, чи ваша система моніторингу розуміє, коли API стає на 50% повільнішим?. Щоб перевірити та пофіксити такі погані речі — [Інженерія хаосу](https://principlesofchaos.org/ua/) створена Netflix. Він має на меті забезпечити обізнаність, структуру та інструменти для перевірки стійкості нашої програми до хаотичних проблем. Наприклад, один із його відомих інструментів, [мавпа хаосу](https://github.com/Netflix/chaosmonkey), випадково вимикає сервери, щоб гарантувати, що наш сервіс усе ще може обслуговувати користувачів і не покладатися на один сервер (є також версія Kubernetes, [kube-monkey](https://github.com/asobti/kube-monkey), яка вбиває модулі). Усі ці інструменти працюють на рівні хостингу/платформи, але що, якщо ви хочете перевірити та створити чистий хаос Node, наприклад перевірити, як ваш процес Node справляється з неперехопленими помилками, необробленим відхиленням обіцянок, перевантаженням пам’яті v8 із максимально допустимим 1,7 ГБ чи чи ваш UX залишається задовільним, коли цикл подій часто блокується? щоб вирішити цю проблему, я написав [node-chaos](https://github.com/i0natan/node-chaos-monkey) (альфа), який надає всілякі хаотичні дії, пов’язані з Node
 <br/>
 
-❌ **Інакше:** No escape here, Murphy’s law will hit your production without mercy
+❌ **Інакше:** Тут немає виходу, закон Мерфі вдарить по вашому виробництву без жалю
 
 <br/>
 
@@ -897,20 +896,20 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :clap: Приклад правильного виконання: : Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos
+### :clap: Приклад правильного виконання: : Node-chaos може генерувати різноманітні розіграші Node.js, щоб ви могли перевірити, наскільки ваша програма стійка до хаосу
 
-![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos can generate all sort of Node.js pranks so you can test how resilience is your app to chaos")
+![alt text](assets/bp-17-yoni-goldberg-chaos-monkey-nodejs.png "Node-chaos може генерувати різноманітні розіграші Node.js, щоб ви могли перевірити, наскільки ваша програма стійка до хаосу")
 
 </details>
 
 <br/>
 
-## ⚪ ️2.7 Avoid global test fixtures and seeds, add data per-test
+## ⚪ ️2.7 Уникайте глобальних фікстур сідів, додавайте данні для кожного тесту
 
-:white_check_mark: **Роби:** Going by the golden rule (bullet 0), each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow. In reality, this is often violated by testers who seed the DB with data before running the tests (also known as ‘test fixture’) for the sake of performance improvement. While performance is indeed a valid concern — it can be mitigated (see “Component testing” bullet), however, test complexity is a much painful sorrow that should govern other considerations most of the time. Practically, make each test case explicitly add the DB records it needs and act only on those records. If performance becomes a critical concern — a balanced compromise might come in the form of seeding the only suite of tests that are not mutating data (e.g. queries)
+:white_check_mark: **Роби:** Дотримуючись золотого правила (Розділ 0), кожен тест повинен додавати власний набір рядків БД і діяти на них, щоб запобігти зчепленню та легко обґрунтувати потік тесту. Насправді це часто порушується тестувальниками, які заповнюють БД даними перед запуском тестів (також відомих як «test fixture») заради підвищення продуктивності. Хоча продуктивність справді є обґрунтованою проблемою —«її можна пофіксити (див. пункт «Тестування компонентів»), однак складність тесту є дуже болісним сумом, який у більшості випадків повинен керувати іншими міркуваннями. На практиці зробіть так, щоб кожен тестовий приклад явно додавав необхідні записи БД і діяв лише з цими записами. Якщо продуктивність стає критичною проблемою — збалансований компроміс може прийти у формі заповнення єдиного набору тестів, які не змінюють дані (наприклад, запити)
 <br/>
 
-❌ **Інакше:** Few tests fail, a deployment is aborted, our team is going to spend precious time now, do we have a bug? let’s investigate, oh no — it seems that two tests were mutating the same seed data
+❌ **Інакше:** Кілька тестів зазнають невдач, розгортання перервано, наша команда витрачатиме дорогоцінний час зараз, у нас є помилка? дослідім, о ні — схоже, що два тести мутували однакові вихідні дані
 
 <br/>
 
@@ -918,36 +917,36 @@ Credit: <a href="https://github.com/TheHollidayInn" data-href="https://github.co
 
 <br/>
 
-### :thumbsdown: Приклад антишаблону: tests are not independent and rely on some global hook to feed global DB data
+### :thumbsdown: Приклад антишаблону: тести не є незалежними і покладаються на якийсь глобальний хук для передачі глобальних даних БД
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Приклади з Mocha")
 
 ```javascript
 before(async () => {
-  //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
+  //додавання даних про сайти та адмінів до нашої БД. Де дані? назовні. У якомусь зовнішньому фреймворку json або міграції
   await DB.AddSeedDataFromJson('seed.json');
 });
 it("When updating site name, get successful confirmation", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+  //Я знаю, що сайт з назвою "портал" існує - я бачив це в початкових файлах
   const siteToUpdate = await SiteService.getSiteByName("Portal");
   const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
   expect(updateNameResult).to.be(true);
 });
 it("When querying by site name, get the right site", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
+  //Я знаю, що сайт з назвою "портал" існує - я бачив це в початкових файлах
   const siteToCheck = await SiteService.getSiteByName("Portal");
-  expect(siteToCheck.name).to.be.equal("Portal"); //Failure! The previous test change the name :[
+  expect(siteToCheck.name).to.be.equal("Portal"); //Невдача! Попередній тест змінив назву :[
 });
 
 ```
 
 <br/>
 
-### :clap: Приклад правильного виконання: We can stay within the test, each test acts on its own set of data
+### :clap: Приклад правильного виконання: Ми можемо залишатися в межах тесту, кожен тест діє на власний набір даних
 
 ```javascript
 it("When updating site name, get successful confirmation", async () => {
-  //test is adding a fresh new records and acting on the records only
+  //тест додає свіжі нові записи та діє лише на основі записів
   const siteUnderTest = await SiteService.addSite({
     name: "siteForUpdateTest"
   });
@@ -960,14 +959,14 @@ it("When updating site name, get successful confirmation", async () => {
 
 <br/>
 
-## ⚪ ️2.8 Choose a clear data clean-up strategy: After-all (recommended) or after-each
+## ⚪ ️2.8 Виберіть чітку стратегію очищення даних: після всього (рекомендовано) або після кожного
 
-:white_check_mark: **Роби:** The timing when the tests clean the database determines the way the tests are being written. The two most viable options are cleaning after all the tests vs cleaning after every single test. Choosing the latter option, cleaning after every single test guarantees clean tables and builds convenient testing perks for the developer. No other records exist when the test starts, one can have certainty which data is being queried and even might be tempted to count rows during assertions. This comes with severe downsides: When running in a multi-process mode, tests are likely to interfere with each other. While process-1 purges tables, at the very moment process-2 queries for data and fail (because the DB was suddenly deleted by process-1). On top of this, It's harder to troubleshoot failing tests - Visiting the DB will show no records.
+:white_check_mark: **Роби:** Час, коли тести очищають базу даних, визначає спосіб написання тестів. Два найбільш життєздатних варіанти: очищення після всіх тестів і очищення після кожного тесту. Вибираючи останній варіант, очищення після кожного окремого тесту гарантує чисті таблиці та створює зручні переваги тестування для розробника. На момент початку тесту не існує інших записів, можна бути впевненим, які дані запитуються, і навіть може виникнути спокуса підрахувати рядки під час тверджень. Це має серйозні недоліки: під час роботи в багатопроцесному режимі тести можуть заважати один одному. Поки процес-1 очищає таблиці, у той самий момент процес-2 запитує дані та зазнає помилки (оскільки БД раптово видалено процесом-1). Крім того, важче усунути невдалі тести – відвідування БД не покаже жодних записів.
 
-The second option is to clean up after all the test files have finished (or even daily!). This approach means that the same DB with existing records serves all the tests and processes. To avoid stepping on each other's toes, the tests must add and act on specific records that they have added. Need to check that some record was added? Assume that there are other thousands of records and query for records that were added explicitly. Need to check that a record was deleted? Can't assume an empty table, check that this specific record is not there. This technique brings few powerful gains: It works natively in multi-process mode, when a developer wishes to understand what happened - the data is there and not deleted. It also increases the chance of finding bugs because the DB is full of records and not artificially empty. [See the full comparison table here](https://github.com/testjavascript/nodejs-integration-tests-best-practices/blob/master/graphics/db-clean-options.png).
+Другий варіант — очищення після завершення всіх тестових файлів (або навіть щодня!). Такий підхід означає, що та сама БД з наявними записами обслуговує всі тести та процеси. Щоб не наступати один одному на ноги, тести повинні додавати та діяти на основі конкретних записів, які вони додали. Потрібно перевірити, чи додано якийсь запис? Припустімо, що є інші тисячі записів і запит на записи, які були додані явно. Потрібно перевірити, чи видалено запис? Неможливо припустити, що таблиця порожня, перевірте, чи немає цього конкретного запису. Ця техніка дає кілька значних переваг: вона працює нативно в багатопроцесному режимі, коли розробник хоче зрозуміти, що сталося – дані є, а не видаляються. Це також збільшує ймовірність виявлення помилок, оскільки БД заповнена записами, а не штучно порожня. [Перегляньте повну порівняльну таблицю тут](https://github.com/testjavascript/nodejs-integration-tests-best-practices/blob/master/graphics/db-clean-options.png).
 <br/>
 
-❌ **Інакше:** Without a strategy to separate records or clean - Tests will step on each other toes; Using transactions will work only for relational DB and likely to get complicated once there are inner transactions
+❌ **Інакше:** Без стратегії розділення записів або очищення - Тести будуть наступати один на одного; Використання транзакцій працюватиме лише для реляційної БД і, ймовірно, ускладниться, коли з’являться внутрішні транзакції
 
 <br/>
 
@@ -975,11 +974,11 @@ The second option is to clean up after all the test files have finished (or even
 
 <br/>
 
-### :clap: Cleaning after ALL the tests. Not neccesserily after every run. The more data we have while the tests are running - The more it resembles the production perks
+### :clap: Прибирання після ВСІХ перевірок. Не обов'язково після кожного запуску. Чим більше даних ми маємо під час виконання тестів, тим більше це нагадує переваги виробництва
 
 ```javascript
-  // After-all clean up (recommended)
-// global-teardown.js
+  // Після всього прибрати (рекомендовано)
+  // global-teardown.js
 module.exports = async () => {
   // ...
   if (Math.ceil(Math.random() * 10) === 10) {
@@ -992,12 +991,12 @@ module.exports = async () => {
 
 <br/>
 
-## ⚪ ️2.9 Isolate the component from the world using HTTP interceptor
+## ⚪ ️2.9 Ізолюйте компонент від світу за допомогою перехоплювача HTTP
 
-:white_check_mark: **Роби:** Isolate the component under test by intercepting any outgoing HTTP request and providing the desired response so the collaborator HTTP API won't get hit. Nock is a great tool for this mission as it provides a convenient syntax for defining external services behavior. Isolation is a must to prevent noise and slow performance but mostly to simulate various scenarios and responses - A good flight simulator is not about painting clear blue sky rather bringing safe storms and chaos. This is reinforced in a Microservice architecture where the focus should always be on a single component without involving the rest of the world. Though it's possible to simulate external service behavior using test doubles (mocking), it's preferable not to touch the deployed code and act on the network level to keep the tests pure black-box. The downside of isolation is not detecting when the collaborator component changes and not realizing misunderstandings between the two services - Make sure to compensate for this using a few contract or E2E tests
+:white_check_mark: **Роби:** Ізолюйте тестований компонент, перехоплюючи будь-який вихідний HTTP-запит і надаючи потрібну відповідь, щоб HTTP API співавтора не постраждав. Nock є чудовим інструментом для цієї місії, оскільки він забезпечує зручний синтаксис для визначення поведінки зовнішніх служб. Ізоляція є обов’язковою для запобігання шуму та повільної продуктивності, але здебільшого для імітації різних сценаріїв і реакцій. Хороший симулятор польоту — це не малювання чистого блакитного неба, а створення безпечних штормів і хаосу. Це посилюється в архітектурі мікросервісу, де фокус завжди має бути зосереджений на одному компоненті без залучення решти світу. Хоча можна імітувати поведінку зовнішнього сервісу за допомогою повторюваних тестів (mocking), бажано не торкатися розгорнутого коду та діяти на рівні мережі, щоб тести залишалися чисто чорною скринькою. Негативною стороною ізоляції є відсутність виявлення змін компонента співавтора та непорозуміння між двома службами. Обов’язково компенсуйте це за допомогою кількох контрактів або тестів E2E
 <br/>
 
-❌ **Інакше:** Some services provide a fake version that can be deployed by the caller locally, usually using Docker - This will ease the setup and boost the performance but won't help with simulating various responses; Some services provide 'sandbox' environment, so the real service is hit but no costs or side effects are triggered - This will cut down the noise of setting up the 3rd party service but also won't allow simulating scenarios
+❌ **Інакше:** Деякі служби надають фальшиву версію, яку абонент може розгорнути локально, зазвичай за допомогою Docker. Це полегшить налаштування та підвищить продуктивність, але не допоможе з симуляцією різних відповідей; Деякі служби надають середовище «пісочниці», тому справжня служба зазнає удару, але не спричиняє жодних витрат або побічних ефектів. Це зменшить шум під час налаштування сторонньої служби, але також не дозволить імітувати сценарії
 
 <br/>
 
@@ -1005,27 +1004,28 @@ module.exports = async () => {
 
 <br/>
 
-### :clap: Preventing network calls to externous components allows simulating scnearios and minimizing the noise
+### :clap: Запобігання мережевим викликам зовнішніх компонентів дозволяє імітувати сценарії та мінімізувати шум
 
 ```javascript
-// Intercept requests for 3rd party APIs and return a predefined response 
+// Перехоплювати запити для сторонніх API і повертати попередньо визначену відповідь 
 beforeEach(() => {
   nock('http://localhost/user/').get(`/1`).reply(200, {
     id: 1,
     name: 'John',
   });
-});```
+});
+```
 
 </details>
 
-## ⚪ ️2.10 Test the response schema, mostly when there are auto-generated fields
+## ⚪ ️2.10 Перевірте схему відповіді, коли є автоматично згенеровані поля
 
-:white_check_mark: **Роби:** When it is impossible to assert for specific data, check for mandatory field existence and types. Sometimes, the response contains important fields with dynamic data that can't be predicted when writing the test, like dates and incrementing numbers. If the API contract promises that these fields won't be null and hold the right types, it's imperative to test it. Most assertion libraries support checking types. If the response is small, check the return data and type together within the same assertion (see code example). One more option is to verify the entire response against an OpenAPI doc (Swagger). Most test runners have community extensions that validate API responses against their documentation.
+:white_check_mark: **Роби:** Якщо неможливо підтвердити певні дані, перевірте наявність і типи обов’язкових полів. Іноді відповідь містить важливі поля з динамічними даними, які неможливо передбачити під час написання тесту, як-от дати та числа, що збільшуються. Якщо договір API обіцяє, що ці поля не будуть нульовими і містять правильні типи, обов’язково перевірте це. Більшість бібліотек тверджень підтримують типи перевірки. Якщо відповідь невелика, перевірте дані, що повертаються, і введіть разом в одному твердженні (див. приклад коду). Ще один варіант — перевірити всю відповідь за документом OpenAPI (Swagger). Більшість тестувальників мають розширення спільноти, які перевіряють відповіді API на їхню документацію.
 
 
 <br/>
 
-❌ **Інакше:** Although the code/API caller relies on some field with dynamic data (e.g., ID, date), it will not come in return and break the contract
+❌ **Інакше:** Хоча програма виклику коду/API покладається на деякі поля з динамічними даними (наприклад, ідентифікатор, дата), вона не прийде у відповідь і не порушить контракт
 
 <br/>
 
@@ -1033,16 +1033,16 @@ beforeEach(() => {
 
 <br/>
 
-### :clap: Asserting that fields with dynamic value exist and have the right type
+### :clap: Стверджуючи, що поля з динамічним значенням існують і мають правильний тип
 
 ```javascript
   test('When adding a new valid order, Then should get back approval with 200 response', async () => {
   // ...
-  //Assert
+  // Стверджування
   expect(receivedAPIResponse).toMatchObject({
     status: 200,
     data: {
-      id: expect.any(Number), // Any number satisfies this test
+      id: expect.any(Number), // Будь-яке число задовольняє цей тест
       mode: 'approved',
     },
   });
@@ -1053,14 +1053,14 @@ beforeEach(() => {
 
 <br/>
 
-## ⚪ ️2.12 Check integrations corner cases and chaos
+## ⚪ ️2.12 Перевірте крайні випадки інтеграції та хаос
 
-:white_check_mark: **Роби:** When checking integrations, go beyond the happy and sad paths. Check not only errored responses (e.g., HTTP 500 error) but also network-level anomalies like slow and timed-out responses. This will prove that the code is resilient and can handle various network scenarios like taking the right path after a timeout, has no fragile race conditions, and contains a circuit breaker for retries. Reputable interceptor tools can easily simulate various network behaviors like hectic service that occasionally fail. It can even realize when the default HTTP client timeout value is longer than the simulated response time and throw a timeout exception right away without waiting
+:white_check_mark: **Роби:** Перевіряючи інтеграції, виходьте за рамки щасливих і сумних шляхів. Перевіряйте не лише відповіді з помилками (наприклад, помилка HTTP 500), а й аномалії на рівні мережі, як-от повільні відповіді та відповіді, що закінчилися. Це доведе, що код стійкий і може обробляти різні мережеві сценарії, як-от вибір правильного шляху після тайм-ауту, відсутність крихких умов змагання та містить автоматичний вимикач для повторних спроб. Інструменти перехоплення з авторитетним досвідом можуть легко імітувати різні поведінки мережі, як-от неспокійне обслуговування, яке час від часу дає збій. Він навіть може зрозуміти, коли значення тайм-ауту HTTP-клієнта за замовчуванням перевищує змодельований час відповіді, і відразу, не чекаючи, викликати виняток часу очікування
 
 
 <br/>
 
-❌ **Інакше:** All your tests pass, it's only the production who will crash or won't report errors correctly when 3rd parties send excpetional responses
+❌ **Інакше:** Усі ваші тести проходять успішно, тільки виробництво буде аварійно або неправильно повідомляти про помилки, коли треті сторони надсилатимуть виняткові відповіді
 
 <br/>
 
@@ -1068,11 +1068,11 @@ beforeEach(() => {
 
 <br/>
 
-### :clap: Ensuring that on network failures, the circuit breaker can save the day
+### :clap: Забезпечення того, що в разі збоїв у мережі автоматичний вимикач може врятувати ситуацію
 
 ```javascript
   test('When users service replies with 503 once and retry mechanism is applied, then an order is added successfully', async () => {
-  //Arrange
+  // Упорядкування
   nock.removeInterceptor(userServiceNock.interceptors[0])
   nock('http://localhost/user/')
     .get('/1')
@@ -1086,10 +1086,10 @@ beforeEach(() => {
     mode: 'approved',
   };
 
-  //Act
+  // Дія
   const response = await axiosAPIClient.post('/order', orderToAdd);
 
-  //Assert
+  // Стверджування
   expect(response.status).toBe(200);
 });
 ```
@@ -1099,19 +1099,19 @@ beforeEach(() => {
 <br/>
 
 
-## ⚪ ️2.13 Test the five potential outcomes
+## ⚪ ️2.13 Перевірте п’ять потенційних результатів
 
-:white_check_mark: **Роби:** When planning your tests, consider covering the five typical flow's outputs. When your test is triggering some action (e.g., API call), a reaction is happening, something meaningful occurs and calls for testing. Note that we don't care about how things work. Our focus is on outcomes, things that are noticeable from the outside and might affect the user. These outcomes/reactions can be put in 5 categories:
+:white_check_mark: **Роби:** Плануючи свої тести, подумайте про охоплення п’яти типових виходів потоку. Коли ваш тест запускає певну дію (наприклад, виклик API), відбувається реакція, відбувається щось значуще та вимагає тестування. Зауважте, що нам байдуже, як все працює. Ми зосереджені на результатах, речах, які помітні ззовні та можуть вплинути на користувача. Ці результати/реакції можна розділити на 5 категорій:
 
-• Response - The test invokes an action (e.g., via API) and gets a response. It's now concerned with checking the response data correctness, schema, and HTTP status
+• Відповідь - Тест викликає дію (наприклад, через API) і отримує відповідь. Тепер він займається перевіркою правильності даних відповіді, схеми та статусу HTTP
 
-• A new state - After invoking an action, some **publicly accessible** data is probably modified
+• Новий стан - Після виклику дії деякі **загальнодоступні** дані, ймовірно, змінюються
 
-• External calls - After invoking an action, the app might call an external component via HTTP or any other transport. For example, a call to send SMS, email or charge a credit card
+• Зовнішні виклики - Після виклику дії програма може викликати зовнішній компонент через HTTP або будь-який інший транспорт. Наприклад, дзвінок для відправки SMS, електронної пошти або стягнення коштів з кредитної картки
 
-• Message queues - The outcome of a flow might be a message in a queue
+• Message queues - Результатом потоку може бути повідомлення в черзі
 
-• Observability - Some things must be monitored, like errors or remarkable business events. When a transaction fails, not only we expect the right response but also correct error handling and proper logging/metrics. This information goes directly to a very important user - The ops user (i.e., production SRE/admin)
+• Спостережливість - Деякі речі необхідно відстежувати, як-от помилки чи значні ділові події. Коли транзакція зазнає невдачі, ми очікуємо не лише правильної відповіді, але й правильної обробки помилок і належного журналювання/метрик. Ця інформація надходить безпосередньо до дуже важливого користувача – користувача ops (SRE/адміністратора)
 
 </details>
 
