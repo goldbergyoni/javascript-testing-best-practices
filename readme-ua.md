@@ -28,15 +28,15 @@
 
 ### Переклади - читайте своєю мовою
 
-- 🇨🇳[Chinese](readme-zh-CN.md) - З люб'язного дозволу [Yves yao](https://github.com/yvesyao)
-- 🇰🇷[Korean](readme.kr.md) - З люб'язного дозволу [Rain Byun](https://github.com/ragubyun)
-- 🇵🇱[Polish](readme-pl.md) - З люб'язного дозволу [Michal Biesiada](https://github.com/mbiesiad)
-- 🇺🇦[Ukrainian](readme-ua.md) - З люб'язного дозволу [Serhii Shramko](https://github.com/Shramkoweb)
-- 🇪🇸[Spanish](readme-es.md) - З люб'язного дозволу [Miguel G. Sanguino](https://github.com/sanguino)
-- 🇧🇷[Portuguese-BR](readme-pt-br.md) - З люб'язного дозволу [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) and [koooge](https://github.com/koooge)
-- 🇫🇷[French](readme-fr.md) - З люб'язного дозволу [Mathilde El Mouktafi](https://github.com/mel-mouk)
-- 🇯🇵[Japanese (draft)](https://github.com/yuichkun/javascript-testing-best-practices/blob/master/readme-jp.md) - З люб'язного дозволу [Yuichi Yogo](https://github.com/yuichkun) and [ryo](https://github.com/kawamataryo)
-- 🇹🇼[Traditional Chinese](readme-zh-TW.md) - З люб'язного дозволу [Yubin Hsu](https://github.com/yubinTW)
+- 🇨🇳[Chinese](readme-zh-CN.md) - Завдяки [Yves yao](https://github.com/yvesyao)
+- 🇰🇷[Korean](readme.kr.md) - Завдяки [Rain Byun](https://github.com/ragubyun)
+- 🇵🇱[Polish](readme-pl.md) - Завдяки [Michal Biesiada](https://github.com/mbiesiad)
+- 🇪🇸[Spanish](readme-es.md) - Завдяки [Miguel G. Sanguino](https://github.com/sanguino)
+- 🇧🇷[Portuguese-BR](readme-pt-br.md) - Завдяки [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) and [koooge](https://github.com/koooge)
+- 🇫🇷[French](readme-fr.md) - Завдяки [Mathilde El Mouktafi](https://github.com/mel-mouk)
+- 🇯🇵[Japanese (draft)](https://github.com/yuichkun/javascript-testing-best-practices/blob/master/readme-jp.md) - Завдяки [Yuichi Yogo](https://github.com/yuichkun) and [ryo](https://github.com/kawamataryo)
+- 🇹🇼[Traditional Chinese](readme-zh-TW.md) - Завдяки [Yubin Hsu](https://github.com/yubinTW)
+- 🇺🇦[Ukrainian](readme-ua.md) - Завдяки [Serhii Shramko](https://github.com/Shramkoweb)
 - Хочете перекласти на свою рідну мову? будь ласка, відкрийте issue 💜
 
 <br/><br/>
