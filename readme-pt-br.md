@@ -1800,7 +1800,7 @@ Na prática alguns fornecedores de IC (exemplo: [CircleCI local CLI](https://cir
 
 <br/><br/>
 
-# ⚪ ️5.3 Realize testes e2eem um verdadeiro espelho de produção
+# ⚪ ️5.3 Realize testes e2e em um verdadeiro espelho de produção
 
 :white_check_mark: **Faça:**   Os testes de ponta a ponta (e2e) são o principal desafio de cada pipeline de IC—criar um espelho efêmero idêntico de produção em tempo real com todos os serviços em nuvem relacionados pode ser entediante e caro. Encontrar o melhor comprometimento é o seu jogo: [Docker-compose](https://serverless.com/) permite criar ambiente docker isolado com contêineres idênticos usando um único arquivo de texto sem formatação, mas as tecnologias de suporte (por exemplo. rede, modelo de implantação) é diferente das produções do mundo real. Você pode combiná-lo com [‘AWS Local’](https://github.com/localstack/localstack) para trabalhar com um esboço dos serviços reais da AWS. Se você usar [serverless](https://serverless.com/) vários frameworks como serverless e [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) permite a chamada local de códigos FaaS.
 
