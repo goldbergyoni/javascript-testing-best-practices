@@ -1060,7 +1060,7 @@ beforeEach(() => {
 
 ```javascript
   test('هنگامی که سرویس کاربران یک بار با 503 پاسخ می دهد و مکانیسم امتحان مجدد اعمال می شود، سفارش با موفقیت اضافه می شود', async () => {
-  //مفدار دهی کردن
+  //مقدار دهی کردن
   nock.removeInterceptor(userServiceNock.interceptors[0])
   nock('http://localhost/user/')
     .get('/1')
@@ -1104,54 +1104,54 @@ beforeEach(() => {
 
 <br/><br/>
 
-# Section 3️⃣: Frontend Testing
+# بخش 3️⃣: Frontend تست کردن
 
-## ⚪ ️ 3.1 Separate UI from functionality
+## ⚪ ️ 3.1 UI را از لاجیک برنامه جدا کنید
 
-:white_check_mark: **Do:** When focusing on testing component logic, UI details become a noise that should be extracted, so your tests can focus on pure data. Practically, extract the desired data from the markup in an abstract way that is not too coupled to the graphic implementation, assert only on pure data (vs HTML/CSS graphic details) and disable animations that slow down. You might get tempted to avoid rendering and test only the back part of the UI (e.g. services, actions, store) but this will result in fictional tests that don't resemble the reality and won't reveal cases where the right data doesn't even arrive in the UI
-
-<br/>
-
-❌ **Otherwise:** The pure calculated data of your test might be ready in 10ms, but then the whole test will last 500ms (100 tests = 1 min) due to some fancy and irrelevant animation
+:white_check_mark: **انجام دادن:** هنگام تمرکز بر روی تست منطق مؤلفه، جزئیات UI تبدیل به نویز می شود که باید استخراج شود، بنابراین آزمایشات شما می توانند بر روی داده های خالص تمرکز کنند. عملاً داده‌های مورد نظر را از نشانه‌گذاری به روشی انتزاعی استخراج کنید که خیلی با پیاده‌سازی گرافیکی همراه نباشد، فقط روی داده‌های خالص (در مقابل جزئیات گرافیکی HTML/CSS) ادعا کنید و انیمیشن‌هایی را که کند می‌شوند غیرفعال کنید. ممکن است وسوسه شوید که از رندر کردن خودداری کنید و فقط قسمت پشتی رابط کاربری (مانند سرویس‌ها، اقدامات، فروشگاه) را آزمایش کنید، اما این منجر به آزمایش‌های تخیلی می‌شود که به واقعیت شباهت ندارند و مواردی را که داده‌های مناسب وجود ندارد را نشان نمی‌دهد. حتی وارد UI شوید
 
 <br/>
 
-<details><summary>✏ <b>Code Examples</b></summary>
+❌ **در غیر این صورت:** داده‌های محاسباتی خالص آزمون شما ممکن است در 10 میلی‌ثانیه آماده باشد، اما پس از آن کل آزمون به دلیل برخی انیمیشن‌های فانتزی و نامربوط، 500 میلی‌ثانیه (100 تست = 1 دقیقه) طول خواهد کشید.
 
 <br/>
 
-### :clap: Doing It Right Example: Separating out the UI details
+<details><summary>✏ <b>نمونه کد</b></summary>
+
+<br/>
+
+### :clap: متال درست: جدا کردن جزئیات UI
 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20React%20Testing%20Library-blue.svg "Examples with react-testing-library")
 
 ```javascript
-test("When users-list is flagged to show only VIP, should display only VIP members", () => {
-  // Arrange
+test("هنگامی که لیست کاربران برای نشان دادن فقط VIP پرچم گذاری می شود، باید فقط اعضای VIP نمایش داده شود", () => {
+  // مقدار دهی کردن
   const allUsers = [{ id: 1, name: "Yoni Goldberg", vip: false }, { id: 2, name: "John Doe", vip: true }];
 
-  // Act
+  // اجرا کردن
   const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true} />);
 
-  // Assert - Extract the data from the UI first
+  // مفایسه کردن - ابتدا داده ها را از UI استخراج کنید
   const allRenderedUsers = getAllByTestId("user").map(uiElement => uiElement.textContent);
   const allRealVIPUsers = allUsers.filter(user => user.vip).map(user => user.name);
-  expect(allRenderedUsers).toEqual(allRealVIPUsers); //compare data with data, no UI here
+  expect(allRenderedUsers).toEqual(allRealVIPUsers); //داده ها را با داده ها مقایسه کنید، اینجا رابط کاربری وجود ندارد
 });
 ```
 
 <br/>
 
-### :thumbsdown: Anti-Pattern Example: Assertion mix UI details and data
+### :thumbsdown: مثال ضد الگو: جزئیات و داده های رابط کاربری ترکیبی ادعا
 
 ```javascript
-test("When flagging to show only VIP, should display only VIP members", () => {
-  // Arrange
+test("هنگام پرچم گذاری برای نمایش فقط VIP، باید فقط اعضای VIP نمایش داده شود", () => {
+  // مقداری دهی کردن
   const allUsers = [{ id: 1, name: "Yoni Goldberg", vip: false }, { id: 2, name: "John Doe", vip: true }];
 
-  // Act
+  // اجرا کردن
   const { getAllByTestId } = render(<UsersList users={allUsers} showOnlyVIP={true} />);
 
-  // Assert - Mix UI & data in assertion
+  // مقابسه کردن - ترکیب ui و data در این قسمت
   expect(getAllByTestId("user")).toEqual('[<li data-test-id="user">John Doe</li>]');
 });
 ```
