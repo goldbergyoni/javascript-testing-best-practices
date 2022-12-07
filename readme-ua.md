@@ -1663,19 +1663,19 @@ describe("visual validation", () => {
 
 <br/><br/>
 
-# Section 4️⃣: Measuring Test Effectiveness
+# Section 4️⃣: Вимірювання ефективності тесту
 
 <br/><br/>
 
-## ⚪ ️ 4.1 Get enough coverage for being confident, ~80% seems to be the lucky number
+## ⚪ ️ 4.1 Отримайте достатнє покриття, щоб бути впевненим, ~80%, здається, це щасливе число
 
-:white_check_mark: **Роби:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380 than 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) that presumably should satisfy most of the applications.
+:white_check_mark: **Роби:** Мета тестування полягає в тому, щоб отримати достатню впевненість для швидкого просування; очевидно, чим більше коду тестується, тим впевненішою може бути команда. Покриття — це показник того, скільки рядків коду (і розгалужень, операторів тощо) охоплено тестами. То скільки вистачить? 10–30% — це, очевидно, занадто мало, щоб отримати будь-яке уявлення про правильність збірки, з іншого боку, 100% — це дуже дорого й може перемістити вашу увагу з критичних шляхів на екзотичні куточки коду. Довга відповідь полягає в тому, що це залежить від багатьох факторів, таких як тип застосування —«якщо ви створюєте наступне покоління Airbus A380, 100% є обов’язковим, для веб-сайту з мультфільмами 50% може бути забагато. Хоча більшість ентузіастів тестування стверджують, що правильний поріг охоплення є контекстним, більшість із них також згадує число 80% як правило ([Fowler: "in the upper 80s or 90s"](https://martinfowler. com/bliki/TestCoverage.html)), який, імовірно, повинен задовольнити більшість програм.
 
-Implementation tips: You may want to configure your continuous integration (CI) to have a coverage threshold ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) and stop a build that doesn’t stand to this standard (it’s also possible to configure threshold per component, see code example below). On top of this, consider detecting build coverage decrease (when a newly committed code has less coverage) — this will push developers raising or at least preserving the amount of tested code. All that said, coverage is only one measure, a quantitative based one, that is not enough to tell the robustness of your testing. And it can also be fooled as illustrated in the next bullets
+Поради щодо впровадження: Можливо, ви захочете налаштувати безперервну інтеграцію (CI), щоб мати поріг покриття ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) і зупинити збірку що не відповідає цьому стандарту (також можна налаштувати порогове значення для кожного компонента, див. приклад коду нижче). На додаток до цього, подумайте про виявлення зменшення покриття збірки (коли нещодавно зафіксований код має менше покриття) — це підштовхне розробників збільшити або принаймні зберегти кількість перевіреного коду. Загалом, охоплення — це лише один показник, кількісний, якого недостатньо, щоб визначити надійність вашого тестування. І його також можна обдурити, як показано в наступних пунктах
 
 <br/>
 
-❌ **Інакше:** Confidence and numbers go hand in hand, without really knowing that you tested most of the system — there will also be some fear and fear will slow you down
+❌ **Інакше:** Впевненість і цифри йдуть пліч-о-пліч, навіть не знаючи, що ви перевірили більшу частину системи -також буде певний страх, і страх сповільнить вас
 
 <br/>
 
@@ -1683,28 +1683,28 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
-### :clap: Example: A typical coverage report
+### :clap: Приклад: Типовий звіт про покриття
 
-![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "A typical coverage report")
+![alt text](assets/bp-18-yoni-goldberg-code-coverage.png "Типовий звіт про покриття")
 
 <br/>
 
-### :clap: Приклад правильного виконання: Setting up coverage per component (using Jest)
+### :clap: Приклад правильного виконання: Налаштування покриття для кожного компонента (за допомогою Jest)
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg "Using Jest")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Jest-blue.svg "Jest")
 
-![alt text](assets/bp-18-code-coverage2.jpeg "Setting up coverage per component (using Jest)")
+![alt text](assets/bp-18-code-coverage2.jpeg "Налаштування покриття для кожного компонента (за допомогою Jest)")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️ 4.2 Inspect coverage reports to detect untested areas and other oddities
+## ⚪ ️ 4.2 Перевірте звіти про покриття, щоб виявити неперевірені області та інші дивацтва
 
-:white_check_mark: **Роби:** Some issues sneak just under the radar and are really hard to find using traditional tools. These are not really bugs but more of surprising application behavior that might have a severe impact. For example, often some code areas are never or rarely being invoked — you thought that the ‘PricingCalculator’ class is always setting the product price but it turns out it is actually never invoked although we have 10000 products in DB and many sales… Code coverage reports help you realize whether the application behaves the way you believe it does. Other than that, it can also highlight which types of code is not tested — being informed that 80% of the code is tested doesn’t tell whether the critical parts are covered. Generating reports is easy — just run your app in production or during testing with coverage tracking and then see colorful reports that highlight how frequent each code area is invoked. If you take your time to glimpse into this data — you might find some gotchas
+:white_check_mark: **Роби:** Деякі проблеми непомічені, і їх дуже важко знайти за допомогою традиційних інструментів. Насправді це не помилки, а скоріше дивовижна поведінка програми, яка може мати серйозні наслідки. Наприклад, часто деякі області коду ніколи або рідко викликаються — ви думали, що клас «PricingCalculator» завжди встановлює ціну продукту, але виявилося, що він насправді ніколи не викликається, хоча ми маємо 10000 продуктів у БД і багато продажів… Покриття коду звіти допомагають зрозуміти, чи працює програма так, як ви думаєте. Окрім цього, він також може підкреслити, які типи коду не перевірено —«інформація про те, що 80% коду перевірено, не говорить про те, чи охоплено критичні частини. Створювати звіти легко — просто запустіть свою програму в робочому стані або під час тестування з відстеженням покриття, а потім перегляньте кольорові звіти, у яких показано, як часто викликається кожна область коду. Якщо ви не поспішаєте зазирнути в ці дані — ви можете знайти деякі проблеми
 <br/>
 
-❌ **Інакше:** If you don’t know which parts of your code are left un-tested, you don’t know where the issues might come from
+❌ **Інакше:** Якщо ви не знаєте, які частини вашого коду залишилися необробленими, ви не знаєте, звідки можуть виникнути проблеми
 
 <br/>
 
@@ -1712,30 +1712,30 @@ Implementation tips: You may want to configure your continuous integration (CI) 
 
 <br/>
 
-### :thumbsdown: Приклад антишаблону: What’s wrong with this coverage report?
+### :thumbsdown: Приклад антишаблону: Що не так із цим звітом про покриття?
 
-Based on a real-world scenario where we tracked our application usage in QA and find out interesting login patterns (Hint: the amount of login failures is non-proportional, something is clearly wrong. Finally it turned out that some frontend bug keeps hitting the backend login API)
+На основі реального сценарію, коли ми відстежували використання нашої програми в QA та знаходили цікаві шаблони входу (Підказка: кількість помилок входу непропорційна, щось явно не так. Нарешті виявилося, що якась помилка інтерфейсу постійно вражає серверний API входу)
 
-![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "What’s wrong with this coverage report?")
+![alt text](assets/bp-19-coverage-yoni-goldberg-nodejs-consultant.png "Що не так із цим звітом про покриття?")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️ 4.3 Measure logical coverage using mutation testing
+## ⚪ ️ 4.3 Виміряйте логічне покриття за допомогою тестування на мутації
 
-:white_check_mark: **Роби:** The Traditional Coverage metric often lies: It may show you 100% code coverage, but none of your functions, even not one, return the right response. How come? it simply measures over which lines of code the test visited, but it doesn’t check if the tests actually tested anything — asserted for the right response. Like someone who’s traveling for business and showing his passport stamps — this doesn’t prove any work done, only that he visited few airports and hotels.
+:white_check_mark: **Роби:** Традиційний показник покриття часто брехня: він може показати вам 100% покриття коду, але жодна з ваших функцій, навіть жодна, не повертає правильну відповідь. Як так? він просто вимірює, які рядки коду відвідав тест, але не перевіряє, чи тести справді щось перевіряли — заявлено для правильної відповіді. Як хтось, хто подорожує у справах і показує штампи в паспорті —«це не доводить жодної роботи, лише те, що він відвідав кілька аеропортів і готелів.
 
-Mutation-based testing is here to help by measuring the amount of code that was actually TESTED not just VISITED. [Stryker](https://stryker-mutator.io/) is a JavaScript library for mutation testing and the implementation is really neat:
+Тестування на основі мутацій тут, щоб допомогти, вимірюючи кількість коду, який був фактично ПРОТЕСТОВАНИЙ, а не просто ВІДВІДАНИЙ. [Stryker](https://stryker-mutator.io/) — це бібліотека JavaScript для тестування на мутації, реалізація якої дуже гарна:
 
-(1) it intentionally changes the code and “plants bugs”. For example the code newOrder.price===0 becomes newOrder.price!=0. This “bugs” are called mutations
+(1) він навмисно змінює код і «підсаджує помилки». Наприклад, код newOrder.price===0 стає newOrder.price!=0. Ці «помилки» називаються мутаціями
 
-(2) it runs the tests, if all succeed then we have a problem — the tests didn’t serve their purpose of discovering bugs, the mutations are so-called survived. If the tests failed, then great, the mutations were killed.
+(2) він запускає тести, якщо всі вдаються, тоді у нас є проблема —«тести не виконали своєї мети виявлення помилок, мутації так звані вижили. Якщо тести провалилися, то чудово, мутації були вбиті.
 
-Knowing that all or most of the mutations were killed gives much higher confidence than traditional coverage and the setup time is similar
+Знання того, що всі або більшість мутацій були знищені, дає набагато більшу впевненість, ніж традиційне покриття, а час налаштування подібний
 <br/>
 
-❌ **Інакше:** You’ll be fooled to believe that 85% coverage means your test will detect bugs in 85% of your code
+❌ **Інакше:** Ви будете обдурені, якщо повірите, що 85% покриття означає, що ваш тест виявить помилки в 85% вашого коду
 
 <br/>
 
@@ -1743,9 +1743,9 @@ Knowing that all or most of the mutations were killed gives much higher confiden
 
 <br/>
 
-### :thumbsdown: Приклад антишаблону: 100% coverage, 0% testing
+### :thumbsdown: Приклад антишаблону: 100% покриття, 0% тестування
 
-![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg "Using Stryker")
+![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg "Використання Stryker")
 
 ```javascript
 function addNewOrder(newOrder) {
@@ -1758,33 +1758,33 @@ function addNewOrder(newOrder) {
 
 it("Test addNewOrder, don't use such test names", () => {
   addNewOrder({ assignee: "John@mailer.com", price: 120 });
-}); //Triggers 100% code coverage, but it doesn't check anything
+}); // Запускає 100% покриття коду, але нічого не перевіряє
 ```
 
 <br/>
 
-### :clap: Приклад правильного виконання: Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)
+### :clap: Приклад правильного виконання: Звіти Stryker, інструмент для перевірки мутацій, виявляють і підраховують кількість коду, який не перевіряється (Мутації)
 
-![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Stryker reports, a tool for mutation testing, detects and counts the amount of code that is not tested (Mutations)")
+![alt text](assets/bp-20-yoni-goldberg-mutation-testing.jpeg "Звіти Stryker, інструмент для перевірки мутацій, виявляють і підраховують кількість коду, який не перевіряється (Мутації)")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️4.4 Preventing test code issues with Test linters
+## ⚪ ️4.4 Запобігання проблемам тестового коду за допомогою тестових лінтерів
 
-:white_check_mark: **Роби:** A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) will warn when a test is written at the global level (not a son of a describe() statement) or when tests are [skipped](https://mochajs.org/#inclusive-tests) which might lead to a false belief that all tests are passing. Similarly, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) can, for example, warn when a test has no assertions at all (not checking anything)
+:white_check_mark: **Роби:** Набір плагінів ESLint створено спеціально для перевірки шаблонів коду тестів і виявлення проблем. Наприклад, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) попереджатиме, коли тест написаний на глобальному рівні (а не син оператора describe()) або коли тести [skipped](https://mochajs.org/#inclusive-tests), що може призвести до хибного переконання, що всі тести успішно пройдені. Подібним чином [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) може, наприклад, попередити, коли тест взагалі не має тверджень (нічого не перевіряє)
 
 <br/>
 
-❌ **Інакше:** Seeing 90% code coverage and 100% green tests will make your face wear a big smile only until you realize that many tests aren’t asserting for anything and many test suites were just skipped. Hopefully, you didn’t deploy anything based on this false observation
+❌ **Інакше:** Побачивши 90% охоплення коду та 100% зелених тестів, ваше обличчя буде широко посміхатися, доки ви не зрозумієте, що багато тестів нічого не стверджують, а багато наборів тестів просто пропущено. Сподіваюся, ви нічого не розгорнули на основі цього помилкового спостереження
 
 <br/>
 <details><summary>✏ <b>Приклади коду</b></summary>
 
 <br/>
 
-### :thumbsdown: Приклад антишаблону: A test case full of errors, luckily all are caught by Linters
+### :thumbsdown: Приклад антишаблону: Тестовий приклад, повний помилок, на щастя, усі вони виявлені за допомогою лінтерів (Linters)
 
 ```javascript
 describe("Too short description", () => {
@@ -1804,16 +1804,16 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/><br/>
 
-# Section 5️⃣: CI and Other Quality Measures
+# Section 5️⃣: CI та інші показники якості
 
 <br/><br/>
 
-## ⚪ ️ 5.1 Enrich your linters and abort builds that have linting issues
+## ⚪ ️ 5.1 Збагачуйте ваші лінтери та припиняйте збірки, які мають проблеми з лінінгами
 
-:white_check_mark: **Роби:** Linters are a free lunch, with 5 min setup you get for free an auto-pilot guarding your code and catching significant issue as you type. Gone are the days where linting was about cosmetics (no semi-colons!). Nowadays, Linters can catch severe issues like errors that are not thrown correctly and losing information. On top of your basic set of rules (like [ESLint standard](https://www.npmjs.com/package/eslint-plugin-standard) or [Airbnb style](https://www.npmjs.com/package/eslint-config-airbnb)), consider including some specializing Linters like [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect) that can discover tests without assertions, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) can discover promises with no resolve (your code will never continue), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme) which can discover eager regex expressions that might get used for DOS attacks, and [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) is capable of alarming when the code uses utility library methods that are part of the V8 core methods like Lodash.\_map(…)
+:white_check_mark: **Роби:** Linters — це безкоштовний обід, після 5-хвилинного налаштування ви безкоштовно отримуєте автопілот, який охороняє ваш код і виявляє значні проблеми під час введення. Пройшли ті часи, коли розмови стосувалися косметики (без крапок з комою!). Сьогодні Linters може виявляти серйозні проблеми, як-от помилки, які неправильно видаються та втрачають інформацію. На додаток до вашого базового набору правил (наприклад, [стандарт ESLint](https://www.npmjs.com/package/eslint-plugin-standard) або [стиль Airbnb](https://www.npmjs.com/package /eslint-config-airbnb)), подумайте про включення деяких спеціалізованих лінтерів, таких як [eslint-plugin-chai-expect](https://www.npmjs.com/package/eslint-plugin-chai-expect), які можуть виявляти тести без твердження, [eslint-plugin-promise](https://www.npmjs.com/package/eslint-plugin-promise?activeTab=readme) може виявляти обіцянки без вирішення (ваш код ніколи не продовжиться), [eslint-plugin-security](https://www.npmjs.com/package/eslint-plugin-security?activeTab=readme), який може виявити активні регулярні вирази, які можуть бути використані для атак DOS, і [eslint-plugin-you-dont-need-lodash-underscore](https://www.npmjs.com/package/eslint-plugin-you-dont-need-lodash-underscore) здатний викликати тривогу, коли код використовує методи службової бібліотеки, які є частиною V8 основні методи, такі як Lodash.\_map(…)
 <br/>
 
-❌ **Інакше:** Consider a rainy day where your production keeps crashing but the logs don’t display the error stack trace. What happened? Your code mistakenly threw a non-error object and the stack trace was lost, a good reason for banging your head against a brick wall. A 5 min linter setup could detect this TYPO and save your day
+❌ **Інакше:** Уявіть собі дощовий день, коли ваша продуктивність продовжує давати збої, але журнали не відображають трасування стека помилок. Що трапилось? Ваш код помилково викинув об’єкт без помилки, і трасування стека було втрачено, що є вагомою причиною для того, щоб битися головою об цегляну стіну. 5-хвилинне налаштування Linter може виявити цю TYPO і врятувати ваш день
 
 <br/>
 
@@ -1821,22 +1821,22 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 <br/>
 
-### :thumbsdown: Приклад антишаблону: The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug
+### :thumbsdown: Приклад антишаблону: Помилково створено неправильний об’єкт Error, трасування стека для цієї помилки не з’явиться. На щастя, ESLint виявляє наступну виробничу помилку
 
-![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "The wrong Error object is thrown mistakenly, no stack-trace will appear for this error. Luckily, ESLint catches the next production bug")
+![alt text](assets/bp-21-yoni-goldberg-eslint.jpeg "Помилково створено неправильний об’єкт Error, трасування стека для цієї помилки не з’явиться. На щастя, ESLint виявляє наступну виробничу помилку")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️ 5.2 Shorten the feedback loop with local developer-CI
+## ⚪ ️ 5.2 Скоротіть цикл зворотного зв’язку за допомогою локального Developer-CI
 
-:white_check_mark: **Роби:** Using a CI with shiny quality inspections like testing, linting, vulnerabilities check, etc? Help developers run this pipeline also locally to solicit instant feedback and shorten the [feedback loop](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/). Why? an efficient testing process constitutes many and iterative loops: (1) try-outs -> (2) feedback -> (3) refactor. The faster the feedback is, the more improvement iterations a developer can perform per-module and perfect the results. On the flip, when the feedback is late to come fewer improvement iterations could be packed into a single day, the team might already move forward to another topic/task/module and might not be up for refining that module.
+:white_check_mark: **Роби:** Використовуєте CI з блискучою перевіркою якості, як-от тестування, лінтування, перевірка вразливостей тощо? Допоможіть розробникам запустити цей конвеєр також локально, щоб отримати миттєвий відгук і скоротити [цикл зворотного зв’язку](https://www.gocd.org/2016/03/15/are-you-ready-for-continuous-delivery-part-2 -петлі зворотного зв'язку/). чому ефективний процес тестування складається з багатьох ітераційних циклів: (1) тестування -> (2) зворотній зв'язок -> (3) рефакторинг. Чим швидший зворотній зв’язок, тим більше ітерацій покращення може виконати розробник для кожного модуля та покращити результати. З іншого боку, коли зворотній зв’язок надходить із запізненням, менше ітерацій покращення може бути упаковано в один день, команда може вже перейти до іншої теми/завдання/модуля та не готова вдосконалювати цей модуль.
 
-Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) allow running the pipeline locally. Some commercial tools like [wallaby provide highly-valuable & testing insights](https://wallabyjs.com/) as a developer prototype (no affiliation). Alternatively, you may just add npm script to package.json that runs all the quality commands (e.g. test, lint, vulnerabilities) — use tools like [concurrently](https://www.npmjs.com/package/concurrently) for parallelization and non-zero exit code if one of the tools failed. Now the developer should just invoke one command — e.g. ‘npm run quality’ — to get instant feedback. Consider also aborting a commit if the quality check failed using a githook ([husky can help](https://github.com/typicode/husky))
+На практиці деякі постачальники CI (Приклад: [CircleCI local CLI](https://circleci.com/docs/2.0/local-cli/)) дозволяють запускати конвеєр локально. Деякі комерційні інструменти, як-от [wallaby, надають дуже цінну інформацію для тестування](https://wallabyjs.com/) як прототип розробника (без зв’язку). Крім того, ви можете просто додати сценарій npm до package.json, який запускає всі команди якості (наприклад, test, lint, vulnerabilities) — використовуйте такі інструменти, як [concurrently](https://www.npmjs.com/package/concurrently) для розпаралелювання і ненульовий код виходу, якщо один із інструментів вийшов з ладу. Тепер розробник має просто викликати одну команду — наприклад. «Якість виконання npm» — щоб отримати миттєвий відгук. Також подумайте про переривання коміту, якщо перевірка якості не вдалася за допомогою githook ([husky може допомогти](https://github.com/typicode/husky))
 <br/>
 
-❌ **Інакше:** When the quality results arrive the day after the code, testing doesn’t become a fluent part of development rather an after the fact formal artifact
+❌ **Інакше:** Коли якісні результати надходять наступного дня після коду, тестування не стає плавною частиною розробки, а формальним артефактом.
 
 <br/>
 
@@ -1844,7 +1844,7 @@ Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com
 
 <br/>
 
-### :clap: Приклад правильного виконання: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
+### :clap: Приклад правильного виконання: Сценарії npm, які виконують перевірку якості коду, усі виконуються паралельно на вимогу або коли розробник намагається надіслати новий код
 
 ```javascript
 "scripts": {
@@ -1869,14 +1869,14 @@ Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com
 
 <br/><br/>
 
-## ⚪ ️5.3 Perform e2e testing over a true production-mirror
+## ⚪ ️5.3 Виконайте тестування e2e на справжньому робочому дзеркалі
 
-:white_check_mark: **Роби:** End to end (e2e) testing are the main challenge of every CI pipeline — creating an identical ephemeral production mirror on the fly with all the related cloud services can be tedious and expensive. Finding the best compromise is your game: [Docker-compose](https://serverless.com/) allows crafting isolated dockerized environment with identical containers using a single plain text file but the backing technology (e.g. networking, deployment model) is different from real-world productions. You may combine it with [‘AWS Local’](https://github.com/localstack/localstack) to work with a stub of the real AWS services. If you went [serverless](https://serverless.com/) multiple frameworks like serverless and [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) allows the local invocation of FaaS code.
+:white_check_mark: **Роби:** Наскрізне тестування (e2e) є головною проблемою кожного конвеєра CI —«створення ідентичного ефемерного робочого дзеркала на льоту з усіма пов’язаними хмарними службами може бути виснажливим і дорогим. Пошук найкращого компромісу — ваша гра: [Docker-compose](https://serverless.com/) дозволяє створювати ізольоване докеризоване середовище з ідентичними контейнерами за допомогою одного простого текстового файлу, але технологія підтримки (наприклад, мережа, модель розгортання) відрізняється з реальних виробництв. Ви можете поєднати його з [‘AWS Local’](https://github.com/localstack/localstack), щоб працювати із заглушкою справжніх служб AWS. Якщо ви використовуєте [безсерверні](https://serverless.com/) кілька фреймворків, як-от безсерверні, і [AWS SAM](https://docs.aws.amazon.com/lambda/latest/dg/serverless_app.html) дозволяє локальний виклик коду FaaS.
 
-The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for local and CI-mirroring though many new tools are launched frequently. One approach is running a ‘minimized-Kubernetes’ using tools like [Minikube](https://kubernetes.io/docs/setup/minikube/) and [MicroK8s](https://microk8s.io/) which resemble the real thing only come with less overhead. Another approach is testing over a remote ‘real-Kubernetes’, some CI providers (e.g. [Codefresh](https://codefresh.io/)) has native integration with Kubernetes environment and make it easy to run the CI pipeline over the real thing, others allow custom scripting against a remote Kubernetes.
+Величезна екосистема Kubernetes ще має формалізувати стандартний зручний інструмент для локального та CI-дзеркалювання, хоча часто запускається багато нових інструментів. Одним із підходів є запуск «мінімізованого Kubernetes» за допомогою таких інструментів, як [Minikube](https://kubernetes.io/docs/setup/minikube/) і [MicroK8s](https://microk8s.io/), які нагадують справжній річ лише з меншими накладними витратами. Інший підхід полягає в тестуванні на віддаленому «реальному Kubernetes». Деякі постачальники CI (наприклад, [Codefresh](https://codefresh.io/)) мають власну інтеграцію з середовищем Kubernetes і дозволяють легко запускати конвеєр CI через реальний інші дозволяють створювати спеціальні сценарії для віддаленого Kubernetes.
 <br/>
 
-❌ **Інакше:** Using different technologies for production and testing demands maintaining two deployment models and keeps the developers and the ops team separated
+❌ **Інакше:** Використання різних технологій для виробництва та тестування вимагає підтримки двох моделей розгортання та роз’єднує розробників і команду операцій
 
 <br/>
 
@@ -1884,7 +1884,7 @@ The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for
 
 <br/>
 
-### :clap: Example: a CI pipeline that generates Kubernetes cluster on the fly <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([Credit: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
+### :clap: Приклад: конвеєр CI, який генерує кластер Kubernetes на льоту <a href="https://container-solutions.com/dynamic-environments-kubernetes/" data-href="https://container-solutions.com/dynamic-environments-kubernetes/" class="markup--anchor markup--p-anchor" rel="noopener nofollow" target="_blank">([Авторство: Dynamic-environments Kubernetes](https://container-solutions.com/dynamic-environments-kubernetes/))</a>
 
 <pre name="38d9" id="38d9" class="graf graf--pre graf-after--p">deploy:<br>stage: deploy<br>image: registry.gitlab.com/gitlab-examples/kubernetes-deploy<br>script:<br>- ./configureCluster.sh $KUBE_CA_PEM_FILE $KUBE_URL $KUBE_TOKEN<br>- kubectl create ns $NAMESPACE<br>- kubectl create secret -n $NAMESPACE docker-registry gitlab-registry --docker-server="$CI_REGISTRY" --docker-username="$CI_REGISTRY_USER" --docker-password="$CI_REGISTRY_PASSWORD" --docker-email="$GITLAB_USER_EMAIL"<br>- mkdir .generated<br>- echo "$CI_BUILD_REF_NAME-$CI_BUILD_REF"<br>- sed -e "s/TAG/$CI_BUILD_REF_NAME-$CI_BUILD_REF/g" templates/deals.yaml | tee ".generated/deals.yaml"<br>- kubectl apply --namespace $NAMESPACE -f .generated/deals.yaml<br>- kubectl apply --namespace $NAMESPACE -f templates/my-sock-shop.yaml<br>environment:<br>name: test-for-ci</pre>
 
@@ -1892,11 +1892,11 @@ The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for
 
 <br/><br/>
 
-## ⚪ ️5.4 Parallelize test execution
+## ⚪ ️5.4 Паралелізуйте виконання тесту
 
-:white_check_mark: **Роби:** When done right, testing is your 24/7 friend providing almost instant feedback. In practice, executing 500 CPU-bounded unit test on a single thread can take too long. Luckily, modern test runners and CI platforms (like [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) and [Mocha extensions](https://github.com/yandex/mocha-parallel-tests)) can parallelize the test into multiple processes and achieve significant improvement in feedback time. Some CI vendors do also parallelize tests across containers (!) which shortens the feedback loop even further. Whether locally over multiple processes, or over some cloud CLI using multiple machines — parallelizing demand keeping the tests autonomous as each might run on different processes
+:white_check_mark: **Роби:** Якщо все зроблено правильно, тестування стане вашим другом цілодобово та без вихідних, що надає майже миттєвий відгук. На практиці виконання 500 обмежених ЦП модульних тестів в одному потоці може тривати занадто довго. На щастя, сучасні тестувальники та платформи CI (як-от [Jest](https://github.com/facebook/jest), [AVA](https://github.com/avajs/ava) і [розширення Mocha](https ://github.com/yandex/mocha-parallel-tests)) можна розпаралелити тест на кілька процесів і значно покращити час зворотного зв’язку. Деякі постачальники CI також розпаралелюють тести між контейнерами (!), що ще більше скорочує цикл зворотного зв’язку. Незалежно від того, локально над кількома процесами чи над деяким хмарним CLI з використанням кількох машин — розпаралелювання попиту, зберігаючи автономність тестів, оскільки кожен може виконуватися на різних процесах
 
-❌ **Інакше:** Getting test results 1 hour long after pushing new code, as you already code the next features, is a great recipe for making testing less relevant
+❌ **Інакше:** Отримання результатів тестування через 1 годину після введення нового коду, оскільки ви вже кодуєте наступні функції, є чудовим рецептом для того, щоб зробити тестування менш актуальним
 
 <br/>
 
@@ -1904,19 +1904,19 @@ The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for
 
 <br/>
 
-### :clap: Приклад правильного виконання: Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization ([Credit: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
+### :clap: Приклад правильного виконання: Mocha parallel & Jest легко випереджають традиційну Mocha завдяки розпаралелюванню тестування ([Авторство: JavaScript Test-Runners Benchmark](https://medium.com/dailyjs/javascript-test-runners-benchmark-3a78d4117b4))
 
-![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest easily outrun the traditional Mocha thanks to testing parallelization (Credit: JavaScript Test-Runners Benchmark)")
+![alt text](assets/bp-24-yonigoldberg-jest-parallel.png "Mocha parallel & Jest легко випереджають традиційну Mocha завдяки розпаралелюванню тестування")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️5.5 Stay away from legal issues using license and plagiarism check
+## ⚪ ️5.5 Тримайтеся подалі від юридичних проблем, використовуючи ліцензію та перевірку на плагіат
 
-:white_check_mark: **Роби:** Licensing and plagiarism issues are probably not your main concern right now, but why not tick this box as well in 10 minutes? A bunch of npm packages like [license check](https://www.npmjs.com/package/license-checker) and [plagiarism check](https://www.npmjs.com/package/plagiarism-checker) (commercial with free plan) can be easily baked into your CI pipeline and inspect for sorrows like dependencies with restrictive licenses or code that was copy-pasted from Stack Overflow and apparently violates some copyrights
+:white_check_mark: **Роби:** Проблеми ліцензування та плагіату, ймовірно, не є вашою головною проблемою зараз, але чому б також не поставити галочку в цьому полі через 10 хвилин? Купа пакетів npm, таких як [перевірка ліцензії](https://www.npmjs.com/package/license-checker) і [перевірка на плагіат](https://www.npmjs.com/package/plagiarism-checker) ( рекламний ролик із безкоштовним планом) можна легко вставити у ваш конвеєр CI та перевірити на наявність таких проблем, як залежності з обмежувальними ліцензіями або код, який було скопійовано з Stack Overflow і, очевидно, порушує деякі авторські права
 
-❌ **Інакше:** Unintentionally, developers might use packages with inappropriate licenses or copy paste commercial code and run into legal issues
+❌ **Інакше:** Ненавмисно розробники можуть використати пакети з невідповідними ліцензіями або скопіювати комерційний код і зіткнутися з юридичними проблемами
 
 <br/>
 
@@ -1943,38 +1943,11 @@ license-checker --summary --failOn BSD
 
 <br/><br/>
 
-## ⚪ ️5.6 Constantly inspect for vulnerable dependencies
+## ⚪ ️5.6 Постійно перевіряйте наявність вразливих залежностей
 
-:white_check_mark: **Роби:** Even the most reputable dependencies such as Express have known vulnerabilities. This can get easily tamed using community tools such as [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), or commercial tools like [snyk](https://snyk.io/) (offer also a free community version). Both can be invoked from your CI on every build
+:white_check_mark: **Роби:** Навіть найавторитетніші залежності, такі як Express, мають відомі вразливості. Це можна легко приборкати за допомогою інструментів спільноти, таких як [npm audit](https://docs.npmjs.com/getting-started/running-a-security-audit), або комерційних інструментів, таких як [snyk](https:// snyk.io/) (пропонуємо також безкоштовну версію спільноти). Обидва можна викликати з вашого КІ під час кожної збірки
 
-❌ **Інакше:** Keeping your code clean from vulnerabilities without dedicated tools will require to constantly follow online publications about new threats. Quite tedious
-
-<br/>
-
-<details><summary>✏ <b>Приклади коду</b></summary>
-
-<br/>
-
-### :clap: Example: NPM Audit result
-
-![alt text](assets/bp-26-npm-audit-snyk.png "NPM Audit result")
-
-</details>
-
-<br/><br/>
-
-## ⚪ ️5.7 Automate dependency updates
-
-:white_check_mark: **Роби:** Yarn and npm latest introduction of package-lock.json introduced a serious challenge (the road to hell is paved with good intentions) — by default now, packages are no longer getting updates. Even a team running many fresh deployments with ‘npm install’ & ‘npm update’ won’t get any new updates. This leads to subpar dependent packages versions at best or to vulnerable code at worst. Teams now rely on developers goodwill and memory to manually update the package.json or use tools [like ncu](https://www.npmjs.com/package/npm-check-updates) manually. A more reliable way could be to automate the process of getting the most reliable dependency versions, though there are no silver bullet solutions yet there are two possible automation roads:
-
-(1) CI can fail builds that have obsolete dependencies — using tools like [‘npm outdated’](https://docs.npmjs.com/cli/outdated) or ‘npm-check-updates (ncu)’ . Doing so will enforce developers to update dependencies.
-
-(2) Use commercial tools that scan the code and automatically send pull requests with updated dependencies. One interesting question remaining is what should be the dependency update policy — updating on every patch generates too many overhead, updating right when a major is released might point to an unstable version (many packages found vulnerable on the very first days after being released, [see the](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) eslint-scope incident).
-
-An efficient update policy may allow some ‘vesting period’ — let the code lag behind the @latest for some time and versions before considering the local copy as obsolete (e.g. local version is 1.3.1 and repository version is 1.3.8)
-<br/>
-
-❌ **Інакше:** Your production will run packages that have been explicitly tagged by their author as risky
+❌ **Інакше:** Щоб захистити ваш код від уразливостей без спеціальних інструментів, потрібно постійно стежити за публікаціями в Інтернеті про нові загрози. Досить нудно
 
 <br/>
 
@@ -1982,31 +1955,57 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 <br/>
 
-### :clap: Example: [ncu](https://www.npmjs.com/package/npm-check-updates) can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions
+### :clap: Приклад: Результат аудиту NPM
 
-![alt text](assets/bp-27-yoni-goldberg-npm.png "ncu can be used manually or within a CI pipeline to detect to which extent the code lag behind the latest versions")
+![alt text](assets/bp-26-npm-audit-snyk.png "Результат аудиту NPM")
 
 </details>
 
 <br/><br/>
 
-## ⚪ ️ 5.8 Other, non-Node related, CI tips
+## ⚪ ️5.7 Автоматизуйте оновлення залежностей
 
-:white_check_mark: **Роби:** This post is focused on testing advice that is related to, or at least can be exemplified with Node JS. This bullet, however, groups few non-Node related tips that are well-known
+:white_check_mark: **Роби:** Yarn і npm останнє представлення package-lock.json поставило серйозну проблему (дорога в пекло вимощена благими намірами) — тепер за замовчуванням пакунки більше не отримують оновлення. Навіть команда, яка виконує багато свіжих розгортань за допомогою «встановлення npm» і «оновлення npm», не отримає нових оновлень. У кращому випадку це призводить до неповноцінних версій пакунків або до вразливого коду в гіршому. Команди тепер покладаються на добру волю та пам’ять розробників, щоб вручну оновити package.json або використовувати інструменти [наприклад, ncu](https://www.npmjs.com/package/npm-check-updates) вручну. Надійнішим способом може бути автоматизація процесу отримання найнадійніших версій залежностей, хоча немає універсальних рішень, але є два можливі шляхи автоматизації:
+
+(1) CI може давати збій збіркам із застарілими залежностями — використанням таких інструментів, як [‘npm outdated’](https://docs.npmjs.com/cli/outdated) або ‘npm-check-updates (ncu)’ . Це змусить розробників оновити залежності.
+
+(2) Використовуйте комерційні інструменти, які сканують код і автоматично надсилають запити на отримання з оновленими залежностями. Залишається одне цікаве питання: якою має бути політика оновлення залежностей —«оновлення кожного патча створює надто багато накладних витрат, оновлення безпосередньо під час випуску основного може вказувати на нестабільну версію (багато пакетів виявляються вразливими в перші дні після випуску, [перегляньте](https://nodesource.com/blog/a-high-level-post-mortem-of-the-eslint-scope-security-incident/) інцидент eslint-scope).
+
+Ефективна політика оновлення може дозволити певний «період набуття прав» — нехай код відстає від @latest на деякий час і версії, перш ніж вважати локальну копію застарілою (наприклад, локальна версія — 1.3.1, а версія сховища — 1.3.8)<br/>
+
+❌ **Інакше:** У вашому виробництві працюватимуть пакунки, які були явно позначені їх автором як ризиковані
+
+<br/>
+
+<details><summary>✏ <b>Приклади коду</b></summary>
+
+<br/>
+
+### :clap: Приклад: [ncu](https://www.npmjs.com/package/npm-check-updates) можна використовувати вручну або в конвеєрі CI, щоб визначити, наскільки код відстає від останніх версій
+
+![alt text](assets/bp-27-yoni-goldberg-npm.png "можна використовувати вручну або в конвеєрі CI, щоб визначити, наскільки код відстає від останніх версій")
+
+</details>
+
+<br/><br/>
+
+## ⚪ ️ 5.8 Інші поради CI, не пов’язані з Node
+
+:white_check_mark: **Роби:** Ця публікація зосереджена на порадах щодо тестування, які пов’язані з Node JS або, принаймні, можуть бути представлені на прикладі Node JS. Однак у цьому розділі згруповано кілька добре відомих порад, не пов’язаних з Node
 
  <ol class="postList"><li name="e3e4" id="e3e4" class="graf graf--li graf-after--p">Use a declarative syntax. This is the only option for most vendors but older versions of Jenkins allows using code or UI</li><li name="1fdc" id="1fdc" class="graf graf--li graf-after--li">Opt for a vendor that has native Docker support</li><li name="edcd" id="edcd" class="graf graf--li graf-after--li">Fail early, run your fastest tests first. Create a ‘Smoke testing’ step/milestone that groups multiple fast inspections (e.g. linting, unit tests) and provide snappy feedback to the code committer</li><li name="0375" id="0375" class="graf graf--li graf-after--li">Make it easy to skim-through all build artifacts including test reports, coverage reports, mutation reports, logs, etc</li><li name="df82" id="df82" class="graf graf--li graf-after--li">Create multiple pipelines/jobs for each event, reuse steps between them. For example, configure a job for feature branch commits and a different one for master PR. Let each reuse logic using shared steps (most vendors provide some mechanism for code reuse)</li><li name="19b0" id="19b0" class="graf graf--li graf-after--li">Never embed secrets in a job declaration, grab them from a secret store or from the job’s configuration</li><li name="b70d" id="b70d" class="graf graf--li graf-after--li">Explicitly bump version in a release build or at least ensure the developer did so</li><li name="957c" id="957c" class="graf graf--li graf-after--li">Build only once and perform all the inspections over the single build artifact (e.g. Docker image)</li><li name="339b" id="339b" class="graf graf--li graf-after--li">Test in an ephemeral environment that doesn’t drift state between builds. Caching node_modules might be the only exception</li></ol>
 <br/>
 
-❌ **Інакше:** You‘ll miss years of wisdom
+❌ **Інакше:** Ви пропустите роки мудрості
 
 <br/><br/>
 
-## ⚪ ️ 5.9 Build matrix: Run the same CI steps using multiple Node versions
+## ⚪ ️ 5.9 Матриця побудови: виконуйте ті самі кроки CI, використовуючи кілька версій Node
 
-:white_check_mark: **Роби:** Quality checking is about serendipity, the more ground you cover the luckier you get in detecting issues early. When developing reusable packages or running a multi-customer production with various configuration and Node versions, the CI must run the pipeline of tests over all the permutations of configurations. For example, assuming we use MySQL for some customers and Postgres for others — some CI vendors support a feature called ‘Matrix’ which allow running the suit of testing against all permutations of MySQL, Postgres and multiple Node version like 8, 9 and 10. This is done using configuration only without any additional effort (assuming you have testing or any other quality checks). Other CIs who doesn’t support Matrix might have extensions or tweaks to allow that
+:white_check_mark: **Роби:** Перевірка якості пов’язана з інтуїцією, чим більше ви охопите, тим більше вам пощастить у виявленні проблем на ранній стадії. Під час розробки пакетів для багаторазового використання або запуску виробництва для кількох клієнтів із різними конфігураціями та версіями Node, CI має запустити конвеєр тестів для всіх перестановок конфігурацій. Наприклад, якщо припустити, що ми використовуємо MySQL для одних клієнтів, а Postgres для інших —«деякі постачальники CI підтримують функцію під назвою «Матриця», яка дозволяє виконувати тестування всіх перестановок MySQL, Postgres і кількох версій Node, таких як 8, 9 і 10. Це робиться лише за допомогою конфігурації без будь-яких додаткових зусиль (за умови, що у вас є тестування чи будь-які інші перевірки якості). Інші КІ, які не підтримують Matrix, можуть мати розширення або налаштування, щоб дозволити це
 <br/>
 
-❌ **Інакше:** So after doing all that hard work of writing testing are we going to let bugs sneak in only because of configuration issues?
+❌ **Інакше:** Отже, після всієї цієї важкої роботи з написання тестування, ми дозволимо помилкам прокрадатися лише через проблеми з конфігурацією?
 
 <br/>
 
@@ -2014,7 +2013,7 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 <br/>
 
-### :clap: Example: Using Travis (CI vendor) build definition to run the same test over multiple Node versions
+### :clap: Приклад: Використання визначення збірки Travis (постачальник CI) для запуску одного тесту на кількох версіях Node
 
 <pre name="f909" id="f909" class="graf graf--pre graf-after--p">language: node_js<br>node_js:<br>  - "7"<br>  - "6"<br>  - "5"<br>  - "4"<br>install:<br>  - npm install<br>script:<br>  - npm run test</pre>
 </details>
@@ -2029,11 +2028,11 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 <img width="480px" src="assets/yoni-goldberg.jpg"/>
 <br/>
 
-**Role:** Writer
+**Роль:** Письменник
 
-**About:** I'm an independent consultant who works with Fortune 500 companies and garage startups on polishing their JS & Node.js applications. More than any other topic I'm fascinated by and aims to master the art of testing. I'm also the author of [Node.js Best Practices](https://github.com/goldbergyoni/nodebestpractices)
+**Опис:** Я незалежний консультант, який працює з компаніями зі списку Fortune 500 і гаражними стартапами над вдосконаленням їхніх додатків JS і Node.js. Більше ніж будь-яка інша тема мене захоплює, і я прагну оволодіти мистецтвом тестування. Я також автор [найкращих практик Node.js](https://github.com/goldbergyoni/nodebestpractices)
 
-**📗 Online Course:** Liked this guide and wish to take your testing skills to the extreme? Consider visiting my comprehensive course [Testing Node.js & JavaScript From A To Z](https://www.testjavascript.com)
+**📗 Онлайн-курс:** Сподобався цей посібник і ви бажаєте вдосконалити свої навички тестування? Відвідайте мій комплексний курс [Тестування Node.js і JavaScript від А до Я](https://www.testjavascript.com)
 
 <br/>
 
@@ -2049,30 +2048,29 @@ An efficient update policy may allow some ‘vesting period’ — let the c
 
 ## [Bruno Scheufler](https://github.com/BrunoScheufler)
 
-**Role:** Tech reviewer and advisor
+**Роль:** Технічний оглядач і радник
 
-Took care to revise, improve, lint and polish all the texts
+Подбав про те, щоб переглянути, вдосконалити, відшліфувати та відшліфувати всі тексти
 
-**About:** full-stack web engineer, Node.js & GraphQL enthusiast
-
+**Опис:** full-stack веб-інженер, ентузіаст Node.js та GraphQL
 <hr/>
 <br/>
 
 ## [Ido Richter](https://github.com/idori)
 
-**Role:** Concept, design and great advice
+**Роль:** Concept, design and great advice
 
-**About:** A savvy frontend developer, CSS expert and emojis freak
+**Опис:** Кмітливий розробник інтерфейсу, експерт із CSS і фанат емодзі
 
 ## [Kyle Martin](https://github.com/js-kyle)
 
-**Role:** Helps keep this project running, and reviews security related practices
+**Роль:** Допомагає підтримувати роботу цього проекту та переглядає методи безпеки
 
-**About:** Loves working on Node.js projects and web application security.
+**Опис:** Любить працювати над проектами Node.js і безпекою веб-додатків.
 
-## Contributors ✨
+## Автори ✨
 
-Thanks goes to these wonderful people who have contributed to this repository!
+Дякуємо цим чудовим людям, які зробили внесок у це сховище!
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
