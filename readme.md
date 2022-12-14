@@ -41,6 +41,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 - 🇫🇷[French](readme-fr.md) - Courtesy of [Mathilde El Mouktafi](https://github.com/mel-mouk)
 - 🇯🇵[Japanese (draft)](https://github.com/yuichkun/javascript-testing-best-practices/blob/master/readme-jp.md) - Courtesy of [Yuichi Yogo](https://github.com/yuichkun) and [ryo](https://github.com/kawamataryo)
 - 🇹🇼[Traditional Chinese](readme-zh-TW.md) - Courtesy of [Yubin Hsu](https://github.com/yubinTW)
+- 🇮🇷[Persian](readme-pr-fr.md) - Courtesy of [Ali Azmoodeh](https://github.com/TREER00T)
 - Want to translate to your own language? please open an issue 💜
 
 <br/><br/>
@@ -1019,7 +1020,8 @@ beforeEach(() => {
     id: 1,
     name: 'John',
   });
-});```
+});
+```
 
 </details>
 
@@ -1118,7 +1120,6 @@ beforeEach(() => {
 
 • Observability - Some things must be monitored, like errors or remarkable business events. When a transaction fails, not only we expect the right response but also correct error handling and proper logging/metrics. This information goes directly to a very important user - The ops user (i.e., production SRE/admin)
 
-</details>
 
 <br/><br/>
 
@@ -1500,14 +1501,13 @@ before(() => {
 })
 
 // happens before EACH test
-beforeEach(setUser => () {
-  cy.visit('/home', {
-    onBeforeLoad (win) {
+beforeEach(setUser => {
+  cy.visit('/home', () => {
+    onBeforeLoad (win => {
       win.localStorage.setItem('token', JSON.stringify(authenticationToken))
-    },
+    })
   })
 })
-
 ```
 
 </details>
@@ -1565,8 +1565,8 @@ it("When doing smoke testing over all page, should load them all successfully", 
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cucumber-blue.svg "Examples using Cucumber")
 
-```javascript
-// this is how one can describe tests using cucumber: plain language that allows anyone to understand and collaborate
+```text
+This is how one can describe tests using cucumber: plain language that allows anyone to understand and collaborate
 
 Feature: Twitter new tweet
 
@@ -1579,7 +1579,6 @@ Feature: Twitter new tweet
     Given I type "Hello followers!" in the textbox
     Given I click on "Submit" button
     Then I see message "Tweet saved"
-
 ```
 
 ### :clap: Doing It Right Example: Visualizing our components, their various states and inputs using Storybook
@@ -1801,7 +1800,7 @@ it.skip("Test name", () => {// *error:no-skipped-tests, error:error:no-global-te
   expect("somevalue"); // error:no-assert
 });
 
-it("Test name", () => {*//error:no-identical-title. Assign unique titles to tests
+it("Test name", () => {// *error:no-identical-title. Assign unique titles to tests
 });
 ```
 
@@ -1851,14 +1850,14 @@ Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com
 
 ### :clap: Doing It Right Example: npm scripts that perform code quality inspection, all are run in parallel on demand or when a developer is trying to push new code
 
-```javascript
-"scripts": {
+```json
+{
+  "scripts": {
     "inspect:sanity-testing": "mocha **/**--test.js --grep \"sanity\"",
     "inspect:lint": "eslint .",
     "inspect:vulnerabilities": "npm audit",
     "inspect:license": "license-checker --failOn GPLv2",
     "inspect:complexity": "plato .",
-
     "inspect:all": "concurrently -c \"bgBlue.bold,bgMagenta.bold,yellow\" \"npm:inspect:quick-testing\" \"npm:inspect:lint\" \"npm:inspect:vulnerabilities\" \"npm:inspect:license\""
   },
   "husky": {
@@ -1866,8 +1865,8 @@ Practically, some CI vendors (Example: [CircleCI local CLI](https://circleci.com
       "precommit": "npm run inspect:all",
       "prepush": "npm run inspect:all"
     }
+  }
 }
-
 ```
 
 </details>
@@ -1931,13 +1930,12 @@ The huge Kubernetes ecosystem is yet to formalize a standard convenient tool for
 
 ### :clap: Doing It Right Example:
 
-```javascript
-//install license-checker in your CI environment or also locally
+```shell
+# install license-checker in your CI environment or also locally
 npm install -g license-checker
 
-//ask it to scan all licenses and fail with exit code other than 0 if it found unauthorized license. The CI system should catch this failure and stop the build
+# ask it to scan all licenses and fail with exit code other than 0 if it found unauthorized license. The CI system should catch this failure and stop the build
 license-checker --summary --failOn BSD
-
 ```
 
 <br/>
