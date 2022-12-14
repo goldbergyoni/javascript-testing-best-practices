@@ -2140,6 +2140,7 @@ Thanks goes to these wonderful people who have contributed to this repository!
     <tr>
       <td align="center"><a href="https://github.com/yugoccp"><img src="https://avatars.githubusercontent.com/u/1724114?v=4?s=100" width="100px;" alt="Yugo Sakamoto"/><br /><sub><b>Yugo Sakamoto</b></sub></a><br /><a href="#content-yugoccp" title="Content">🖋</a></td>
       <td align="center"><a href="https://yeovilhospital.co.uk/"><img src="https://avatars.githubusercontent.com/u/43814140?v=4?s=100" width="100px;" alt="Frazer Smith"/><br /><sub><b>Frazer Smith</b></sub></a><br /><a href="#content-Fdawgs" title="Content">🖋</a></td>
+      <td align="center"><a href="https://github.com/wralith"><img src="https://avatars.githubusercontent.com/u/75392169?v=4?s=100" width="100px;" alt="Wralith"/><br /><sub><b>Wralith</b></sub></a><br /><a href="#content-wralith" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
