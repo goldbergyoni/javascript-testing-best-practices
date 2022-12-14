@@ -432,6 +432,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "drewrwilson",
+      "name": "Drew Wilson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4324656?v=4",
+      "profile": "https://github.com/drewrwilson",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
