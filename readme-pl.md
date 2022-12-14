@@ -1,12 +1,14 @@
 <img src="/assets/jtbp-header-blue.png" width="1920px"/>
 
+## 🎊 Ogłoszenie - Kwiecień 2022: Właśnie ukazała się nowa edycja z 5 nowymi najlepszymi praktykami, wieloma przykładami kodu i 4 nowymi tłumaczeniami językowymi
+
 <br/>
 
 # 👇 Powody dla których ten przewodnik może przenieść twoje umiejętności testowania na wyższy poziom
 
 <br/>
 
-## 📗 46+ najlepszych praktyk: super kompleksowe i wyczerpujące
+## 📗 50+ najlepszych praktyk: super kompleksowe i wyczerpujące
 
 Jest to przewodnik po niezawodności JavaScript i Node.js od A-Z. Podsumowuje i przygotowuje dla Ciebie dziesiątki najlepszych postów na blogu, książek i narzędzi dostępnych na rynku
 
@@ -33,6 +35,11 @@ Zacznij od zrozumienia wszechobecnych praktyk testowania, które są podstawą k
 - 🇨🇳[Chinese](readme-zh-CN.md) - dzięki uprzejmości [Yves yao](https://github.com/yvesyao)
 - 🇰🇷[Korean](readme.kr.md) - dzięki uprzejmości [Rain Byun](https://github.com/ragubyun)
 - 🇵🇱[Polish](readme.pl.md) - dzięki uprzejmości [Michal Biesiada](https://github.com/mbiesiad)
+- 🇪🇸[Spanish](readme-es.md) - dzięki uprzejmości [Miguel G. Sanguino](https://github.com/sanguino)
+- 🇧🇷[Portuguese-BR](readme-pt-br.md) - dzięki uprzejmości [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) oraz [koooge](https://github.com/koooge)
+- 🇫🇷[French](readme-fr.md) - dzięki uprzejmości [Mathilde El Mouktafi](https://github.com/mel-mouk)
+- 🇯🇵[Japanese (draft)](https://github.com/yuichkun/javascript-testing-best-practices/blob/master/readme-jp.md) - dzięki uprzejmości [Yuichi Yogo](https://github.com/yuichkun) oraz [ryo](https://github.com/kawamataryo)
+- 🇹🇼[Traditional Chinese](readme-zh-TW.md) - dzięki uprzejmości [Yubin Hsu](https://github.com/yubinTW)
 - 🇺🇦[Ukrainian](readme-ua.md) - dzięki uprzejmości [Serhii Shramko](https://github.com/Shramkoweb)
 - Chcesz przetłumaczyć na swój język? Proszę skorzystaj z issue 💜
 
@@ -42,7 +49,7 @@ Zacznij od zrozumienia wszechobecnych praktyk testowania, które są podstawą k
 
 #### [`Sekcja 0: Złota zasada`](#sekcja-0️⃣-złota-zasada)
 
-Jedna rada, która inspiruje wszystkich innych (1 specjalny punkt)
+Jedna rada, która inspiruje wszystkie inne (1 punkt specjalny)
 
 #### [`Sekcja 1: Anatomia testu`](#sekcja-1-anatomia-testu-1)
 
@@ -50,7 +57,7 @@ Podstawa - konstruowanie czystych testów (12 wypunktowań)
 
 #### [`Sekcja 2: Backend`](#sekcja-2️⃣-backend-testing)
 
-Pisanie backendu i wydajne testy Mikroserwisów (8 wypunktowań)
+Pisanie backendu i wydajne testy mikroserwisów (13 wypunktowań)
 
 #### [`Sekcja 3: Frontend`](#sekcja-3️⃣-frontend-testing)
 
@@ -58,7 +65,7 @@ Pisanie testów dla webowego interfejsu użytkownika, w tym testy komponentów i
 
 #### [`Sekcja 4: Pomiary skuteczności testów`](#sekcja-4%EF%B8%8F%E2%83%A3-pomiar-skuteczno%C5%9Bci-testu)
 
-Watching the watchman - pomiar jakości testu (4 wypunktowania)
+Pilnowanie strażnika - pomiar jakości testu (4 wypunktowania)
 
 #### [`Sekcja 5: Continuous Integration`](#sekcja-5️⃣-ci-oraz-inne-miary-jakości)
 
@@ -73,7 +80,7 @@ Wytyczne dla CI w świecie JS (9 wypunktowań)
 ## ⚪️ 0 Złota zasada: Projektowanie dla lean testing
 
 :white_check_mark: **Opis:**
-Testowany kod nie przypomina kodu produkcyjnego - zaprojektuj go tak, by był prosty, krótki, pozbawiony abstrakcji, płaski, przyjemny w pracy, lean. Trzeba spojrzeć na test i natychmiast uzyskać cel.
+Kod testowy nie jest kodem produkcyjnym - zaprojektuj go tak, aby był krótki, śmiertelnie prosty, płaski i przyjemny w pracy. Należy spojrzeć na test i natychmiast uzyskać intencję.
 
 Nasz umysł jest przepełniony głównym kodem produkcyjnym, nie mamy 'przestrzeni roboczej' na dodatkową złożoność. Jeśli spróbujemy wcisnąć kolejny trudny kod do naszego słabego mózgu, spowolni to pracę zespołu, co działa wbrew temu, co testujemy. W praktyce wiele zespołów po prostu rezygnuje z testów.
 
@@ -139,6 +146,11 @@ describe('Products Service', function() {
 
 ![alt text](/assets/bp-1-3-parts.jpeg "A test name that constitutes 3 parts")
 
+</details>
+
+<br/>
+<details><summary>© <b>Credits & read-more</b></summary>
+  1. <a href='https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html'>Roy Osherove - Naming standards for unit tests</a>
 </details>
 
 <br/><br/>
@@ -519,12 +531,12 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/><br/>
 
-## ⚪ ️1.9 Unikaj globalnych test fixture i seeds, dodawaj dane na test
+## ⚪ ️1.9 Kopiuj kod, ale tylko to, co niezbędne
 
-:white_check_mark: **Opis:** Kierując się złotą zasadą (punkt 0), każdy test powinien dodawać i działać na swoim własnym zestawie wierszy BD, aby zapobiec sprzężeniu i łatwo uzasadnić przebieg testu. W rzeczywistości jest to często naruszane przez testerów, którzy zapełniają bazę danych danymi przed uruchomieniem testów ([znany również jako ‘test fixture’](https://en.wikipedia.org/wiki/Test_fixture)) w celu poprawy wydajności. Chociaż wydajność jest istotnym problemem - można ją złagodzić (patrz punkt „Testowanie komponentów”), jednak złożoność testów jest bardzo bolesnym smutkiem, który powinien rządzić innymi względami przez większość czasu. Praktycznie spraw, aby każdy przypadek testowy wyraźnie dodał potrzebne rekordy BD i działał tylko na tych rekordach. Jeśli wydajność stanie się kluczowym problemem - zrównoważony kompromis może przyjść w postaci inicjowania jedynego zestawu testów, które nie powodują mutacji danych (np. zapytania)
+:white_check_mark: **Opis:** Dołącz wszystkie niezbędne szczegóły, które wpływają na wynik testu, ale nic więcej. Jako przykład rozważ test, który powinien rozłożyć na czynniki 100 wierszy wejściowego JSON - wklejanie tego w każdym teście jest nużące. Wyodrębnienie go na zewnątrz do transferFactory.getJSON() spowoduje, że test będzie niejasny. Bez danych trudno jest skorelować wynik testu z przyczyną („dlaczego ma zwracać status 400?”). Klasyczna książka wzorców x-unit nazwała ten wzorzec „tajemniczym gościem” - coś niewidocznego wpłynęło na wyniki naszych testów, nie wiemy co dokładnie. Możemy zrobić lepiej, wyodrębniając powtarzalne długie części na zewnątrz ORAZ wyraźnie wspomnij, które konkretne szczegóły mają znaczenie dla testu. Idąc z powyższym przykładem, test może przekazać parametry, które podkreślają to, co jest ważne: transferFactory.getJSON({sender: undefined}). W tym przykładzie czytelnik powinien natychmiast wywnioskować, że puste pole nadawcy jest powodem, dla którego test powinien oczekiwać błędu walidacji lub innego podobnego odpowiedniego wyniku.
 <br/>
 
-❌ **W przeciwnym razie:** Niewiele testów kończy się niepowodzeniem, wdrożenie zostało przerwane, nasz zespół spędza teraz cenny czas, czy mamy błąd? Zbadajmy, och nie - wydaje się, że dwa testy mutowały te same dane seed
+❌ **W przeciwnym razie:** Kopiowanie 500 wierszy JSON spowoduje, że Twoje testy nie będą mogły być konserwowane i będą nieczytelne. Wyniesienie wszystkiego na zewnątrz zakończy się niejasnymi testami, które są trudne do zrozumienia
 
 <br/>
 
@@ -532,49 +544,46 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/>
 
-### :thumbsdown: Przykład antywzorca: testy nie są niezależne i polegają na pewnym globalnym hook do zasilania globalnych danych BD
+### :thumbsdown: Przykład antywzorca: niepowodzenie testu jest niejasne, ponieważ cała przyczyna jest zewnętrzna i ukryta w ogromnym formacie JSON
 
-![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Examples with Mocha")
+![](https://img.shields.io/badge/🔧%20Example%20using%20Mocha-blue.svg "Przykłady z Mocha")
 
 ```javascript
-before(() => {
-  //adding sites and admins data to our DB. Where is the data? outside. At some external json or migration framework
-  await DB.AddSeedDataFromJson('seed.json');
-});
-it("When updating site name, get successful confirmation", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
-  const siteToUpdate = await SiteService.getSiteByName("Portal");
-  const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
-  expect(updateNameResult).to.be(true);
-});
-it("When querying by site name, get the right site", async () => {
-  //I know that site name "portal" exists - I saw it in the seed files
-  const siteToCheck = await SiteService.getSiteByName("Portal");
-  expect(siteToCheck.name).to.be.equal("Portal"); //Failure! The previous test change the name :[
-});
+test("When no credit, then the transfer is declined", async() => {
+      // Arrange
+      const transferRequest = testHelpers.factorMoneyTransfer() //get back 200 lines of JSON;
+      const transferServiceUnderTest = new TransferService();
 
+      // Act
+      const transferResponse = await transferServiceUnderTest.transfer(transferRequest);
+
+      // Assert
+      expect(transferResponse.status).toBe(409);// But why do we expect failure: All seems perfectly valid in the test 🤔
+    });
 ```
 
 <br/>
 
-### :clap: Przykład robienia tego dobrze: Możemy pozostać w teście, każdy test działa na własny zestaw danych
+### :clap: Przykład robienia tego prawidłowo: Test wskazuje, co jest przyczyną wyniku testu
 
 ```javascript
-it("When updating site name, get successful confirmation", async () => {
-  //test is adding a fresh new records and acting on the records only
-  const siteUnderTest = await SiteService.addSite({
-    name: "siteForUpdateTest"
-  });
 
-  const updateNameResult = await SiteService.changeName(siteUnderTest, "newName");
+test("When no credit, then the transfer is declined ", async() => {
+      // Arrange
+      const transferRequest = testHelpers.factorMoneyTransfer({userCredit:100, transferAmount:200}) //obviously there is lack of credit
+      const transferServiceUnderTest = new TransferService({disallowOvercharge:true});
 
-  expect(updateNameResult).to.be(true);
-});
-```
+      // Act
+      const transferResponse = await transferServiceUnderTest.transfer(transferRequest);
+
+      // Assert
+      expect(transferResponse.status).toBe(409); // Obviously if the user has no credit it should fail
+    });
+  ```
 
 </details>
 
-<br/>
+<br/><br/>
 
 ## ⚪ ️ 1.10 Nie wychwytuj błędów, oczekuj ich
 
@@ -768,6 +777,9 @@ Słowo ostrzeżenia: argument TDD w świecie oprogramowania ma typową fałszyw�
 :white_check_mark: **Opis:** Każdy test jednostkowy obejmuje niewielką część aplikacji i jest to kosztowne, aby pokryć całość, podczas gdy kompleksowe testy z łatwością obejmują dużo gruntu, ale są niestabilne i wolniejsze, dlaczego nie zastosować zrównoważonego podejścia i napisać testy, które są większe niż testy jednostkowe, ale mniejsze niż testy kompleksowe? Testowanie komponentów to nieoceniona piosenka świata testowego - zapewniają to, co najlepsze z obu światów: rozsądną wydajność i możliwość zastosowania wzorców TDD + realistyczne i doskonałe pokrycie.
 
 Testy komponentów koncentrują się na mikroserwisowej ‘jednostce’, działają przeciwko interfejsowi API, nie mockują niczego, co należy do samego mikroserwisu (np. prawdziwa baza danych lub przynajmniej wersja tej bazy danych w pamięci), ale usuwają wszystko, co jest zewnętrzne, jak wywołania innych mikrousług. W ten sposób testujemy to, co wdrażamy, podchodzimy do aplikacji od zewnątrz do wewnątrz i zyskujemy dużą pewność w rozsądnym czasie.
+
+[Mamy pełny przewodnik, który jest poświęcony wyłącznie pisaniu testów komponentów we właściwy sposób](https://github.com/testjavascript/nodejs-integration-tests-best-practices)
+
 <br/>
 
 ❌ **W przeciwnym razie:** Możesz spędzać długie dni na pisaniu testów jednostkowych, aby dowiedzieć się, że masz tylko 20% zasięgu systemu
@@ -949,6 +961,164 @@ it("When updating site name, get successful confirmation", async () => {
   expect(updateNameResult).to.be(true);
 });
 ```
+
+</details>
+
+<br/>
+
+## ⚪ ️2.8 Wybierz przejrzystą strategię czyszczenia danych: po wszystkim (zalecane) lub po każdym
+
+:white_check_mark: **Opis:** Moment, w którym testy czyszczą bazę danych, określa sposób pisania testów. Dwie najbardziej opłacalne opcje to czyszczenie po wszystkich testach i czyszczenie po każdym teście. Wybierając tę drugą opcję, czyszczenie po każdym teście gwarantuje czyste tabele i buduje wygodne korzyści testowe dla programisty. Na początku testu nie istnieją żadne inne rekordy, można mieć pewność, które dane są odpytywane, a nawet można pokusić się o zliczenie wierszy podczas asercji. Ma to poważne wady: podczas uruchamiania w trybie wieloprocesowym testy prawdopodobnie będą ze sobą kolidować. Podczas gdy proces-1 czyści tabele, w tej chwili proces-2 wysyła zapytania o dane i kończy się niepowodzeniem (ponieważ baza danych została nagle usunięta przez proces-1). Ponadto trudniej jest rozwiązywać problemy z testami zakończonymi niepowodzeniem — odwiedzenie bazy danych nie spowoduje wyświetlenia żadnych rekordów.
+
+Drugą opcją jest czyszczenie po zakończeniu wszystkich plików testowych (lub nawet codziennie!). Takie podejście oznacza, że ta sama baza danych z istniejącymi rekordami obsługuje wszystkie testy i procesy. Aby uniknąć nadepnięcia sobie nawzajem na palce, testy muszą dodawać i działać na określonych rekordach, które dodały. Chcesz sprawdzić, czy dodano jakiś rekord? Załóżmy, że istnieją inne tysiące rekordów i zapytaj o rekordy, które zostały dodane jawnie. Chcesz sprawdzić, czy rekord został usunięty? Nie można założyć, że tabela jest pusta, sprawdź, czy nie ma tam tego konkretnego rekordu. Ta technika przynosi kilka potężnych korzyści: działa natywnie w trybie wieloprocesowym, gdy programista chce zrozumieć, co się stało — dane są tam i nie są usuwane. Zwiększa również szansę na znalezienie błędów, ponieważ baza danych jest pełna rekordów i nie jest sztucznie opróżniona. [Zobacz pełną tabelę porównawczą tutaj](https://github.com/testjavascript/nodejs-integration-tests-best-practices/blob/master/graphics/db-clean-options.png).
+<br/>
+
+❌ **W przeciwnym razie:** Bez strategii oddzielania rekordów lub czyszczenia — testy będą stąpać po sobie nawzajem; Korzystanie z transakcji będzie działać tylko w przypadku relacyjnych baz danych i może się skomplikować, gdy pojawią się transakcje wewnętrzne
+
+<br/>
+
+<details><summary>✏ <b>Przykłady kodu</b></summary>
+
+<br/>
+
+### :clap: Czyszczenie po WSZYSTKICH testach. Niekoniecznie po każdym uruchomieniu. Im więcej danych mamy w trakcie testów - tym bardziej przypomina to profity produkcyjne
+
+```javascript
+  // After-all clean up (recommended)
+// global-teardown.js
+module.exports = async () => {
+  // ...
+  if (Math.ceil(Math.random() * 10) === 10) {
+    await new OrderRepository().cleanup();
+  }
+};
+```
+
+</details>
+
+<br/>
+
+## ⚪ ️2.9 Odizoluj komponent od świata za pomocą interceptora HTTP
+
+:white_check_mark: **Opis:** Odizoluj testowany składnik, przechwytując wszystkie wychodzące żądania HTTP i dostarczając żądaną odpowiedź, aby interfejs HTTP API współpracownika nie został trafiony. Nock jest doskonałym narzędziem do tej misji, ponieważ zapewnia wygodną składnię do definiowania zachowania usług zewnętrznych. Izolacja jest koniecznością, aby zapobiec szumowi i spowolnieniu działania, ale przede wszystkim aby symulować różne scenariusze i reakcje. Dobry symulator lotu nie polega na malowaniu czystego błękitnego nieba, ale na sprowadzaniu bezpieczeństwa podczas burz i chaosu. Jest to wzmocnione w architekturze mikrousług, w której należy zawsze koncentrować się na jednym komponencie bez angażowania reszty świata. Chociaż możliwe jest symulowanie zachowania usługi zewnętrznej za pomocą dublowania testowego (mockowanie), lepiej nie dotykać wdrożonego kodu i działać na poziomie sieci, aby testy były czysto typu black-box. Wadą izolacji jest nie wykrywanie zmian w komponencie współpracownika i brak zrozumienia nieporozumień między dwiema usługami — pamiętaj, aby zrekompensować to za pomocą kilku testów kontraktowych lub E2E
+<br/>
+
+❌ **W przeciwnym razie:** Niektóre usługi udostępniają wersję fake, która może zostać wdrożona lokalnie przez rozmówcę, zwykle za pomocą Dockera — ułatwi to konfigurację i zwiększy wydajność, ale nie pomoże w symulowaniu różnych odpowiedzi; Niektóre usługi zapewniają środowisko „piaskownicy”, więc prawdziwa usługa zostaje trafiona, ale nie są wyzwalane żadne koszty ani skutki uboczne — zmniejszy to szum związany z konfiguracją usługi innej firmy, ale nie pozwoli również na symulację scenariuszy
+
+<br/>
+
+<details><summary>✏ <b>Przykłady kodu</b></summary>
+
+<br/>
+
+### :clap: Zapobieganie połączeniom sieciowym z komponentami zewnętrznymi umożliwia tworzenie scenariuszy symulacji i minimalizowanie szumu
+
+```javascript
+// Intercept requests for 3rd party APIs and return a predefined response 
+beforeEach(() => {
+  nock('http://localhost/user/').get(`/1`).reply(200, {
+    id: 1,
+    name: 'John',
+  });
+});
+```
+</details>
+<br/>
+
+## ⚪ ️2.10 Przetestuj schemat odpowiedzi, głównie w przypadku pól generowanych automatycznie
+
+:white_check_mark: **Opis:** Gdy nie można potwierdzić konkretnych danych, sprawdź istnienie i typy pól obowiązkowych. Czasami odpowiedź zawiera ważne pola z danymi dynamicznymi, których nie można przewidzieć podczas pisania testu, takie jak daty i rosnące liczby. Jeśli kontrakt API obiecuje, że te pola nie będą miały wartości null i będą zawierać odpowiednie typy, konieczne jest przetestowanie tego. Większość bibliotek asercji obsługuje typy sprawdzania. Jeśli odpowiedź jest mała, sprawdź dane zwrotne i wpisz razem w ramach tego samego potwierdzenia (patrz przykład kodu). Jeszcze jedną opcją jest zweryfikowanie całej odpowiedzi z dokumentem OpenAPI (Swagger). Większość programów uruchamiających testy ma rozszerzenia społeczności, które weryfikują odpowiedzi API w oparciu o ich dokumentację.
+
+
+<br/>
+
+❌ **W przeciwnym razie:** Chociaż wywołujący kod/API opiera się na jakimś polu z danymi dynamicznymi (np. ID, data), nie wróci i nie zerwie umowy
+
+<br/>
+
+<details><summary>✏ <b>Przykłady kodu</b></summary>
+
+<br/>
+
+### :clap: Zapewnienie, że pola z wartością dynamiczną istnieją i mają właściwy typ
+
+```javascript
+  test('When adding a new valid order, Then should get back approval with 200 response', async () => {
+  // ...
+  //Assert
+  expect(receivedAPIResponse).toMatchObject({
+    status: 200,
+    data: {
+      id: expect.any(Number), // Any number satisfies this test
+      mode: 'approved',
+    },
+  });
+});
+```
+
+</details>
+
+<br/>
+
+## ⚪ ️2.11 Sprawdź corner cases integracji i chaos
+
+:white_check_mark: **Opis:** Sprawdzając integracje wyjdź poza happy i sad paths. Sprawdź nie tylko błędne odpowiedzi (np. błąd HTTP 500), ale także anomalie na poziomie sieci, takie jak powolne i przekroczone limity czasu odpowiedzi. Udowodni to, że kod jest odporny i może obsługiwać różne scenariusze sieciowe, takie jak obieranie właściwej ścieżki po przekroczeniu limitu czasu, brak problemów z prądem i czy zawiera wyłącznik umożliwiający ponowną próbę. Renomowane narzędzia przechwytujące mogą z łatwością symulować różne zachowania sieciowe, takie jak gorączkowa usługa, która czasami kończy się niepowodzeniem. Może nawet zdać sobie sprawę, kiedy domyślna wartość limitu czasu klienta HTTP jest dłuższa niż symulowany czas odpowiedzi i natychmiast zgłosić wyjątek limitu czasu, bez czekania
+
+
+<br/>
+
+❌ **W przeciwnym razie:** Wszystkie twoje testy przechodzą pomyślnie, tylko produkcja ulegnie awarii lub nie będzie poprawnie zgłaszać błędów, gdy strony trzecie wyślą wyjątkowe odpowiedzi
+
+<br/>
+
+<details><summary>✏ <b>Przykłady kodu</b></summary>
+
+<br/>
+
+### :clap: Zapewnienie, że w przypadku awarii sieci wyłącznik może uratować sytuację
+
+```javascript
+  test('When users service replies with 503 once and retry mechanism is applied, then an order is added successfully', async () => {
+  //Arrange
+  nock.removeInterceptor(userServiceNock.interceptors[0])
+  nock('http://localhost/user/')
+    .get('/1')
+    .reply(503, undefined, { 'Retry-After': 100 });
+  nock('http://localhost/user/')
+    .get('/1')
+    .reply(200);
+  const orderToAdd = {
+    userId: 1,
+    productId: 2,
+    mode: 'approved',
+  };
+
+  //Act
+  const response = await axiosAPIClient.post('/order', orderToAdd);
+
+  //Assert
+  expect(response.status).toBe(200);
+});
+```
+
+</details>
+
+<br/>
+
+
+## ⚪ ️2.12 Przetestuj pięć potencjalnych wyników
+
+:white_check_mark: **Opis:** Planując testy, rozważ uwzględnienie pięciu typowych wyników przepływu. Kiedy twój test uruchamia jakąś akcję (np. wywołanie API), dzieje się reakcja, dzieje się coś znaczącego i wzywa do testowania. Pamiętaj, że nie dbamy o to, jak wszystko działa. Skupiamy się na wynikach, rzeczach, które są zauważalne z zewnątrz i mogą mieć wpływ na użytkownika. Te wyniki/reakcje można podzielić na 5 kategorii:
+
+• Odpowiedź — test wywołuje akcję (np. przez API) i otrzymuje odpowiedź. Teraz zajmuje się sprawdzaniem poprawności danych odpowiedzi, schematu i statusu HTTP
+
+• Nowy stan — po wywołaniu akcji niektóre **publicznie dostępne** dane są prawdopodobnie modyfikowane
+
+• Wywołania zewnętrzne — po wywołaniu akcji aplikacja może wywołać składnik zewnętrzny za pośrednictwem protokołu HTTP lub dowolnego innego transportu. Na przykład połączenie w celu wysłania SMS-a, e-maila lub obciążenia karty kredytowej
+
+• Kolejki wiadomości — wynikiem przepływu może być wiadomość w kolejce
+
+• Obserwowalność — Niektóre rzeczy muszą być monitorowane, na przykład błędy lub niezwykłe wydarzenia biznesowe. Gdy transakcja się nie powiedzie, oczekujemy nie tylko właściwej reakcji, ale także poprawnej obsługi błędów i prawidłowego logowania/metryk. Informacje te trafiają bezpośrednio do bardzo ważnego użytkownika — użytkownika Ops (tj. produkcyjnego SRE/administratora)
 
 </details>
 
@@ -1919,38 +2089,59 @@ Podziękowania dla tych wspaniałych ludzi, którzy przyczynili się do tego rep
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://geospatialscott.blogspot.com/"><img src="https://avatars3.githubusercontent.com/u/1326248?v=4" width="100px;" alt=""/><br /><sub><b>Scott Davis</b></sub></a><br /><a href="#content-stdavis" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/AdrienRedon"><img src="https://avatars2.githubusercontent.com/u/5978436?v=4" width="100px;" alt=""/><br /><sub><b>Adrien REDON</b></sub></a><br /><a href="#content-AdrienRedon" title="Content">🖋</a></td>
-    <td align="center"><a href="https://twitter.com/NoriSte"><img src="https://avatars0.githubusercontent.com/u/173663?v=4" width="100px;" alt=""/><br /><sub><b>Stefano Magni</b></sub></a><br /><a href="#content-NoriSte" title="Content">🖋</a></td>
-    <td align="center"><a href="https://www.joer.im"><img src="https://avatars2.githubusercontent.com/u/47742486?v=4" width="100px;" alt=""/><br /><sub><b>Yeoh Joer</b></sub></a><br /><a href="#content-yjoer" title="Content">🖋</a></td>
-    <td align="center"><a href="http://jhonnymoreira.dev"><img src="https://avatars0.githubusercontent.com/u/2177742?v=4" width="100px;" alt=""/><br /><sub><b>Jhonny Moreira</b></sub></a><br /><a href="#content-jhonnymoreira" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/Germanika"><img src="https://avatars2.githubusercontent.com/u/8846678?v=4" width="100px;" alt=""/><br /><sub><b>Ian Germann</b></sub></a><br /><a href="#content-Germanika" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/AbdelrahmanHafez"><img src="https://avatars3.githubusercontent.com/u/19984935?v=4" width="100px;" alt=""/><br /><sub><b>Hafez</b></sub></a><br /><a href="#content-AbdelrahmanHafez" title="Content">🖋</a></td>
+    <td align="center"><a href="http://geospatialscott.blogspot.com/"><img src="https://avatars3.githubusercontent.com/u/1326248?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Scott Davis</b></sub></a><br /><a href="#content-stdavis" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/AdrienRedon"><img src="https://avatars2.githubusercontent.com/u/5978436?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adrien REDON</b></sub></a><br /><a href="#content-AdrienRedon" title="Content">🖋</a></td>
+    <td align="center"><a href="https://twitter.com/NoriSte"><img src="https://avatars0.githubusercontent.com/u/173663?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Stefano Magni</b></sub></a><br /><a href="#content-NoriSte" title="Content">🖋</a></td>
+    <td align="center"><a href="https://www.joer.im"><img src="https://avatars2.githubusercontent.com/u/47742486?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yeoh Joer</b></sub></a><br /><a href="#content-yjoer" title="Content">🖋</a></td>
+    <td align="center"><a href="http://jhonnymoreira.dev"><img src="https://avatars0.githubusercontent.com/u/2177742?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jhonny Moreira</b></sub></a><br /><a href="#content-jhonnymoreira" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/Germanika"><img src="https://avatars2.githubusercontent.com/u/8846678?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ian Germann</b></sub></a><br /><a href="#content-Germanika" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/AbdelrahmanHafez"><img src="https://avatars3.githubusercontent.com/u/19984935?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hafez</b></sub></a><br /><a href="#content-AbdelrahmanHafez" title="Content">🖋</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="http://www.ruxandrafediuc.com"><img src="https://avatars1.githubusercontent.com/u/11021586?v=4" width="100px;" alt=""/><br /><sub><b>Ruxandra Fediuc</b></sub></a><br /><a href="#content-ruxandrafed" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/jacklee814"><img src="https://avatars0.githubusercontent.com/u/9951291?v=4" width="100px;" alt=""/><br /><sub><b>Jack</b></sub></a><br /><a href="#content-jacklee814" title="Content">🖋</a></td>
-    <td align="center"><a href="https://www.petercarrero.com"><img src="https://avatars0.githubusercontent.com/u/231727?v=4" width="100px;" alt=""/><br /><sub><b>Peter Carrero</b></sub></a><br /><a href="#content-aloyr" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/huhgawz"><img src="https://avatars3.githubusercontent.com/u/369338?v=4" width="100px;" alt=""/><br /><sub><b>Huhgawz</b></sub></a><br /><a href="#content-huhgawz" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/haakonmb"><img src="https://avatars1.githubusercontent.com/u/7099302?v=4" width="100px;" alt=""/><br /><sub><b>Haakon Borch</b></sub></a><br /><a href="#content-haakonmb" title="Content">🖋</a></td>
-    <td align="center"><a href="https://jaimemendoza.com/"><img src="https://avatars3.githubusercontent.com/u/5395811?v=4" width="100px;" alt=""/><br /><sub><b>Jaime Mendoza</b></sub></a><br /><a href="#content-jaimemendozadev" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/camerondunford"><img src="https://avatars0.githubusercontent.com/u/840612?v=4" width="100px;" alt=""/><br /><sub><b>Cameron Dunford</b></sub></a><br /><a href="#content-camerondunford" title="Content">🖋</a></td>
+    <td align="center"><a href="http://www.ruxandrafediuc.com"><img src="https://avatars1.githubusercontent.com/u/11021586?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ruxandra Fediuc</b></sub></a><br /><a href="#content-ruxandrafed" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/jacklee814"><img src="https://avatars0.githubusercontent.com/u/9951291?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jack</b></sub></a><br /><a href="#content-jacklee814" title="Content">🖋</a></td>
+    <td align="center"><a href="https://www.petercarrero.com"><img src="https://avatars0.githubusercontent.com/u/231727?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Peter Carrero</b></sub></a><br /><a href="#content-aloyr" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/huhgawz"><img src="https://avatars3.githubusercontent.com/u/369338?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Huhgawz</b></sub></a><br /><a href="#content-huhgawz" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/haakonmb"><img src="https://avatars1.githubusercontent.com/u/7099302?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Haakon Borch</b></sub></a><br /><a href="#content-haakonmb" title="Content">🖋</a></td>
+    <td align="center"><a href="https://jaimemendoza.com/"><img src="https://avatars3.githubusercontent.com/u/5395811?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jaime Mendoza</b></sub></a><br /><a href="#content-jaimemendozadev" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/camerondunford"><img src="https://avatars0.githubusercontent.com/u/840612?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cameron Dunford</b></sub></a><br /><a href="#content-camerondunford" title="Content">🖋</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/shadowspawn"><img src="https://avatars1.githubusercontent.com/u/15719847?v=4" width="100px;" alt=""/><br /><sub><b>John Gee</b></sub></a><br /><a href="#content-shadowspawn" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/aurelijusrozenas"><img src="https://avatars0.githubusercontent.com/u/3273544?v=4" width="100px;" alt=""/><br /><sub><b>Aurelijus Rožėnas</b></sub></a><br /><a href="#content-aurelijusrozenas" title="Content">🖋</a></td>
-    <td align="center"><a href="http://aaronshivers.com"><img src="https://avatars2.githubusercontent.com/u/42848750?v=4" width="100px;" alt=""/><br /><sub><b>Aaron</b></sub></a><br /><a href="#content-aaronshivers" title="Content">🖋</a></td>
-    <td align="center"><a href="https://tomdoes.tech/"><img src="https://avatars1.githubusercontent.com/u/8683577?v=4" width="100px;" alt=""/><br /><sub><b>Tom Nagle</b></sub></a><br /><a href="#content-tomanagle" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/yvesyao"><img src="https://avatars0.githubusercontent.com/u/7723729?v=4" width="100px;" alt=""/><br /><sub><b>Yves yao</b></sub></a><br /><a href="#content-yvesyao" title="Content">🖋</a></td>
-    <td align="center"><a href="https://github.com/Userbit"><img src="https://avatars1.githubusercontent.com/u/34487074?v=4" width="100px;" alt=""/><br /><sub><b>Userbit</b></sub></a><br /><a href="#content-Userbit" title="Content">🖋</a></td>
-    <td align="center"><a href="https://glaucialemos.netlify.com/"><img src="https://avatars0.githubusercontent.com/u/1631477?v=4" width="100px;" alt=""/><br /><sub><b>Glaucia Lemos</b></sub></a><br /><a href="#maintenance-glaucia86" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/shadowspawn"><img src="https://avatars1.githubusercontent.com/u/15719847?v=4?s=100" width="100px;" alt=""/><br /><sub><b>John Gee</b></sub></a><br /><a href="#content-shadowspawn" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/aurelijusrozenas"><img src="https://avatars0.githubusercontent.com/u/3273544?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aurelijus Rožėnas</b></sub></a><br /><a href="#content-aurelijusrozenas" title="Content">🖋</a></td>
+    <td align="center"><a href="http://aaronshivers.com"><img src="https://avatars2.githubusercontent.com/u/42848750?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Aaron</b></sub></a><br /><a href="#content-aaronshivers" title="Content">🖋</a></td>
+    <td align="center"><a href="https://tomdoes.tech/"><img src="https://avatars1.githubusercontent.com/u/8683577?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tom Nagle</b></sub></a><br /><a href="#content-tomanagle" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/yvesyao"><img src="https://avatars0.githubusercontent.com/u/7723729?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yves yao</b></sub></a><br /><a href="#content-yvesyao" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/Userbit"><img src="https://avatars1.githubusercontent.com/u/34487074?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Userbit</b></sub></a><br /><a href="#content-Userbit" title="Content">🖋</a></td>
+    <td align="center"><a href="https://glaucialemos.netlify.com/"><img src="https://avatars0.githubusercontent.com/u/1631477?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Glaucia Lemos</b></sub></a><br /><a href="#maintenance-glaucia86" title="Maintenance">🚧</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://twitter.com/koooge"><img src="https://avatars2.githubusercontent.com/u/7419215?v=4" width="100px;" alt=""/><br /><sub><b>koooge</b></sub></a><br /><a href="#content-koooge" title="Content">🖋</a></td>
+    <td align="center"><a href="https://twitter.com/koooge"><img src="https://avatars2.githubusercontent.com/u/7419215?v=4?s=100" width="100px;" alt=""/><br /><sub><b>koooge</b></sub></a><br /><a href="#content-koooge" title="Content">🖋</a></td>
+    <td align="center"><a href="https://twitter.com/michalbiesiada"><img src="https://avatars0.githubusercontent.com/u/18367606?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michal</b></sub></a><br /><a href="#content-mbiesiad" title="Content">🖋</a></td>
+    <td align="center"><a href="http://roywalker.me"><img src="https://avatars0.githubusercontent.com/u/611846?v=4?s=100" width="100px;" alt=""/><br /><sub><b>roywalker</b></sub></a><br /><a href="#content-roywalker" title="Content">🖋</a></td>
+    <td align="center"><a href="https://dangen-effy.github.io/"><img src="https://avatars3.githubusercontent.com/u/23185799?v=4?s=100" width="100px;" alt=""/><br /><sub><b>dangen</b></sub></a><br /><a href="#content-dangen-effy" title="Content">🖋</a></td>
+    <td align="center"><a href="https://dev.to/mbiesiad"><img src="https://avatars1.githubusercontent.com/u/60202305?v=4?s=100" width="100px;" alt=""/><br /><sub><b>biesiadamich</b></sub></a><br /><a href="#content-biesiadamich" title="Content">🖋</a></td>
+    <td align="center"><a href="https://tarojsx.github.io"><img src="https://avatars3.githubusercontent.com/u/127009?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yanlin Jiang</b></sub></a><br /><a href="#content-cncolder" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/sanguino"><img src="https://avatars2.githubusercontent.com/u/2077168?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sanguino</b></sub></a><br /><a href="#content-sanguino" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/MorganGeek"><img src="https://avatars0.githubusercontent.com/u/3721240?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Morgan</b></sub></a><br /><a href="#content-MorganGeek" title="Content">🖋</a></td>
+    <td align="center"><a href="https://luk4s.dev"><img src="https://avatars0.githubusercontent.com/u/8350985?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lukas Bischof</b></sub></a><br /><a href="https://github.com/goldbergyoni/javascript-testing-best-practices/commits?author=lukasbischof" title="Tests">⚠️</a> <a href="#content-lukasbischof" title="Content">🖋</a></td>
+    <td align="center"><a href="https://juanmaruiz.surge.sh"><img src="https://avatars2.githubusercontent.com/u/1837650?v=4?s=100" width="100px;" alt=""/><br /><sub><b>JuanMa Ruiz</b></sub></a><br /><a href="#content-JuanMaRuiz" title="Content">🖋</a></td>
+    <td align="center"><a href="https://luisangelorjr.com.br"><img src="https://avatars3.githubusercontent.com/u/22268900?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Luís Ângelo Rodrigues Jr.</b></sub></a><br /><a href="#content-luisangelorjr" title="Content">🖋</a></td>
+    <td align="center"><a href="https://jfernandezpe.wordpress.com/"><img src="https://avatars0.githubusercontent.com/u/12046620?v=4?s=100" width="100px;" alt=""/><br /><sub><b>José Fernández</b></sub></a><br /><a href="#content-jfernandezpe" title="Content">🖋</a></td>
+    <td align="center"><a href="http://www.linkedin.com/in/AlejandroGutierrezB"><img src="https://avatars3.githubusercontent.com/u/56408597?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alejandro Gutierrez Barcenilla</b></sub></a><br /><a href="#content-AlejandroGutierrezB" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/jasonandmonte"><img src="https://avatars1.githubusercontent.com/u/30088000?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jason</b></sub></a><br /><a href="#content-jasonandmonte" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/otavionetoca"><img src="https://avatars.githubusercontent.com/u/11263232?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Otavio Araujo</b></sub></a><br /><a href="https://github.com/goldbergyoni/javascript-testing-best-practices/commits?author=otavionetoca" title="Tests">⚠️</a> <a href="#content-otavionetoca" title="Content">🖋</a></td>
+    <td align="center"><a href="https://contributor.pw"><img src="https://avatars.githubusercontent.com/u/5027939?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Ivanov</b></sub></a><br /><a href="#content-contributorpw" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/YeeJone"><img src="https://avatars.githubusercontent.com/u/20400822?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yiqiao Xu</b></sub></a><br /><a href="#content-YeeJone" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/yubinTW"><img src="https://avatars.githubusercontent.com/u/31545456?v=4?s=100" width="100px;" alt=""/><br /><sub><b>YuBin, Hsu</b></sub></a><br /><a href="#translation-yubinTW" title="Translation">🌍</a> <a href="https://github.com/goldbergyoni/javascript-testing-best-practices/commits?author=yubinTW" title="Code">💻</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->

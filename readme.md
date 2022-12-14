@@ -534,7 +534,7 @@ it("When visiting TestJavaScript.com home page, a menu is displayed", () => {
 
 <br/><br/>
 
-## ⚪ ️Copy code, but only what's neccessary
+## ⚪ ️ 1.9 Copy code, but only what's neccessary
 
 :white_check_mark: **Do:** Include all the necessary details that affect the test result, but nothing more. As an example, consider a test that should factor 100 lines of input JSON - Pasting this in every test is tedious. Extracting it outside to transferFactory.getJSON() will leave the test vague - Without data, it's hard to correlate the test result with the cause ("why is it supposed to return 400 status?"). The classic book x-unit patterns named this pattern 'the mystery guest' - Something unseen affected our test results, we don't know what exactly. We can do better by extracting repeatable long parts outside AND mentioning explicitly which specific details matter to the test. Going with the example above, the test can pass parameters that highlight what is important: transferFactory.getJSON({sender: undefined}). In this example, the reader should immediately infer that the empty sender field is the reason why the test should expect a validation error or any other similar adequate outcome.
 <br/>
@@ -1023,8 +1023,8 @@ beforeEach(() => {
   });
 });
 ```
-
 </details>
+<br/>
 
 ## ⚪ ️2.10 Test the response schema, mostly when there are auto-generated fields
 
@@ -1061,7 +1061,7 @@ beforeEach(() => {
 
 <br/>
 
-## ⚪ ️2.12 Check integrations corner cases and chaos
+## ⚪ ️2.11 Check integrations corner cases and chaos
 
 :white_check_mark: **Do:** When checking integrations, go beyond the happy and sad paths. Check not only errored responses (e.g., HTTP 500 error) but also network-level anomalies like slow and timed-out responses. This will prove that the code is resilient and can handle various network scenarios like taking the right path after a timeout, has no fragile race conditions, and contains a circuit breaker for retries. Reputable interceptor tools can easily simulate various network behaviors like hectic service that occasionally fail. It can even realize when the default HTTP client timeout value is longer than the simulated response time and throw a timeout exception right away without waiting
 
@@ -1107,7 +1107,7 @@ beforeEach(() => {
 <br/>
 
 
-## ⚪ ️2.13 Test the five potential outcomes
+## ⚪ ️2.12 Test the five potential outcomes
 
 :white_check_mark: **Do:** When planning your tests, consider covering the five typical flow's outputs. When your test is triggering some action (e.g., API call), a reaction is happening, something meaningful occurs and calls for testing. Note that we don't care about how things work. Our focus is on outcomes, things that are noticeable from the outside and might affect the user. These outcomes/reactions can be put in 5 categories:
 
