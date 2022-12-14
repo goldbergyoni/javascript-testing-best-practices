@@ -450,6 +450,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "smonn",
+      "name": "Simon Ingeson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44818?v=4",
+      "profile": "https://www.smonn.se",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
