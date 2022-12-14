@@ -468,6 +468,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "jorbelca",
+      "name": "jorbelca",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76847923?v=4",
+      "profile": "https://github.com/jorbelca",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
