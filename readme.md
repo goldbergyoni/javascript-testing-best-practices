@@ -2137,6 +2137,9 @@ Thanks goes to these wonderful people who have contributed to this repository!
       <td align="center"><a href="https://github.com/Saimon398"><img src="https://avatars.githubusercontent.com/u/71539667?v=4?s=100" width="100px;" alt="Alex Popov"/><br /><sub><b>Alex Popov</b></sub></a><br /><a href="#content-Saimon398" title="Content">🖋</a></td>
       <td align="center"><a href="http://shramko.dev"><img src="https://avatars.githubusercontent.com/u/42001531?v=4?s=100" width="100px;" alt="Serhii Shramko"/><br /><sub><b>Serhii Shramko</b></sub></a><br /><a href="#content-Shramkoweb" title="Content">🖋</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/yugoccp"><img src="https://avatars.githubusercontent.com/u/1724114?v=4?s=100" width="100px;" alt="Yugo Sakamoto"/><br /><sub><b>Yugo Sakamoto</b></sub></a><br /><a href="#content-yugoccp" title="Content">🖋</a></td>
+    </tr>
   </tbody>
 </table>
 
