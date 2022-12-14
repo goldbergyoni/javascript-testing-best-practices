@@ -2133,6 +2133,7 @@ Thanks goes to these wonderful people who have contributed to this repository!
       <td align="center"><a href="https://github.com/YeeJone"><img src="https://avatars.githubusercontent.com/u/20400822?v=4?s=100" width="100px;" alt="Yiqiao Xu"/><br /><sub><b>Yiqiao Xu</b></sub></a><br /><a href="#content-YeeJone" title="Content">🖋</a></td>
       <td align="center"><a href="https://github.com/yubinTW"><img src="https://avatars.githubusercontent.com/u/31545456?v=4?s=100" width="100px;" alt="YuBin, Hsu"/><br /><sub><b>YuBin, Hsu</b></sub></a><br /><a href="#translation-yubinTW" title="Translation">🌍</a> <a href="https://github.com/goldbergyoni/javascript-testing-best-practices/commits?author=yubinTW" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/TREER00T"><img src="https://avatars.githubusercontent.com/u/76606342?v=4?s=100" width="100px;" alt="Ali Azmoodeh"/><br /><sub><b>Ali Azmoodeh</b></sub></a><br /><a href="#content-TREER00T" title="Content">🖋</a></td>
+      <td align="center"><a href="https://github.com/you"><img src="https://avatars.githubusercontent.com/u/57100752?v=4?s=100" width="100px;" alt="you"/><br /><sub><b>you</b></sub></a><br /><a href="https://github.com/goldbergyoni/javascript-testing-best-practices/commits?author=you" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
 </table>
