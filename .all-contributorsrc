@@ -378,6 +378,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "Shramkoweb",
+      "name": "Serhii Shramko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42001531?v=4",
+      "profile": "http://shramko.dev",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
