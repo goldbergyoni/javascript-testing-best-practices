@@ -33,6 +33,7 @@ Zacznij od zrozumienia wszechobecnych praktyk testowania, które są podstawą k
 - 🇨🇳[Chinese](readme-zh-CN.md) - dzięki uprzejmości [Yves yao](https://github.com/yvesyao)
 - 🇰🇷[Korean](readme.kr.md) - dzięki uprzejmości [Rain Byun](https://github.com/ragubyun)
 - 🇵🇱[Polish](readme.pl.md) - dzięki uprzejmości [Michal Biesiada](https://github.com/mbiesiad)
+- 🇺🇦[Ukrainian](readme-ua.md) - dzięki uprzejmości [Serhii Shramko](https://github.com/Shramkoweb)
 - Chcesz przetłumaczyć na swój język? Proszę skorzystaj z issue 💜
 
 <br/><br/>

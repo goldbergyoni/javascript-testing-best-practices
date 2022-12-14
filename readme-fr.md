@@ -35,6 +35,7 @@ Commence par comprendre les pratiques de tests omniprésentes qui sont à la bas
 - 🇵🇱[Polonais](readme-pl.md) - Traduit par [Michal Biesiada](https://github.com/mbiesiad)
 - 🇪🇸[Espagnol](readme-es.md) - Traduit par [Miguel G. Sanguino](https://github.com/sanguino)
 - 🇧🇷[Portugais brésilien](readme-pt-br.md) - Traduit par [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) et [koooge](https://github.com/koooge)
+- 🇺🇦[Ukrainian](readme-ua.md) - Traduit par [Serhii Shramko](https://github.com/Shramkoweb)
 - Envie de traduire dans ta propre langue ? Ouvres une issue 💜
 
 <br/><br/>

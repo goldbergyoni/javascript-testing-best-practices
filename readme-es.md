@@ -35,6 +35,7 @@ Empieza por comprender las técnicas de testing ubicuas que son la base de cualq
 - 🇵🇱[Polaco](readme-pl.md) - cortesía de [Michal Biesiada](https://github.com/mbiesiad)
 - 🇪🇸[Español](readme-es.md) - cortesía de [Miguel G. Sanguino](https://github.com/sanguino)
 - 🇧🇷[Portugués-BR](readme-pt-br.md) - cortesía de [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante), [Douglas Mariano Valero](https://github.com/DouglasMV) y [koooge](https://github.com/koooge)
+- 🇺🇦[Ukrainian](readme-ua.md) - cortesía de [Serhii Shramko](https://github.com/Shramkoweb)
 - ¿Quieres traducir a tu propio lenguaje? por favor abre una issue 💜
 
 <br/><br/>

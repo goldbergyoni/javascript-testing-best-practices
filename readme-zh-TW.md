@@ -38,6 +38,7 @@
 - 🇪🇸[Spanish](readme-es.md) - Courtesy of [Miguel G. Sanguino](https://github.com/sanguino)
 - 🇧🇷[Portuguese-BR](readme-pt-br.md) - Courtesy of [Iago Angelim Costa Cavalcante](https://github.com/iagocavalcante) , [Douglas Mariano Valero](https://github.com/DouglasMV) and [koooge](https://github.com/koooge)
 - 🇫🇷[French](readme-fr.md) - Courtesy of [Mathilde El Mouktafi](https://github.com/mel-mouk)
+- 🇺🇦[Ukrainian](readme-ua.md) - Courtesy of [Serhii Shramko](https://github.com/Shramkoweb)
 - Want to translate to your own language? please open an issue 💜
 
 <br/><br/>
