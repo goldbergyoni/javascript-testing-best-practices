@@ -2149,6 +2149,7 @@ Thanks goes to these wonderful people who have contributed to this repository!
     </tr>
     <tr>
       <td align="center"><a href="https://www.smonn.se"><img src="https://avatars.githubusercontent.com/u/44818?v=4?s=100" width="100px;" alt="Simon Ingeson"/><br /><sub><b>Simon Ingeson</b></sub></a><br /><a href="#content-smonn" title="Content">🖋</a></td>
+      <td align="center"><a href="https://github.com/elfacu0"><img src="https://avatars.githubusercontent.com/u/30785449?v=4?s=100" width="100px;" alt="elfacu0"/><br /><sub><b>elfacu0</b></sub></a><br /><a href="#content-elfacu0" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
