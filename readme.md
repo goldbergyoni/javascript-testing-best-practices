@@ -2147,6 +2147,9 @@ Thanks goes to these wonderful people who have contributed to this repository!
       <td align="center"><a href="https://github.com/drewrwilson"><img src="https://avatars.githubusercontent.com/u/4324656?v=4?s=100" width="100px;" alt="Drew Wilson"/><br /><sub><b>Drew Wilson</b></sub></a><br /><a href="#content-drewrwilson" title="Content">🖋</a></td>
       <td align="center"><a href="https://github.com/XtLee"><img src="https://avatars.githubusercontent.com/u/30145777?v=4?s=100" width="100px;" alt="XtLee"/><br /><sub><b>XtLee</b></sub></a><br /><a href="#content-XtLee" title="Content">🖋</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://www.smonn.se"><img src="https://avatars.githubusercontent.com/u/44818?v=4?s=100" width="100px;" alt="Simon Ingeson"/><br /><sub><b>Simon Ingeson</b></sub></a><br /><a href="#content-smonn" title="Content">🖋</a></td>
+    </tr>
   </tbody>
 </table>
 
