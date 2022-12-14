@@ -1012,7 +1012,7 @@ module.exports = async () => {
 
 <br/>
 
-### :clap: Preventing network calls to externous components allows simulating scnearios and minimizing the noise
+### :clap: Preventing network calls to externous components allows simulating scenarios and minimizing the noise
 
 ```javascript
 // Intercept requests for 3rd party APIs and return a predefined response 
