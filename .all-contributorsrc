@@ -414,6 +414,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "saseungmin",
+      "name": "Harang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60910665?v=4",
+      "profile": "https://haranglog.tistory.com",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
