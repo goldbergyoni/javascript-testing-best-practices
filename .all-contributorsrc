@@ -360,10 +360,20 @@
         "translation",
         "code"
       ]
+    },
+    {
+      "login": "TREER00T",
+      "name": "Ali Azmoodeh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76606342?v=4",
+      "profile": "https://github.com/TREER00T",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
   "projectOwner": "goldbergyoni",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "commitConvention": "angular"
 }
