@@ -321,7 +321,7 @@ it("화이트박스 테스트: 내부 method가 VAT 0을 받으면 0을 반환�
 ```javascript
 it("유효한 제품을 삭제하려고 할 때, 올바른 제품과 올바른 구성 정보로 데이터 액세스 DAL을 한 번 호출했는지 확인한다", async () => {
     // 이미 제품을 추가했다고 가정
-    const dataAccessMock = sinon.mock(DAL);
+    const dataAccessMock = sinon.mock(DAL);
     // 좋지 않음: 내부 테스트는 side-effect를 위해서가 주요 목적을 위해서 입니다.
     dataAccessMock.expects("deleteProduct").once().withArgs(DBConfig, theProductWeJustAdded, true, false);
     new ProductService().deletePrice(theProductWeJustAdded);
@@ -448,7 +448,7 @@ describe("Product service", () => {
 
 :white_check_mark: **이렇게 해라:** [스냅샷 테스트](https://jestjs.io/docs/en/snapshot-testing)가 필요한 경우 외부 파일이 아닌 테스트의 일부 ([인라인 스냅샷](https://jestjs.io/docs/en/snapshot-testing#inline-snapshots))에 포함 된 짧고 집중된 스냅샷(3~7 라인)만 사용하십시오. 이 지침을 따르면 따로 설명이 필요없고 잘 깨지지 않는 테스트가 됩니다.
 
-반면에, '고전적인 스냅샷' 튜토리얼 및 도구는 외부에 큰 파일(예: 구성 요소 랜더링 마크업, API JSON 결과)를 저장하고, 테스트를 실행할 때 마다 수신된 결과를 저장된 버전과 비교하기를 권장합니다. 예를 들어, 이것은 1,000 라인(우리가 절대 읽지 않고 추론하지 않을 3,000개의 데이터 값을 가진)의 코드를 우리 테스트에 암시적으로 연결할 수 있습니다. 왜 이것이 잘못 되었을까요? 이렇게하면 테스트에 실패할 1,000 가지 이유가 생깁니다. 한줄만 변경되어도 스냅샷이 유효하지 않게 되고, 이런일이 일어날 가능성이 높습니다. 얼마나 자주? 모든 공백, 주석에서 혹은 사소한 CSS/HTML 변경에 대해서. 뿐만 아니라 테스트 이름은 1,000 라인이 변경되지 않았는지를 나타내기 때분에, 실패에 대한 단서를 제공하지 않습니다. 또한 테스트 작성자가 긴 문서(검사하고 확인할 수 없는)를 받아들이게끔 합니다. 이 모든 것은 초점이 맞지않고 너무 많은 것을 달성하려는 모호하고 간절한 테스트 증상입니다.
+반면에, '고전적인 스냅샷' 튜토리얼 및 도구는 외부에 큰 파일(예: 구성 요소 랜더링 마크업, API JSON 결과)를 저장하고, 테스트를 실행할 때 마다 수신된 결과를 저장된 버전과 비교하기를 권장합니다. 예를 들어, 이것은 1,000 라인(우리가 절대 읽지 않고 추론하지 않을 3,000개의 데이터 값을 가진)의 코드를 우리 테스트에 암시적으로 연결할 수 있습니다. 왜 이것이 잘못 되었을까요? 이렇게하면 테스트에 실패할 1,000 가지 이유가 생깁니다. 한줄만 변경되어도 스냅샷이 유효하지 않게 되고, 이런일이 일어날 가능성이 높습니다. 얼마나 자주? 모든 공백, 주석에서 혹은 사소한 CSS/HTML 변경에 대해서. 뿐만 아니라 테스트 이름은 1,000 라인이 변경되지 않았는지를 나타내기 때분에, 실패에 대한 단서를 제공하지 않습니다. 또한 테스트 작성자가 긴 문서(검사하고 확인할 수 없는)를 받아들이게끔 합니다. 이 모든 것은 초점이 맞지않고 너무 많은 것을 달성하려는 모호하고 간절한 테스트 증상입니다.
 
 긴 외부 스냅샷이 허용되는 경우가 거의 없다는 점은 주목할 가치가 있습니다 - 데이터가 아닌 스키마를 assert 할 때(값 추출 및 필드에 집중) 또는 수신된 문서가 거의 변경되지 않는 경우
 
@@ -468,20 +468,18 @@ describe("Product service", () => {
  "Examples with Jest")
  
 ```javascript
-it('TestJavaScript.com 이 올바르게 랜더링 된다.', ()  => {
+it("TestJavaScript.com 이 올바르게 랜더링 된다.", () => {
+  //Arrange
 
-//Arrange
+  //Act
+  const receivedPage = renderer
+    .create(<DisplayPage page="http://www.testjavascript.com"> Test JavaScript </DisplayPage>)
+    .toJSON();
 
-//Act
-const receivedPage = renderer
-.create(  <DisplayPage page  =  "http://www.testjavascript.com"  > Test JavaScript < /DisplayPage>)
-.toJSON();
-
-//Assert
-expect(receivedPage).toMatchSnapshot();
-// 이제 2,000 라인의 문서를 암묵적으로 유지합니다.
-// 모든 줄바꿈 또는 주석이 테스트를 망가뜨립니다.
-
+  //Assert
+  expect(receivedPage).toMatchSnapshot();
+  // 이제 2,000 라인의 문서를 암묵적으로 유지합니다.
+  // 모든 줄바꿈 또는 주석이 테스트를 망가뜨립니다.
 });
 ```
 
@@ -490,18 +488,18 @@ expect(receivedPage).toMatchSnapshot();
 ### :clap: 올바른 예: expectation이 잘 보이고 집중된다.
 
 ```javascript
-it('TestJavaScript.com 홈페이지를 방문하면 메뉴가 보인다.', () => {
-//Arrange
+it("TestJavaScript.com 홈페이지를 방문하면, 메뉴가 보인다.", () => {
+  //Arrange
 
-//Act
-receivedPage tree = renderer
-.create(  <DisplayPage page  =  "http://www.testjavascript.com"  > Test JavaScript < /DisplayPage>)
-.toJSON();
+  //Act
+  const receivedPage = renderer
+    .create(<DisplayPage page="http://www.testjavascript.com"> Test JavaScript </DisplayPage>)
+    .toJSON();
 
-//Assert
+  //Assert
 
-const menu = receivedPage.content.menu;
-expect(menu).toMatchInlineSnapshot(`
+  const menu = receivedPage.content.menu;
+  expect(menu).toMatchInlineSnapshot(`
 <ul>
 <li>Home</li>
 <li> About </li>
@@ -595,12 +593,12 @@ it("사이트 이름을 업데이트 할 때, 성공을 확인한다.", async ()
  "Examples with Jest")
  
 ```javascript
-it("제품명이 없으면 400 오류를 던진다.", async() => {
+it("제품명이 없으면, 400 오류를 던진다.", async() => {
   let errorWeExceptFor = null;
   try {
-    const result = await addNewProduct({name:'nest'});}
-  catch (error) {
-    expect(error.code).to.equal('InvalidInput');
+    const result = await addNewProduct({});
+  } catch (error) {
+    expect(error.code).to.equal("InvalidInput");
     errorWeExceptFor = error;
   }
   expect(errorWeExceptFor).not.to.be.null;
@@ -614,8 +612,10 @@ it("제품명이 없으면 400 오류를 던진다.", async() => {
 ### :clap: 올바른 예: QA나 PM이라도 쉽게 이해할 수 있고 읽기 쉬운 expectation
 
 ```javascript
-it.only("제품명이 없으면 400 오류를 던진다.", async() => {
-  expect(addNewProduct)).to.eventually.throw(AppError).with.property('code', "InvalidInput");
+it("제품명이 없으면, 400 오류를 던진다.", async () => {
+  await expect(addNewProduct({}))
+    .to.eventually.throw(AppError)
+    .with.property("code", "InvalidInput");
 });
 ```
 
@@ -658,7 +658,7 @@ describe('주문 서비스', function() {
 <br/><br/>
 
 ## ⚪ ️ 1.12 일반적인 좋은 테스트 기법들
-
+
 :white_check_mark: **이렇게 해라:** 이 글은 Node.js와 관련이 있거나 최소한 Node.js로 예를 들 수 있는 테스트 조언에 중점을두고 있습니다. 그러나 이번에는 Node.js가 아니지만 잘 알려진 팁들을 포함하고 있습니다.
 
 [TDD 원칙](https://www.sm-cloud.com/book-review-test-driven-development-by-example-a-tldr/)을 배우고 연습하십시오 - 많은 사람들에게 매우 가치가 있지만, 자신의 스타일에 맞지 않을 수 있습니다. [실패-성공-리페토링 스타일](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html)로 코드 작성 전에 테스트를 작성하는 것을 고려하십시오. 버그를 발견하면 각 테스트에서 정확히 한 가지만 확인하도록 하십시오. 수정하기 전에 앞으로 이 버그를 발견 할 테스트를 작성하십시오. 테스트가 성공하기 전에 각 테스트가 한번 이상 실패하도록 하십시오. 테스트를 만족시키는 간단한 코드를 작성하여 빠르게 모듈을 시작하십시오 - 점신적으로 리펙토링하여 프로덕션 등급의 수준으로 가져가십시오. 환경(경로, OS 등)에 대한 종속성을 피하십시오.
@@ -879,7 +879,7 @@ Credit:: <a href="https://github.com/TheHollidayInn" data-href="https://github.c
  "Examples with Mocha")
  
 ```javascript
-before(() => {
+before(async () => {
   // DB에 사이트와 어드민 데이터를 추가합니다. 데이터는 어디에 있나요? 외부에 있습니다. 외부 json 파일이나 마이그레이션 프레임워크에 있습니다. 
   await DB.AddSeedDataFromJson('seed.json');
 });
@@ -889,8 +889,8 @@ it("사이트 이름을 변경하면, 성공 결과값을 받아온다", async (
   const updateNameResult = await SiteService.changeName(siteToUpdate, "newName");
   expect(updateNameResult).to.be(true);
 });
-it("사이트 이름으로 조회했을때, 해당 사이트를 가져온다", async () => {
-  //"portal"이라는 이름의 사이트가 있다는 것을 알고 있습니다. - 씨드 파일에서 봤습니다. 
+it("사이트 이름으로 조회 했을 때, 해당 사이트를 가져온다", async () => {
+  //"portal"이라는 이름의 사이트가 있다는 것을 알고 있습니다. - 씨드 파일에서 봤습니다.
   const siteToCheck = await SiteService.getSiteByName("Portal");
   expect(siteToCheck.name).to.be.equal("Portal"); //실패! 이전 테스트에서 이름이 변경되었습니다 :[
 });
@@ -941,7 +941,7 @@ it("사이트 이름을 변경하면, 성공 결과값을 받아온다", async (
  "Examples with react-testing-library")
 
 ```javascript
-test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 멤버들만 보여져야 한다', () => {
+test('오직 VIP를 보기위해 사용자 목록을 표시 했을 때, 오직 VIP 멤버들만 보여져야 한다', () => {
   // Arrange
   const allUsers = [
    { id: 1, name: 'Yoni Goldberg', vip: false }, 
@@ -963,7 +963,7 @@ test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 
 
 ### :thumbsdown: 잘못된 예: 화면 세부사항들과 데이터를 섞어서 검증
 ```javascript
-test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 멤버들만 보여져야 한다', () => {
+test('오직 VIP를 보기위해 사용자 목록을 표시 했을 때, 오직 VIP 멤버들만 보여져야 한다', () => {
   // Arrange
   const allUsers = [
    {id: 1, name: 'Yoni Goldberg', vip: false }, 
@@ -1006,44 +1006,45 @@ test('오직 VIP를 보기위해 사용자목록을 표시했을때, 오직 VIP 
 ![](https://img.shields.io/badge/🔧%20Example%20using%20React-blue.svg
  "Examples with React")
  
-```html
+```jsx
 // the markup code (part of React component)
 <h3>
   <Badge pill className="fixed_badge" variant="dark">
-    <span data-test-id="errorsLabel">{value}</span> <!-- note the attribute data-test-id -->
+    <span data-test-id="errorsLabel">{value}</span>
+    {/* data-test-id 속성 참고 */}
   </Badge>
 </h3>
 ```
 
 ```javascript
 // react-testing-library를 사용한 예제
-  test('metric에 데이터가 전달되지 않으면, 0을 기본값으로 보여준다', () => {
-    // Arrange
-    const metricValue = undefined;
+test("metric에 데이터가 전달되지 않으면, 0을 기본값으로 보여준다", () => {
+  // Arrange
+  const metricValue = undefined;
 
-    // Act
-    const { getByTestId } = render(<dashboardMetric value={undefined}/>);    
-    
-    expect(getByTestId('errorsLabel')).text()).toBe("0");
-  });
+  // Act
+  const { getByTestId } = render(<DashboardMetric value={undefined} />);
 
+  expect(getByTestId("errorsLabel").text()).toBe("0");
+});
 ```
 
 <br/>
 
 ### :thumbsdown: 잘못된 예: CSS 요소들에 의존
-```html
-<!-- the markup code (part of React component) -->
-<span id="metric" className="d-flex-column">{value}</span> <!-- 만약 디자이너가 클래스를 변경한다면? -->
+```jsx
+// the markup code (part of React component)
+<span id="metric" className="d-flex-column">{value}</span>
+// 만약 디자이너가 클래스를 변경한다면?
 ```
 
 ```javascript
-// enzyme을 사용한 예제
-test('데이터가 전달되지 않으면, 0을 보여준다', () => {
-    // ...
-    
-    expect(wrapper.find("[className='d-flex-column']").text()).toBe("0");
-  });
+// this exammple is using enzyme
+test("데이터가 전달되지 않으면, 0을 보여준다", () => {
+  // ...
+
+  expect(wrapper.find("[className='d-flex-column']").text()).toBe("0");
+});
 ```
 
 
@@ -1078,50 +1079,50 @@ test('데이터가 전달되지 않으면, 0을 보여준다', () => {
  
 ```javascript
 class Calendar extends React.Component {
-  static defaultProps = {showFilters: false}
-  
+  static defaultProps = { showFilters: false };
+
   render() {
     return (
       <div>
         A filters panel with a button to hide/show filters
-        <FiltersPanel showFilter={showFilters} title='Choose Filters'/>
+        <FiltersPanel showFilter={showFilters} title="Choose Filters" />
       </div>
-    )
+    );
   }
 }
 
-//Examples use React & Enzyme
-test('실제적인 접근: 필터들을 클릭하면, 필터들이 화면에 표시된다', () => {
-    // Arrange
-    const wrapper = mount(<Calendar showFilters={false} />)
+//React & Enzyme 사용 예
+test("실제적인 접근: 필터들을 클릭하면, 필터들이 화면에 표시된다", () => {
+  // Arrange
+  const wrapper = mount(<Calendar showFilters={false} />);
 
-    // Act
-    wrapper.find('button').simulate('click');
+  // Act
+  wrapper.find("button").simulate("click");
 
-    // Assert
-    expect(wrapper.text().includes('Choose Filter'));
-    // 사용자가 요소에 접근하는 방법: 텍스트를 이용
-})
-
+  // Assert
+  expect(wrapper.text().includes("Choose Filter"));
+  // 사용자가 요소에 접근하는 방법: 텍스트를 이용
+});
 
 ```
 
 ### :thumbsdown: 잘못된 예: 얕은 렌더링과 함께 실제를 목킹
 ```javascript
+test("얕은/목킹 접근: 필터들을 클릭하면, 필터들이 화면에 표시된다", () => {
+  // Arrange
+  const wrapper = shallow(<Calendar showFilters={false} title="Choose Filter" />);
 
-test('얕은/목킹 접근: 필터들을 클릭하면, 필터들이 화면에 표시된다', () => {
-    // Arrange
-    const wrapper = shallow(<Calendar showFilters={false} title='Choose Filter'/>)
+  // Act
+  wrapper
+    .find("filtersPanel")
+    .instance()
+    .showFilters();
+  // 내부를 탭하고, 화면을 무시한채 메소드를 호출. 화이트박스 접근
 
-    // Act
-    wrapper.find('filtersPanel').instance().showFilters();
-    // 내부를 탭하고, 화면을 무시한채 메소드를 호출. 화이트박스 접근
-
-    // Assert
-    expect(wrapper.find('Filter').props()).toEqual({title: 'Choose Filter'});
-    // name을 변경하거나, 관련된 다른 것들을 전달하지 않는다면 어떻게 될까?
-})
-
+  // Assert
+  expect(wrapper.find("Filter").props()).toEqual({ title: "Choose Filter" });
+  // name을 변경하거나, 관련된 다른 것들을 전달하지 않는다면 어떻게 될까?
+});
 ```
 
 </details>
@@ -1161,40 +1162,36 @@ cy.wait('@products')// wait for route to appear
 
 ```javascript
 // @testing-library/dom
-test('movie title appears', async () => {
-    // 요소는 초기에 존재 하지 않음...
+test("영화 제목이 나타난다", async () => {
+  // 요소는 초기에 존재 하지 않음...
 
-    // 출현을 대기
-    await wait(() => {
-        expect(getByText('the lion king')).toBeInTheDocument()
-    })
+  // 출현을 대기
+  await wait(() => {
+    expect(getByText("the lion king")).toBeInTheDocument();
+  });
 
-    // 출현을 기다린 후 요소를 리턴
-    const movie = await waitForElement(() => getByText('the lion king'))
-})
-
+  // 출현을 기다린 후 요소를 리턴
+  const movie = await waitForElement(() => getByText("the lion king"));
+});
 ```
 
 ### :thumbsdown: 잘못된 예: 사용자 정의 슬립 코드
 ```javascript
+test("영화 제목이 나타난다", async () => {
+  // 초기에 요소가 존재 하지 않음...
 
-test('movie title appears', async () => {
-    // 초기에 요소가 존재 하지 않음...
+  // 사용자 정의 대기 로직 (주의: 매우 단순, 타임아웃이 아님)
+  const interval = setInterval(() => {
+    const found = getByText("the lion king");
+    if (found) {
+      clearInterval(interval);
+      expect(getByText("the lion king")).toBeInTheDocument();
+    }
+  }, 100);
 
-    // 사용자 정의 대기 로직 (주의: 매우 단순, 타임아웃이 아님)
-    const interval = setInterval(() => {
-        const found = getByText('the lion king');
-        if(found){
-            clearInterval(interval);
-            expect(getByText('the lion king')).toBeInTheDocument();
-        }
-        
-    }, 100);
-
-    // 출현을 기다린 후 요소를 리턴
-    const movie = await waitForElement(() => getByText('the lion king'))
-})
-
+  // 출현을 기다린 후 요소를 리턴
+  const movie = await waitForElement(() => getByText("the lion king"));
+});
 ```
 
 </details>
@@ -1247,38 +1244,36 @@ test('movie title appears', async () => {
  "Examples with React") ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg
  "Examples with react-testing-library")
  
-```javascript
-
+```jsx
 // unit under test
-export default function ProductsList() { 
-    const [products, setProducts] = useState(false)
+export default function ProductsList() {
+  const [products, setProducts] = useState(false);
 
-    const fetchProducts = async() => {
-      const products = await axios.get('api/products')
-      setProducts(products);
-    }
+  const fetchProducts = async () => {
+    const products = await axios.get("api/products");
+    setProducts(products);
+  };
 
-    useEffect(() => {
-      fetchProducts();
-    }, []);
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
-  return products ? <div>{products}</div> : <div data-test-id='no-products-message'>No products</div>
+  return products ? <div>{products}</div> : <div data-test-id="no-products-message">No products</div>;
 }
 
 // test
-test('products가 없는 경우, 적절한 메시지 표시하기', () => {
-    // Arrange
-    nock("api")
-            .get(`/products`)
-            .reply(404);
+test("products가 없는 경우, 적절한 메시지 표시한다", () => {
+  // Arrange
+  nock("api")
+    .get(`/products`)
+    .reply(404);
 
-    // Act
-    const {getByTestId} = render(<ProductsList/>);
+  // Act
+  const { getByTestId } = render(<ProductsList />);
 
-    // Assert
-    expect(getByTestId('no-products-message')).toBeTruthy();
+  // Assert
+  expect(getByTestId("no-products-message")).toBeTruthy();
 });
-
 ```
 
 </details>
@@ -1360,7 +1355,7 @@ beforeEach(setUser => () {
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Cypress-blue.svg
  "Using Cypress to illustrate the idea")
 ```javascript
-it('모든 페이지를 smoke 테스트 할때, 페이지들이 정상적으로 로드 되어야 한다', () => {
+it('모든 페이지를 smoke 테스트 할 때, 페이지들이 정상적으로 로드되어야 한다', () => {
     // Cypress를 이용한 예제 입니다
     // 다른 E2E 도구로도 쉽게 구현이 가능합니다
     cy.visit('https://mysite.com/home');
@@ -1480,44 +1475,21 @@ paths:
  "Using Cypress to illustrate the idea")
 
 ```javascript
-import  *  as todoPage from  '../page-objects/todo-page';
+import * as todoPage from "../page-objects/todo-page";
 
-describe('visual validation',  ()  =>  {
+describe("visual validation", () => {
+  before(() => todoPage.navigate());
+  beforeEach(() => cy.eyesOpen({ appName: "TAU TodoMVC" }));
+  afterEach(() => cy.eyesClose());
 
-before(()  =>  todoPage.navigate());
-
-beforeEach(()  =>  cy.eyesOpen({ appName:  'TAU TodoMVC'  }));
-
-afterEach(()  =>  cy.eyesClose());
-
-  
-
-it('should look good',  ()  =>  {
-
-cy.eyesCheckWindow('empty todo list');
-
-  
-
-todoPage.addTodo('Clean room');
-
-  
-
-todoPage.addTodo('Learn javascript');
-
-  
-
-cy.eyesCheckWindow('two todos');
-
-  
-
-todoPage.toggleTodo(0);
-
-  
-
-cy.eyesCheckWindow('mark as completed');
-
-});
-
+  it("should look good", () => {
+    cy.eyesCheckWindow("empty todo list");
+    todoPage.addTodo("Clean room");
+    todoPage.addTodo("Learn javascript");
+    cy.eyesCheckWindow("two todos");
+    todoPage.toggleTodo(0);
+    cy.eyesCheckWindow("mark as completed");
+  });
 });
 ```
 
@@ -1603,7 +1575,7 @@ mutation 기반의 테스트는 단순한 '방문'이 아닌 실제로 테스트
 
 <br/>
 
-❌ **그렇지 않으면:** 85%의 커버리지는 테스트에서 코드의 85%에서 버그를 감지한다는 의미입니다.
+❌ **그렇지 않으면:** 85%의 커버리지는 테스트에서 코드의 85%에서 버그를 감지한다는 의미입니다.
 
 <br/>
 
@@ -1611,22 +1583,22 @@ mutation 기반의 테스트는 단순한 '방문'이 아닌 실제로 테스트
 
 <br/>
 
-### :thumbsdown: 올바르지 않은 예: 100% 커버리지, 0% 테스트
+### :thumbsdown: 올바르지 않은 예: 100% 커버리지, 0% 테스트
 
 ![](https://img.shields.io/badge/🔨%20Example%20using%20Stryker-blue.svg
 "Using Cypress to illustrate the idea")
 
 ```javascript
 function addNewOrder(newOrder) {
-    logger.log(`Adding new order ${newOrder}`);
-    DB.save(newOrder);
-    Mailer.sendMail(newOrder.assignee, `A new order was places ${newOrder}`);
+  logger.log(`Adding new order ${newOrder}`);
+  DB.save(newOrder);
+  Mailer.sendMail(newOrder.assignee, `A new order was places ${newOrder}`);
 
-    return {approved: true};
+  return { approved: true };
 }
 
-it("Test addNewOrder, don't use such test names", () => {
-    addNewOrder({asignee: "John@mailer.com",price: 120});
+it("addNewOrder를 테스트하고, 이러한 테스트 이름을 사용하지 마십시오.", () => {
+  addNewOrder({ assignee: "John@mailer.com", price: 120 });
 }); // 100% 커버리지가 나오지만 아무것도 확인하지 않습니다.
 ```
 
@@ -1718,7 +1690,7 @@ it("Test name", () => {*//error:no-identical-title. Assign unique titles to test
 
 ### :clap: 올바른 예: 코드 품질 검사를 수행하는 npm 스크립트는 요청 시 또는 개발자가 새 코드를 푸시하려고 할 때 모두 병렬로 실행됩니다.
 
-```javascript
+```json
 "scripts": {
     "inspect:sanity-testing": "mocha **/**--test.js --grep \"sanity\"",
     "inspect:lint": "eslint .",

@@ -40,6 +40,7 @@ Zacznij od zrozumienia wszechobecnych praktyk testowania, które są podstawą k
 - 🇫🇷[French](readme-fr.md) - dzięki uprzejmości [Mathilde El Mouktafi](https://github.com/mel-mouk)
 - 🇯🇵[Japanese (draft)](https://github.com/yuichkun/javascript-testing-best-practices/blob/master/readme-jp.md) - dzięki uprzejmości [Yuichi Yogo](https://github.com/yuichkun) oraz [ryo](https://github.com/kawamataryo)
 - 🇹🇼[Traditional Chinese](readme-zh-TW.md) - dzięki uprzejmości [Yubin Hsu](https://github.com/yubinTW)
+- 🇺🇦[Ukrainian](readme-ua.md) - dzięki uprzejmości [Serhii Shramko](https://github.com/Shramkoweb)
 - Chcesz przetłumaczyć na swój język? Proszę skorzystaj z issue 💜
 
 <br/><br/>

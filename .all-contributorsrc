@@ -360,10 +360,74 @@
         "translation",
         "code"
       ]
+    },
+    {
+      "login": "TREER00T",
+      "name": "Ali Azmoodeh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76606342?v=4",
+      "profile": "https://github.com/TREER00T",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "Saimon398",
+      "name": "Alex Popov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/71539667?v=4",
+      "profile": "https://github.com/Saimon398",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "Shramkoweb",
+      "name": "Serhii Shramko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42001531?v=4",
+      "profile": "http://shramko.dev",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "yugoccp",
+      "name": "Yugo Sakamoto",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1724114?v=4",
+      "profile": "https://github.com/yugoccp",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "Fdawgs",
+      "name": "Frazer Smith",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43814140?v=4",
+      "profile": "https://yeovilhospital.co.uk/",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "wralith",
+      "name": "Wralith",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75392169?v=4",
+      "profile": "https://github.com/wralith",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "saseungmin",
+      "name": "Harang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60910665?v=4",
+      "profile": "https://haranglog.tistory.com",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
   "projectOwner": "goldbergyoni",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "commitConvention": "angular"
 }
