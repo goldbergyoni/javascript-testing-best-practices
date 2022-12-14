@@ -423,6 +423,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "rcanelav",
+      "name": "rcanelav",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64812826?v=4",
+      "profile": "https://github.com/rcanelav",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "projectName": "javascript-testing-best-practices",
