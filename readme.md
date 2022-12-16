@@ -86,7 +86,7 @@ Guidelines for CI in the JS world (9 bullets)
 :white_check_mark: **Do:**
 Testing code is not production-code - Design it to be short, dead-simple, flat, and delightful to work with. One should look at a test and get the intent instantly.
 
-See, our minds are already occupied with our main job - the production code. There is no 'headspace' for additional complexity. Should we try to squeeze yet another sus-system into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
+See, our minds are already occupied with our main job - the production code. There is no 'headspace' for additional complexity. Should we try to squeeze yet another sub-system into our poor brain it will slow the team down which works against the reason we do testing. Practically this is where many teams just abandon testing.
 
 The tests are an opportunity for something else - a friendly assistant, co-pilot, that delivers great value for a small investment. Science tells us that we have two brain systems: system 1 is used for effortless activities like driving a car on an empty road and system 2 is meant for complex and conscious operations like solving a math equation. Design your test for system 1, when looking at test code it should _feel_ as easy as modifying an HTML document and not like solving 2X(17 × 24).
 
@@ -134,9 +134,10 @@ Most of the advice below are derivatives of this principle.
 ```javascript
 //1. unit under test
 describe('Products Service', function() {
-  describe('Add new product', function() {
+  describe('Add new produ
+  ct', function() {
     //2. scenario and 3. expectation
-    it('When no price is specified, then the product status is pending approval', ()=> {
+    test('When no price is specified, then the product status is pending approval', ()=> {
       const newProduct = new ProductService().add(...);
       expect(newProduct.status).to.equal('pendingApproval');
     });
@@ -778,7 +779,7 @@ A word of caution: the TDD argument in the software world takes a typical false-
 
 ## ⚪ ️2.2 Component testing might be your best affair
 
-:white_check_mark: **Do:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung song of the testing world — they provide the best of both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
+:white_check_mark: **Do:** Each unit test covers a tiny portion of the application and it’s expensive to cover the whole, whereas end-to-end testing easily covers a lot of ground but is flaky and slower, why not apply a balanced approach and write tests that are bigger than unit tests but smaller than end-to-end testing? Component testing is the unsung hero of the testing world — they provide the best of both worlds: reasonable performance and a possibility to apply TDD patterns + realistic and great coverage.
 
 Component tests focus on the Microservice ‘unit’, they work against the API and don’t mock anything which belongs to the Microservice itself (e.g. real DB, or at least the in-memory version of that DB) but stub anything that is external like calls to other Microservices. By doing so, we test what we deploy, approach the app from outward to inward and gain great confidence in a reasonable amount of time.
 
@@ -1677,7 +1678,7 @@ describe("visual validation", () => {
 
 ## ⚪ ️ 4.1 Get enough coverage for being confident, ~80% seems to be the lucky number
 
-:white_check_mark: **Do:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380 than 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) that presumably should satisfy most of the applications.
+:white_check_mark: **Do:** The purpose of testing is to get enough confidence for moving fast, obviously the more code is tested the more confident the team can be. Coverage is a measure of how many code lines (and branches, statements, etc) are being reached by the tests. So how much is enough? 10–30% is obviously too low to get any sense about the build correctness, on the other side 100% is very expensive and might shift your focus from the critical paths to the exotic corners of the code. The long answer is that it depends on many factors like the type of application — if you’re building the next generation of Airbus A380, then 100% is a must, for a cartoon pictures website 50% might be too much. Although most of the testing enthusiasts claim that the right coverage threshold is contextual, most of them also mention the number 80% as a thumb of a rule ([Fowler: “in the upper 80s or 90s”](https://martinfowler.com/bliki/TestCoverage.html)) that presumably should satisfy most of the applications.
 
 Implementation tips: You may want to configure your continuous integration (CI) to have a coverage threshold ([Jest link](https://jestjs.io/docs/en/configuration.html#collectcoverage-boolean)) and stop a build that doesn’t stand to this standard (it’s also possible to configure threshold per component, see code example below). On top of this, consider detecting build coverage decrease (when a newly committed code has less coverage) — this will push developers raising or at least preserving the amount of tested code. All that said, coverage is only one measure, a quantitative based one, that is not enough to tell the robustness of your testing. And it can also be fooled as illustrated in the next bullets
 
@@ -1781,7 +1782,7 @@ it("Test addNewOrder, don't use such test names", () => {
 
 ## ⚪ ️4.4 Preventing test code issues with Test linters
 
-:white_check_mark: **Do:** A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) will warn when a test is written at the global level (not a son of a describe() statement) or when tests are [skipped](https://mochajs.org/#inclusive-tests) which might lead to a false belief that all tests are passing. Similarly, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) can, for example, warn when a test has no assertions at all (not checking anything)
+:white_check_mark: **Do:** A set of ESLint plugins were built specifically for inspecting the tests code patterns and discover issues. For example, [eslint-plugin-mocha](https://www.npmjs.com/package/eslint-plugin-mocha) will warn when a test is written at the global level (not a descendant of a describe() statement) or when tests are [skipped](https://mochajs.org/#inclusive-tests) which might lead to a false belief that all tests are passing. Similarly, [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) can, for example, warn when a test has no assertions at all (not checking anything)
 
 <br/>
 
