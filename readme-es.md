@@ -126,7 +126,7 @@ La mayoría de los siguientes consejos son derivados de este principio
 //1. unidad que esta siendo testeada
 describe('Products Service', function() {
   describe('Add new product', function() {
-    //2. escenario y 3. quá se espera
+    //2. escenario y 3. qué se espera
     it('When no price is specified, then the product status is pending approval', ()=> {
       const newProduct = new ProductService().add(...);
       expect(newProduct.status).to.equal('pendingApproval');
