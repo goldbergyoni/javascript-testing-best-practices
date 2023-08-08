@@ -23,7 +23,7 @@ Start by understanding the ubiquitous testing practices that are the foundation 
 
 ### Written By Yoni Goldberg - A JavaScript & Node.js consultant
 
-### 👨‍🏫 Exciting news: I've just released my super-comprehensive testing course after two years of recording and editing. [It's now on a 🎁 limited-time sale during July](https://testjavascript.com/)
+### 👨‍🏫 Exciting news: I've just released my super-comprehensive testing course after two years of recording and editing. [Less than 48 hours left for the 🎁 special launch deal](https://testjavascript.com/)
 
 <br/>
 
