@@ -1,4 +1,4 @@
-<img src="/assets/jtbp-header-blue.png" width="1920px"/>
+<img src="/assets/jtbp-header-bluenew.png" width="1920px"/>
 
 
 <br/>
