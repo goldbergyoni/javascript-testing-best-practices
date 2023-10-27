@@ -654,7 +654,7 @@ it("When no product name, it throws error 400", async () => {
 ![](https://img.shields.io/badge/🔧%20Example%20using%20Jest-blue.svg "Examples with Jest")
 
 ```javascript
-//this test is fast (no DB) and we're tagging it correspondigly
+//this test is fast (no DB) and we're tagging it correspondingly
 //now the user/CI can run it frequently
 describe("Order service", function() {
   describe("Add new order #cold-test #sanity", function() {
@@ -671,7 +671,7 @@ describe("Order service", function() {
 
 ## ⚪ ️ 1.12 Categorize tests under at least 2 levels
 
-:white_check_mark: **Do:** Apply some structure to your test suite so an occasional visitor could easily understand the requirements (tests are the best documentation) and the various scenarios that are being tested. A common method for this is by placing at least 2 'describe' blocks above your tests: the 1st is for the name of the unit under test and the 2nd for an additional level of categorization like the scenario or custom categories (see code examples and the print screen below). Doing so will also greatly improve the test reports: The reader will easily infer the test categories, delve into the desired section and correlate failing tests. In addition, it will get much easier for a developer to navigate through the code of a suite with many tests. There are multiple alternative structures for the test suite that you may consider like [given-when-then](https://github.com/searls/jasmine-given) and [RITE](https://github.com/ericelliott/riteway)
+:white_check_mark: **Do:** Apply some structure to your test suite so an occasional visitor can easily understand the requirements (tests are the best documentation) and the various scenarios that are being tested. A common method for this is by placing at least 2 'describe' blocks above your tests: the 1st is for the name of the unit under test and the 2nd for an additional level of categorization like the scenario or custom categories (see code examples and the print screen below). Doing so will also greatly improve the test reports: The reader will easily infer the test categories, delve into the desired section and correlate failing tests. In addition, it will get much easier for a developer to navigate through the code of a suite with many tests. There are multiple alternative structures for the test suite that you may consider like [given-when-then](https://github.com/searls/jasmine-given) and [RITE](https://github.com/ericelliott/riteway)
 
 <br/>
 
@@ -980,7 +980,7 @@ The second option is to clean up after all the test files have finished (or even
 
 <br/>
 
-### :clap: Cleaning after ALL the tests. Not neccesserily after every run. The more data we have while the tests are running - The more it resembles the production perks
+### :clap: Cleaning after ALL the tests. Not necessarily after every run. The more data we have while the tests are running - The more it resembles the production perks
 
 ```javascript
   // After-all clean up (recommended)
